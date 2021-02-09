@@ -6,5 +6,5 @@ add_subdirectory(googletest)
 include_directories(googletest/googletest/include)
 include_directories(googletest/googlemock/include)
 
-add_executable(PSE main.cpp tests/test.cpp)
+add_executable(PSE main.cpp lib/DesignByContract.h)
 target_link_libraries(PSE gtest gtest_main)
