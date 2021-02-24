@@ -1,9 +1,8 @@
 #include <iostream>
-#include <gtest/gtest.h>
-#include <gmock/gmock.h>
+using namespace std;
 
 int main() {
-    testing::InitGoogleTest();
-    std::cout << "Hello, World!" << std::endl;
-    return RUN_ALL_TESTS();
+    cout << "Hello, World!" << endl;
+    return 0;
 }
+
