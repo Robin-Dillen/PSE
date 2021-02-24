@@ -4,8 +4,6 @@ project(PSE)
 set(CMAKE_CXX_STANDARD 98)
 set(CMAKE_EXE_LINKER_FLAGS -pthread)
 
-enable_testing()
-
 add_subdirectory(googletest-release-1.10.0)
 
 # Set source files for RELEASE target
