@@ -12,17 +12,21 @@ using namespace std;
 class Hub {
 public:
 
-    Hub(const vector<VaccinatieCentrum *> &vaccinCentra, unsigned int aantal_vaccins_per_levering,
-        unsigned int leveringen_interval,
-        unsigned int aantal_vaccins_per_lading);
+    Hub();
 
     unsigned int getLeveringenInterval() const;
 
-    /*
-     *
-     */
-    void levering();
+    void setFverbondenCentra(const map<string, VaccinatieCentrum *> &fverbondenCentra);
 
+    void setFverbondenCentra(const vector<VaccinatieCentrum *> &fverbondenCentra);
+
+    void setAantalVaccins(unsigned int aantalVaccins);
+
+    void setAantalVaccinsPerLevering(unsigned int aantalVaccinsPerLevering);
+
+    void setLeveringenInterval(unsigned int leveringenInterval);
+
+    void setAantalVaccinsPerLading(unsigned int aantalVaccinsPerLading);
 
 private:
     // const attributes
@@ -34,6 +38,8 @@ private:
     unsigned int aantal_vaccins_per_levering;
     unsigned int leveringen_interval;
     unsigned int aantal_vaccins_per_lading;
+
+    Hub *_initCheck; // pointer naar zichzelf om te checken of het object correct geïnitialseert is
 };
 
 

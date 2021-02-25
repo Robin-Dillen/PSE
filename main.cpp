@@ -9,7 +9,6 @@
 #include <iostream>
 #include <vector>
 
-#include "TinyXML/tinyxml.h"
 #include "Parser.h"
 
 using namespace std;
@@ -20,9 +19,9 @@ int main(int argc, char const *argv[]) {
 
     Hub *H = P.getFhub();
 
-    while (H) {
-        // simulatie
-    }
+//    while (H) {
+//        // simulatie
+//    }
 
     delete H;
     return 0;
