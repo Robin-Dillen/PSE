@@ -6,7 +6,7 @@ int main() {
     TiXmlDocument doc;
 
     //TiXmlDocument doc;
-    if(!doc.LoadFile("../test.xml")) {
+    if(!doc.LoadFile("../XMLfiles/test.xml")) {
         std::cerr << doc.ErrorDesc() << std::endl;
         return 1;
     }
