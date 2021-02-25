@@ -6,6 +6,7 @@
 
 #include "Hub.h"
 #include "VaccinatieCentrum.h"
+#include "TinyXML/tinyxml.h"
 
 using namespace std;
 
