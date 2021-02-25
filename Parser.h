@@ -3,6 +3,7 @@
 
 #include <fstream>
 #include <string>
+#include <iostream>
 
 #include "Hub.h"
 #include "VaccinatieCentrum.h"
@@ -15,8 +16,10 @@ class Parser {
 public:
     Parser(const string &filename);
 
+    Hub *getFhub() const;
+
 private:
-    Hub *hub;
+    Hub *fhub;
 };
 
 

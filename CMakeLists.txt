@@ -15,6 +15,8 @@ link_directories(gtest/lib)
 set(RELEASE_SOURCE_FILES
         main.cpp
         Parser.cpp Parser.h
+        Hub.cpp Hub.h
+        VaccinatieCentrum.cpp VaccinatieCentrum.h
         TinyXML/tinystr.cpp
         TinyXML/tinystr.h
         TinyXML/tinyxml.cpp

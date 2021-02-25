@@ -1,19 +1,19 @@
 #include "Parser.h"
 
 Parser::Parser(const string &filename) {
-// read in with tiny xml
+// read file in with tiny xml
     TiXmlDocument doc;
 
     //TiXmlDocument doc;
     if (!doc.LoadFile(filename.c_str())) {
-        std::cerr << doc.ErrorDesc() << std::endl;
-        return 1;
+        cerr << doc.ErrorDesc() << endl;
+//        return 1;
     }
     TiXmlElement *root = doc.FirstChildElement();
     if (root == NULL) {
-        std::cerr << "Failed to load file: No root element." << std::endl;
+        cerr << "Failed to load file: No root element." << endl;
         doc.Clear();
-        return 1;
+//        return 1;
     }
 
     for (TiXmlElement *elem = root->FirstChildElement(); elem != NULL; elem = elem->NextSiblingElement()) {
@@ -52,5 +52,9 @@ Parser::Parser(const string &filename) {
     doc.Clear();
 
 //put all the data in according variables
-    hub = new Hub(/*input vector of vaccinatie centra*/);
+    //fhub = new Hub(/*input vector of vaccinatie centra*/);
+}
+
+Hub *Parser::getFhub() const {
+    return fhub;
 }
