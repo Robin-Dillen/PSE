@@ -7,14 +7,14 @@
 #include <iostream>
 #include <sstream>
 
-Parser::Parser(const string &filename) {
+Parser::Parser(const string &filename) : _initCheck(this) {
     TiXmlDocument doc;
-    if(!doc.LoadFile(filename.c_str())) {
+    if (!doc.LoadFile(filename.c_str())) {
         std::cerr << doc.ErrorDesc() << std::endl;
         return;
     }
-    TiXmlElement* root = doc.RootElement();
-    if(root == NULL) {
+    TiXmlElement *root = doc.RootElement();
+    if (root == NULL) {
         std::cerr << "Failed to load file: No root element." << std::endl;
         doc.Clear();
         return;
@@ -74,9 +74,15 @@ Parser::Parser(const string &filename) {
             }
         }
     }
-    return;
+
+    ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
 }
 
 Hub *Parser::getFhub() const {
+    REQUIRE(isProperlyInitialized(), "Parser wasn't initialized when calling getFhub()");
     return fhub;
+}
+
+bool Parser::isProperlyInitialized() const {
+    return false;
 }
