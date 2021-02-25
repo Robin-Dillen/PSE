@@ -2,7 +2,7 @@
 // Created by nibor on 24/02/2021.
 //
 
-#include <gtest/gtest.h>
+#include "gtest/gtest.h"
 
 TEST(ExampleTests, testing) {
     EXPECT_TRUE(true);

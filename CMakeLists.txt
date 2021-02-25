@@ -15,7 +15,7 @@ link_directories(gtest/lib)
 set(RELEASE_SOURCE_FILES main.cpp)
 
 # Set source files for DEBUG target
-set(DEBUG_SOURCE_FILES tests/main_test.cpp)
+set(DEBUG_SOURCE_FILES main_test.cpp)
 
 # Create RELEASE target
 add_executable(PSE ${RELEASE_SOURCE_FILES})
