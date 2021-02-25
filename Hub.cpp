@@ -9,6 +9,8 @@ Hub::Hub() {
     aantal_vaccins_per_lading = 0;
     aantal_vaccins_per_levering = 0;
     leveringen_interval = 0;
+
+    _initCheck = this;
 }
 
 unsigned int Hub::getLeveringenInterval() const {
@@ -40,5 +42,9 @@ void Hub::setLeveringenInterval(unsigned int leveringenInterval) {
 
 void Hub::setAantalVaccinsPerLading(unsigned int aantalVaccinsPerLading) {
     aantal_vaccins_per_lading = aantalVaccinsPerLading;
+}
+
+bool Hub::isProperlyInitialized() const {
+    return _initCheck == this;
 }
 

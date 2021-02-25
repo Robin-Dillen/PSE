@@ -29,7 +29,14 @@ public:
     void setAantalVaccinsPerLading(unsigned int aantalVaccinsPerLading);
 
 private:
+
+    //functions
+
+    bool isProperlyInitialized() const;
+
     // const attributes
+
+    const Hub *_initCheck; // pointer naar zichzelf om te checken of het object correct geïnitialseert is
 
     // changing attributes
     map<string, VaccinatieCentrum *> fverbonden_centra; // slaagt alle vaccinatie centra op met zoeksleutel: name
@@ -38,8 +45,6 @@ private:
     unsigned int aantal_vaccins_per_levering;
     unsigned int leveringen_interval;
     unsigned int aantal_vaccins_per_lading;
-
-    Hub *_initCheck; // pointer naar zichzelf om te checken of het object correct geïnitialseert is
 };
 
 

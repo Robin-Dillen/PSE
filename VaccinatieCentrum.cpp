@@ -17,3 +17,19 @@ const string &VaccinatieCentrum::getKfname() const {
 const string &VaccinatieCentrum::getKfaddress() const {
     return kfaddress;
 }
+
+void VaccinatieCentrum::setVaccins(unsigned int vaccins) {
+    VaccinatieCentrum::vaccins = vaccins;
+}
+
+void VaccinatieCentrum::setAantalVaccinaties(unsigned int aantalVaccinaties) {
+    aantal_vaccinaties = aantalVaccinaties;
+}
+
+void VaccinatieCentrum::setAantalGeleverdeVaccins(unsigned int aantalGeleverdeVaccins) {
+    aantal_geleverde_vaccins = aantalGeleverdeVaccins;
+}
+
+bool VaccinatieCentrum::isProperlyInitialized() const {
+    return _initCheck == this;
+}
