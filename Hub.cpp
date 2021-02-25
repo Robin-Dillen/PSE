@@ -4,19 +4,16 @@
 
 #include "Hub.h"
 
-Hub::Hub() {
-    aantal_vaccins = 0;
-    aantal_vaccins_per_lading = 0;
-    aantal_vaccins_per_levering = 0;
-    leveringen_interval = 0;
-
-    _initCheck = this;
+Hub::Hub(const unsigned int kaantal_vaccins_per_levering,
+         const unsigned int kleveringen_interval, const unsigned int kaantal_vaccins_per_lading) :  kaantal_vaccins_per_levering(kaantal_vaccins_per_levering),
+                                                                                                    kleveringen_interval(kleveringen_interval),
+                                                                                                    kaantal_vaccins_per_lading(kaantal_vaccins_per_lading){
     ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
 }
 
 unsigned int Hub::getLeveringenInterval() const {
     REQUIRE(isProperlyInitialized(), "Parser wasn't initialized when calling getLeveringenInterval");
-    return leveringen_interval;
+    return kleveringen_interval;
 }
 
 void Hub::setFverbondenCentra(const map<string, VaccinatieCentrum *> &fverbondenCentra) {
@@ -35,22 +32,22 @@ void Hub::setAantalVaccins(unsigned int aantalVaccins) {
     REQUIRE(isProperlyInitialized(), "Parser wasn't initialized when calling setAantalVaccins");
     aantal_vaccins = aantalVaccins;
 }
-
+/*
 void Hub::setAantalVaccinsPerLevering(unsigned int aantalVaccinsPerLevering) {
     REQUIRE(isProperlyInitialized(), "Parser wasn't initialized when calling setAantalVaccinsPerLevering");
-    aantal_vaccins_per_levering = aantalVaccinsPerLevering;
+    kaantal_vaccins_per_levering = aantalVaccinsPerLevering;
 }
 
 void Hub::setLeveringenInterval(unsigned int leveringenInterval) {
     REQUIRE(isProperlyInitialized(), "Parser wasn't initialized when calling setLeveringenInterval");
-    leveringen_interval = leveringenInterval;
+    kleveringen_interval = leveringenInterval;
 }
 
 void Hub::setAantalVaccinsPerLading(unsigned int aantalVaccinsPerLading) {
     REQUIRE(isProperlyInitialized(), "Parser wasn't initialized when calling setAantalVaccinsPerLading");
-    aantal_vaccins_per_lading = aantalVaccinsPerLading;
+    kaantal_vaccins_per_lading = aantalVaccinsPerLading;
 }
-
+*/
 bool Hub::isProperlyInitialized() const {
     return _initCheck == this;
 }

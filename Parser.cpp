@@ -19,65 +19,58 @@ Parser::Parser(const string &filename) : _initCheck(this) {
         doc.Clear();
         return;
     }
-    Hub* H = new Hub;
-    for(TiXmlElement* firstelem = root->FirstChildElement(); firstelem != NULL; firstelem = firstelem->NextSiblingElement()) {
-        string elemName = firstelem->Value();
-        if (elemName == "HUB") {
-            unsigned int levering;
-            unsigned int interval;
-            unsigned int transport;
-            for(TiXmlElement* secondelem = firstelem->FirstChildElement(); secondelem != NULL; secondelem = secondelem->NextSiblingElement()) {
-                string secondname = secondelem->Value();
-                if(secondelem->GetText() != NULL) {
-                    string s = secondelem->GetText();
+    unsigned int levering;
+    unsigned int interval;
+    unsigned int transport;
+    vector<VaccinatieCentrum*> vaccinatieCentra;
+    for(TiXmlElement* firstElement = root->FirstChildElement(); firstElement != NULL; firstElement = firstElement->NextSiblingElement()) {
+        string firstName = firstElement->Value();
+        if (firstName == "HUB") {
+            for(TiXmlElement* secondElement = firstElement->FirstChildElement(); secondElement != NULL; secondElement = secondElement->NextSiblingElement()) {
+                string secondName = secondElement->Value();
+                if(secondElement->GetText() != NULL) {
+                    string s = secondElement->GetText();
                     stringstream g(s);
-                    if (secondname == "levering") {
+                    if(secondName == "levering") {
                         g >> levering;
-                        H->setAantalVaccinsPerLevering(levering);
                     }
-                    if (secondname == "interval") {
+                    else if(secondName == "interval") {
                         g >> interval;
-                        H->setLeveringenInterval(interval);
                     }
-                    if (secondname == "transport") {
+                    else if(secondName == "transport") {
                         g >> transport;
-                        H->setAantalVaccinsPerLading(levering);
                     }
                 }
-                if (secondname == "CENTRA") {
+                /*if (secondname == "CENTRA") {
                     vector<VaccinatieCentrum*> VCentra;
                     for (TiXmlElement *thirdelem = secondelem->FirstChildElement(); thirdelem != NULL; thirdelem = thirdelem->NextSiblingElement()) {
 
                     }
-                    //H->setFverbondenCentra(VCentra);
                 }
+                */
             }
-            cout<<"levering: "<<levering<<endl;
-            cout<<"transport: "<<transport<<endl;
-            cout<<"interval: "<<interval<<endl;
         }
-        else if(elemName == "VACCINATIECENTRUM") {
-            vector<VaccinatieCentrum*> vaccinatieCentra;
-            unsigned int naam;
-            unsigned int adres;
+        else if(firstName == "VACCINATIECENTRUM") {
+            string naam;
+            string adres;
             unsigned int inwoners;
             unsigned int capaciteit;
-            for(TiXmlElement* secondelem = firstelem->FirstChildElement(); secondelem != NULL; secondelem = secondelem->NextSiblingElement()) {
-                string secondname = secondelem->Value();
-                string tekst = secondelem->GetText();
-                if(secondelem->GetText() != NULL) {
-                    string s = secondelem->GetText();
+            for(TiXmlElement* secondElement = firstElement->FirstChildElement(); secondElement != NULL; secondElement = secondElement->NextSiblingElement()) {
+                string secondName = secondElement->Value();
+                string tekst = secondElement->GetText();
+                if(secondElement->GetText() != NULL) {
+                    string s = secondElement->GetText();
                     stringstream g(s);
-                    if (secondname == "naam") {
-                        g >> naam;
+                    if(secondName == "naam") {
+                        naam = s;
                     }
-                    if (secondname == "adres") {
-                        g >> adres;
+                    else if(secondName == "adres") {
+                        adres = s;
                     }
-                    if (secondname == "inwoners") {
+                    else if(secondName == "inwoners") {
                         g >> inwoners;
                     }
-                    if (secondname == "capaciteit") {
+                    else if(secondName == "capaciteit") {
                         g >> capaciteit;
                     }
                 }
@@ -86,8 +79,10 @@ Parser::Parser(const string &filename) : _initCheck(this) {
             }
         }
     }
-
+    Hub* H = new Hub(levering,interval,transport);
+    H->setFverbondenCentra(vaccinatieCentra);
     ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
+    return;
 }
 
 Hub *Parser::getFhub() const {

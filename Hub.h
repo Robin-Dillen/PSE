@@ -16,7 +16,7 @@ public:
     /**
     \n ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
     */
-    Hub();
+    Hub(const unsigned int kaantal_vaccins_per_levering, const unsigned int kleveringen_interval, const unsigned int kaantal_vaccins_per_lading);
 
     /**
      * @return unsigned int :geeft terug om de hoeveel dagen een levering vaccins binnenkomt
@@ -90,9 +90,9 @@ private:
     map<string, VaccinatieCentrum *> fverbonden_centra; // slaagt alle vaccinatie centra op met zoeksleutel: name
 
     unsigned int aantal_vaccins;
-    unsigned int aantal_vaccins_per_levering;
-    unsigned int leveringen_interval;
-    unsigned int aantal_vaccins_per_lading;
+    const unsigned int kaantal_vaccins_per_levering;
+    const unsigned int kleveringen_interval;
+    const unsigned int kaantal_vaccins_per_lading;
 };
 
 
