@@ -8,10 +8,10 @@
 
 Parser::Parser(const string &filename) {
     TiXmlDocument doc;
-    //if(!doc.LoadFile(filename)) {
-    //    std::cerr << doc.ErrorDesc() << std::endl;
-    //    return;
-    //}
+    if(!doc.LoadFile(filename.c_str())) {
+        std::cerr << doc.ErrorDesc() << std::endl;
+        return;
+    }
     TiXmlElement* root = doc.RootElement();
     if(root == NULL) {
         std::cerr << "Failed to load file: No root element." << std::endl;
@@ -27,17 +27,20 @@ Parser::Parser(const string &filename) {
             vector<VaccinatieCentrum*> vaccinatieCentra;
             for(TiXmlElement* secondelem = firstelem->FirstChildElement(); secondelem != NULL; secondelem = secondelem->NextSiblingElement()) {
                 string secondname = secondelem->Value();
-                string s = secondelem->GetText();
-                stringstream g(s);
-                if (secondname == "levering") {
-                    g >> levering;
+                if(secondelem->GetText() != NULL) {
+                    string s = secondelem->GetText();
+                    stringstream g(s);
+                    if (secondname == "levering") {
+                        g >> levering;
+                    }
+                    if (secondname == "interval") {
+                        g >> interval;
+                    }
+                    if (secondname == "transport") {
+                        g >> transport;
+                    }
                 }
-                if (secondname == "interval") {
-                    g >> interval;
-                }
-                if (secondname == "transport") {
-                    g >> transport;
-                }
+
                 if (secondname == "CENTRA") {
                     for (TiXmlElement *thirdelem = secondelem->FirstChildElement(); thirdelem != NULL; thirdelem = thirdelem->NextSiblingElement()) {
                         cout<<thirdelem->GetText()<<endl;
@@ -45,6 +48,9 @@ Parser::Parser(const string &filename) {
                     }
                 }
             }
+            cout<<"levering: "<<levering<<endl;
+            cout<<"transport: "<<transport<<endl;
+            cout<<"interval: "<<interval<<endl;
         }
         else if(elemName == "VACCINATIECENTRUM") {
 
@@ -66,6 +72,7 @@ Parser::Parser(const string &filename) {
             }
         }
     }
+    return;
 }
 
 Hub *Parser::getFhub() const {
