@@ -21,6 +21,7 @@ Parser::Parser(const string &filename) {
     for(TiXmlElement* firstelem = root->FirstChildElement(); firstelem != NULL; firstelem = firstelem->NextSiblingElement()) {
         string elemName = firstelem->Value();
         if (elemName == "HUB") {
+            Hub *H;
             int levering;
             int interval;
             int transport;
