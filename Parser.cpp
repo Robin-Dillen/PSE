@@ -1,58 +1,71 @@
 #include "Parser.h"
+#include "TinyXML/tinyxml.h"
+#include "Hub.h"
+#include "VaccinatieCentrum.h"
+#include <string>
+#include <iostream>
+#include <sstream>
 
 Parser::Parser(const string &filename) {
-// read file in with tiny xml
     TiXmlDocument doc;
-
-    //TiXmlDocument doc;
-    if (!doc.LoadFile(filename.c_str())) {
-        cerr << doc.ErrorDesc() << endl;
-//        return 1;
-    }
-    TiXmlElement *root = doc.FirstChildElement();
-    if (root == NULL) {
-        cerr << "Failed to load file: No root element." << endl;
+    //if(!doc.LoadFile(filename)) {
+    //    std::cerr << doc.ErrorDesc() << std::endl;
+    //    return;
+    //}
+    TiXmlElement* root = doc.RootElement();
+    if(root == NULL) {
+        std::cerr << "Failed to load file: No root element." << std::endl;
         doc.Clear();
-//        return 1;
+        return;
     }
-
-    for (TiXmlElement *elem = root->FirstChildElement(); elem != NULL; elem = elem->NextSiblingElement()) {
-        string elemName = elem->Value();
-        const char *attr;
-        if (elemName == "Element1") {
-            attr = elem->Attribute("attribute1");
-            if (attr != NULL) {
-                cout << attr << endl;
-            }// Do stuff with it
-        } else if (elemName == "Element2") {
-            attr = elem->Attribute("attribute2");
-            if (attr != NULL) {
-                cout << attr << endl;
-            } // Do stuff with it
-            attr = elem->Attribute("attribute3");
-            if (attr != NULL) {
-                cout << attr << endl;
-            }// Do stuff with it
-            for (TiXmlElement *e = elem->FirstChildElement("Element3"); e != NULL;
-                 e = e->NextSiblingElement("Element3")) {
-                attr = e->Attribute("attribute4");
-                if (attr != NULL) {
-                    cout << attr << endl;
-                } // Do stuff with it
+    for(TiXmlElement* firstelem = root->FirstChildElement(); firstelem != NULL; firstelem = firstelem->NextSiblingElement()) {
+        string elemName = firstelem->Value();
+        if (elemName == "HUB") {
+            int levering;
+            int interval;
+            int transport;
+            vector<VaccinatieCentrum*> vaccinatieCentra;
+            for(TiXmlElement* secondelem = firstelem->FirstChildElement(); secondelem != NULL; secondelem = secondelem->NextSiblingElement()) {
+                string secondname = secondelem->Value();
+                string s = secondelem->GetText();
+                stringstream g(s);
+                if (secondname == "levering") {
+                    g >> levering;
+                }
+                if (secondname == "interval") {
+                    g >> interval;
+                }
+                if (secondname == "transport") {
+                    g >> transport;
+                }
+                if (secondname == "CENTRA") {
+                    for (TiXmlElement *thirdelem = secondelem->FirstChildElement(); thirdelem != NULL; thirdelem = thirdelem->NextSiblingElement()) {
+                        cout<<thirdelem->GetText()<<endl;
+                        //vaccinatiecentrum aanmaken
+                    }
+                }
             }
         }
-        for (TiXmlNode *e = elem->FirstChild(); e != NULL; e = e->NextSibling()) {
-            TiXmlText *text = e->ToText();
-            if (text == NULL)
-                continue;
-            string t = text->Value();
-            // Do stuff
+        else if(elemName == "VACCINATIECENTRUM") {
+
+            for(TiXmlElement* secondelem = firstelem->FirstChildElement(); secondelem != NULL; secondelem = secondelem->NextSiblingElement()) {
+                string secondname = secondelem->Value();
+                string tekst = secondelem->GetText();
+                if (secondname == "naam") {
+                    cout << "naam: " << tekst << endl;
+                }
+                if (secondname == "adres") {
+                    cout << "adres: " << tekst << endl;
+                }
+                if (secondname == "inwoners") {
+                    cout << "inwoners: " << tekst << endl;
+                }
+                if (secondname == "capaciteit") {
+                    cout << "capaciteit: " << tekst << endl;
+                }
+            }
         }
     }
-    doc.Clear();
-
-//put all the data in according variables
-    //fhub = new Hub(/*input vector of vaccinatie centra*/);
 }
 
 Hub *Parser::getFhub() const {
