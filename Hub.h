@@ -16,6 +16,14 @@ public:
         unsigned int leveringen_interval,
         unsigned int aantal_vaccins_per_lading);
 
+    unsigned int getLeveringenInterval() const;
+
+    /*
+     *
+     */
+    void levering();
+
+
 private:
     // const attributes
 

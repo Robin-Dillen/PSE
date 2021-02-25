@@ -17,3 +17,7 @@ Hub::Hub(const vector<VaccinatieCentrum *> &vaccinCentra, unsigned int aantal_va
 
 
 }
+
+unsigned int Hub::getLeveringenInterval() const {
+    return leveringen_interval;
+}
