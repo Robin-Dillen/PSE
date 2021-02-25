@@ -12,7 +12,15 @@ include_directories(gtest/include)
 link_directories(gtest/lib)
 
 # Set source files for RELEASE target
-set(RELEASE_SOURCE_FILES main.cpp Parser.cpp Parser.h Hub.cpp Hub.h VaccinatieCentrum.cpp VaccinatieCentrum.h)
+set(RELEASE_SOURCE_FILES
+        main.cpp
+        Parser.cpp Parser.h
+        TinyXML/tinystr.cpp
+        TinyXML/tinystr.h
+        TinyXML/tinyxml.cpp
+        TinyXML/tinyxml.h
+        TinyXML/tinyxmlerror.cpp
+        TinyXML/tinyxmlparser.cpp)
 
 # Set source files for DEBUG target
 set(DEBUG_SOURCE_FILES main_test.cpp)
