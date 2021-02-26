@@ -53,6 +53,7 @@ void Hub::setAantalVaccinsPerLading(unsigned int aantalVaccinsPerLading) {
     kaantal_vaccins_per_lading = aantalVaccinsPerLading;
 }
 */
+
 bool Hub::isProperlyInitialized() const {
     return _initCheck == this;
 }
@@ -70,4 +71,49 @@ unsigned int Hub::getTotaalAantalVaccinaties() const {
 bool Hub::isIedereenGevaccineerd() const {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling isIedereenGevaccineerd");
     return false;
+}
+
+void Hub::nieuweDag() {
+    // verdeel de vaccins als er nog op voorraad zijn + output
+    // VB Er werden 4 ladingen (8000 vaccins) getransporteerd naar Park Spoor Oost.
+    verdeelVaccins();
+
+    // stuur signaal nieuwe dag naar alle centra
+    for (map<string, VaccinatieCentrum *>::const_iterator it = fverbonden_centra.begin(), end = fverbonden_centra.end();
+         it != end; it++) {
+        it->second->nieuweDag();
+    }
+}
+
+void Hub::ontvangLevering(unsigned int aantal_geleverde_vaccins) {
+    aantal_vaccins += aantal_geleverde_vaccins;
+}
+
+const unsigned int Hub::getKaantalVaccinsPerLevering() const {
+    return kaantal_vaccins_per_levering;
+}
+
+void Hub::verdeelVaccins() {
+    // eerste verdeling zorgt ervoor dat alle centra genoeg vaccins hebben voor 1 dag
+    for (map<string, VaccinatieCentrum *>::const_iterator it = fverbonden_centra.begin(), end = fverbonden_centra.end();
+         it != end; it++) {
+        if (it->second->getAantalVaccins() >= it->second->getKcapaciteit()) continue;
+        for (int ladingen = 1; !it->second->isVolNaLevering((ladingen * kaantal_vaccins_per_lading)) &&
+                               aantal_vaccins - (ladingen * kaantal_vaccins_per_lading) > 0; ladingen++) {
+            it->second->ontvangLevering(ladingen * kaantal_vaccins_per_lading);
+        }
+    }
+    // 2de verdeling zorgt ervoor dat alle vaccins verdeelt worden
+    bool change = true;
+    while (aantal_vaccins >= 2000 && change) {
+        change = false;
+        for (map<string, VaccinatieCentrum *>::const_iterator it = fverbonden_centra.begin(), end = fverbonden_centra.end();
+             it != end; it++) {
+            for (int ladingen = 1; !it->second->isVolNaLevering((ladingen * kaantal_vaccins_per_lading)) &&
+                                   aantal_vaccins - (ladingen * kaantal_vaccins_per_lading) > 0; ladingen++) {
+                it->second->ontvangLevering(ladingen * kaantal_vaccins_per_lading);
+                change = true;
+            }
+        }
+    }
 }

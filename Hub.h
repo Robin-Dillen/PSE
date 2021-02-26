@@ -77,6 +77,7 @@ public:
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling totaalAantalVaccinaties");
      */
     unsigned int getTotaalAantalVaccinaties() const; // wordt wss niet gebruikt
+    const unsigned int getKaantalVaccinsPerLevering() const;
 
     /*!
      * @return geeft true terug als iedereen gevaccineerd is, anders geeft de functie false terug
@@ -84,6 +85,12 @@ public:
      */
     bool isIedereenGevaccineerd() const;
 
+    /*!
+     * #TODO
+     */
+    void nieuweDag();
+
+    void ontvangLevering(unsigned int aantal_vaccins);
 
 private:
 
@@ -93,17 +100,19 @@ private:
      */
     bool isProperlyInitialized() const;
 
+    void verdeelVaccins();
+
     // const attributes
+    const unsigned int kaantal_vaccins_per_levering;
+    const unsigned int kleveringen_interval;
+    const unsigned int kaantal_vaccins_per_lading;
 
     const Hub *_initCheck; // pointer naar zichzelf om te checken of het object correct geïnitialseert is
 
     // changing attributes
     map<string, VaccinatieCentrum *> fverbonden_centra; // slaagt alle vaccinatie centra op met zoeksleutel: name
 
-    unsigned int aantal_vaccins;
-    const unsigned int kaantal_vaccins_per_levering;
-    const unsigned int kleveringen_interval;
-    const unsigned int kaantal_vaccins_per_lading;
+    unsigned int aantal_vaccins; // aantal vaccins in de hub
 };
 
 

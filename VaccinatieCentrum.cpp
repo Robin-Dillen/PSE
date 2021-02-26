@@ -51,4 +51,34 @@ const unsigned int VaccinatieCentrum::getKaantalInwoners() const {
     return kaantal_inwoners;
 }
 
+void VaccinatieCentrum::nieuweDag() {
+    // check hoeveel mensen gevaccineerd kunnen worden
+    unsigned int vaccinaties = min(aantal_vaccins, kcapaciteit);
+    vaccinaties = min(vaccinaties, kaantal_inwoners - aantal_vaccinaties);
+
+    // verminder het aantal vaccins en vermeerder het aantal gevaccineerden
+    aantal_vaccins -= vaccinaties;
+    aantal_vaccinaties += vaccinaties;
+}
+
+bool VaccinatieCentrum::isVol() const {
+    return aantal_vaccins == (kcapaciteit * 2);
+}
+
+bool VaccinatieCentrum::isVolNaLevering(unsigned int vaccins_in_levering) const {
+    return (aantal_vaccins + vaccins_in_levering) > (kcapaciteit * 2);
+}
+
+const unsigned int VaccinatieCentrum::getKcapaciteit() const {
+    return kcapaciteit;
+}
+
+unsigned int VaccinatieCentrum::getAantalVaccins() const {
+    return aantal_vaccins;
+}
+
+void VaccinatieCentrum::ontvangLevering(unsigned int vaccins_in_levering) {
+    aantal_vaccins += vaccins_in_levering;
+}
+
 

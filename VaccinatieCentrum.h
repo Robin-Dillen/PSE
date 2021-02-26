@@ -60,6 +60,26 @@ public:
      */
     void setAantalGeleverdeVaccins(unsigned int aantalGeleverdeVaccins);
 
+    const unsigned int getKaantalInwoners() const;
+
+    const unsigned int getKcapaciteit() const;
+
+    unsigned int getAantalVaccins() const;
+
+    /*!
+     *
+     */
+    void nieuweDag();
+
+    /*!
+     * geeft terug of de stock van vaccins vol is
+     */
+    bool isVol() const;
+
+    bool isVolNaLevering(unsigned int vaccins_in_levering) const;
+
+    void ontvangLevering(unsigned int vaccins_in_levering);
+
 private:
 
     //functions
@@ -77,12 +97,9 @@ private:
 
     // changing attributes
     unsigned int aantal_vaccins;
-public:
-    const unsigned int getKaantalInwoners() const;
 
-private:
     unsigned int aantal_vaccinaties; // aantal mensen dat gevaccineert is
-    unsigned int aantal_geleverde_vaccins; // aantal vaccins dat toegevoegd wordt na een levering
+//    unsigned int aantal_geleverde_vaccins; // aantal vaccins dat toegevoegd wordt na een levering
 };
 
 

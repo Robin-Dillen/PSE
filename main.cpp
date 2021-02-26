@@ -10,18 +10,15 @@
 #include <vector>
 
 #include "Parser.h"
+#include "VaccinatieSimulatie.h"
 
 using namespace std;
 
 int main(int argc, char const *argv[]) {
     vector<string> args = vector<string>(argv + 1, argv + argc);
     Parser P(args[0]);
+    VaccinatieSimulatie sim(P.getFhub());
 
-    Hub *H = P.getFhub();
-
-    while (!H->isIedereenGevaccineerd()) {
-        // simulatie
-    }
 
     return 0;
 }
