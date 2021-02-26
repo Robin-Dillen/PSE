@@ -8,7 +8,8 @@ VaccinatieCentrum::VaccinatieCentrum(const unsigned int kcapaciteit, const unsig
                                      const string &kfname, const string &kfaddress) : kcapaciteit(kcapaciteit),
                                                                                       kaantal_inwoners(kaantalInwoners),
                                                                                       kfname(kfname),
-                                                                                      kfaddress(kfaddress) {
+                                                                                      kfaddress(kfaddress),
+                                                                                      _initCheck(this) {
     ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
 }
 
