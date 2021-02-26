@@ -63,18 +63,16 @@ Parser::Parser(const string &filename) : _initCheck(this) {
                     stringstream g(s);
                     if(secondName == "naam") {
                         naam = s;
-                    }
-                    else if(secondName == "adres") {
+                    } else if (secondName == "adres") {
                         adres = s;
-                    }
-                    else if(secondName == "inwoners") {
+                    } else if (secondName == "inwoners") {
                         g >> inwoners;
-                    }
-                    else if(secondName == "capaciteit") {
+                    } else if (secondName == "capaciteit") {
                         g >> capaciteit;
                     }
                 }
-                VaccinatieCentrum* V = new VaccinatieCentrum(capaciteit,inwoners,naam,adres);
+                ENSURE(naam != "" && adres != "" && inwoners != 0 && capaciteit != 0, "fout bij het parsen!");
+                VaccinatieCentrum *V = new VaccinatieCentrum(capaciteit, inwoners, naam, adres);
                 vaccinatieCentra.push_back(V);
             }
         }

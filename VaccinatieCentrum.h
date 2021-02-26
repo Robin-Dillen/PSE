@@ -53,13 +53,6 @@ public:
      */
     void setAantalVaccinaties(unsigned int aantalVaccinaties);
 
-    /**
-     * update het aantal_geleverde_vaccins
-     * @param aantalGeleverdeVaccins: unsigned int
-     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling setAantalGeleverdeVaccins");
-     */
-    void setAantalGeleverdeVaccins(unsigned int aantalGeleverdeVaccins);
-
     const unsigned int getKaantalInwoners() const;
 
     const unsigned int getKcapaciteit() const;

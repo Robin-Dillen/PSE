@@ -18,7 +18,7 @@ int main(int argc, char const *argv[]) {
     vector<string> args = vector<string>(argv + 1, argv + argc);
     Parser P(args[0]);
     VaccinatieSimulatie sim(P.getFhub());
-
+    sim.start();
 
     return 0;
 }

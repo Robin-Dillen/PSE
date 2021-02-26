@@ -16,7 +16,7 @@ public:
     void start();
 
 private:
-    Hub *fhub
+    Hub *fhub;
 };
 
 

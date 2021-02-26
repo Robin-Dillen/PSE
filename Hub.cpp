@@ -5,13 +5,9 @@
 #include "Hub.h"
 
 Hub::Hub(const unsigned int kaantal_vaccins_per_levering,
-         const unsigned int kleveringen_interval, const unsigned int kaantal_vaccins_per_lading) : _initCheck(this),
-                                                                                                   kaantal_vaccins_per_levering(
-                                                                                                           kaantal_vaccins_per_levering),
-                                                                                                   kleveringen_interval(
-                                                                                                           kleveringen_interval),
-                                                                                                   kaantal_vaccins_per_lading(
-                                                                                                           kaantal_vaccins_per_lading) {
+         const unsigned int kleveringen_interval, const unsigned int kaantal_vaccins_per_lading)
+        : kaantal_vaccins_per_levering(kaantal_vaccins_per_levering), kleveringen_interval(kleveringen_interval),
+          kaantal_vaccins_per_lading(kaantal_vaccins_per_lading), _initCheck(this) {
     ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
 }
 

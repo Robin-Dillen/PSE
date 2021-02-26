@@ -33,11 +33,6 @@ void VaccinatieCentrum::setAantalVaccinaties(unsigned int aantalVaccinaties) {
     aantal_vaccinaties = aantalVaccinaties;
 }
 
-void VaccinatieCentrum::setAantalGeleverdeVaccins(unsigned int aantalGeleverdeVaccins) {
-    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling setAantalGeleverdeVaccins");
-    aantal_geleverde_vaccins = aantalGeleverdeVaccins;
-}
-
 unsigned int VaccinatieCentrum::getAantalVaccinaties() const {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getAantalVaccinaties");
     return aantal_vaccinaties;
