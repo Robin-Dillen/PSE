@@ -46,3 +46,4 @@ bool VaccinatieCentrum::isProperlyInitialized() const {
     return _initCheck == this;
 }
 
+
