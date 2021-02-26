@@ -91,5 +91,5 @@ Hub *Parser::getFhub() const {
 }
 
 bool Parser::isProperlyInitialized() const {
-    return false;
+    return _initCheck == this;
 }
