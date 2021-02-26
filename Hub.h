@@ -4,6 +4,8 @@
 #include <map>
 #include <string>
 #include <vector>
+#include <cmath> // voor ceil
+#include <iostream> // for testing
 
 #include "VaccinatieCentrum.h"
 #include "lib/DesignByContract.h"

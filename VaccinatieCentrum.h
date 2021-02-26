@@ -6,6 +6,7 @@
 #define PSE_VACCINATIECENTRUM_H
 
 #include <string>
+#include <iostream>
 
 #include "lib/DesignByContract.h"
 
@@ -82,7 +83,10 @@ private:
     // const attributes
     const unsigned int kcapaciteit;
     const unsigned int kaantal_inwoners;
+public:
+    unsigned int getAantalGeleverdeVaccins() const;
 
+private:
     const string kfname;
     const string kfaddress;
 
@@ -90,9 +94,8 @@ private:
 
     // changing attributes
     unsigned int aantal_vaccins;
-
     unsigned int aantal_vaccinaties; // aantal mensen dat gevaccineert is
-//    unsigned int aantal_geleverde_vaccins; // aantal vaccins dat toegevoegd wordt na een levering
+    unsigned int aantal_geleverde_vaccins; // aantal vaccins dat toegevoegd wordt na een levering
 };
 
 

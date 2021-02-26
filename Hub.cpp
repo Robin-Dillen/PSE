@@ -7,7 +7,8 @@
 Hub::Hub(const unsigned int kaantal_vaccins_per_levering,
          const unsigned int kleveringen_interval, const unsigned int kaantal_vaccins_per_lading)
         : kaantal_vaccins_per_levering(kaantal_vaccins_per_levering), kleveringen_interval(kleveringen_interval),
-          kaantal_vaccins_per_lading(kaantal_vaccins_per_lading), _initCheck(this) {
+          kaantal_vaccins_per_lading(kaantal_vaccins_per_lading), _initCheck(this),
+          aantal_vaccins(kaantal_vaccins_per_levering) {
     ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
 }
 
@@ -66,10 +67,15 @@ unsigned int Hub::getTotaalAantalVaccinaties() const {
 
 bool Hub::isIedereenGevaccineerd() const {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling isIedereenGevaccineerd");
-    return false;
+    for (map<string, VaccinatieCentrum *>::const_iterator it = fverbonden_centra.begin(), end = fverbonden_centra.end();
+         it != end; it++) {
+        if (it->second->getAantalVaccinaties() != it->second->getKaantalInwoners()) return false;
+    }
+    return true;
 }
 
 void Hub::nieuweDag() {
+    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling nieuweDag");
     // verdeel de vaccins als er nog op voorraad zijn + output
     // VB Er werden 4 ladingen (8000 vaccins) getransporteerd naar Park Spoor Oost.
     verdeelVaccins();
@@ -94,10 +100,12 @@ void Hub::verdeelVaccins() {
     for (map<string, VaccinatieCentrum *>::const_iterator it = fverbonden_centra.begin(), end = fverbonden_centra.end();
          it != end; it++) {
         if (it->second->getAantalVaccins() >= it->second->getKcapaciteit()) continue;
-        for (int ladingen = 1; !it->second->isVolNaLevering((ladingen * kaantal_vaccins_per_lading)) &&
-                               aantal_vaccins - (ladingen * kaantal_vaccins_per_lading) > 0; ladingen++) {
-            it->second->ontvangLevering(ladingen * kaantal_vaccins_per_lading);
-        }
+        unsigned int ladingen = ceil(((float) (it->second->getKcapaciteit() - it->second->getAantalVaccins()) /
+                                      kaantal_vaccins_per_lading)); // normale deling floort het resultaat, door het + 1 te doen is het een ceil
+        if (ladingen * kaantal_vaccins_per_lading > aantal_vaccins) continue;
+        it->second->ontvangLevering(ladingen * kaantal_vaccins_per_lading);
+
+        aantal_vaccins -= ladingen * kaantal_vaccins_per_lading; // update aantal vaccins van Hub
     }
     // 2de verdeling zorgt ervoor dat alle vaccins verdeelt worden
     bool change = true;
@@ -105,11 +113,17 @@ void Hub::verdeelVaccins() {
         change = false;
         for (map<string, VaccinatieCentrum *>::const_iterator it = fverbonden_centra.begin(), end = fverbonden_centra.end();
              it != end; it++) {
-            for (int ladingen = 1; !it->second->isVolNaLevering((ladingen * kaantal_vaccins_per_lading)) &&
-                                   aantal_vaccins - (ladingen * kaantal_vaccins_per_lading) > 0; ladingen++) {
-                it->second->ontvangLevering(ladingen * kaantal_vaccins_per_lading);
-                change = true;
-            }
+            if (aantal_vaccins < kaantal_vaccins_per_lading ||
+                it->second->getAantalVaccins() + it->second->getAantalGeleverdeVaccins() + kaantal_vaccins_per_lading >
+                it->second->getKcapaciteit() * 2)
+                continue;
+            it->second->ontvangLevering(kaantal_vaccins_per_lading);
+            aantal_vaccins -= kaantal_vaccins_per_lading; // update aantal vaccins van Hub
+            change = true;
         }
+    }
+    // show output
+    for (map<string, VaccinatieCentrum *>::const_iterator it = fverbonden_centra.begin(), end = fverbonden_centra.end();
+         it != end; it++) {
     }
 }

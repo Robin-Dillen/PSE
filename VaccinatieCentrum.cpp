@@ -47,6 +47,11 @@ const unsigned int VaccinatieCentrum::getKaantalInwoners() const {
 }
 
 void VaccinatieCentrum::nieuweDag() {
+    // update het aantal vaccins
+    aantal_vaccins += aantal_geleverde_vaccins;
+    ENSURE(aantal_vaccins <= kcapaciteit * 2, "Error, er zijn te veel vaccins geleverd!");
+    aantal_geleverde_vaccins = 0;
+
     // check hoeveel mensen gevaccineerd kunnen worden
     unsigned int vaccinaties = min(aantal_vaccins, kcapaciteit);
     vaccinaties = min(vaccinaties, kaantal_inwoners - aantal_vaccinaties);
@@ -54,6 +59,8 @@ void VaccinatieCentrum::nieuweDag() {
     // verminder het aantal vaccins en vermeerder het aantal gevaccineerden
     aantal_vaccins -= vaccinaties;
     aantal_vaccinaties += vaccinaties;
+    cout << "Er werden " << vaccinaties << " inwoners gevaccineerd in " << kfname << ". "
+         << ((double) aantal_vaccinaties / kaantal_inwoners) * 100 << "% is reeds gevaccineerd" << endl;
 }
 
 bool VaccinatieCentrum::isVol() const {
@@ -73,7 +80,11 @@ unsigned int VaccinatieCentrum::getAantalVaccins() const {
 }
 
 void VaccinatieCentrum::ontvangLevering(unsigned int vaccins_in_levering) {
-    aantal_vaccins += vaccins_in_levering;
+    aantal_geleverde_vaccins += vaccins_in_levering;
+}
+
+unsigned int VaccinatieCentrum::getAantalGeleverdeVaccins() const {
+    return aantal_geleverde_vaccins;
 }
 
 
