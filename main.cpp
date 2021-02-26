@@ -19,11 +19,10 @@ int main(int argc, char const *argv[]) {
 
     Hub *H = P.getFhub();
 
-//    while (H) {
-//        // simulatie
-//    }
+    while (!H->isIedereenGevaccineerd()) {
+        // simulatie
+    }
 
-    delete H;
     return 0;
 }
 

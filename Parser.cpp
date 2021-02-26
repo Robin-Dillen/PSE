@@ -82,7 +82,6 @@ Parser::Parser(const string &filename) : _initCheck(this) {
     Hub* H = new Hub(levering,interval,transport);
     H->setFverbondenCentra(vaccinatieCentra);
     ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
-    return;
 }
 
 Hub *Parser::getFhub() const {

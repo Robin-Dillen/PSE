@@ -47,4 +47,8 @@ bool VaccinatieCentrum::isProperlyInitialized() const {
     return _initCheck == this;
 }
 
+const unsigned int VaccinatieCentrum::getKaantalInwoners() const {
+    return kaantal_inwoners;
+}
+
 

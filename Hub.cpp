@@ -57,11 +57,17 @@ bool Hub::isProperlyInitialized() const {
     return _initCheck == this;
 }
 
-unsigned int Hub::totaalAantalVaccinaties() const {
+unsigned int Hub::getTotaalAantalVaccinaties() const {
+    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getTotaalAantalVaccinaties");
     unsigned int totaal = 0;
     for (map<string, VaccinatieCentrum *>::const_iterator it = fverbonden_centra.begin(), end = fverbonden_centra.end();
          it != end; it++) {
         totaal += it->second->getAantalVaccinaties();
     }
     return totaal;
+}
+
+bool Hub::isIedereenGevaccineerd() const {
+    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling isIedereenGevaccineerd");
+    return false;
 }

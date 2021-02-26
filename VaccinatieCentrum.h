@@ -77,7 +77,11 @@ private:
 
     // changing attributes
     unsigned int aantal_vaccins;
-    unsigned int aantal_vaccinaties;
+public:
+    const unsigned int getKaantalInwoners() const;
+
+private:
+    unsigned int aantal_vaccinaties; // aantal mensen dat gevaccineert is
     unsigned int aantal_geleverde_vaccins; // aantal vaccins dat toegevoegd wordt na een levering
 };
 
