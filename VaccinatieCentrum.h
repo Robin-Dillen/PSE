@@ -78,6 +78,8 @@ public:
 
     bool isIedereenGevaccineerd() const;
 
+    unsigned int getMaxStock() const;
+
 private:
 
     //functions

@@ -94,4 +94,8 @@ bool VaccinatieCentrum::isIedereenGevaccineerd() const {
     return aantal_vaccinaties == kaantal_inwoners;
 }
 
+unsigned int VaccinatieCentrum::getMaxStock() const {
+    return kcapaciteit * 2;
+}
+
 

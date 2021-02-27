@@ -104,6 +104,8 @@ private:
 
     void verdeelVaccins();
 
+    unsigned int minAantalLeveringen(const map<string, VaccinatieCentrum *>::const_iterator &it) const;
+
     // const attributes
     const unsigned int kaantal_vaccins_per_levering;
     const unsigned int kleveringen_interval;
