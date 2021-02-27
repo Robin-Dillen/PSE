@@ -71,15 +71,18 @@ Parser::Parser(const string &filename) : _initCheck(this) {
                         g >> capaciteit;
                     }
                 }
-                ENSURE(naam != "" && adres != "" && inwoners != 0 && capaciteit != 0, "fout bij het parsen!");
-                VaccinatieCentrum *V = new VaccinatieCentrum(capaciteit, inwoners, naam, adres);
-                vaccinatieCentra.push_back(V);
             }
+            cout<<capaciteit<<" "<<inwoners<<" "<<naam<<" "<<adres<<endl;
+            ENSURE(naam != "" && adres != "" && inwoners != 0 && capaciteit != 0, "fout bij het parsen!");
+            VaccinatieCentrum *V = new VaccinatieCentrum(capaciteit, inwoners, naam, adres);
+            vaccinatieCentra.push_back(V);
         }
     }
+    cout<<levering<<" "<<interval<<" "<<transport<<endl;
     Hub* H = new Hub(levering,interval,transport);
     H->setFverbondenCentra(vaccinatieCentra);
     ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
+    fhub = H;
 }
 
 Hub *Parser::getFhub() const {
