@@ -74,6 +74,10 @@ public:
 
     void ontvangLevering(unsigned int vaccins_in_levering);
 
+    unsigned int getAantalGeleverdeVaccins() const;
+
+    bool isIedereenGevaccineerd() const;
+
 private:
 
     //functions
@@ -83,10 +87,7 @@ private:
     // const attributes
     const unsigned int kcapaciteit;
     const unsigned int kaantal_inwoners;
-public:
-    unsigned int getAantalGeleverdeVaccins() const;
 
-private:
     const string kfname;
     const string kfaddress;
 

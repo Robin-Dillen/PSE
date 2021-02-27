@@ -99,7 +99,9 @@ void Hub::verdeelVaccins() {
     // eerste verdeling zorgt ervoor dat alle centra genoeg vaccins hebben voor 1 dag
     for (map<string, VaccinatieCentrum *>::const_iterator it = fverbonden_centra.begin(), end = fverbonden_centra.end();
          it != end; it++) {
-        if (it->second->getAantalVaccins() >= it->second->getKcapaciteit()) continue;
+        if (it->second->getAantalVaccins() >= it->second->getKcapaciteit() ||
+            it->second->isIedereenGevaccineerd())
+            continue;
         unsigned int ladingen = ceil(((float) (it->second->getKcapaciteit() - it->second->getAantalVaccins()) /
                                       kaantal_vaccins_per_lading)); // normale deling floort het resultaat, door het + 1 te doen is het een ceil
         if (ladingen * kaantal_vaccins_per_lading > aantal_vaccins) continue;
@@ -115,7 +117,7 @@ void Hub::verdeelVaccins() {
              it != end; it++) {
             if (aantal_vaccins < kaantal_vaccins_per_lading ||
                 it->second->getAantalVaccins() + it->second->getAantalGeleverdeVaccins() + kaantal_vaccins_per_lading >
-                it->second->getKcapaciteit() * 2)
+                it->second->getKcapaciteit() * 2 || it->second->isIedereenGevaccineerd())
                 continue;
             it->second->ontvangLevering(kaantal_vaccins_per_lading);
             aantal_vaccins -= kaantal_vaccins_per_lading; // update aantal vaccins van Hub

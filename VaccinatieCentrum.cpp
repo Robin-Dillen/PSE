@@ -90,4 +90,8 @@ unsigned int VaccinatieCentrum::getAantalGeleverdeVaccins() const {
     return aantal_geleverde_vaccins;
 }
 
+bool VaccinatieCentrum::isIedereenGevaccineerd() const {
+    return aantal_vaccinaties == kaantal_inwoners;
+}
+
 
