@@ -125,5 +125,8 @@ void Hub::verdeelVaccins() {
     // show output
     for (map<string, VaccinatieCentrum *>::const_iterator it = fverbonden_centra.begin(), end = fverbonden_centra.end();
          it != end; it++) {
+        cout << "Er werden " << it->second->getAantalGeleverdeVaccins() / kaantal_vaccins_per_lading << " ladingen ("
+             << it->second->getAantalGeleverdeVaccins() << " vaccins) getransporteerd naar " << it->first << "."
+             << endl;
     }
 }
