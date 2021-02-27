@@ -10,6 +10,9 @@ VaccinatieCentrum::VaccinatieCentrum(const unsigned int kcapaciteit, const unsig
                                                                                       kfname(kfname),
                                                                                       kfaddress(kfaddress),
                                                                                       _initCheck(this) {
+    aantal_vaccins = 0;
+    aantal_vaccinaties = 0;
+    aantal_geleverde_vaccins = 0;
     ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
 }
 
