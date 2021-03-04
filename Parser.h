@@ -26,10 +26,9 @@ public:
      */
     Hub *getFhub() const;
 
-private:
-    //functions
-
     bool isProperlyInitialized() const;
+
+private:
 
     // const attributes
 

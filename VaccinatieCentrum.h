@@ -80,11 +80,9 @@ public:
 
     unsigned int getMaxStock() const;
 
-private:
-
-    //functions
-
     bool isProperlyInitialized() const;
+
+private:
 
     // const attributes
     const unsigned int kcapaciteit;

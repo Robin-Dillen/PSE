@@ -94,9 +94,6 @@ public:
 
     void ontvangLevering(unsigned int aantal_vaccins);
 
-private:
-
-    //functions
     /**
      * @return geeft terug of het object correct is geïnitialiseert
      */
@@ -105,6 +102,8 @@ private:
     void verdeelVaccins();
 
     unsigned int minAantalLeveringen(const map<string, VaccinatieCentrum *>::const_iterator &it) const;
+
+private:
 
     // const attributes
     const unsigned int kaantal_vaccins_per_levering;
