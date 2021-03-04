@@ -22,7 +22,7 @@ int main(int argc, char const *argv[]) {
     vector<VaccinatieCentrum *> centra;
     centra.push_back(new VaccinatieCentrum(7500, 540173, "Park Spoor Oost", "Noordersingel 40, Antwerpen"));
     centra.push_back(new VaccinatieCentrum(2000, 76935, "AED Studios", "Fabriekstraat 38, Lint"));
-    H->setFverbondenCentra(centra);
+    H->addFverbondenCentra(centra);
     */
     // start simulatie
 

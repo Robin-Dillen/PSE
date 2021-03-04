@@ -30,17 +30,18 @@ public:
      * update de verbonden centra
      * @param fverbondenCentra: een map met als key een string(naam van vaccinatie centrum) en als value een pointer naar een vaccinatie centrum
      * @return void
-     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling setFverbondenCentra");
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling addFverbondenCentra");
      */
     void setFverbondenCentra(const map<string, VaccinatieCentrum *> &fverbondenCentra);
 
     /**
-     * update de verbonden centra
+     * voegt centra toe aan de verbonden centra
      * @param fverbondenCentra: een vector met een aantal verbonden centra
      * @return void
-     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling setFverbondenCentra");
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling addFverbondenCentra");
+     * \n ENSURE(fverbonden_centra.size() == fverbondenCentra.size() + start_size, "De centra zijn niet (volledig) Toegevoegd");
      */
-    void setFverbondenCentra(const vector<VaccinatieCentrum *> &fverbondenCentra);
+    void addFverbondenCentra(const vector<VaccinatieCentrum *> &fverbondenCentra);
 
     /**
      * update het aantal vaccins
@@ -79,6 +80,11 @@ public:
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling totaalAantalVaccinaties");
      */
     unsigned int getTotaalAantalVaccinaties() const; // wordt wss niet gebruikt
+
+    /*!
+     * @return geeft het aantal vaccins per levering terug
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getKaantalVaccinsPerLevering");
+     */
     const unsigned int getKaantalVaccinsPerLevering() const;
 
     /*!
@@ -88,10 +94,16 @@ public:
     bool isIedereenGevaccineerd() const;
 
     /*!
-     * #TODO
+     * start een nieuwe dag, verdeelt de vaccins en stuurt een signaal naar de vaccinatiecentra
+     * REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling nieuweDag");
      */
     void nieuweDag();
 
+    /*!
+     * ontvangt een levering, voegt het aantal geleverde vaccins toe aan het aantal vaccins van de hub.
+     * @param aantal_vaccins het aanta geleverde vaccins
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling ontvangLevering");
+     */
     void ontvangLevering(unsigned int aantal_vaccins);
 
     /**
@@ -99,10 +111,25 @@ public:
      */
     bool isProperlyInitialized() const;
 
+    /*!
+     * verdeelt de vaccins over alle verbonden vaccinatie centra
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling verdeelVaccins");
+     * \n ENSURE(aantal vaccins >= 0, "You can't have less than 0 vaccins!");
+     */
     void verdeelVaccins();
 
+    /*!
+     * geeft het minimum aantal leveringen terug dat nodig is om de capaciteit van het gegeven vaccinaticentrum te bereiken
+     * @param it iterator
+     * @return het minimum aantal leveringen
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling minAantalLeveringen");
+     */
     unsigned int minAantalLeveringen(const map<string, VaccinatieCentrum *>::const_iterator &it) const;
 
+    /*!
+     * @return geeft de verbonden centra terug
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getFverbondenCentra");
+     */
     const map<string, VaccinatieCentrum *> &getFverbondenCentra() const;
 
 private:

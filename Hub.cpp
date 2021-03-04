@@ -18,15 +18,18 @@ unsigned int Hub::getLeveringenInterval() const {
 }
 
 void Hub::setFverbondenCentra(const map<string, VaccinatieCentrum *> &fverbondenCentra) {
-    REQUIRE(isProperlyInitialized(), "Parser wasn't initialized when calling setFverbondenCentra(map)");
+    REQUIRE(isProperlyInitialized(), "Parser wasn't initialized when calling addFverbondenCentra(map)");
     fverbonden_centra = fverbondenCentra;
 }
 
-void Hub::setFverbondenCentra(const vector<VaccinatieCentrum *> &fverbondenCentra) {
-    REQUIRE(isProperlyInitialized(), "Parser wasn't initialized when calling setFverbondenCentra(vector)");
+void Hub::addFverbondenCentra(const vector<VaccinatieCentrum *> &fverbondenCentra) {
+    REQUIRE(isProperlyInitialized(), "Parser wasn't initialized when calling addFverbondenCentra(vector)");
+    int start_size = fverbonden_centra.size();
     for (int i = 0, end = fverbondenCentra.size(); i < end; i++) {
         fverbonden_centra[fverbondenCentra[i]->getKfname()] = fverbondenCentra[i];
     }
+    ENSURE(fverbonden_centra.size() == fverbondenCentra.size() + start_size,
+           "De centra zijn niet (volledig) Toegevoegd");
 }
 
 void Hub::setAantalVaccins(unsigned int aantalVaccins) {
@@ -88,14 +91,17 @@ void Hub::nieuweDag() {
 }
 
 void Hub::ontvangLevering(unsigned int aantal_geleverde_vaccins) {
+    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling ontvangLevering");
     aantal_vaccins += aantal_geleverde_vaccins;
 }
 
 const unsigned int Hub::getKaantalVaccinsPerLevering() const {
+    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getKaantalVaccinsPerLevering");
     return kaantal_vaccins_per_levering;
 }
 
 void Hub::verdeelVaccins() {
+    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling verdeelVaccins");
     // eerste verdeling zorgt ervoor dat alle centra genoeg vaccins hebben voor 1 dag
     for (map<string, VaccinatieCentrum *>::const_iterator it = fverbonden_centra.begin(), end = fverbonden_centra.end();
          it != end; it++) {
@@ -135,12 +141,15 @@ void Hub::verdeelVaccins() {
              << it->second->getAantalGeleverdeVaccins() << " vaccins) getransporteerd naar " << it->first << "."
              << endl;
     }
+    ENSURE(aantal_vaccins >= 0, "You can't have less than 0 vaccins!");
 }
 
 unsigned int Hub::minAantalLeveringen(const map<string, VaccinatieCentrum *>::const_iterator &it) const {
+    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling minAantalLeveringen");
     return ceil(((float) (it->second->getKcapaciteit() - it->second->getAantalVaccins()) / kaantal_vaccins_per_lading));
 }
 
 const map<string, VaccinatieCentrum *> &Hub::getFverbondenCentra() const {
+    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getFverbondenCentra");
     return fverbonden_centra;
 }
