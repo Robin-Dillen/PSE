@@ -114,7 +114,7 @@ void Hub::verdeelVaccins() {
     }
     // 2de verdeling zorgt ervoor dat de vaccins zo veel als mogelijk verdeelt worden
     bool change = true;
-    while (aantal_vaccins >= 2000 && change) {
+    while (aantal_vaccins >= kaantal_vaccins_per_lading && change) {
         change = false;
         for (map<string, VaccinatieCentrum *>::const_iterator it = fverbonden_centra.begin(), end = fverbonden_centra.end();
              it != end; it++) {
@@ -139,4 +139,8 @@ void Hub::verdeelVaccins() {
 
 unsigned int Hub::minAantalLeveringen(const map<string, VaccinatieCentrum *>::const_iterator &it) const {
     return ceil(((float) (it->second->getKcapaciteit() - it->second->getAantalVaccins()) / kaantal_vaccins_per_lading));
+}
+
+const map<string, VaccinatieCentrum *> &Hub::getFverbondenCentra() const {
+    return fverbonden_centra;
 }

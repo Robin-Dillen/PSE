@@ -103,6 +103,8 @@ public:
 
     unsigned int minAantalLeveringen(const map<string, VaccinatieCentrum *>::const_iterator &it) const;
 
+    const map<string, VaccinatieCentrum *> &getFverbondenCentra() const;
+
 private:
 
     // const attributes

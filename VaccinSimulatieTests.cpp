@@ -49,6 +49,11 @@ Declares the variables your tests want to use.
 
 TEST_F(VaccinSimulatieTest, DefaultConstructor) {
     EXPECT_TRUE(H->isProperlyInitialized());
+    EXPECT_TRUE(P->isProperlyInitialized());
+    for (map<string, VaccinatieCentrum *>::const_iterator it = H->getFverbondenCentra().begin(), end = H->getFverbondenCentra().end();
+         it != end; it++) {
+        EXPECT_TRUE(it->second->isProperlyInitialized());
+    }
 }
 
 int main(int argc, char **argv) {
