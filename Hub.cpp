@@ -17,7 +17,7 @@ unsigned int Hub::getLeveringenInterval() const {
     return kleveringen_interval;
 }
 
-void Hub::setFverbondenCentra(const map<string, VaccinatieCentrum *> &fverbondenCentra) {
+void Hub::addFverbondenCentra(const map<string, VaccinatieCentrum *> &fverbondenCentra) {
     REQUIRE(isProperlyInitialized(), "Parser wasn't initialized when calling addFverbondenCentra(map)");
     fverbonden_centra = fverbondenCentra;
 }

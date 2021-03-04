@@ -32,7 +32,7 @@ public:
      * @return void
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling addFverbondenCentra");
      */
-    void setFverbondenCentra(const map<string, VaccinatieCentrum *> &fverbondenCentra);
+    void addFverbondenCentra(const map<string, VaccinatieCentrum *> &fverbondenCentra);
 
     /**
      * voegt centra toe aan de verbonden centra
