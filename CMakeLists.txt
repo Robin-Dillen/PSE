@@ -25,7 +25,7 @@ set(RELEASE_SOURCE_FILES
         TinyXML/tinyxmlparser.cpp)
 
 # Set source files for DEBUG target
-set(DEBUG_SOURCE_FILES main_test.cpp)
+set(DEBUG_SOURCE_FILES main_test.cpp VaccinSimulatieTests.cpp)
 
 # Create RELEASE target
 add_executable(PSE ${RELEASE_SOURCE_FILES})
