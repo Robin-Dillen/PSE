@@ -64,7 +64,7 @@ Parser::Parser(const string &filename) : _initCheck(this) {
         //variabelen moeten een waarde hebben gekregen
         ENSURE(levering != 0 && interval != 0 && transport != 0 , "Sommige variabelen van HUB werden niet correct meegegeven.");
         Hub* H = new Hub(levering,interval,transport);
-        H->setFverbondenCentra(vaccinatieCentra);
+        H->addFverbondenCentra(vaccinatieCentra);
         fhub = H;
         ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
     }
