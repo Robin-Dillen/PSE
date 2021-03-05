@@ -10,8 +10,6 @@
 #include "TinyXML/tinyxml.h"
 #include "lib/DesignByContract.h"
 
-#include "ParserExeptions.h"
-
 using namespace std;
 
 

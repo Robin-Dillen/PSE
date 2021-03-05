@@ -1,5 +1,5 @@
 <root>
-    <HUB>
+<!--    <HUB>-->
         <levering>93000</levering>
         <interval>6</interval>
 <!--        <transport>2000</transport>-->
@@ -9,7 +9,7 @@
             <centrum>De Zoerla</centrum>
             <centrum>Flanders Expo</centrum>
         </CENTRA>
-    </HUB>
+    <!--    </HUB>-->
     <VACCINATIECENTRUM>
         <naam>Park Spoor Oost</naam>
         <adres>Noordersingel 40, Antwerpen</adres>

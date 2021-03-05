@@ -26,12 +26,17 @@ Parser::Parser(const string &filename) : _initCheck(this) {
             unsigned int inwoners = 0;
             unsigned int capaciteit = 0;
             //Loop over alle atributen van Vaccinatiecentrum
+            ENSURE(firstElement->FirstChildElement("naam") != NULL, "naam does not exist");
             string naam = firstElement->FirstChildElement("naam")->GetText();
+
+            ENSURE(firstElement->FirstChildElement("adres") != NULL, "adres does not exist");
             string adres = firstElement->FirstChildElement("adres")->GetText();
 
+            ENSURE(firstElement->FirstChildElement("inwoners") != NULL, "inwoners does not exist");
             stringstream g(firstElement->FirstChildElement("inwoners")->GetText());
             g >> inwoners;
 
+            ENSURE(firstElement->FirstChildElement("capaciteit") != NULL, "capaciteit does not exist");
             stringstream h(firstElement->FirstChildElement("capaciteit")->GetText());
             h >> capaciteit;
 
@@ -49,18 +54,19 @@ Parser::Parser(const string &filename) : _initCheck(this) {
     unsigned int levering = 0;
     unsigned int interval = 0;
     unsigned int transport = 0;
+
+    ENSURE(hub->FirstChildElement("levering") != NULL, "levering does not exist");
     stringstream g(hub->FirstChildElement("levering")->GetText());
     g >> levering;
 
+    ENSURE(hub->FirstChildElement("interval") != NULL, "interval does not exist");
     stringstream h(hub->FirstChildElement("interval")->GetText());
     h >> interval;
 
+    ENSURE(hub->FirstChildElement("transport") != NULL, "Transport does not exist");
     stringstream i(hub->FirstChildElement("transport")->GetText());
     i >> transport;
 
-    //variabelen moeten een waarde hebben gekregen
-    ENSURE(levering != 0 && interval != 0 && transport != 0,
-           "Sommige variabelen van HUB werden niet correct meegegeven.");
     Hub *H = new Hub(levering, interval, transport);
     H->addFverbondenCentra(vaccinatieCentra);
     fhub = H;
