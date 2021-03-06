@@ -9,7 +9,7 @@ Output::Output(Hub *h, int y, int m, int w, int d) {
 }
 
 void Output::makeOutputFile(Hub *h, int y, int m, int w, int d) {
-    ofstream outputFile("../Output.txt");
+    ofstream outputFile("../Output.txt", ios_base::app);
     outputFile << "Overzicht van vaccinaties na: " << dateToString(y, m, w, d) << string(".\n\n");
     outputFile << "Hub (" << h->getKaantalVaccinsPerLevering() << " vaccins)\n";
 
