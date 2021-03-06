@@ -56,6 +56,10 @@ TEST_F(VaccinSimulatieTest, DefaultConstructor) {
     }
 }
 
+TEST_F(VaccinSimulatieTest, AantalGeleverdeVaccins) {
+
+}
+
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
