@@ -10,6 +10,7 @@
 #include <vector>
 
 #include "Parser.h"
+#include "Output.h"
 
 using namespace std;
 
@@ -52,7 +53,7 @@ int main(int argc, char const *argv[]) {
     cout << "de simulatie duurde " << years << " jaren, " << months << " maanden, " << weeks
          << string(" ") + (weeks == 1 ? "week" : "weken") + " en " << date
          << string(" ") + +(date == 1 ? "dag" : "dagen") + +"." << endl;
-
+    Output(H, years, months, weeks);
     return 0;
 }
 
