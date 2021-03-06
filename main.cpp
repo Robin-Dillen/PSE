@@ -27,10 +27,12 @@ int main(int argc, char const *argv[]) {
     */
     // start simulatie
 
-    unsigned int date = 0; // we houden de datum hier bij zodat we aan het einde van de simulatie de duur van de simulatie kunnen opvragen
-    while (!H->isIedereenGevaccineerd()) {
+    unsigned int end_day = 30; // we kunnen ook een grens zetten op de duur van de simulatie, zet op 0 om geen grens te hebben
 
-        if (date % H->getLeveringenInterval() == 0) {
+    unsigned int current_day = 0; // we houden de datum hier bij zodat we aan het einde van de simulatie de duur van de simulatie kunnen opvragen
+    while (!H->isIedereenGevaccineerd() && (end_day && current_day < end_day)) {
+
+        if (current_day % H->getLeveringenInterval() == 0) {
             H->ontvangLevering(H->getKaantalVaccinsPerLevering());
             // door in de simulatie het aantal vaccins mee te geven kunnen we war randomness toevoegen aan het aantal
             // geleverde vaccins. Want ze zijn toch niet te vertrouwen die farmareuzen!
@@ -39,21 +41,22 @@ int main(int argc, char const *argv[]) {
         // stuur signaal nieuwe dag
         H->nieuweDag();
 
-        // increase date
-        date++;
+        // increase current_day
+        current_day++;
     }
 
-    unsigned int years = date / 356;
-    date -= years * 356;
-    unsigned int months = date / 30;
-    date -= months * 30;
-    unsigned int weeks = date / 7;
-    date -= weeks * 7;
+    Output::makeOutputFile(H, current_day);
+
+    unsigned int years = current_day / 356;
+    current_day -= years * 356;
+    unsigned int months = current_day / 30;
+    current_day -= months * 30;
+    unsigned int weeks = current_day / 7;
+    current_day -= weeks * 7;
 
     cout << "de simulatie duurde " << years << " jaren, " << months << " maanden, " << weeks
-         << string(" ") + (weeks == 1 ? "week" : "weken") + " en " << date
-         << string(" ") + +(date == 1 ? "dag" : "dagen") + +"." << endl;
-    Output(H, years, months, weeks);
+         << string(" ") + (weeks == 1 ? "week" : "weken") + " en " << current_day
+         << string(" ") + +(current_day == 1 ? "dag" : "dagen") + +"." << endl;
     return 0;
 }
 
