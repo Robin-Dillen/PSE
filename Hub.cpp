@@ -86,6 +86,8 @@ void Hub::nieuweDag() {
     // stuur signaal nieuwe dag naar alle centra
     for (map<string, VaccinatieCentrum *>::const_iterator it = fverbonden_centra.begin(), end = fverbonden_centra.end();
          it != end; it++) {
+        cout << "Er werden " << it->second->getAantalGeleverdeVaccins() / kaantal_vaccins_per_lading << " ladingen ("
+             << it->second->getAantalGeleverdeVaccins() << " vaccins) getransporteerd naar " << it->first << ". En ";
         it->second->nieuweDag();
     }
 }
@@ -134,13 +136,6 @@ void Hub::verdeelVaccins() {
         }
     }
 
-    // show output
-    for (map<string, VaccinatieCentrum *>::const_iterator it = fverbonden_centra.begin(), end = fverbonden_centra.end();
-         it != end; it++) {
-        cout << "Er werden " << it->second->getAantalGeleverdeVaccins() / kaantal_vaccins_per_lading << " ladingen ("
-             << it->second->getAantalGeleverdeVaccins() << " vaccins) getransporteerd naar " << it->first << "."
-             << endl;
-    }
     ENSURE(aantal_vaccins >= 0, "You can't have less than 0 vaccins!");
 }
 
