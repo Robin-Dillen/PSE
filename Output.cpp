@@ -19,10 +19,11 @@ void Output::makeOutputFile(Hub* h, int y, int m, int w) {
     outputFile<<"Overzicht van vaccinaties na: "<<y<<" jaren, "<<m<<" maanden en "<<w<<" weken.\n\n";
     outputFile<<"Hub ("<<h->getKaantalVaccinsPerLevering() <<" vaccins)\n";
 
-    for(map<string, VaccinatieCentrum *>::iterator it = h->getFverbondenCentra().begin(); it!= h->getFverbondenCentra().end(); it++){
+    for(map<string, VaccinatieCentrum *>::const_iterator it = h->getFverbondenCentra().begin(); it!= h->getFverbondenCentra().end(); it++){
         outputFile<<"\t-> "<<it->first<<" ("<< it->second->getAantalVaccinaties()<<" vaccins)\n";
     }
-    for(map<string, VaccinatieCentrum *>::iterator it = h->getFverbondenCentra().begin(); it!= h->getFverbondenCentra().end(); it++){
+    outputFile<<"\n";
+    for(map<string, VaccinatieCentrum *>::const_iterator it = h->getFverbondenCentra().begin(); it!= h->getFverbondenCentra().end(); it++){
         outputFile<<it->first<<": "<< it->second->getAantalVaccinaties()<<" gevacineerd, nog "<< it->second->getKaantalInwoners()-it->second->getAantalVaccinaties()<<" inwoners niet gevaccineerd.\n";
     }
     outputFile.close();
