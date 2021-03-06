@@ -86,8 +86,9 @@ void Hub::nieuweDag() {
     // stuur signaal nieuwe dag naar alle centra
     for (map<string, VaccinatieCentrum *>::const_iterator it = fverbonden_centra.begin(), end = fverbonden_centra.end();
          it != end; it++) {
-        cout << "Er werden " << it->second->getAantalGeleverdeVaccins() / kaantal_vaccins_per_lading << " ladingen ("
-             << it->second->getAantalGeleverdeVaccins() << " vaccins) getransporteerd naar " << it->first << ". En ";
+        /*cout << "Er werden " << it->second->getAantalGeleverdeVaccins() / kaantal_vaccins_per_lading << " ladingen ("
+             << it->second->getAantalGeleverdeVaccins() << " vaccins) getransporteerd naar " << it->first << ". En ";*/
+        // best zo weinig mogelijk output op de console
         it->second->nieuweDag();
     }
 }
@@ -147,4 +148,8 @@ unsigned int Hub::minAantalLeveringen(const map<string, VaccinatieCentrum *>::co
 const map<string, VaccinatieCentrum *> &Hub::getFverbondenCentra() const {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getFverbondenCentra");
     return fverbonden_centra;
+}
+
+const unsigned int Hub::getKaantalVaccinsPerLading() const {
+    return kaantal_vaccins_per_lading;
 }

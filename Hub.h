@@ -133,6 +133,10 @@ public:
     const map<string, VaccinatieCentrum *> &getFverbondenCentra() const;
 
 private:
+public:
+    const unsigned int getKaantalVaccinsPerLading() const;
+
+private:
 
     // const attributes
     const unsigned int kaantal_vaccins_per_levering;

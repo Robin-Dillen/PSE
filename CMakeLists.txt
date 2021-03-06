@@ -27,7 +27,19 @@ set(RELEASE_SOURCE_FILES
         Output.h)
 
 # Set source files for DEBUG target
-set(DEBUG_SOURCE_FILES main_test.cpp VaccinSimulatieTests.cpp)
+set(DEBUG_SOURCE_FILES
+        VaccinSimulatieTests.cpp
+        Parser.cpp Parser.h
+        Hub.cpp Hub.h
+        VaccinatieCentrum.cpp VaccinatieCentrum.h
+        TinyXML/tinystr.cpp
+        TinyXML/tinystr.h
+        TinyXML/tinyxml.cpp
+        TinyXML/tinyxml.h
+        TinyXML/tinyxmlerror.cpp
+        TinyXML/tinyxmlparser.cpp
+        Output.cpp
+        Output.h)
 
 # Create RELEASE target
 add_executable(PSE ${RELEASE_SOURCE_FILES})

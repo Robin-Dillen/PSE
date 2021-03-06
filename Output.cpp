@@ -24,6 +24,7 @@ void Output::makeOutputFile(Hub *h, int y, int m, int w, int d) {
                    << it->second->getKaantalInwoners() - it->second->getAantalVaccinaties()
                    << " inwoners niet gevaccineerd.\n";
     }
+    outputFile << "\r";
     outputFile.close();
 }
 

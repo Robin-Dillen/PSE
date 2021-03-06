@@ -62,8 +62,8 @@ void VaccinatieCentrum::nieuweDag() {
     // verminder het aantal vaccins en vermeerder het aantal gevaccineerden
     aantal_vaccins -= vaccinaties;
     aantal_vaccinaties += vaccinaties;
-    cout << "er werden " << vaccinaties << " inwoners gevaccineerd in " << kfname << ". "
-         << ((double) aantal_vaccinaties / kaantal_inwoners) * 100 << "% is reeds gevaccineerd" << endl;
+    //cout << "er werden " << vaccinaties << " inwoners gevaccineerd in " << kfname << ". "
+    //    << ((double) aantal_vaccinaties / kaantal_inwoners) * 100 << "% is reeds gevaccineerd" << endl;
 }
 
 bool VaccinatieCentrum::isVol() const {

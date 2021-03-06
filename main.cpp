@@ -32,9 +32,9 @@ int main(int argc, char const *argv[]) {
     while (!H->isIedereenGevaccineerd() && (end_day && current_day < end_day)) {
 
         if (current_day % H->getLeveringenInterval() == 0) {
-            H->ontvangLevering(H->getKaantalVaccinsPerLevering());
             // door in de simulatie het aantal vaccins mee te geven kunnen we war randomness toevoegen aan het aantal
             // geleverde vaccins. Want ze zijn toch niet te vertrouwen die farmareuzen!
+            H->ontvangLevering(H->getKaantalVaccinsPerLevering());
         }
 
         // stuur signaal nieuwe dag
