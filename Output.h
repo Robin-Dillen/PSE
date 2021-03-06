@@ -5,8 +5,6 @@
 #ifndef PSE_OUTPUT_H
 #define PSE_OUTPUT_H
 
-#include <string>
-
 #include "Hub.h"
 
 using namespace std;

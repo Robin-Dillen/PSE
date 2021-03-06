@@ -3,10 +3,8 @@
 //
 
 #include "Output.h"
-#include "VaccinatieCentrum.h"
-#include <iostream>
+
 #include <fstream>
-#include <string>
 
 using namespace std;
 
