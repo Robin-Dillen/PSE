@@ -54,7 +54,7 @@ int main(int argc, char const *argv[]) {
     unsigned int weeks = current_day / 7;
     current_day -= weeks * 7;
 
-    cout << "de simulatie duurde " << years << " jaren, " << months << " maanden, " << weeks
+    cout << "de simulatie duurde " << years << " jaren, " << months << string(" ") + (months == 1 ? "maand, " : "maanden, ") << weeks
          << string(" ") + (weeks == 1 ? "week" : "weken") + " en " << current_day
          << string(" ") + +(current_day == 1 ? "dag" : "dagen") + +"." << endl;
     return 0;
