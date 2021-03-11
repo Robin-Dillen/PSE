@@ -44,8 +44,7 @@ unsigned int VaccinatieCentrum::getAantalVaccinaties() const {
 bool VaccinatieCentrum::isProperlyInitialized() const {
     return _initCheck == this;
 }
-
-const unsigned int VaccinatieCentrum::getKaantalInwoners() const {
+q
     return kaantal_inwoners;
 }
 
