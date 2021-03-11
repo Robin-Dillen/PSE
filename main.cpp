@@ -26,10 +26,10 @@ int main(int argc, char const *argv[]) {
 
     // start simulatie
 
-    unsigned int end_day = 30; // we kunnen ook een grens zetten op de duur van de simulatie, zet op 0 om geen grens te hebben
+    unsigned int end_day = 0; // we kunnen ook een grens zetten op de duur van de simulatie, zet op 0 om geen grens te hebben
 
     unsigned int current_day = 1; // we houden de datum hier bij zodat we aan het einde van de simulatie de duur van de simulatie kunnen opvragen
-    while (!H->isIedereenGevaccineerd() && (end_day && current_day < end_day)) {
+    while (!H->isIedereenGevaccineerd() && (!end_day || current_day < end_day)) {
 
         if (current_day % H->getLeveringenInterval() == 0) {
             // door in de simulatie het aantal vaccins mee te geven kunnen we war randomness toevoegen aan het aantal
