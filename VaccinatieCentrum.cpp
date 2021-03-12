@@ -44,9 +44,10 @@ unsigned int VaccinatieCentrum::getAantalVaccinaties() const {
 bool VaccinatieCentrum::isProperlyInitialized() const {
     return _initCheck == this;
 }
-q
+const unsigned int VaccinatieCentrum::getKaantalInwoners() const {
     return kaantal_inwoners;
 }
+
 
 void VaccinatieCentrum::nieuweDag() {
     // update het aantal vaccins

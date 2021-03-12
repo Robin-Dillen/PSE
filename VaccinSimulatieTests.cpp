@@ -47,7 +47,7 @@ private:
     Parser *P;
 };
 
-
+/*
 TEST_F(VaccinSimulatieTest, DefaultConstructor) {
     EXPECT_TRUE(H->isProperlyInitialized());
     for (map<string, VaccinatieCentrum *>::const_iterator it = H->getFverbondenCentra().begin(), end = H->getFverbondenCentra().end();
@@ -91,6 +91,17 @@ TEST_F(VaccinSimulatieTest, HappyDayIedereenGevaccineert) {
     }
     EXPECT_TRUE(H->isIedereenGevaccineerd());
 
+}
+*/
+
+TEST_F(VaccinSimulatieTest, Parser1){
+    Parser P("../XMLfiles/vb.xml");
+    EXPECT_TRUE(P.isProperlyInitialized());
+}
+
+TEST_F(VaccinSimulatieTest, Parser2){
+    Parser P("../XMLfiles/fout_bestand.xml");
+    EXPECT_FALSE(P.isProperlyInitialized());
 }
 
 int main(int argc, char **argv) {
