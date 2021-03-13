@@ -22,6 +22,9 @@ public:
     VaccinatieCentrum(const unsigned int kcapaciteit, const unsigned int kaantalInwoners, const string &kfname,
                       const string &kfaddress);
 
+    /**
+     * @return geeft terug of het object correct is geïnitialiseert
+     */
     bool isProperlyInitialized() const;
 
     /**
@@ -42,14 +45,34 @@ public:
      */
     const string &getKfaddress() const;
 
+    /**
+     * @return geeft het aantal inwoners van de plaats, waar het vaccinatie centrum zich bevind, terug
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getKfaddress");
+     */
     const unsigned int getKaantalInwoners() const;
 
+    /**
+     * @return geeft capaciteit van het vaccinatie centrum terug
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getKfaddress");
+     */
     const unsigned int getKcapaciteit() const;
 
+    /**
+     * @return geeft het aantal vaccins van het vaccinatie centrum terug die momenteel beschikbaar zijn
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getKfaddress");
+     */
     unsigned int getAantalVaccins() const;
 
+    /**
+     * @return geeft het de maximum opslag weer van het vaccinatiecentrum
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getKfaddress");
+     */
     unsigned int getMaxStock() const;
 
+    /**
+     * @return geeft het aantal geleverde vaccinaties weer van het vaccinatie centrum terug
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getKfaddress");
+     */
     unsigned int getAantalGeleverdeVaccins() const;
 
     /**
@@ -67,7 +90,7 @@ public:
     void setAantalVaccinaties(unsigned int aantalVaccinaties);
 
     /*!
-     *
+     *start een nieuwe dag
      */
     void nieuweDag();
 
@@ -76,10 +99,19 @@ public:
      */
     bool isVol() const;
 
+    /*!
+     * geeft terug of de stock van vaccins vol is na een nieuwe levering
+     */
     bool isVolNaLevering(unsigned int vaccins_in_levering) const;
 
+    /*!
+     * ontvangt een levering en plaatst de vaccinaties in de stock
+     */
     void ontvangLevering(unsigned int vaccins_in_levering);
 
+    /*!
+     * Kijkt na of iedereen gevaccineerd is.
+     */
     bool isIedereenGevaccineerd() const;
 
 private:

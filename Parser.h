@@ -26,6 +26,9 @@ public:
      */
     Hub *getFhub() const;
 
+    /**
+     * @return geeft terug of het object correct is geïnitialiseert
+     */
     bool isProperlyInitialized() const;
 
 private:

@@ -8,6 +8,10 @@ Output::Output(Hub *h, int y, int m, int w, int d) {
     makeOutputFile(h, y, m, w, d);
 }
 
+bool Output::isProperlyInitialized() const {
+    return _initCheck == this;
+}
+
 void Output::makeOutputFile(Hub *h, int y, int m, int w, int d) {
     ofstream outputFile("../Output.txt", ios_base::app);
     outputFile << "Overzicht van vaccinaties na: " << dateToString(y, m, w, d) << string(".\n\n");

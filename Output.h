@@ -10,21 +10,51 @@
 #include <sstream>
 #include <string>
 #include <fstream>
-
-using namespace std;
+#include "lib/DesignByContract.h"
 
 using namespace std;
 
 class Output {
 public:
+    /**
+    \n ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
+    */
     Output(Hub *h, int y, int m, int w, int d);
 
+    /**
+     * @return geeft terug of het object correct is geïnitialiseert
+     */
+    bool isProperlyInitialized() const;
+
+    /**
+     * Maakt een tekst bestand aan
+     * @param h: hub
+     * @param y,m,w,d: jaren, maanden, weken en dagen na start simulatie
+     * @return void
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling addFverbondenCentra");
+     */
     static void makeOutputFile(Hub *h, int y, int m, int w, int d);
 
+    /**
+     * Maakt een tekst bestand aan
+     * @param h: hub
+     * @param days:dagen na start simulatie
+     * @return void
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling addFverbondenCentra");
+     */
     static void makeOutputFile(Hub *h, unsigned int days);
 
+
 private:
+    /**
+     * zet een datum in int formaat om naar een string
+     * @param y,m,w,d: jaren, maanden, weken en dagen na start simulatie
+     * @return string: datum in string
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling addFverbondenCentra");
+     */
     static string dateToString(unsigned int y, unsigned int m, unsigned int w, unsigned int d);
+
+    const Output *_initCheck; // pointer naar zichzelf om te checken of het object correct geïnitialseert is
 };
 
 
