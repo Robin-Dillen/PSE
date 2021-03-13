@@ -99,9 +99,9 @@ TEST_F(VaccinSimulatieTest, HappyDayIedereenGevaccineerd) {
 
 //HUB
 TEST_F(VaccinSimulatieTest, getLeveringenInterval){
-    unsigned int i = 3;
-    Hub H(100,3,500);
-    EXPECT_EQ(i, H.getLeveringenInterval());
+unsigned int i = 3;
+Hub H(100, i, 500);
+EXPECT_EQ(i, H.getLeveringenInterval());
 }
 
 TEST_F(VaccinSimulatieTest, addFverbondenCentra1){
@@ -152,11 +152,10 @@ TEST_F(VaccinSimulatieTest, AantalVaccins){
 TEST_F(VaccinSimulatieTest, Parser1){
     Parser P("../XMLfiles/vb.xml");
     EXPECT_TRUE(P.isProperlyInitialized());
-}
+    }
 
-TEST_F(VaccinSimulatieTest, Parser2){
-    //Parser P("../XMLfiles/fout_bestand.xml");
-    //EXPECT_FALSE(P.isProperlyInitialized());
+    TEST_F(VaccinSimulatieTest, Parser2){
+    EXPECT_DEATH(Parser P("../XMLfiles/fout_bestand.xml"), "");
 }
 
 int main(int argc, char **argv) {
