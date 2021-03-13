@@ -100,7 +100,7 @@ public:
 
     /*!
      * ontvangt een levering, voegt het aantal geleverde vaccins toe aan het aantal vaccins van de hub.
-     * @param aantal_vaccins het aanta geleverde vaccins
+     * @param aantal_vaccins het aantal geleverde vaccins
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling ontvangLevering");
      */
     void ontvangLevering(unsigned int aantal_vaccins);

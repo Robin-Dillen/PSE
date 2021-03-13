@@ -16,6 +16,10 @@ VaccinatieCentrum::VaccinatieCentrum(const unsigned int kcapaciteit, const unsig
     ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
 }
 
+bool VaccinatieCentrum::isProperlyInitialized() const {
+    return _initCheck == this;
+}
+
 const string &VaccinatieCentrum::getKfname() const {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getKfname");
     return kfname;
@@ -24,6 +28,31 @@ const string &VaccinatieCentrum::getKfname() const {
 const string &VaccinatieCentrum::getKfaddress() const {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getKfaddress");
     return kfaddress;
+}
+
+unsigned int VaccinatieCentrum::getAantalVaccinaties() const {
+    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getAantalVaccinaties");
+    return aantal_vaccinaties;
+}
+
+const unsigned int VaccinatieCentrum::getKaantalInwoners() const {
+    return kaantal_inwoners;
+}
+
+const unsigned int VaccinatieCentrum::getKcapaciteit() const {
+    return kcapaciteit;
+}
+
+unsigned int VaccinatieCentrum::getAantalVaccins() const {
+    return aantal_vaccins;
+}
+
+unsigned int VaccinatieCentrum::getAantalGeleverdeVaccins() const {
+    return aantal_geleverde_vaccins;
+}
+
+unsigned int VaccinatieCentrum::getMaxStock() const {
+    return kcapaciteit * 2;
 }
 
 void VaccinatieCentrum::setVaccins(unsigned int vaccins) {
@@ -35,19 +64,6 @@ void VaccinatieCentrum::setAantalVaccinaties(unsigned int aantalVaccinaties) {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling setAantalVaccinaties");
     aantal_vaccinaties = aantalVaccinaties;
 }
-
-unsigned int VaccinatieCentrum::getAantalVaccinaties() const {
-    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getAantalVaccinaties");
-    return aantal_vaccinaties;
-}
-
-bool VaccinatieCentrum::isProperlyInitialized() const {
-    return _initCheck == this;
-}
-const unsigned int VaccinatieCentrum::getKaantalInwoners() const {
-    return kaantal_inwoners;
-}
-
 
 void VaccinatieCentrum::nieuweDag() {
     // update het aantal vaccins
@@ -74,28 +90,14 @@ bool VaccinatieCentrum::isVolNaLevering(unsigned int vaccins_in_levering) const 
     return (aantal_vaccins + vaccins_in_levering) > getMaxStock();
 }
 
-const unsigned int VaccinatieCentrum::getKcapaciteit() const {
-    return kcapaciteit;
-}
-
-unsigned int VaccinatieCentrum::getAantalVaccins() const {
-    return aantal_vaccins;
-}
-
 void VaccinatieCentrum::ontvangLevering(unsigned int vaccins_in_levering) {
     aantal_geleverde_vaccins += vaccins_in_levering;
-}
-
-unsigned int VaccinatieCentrum::getAantalGeleverdeVaccins() const {
-    return aantal_geleverde_vaccins;
 }
 
 bool VaccinatieCentrum::isIedereenGevaccineerd() const {
     return aantal_vaccinaties == kaantal_inwoners;
 }
 
-unsigned int VaccinatieCentrum::getMaxStock() const {
-    return kcapaciteit * 2;
-}
+
 
 

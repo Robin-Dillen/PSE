@@ -22,6 +22,8 @@ public:
     VaccinatieCentrum(const unsigned int kcapaciteit, const unsigned int kaantalInwoners, const string &kfname,
                       const string &kfaddress);
 
+    bool isProperlyInitialized() const;
+
     /**
      * @return geeft de naam van het vaccinatie centrum terug
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getKfname");
@@ -40,6 +42,16 @@ public:
      */
     const string &getKfaddress() const;
 
+    const unsigned int getKaantalInwoners() const;
+
+    const unsigned int getKcapaciteit() const;
+
+    unsigned int getAantalVaccins() const;
+
+    unsigned int getMaxStock() const;
+
+    unsigned int getAantalGeleverdeVaccins() const;
+
     /**
      * update het aantal_vaccins
      * @param vaccins: unsigned int
@@ -53,12 +65,6 @@ public:
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling setAantalVaccinaties");
      */
     void setAantalVaccinaties(unsigned int aantalVaccinaties);
-
-    const unsigned int getKaantalInwoners() const;
-
-    const unsigned int getKcapaciteit() const;
-
-    unsigned int getAantalVaccins() const;
 
     /*!
      *
@@ -74,13 +80,7 @@ public:
 
     void ontvangLevering(unsigned int vaccins_in_levering);
 
-    unsigned int getAantalGeleverdeVaccins() const;
-
     bool isIedereenGevaccineerd() const;
-
-    unsigned int getMaxStock() const;
-
-    bool isProperlyInitialized() const;
 
 private:
 
