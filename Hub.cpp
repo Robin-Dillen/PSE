@@ -138,7 +138,8 @@ void Hub::verdeelVaccins() {
 
 unsigned int Hub::minAantalLeveringen(const map<string, VaccinatieCentrum *>::const_iterator &it) const {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling minAantalLeveringen");
-    return ceil(((float) (it->second->getKcapaciteit() - it->second->getAantalVaccins()) / kaantal_vaccins_per_lading));
+    return ceil(((float) max((int) it->second->getKcapaciteit() - (int) it->second->getAantalVaccins(), 0) /
+                 kaantal_vaccins_per_lading));
 }
 
 
