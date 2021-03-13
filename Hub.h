@@ -21,10 +21,53 @@ public:
     Hub(const unsigned int kaantal_vaccins_per_levering, const unsigned int kleveringen_interval, const unsigned int kaantal_vaccins_per_lading);
 
     /**
+     * @return geeft terug of het object correct is geïnitialiseert
+     */
+    bool isProperlyInitialized() const;
+
+    /**
+     * @return unsigned int :geeft terug om de hoeveel dagen een levering vaccins binnenkomt
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getFhub()");
+     */
+    unsigned int getAantalVaccins() const;
+
+    /**
      * @return unsigned int :geeft terug om de hoeveel dagen een levering vaccins binnenkomt
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getFhub()");
      */
     unsigned int getLeveringenInterval() const;
+
+    /*!
+     * @return geeft het totaal aantal vaccinaties terug: som van de vaccinaties van de vaccinatie centra
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling totaalAantalVaccinaties");
+     */
+    unsigned int getTotaalAantalVaccinaties() const; // wordt wss niet gebruikt
+
+    /*!
+     * @return geeft het aantal vaccins per levering terug
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getKaantalVaccinsPerLevering");
+     */
+    const unsigned int getKaantalVaccinsPerLevering() const;
+
+    /*!
+     * @return geeft het aantal vaccins per lading terug
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getKaantalVaccinsPerLading");
+     */
+    const unsigned int getKaantalVaccinsPerLading() const;
+
+    /*!
+     * @return geeft de verbonden centra terug
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getFverbondenCentra");
+     */
+    const map<string, VaccinatieCentrum *> &getFverbondenCentra() const;
+
+    /**
+     * update het aantal vaccins
+     * @param aantalVaccins: unsigned int
+     * @return void
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling setAantalVaccins");
+     */
+    void setAantalVaccins(unsigned int aantalVaccins);
 
     /**
      * update de verbonden centra
@@ -42,50 +85,6 @@ public:
      * \n ENSURE(fverbonden_centra.size() == fverbondenCentra.size() + start_size, "De centra zijn niet (volledig) Toegevoegd");
      */
     void addFverbondenCentra(const vector<VaccinatieCentrum *> &fverbondenCentra);
-
-    /**
-     * update het aantal vaccins
-     * @param aantalVaccins: unsigned int
-     * @return void
-     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling setAantalVaccins");
-     */
-    void setAantalVaccins(unsigned int aantalVaccins);
-
-    /**
-     * update het aantal vaccins dat geleverd wordt bij elke levering
-     * @param aantalVaccinsPerLevering: unsigned int
-     * @return void
-     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling setAantalVaccinsPerLevering");
-     */
-    void setAantalVaccinsPerLevering(unsigned int aantalVaccinsPerLevering);
-
-    /**
-     * update de tijdsduur tussen elke levering van vaccins(in dagen)
-     * @param leveringenInterval: unsigned int
-     * @return void
-     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling setLeveringenInterval");
-     */
-    void setLeveringenInterval(unsigned int leveringenInterval);
-
-    /**
-     * update het aantal vaccins dat geleverd kan worden aan een vaccinatie centrum
-     * @param aantalVaccinsPerLading: unsigned int
-     * @return void
-     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling setAantalVaccinsPerLading");
-     */
-    void setAantalVaccinsPerLading(unsigned int aantalVaccinsPerLading);
-
-    /*!
-     * @return geeft het totaal aantal vaccinaties terug: som van de vaccinaties van de vaccinatie centra
-     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling totaalAantalVaccinaties");
-     */
-    unsigned int getTotaalAantalVaccinaties() const; // wordt wss niet gebruikt
-
-    /*!
-     * @return geeft het aantal vaccins per levering terug
-     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getKaantalVaccinsPerLevering");
-     */
-    const unsigned int getKaantalVaccinsPerLevering() const;
 
     /*!
      * @return geeft true terug als iedereen gevaccineerd is, anders geeft de functie false terug
@@ -106,11 +105,6 @@ public:
      */
     void ontvangLevering(unsigned int aantal_vaccins);
 
-    /**
-     * @return geeft terug of het object correct is geïnitialiseert
-     */
-    bool isProperlyInitialized() const;
-
     /*!
      * verdeelt de vaccins over alle verbonden vaccinatie centra
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling verdeelVaccins");
@@ -125,16 +119,6 @@ public:
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling minAantalLeveringen");
      */
     unsigned int minAantalLeveringen(const map<string, VaccinatieCentrum *>::const_iterator &it) const;
-
-    /*!
-     * @return geeft de verbonden centra terug
-     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getFverbondenCentra");
-     */
-    const map<string, VaccinatieCentrum *> &getFverbondenCentra() const;
-
-private:
-public:
-    const unsigned int getKaantalVaccinsPerLading() const;
 
 private:
 
