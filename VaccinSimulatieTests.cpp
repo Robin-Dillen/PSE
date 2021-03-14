@@ -469,12 +469,18 @@ TEST_F(VaccinSimulatieTest, ParserSucces) {
 
 TEST_F(VaccinSimulatieTest, ParserDeath) {
     EXPECT_DEATH(Parser P("../XMLfiles/test002.xml"), "");
-    EXPECT_DEATH(Parser P("../XMLfiles/test005.xml"), "");
-    EXPECT_DEATH(Parser P("../XMLfiles/test006.xml"), "");
     EXPECT_DEATH(Parser P("../XMLfiles/test008.xml"), "");
     EXPECT_DEATH(Parser P("../XMLfiles/test009.xml"), "");
-    EXPECT_DEATH(Parser P("../XMLfiles/test0010.xml"), "");
 }
+
+TEST_F(VaccinSimulatieTest, ParserExeption1){
+    try {
+        Parser P("../XMLfiles/test005.xml");
+    } catch (string e) {
+        EXPECT_EQUAL(e,"Sommige variabelen van een VACCINATIECENTRUM werden niet correct meegegeven.");
+    }
+}
+
 
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);

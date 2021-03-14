@@ -1,14 +1,5 @@
 <!--centra zonder hub-->
 <root>
-    <HUB>
-        <levering>81000</levering>
-        <interval>6</interval>
-        <transport>2000</transport>
-        <CENTRA>
-            <centrum>Park Spoor Oost</centrum>
-            <centrum>AED Studios</centrum>
-        </CENTRA>
-    </HUB>
     <VACCINATIECENTRUM>
         <naam>Park Spoor Oost</naam>
         <adres>Noordersingel 40, Antwerpen</adres>

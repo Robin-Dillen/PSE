@@ -20,6 +20,8 @@ public:
     */
     Parser(const string &filename);
 
+    void parseFile(const string &filename);
+
     virtual ~Parser();
 
     /**
