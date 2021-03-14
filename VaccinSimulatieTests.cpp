@@ -43,15 +43,15 @@ TEST_F(VaccinSimulatieTest, DefaultConstructor) {
 
     Parser* P = new Parser("../XMLfiles/vb.xml");
     Hub* H = P->getFhub();
-    unsigned int zero = 0;
     EXPECT_TRUE(H->isProperlyInitialized());
-    EXPECT_NE(H->getFverbondenCentra().size(), zero);
+    unsigned int zero = 0;
+    EXPECT_NE(zero,H->getFverbondenCentra().size());
     for (map<string, VaccinatieCentrum *>::const_iterator it = H->getFverbondenCentra().begin(), end = H->getFverbondenCentra().end();
          it != end; it++) {
         EXPECT_TRUE(it->second->isProperlyInitialized());
-        EXPECT_EQ(zero, it->second->getAantalVaccinaties());
-        EXPECT_EQ(zero, it->second->getAantalGeleverdeVaccins());
-        EXPECT_EQ(zero, it->second->getAantalVaccins());
+        EXPECT_EQ(0, it->second->getAantalVaccinaties());
+        EXPECT_EQ(0, it->second->getAantalGeleverdeVaccins());
+        EXPECT_EQ(0, it->second->getAantalVaccins());
     }
 }
 
@@ -59,9 +59,9 @@ TEST_F(VaccinSimulatieTest, HappyDay) {
     Parser *P = new Parser("../XMLfiles/vb.xml");
     Hub *H = P->getFhub();
 
-    unsigned int end_day = 0; // we kunnen ook een grens zetten op de duur van de simulatie, zet op 0 om geen grens te hebben
+    int end_day = 0; // we kunnen ook een grens zetten op de duur van de simulatie, zet op 0 om geen grens te hebben
 
-    unsigned int current_day = 1; // we houden de datum hier bij zodat we aan het einde van de simulatie de duur van de simulatie kunnen opvragen
+    int current_day = 1; // we houden de datum hier bij zodat we aan het einde van de simulatie de duur van de simulatie kunnen opvragen
     while (!H->isIedereenGevaccineerd() && (!end_day || current_day < end_day)) {
         // increase current_day
         current_day++;
@@ -76,15 +76,15 @@ TEST_F(VaccinSimulatieTest, HappyDay) {
         H->nieuweDag();
     }
 
-    unsigned int years = current_day / 356;
+    int years = current_day / 356;
     current_day -= years * 356;
-    unsigned int months = current_day / 30;
+    int months = current_day / 30;
     current_day -= months * 30;
-    unsigned int weeks = current_day / 7;
+    int weeks = current_day / 7;
     current_day -= weeks * 7;
 
     // tests
-    EXPECT_GE(current_day, (unsigned int) 1);
+    EXPECT_GE(current_day, (int) 1);
 
     for (map<string, VaccinatieCentrum *>::const_iterator it = H->getFverbondenCentra().begin(), end = H->getFverbondenCentra().end();
          it != end; it++) {
@@ -113,47 +113,40 @@ TEST_F(VaccinSimulatieTest,VaccinatieCentrum_getaddress){
 TEST_F(VaccinSimulatieTest,VaccinatieCentrum_AantalVaccinaties){
     VaccinatieCentrum* V = new VaccinatieCentrum(10,10,"A","B");
     V->setAantalVaccinaties(10);
-    unsigned int i = 10;
-    EXPECT_EQ(i, V->getAantalVaccinaties());
+    EXPECT_EQ(10, V->getAantalVaccinaties());
     delete V;
 }
 
 TEST_F(VaccinSimulatieTest,VaccinatieCentrum_AantalVaccins){
     VaccinatieCentrum* V = new VaccinatieCentrum(10,10,"A","B");
     V->setVaccins(10);
-    unsigned int i = 10;
-    EXPECT_EQ(i, V->getAantalVaccins());
+    EXPECT_EQ(10, V->getAantalVaccins());
     delete V;
 }
 
 TEST_F(VaccinSimulatieTest,VaccinatieCentrum_getAantalInwoners){
     VaccinatieCentrum* V = new VaccinatieCentrum(20,10,"A","B");
-    unsigned int i = 10;
-    EXPECT_EQ(i, V->getKaantalInwoners());
+    EXPECT_EQ(10, V->getKaantalInwoners());
     delete V;
 }
 
 TEST_F(VaccinSimulatieTest,VaccinatieCentrum_getCapaciteit){
     VaccinatieCentrum* V = new VaccinatieCentrum(20,10,"A","B");
-    unsigned int i = 20;
-    EXPECT_EQ(i, V->getKcapaciteit());
+    EXPECT_EQ(20, V->getKcapaciteit());
     delete V;
 }
 
 TEST_F(VaccinSimulatieTest,VaccinatieCentrum_getMaxStock){
     VaccinatieCentrum* V = new VaccinatieCentrum(20,10,"A","B");
-    unsigned int i = 40;
-    EXPECT_EQ(i, V->getMaxStock());
+    EXPECT_EQ(40, V->getMaxStock());
     delete V;
 }
 
 TEST_F(VaccinSimulatieTest,VaccinatieCentrum_AantalGeleverdeVaccins){
     VaccinatieCentrum* V = new VaccinatieCentrum(20,10,"A","B");
-    unsigned int i = 0;
-    EXPECT_EQ(i, V->getAantalGeleverdeVaccins());
+    EXPECT_EQ(0, V->getAantalGeleverdeVaccins());
     V->ontvangLevering(3);
-    i+=3;
-    EXPECT_EQ(i, V->getAantalGeleverdeVaccins());
+    EXPECT_EQ(3, V->getAantalGeleverdeVaccins());
     delete V;
 }
 
@@ -184,10 +177,8 @@ TEST_F(VaccinSimulatieTest,VaccinatieCentrum_nieuweDag1){
     VaccinatieCentrum* V = new VaccinatieCentrum(20,10,"A","B");
     V->ontvangLevering(10);
     V->nieuweDag();
-    unsigned int i = 0;
-    EXPECT_EQ(V->getAantalGeleverdeVaccins(), i);
-    i = 10;
-    EXPECT_EQ(V->getAantalVaccinaties(), i);
+    EXPECT_EQ(0,V->getAantalGeleverdeVaccins());
+    EXPECT_EQ(10,V->getAantalVaccinaties());
     delete V;
 }
 
@@ -195,12 +186,9 @@ TEST_F(VaccinSimulatieTest,VaccinatieCentrum_nieuweDag2){
     VaccinatieCentrum* V = new VaccinatieCentrum(10,40,"A","B");
     V->ontvangLevering(15);
     V->nieuweDag();
-    unsigned int i = 0;
-    EXPECT_EQ(i, V->getAantalGeleverdeVaccins());
-    i = 10;
-    EXPECT_EQ(i, V->getAantalVaccinaties());
-    i = 5;
-    EXPECT_EQ(i, V->getAantalVaccins());
+    EXPECT_EQ(0, V->getAantalGeleverdeVaccins());
+    EXPECT_EQ(10, V->getAantalVaccinaties());
+    EXPECT_EQ(5, V->getAantalVaccins());
     delete V;
 }
 
@@ -208,18 +196,14 @@ TEST_F(VaccinSimulatieTest,VaccinatieCentrum_nieuweDag3){
     VaccinatieCentrum* V = new VaccinatieCentrum(10,5,"A","B");
     V->ontvangLevering(15);
     V->nieuweDag();
-    unsigned int i = 0;
-    EXPECT_EQ(i, V->getAantalGeleverdeVaccins());
-    i = 5;
-    EXPECT_EQ(i, V->getAantalVaccinaties());
-    i = 10;
-    EXPECT_EQ(i, V->getAantalVaccins());
+    EXPECT_EQ(0, V->getAantalGeleverdeVaccins());
+    EXPECT_EQ(5, V->getAantalVaccinaties());
+    EXPECT_EQ(10, V->getAantalVaccins());
     delete V;
 }
 
     //HUB
 TEST_F(VaccinSimulatieTest, Hub_addFverbondenCentra1){
-    unsigned int i = 0;
     Hub* H = new Hub(10,10,10);
     VaccinatieCentrum *V1 = new VaccinatieCentrum(10,10,"A","B");
     VaccinatieCentrum *V2 = new VaccinatieCentrum(10,10,"C","D");
@@ -227,9 +211,10 @@ TEST_F(VaccinSimulatieTest, Hub_addFverbondenCentra1){
     vector<VaccinatieCentrum*> VaccinatieCentra;
     VaccinatieCentra.push_back(V1);
     VaccinatieCentra.push_back(V2);
+    unsigned int i = 0;
     EXPECT_EQ(i, H->getFverbondenCentra().size());
     H->addFverbondenCentra(VaccinatieCentra);
-    i+=2;
+    i = 2;
     EXPECT_EQ(i, H->getFverbondenCentra().size());
     delete H;
     delete V1;
@@ -237,7 +222,6 @@ TEST_F(VaccinSimulatieTest, Hub_addFverbondenCentra1){
 }
 
 TEST_F(VaccinSimulatieTest, Hub_addFverbondenCentra2){
-    unsigned int i = 0;
     Hub* H = new Hub(10,10,10);
     VaccinatieCentrum *V1 = new VaccinatieCentrum(10,10,"A","B");
     VaccinatieCentrum *V2 = new VaccinatieCentrum(10,10,"C","D");
@@ -245,9 +229,10 @@ TEST_F(VaccinSimulatieTest, Hub_addFverbondenCentra2){
     map<string,VaccinatieCentrum*> VaccinatieCentra;
     VaccinatieCentra[V1->getKfname()] = V1;
     VaccinatieCentra[V2->getKfname()] = V2;
+    unsigned int i = 0;
     EXPECT_EQ(i, H->getFverbondenCentra().size());
     H->addFverbondenCentra(VaccinatieCentra);
-    i+=2;
+    i = 2;
     EXPECT_EQ(i, H->getFverbondenCentra().size());
     delete H;
     delete V1;
@@ -257,29 +242,25 @@ TEST_F(VaccinSimulatieTest, Hub_addFverbondenCentra2){
 TEST_F(VaccinSimulatieTest, Hub_AantalVaccins){
     Hub* H = new Hub(10,10,10);
     H->setAantalVaccins(230);
-    unsigned int i = 230;
-    EXPECT_EQ(i, H->getAantalVaccins());
+    EXPECT_EQ(230, H->getAantalVaccins());
     delete H;
 }
 
 TEST_F(VaccinSimulatieTest, Hub_getLeveringenInterval){
-    unsigned int i = 3;
     Hub* H = new Hub(100,3,500);
-    EXPECT_EQ(i, H->getLeveringenInterval());
+    EXPECT_EQ(3, H->getLeveringenInterval());
     delete H;
 }
 
 TEST_F(VaccinSimulatieTest, Hub_getKaantalVaccinsPerLevering){
     Hub* H = new Hub(16,10,10);
-    unsigned int i = 16;
-    EXPECT_EQ(i, H->getKaantalVaccinsPerLevering());
+    EXPECT_EQ(16, H->getKaantalVaccinsPerLevering());
     delete H;
 }
 
 TEST_F(VaccinSimulatieTest, Hub_getKaantalVaccinsPerLading){
     Hub* H = new Hub(10,10,500);
-    unsigned int i = 500;
-    EXPECT_EQ(i, H->getKaantalVaccinsPerLading());
+    EXPECT_EQ(500, H->getKaantalVaccinsPerLading());
     delete H;
 }
 
@@ -310,21 +291,17 @@ TEST_F(VaccinSimulatieTest, Hub_verdeelVaccins){
     centra.push_back(V);
     H->addFverbondenCentra(centra);
     V->ontvangLevering(10);
-    unsigned int i = 10;
-    EXPECT_EQ(i,V->getAantalGeleverdeVaccins());
+    EXPECT_EQ(10,V->getAantalGeleverdeVaccins());
     H->nieuweDag();
-    i = 0;
-    EXPECT_EQ(i, V->getAantalGeleverdeVaccins());
+    EXPECT_EQ(0, V->getAantalGeleverdeVaccins());
     EXPECT_TRUE(V->isIedereenGevaccineerd());
     delete H;
 }
 
 TEST_F(VaccinSimulatieTest, Hub_ontvangLevering){
     Hub* H = new Hub(10,10,10);
-    unsigned int i = H->getAantalVaccins();
     H->ontvangLevering(2643);
-    i += 2643;
-    EXPECT_EQ(i, H->getAantalVaccins());
+    EXPECT_EQ(2653, H->getAantalVaccins());
     delete H;
 }
 
@@ -335,11 +312,9 @@ TEST_F(VaccinSimulatieTest, Hub_nieuweDag){
     centra.push_back(V);
     H->addFverbondenCentra(centra);
     V->ontvangLevering(10);
-    unsigned int i = 10;
-    EXPECT_EQ(i,V->getAantalGeleverdeVaccins());
+    EXPECT_EQ(10,V->getAantalGeleverdeVaccins());
     H->nieuweDag();
-    i = 0;
-    EXPECT_EQ(i, V->getAantalGeleverdeVaccins());
+    EXPECT_EQ(0, V->getAantalGeleverdeVaccins());
     EXPECT_TRUE(V->isIedereenGevaccineerd());
     delete H;
     delete V;
