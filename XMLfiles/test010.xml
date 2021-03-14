@@ -1,20 +1,20 @@
-<!-- capaciteit van -1-->
+<!-- capaciteit en aantal inwoners van -1, lege naam en address-->
 <root>
     <HUB>
         <levering>81000</levering>
         <interval>6</interval>
         <transport>2000</transport>
         <CENTRA>
-            <centrum>Park Spoor Oost</centrum>
+            <centrum></centrum>
             <centrum>AED Studios</centrum>
             <centrum>De Zoerla</centrum>
             <centrum>Flanders Expo</centrum>
         </CENTRA>
     </HUB>
     <VACCINATIECENTRUM>
-        <naam>Park Spoor Oost</naam>
-        <adres>Noordersingel 40, Antwerpen</adres>
-        <inwoners>540173</inwoners>
+        <naam></naam>
+        <adres></adres>
+        <inwoners>-1</inwoners>
         <capaciteit>-1</capaciteit>
     </VACCINATIECENTRUM>
     <VACCINATIECENTRUM>

@@ -86,6 +86,15 @@ public:
      */
     void addFverbondenCentra(const vector<VaccinatieCentrum *> &fverbondenCentra);
 
+    /**
+    * voegt een centrum toe aan de verbonden centra
+    * @param fverbondenCentra: een vector met een aantal verbonden centra
+    * @return void
+    * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling addCentrum");
+    * \n ENSURE(fverbonden_centra.size() == 1 + start_size, "De centra zijn niet (volledig) Toegevoegd");
+     */
+    void addCentrum(VaccinatieCentrum *centrum);
+
     /*!
      * @return geeft true terug als iedereen gevaccineerd is, anders geeft de functie false terug
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling isIedereenGevaccineerd");

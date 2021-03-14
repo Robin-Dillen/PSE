@@ -142,4 +142,8 @@ int Hub::minAantalLeveringen(const map<string, VaccinatieCentrum *>::const_itera
                  kaantal_vaccins_per_lading));
 }
 
+void Hub::addCentrum(VaccinatieCentrum *centrum) {
+    fverbonden_centra[centrum->getKfname()] = centrum;
+}
+
 

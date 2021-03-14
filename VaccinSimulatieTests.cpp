@@ -6,6 +6,7 @@
 #include "Hub.h"
 #include "VaccinatieCentrum.h"
 #include "Parser.h"
+#include "Lib.h"
 
 class VaccinSimulatieTest : public ::testing::Test {
 protected:
@@ -42,16 +43,18 @@ Declares the variables your tests want to use.
 TEST_F(VaccinSimulatieTest, DefaultConstructor) {
 
     Parser *P = new Parser("../XMLfiles/test001.xml");
-    Hub *H = P->getFhub();
-    EXPECT_TRUE(H->isProperlyInitialized());
-    unsigned int zero = 0;
-    EXPECT_NE(zero,H->getFverbondenCentra().size());
-    for (map<string, VaccinatieCentrum *>::const_iterator it = H->getFverbondenCentra().begin(), end = H->getFverbondenCentra().end();
-         it != end; it++) {
-        EXPECT_TRUE(it->second->isProperlyInitialized());
-        EXPECT_EQ(0, it->second->getAantalVaccinaties());
-        EXPECT_EQ(0, it->second->getAantalGeleverdeVaccins());
-        EXPECT_EQ(0, it->second->getAantalVaccins());
+    vector<Hub *> hubs = P->getFhubs();
+    for (int i = 0; i < hubs.size(); i++) {
+        EXPECT_TRUE(hubs[i]->isProperlyInitialized());
+        unsigned int zero = 0;
+        EXPECT_NE(zero, hubs[i]->getFverbondenCentra().size());
+        for (map<string, VaccinatieCentrum *>::const_iterator it = hubs[i]->getFverbondenCentra().begin(), end = hubs[i]->getFverbondenCentra().end();
+             it != end; it++) {
+            EXPECT_TRUE(it->second->isProperlyInitialized());
+            EXPECT_EQ(0, it->second->getAantalVaccinaties());
+            EXPECT_EQ(0, it->second->getAantalGeleverdeVaccins());
+            EXPECT_EQ(0, it->second->getAantalVaccins());
+        }
     }
     delete P;
 }
@@ -59,7 +62,7 @@ TEST_F(VaccinSimulatieTest, DefaultConstructor) {
 //SYSTEM TESTS
 TEST_F(VaccinSimulatieTest, HappyDay1) {
     Parser P("../XMLfiles/test001.xml");
-    Hub *H = P.getFhub();
+    Hub *H = P.getFhubs()[0];
 
     int end_day = 0; // we kunnen ook een grens zetten op de duur van de simulatie, zet op 0 om geen grens te hebben
 
@@ -98,7 +101,7 @@ TEST_F(VaccinSimulatieTest, HappyDay1) {
 
 TEST_F(VaccinSimulatieTest, HappyDay2) {
     Parser P("../XMLfiles/test003.xml");
-    Hub *H = P.getFhub();
+    Hub *H = P.getFhubs()[0];
 
     int end_day = 0; // we kunnen ook een grens zetten op de duur van de simulatie, zet op 0 om geen grens te hebben
 
@@ -137,7 +140,7 @@ TEST_F(VaccinSimulatieTest, HappyDay2) {
 
 TEST_F(VaccinSimulatieTest, HappyDay3) {
     Parser P("../XMLfiles/test004.xml");
-    Hub *H = P.getFhub();
+    Hub *H = P.getFhubs()[0];
 
     int end_day = 0; // we kunnen ook een grens zetten op de duur van de simulatie, zet op 0 om geen grens te hebben
 
@@ -176,7 +179,7 @@ TEST_F(VaccinSimulatieTest, HappyDay3) {
 
 TEST_F(VaccinSimulatieTest, HappyDay4) {
     Parser P("../XMLfiles/test007.xml");
-    Hub *H = P.getFhub();
+    Hub *H = P.getFhubs()[0];
 
     int end_day = 0; // we kunnen ook een grens zetten op de duur van de simulatie, zet op 0 om geen grens te hebben
 
@@ -469,15 +472,15 @@ TEST_F(VaccinSimulatieTest, ParserSucces) {
 
 TEST_F(VaccinSimulatieTest, ParserDeath) {
     EXPECT_DEATH(Parser P("../XMLfiles/test002.xml"), "");
+    EXPECT_DEATH(Parser P("../XMLfiles/test006.xml"), "");
     EXPECT_DEATH(Parser P("../XMLfiles/test008.xml"), "");
     EXPECT_DEATH(Parser P("../XMLfiles/test009.xml"), "");
 }
 
-TEST_F(VaccinSimulatieTest, ParserExeption1){
-    try {
+TEST_F(VaccinSimulatieTest, ParserExeption) {
+    {
         Parser P("../XMLfiles/test005.xml");
-    } catch (string e) {
-        EXPECT_EQUAL(e,"Sommige variabelen van een VACCINATIECENTRUM werden niet correct meegegeven.");
+        EXPECT_EQ(1, P.errorOccured(WRONG_VALUE));
     }
 }
 
