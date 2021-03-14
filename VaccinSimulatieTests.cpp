@@ -40,11 +40,12 @@ Declares the variables your tests want to use.
 
 
 TEST_F(VaccinSimulatieTest, DefaultConstructor) {
+
     Parser* P = new Parser("../XMLfiles/vb.xml");
     Hub* H = P->getFhub();
     unsigned int zero = 0;
     EXPECT_TRUE(H->isProperlyInitialized());
-    EXPECT_NE(H->getFverbondenCentra().size(),zero);
+    EXPECT_NE(H->getFverbondenCentra().size(), zero);
     for (map<string, VaccinatieCentrum *>::const_iterator it = H->getFverbondenCentra().begin(), end = H->getFverbondenCentra().end();
          it != end; it++) {
         EXPECT_TRUE(it->second->isProperlyInitialized());
@@ -53,8 +54,11 @@ TEST_F(VaccinSimulatieTest, DefaultConstructor) {
         EXPECT_EQ(zero, it->second->getAantalVaccins());
     }
 }
-/*
-TEST_F(VaccinSimulatieTest, HappyDayIedereenGevaccineerd) {
+
+TEST_F(VaccinSimulatieTest, HappyDay) {
+    Parser *P = new Parser("../XMLfiles/vb.xml");
+    Hub *H = P->getFhub();
+
     unsigned int end_day = 0; // we kunnen ook een grens zetten op de duur van de simulatie, zet op 0 om geen grens te hebben
 
     unsigned int current_day = 1; // we houden de datum hier bij zodat we aan het einde van de simulatie de duur van de simulatie kunnen opvragen
@@ -80,7 +84,7 @@ TEST_F(VaccinSimulatieTest, HappyDayIedereenGevaccineerd) {
     current_day -= weeks * 7;
 
     // tests
-    EXPECT_GE(current_day, 1);
+    EXPECT_GE(current_day, (unsigned int) 1);
 
     for (map<string, VaccinatieCentrum *>::const_iterator it = H->getFverbondenCentra().begin(), end = H->getFverbondenCentra().end();
          it != end; it++) {
@@ -90,7 +94,7 @@ TEST_F(VaccinSimulatieTest, HappyDayIedereenGevaccineerd) {
     EXPECT_TRUE(H->isIedereenGevaccineerd());
 
 }
-*/
+
 
 //UNIT TESTS
     //VACCINATIECENTRUM
@@ -348,8 +352,9 @@ TEST_F(VaccinSimulatieTest, Parser1){
     EXPECT_TRUE(P.isProperlyInitialized());
 }
 
-TEST_F(VaccinSimulatieTest, Parser2){
-    EXPECT_DEATH(Parser P("../XMLfiles/fout_bestand.xml"), "");
+TEST_F(VaccinSimulatieTest, Parser2) {
+
+    EXPECT_DEATH(Parser P("../XMLfiles/geen_hub.xml"), "");
 }
 
 int main(int argc, char **argv) {
