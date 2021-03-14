@@ -4,11 +4,15 @@
 #include <fstream>
 #include <string>
 #include <iostream>
+#include <vector>
+#include <algorithm>
 
 #include "Hub.h"
 #include "VaccinatieCentrum.h"
 #include "TinyXML/tinyxml.h"
 #include "lib/DesignByContract.h"
+#include "Lib.h"
+
 
 using namespace std;
 
@@ -35,6 +39,13 @@ public:
      */
     bool isProperlyInitialized() const;
 
+    /**
+     * geeft terug hoeveel keer een bepaalde error is voorgekomen
+     * @param error: int van de error code
+     * @return int, het aantal voorkomens
+     */
+    int errorOccured(char error) const;
+
 private:
 
     // const attributes
@@ -44,6 +55,7 @@ private:
     // attributes
 
     Hub *fhub;
+    vector<char> errors;
 };
 
 
