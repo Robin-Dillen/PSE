@@ -23,8 +23,8 @@ Parser::Parser(const string &filename) : _initCheck(this) {
         string firstName = firstElement->Value();
         //Vacinatiecentrum aanmaken
         if (firstName == "VACCINATIECENTRUM") {
-            unsigned int inwoners = 0;
-            unsigned int capaciteit = 0;
+            int inwoners = -1;
+            int capaciteit = -1;
             //Loop over alle atributen van Vaccinatiecentrum
             ENSURE(firstElement->FirstChildElement("naam") != NULL, "naam does not exist");
             string naam = firstElement->FirstChildElement("naam")->GetText();
@@ -41,7 +41,7 @@ Parser::Parser(const string &filename) : _initCheck(this) {
             h >> capaciteit;
 
             //variabelen moeten een waarde hebben gekregen
-            ENSURE(naam != "" && adres != "" && inwoners != 0 && capaciteit != 0,
+            ENSURE(!naam.empty() && !adres.empty() && inwoners >= 0 && capaciteit >= 0,
                    "Sommige variabelen van VACCINATIECENTRUM werden niet correct meegegeven.");
             VaccinatieCentrum *V = new VaccinatieCentrum(capaciteit, inwoners, naam, adres);
             vaccinatieCentra.push_back(V);
@@ -51,9 +51,9 @@ Parser::Parser(const string &filename) : _initCheck(this) {
     //Hub aanmaken
     ENSURE(root->FirstChildElement("HUB") != NULL, "Failed to load file: No HUB element.");
     TiXmlElement *hub = root->FirstChildElement("HUB");
-    unsigned int levering = 0;
-    unsigned int interval = 0;
-    unsigned int transport = 0;
+    int levering = -1;
+    int interval = -1;
+    int transport = -1;
 
     ENSURE(hub->FirstChildElement("levering") != NULL, "levering does not exist");
     stringstream g(hub->FirstChildElement("levering")->GetText());
@@ -66,6 +66,9 @@ Parser::Parser(const string &filename) : _initCheck(this) {
     ENSURE(hub->FirstChildElement("transport") != NULL, "Transport does not exist");
     stringstream i(hub->FirstChildElement("transport")->GetText());
     i >> transport;
+
+    ENSURE(levering >= 0 && interval >= 0 && transport >= 0,
+           "Sommige variabelen van HUB werden niet correct meegegeven.");
 
     Hub *H = new Hub(levering, interval, transport);
     H->addFverbondenCentra(vaccinatieCentra);
