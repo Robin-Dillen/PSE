@@ -12,7 +12,7 @@ string toString(string s){
     return s;
 }
 
-void Parser::parseFile(const string &filename) {
+Parser::Parser(const string &filename) {
     TiXmlDocument doc;
     //Kijkt na of de file is ingeladen
     ENSURE(doc.LoadFile(filename.c_str()), doc.ErrorDesc());
@@ -147,15 +147,6 @@ void Parser::parseFile(const string &filename) {
     }
 }
 
-Parser::Parser(const string &filename) : _initCheck(this) {
-    try {
-        parseFile(filename);
-    }
-    catch(string e){
-        cout<<e<<endl;
-    }
-}
-
 Hub *Parser::getFhub() const {
     REQUIRE(isProperlyInitialized(), "Parser wasn't initialized when calling getFhub()");
     return fhub;
@@ -171,5 +162,5 @@ Parser::~Parser() {
 
 int Parser::errorOccured(char error) const {
     int count_ = count(errors.begin(), errors.end(), error);
-    return count_
+    return count_;
 }
