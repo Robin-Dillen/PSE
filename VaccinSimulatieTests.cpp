@@ -56,8 +56,126 @@ TEST_F(VaccinSimulatieTest, DefaultConstructor) {
     delete P;
 }
 
-TEST_F(VaccinSimulatieTest, HappyDay) {
+//SYSTEM TESTS
+TEST_F(VaccinSimulatieTest, HappyDay1) {
     Parser P("../XMLfiles/test001.xml");
+    Hub *H = P.getFhub();
+
+    int end_day = 0; // we kunnen ook een grens zetten op de duur van de simulatie, zet op 0 om geen grens te hebben
+
+    int current_day = 1; // we houden de datum hier bij zodat we aan het einde van de simulatie de duur van de simulatie kunnen opvragen
+    while (!H->isIedereenGevaccineerd() && (!end_day || current_day < end_day)) {
+        // increase current_day
+        current_day++;
+
+        if (current_day % H->getLeveringenInterval() == 0) {
+            // door in de simulatie het aantal vaccins mee te geven kunnen we war randomness toevoegen aan het aantal
+            // geleverde vaccins. Want ze zijn toch niet te vertrouwen die farmareuzen!
+            H->ontvangLevering(H->getKaantalVaccinsPerLevering());
+        }
+
+        // stuur signaal nieuwe dag
+        H->nieuweDag();
+    }
+
+    int years = current_day / 356;
+    current_day -= years * 356;
+    int months = current_day / 30;
+    current_day -= months * 30;
+    int weeks = current_day / 7;
+    current_day -= weeks * 7;
+
+    // tests
+    EXPECT_GE(current_day, 1);
+
+    for (map<string, VaccinatieCentrum *>::const_iterator it = H->getFverbondenCentra().begin(), end = H->getFverbondenCentra().end();
+         it != end; it++) {
+        EXPECT_TRUE(it->second->isIedereenGevaccineerd());
+        EXPECT_EQ(it->second->getKaantalInwoners(), it->second->getAantalVaccinaties());
+    }
+    EXPECT_TRUE(H->isIedereenGevaccineerd());
+}
+
+TEST_F(VaccinSimulatieTest, HappyDay2) {
+    Parser P("../XMLfiles/test003.xml");
+    Hub *H = P.getFhub();
+
+    int end_day = 0; // we kunnen ook een grens zetten op de duur van de simulatie, zet op 0 om geen grens te hebben
+
+    int current_day = 1; // we houden de datum hier bij zodat we aan het einde van de simulatie de duur van de simulatie kunnen opvragen
+    while (!H->isIedereenGevaccineerd() && (!end_day || current_day < end_day)) {
+        // increase current_day
+        current_day++;
+
+        if (current_day % H->getLeveringenInterval() == 0) {
+            // door in de simulatie het aantal vaccins mee te geven kunnen we war randomness toevoegen aan het aantal
+            // geleverde vaccins. Want ze zijn toch niet te vertrouwen die farmareuzen!
+            H->ontvangLevering(H->getKaantalVaccinsPerLevering());
+        }
+
+        // stuur signaal nieuwe dag
+        H->nieuweDag();
+    }
+
+    int years = current_day / 356;
+    current_day -= years * 356;
+    int months = current_day / 30;
+    current_day -= months * 30;
+    int weeks = current_day / 7;
+    current_day -= weeks * 7;
+
+    // tests
+    EXPECT_GE(current_day, 1);
+
+    for (map<string, VaccinatieCentrum *>::const_iterator it = H->getFverbondenCentra().begin(), end = H->getFverbondenCentra().end();
+         it != end; it++) {
+        EXPECT_TRUE(it->second->isIedereenGevaccineerd());
+        EXPECT_EQ(it->second->getKaantalInwoners(), it->second->getAantalVaccinaties());
+    }
+    EXPECT_TRUE(H->isIedereenGevaccineerd());
+}
+
+TEST_F(VaccinSimulatieTest, HappyDay3) {
+    Parser P("../XMLfiles/test004.xml");
+    Hub *H = P.getFhub();
+
+    int end_day = 0; // we kunnen ook een grens zetten op de duur van de simulatie, zet op 0 om geen grens te hebben
+
+    int current_day = 1; // we houden de datum hier bij zodat we aan het einde van de simulatie de duur van de simulatie kunnen opvragen
+    while (!H->isIedereenGevaccineerd() && (!end_day || current_day < end_day)) {
+        // increase current_day
+        current_day++;
+
+        if (current_day % H->getLeveringenInterval() == 0) {
+            // door in de simulatie het aantal vaccins mee te geven kunnen we war randomness toevoegen aan het aantal
+            // geleverde vaccins. Want ze zijn toch niet te vertrouwen die farmareuzen!
+            H->ontvangLevering(H->getKaantalVaccinsPerLevering());
+        }
+
+        // stuur signaal nieuwe dag
+        H->nieuweDag();
+    }
+
+    int years = current_day / 356;
+    current_day -= years * 356;
+    int months = current_day / 30;
+    current_day -= months * 30;
+    int weeks = current_day / 7;
+    current_day -= weeks * 7;
+
+    // tests
+    EXPECT_GE(current_day, 1);
+
+    for (map<string, VaccinatieCentrum *>::const_iterator it = H->getFverbondenCentra().begin(), end = H->getFverbondenCentra().end();
+         it != end; it++) {
+        EXPECT_TRUE(it->second->isIedereenGevaccineerd());
+        EXPECT_EQ(it->second->getKaantalInwoners(), it->second->getAantalVaccinaties());
+    }
+    EXPECT_TRUE(H->isIedereenGevaccineerd());
+}
+
+TEST_F(VaccinSimulatieTest, HappyDay4) {
+    Parser P("../XMLfiles/test007.xml");
     Hub *H = P.getFhub();
 
     int end_day = 0; // we kunnen ook een grens zetten op de duur van de simulatie, zet op 0 om geen grens te hebben
@@ -276,26 +394,34 @@ TEST_F(VaccinSimulatieTest, Hub_isIedereengevaccineerd){
     delete H;
 }
 
-//fix
 TEST_F(VaccinSimulatieTest, Hub_minAantalLeveringen){
-    Hub* H = new Hub(10,10,10);
-    //Fix stuff
+    Hub* H = new Hub(20,10,6);
+    VaccinatieCentrum *V = new VaccinatieCentrum(8,10,"A","B");
+    vector<VaccinatieCentrum*> VaccinatieCentra;
+    VaccinatieCentra.push_back(V);
+    H->addFverbondenCentra(VaccinatieCentra);
+    map<string, VaccinatieCentrum *>::const_iterator it = H->getFverbondenCentra().begin();
+    EXPECT_EQ(2,H->minAantalLeveringen(it));
     delete H;
+    delete V;
 }
 
-//fix
 TEST_F(VaccinSimulatieTest, Hub_verdeelVaccins){
-    Hub* H = new Hub(10,10,10);
-    VaccinatieCentrum* V = new VaccinatieCentrum(10,10,"A","B");
+    Hub* H = new Hub(30,10,3);
+    VaccinatieCentrum* V1 = new VaccinatieCentrum(10,10,"A","B");
+    VaccinatieCentrum* V2 = new VaccinatieCentrum(5,12,"C","D");
     vector<VaccinatieCentrum*> centra;
-    centra.push_back(V);
+    centra.push_back(V1);
+    centra.push_back(V2);
     H->addFverbondenCentra(centra);
-    V->ontvangLevering(10);
-    EXPECT_EQ(10,V->getAantalGeleverdeVaccins());
-    H->nieuweDag();
-    EXPECT_EQ(0, V->getAantalGeleverdeVaccins());
-    EXPECT_TRUE(V->isIedereenGevaccineerd());
+    H->verdeelVaccins();
+    EXPECT_EQ(18, V1->getAantalGeleverdeVaccins());
+    EXPECT_EQ(9, V2->getAantalGeleverdeVaccins());
+    EXPECT_EQ(3, H->getAantalVaccins());
+
     delete H;
+    delete V1;
+    delete V2;
 }
 
 TEST_F(VaccinSimulatieTest, Hub_ontvangLevering){
@@ -321,7 +447,7 @@ TEST_F(VaccinSimulatieTest, Hub_nieuweDag){
 }
 
 
-//input tests
+//INPUT TESTS
 TEST_F(VaccinSimulatieTest, ParserSucces) {
     {
         Parser P("../XMLfiles/test001.xml");
@@ -349,8 +475,6 @@ TEST_F(VaccinSimulatieTest, ParserDeath) {
     EXPECT_DEATH(Parser P("../XMLfiles/test009.xml"), "");
     EXPECT_DEATH(Parser P("../XMLfiles/test0010.xml"), "");
 }
-
-//random push
 
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
