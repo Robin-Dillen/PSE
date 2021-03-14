@@ -350,6 +350,8 @@ TEST_F(VaccinSimulatieTest, ParserDeath) {
     EXPECT_DEATH(Parser P("../XMLfiles/test0010.xml"), "");
 }
 
+//random push
+
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
