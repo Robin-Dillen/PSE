@@ -41,7 +41,8 @@ Parser::Parser(const string &filename) : _initCheck(this) {
             h >> capaciteit;
 
             //variabelen moeten een waarde hebben gekregen
-            ENSURE(!naam.empty() && !adres.empty() && inwoners >= 0 && capaciteit >= 0,
+            ENSURE(!naam.empty() && !adres.empty() && inwoners >= 0 &&
+                   (capaciteit > 0 || (capaciteit == 0 && inwoners == 0)),
                    "Sommige variabelen van VACCINATIECENTRUM werden niet correct meegegeven.");
             VaccinatieCentrum *V = new VaccinatieCentrum(capaciteit, inwoners, naam, adres);
             vaccinatieCentra.push_back(V);
@@ -51,9 +52,9 @@ Parser::Parser(const string &filename) : _initCheck(this) {
     //Hub aanmaken
     ENSURE(root->FirstChildElement("HUB") != NULL, "Failed to load file: No HUB element.");
     TiXmlElement *hub = root->FirstChildElement("HUB");
-    int levering = -1;
-    int interval = -1;
-    int transport = -1;
+    int levering = 0;
+    int interval = 0;
+    int transport = 0;
 
     ENSURE(hub->FirstChildElement("levering") != NULL, "levering does not exist");
     stringstream g(hub->FirstChildElement("levering")->GetText());
@@ -67,7 +68,7 @@ Parser::Parser(const string &filename) : _initCheck(this) {
     stringstream i(hub->FirstChildElement("transport")->GetText());
     i >> transport;
 
-    ENSURE(levering >= 0 && interval >= 0 && transport >= 0,
+    ENSURE(levering > 0 && interval > 0 && transport > 0,
            "Sommige variabelen van HUB werden niet correct meegegeven.");
 
     Hub *H = new Hub(levering, interval, transport);
@@ -84,4 +85,8 @@ Hub *Parser::getFhub() const {
 
 bool Parser::isProperlyInitialized() const {
     return _initCheck == this;
+}
+
+Parser::~Parser() {
+    delete fhub;
 }

@@ -20,6 +20,8 @@ public:
     */
     Parser(const string &filename);
 
+    virtual ~Parser();
+
     /**
      * @return geeft een pointer naar de hub terug
      * \n REQUIRE(this->properlyInitialized(), "Parser wasn't initialized when calling getFhub()");

@@ -41,8 +41,8 @@ Declares the variables your tests want to use.
 
 TEST_F(VaccinSimulatieTest, DefaultConstructor) {
 
-    Parser* P = new Parser("../XMLfiles/vb.xml");
-    Hub* H = P->getFhub();
+    Parser *P = new Parser("../XMLfiles/test001.xml");
+    Hub *H = P->getFhub();
     unsigned int zero = 0;
     EXPECT_TRUE(H->isProperlyInitialized());
     EXPECT_NE(H->getFverbondenCentra().size(), zero);
@@ -53,11 +53,12 @@ TEST_F(VaccinSimulatieTest, DefaultConstructor) {
         EXPECT_EQ(zero, it->second->getAantalGeleverdeVaccins());
         EXPECT_EQ(zero, it->second->getAantalVaccins());
     }
+    delete P;
 }
 
 TEST_F(VaccinSimulatieTest, HappyDay) {
-    Parser *P = new Parser("../XMLfiles/vb.xml");
-    Hub *H = P->getFhub();
+    Parser P("../XMLfiles/test001.xml");
+    Hub *H = P.getFhub();
 
     unsigned int end_day = 0; // we kunnen ook een grens zetten op de duur van de simulatie, zet op 0 om geen grens te hebben
 
@@ -92,7 +93,6 @@ TEST_F(VaccinSimulatieTest, HappyDay) {
         EXPECT_EQ(it->second->getKaantalInwoners(), it->second->getAantalVaccinaties());
     }
     EXPECT_TRUE(H->isIedereenGevaccineerd());
-
 }
 
 
@@ -347,15 +347,34 @@ TEST_F(VaccinSimulatieTest, Hub_nieuweDag){
 
 
 //input tests
-TEST_F(VaccinSimulatieTest, Parser1){
-    Parser P("../XMLfiles/vb.xml");
-    EXPECT_TRUE(P.isProperlyInitialized());
+TEST_F(VaccinSimulatieTest, ParserSucces) {
+    {
+        Parser P("../XMLfiles/test001.xml");
+        EXPECT_TRUE(P.isProperlyInitialized());
+    }
+    {
+        Parser P("../XMLfiles/test003.xml");
+        EXPECT_TRUE(P.isProperlyInitialized());
+    }
+    {
+        Parser P("../XMLfiles/test004.xml");
+        EXPECT_TRUE(P.isProperlyInitialized());
+    }
+    {
+        Parser P("../XMLfiles/test007.xml");
+        EXPECT_TRUE(P.isProperlyInitialized());
+    }
 }
 
-TEST_F(VaccinSimulatieTest, Parser2) {
-
-    EXPECT_DEATH(Parser P("../XMLfiles/geen_hub.xml"), "");
+TEST_F(VaccinSimulatieTest, ParserDeath) {
+    EXPECT_DEATH(Parser P("../XMLfiles/test002.xml"), "");
+    EXPECT_DEATH(Parser P("../XMLfiles/test005.xml"), "");
+    EXPECT_DEATH(Parser P("../XMLfiles/test006.xml"), "");
+    EXPECT_DEATH(Parser P("../XMLfiles/test008.xml"), "");
+    EXPECT_DEATH(Parser P("../XMLfiles/test009.xml"), "");
+    EXPECT_DEATH(Parser P("../XMLfiles/test0010.xml"), "");
 }
+
 
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
