@@ -26,9 +26,9 @@ int main(int argc, char const *argv[]) {
 
     // start simulatie
 
-    unsigned int end_day = 0; // we kunnen ook een grens zetten op de duur van de simulatie, zet op 0 om geen grens te hebben
+    int end_day = 0; // we kunnen ook een grens zetten op de duur van de simulatie, zet op 0 om geen grens te hebben
 
-    unsigned int current_day = 0; // we houden de datum hier bij zodat we aan het einde van de simulatie de duur van de simulatie kunnen opvragen
+    int current_day = 0; // we houden de datum hier bij zodat we aan het einde van de simulatie de duur van de simulatie kunnen opvragen
     while (!H->isIedereenGevaccineerd() && (!end_day || current_day < end_day)) {
         // increase current_day
         current_day++;
@@ -46,11 +46,11 @@ int main(int argc, char const *argv[]) {
         Output::makeOutputFile(H, current_day);
     }
 
-    unsigned int years = current_day / 356;
+    int years = current_day / 356;
     current_day -= years * 356;
-    unsigned int months = current_day / 30;
+    int months = current_day / 30;
     current_day -= months * 30;
-    unsigned int weeks = current_day / 7;
+    int weeks = current_day / 7;
     current_day -= weeks * 7;
 
     cout << "de simulatie duurde " << years << " jaren, " << months << string(" ") + (months == 1 ? "maand, " : "maanden, ") << weeks

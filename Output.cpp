@@ -32,17 +32,17 @@ void Output::makeOutputFile(Hub *h, int y, int m, int w, int d) {
     outputFile.close();
 }
 
-void Output::makeOutputFile(Hub *h, unsigned int days) {
-    unsigned int years = days / 356;
+void Output::makeOutputFile(Hub *h, int days) {
+    int years = days / 356;
     days -= years * 356;
-    unsigned int months = days / 30;
+    int months = days / 30;
     days -= months * 30;
-    unsigned int weeks = days / 7;
+    int weeks = days / 7;
     days -= weeks * 7;
     makeOutputFile(h, years, months, weeks, days);
 }
 
-string Output::dateToString(unsigned int y, unsigned int m, unsigned int w, unsigned int d) {
+string Output::dateToString(int y, int m, int w, int d) {
     ostringstream ss;
     ss << y << (y == 1 ? " jaar" : " jaren") + string(", ") << m << (m == 1 ? " maand" : " maanden") + string(", ") << w
        << (w == 1 ? " week" : " weken") + string(" en ") << d << (d == 1 ? " dag" : " dagen");

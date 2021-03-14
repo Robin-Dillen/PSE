@@ -18,7 +18,7 @@ public:
     /**
     \n ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
     */
-    Hub(const unsigned int kaantal_vaccins_per_levering, const unsigned int kleveringen_interval, const unsigned int kaantal_vaccins_per_lading);
+    Hub(const int kaantal_vaccins_per_levering, const int kleveringen_interval, const int kaantal_vaccins_per_lading);
 
     /**
      * @return geeft terug of het object correct is geïnitialiseert
@@ -26,34 +26,34 @@ public:
     bool isProperlyInitialized() const;
 
     /**
-     * @return unsigned int :geeft terug om de hoeveel dagen een levering vaccins binnenkomt
+     * @return int :geeft terug om de hoeveel dagen een levering vaccins binnenkomt
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getFhub()");
      */
-    unsigned int getAantalVaccins() const;
+    int getAantalVaccins() const;
 
     /**
-     * @return unsigned int :geeft terug om de hoeveel dagen een levering vaccins binnenkomt
+     * @return int :geeft terug om de hoeveel dagen een levering vaccins binnenkomt
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getFhub()");
      */
-    unsigned int getLeveringenInterval() const;
+    int getLeveringenInterval() const;
 
     /*!
      * @return geeft het totaal aantal vaccinaties terug: som van de vaccinaties van de vaccinatie centra
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling totaalAantalVaccinaties");
      */
-    unsigned int getTotaalAantalVaccinaties() const; // wordt wss niet gebruikt
+    int getTotaalAantalVaccinaties() const; // wordt wss niet gebruikt
 
     /*!
      * @return geeft het aantal vaccins per levering terug
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getKaantalVaccinsPerLevering");
      */
-    const unsigned int getKaantalVaccinsPerLevering() const;
+    const int getKaantalVaccinsPerLevering() const;
 
     /*!
      * @return geeft het aantal vaccins per lading terug
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getKaantalVaccinsPerLading");
      */
-    const unsigned int getKaantalVaccinsPerLading() const;
+    const int getKaantalVaccinsPerLading() const;
 
     /*!
      * @return geeft de verbonden centra terug
@@ -63,11 +63,11 @@ public:
 
     /**
      * update het aantal vaccins
-     * @param aantalVaccins: unsigned int
+     * @param aantalVaccins: int
      * @return void
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling setAantalVaccins");
      */
-    void setAantalVaccins(unsigned int aantalVaccins);
+    void setAantalVaccins(int aantalVaccins);
 
     /**
      * update de verbonden centra
@@ -103,7 +103,7 @@ public:
      * @param aantal_vaccins het aantal geleverde vaccins
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling ontvangLevering");
      */
-    void ontvangLevering(unsigned int aantal_vaccins);
+    void ontvangLevering(int aantal_vaccins);
 
     /*!
      * verdeelt de vaccins over alle verbonden vaccinatie centra
@@ -118,21 +118,21 @@ public:
      * @return het minimum aantal leveringen
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling minAantalLeveringen");
      */
-    unsigned int minAantalLeveringen(const map<string, VaccinatieCentrum *>::const_iterator &it) const;
+    int minAantalLeveringen(const map<string, VaccinatieCentrum *>::const_iterator &it) const;
 
 private:
 
     // const attributes
-    const unsigned int kaantal_vaccins_per_levering;
-    const unsigned int kleveringen_interval;
-    const unsigned int kaantal_vaccins_per_lading;
+    const int kaantal_vaccins_per_levering;
+    const int kleveringen_interval;
+    const int kaantal_vaccins_per_lading;
 
     const Hub *_initCheck; // pointer naar zichzelf om te checken of het object correct geïnitialseert is
 
     // changing attributes
     map<string, VaccinatieCentrum *> fverbonden_centra; // slaagt alle vaccinatie centra op met zoeksleutel: name
 
-    unsigned int aantal_vaccins; // aantal vaccins in de hub
+    int aantal_vaccins; // aantal vaccins in de hub
 };
 
 

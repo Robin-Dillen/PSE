@@ -42,7 +42,7 @@ public:
      * @return void
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling addFverbondenCentra");
      */
-    static void makeOutputFile(Hub *h, unsigned int days);
+    static void makeOutputFile(Hub *h, int days);
 
 
 private:
@@ -52,7 +52,7 @@ private:
      * @return string: datum in string
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling addFverbondenCentra");
      */
-    static string dateToString(unsigned int y, unsigned int m, unsigned int w, unsigned int d);
+    static string dateToString(int y, int m, int w, int d);
 
     const Output *_initCheck; // pointer naar zichzelf om te checken of het object correct geïnitialseert is
 };
