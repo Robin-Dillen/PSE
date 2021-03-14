@@ -30,7 +30,7 @@ public:
      * @return geeft een pointer naar de hub terug
      * \n REQUIRE(this->properlyInitialized(), "Parser wasn't initialized when calling getFhub()");
      */
-    Hub *getFhub() const;
+    vector<Hub *> getFhubs() const;
 
     /**
      * @return geeft terug of het object correct is geïnitialiseert
@@ -44,6 +44,8 @@ public:
      */
     int errorOccured(char error) const;
 
+    static string locationToString(TiXmlElement *el);
+
 private:
 
     // const attributes
@@ -52,7 +54,7 @@ private:
 
     // attributes
 
-    Hub *fhub;
+    vector<Hub *> fhubs;
     vector<char> errors;
 };
 

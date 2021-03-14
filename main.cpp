@@ -17,7 +17,7 @@ using namespace std;
 int main(int argc, char const *argv[]) {
     vector<string> args = vector<string>(argv + 1, argv + argc);
     Parser P(args[0]);
-    Hub *H = P.getFhub();
+    vector<Hub *> hubs = P.getFhubs();
 
     // clear the output file
     std::ofstream ofs;
@@ -29,21 +29,29 @@ int main(int argc, char const *argv[]) {
     int end_day = 0; // we kunnen ook een grens zetten op de duur van de simulatie, zet op 0 om geen grens te hebben
 
     int current_day = 0; // we houden de datum hier bij zodat we aan het einde van de simulatie de duur van de simulatie kunnen opvragen
-    while (!H->isIedereenGevaccineerd() && (!end_day || current_day < end_day)) {
-        // increase current_day
-        current_day++;
+    bool break_ = false;
+    while ((!end_day || current_day < end_day) && !break_) {
+        for (unsigned int i = 0; i < hubs.size(); i++) {
+            if (hubs[i]->isIedereenGevaccineerd()) {
+                break_ = true;
+                continue;
+            }
+            break_ = false;
+            // increase current_day
+            current_day++;
 
-        if (current_day % H->getLeveringenInterval() == 0) {
-            // door in de simulatie het aantal vaccins mee te geven kunnen we war randomness toevoegen aan het aantal
-            // geleverde vaccins. Want ze zijn toch niet te vertrouwen die farmareuzen!
-            H->ontvangLevering(H->getKaantalVaccinsPerLevering());
+            if (current_day % hubs[i]->getLeveringenInterval() == 0) {
+                // door in de simulatie het aantal vaccins mee te geven kunnen we war randomness toevoegen aan het aantal
+                // geleverde vaccins. Want ze zijn toch niet te vertrouwen die farmareuzen!
+                hubs[i]->ontvangLevering(hubs[i]->getKaantalVaccinsPerLevering());
+            }
+
+            // stuur signaal nieuwe dag
+            hubs[i]->nieuweDag();
+
+            // output
+            Output::makeOutputFile(hubs[i], current_day);
         }
-
-        // stuur signaal nieuwe dag
-        H->nieuweDag();
-
-        // output
-        Output::makeOutputFile(H, current_day);
     }
 
     int years = current_day / 356;
