@@ -34,7 +34,7 @@ Parser::Parser(const string &filename) : _initCheck(this) {
             //Loop over alle atributen van Vaccinatiecentrum
             if (centrum->FirstChildElement("naam")->GetText() == NULL) {
                 valid = false;
-                cerr << "de naam" << locationToString(centrum->FirstChildElement("adres"))
+                cerr << "de naam" << locationToString(centrum->FirstChildElement("naam"))
                      << " van het vaccinatiecentrum"
                      << locationToString(centrum) << " werd niet correct meegegeven." << endl;
                 errors.push_back(MISSING_TAG);
