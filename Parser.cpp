@@ -62,6 +62,7 @@ Parser::Parser(const string &filename) : _initCheck(this) {
                 stringstream j(centrum->FirstChildElement("inwoners")->GetText());
                 j >> inwoners;
                 if (inwoners < 0) {
+                    valid = false;
                     cerr << "het aantal inwonders" << locationToString(centrum->FirstChildElement("inwoners"))
                          << " van het vaccinatiecentrum" << locationToString(centrum)
                          << " heeft een niet toegestaane waarde(negatief)." << endl;
@@ -79,6 +80,7 @@ Parser::Parser(const string &filename) : _initCheck(this) {
                 stringstream j(centrum->FirstChildElement("capaciteit")->GetText());
                 j >> capaciteit;
                 if (capaciteit < 0) {
+                    valid = false;
                     cerr << "de capaciteit" << locationToString(centrum->FirstChildElement("inwoners"))
                          << " van het vaccinatiecentrum" << locationToString(centrum)
                          << " heeft een niet toegestaane waarde(negatief)." << endl;
