@@ -14,6 +14,7 @@
 #define NO_CENTRA 5
 #define DUPLICATE_NAME 6
 #define WRONG_TAG 7
+#define OUTPUT_FILE_LOCATION "../Outputfiles/"
 
 template<typename AType>
 string to_string(AType var) {

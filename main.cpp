@@ -19,13 +19,13 @@ int main(int argc, char const *argv[]) {
     Parser P(args[0]);
     vector<Hub *> hubs = P.getFhubs();
 
-    int pos = args[0].find("test");
+    size_t pos = args[0].find("test");
     ENSURE(pos != string::npos, "Given argument doesn't include a test file!");
     string filename = "Output_" + args[0].substr(pos, 7);
 
     // clear the output file
     std::ofstream ofs;
-    ofs.open(("../" + filename).c_str(), std::ofstream::out | std::ofstream::trunc);
+    ofs.open((OUTPUT_FILE_LOCATION + filename + ".txt").c_str(), std::ofstream::out | std::ofstream::trunc);
     ofs.close();
 
     // start simulatie

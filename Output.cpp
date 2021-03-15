@@ -3,6 +3,7 @@
 //
 
 #include "Output.h"
+#include "Lib.h"
 
 Output::Output(Hub *h, int y, int m, int w, int d) {
 //    makeOutputFile(h, y, m, w, d);
@@ -13,7 +14,7 @@ bool Output::isProperlyInitialized() const {
 }
 
 void Output::makeOutputFile(Hub *h, int y, int m, int w, int d, const string &filename) {
-    ofstream outputFile(("../" + filename).c_str(), ios_base::app);
+    ofstream outputFile((OUTPUT_FILE_LOCATION + filename + ".txt").c_str(), ios_base::app);
     outputFile << "Overzicht van vaccinaties na: " << dateToString(y, m, w, d) << string(".\n\n");
     outputFile << "Hub (" << h->getKaantalVaccinsPerLevering() << " vaccins)\n";
 
