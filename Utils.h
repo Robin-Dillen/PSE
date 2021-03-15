@@ -1,6 +1,10 @@
-//
-// Created by nibor on 15/03/2021.
-//
+//============================================================================
+// Name        : Utils.h
+// Author      : Niels Van den Broeck, Robin Dillen
+// Version     : 1.0
+// Copyright   : Project Software Engineering - BA1 Informatica - Niels Van den Broeck, Robin Dillen - University of Antwerp
+// Description : utility functions
+//============================================================================
 
 #ifndef PSE_UTILS_H
 #define PSE_UTILS_H
@@ -11,6 +15,8 @@
 #include <sys/stat.h>
 #include <cstdio>
 #include <string>
+
+using namespace std;
 
 // converts a all types supporting << to strings
 template<typename AType>

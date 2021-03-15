@@ -1,3 +1,11 @@
+//============================================================================
+// Name        : Parser.h
+// Author      : Niels Van den Broeck, Robin Dillen
+// Version     : 1.0
+// Copyright   : Project Software Engineering - BA1 Informatica - Niels Van den Broeck, Robin Dillen - University of Antwerp
+// Description : parser for xml files
+//============================================================================
+
 #ifndef PSE_PARSER_H
 #define PSE_PARSER_H
 
@@ -6,12 +14,13 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <sstream>
 
-#include "Hub.h"
-#include "VaccinatieCentrum.h"
 #include "TinyXML/tinyxml.h"
 #include "lib/DesignByContract.h"
-#include "Utils.h"
+
+
+class Hub;
 
 using namespace std;
 

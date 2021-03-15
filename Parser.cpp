@@ -1,11 +1,16 @@
+//============================================================================
+// Name        : Parser.cpp
+// Author      : Niels Van den Broeck, Robin Dillen
+// Version     : 1.0
+// Copyright   : Project Software Engineering - BA1 Informatica - Niels Van den Broeck, Robin Dillen - University of Antwerp
+// Description : parser for xml files
+//============================================================================
+
 #include "Parser.h"
 #include "TinyXML/tinyxml.h"
-#include "Hub.h"
 #include "VaccinatieCentrum.h"
-
-#include <string>
-#include <iostream>
-#include <sstream>
+#include "Hub.h"
+#include "Utils.h"
 
 Parser::Parser(const string &filename) : _initCheck(this) {
     TiXmlDocument doc;
@@ -38,16 +43,16 @@ Parser::Parser(const string &filename) : _initCheck(this) {
             if (centrum->FirstChildElement("naam")->GetText() == NULL) {
                 valid = false;
                 cerr << "de naam" << locationToString(centrum->FirstChildElement("naam"))
-                     << " van het vaccinatiecentrum"
-                     << locationToString(centrum) << " werd niet correct meegegeven." << endl;
+                        << " van het vaccinatiecentrum"
+                        << locationToString(centrum) << " werd niet correct meegegeven." << endl;
                 errors.push_back(MISSING_TAG);
             } else {
                 naam = centrum->FirstChildElement("naam")->GetText();
                 if (naam.empty()) {
                     valid = false;
                     cerr << "de naam" << locationToString(centrum->FirstChildElement("naam"))
-                         << " van het vaccinatiecentrum" << locationToString(centrum)
-                         << " heeft een niet toegestaane waarde(leeg)." << endl;
+                            << " van het vaccinatiecentrum" << locationToString(centrum)
+                            << " heeft een niet toegestaane waarde(leeg)." << endl;
                     errors.push_back(WRONG_VALUE);
                 }
             }
@@ -56,16 +61,16 @@ Parser::Parser(const string &filename) : _initCheck(this) {
             if (centrum->FirstChildElement("adres")->GetText() == NULL) {
                 valid = false;
                 cerr << "het adres" << locationToString(centrum->FirstChildElement("adres"))
-                     << " van het vaccinatiecentrum"
-                     << " werd niet correct meegegeven." << endl;
+                        << " van het vaccinatiecentrum"
+                        << " werd niet correct meegegeven." << endl;
                 errors.push_back(MISSING_TAG);
             } else {
                 adres = centrum->FirstChildElement("adres")->GetText();
                 if (adres.empty()) {
                     valid = false;
                     cerr << "het adres" << locationToString(centrum->FirstChildElement("adres"))
-                         << " van het vaccinatiecentrum" << locationToString(centrum)
-                         << " heeft een niet toegestaane waarde(leeg)." << endl;
+                            << " van het vaccinatiecentrum" << locationToString(centrum)
+                            << " heeft een niet toegestaane waarde(leeg)." << endl;
                     errors.push_back(WRONG_VALUE);
                 }
             }
@@ -74,7 +79,7 @@ Parser::Parser(const string &filename) : _initCheck(this) {
             if (centrum->FirstChildElement("inwoners")->GetText() == NULL) {
                 valid = false;
                 cerr << "het aantal inwonders" << locationToString(centrum->FirstChildElement("inwoners"))
-                     << " van het vaccinatiecentrum" << " werd niet correct meegegeven." << endl;
+                        << " van het vaccinatiecentrum" << " werd niet correct meegegeven." << endl;
                 errors.push_back(MISSING_TAG);
             } else {
                 inwoners = to_int(centrum->FirstChildElement("inwoners")->GetText());
@@ -82,8 +87,8 @@ Parser::Parser(const string &filename) : _initCheck(this) {
                 if (inwoners < 0) {
                     valid = false;
                     cerr << "het aantal inwonders" << locationToString(centrum->FirstChildElement("inwoners"))
-                         << " van het vaccinatiecentrum" << locationToString(centrum)
-                         << " heeft een niet toegestaane waarde(negatief)." << endl;
+                            << " van het vaccinatiecentrum" << locationToString(centrum)
+                            << " heeft een niet toegestaane waarde(negatief)." << endl;
                     errors.push_back(WRONG_VALUE);
                 }
             }
@@ -92,15 +97,15 @@ Parser::Parser(const string &filename) : _initCheck(this) {
             if (centrum->FirstChildElement("capaciteit")->GetText() == NULL) {
                 valid = false;
                 cerr << "de capaciteit" << locationToString(centrum->FirstChildElement("inwoners"))
-                     << " van het vaccinatiecentrum" << " werd niet correct meegegeven." << endl;
+                        << " van het vaccinatiecentrum" << " werd niet correct meegegeven." << endl;
                 errors.push_back(MISSING_TAG);
             } else {
                 capaciteit = to_int(centrum->FirstChildElement("capaciteit")->GetText());
                 if (capaciteit < 0) {
                     valid = false;
                     cerr << "de capaciteit" << locationToString(centrum->FirstChildElement("inwoners"))
-                         << " van het vaccinatiecentrum" << locationToString(centrum)
-                         << " heeft een niet toegestaane waarde(negatief)." << endl;
+                            << " van het vaccinatiecentrum" << locationToString(centrum)
+                            << " heeft een niet toegestaane waarde(negatief)." << endl;
                     errors.push_back(WRONG_VALUE);
                 }
             }
@@ -121,16 +126,16 @@ Parser::Parser(const string &filename) : _initCheck(this) {
                  secondElement != NULL; secondElement = secondElement->NextSiblingElement()) {
                 string secondName = secondElement->Value();
                 if (secondName != "naam" && secondName != "adres" && secondName != "capaciteit" &&
-                    secondName != "inwoners") {
+                        secondName != "inwoners") {
                     cerr << secondName << "(" << secondElement->Row() << ", " << secondElement->Column()
-                         << ") wordt niet herkent als tag!" << endl;
+                            << ") wordt niet herkent als tag!" << endl;
                     errors.push_back(UNKNOWN_TAG);
                 }
             }
             // check of de naam van het vaccinatiecentrum uniek is
             if (vaccinatieCentra.find(naam) != vaccinatieCentra.end()) {
                 cerr << "(" << centrum->Row() << ", " << centrum->Column()
-                     << ") Er mogen geen centra met dezelfde naam zijn!" << endl;
+                        << ") Er mogen geen centra met dezelfde naam zijn!" << endl;
                 errors.push_back(DUPLICATE_NAME);
                 valid = false;
             }
@@ -175,12 +180,12 @@ Parser::Parser(const string &filename) : _initCheck(this) {
 
         ENSURE(levering > 0,
                ("Levering" + locationToString(hub->FirstChildElement("levering")) + " in hub" + locationToString(hub) +
-                "heeft een waarde kleiner dan 1").c_str());
+                       "heeft een waarde kleiner dan 1").c_str());
         ENSURE(interval > 0,
                ("Interval" + locationToString(hub->FirstChildElement("interval")) + " in hub" + locationToString(hub) +
-                "heeft een waarde kleiner dan 1").c_str());
+                       "heeft een waarde kleiner dan 1").c_str());
         ENSURE(transport > 0, ("Transport" + locationToString(hub->FirstChildElement("transport")) + " in hub" +
-                               locationToString(hub) + "heeft een waarde kleiner dan 1").c_str());
+                locationToString(hub) + "heeft een waarde kleiner dan 1").c_str());
         ENSURE(hub->FirstChildElement("CENTRA") != NULL,
                ("Hub" + locationToString(hub) + "bevat geen 'CENTRA' tag").c_str());
 
@@ -197,8 +202,7 @@ Parser::Parser(const string &filename) : _initCheck(this) {
             if(thirdElement->GetText() == NULL){
                 cerr << "Een vaccinatiecentrum werd niet correct meegegeven." << endl;
                 errors.push_back(MISSING_TAG);
-            }
-            else if(vaccinatieCentra[thirdElement->GetText()] != NULL){
+            } else if(vaccinatieCentra[thirdElement->GetText()] != NULL){
                 H->addCentrum(vaccinatieCentra[thirdElement->GetText()]);
             }
 
@@ -218,9 +222,9 @@ Parser::Parser(const string &filename) : _initCheck(this) {
                 ) {
             string secondName = secondElement->Value();
             if (secondName != "levering" && secondName != "interval" && secondName != "transport" &&
-                secondName != "CENTRA") {
+                    secondName != "CENTRA") {
                 cerr << secondName << "(" << secondElement->Row() << ", " << secondElement->Column()
-                     << ") wordt niet herkent als tag!" << endl;
+                        << ") wordt niet herkent als tag!" << endl;
                 errors.push_back(UNKNOWN_TAG);
             }
         }

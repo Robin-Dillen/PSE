@@ -1,6 +1,10 @@
-//
-// Created by nibor on 2/03/2021.
-//
+//============================================================================
+// Name        : VaccinatieSimulatieTests.cpp
+// Author      : Niels Van den Broeck, Robin Dillen
+// Version     : 1.0
+// Copyright   : Project Software Engineering - BA1 Informatica - Niels Van den Broeck, Robin Dillen - University of Antwerp
+// Description : defines a VaccinatieCentrum
+//============================================================================
 
 #include "gtest/gtest.h"
 #include "Hub.h"

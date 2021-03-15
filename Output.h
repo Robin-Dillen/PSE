@@ -1,18 +1,23 @@
-//
-// Created by Niels on 6/03/2021.
-//
+//============================================================================
+// Name        : Output.h
+// Author      : Niels Van den Broeck, Robin Dillen
+// Version     : 1.0
+// Copyright   : Project Software Engineering - BA1 Informatica - Niels Van den Broeck, Robin Dillen - University of Antwerp
+// Description : functions to generate output
+//============================================================================
 
 #ifndef PSE_OUTPUT_H
 #define PSE_OUTPUT_H
-
-#include "Hub.h"
 
 #include <sstream>
 #include <string>
 #include <fstream>
 #include "lib/DesignByContract.h"
+#include "Lib.h"
 
 using namespace std;
+
+class Hub;
 
 class Output {
 public:

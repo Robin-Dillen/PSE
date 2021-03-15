@@ -1,9 +1,14 @@
-//
-// Created by Niels on 6/03/2021.
-//
+//============================================================================
+// Name        : Output.cpp
+// Author      : Niels Van den Broeck, Robin Dillen
+// Version     : 1.0
+// Copyright   : Project Software Engineering - BA1 Informatica - Niels Van den Broeck, Robin Dillen - University of Antwerp
+// Description : functions to generate output
+//============================================================================
 
 #include "Output.h"
-#include "Lib.h"
+#include "Hub.h"
+#include "VaccinatieCentrum.h"
 
 bool Output::isProperlyInitialized() const {
     return _initCheck == this;

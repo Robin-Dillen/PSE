@@ -1,9 +1,9 @@
 //============================================================================
 // Name        : main.cpp
 // Author      : Niels Van den Broeck, Robin Dillen
-// Version     :
+// Version     : 1.0
 // Copyright   : Project Software Engineering - BA1 Informatica - Niels Van den Broeck, Robin Dillen - University of Antwerp
-// Description : ...
+// Description : runs the simulation
 //============================================================================
 
 #include <iostream>
@@ -11,6 +11,7 @@
 
 #include "Parser.h"
 #include "Output.h"
+#include "Hub.h"
 
 using namespace std;
 

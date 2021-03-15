@@ -1,6 +1,10 @@
-//
-// Created by nibor on 25/02/2021.
-//
+//============================================================================
+// Name        : VaccinatieCentrum.h
+// Author      : Niels Van den Broeck, Robin Dillen
+// Version     : 1.0
+// Copyright   : Project Software Engineering - BA1 Informatica - Niels Van den Broeck, Robin Dillen - University of Antwerp
+// Description : defines a VaccinatieCentrum
+//============================================================================
 
 #ifndef PSE_VACCINATIECENTRUM_H
 #define PSE_VACCINATIECENTRUM_H
