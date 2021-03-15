@@ -16,11 +16,11 @@ bool Output::isProperlyInitialized() const {
 void Output::makeOutputFile(Hub *h, int y, int m, int w, int d, const string &filename) {
     ofstream outputFile((OUTPUT_FILE_LOCATION + filename + ".txt").c_str(), ios_base::app);
     outputFile << "Overzicht van vaccinaties na: " << dateToString(y, m, w, d) << string(".\n\n");
-    outputFile << "Hub (" << h->getKaantalVaccinsPerLevering() << " vaccins)\n";
+    outputFile << "Hub (" << h->getAantalVaccins() << " vaccins)\n";
 
     for (map<string, VaccinatieCentrum *>::const_iterator it = h->getFverbondenCentra().begin();
          it != h->getFverbondenCentra().end(); it++) {
-        outputFile << "\t-> " << it->first << " (" << it->second->getAantalVaccinaties() << " vaccins)\n";
+        outputFile << "\t-> " << it->first << " (" << it->second->getAantalGeleverdeVaccinsBuffer() << " vaccins)\n";
     }
     outputFile << "\n";
     for (map<string, VaccinatieCentrum *>::const_iterator it = h->getFverbondenCentra().begin();

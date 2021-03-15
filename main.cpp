@@ -34,6 +34,10 @@ int main(int argc, char const *argv[]) {
 
     int current_day = 0; // we houden de datum hier bij zodat we aan het einde van de simulatie de duur van de simulatie kunnen opvragen
     bool break_ = false;
+    for (unsigned int i = 0; i < hubs.size(); i++) {
+        // output
+        Output::makeOutputFile(hubs[i], current_day, filename);
+    }
     while ((!end_day || current_day < end_day) && !break_) {
         current_day++;
         for (unsigned int i = 0; i < hubs.size(); i++) {

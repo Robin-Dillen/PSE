@@ -14,18 +14,6 @@
 #define NO_CENTRA 5
 #define DUPLICATE_NAME 6
 #define WRONG_TAG 7
-#define OUTPUT_FILE_LOCATION "../Outputfiles/"
-
-template<typename AType>
-string to_string(AType var) {
-    string str; // a variable of str data type
-
-    // using the stringstream class to insert an int and
-    // extract a string
-    stringstream ss;
-    ss << var;
-    ss >> str;
-    return str;
-}
+#define OUTPUT_FILE_LOCATION "../"
 
 #endif //PSE_LIB_H

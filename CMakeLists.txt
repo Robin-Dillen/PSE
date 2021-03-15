@@ -24,7 +24,7 @@ set(RELEASE_SOURCE_FILES
         TinyXML/tinyxmlerror.cpp
         TinyXML/tinyxmlparser.cpp
         Output.cpp
-        Output.h Lib.h)
+        Output.h Lib.h Utils.h)
 
 # Set source files for DEBUG target
 set(DEBUG_SOURCE_FILES

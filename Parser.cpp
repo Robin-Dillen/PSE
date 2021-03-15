@@ -123,7 +123,8 @@ Parser::Parser(const string &filename) : _initCheck(this) {
             vaccinatieCentra[naam] = V;
 
         } else if (centrumName != "HUB") {
-            errors.push_back(UNKNOWN_TAG);
+            cerr << "Het element " << centrumName << locationToString(centrum) << " wordt niet herkent!" << endl;
+            errors.push_back(UNKNOWN_ELEMENT);
         }
     }
 

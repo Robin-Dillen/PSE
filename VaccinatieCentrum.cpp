@@ -13,6 +13,7 @@ VaccinatieCentrum::VaccinatieCentrum(const int kcapaciteit, const int kaantalInw
     aantal_vaccins = 0;
     aantal_vaccinaties = 0;
     aantal_geleverde_vaccins = 0;
+    aantal_geleverde_vaccins_buffer = 0;
     ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
 }
 
@@ -69,6 +70,7 @@ void VaccinatieCentrum::nieuweDag() {
     // update het aantal vaccins
     aantal_vaccins += aantal_geleverde_vaccins;
     ENSURE(aantal_vaccins <= getMaxStock(), "Error, er zijn te veel vaccins geleverd!");
+    aantal_geleverde_vaccins_buffer = aantal_geleverde_vaccins;
     aantal_geleverde_vaccins = 0;
 
     // check hoeveel mensen gevaccineerd kunnen worden
@@ -96,6 +98,10 @@ void VaccinatieCentrum::ontvangLevering(int vaccins_in_levering) {
 
 bool VaccinatieCentrum::isIedereenGevaccineerd() const {
     return aantal_vaccinaties == kaantal_inwoners;
+}
+
+int VaccinatieCentrum::getAantalGeleverdeVaccinsBuffer() const {
+    return aantal_geleverde_vaccins_buffer;
 }
 
 

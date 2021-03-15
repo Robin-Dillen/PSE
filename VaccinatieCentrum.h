@@ -22,6 +22,8 @@ public:
     VaccinatieCentrum(const int kcapaciteit, const int kaantalInwoners, const string &kfname,
                       const string &kfaddress);
 
+    int getAantalGeleverdeVaccinsBuffer() const;
+
     /**
      * @return geeft terug of het object correct is geïnitialiseert
      */
@@ -129,6 +131,7 @@ private:
     int aantal_vaccins;
     int aantal_vaccinaties; // aantal mensen dat gevaccineert is
     int aantal_geleverde_vaccins; // aantal vaccins dat toegevoegd wordt na een levering
+    int aantal_geleverde_vaccins_buffer; // aantal vaccins dat toegevoegd wordt na een levering(buffer for output)
 };
 
 
