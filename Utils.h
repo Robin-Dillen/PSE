@@ -5,6 +5,14 @@
 #ifndef PSE_UTILS_H
 #define PSE_UTILS_H
 
+#include <iostream>
+#include <sstream>
+#include <fstream>
+#include <sys/stat.h>
+#include <cstdio>
+#include <string>
+
+// converts a all types supporting << to strings
 template<typename AType>
 string to_string(AType var) {
     string str; // a variable of str data type
@@ -15,6 +23,15 @@ string to_string(AType var) {
     ss << var;
     ss >> str;
     return str;
+}
+
+// converts an int to a string
+int to_int(const string &s) {
+    int ret;
+    stringstream ss;
+    ss << s;
+    ss >> ret;
+    return ret;
 }
 
 // volgende functies zijn van het TicTacToe voorbeeld

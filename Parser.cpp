@@ -20,18 +20,21 @@ Parser::Parser(const string &filename) : _initCheck(this) {
     ENSURE(root->FirstChildElement("VACCINATIECENTRUM") != NULL, "Er zijn geen vaccinatiecentra.");
 
     map<string, VaccinatieCentrum *> vaccinatieCentra;
-    //Loop over alle kinderen van root met de waarde VACCINATIECENTRUM
+    //Loop over alle kinderen van root
     for (TiXmlElement *centrum = root->FirstChildElement();
          centrum != NULL; centrum = centrum->NextSiblingElement()) {
         string centrumName = centrum->Value();
+
         if (centrumName == "VACCINATIECENTRUM") {
             //Vacinatiecentrum aanmaken
+            bool valid = true; // checkt of het vaccinatie centrum geldig is
             string naam;
             string adres;
-            bool valid = true;
             int inwoners = -1;
             int capaciteit = -1;
-            //Loop over alle atributen van Vaccinatiecentrum
+            //Loop over alle atributen van het Vaccinatiecentrum
+
+            // naam moet bestaan
             if (centrum->FirstChildElement("naam")->GetText() == NULL) {
                 valid = false;
                 cerr << "de naam" << locationToString(centrum->FirstChildElement("naam"))
@@ -40,6 +43,13 @@ Parser::Parser(const string &filename) : _initCheck(this) {
                 errors.push_back(MISSING_TAG);
             } else {
                 naam = centrum->FirstChildElement("naam")->GetText();
+                if (naam.empty()) {
+                    valid = false;
+                    cerr << "de naam" << locationToString(centrum->FirstChildElement("naam"))
+                         << " van het vaccinatiecentrum" << locationToString(centrum)
+                         << " heeft een niet toegestaane waarde(leeg)." << endl;
+                    errors.push_back(WRONG_VALUE);
+                }
             }
 
             // adres moet bestaan
@@ -51,7 +61,15 @@ Parser::Parser(const string &filename) : _initCheck(this) {
                 errors.push_back(MISSING_TAG);
             } else {
                 adres = centrum->FirstChildElement("adres")->GetText();
+                if (adres.empty()) {
+                    valid = false;
+                    cerr << "het adres" << locationToString(centrum->FirstChildElement("adres"))
+                         << " van het vaccinatiecentrum" << locationToString(centrum)
+                         << " heeft een niet toegestaane waarde(leeg)." << endl;
+                    errors.push_back(WRONG_VALUE);
+                }
             }
+
             // inwoners moet bestaan
             if (centrum->FirstChildElement("inwoners")->GetText() == NULL) {
                 valid = false;
@@ -59,8 +77,8 @@ Parser::Parser(const string &filename) : _initCheck(this) {
                      << " van het vaccinatiecentrum" << " werd niet correct meegegeven." << endl;
                 errors.push_back(MISSING_TAG);
             } else {
-                stringstream j(centrum->FirstChildElement("inwoners")->GetText());
-                j >> inwoners;
+                inwoners = to_int(centrum->FirstChildElement("inwoners")->GetText());
+
                 if (inwoners < 0) {
                     valid = false;
                     cerr << "het aantal inwonders" << locationToString(centrum->FirstChildElement("inwoners"))
@@ -77,8 +95,7 @@ Parser::Parser(const string &filename) : _initCheck(this) {
                      << " van het vaccinatiecentrum" << " werd niet correct meegegeven." << endl;
                 errors.push_back(MISSING_TAG);
             } else {
-                stringstream j(centrum->FirstChildElement("capaciteit")->GetText());
-                j >> capaciteit;
+                capaciteit = to_int(centrum->FirstChildElement("capaciteit")->GetText());
                 if (capaciteit < 0) {
                     valid = false;
                     cerr << "de capaciteit" << locationToString(centrum->FirstChildElement("inwoners"))
@@ -99,7 +116,7 @@ Parser::Parser(const string &filename) : _initCheck(this) {
                 errors.push_back(WRONG_VALUE);
             }
 
-            // check voor attributen met een net herkende tag
+            // check voor attributen met een niet herkende tag
             for (TiXmlElement *secondElement = centrum->FirstChildElement();
                  secondElement != NULL; secondElement = secondElement->NextSiblingElement()) {
                 string secondName = secondElement->Value();
@@ -110,7 +127,7 @@ Parser::Parser(const string &filename) : _initCheck(this) {
                     errors.push_back(UNKNOWN_TAG);
                 }
             }
-            // check of de naam van het vaccinatiecentra uniek is
+            // check of de naam van het vaccinatiecentrum uniek is
             if (vaccinatieCentra.find(naam) != vaccinatieCentra.end()) {
                 cerr << "(" << centrum->Row() << ", " << centrum->Column()
                      << ") Er mogen geen centra met dezelfde naam zijn!" << endl;
@@ -176,6 +193,7 @@ Parser::Parser(const string &filename) : _initCheck(this) {
                 thirdElement != NULL;
                 thirdElement = thirdElement->NextSiblingElement()
                 ) {
+            // koppel de hubs aan hun vaccinatiecentra
             if(thirdElement->GetText() == NULL){
                 cerr << "Een vaccinatiecentrum werd niet correct meegegeven." << endl;
                 errors.push_back(MISSING_TAG);
@@ -184,6 +202,7 @@ Parser::Parser(const string &filename) : _initCheck(this) {
                 H->addCentrum(vaccinatieCentra[thirdElement->GetText()]);
             }
 
+            // check of er extra, foute, tags aanwezig zijn
             string thirdName = thirdElement->Value();
             if (thirdName != "centrum") {
                 cerr << "Er zit een foute tag op locatie: " << locationToString(thirdElement) << " !" << endl;
@@ -191,7 +210,7 @@ Parser::Parser(const string &filename) : _initCheck(this) {
             }
         }
 
-
+        // check voor niet herkende tags
         for (
                 TiXmlElement *secondElement = hub->FirstChildElement();
                 secondElement != NULL;
@@ -225,7 +244,7 @@ Parser::~Parser() {
     }
 }
 
-int Parser::errorOccured(char error) const {
+int Parser::errorOccured(EExeption error) const {
     int count_ = count(errors.begin(), errors.end(), error);
     return count_;
 }

@@ -82,7 +82,7 @@ public:
      * @param fverbondenCentra: een vector met een aantal verbonden centra
      * @return void
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling addFverbondenCentra");
-     * \n ENSURE(fverbonden_centra.size() == fverbondenCentra.size() + start_size, "De centra zijn niet (volledig) Toegevoegd");
+     * \n ENSURE(fverbonden_centra.size() == 1 + start_size, "De centra zijn niet (volledig) Toegevoegd");
      */
     void addFverbondenCentra(const vector<VaccinatieCentrum *> &fverbondenCentra);
 

@@ -17,6 +17,7 @@ bool Hub::isProperlyInitialized() const {
 }
 
 int Hub::getAantalVaccins() const{
+    REQUIRE(isProperlyInitialized(), "Parser wasn't initialized when calling getAantalVaccins");
     return aantal_vaccins;
 }
 
@@ -41,6 +42,7 @@ const int Hub::getKaantalVaccinsPerLevering() const {
 }
 
 const int Hub::getKaantalVaccinsPerLading() const {
+    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getKaantalVaccinsPerLading");
     return kaantal_vaccins_per_lading;
 }
 
@@ -143,7 +145,10 @@ int Hub::minAantalLeveringen(const map<string, VaccinatieCentrum *>::const_itera
 }
 
 void Hub::addCentrum(VaccinatieCentrum *centrum) {
+    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling addCentrum");
+    int og_size = fverbonden_centra.size();
     fverbonden_centra[centrum->getKfname()] = centrum;
+    ENSURE(fverbonden_centra.size() == og_size + 1, "Het vaccinatie centrum is niet toegevoegt!");
 }
 
 

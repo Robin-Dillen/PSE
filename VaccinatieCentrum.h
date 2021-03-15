@@ -93,26 +93,31 @@ public:
 
     /*!
      *start een nieuwe dag
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling nieuweDag");
      */
     void nieuweDag();
 
     /*!
      * geeft terug of de stock van vaccins vol is
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling isVol");
      */
     bool isVol() const;
 
     /*!
      * geeft terug of de stock van vaccins vol is na een nieuwe levering
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling isVolNaLevering");
      */
     bool isVolNaLevering(int vaccins_in_levering) const;
 
     /*!
      * ontvangt een levering en plaatst de vaccinaties in de stock
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling ontvangLevering");
      */
     void ontvangLevering(int vaccins_in_levering);
 
     /*!
      * Kijkt na of iedereen gevaccineerd is.
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling isIedereenGevaccineerd");
      */
     bool isIedereenGevaccineerd() const;
 

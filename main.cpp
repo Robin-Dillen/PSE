@@ -23,10 +23,8 @@ int main(int argc, char const *argv[]) {
     ENSURE(pos != string::npos, "Given argument doesn't include a test file!");
     string filename = "Output_" + args[0].substr(pos, 7);
 
-    // clear the output file
-    std::ofstream ofs;
-    ofs.open((OUTPUT_FILE_LOCATION + filename + ".txt").c_str(), std::ofstream::out | std::ofstream::trunc);
-    ofs.close();
+    // clear/create the output file
+    Output::makeOutputFile(filename);
 
     // start simulatie
 
@@ -36,7 +34,7 @@ int main(int argc, char const *argv[]) {
     bool break_ = false;
     for (unsigned int i = 0; i < hubs.size(); i++) {
         // output
-        Output::makeOutputFile(hubs[i], current_day, filename);
+        Output::addToOutputFile(hubs[i], current_day, filename);
     }
     while ((!end_day || current_day < end_day) && !break_) {
         current_day++;
@@ -58,7 +56,7 @@ int main(int argc, char const *argv[]) {
             hubs[i]->nieuweDag();
 
             // output
-            Output::makeOutputFile(hubs[i], current_day, filename);
+            Output::addToOutputFile(hubs[i], current_day, filename);
         }
     }
 

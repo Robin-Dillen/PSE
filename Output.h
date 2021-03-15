@@ -16,10 +16,6 @@ using namespace std;
 
 class Output {
 public:
-    /**
-    \n ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
-    */
-    Output(Hub *h, int y, int m, int w, int d);
 
     /**
      * @return geeft terug of het object correct is geïnitialiseert
@@ -27,30 +23,33 @@ public:
     bool isProperlyInitialized() const;
 
     /**
-     * Maakt een tekst bestand aan
+     * maakt een output file aan of maakt een output file leeg
+     * @param filename file dat aangemaakt/leeggemaakt moet worden (zonder path of extensie)
+     */
+    static void makeOutputFile(const string &filename);
+
+    /**
+     * voegt info toe aan het outputbestand
      * @param h: hub
      * @param y,m,w,d: jaren, maanden, weken en dagen na start simulatie
      * @return void
-     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling addFverbondenCentra");
      */
-    static void makeOutputFile(Hub *h, int y, int m, int w, int d, const string &filename);
+    static void addToOutputFile(Hub *h, int y, int m, int w, int d, const string &filename);
 
     /**
-     * Maakt een tekst bestand aan
+     * voegt info toe aan het outputbestand
      * @param h: hub
      * @param days:dagen na start simulatie
      * @return void
-     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling addFverbondenCentra");
      */
-    static void makeOutputFile(Hub *h, int days, const string &filename);
+    static void addToOutputFile(Hub *h, int days, const string &filename);
 
 
 private:
     /**
      * zet een datum in int formaat om naar een string
-     * @param y,m,w,d: jaren, maanden, weken en dagen na start simulatie
+     * @param y,m,w,d: jaren, maanden, weken en dagen
      * @return string: datum in string
-     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling addFverbondenCentra");
      */
     static string dateToString(int y, int m, int w, int d);
 
