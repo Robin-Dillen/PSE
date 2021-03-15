@@ -13,7 +13,9 @@ Parser::Parser(const string &filename) : _initCheck(this) {
     ENSURE(doc.LoadFile(filename.c_str()), doc.ErrorDesc());
     //Kijkt na of er een root aanwezig is
     TiXmlElement *root = doc.RootElement();
-    ENSURE(root != NULL, "Failed to load file: No root element.");
+    //ENSURE(root != NULL, "Failed to load file: No root element.");
+    // doc.RootElement(); geeft de eerste tag terug dus we moeten testen of die tag geen siblings heeft
+    ENSURE(root->NextSibling() == NULL, "Er is geen root aanwezig in het document!");
     // checkt of er vaccinatiecentra zijn
     ENSURE(root->FirstChildElement("VACCINATIECENTRUM") != NULL, "Er zijn geen vaccinatiecentra.");
 
