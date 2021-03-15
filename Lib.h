@@ -1,30 +1,14 @@
-//
-// Created by nibor on 14/03/2021.
-//
+//============================================================================
+// Name        : Lib.h
+// Author      : Niels Van den Broeck, Robin Dillen
+// Version     : 1.0
+// Copyright   : Project Software Engineering - BA1 Informatica - Niels Van den Broeck, Robin Dillen - University of Antwerp
+// Description : contains constants
+//============================================================================
 
 #ifndef PSE_LIB_H
 #define PSE_LIB_H
 
-#include <sstream>
-
-#define MISSING_TAG 1
-#define WRONG_VALUE 2
-#define UNKNOWN_TAG 3
-#define UNKNOWN_ELEMENT 4
-#define NO_CENTRA 5
-#define DUPLICATE_NAME 6
-#define WRONG_TAG 7
-
-template<typename AType>
-string to_string(AType var) {
-    string str; // a variable of str data type
-
-    // using the stringstream class to insert an int and
-    // extract a string
-    stringstream ss;
-    ss << var;
-    ss >> str;
-    return str;
-}
+#define OUTPUT_FILE_LOCATION "../"
 
 #endif //PSE_LIB_H

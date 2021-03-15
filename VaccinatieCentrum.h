@@ -1,6 +1,10 @@
-//
-// Created by nibor on 25/02/2021.
-//
+//============================================================================
+// Name        : VaccinatieCentrum.h
+// Author      : Niels Van den Broeck, Robin Dillen
+// Version     : 1.0
+// Copyright   : Project Software Engineering - BA1 Informatica - Niels Van den Broeck, Robin Dillen - University of Antwerp
+// Description : defines a VaccinatieCentrum
+//============================================================================
 
 #ifndef PSE_VACCINATIECENTRUM_H
 #define PSE_VACCINATIECENTRUM_H
@@ -21,6 +25,8 @@ public:
     */
     VaccinatieCentrum(const int kcapaciteit, const int kaantalInwoners, const string &kfname,
                       const string &kfaddress);
+
+    int getAantalGeleverdeVaccinsBuffer() const;
 
     /**
      * @return geeft terug of het object correct is geïnitialiseert
@@ -91,26 +97,31 @@ public:
 
     /*!
      *start een nieuwe dag
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling nieuweDag");
      */
     void nieuweDag();
 
     /*!
      * geeft terug of de stock van vaccins vol is
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling isVol");
      */
     bool isVol() const;
 
     /*!
      * geeft terug of de stock van vaccins vol is na een nieuwe levering
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling isVolNaLevering");
      */
     bool isVolNaLevering(int vaccins_in_levering) const;
 
     /*!
      * ontvangt een levering en plaatst de vaccinaties in de stock
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling ontvangLevering");
      */
     void ontvangLevering(int vaccins_in_levering);
 
     /*!
      * Kijkt na of iedereen gevaccineerd is.
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling isIedereenGevaccineerd");
      */
     bool isIedereenGevaccineerd() const;
 
@@ -129,6 +140,7 @@ private:
     int aantal_vaccins;
     int aantal_vaccinaties; // aantal mensen dat gevaccineert is
     int aantal_geleverde_vaccins; // aantal vaccins dat toegevoegd wordt na een levering
+    int aantal_geleverde_vaccins_buffer; // aantal vaccins dat toegevoegd wordt na een levering(buffer for output)
 };
 
 

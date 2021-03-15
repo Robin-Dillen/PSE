@@ -1,3 +1,11 @@
+//============================================================================
+// Name        : Hub.h
+// Author      : Niels Van den Broeck, Robin Dillen
+// Version     : 1.0
+// Copyright   : Project Software Engineering - BA1 Informatica - Niels Van den Broeck, Robin Dillen - University of Antwerp
+// Description : defines a hub
+//============================================================================
+
 #ifndef PSE_HUB_H
 #define PSE_HUB_H
 
@@ -7,10 +15,11 @@
 #include <cmath> // voor ceil
 #include <iostream> // for testing
 
-#include "VaccinatieCentrum.h"
 #include "lib/DesignByContract.h"
 
 using namespace std;
+
+class VaccinatieCentrum;
 
 class Hub {
 public:
@@ -82,7 +91,7 @@ public:
      * @param fverbondenCentra: een vector met een aantal verbonden centra
      * @return void
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling addFverbondenCentra");
-     * \n ENSURE(fverbonden_centra.size() == fverbondenCentra.size() + start_size, "De centra zijn niet (volledig) Toegevoegd");
+     * \n ENSURE(fverbonden_centra.size() == 1 + start_size, "De centra zijn niet (volledig) Toegevoegd");
      */
     void addFverbondenCentra(const vector<VaccinatieCentrum *> &fverbondenCentra);
 

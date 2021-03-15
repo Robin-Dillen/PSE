@@ -1,9 +1,9 @@
 //============================================================================
 // Name        : main.cpp
 // Author      : Niels Van den Broeck, Robin Dillen
-// Version     :
+// Version     : 1.0
 // Copyright   : Project Software Engineering - BA1 Informatica - Niels Van den Broeck, Robin Dillen - University of Antwerp
-// Description : ...
+// Description : runs the simulation
 //============================================================================
 
 #include <iostream>
@@ -11,6 +11,7 @@
 
 #include "Parser.h"
 #include "Output.h"
+#include "Hub.h"
 
 using namespace std;
 
@@ -19,14 +20,12 @@ int main(int argc, char const *argv[]) {
     Parser P(args[0]);
     vector<Hub *> hubs = P.getFhubs();
 
-    int pos = args[0].find("test");
+    size_t pos = args[0].find("test");
     ENSURE(pos != string::npos, "Given argument doesn't include a test file!");
     string filename = "Output_" + args[0].substr(pos, 7);
 
-    // clear the output file
-    std::ofstream ofs;
-    ofs.open(("../" + filename).c_str(), std::ofstream::out | std::ofstream::trunc);
-    ofs.close();
+    // clear/create the output file
+    Output::makeOutputFile(filename);
 
     // start simulatie
 
@@ -34,6 +33,10 @@ int main(int argc, char const *argv[]) {
 
     int current_day = 0; // we houden de datum hier bij zodat we aan het einde van de simulatie de duur van de simulatie kunnen opvragen
     bool break_ = false;
+    for (unsigned int i = 0; i < hubs.size(); i++) {
+        // output
+        Output::addToOutputFile(hubs[i], current_day, filename);
+    }
     while ((!end_day || current_day < end_day) && !break_) {
         current_day++;
         for (unsigned int i = 0; i < hubs.size(); i++) {
@@ -54,7 +57,7 @@ int main(int argc, char const *argv[]) {
             hubs[i]->nieuweDag();
 
             // output
-            Output::makeOutputFile(hubs[i], current_day, filename);
+            Output::addToOutputFile(hubs[i], current_day, filename);
         }
     }
 

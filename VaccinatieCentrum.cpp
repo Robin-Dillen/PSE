@@ -1,6 +1,10 @@
-//
-// Created by nibor on 25/02/2021.
-//
+//============================================================================
+// Name        : VaccinatieCentrum.cpp
+// Author      : Niels Van den Broeck, Robin Dillen
+// Version     : 1.0
+// Copyright   : Project Software Engineering - BA1 Informatica - Niels Van den Broeck, Robin Dillen - University of Antwerp
+// Description : defines a VaccinatieCentrum
+//============================================================================
 
 #include "VaccinatieCentrum.h"
 
@@ -13,6 +17,7 @@ VaccinatieCentrum::VaccinatieCentrum(const int kcapaciteit, const int kaantalInw
     aantal_vaccins = 0;
     aantal_vaccinaties = 0;
     aantal_geleverde_vaccins = 0;
+    aantal_geleverde_vaccins_buffer = 0;
     ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
 }
 
@@ -66,9 +71,11 @@ void VaccinatieCentrum::setAantalVaccinaties(int aantalVaccinaties) {
 }
 
 void VaccinatieCentrum::nieuweDag() {
+    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling nieuweDag");
     // update het aantal vaccins
     aantal_vaccins += aantal_geleverde_vaccins;
     ENSURE(aantal_vaccins <= getMaxStock(), "Error, er zijn te veel vaccins geleverd!");
+    aantal_geleverde_vaccins_buffer = aantal_geleverde_vaccins;
     aantal_geleverde_vaccins = 0;
 
     // check hoeveel mensen gevaccineerd kunnen worden
@@ -83,19 +90,28 @@ void VaccinatieCentrum::nieuweDag() {
 }
 
 bool VaccinatieCentrum::isVol() const {
+    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling isVol");
     return aantal_vaccins == getMaxStock();
 }
 
 bool VaccinatieCentrum::isVolNaLevering(int vaccins_in_levering) const {
+    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling isVolNaLevering");
     return (aantal_vaccins + vaccins_in_levering) > getMaxStock();
 }
 
 void VaccinatieCentrum::ontvangLevering(int vaccins_in_levering) {
+    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling ontvangLevering");
     aantal_geleverde_vaccins += vaccins_in_levering;
 }
 
 bool VaccinatieCentrum::isIedereenGevaccineerd() const {
+    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling isIedereenGevaccineerd");
     return aantal_vaccinaties == kaantal_inwoners;
+}
+
+int VaccinatieCentrum::getAantalGeleverdeVaccinsBuffer() const {
+    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getAantalGeleverdeVaccinsBuffer");
+    return aantal_geleverde_vaccins_buffer;
 }
 
 

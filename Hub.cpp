@@ -1,8 +1,13 @@
-//
-// Created by nibor on 25/02/2021.
-//
+//============================================================================
+// Name        : Hub.cpp
+// Author      : Niels Van den Broeck, Robin Dillen
+// Version     : 1.0
+// Copyright   : Project Software Engineering - BA1 Informatica - Niels Van den Broeck, Robin Dillen - University of Antwerp
+// Description : defines a hub
+//============================================================================
 
 #include "Hub.h"
+#include "VaccinatieCentrum.h"
 
 Hub::Hub(const int kaantal_vaccins_per_levering,
          const int kleveringen_interval, const int kaantal_vaccins_per_lading)
@@ -17,6 +22,7 @@ bool Hub::isProperlyInitialized() const {
 }
 
 int Hub::getAantalVaccins() const{
+    REQUIRE(isProperlyInitialized(), "Parser wasn't initialized when calling getAantalVaccins");
     return aantal_vaccins;
 }
 
@@ -41,6 +47,7 @@ const int Hub::getKaantalVaccinsPerLevering() const {
 }
 
 const int Hub::getKaantalVaccinsPerLading() const {
+    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getKaantalVaccinsPerLading");
     return kaantal_vaccins_per_lading;
 }
 
@@ -143,7 +150,10 @@ int Hub::minAantalLeveringen(const map<string, VaccinatieCentrum *>::const_itera
 }
 
 void Hub::addCentrum(VaccinatieCentrum *centrum) {
+    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling addCentrum");
+    unsigned int og_size = fverbonden_centra.size();
     fverbonden_centra[centrum->getKfname()] = centrum;
+    ENSURE(fverbonden_centra.size() == og_size + 1, "Het vaccinatie centrum is niet toegevoegt!");
 }
 
 

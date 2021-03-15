@@ -1,3 +1,11 @@
+//============================================================================
+// Name        : Parser.h
+// Author      : Niels Van den Broeck, Robin Dillen
+// Version     : 1.0
+// Copyright   : Project Software Engineering - BA1 Informatica - Niels Van den Broeck, Robin Dillen - University of Antwerp
+// Description : parser for xml files
+//============================================================================
+
 #ifndef PSE_PARSER_H
 #define PSE_PARSER_H
 
@@ -6,15 +14,19 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <sstream>
 
-#include "Hub.h"
-#include "VaccinatieCentrum.h"
 #include "TinyXML/tinyxml.h"
 #include "lib/DesignByContract.h"
-#include "Lib.h"
 
+
+class Hub;
 
 using namespace std;
+
+enum EExeption {
+    MISSING_TAG, WRONG_VALUE, UNKNOWN_TAG, UNKNOWN_ELEMENT, DUPLICATE_NAME, WRONG_TAG
+};
 
 
 class Parser {
@@ -42,7 +54,7 @@ public:
      * @param error: int van de error code
      * @return int, het aantal voorkomens
      */
-    int errorOccured(char error) const;
+    int errorOccured(EExeption error) const;
 
     static string locationToString(TiXmlElement *el);
 
@@ -55,7 +67,7 @@ private:
     // attributes
 
     vector<Hub *> fhubs;
-    vector<char> errors;
+    vector<EExeption> errors;
 };
 
 
