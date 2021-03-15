@@ -5,15 +5,15 @@
 #include "Output.h"
 
 Output::Output(Hub *h, int y, int m, int w, int d) {
-    makeOutputFile(h, y, m, w, d);
+//    makeOutputFile(h, y, m, w, d);
 }
 
 bool Output::isProperlyInitialized() const {
     return _initCheck == this;
 }
 
-void Output::makeOutputFile(Hub *h, int y, int m, int w, int d) {
-    ofstream outputFile("../Output.txt", ios_base::app);
+void Output::makeOutputFile(Hub *h, int y, int m, int w, int d, const string &filename) {
+    ofstream outputFile(("../" + filename).c_str(), ios_base::app);
     outputFile << "Overzicht van vaccinaties na: " << dateToString(y, m, w, d) << string(".\n\n");
     outputFile << "Hub (" << h->getKaantalVaccinsPerLevering() << " vaccins)\n";
 
@@ -32,14 +32,14 @@ void Output::makeOutputFile(Hub *h, int y, int m, int w, int d) {
     outputFile.close();
 }
 
-void Output::makeOutputFile(Hub *h, int days) {
+void Output::makeOutputFile(Hub *h, int days, const string &filename) {
     int years = days / 356;
     days -= years * 356;
     int months = days / 30;
     days -= months * 30;
     int weeks = days / 7;
     days -= weeks * 7;
-    makeOutputFile(h, years, months, weeks, days);
+    makeOutputFile(h, years, months, weeks, days, filename);
 }
 
 string Output::dateToString(int y, int m, int w, int d) {

@@ -19,9 +19,13 @@ int main(int argc, char const *argv[]) {
     Parser P(args[0]);
     vector<Hub *> hubs = P.getFhubs();
 
+    int pos = args[0].find("test");
+    ENSURE(pos != string::npos, "Given argument doesn't include a test file!");
+    string filename = "Output_" + args[0].substr(pos, 7);
+
     // clear the output file
     std::ofstream ofs;
-    ofs.open("../Output.txt", std::ofstream::out | std::ofstream::trunc);
+    ofs.open(("../" + filename).c_str(), std::ofstream::out | std::ofstream::trunc);
     ofs.close();
 
     // start simulatie
@@ -31,6 +35,7 @@ int main(int argc, char const *argv[]) {
     int current_day = 0; // we houden de datum hier bij zodat we aan het einde van de simulatie de duur van de simulatie kunnen opvragen
     bool break_ = false;
     while ((!end_day || current_day < end_day) && !break_) {
+        current_day++;
         for (unsigned int i = 0; i < hubs.size(); i++) {
             if (hubs[i]->isIedereenGevaccineerd()) {
                 break_ = true;
@@ -38,7 +43,6 @@ int main(int argc, char const *argv[]) {
             }
             break_ = false;
             // increase current_day
-            current_day++;
 
             if (current_day % hubs[i]->getLeveringenInterval() == 0) {
                 // door in de simulatie het aantal vaccins mee te geven kunnen we war randomness toevoegen aan het aantal
@@ -50,7 +54,7 @@ int main(int argc, char const *argv[]) {
             hubs[i]->nieuweDag();
 
             // output
-            Output::makeOutputFile(hubs[i], current_day);
+            Output::makeOutputFile(hubs[i], current_day, filename);
         }
     }
 

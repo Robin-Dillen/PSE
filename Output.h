@@ -33,7 +33,7 @@ public:
      * @return void
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling addFverbondenCentra");
      */
-    static void makeOutputFile(Hub *h, int y, int m, int w, int d);
+    static void makeOutputFile(Hub *h, int y, int m, int w, int d, const string &filename);
 
     /**
      * Maakt een tekst bestand aan
@@ -42,7 +42,7 @@ public:
      * @return void
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling addFverbondenCentra");
      */
-    static void makeOutputFile(Hub *h, int days);
+    static void makeOutputFile(Hub *h, int days, const string &filename);
 
 
 private:
