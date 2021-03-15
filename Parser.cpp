@@ -154,79 +154,71 @@ Parser::Parser(const string &filename) : _initCheck(this) {
 
     map<string, VaccinatieCentrum *> vaccinatieCentra;
     //Loop over alle kinderen van root met de waarde VACCINATIECENTRUM
-    for (TiXmlElement *centrum = root->FirstChildElement("VACCINATIECENTRUM");
-         centrum != NULL; centrum = centrum->NextSiblingElement("VACCINATIECENTRUM")) {
-
-        //Vacinatiecentrum aanmaken
-        bool valid = true;
-        int inwoners = -1;
-        int capaciteit = -1;
-        //Loop over alle atributen van Vaccinatiecentrum
-        if (centrum->FirstChildElement("naam") == NULL) {
-            valid = false;
-            cerr << "de naam" << locationToString(centrum->FirstChildElement("adres")) << " van het vaccinatiecentrum"
-                 << locationToString(centrum) << " werd niet correct meegegeven." << endl;
-            errors.push_back(MISSING_TAG);
-        }
-        string naam = centrum->FirstChildElement("naam")->GetText();
-
-        // adres moet bestaan
-        if (centrum->FirstChildElement("adres") == NULL) {
-            valid = false;
-            cerr << "het adres" << locationToString(centrum->FirstChildElement("adres")) << " van het vaccinatiecentrum"
-                 << " werd niet correct meegegeven." << endl;
-            errors.push_back(MISSING_TAG);
-            continue;
-        }
-        string adres = centrum->FirstChildElement("adres")->GetText();
-
-        // inwoners moet bestaan
-        if (centrum->FirstChildElement("inwoners") == NULL) {
-            valid = false;
-            cerr << "het aantal inwonders" << locationToString(centrum->FirstChildElement("inwoners"))
-                 << " van het vaccinatiecentrum" << " werd niet correct meegegeven." << endl;
-            errors.push_back(MISSING_TAG);
-            continue;
-        };
-        {
-            stringstream j(centrum->FirstChildElement("inwoners")->GetText());
-            j >> inwoners;
-        }
-
-        // capaciteit moet bestaan
-        if (centrum->FirstChildElement("capaciteit") == NULL) {
-            valid = false;
-            cerr << "de capaciteit" << locationToString(centrum->FirstChildElement("inwoners"))
-                 << " van het vaccinatiecentrum" << " werd niet correct meegegeven." << endl;
-            errors.push_back(MISSING_TAG);
-            continue;
-        }
-        {
-            stringstream j(centrum->FirstChildElement("capaciteit")->GetText());
-            j >> capaciteit;
-        }
-
-        //variabelen moeten een Juiste waarde hebben gekregen
-        if (naam.empty() || adres.empty() || inwoners < 0 || capaciteit < 0 || (capaciteit == 0 && inwoners != 0)) {
-            valid = false;
-            if (naam.empty())
+    for (TiXmlElement *centrum = root->FirstChildElement();
+         centrum != NULL; centrum = centrum->NextSiblingElement()) {
+        string centrumName = centrum->Value();
+        if (centrumName == "VACCINATIECENTRUM") {
+            //Vacinatiecentrum aanmaken
+            string naam;
+            string adres;
+            bool valid = true;
+            int inwoners = -1;
+            int capaciteit = -1;
+            //Loop over alle atributen van Vaccinatiecentrum
+            if (centrum->FirstChildElement("naam")->GetText() == NULL) {
+                valid = false;
                 cerr << "de naam" << locationToString(centrum->FirstChildElement("adres"))
-                     << " van het vaccinatiecentrum" << locationToString(centrum)
-                     << " heeft een niet toegestaane waarde(leeg)." << endl;
-            if (adres.empty())
+                     << " van het vaccinatiecentrum"
+                     << locationToString(centrum) << " werd niet correct meegegeven." << endl;
+                errors.push_back(MISSING_TAG);
+            } else {
+                naam = centrum->FirstChildElement("naam")->GetText();
+            }
+
+            // adres moet bestaan
+            if (centrum->FirstChildElement("adres")->GetText() == NULL) {
+                valid = false;
                 cerr << "het adres" << locationToString(centrum->FirstChildElement("adres"))
-                     << " van het vaccinatiecentrum" << locationToString(centrum)
-                     << " heeft een niet toegestaane waarde(leeg)." << endl;
-            if (inwoners < 0)
+                     << " van het vaccinatiecentrum"
+                     << " werd niet correct meegegeven." << endl;
+                errors.push_back(MISSING_TAG);
+            } else {
+                adres = centrum->FirstChildElement("adres")->GetText();
+            }
+            // inwoners moet bestaan
+            if (centrum->FirstChildElement("inwoners")->GetText() == NULL) {
+                valid = false;
                 cerr << "het aantal inwonders" << locationToString(centrum->FirstChildElement("inwoners"))
-                     << " van het vaccinatiecentrum" << locationToString(centrum)
-                     << " heeft een niet toegestaane waarde(negatief)." << endl;
-            if (capaciteit < 0)
+                     << " van het vaccinatiecentrum" << " werd niet correct meegegeven." << endl;
+                errors.push_back(MISSING_TAG);
+            } else {
+                stringstream j(centrum->FirstChildElement("inwoners")->GetText());
+                j >> inwoners;
+                if (inwoners < 0) {
+                    cerr << "het aantal inwonders" << locationToString(centrum->FirstChildElement("inwoners"))
+                         << " van het vaccinatiecentrum" << locationToString(centrum)
+                         << " heeft een niet toegestaane waarde(negatief)." << endl;
+                    errors.push_back(WRONG_VALUE);
+                }
+            }
+
+            // capaciteit moet bestaan
+            if (centrum->FirstChildElement("capaciteit")->GetText() == NULL) {
+                valid = false;
                 cerr << "de capaciteit" << locationToString(centrum->FirstChildElement("inwoners"))
-                     << " van het vaccinatiecentrum" << locationToString(centrum)
-                     << " heeft een niet toegestaane waarde(negatief)."
-                     << endl;
-            if ((capaciteit == 0 && inwoners != 0))
+                     << " van het vaccinatiecentrum" << " werd niet correct meegegeven." << endl;
+                errors.push_back(MISSING_TAG);
+            } else {
+                stringstream j(centrum->FirstChildElement("capaciteit")->GetText());
+                j >> capaciteit;
+                if (capaciteit < 0) {
+                    cerr << "de capaciteit" << locationToString(centrum->FirstChildElement("inwoners"))
+                         << " van het vaccinatiecentrum" << locationToString(centrum)
+                         << " heeft een niet toegestaane waarde(negatief)." << endl;
+                    errors.push_back(WRONG_VALUE);
+                }
+            }
+            if ((capaciteit == 0 && inwoners > 0)) {
                 cerr
                         << "de capaciteit" << centrum->FirstChildElement("capaciteit")->Row() << ", "
                         << centrum->FirstChildElement("capaciteit")->Column() << ") van het vaccinatiecentrum, op rij: "
@@ -235,35 +227,40 @@ Parser::Parser(const string &filename) : _initCheck(this) {
                         << centrum->FirstChildElement("inwoners")->Row() << ", "
                         << centrum->FirstChildElement("inwoners")->Column() << ") niet 0)."
                         << endl;
-            errors.push_back(WRONG_VALUE);
-            continue;
-        }
-
-        // check voor attributen met een net herkende tag
-        for (TiXmlElement *secondElement = centrum->FirstChildElement();
-             secondElement != NULL; secondElement = secondElement->NextSiblingElement()) {
-            string secondName = secondElement->Value();
-            if (secondName != "naam" && secondName != "adres" && secondName != "capaciteit" &&
-                secondName != "inwoners") {
-                cerr << secondName << "(" << secondElement->Row() << ", " << secondElement->Column()
-                     << ") wordt niet herkent als tag!" << endl;
-                errors.push_back(UNKNOWN_TAG);
+                errors.push_back(WRONG_VALUE);
             }
-        }
-        // check of de naam van het vaccinatiecentra uniek is
-        if (vaccinatieCentra.find(naam) != vaccinatieCentra.end()) {
-            cerr << "(" << centrum->Row() << ", " << centrum->Column()
-                 << ") Er mogen geen centra met dezelfde naam zijn!" << endl;
-            errors.push_back(DUPLICATE_NAME);
-            valid = false;
-        }
-        if (!valid) continue;
 
-        VaccinatieCentrum *V = new VaccinatieCentrum(capaciteit, inwoners, naam, adres);
-        vaccinatieCentra[naam] = V;
+            // check voor attributen met een net herkende tag
+            for (TiXmlElement *secondElement = centrum->FirstChildElement();
+                 secondElement != NULL; secondElement = secondElement->NextSiblingElement()) {
+                string secondName = secondElement->Value();
+                if (secondName != "naam" && secondName != "adres" && secondName != "capaciteit" &&
+                    secondName != "inwoners") {
+                    cerr << secondName << "(" << secondElement->Row() << ", " << secondElement->Column()
+                         << ") wordt niet herkent als tag!" << endl;
+                    errors.push_back(UNKNOWN_TAG);
+                }
+            }
+            // check of de naam van het vaccinatiecentra uniek is
+            if (vaccinatieCentra.find(naam) != vaccinatieCentra.end()) {
+                cerr << "(" << centrum->Row() << ", " << centrum->Column()
+                     << ") Er mogen geen centra met dezelfde naam zijn!" << endl;
+                errors.push_back(DUPLICATE_NAME);
+                valid = false;
+            }
+            if (!valid) continue;
+
+            VaccinatieCentrum *V = new VaccinatieCentrum(capaciteit, inwoners, naam, adres);
+            vaccinatieCentra[naam] = V;
+
+        } else if (centrumName != "HUB") {
+            errors.push_back(UNKNOWN_TAG);
+        }
     }
 
     ENSURE(vaccinatieCentra.size() > 0, "Er moet minstens 1(geldig) vaccinatiecentrum zijn!");
+
+    ENSURE(root->FirstChildElement("HUB") != NULL, "Er is geen HUB aanwezig");
 
     // maak de hubs aan
     for (TiXmlElement *hub = root->FirstChildElement("HUB"); hub != NULL; hub = hub->NextSiblingElement("HUB")) {
@@ -273,16 +270,19 @@ Parser::Parser(const string &filename) : _initCheck(this) {
 
         // leveringen moet bestaan
         ENSURE(hub->FirstChildElement("levering") != NULL, "levering does not exist");
+        ENSURE(hub->FirstChildElement("levering")->GetText() != NULL, "levering heeft een ongeldige waarde");
         stringstream g(hub->FirstChildElement("levering")->GetText());
         g >> levering;
 
         // interval moet bestaan
         ENSURE(hub->FirstChildElement("interval") != NULL, "interval does not exist");
+        ENSURE(hub->FirstChildElement("interval")->GetText() != NULL, "interval heeft een ongeldige waarde");
         stringstream h(hub->FirstChildElement("interval")->GetText());
         h >> interval;
 
         // transport moet bestaan
         ENSURE(hub->FirstChildElement("transport") != NULL, "Transport does not exist");
+        ENSURE(hub->FirstChildElement("transport")->GetText() != NULL, "Transport heeft een ongeldige waarde");
         stringstream i(hub->FirstChildElement("transport")->GetText());
         i >> transport;
 
@@ -297,11 +297,23 @@ Parser::Parser(const string &filename) : _initCheck(this) {
         ENSURE(hub->FirstChildElement("CENTRA") != NULL,
                ("Hub" + locationToString(hub) + "bevat geen 'CENTRA' tag").c_str());
 
+
+        Hub *H = new Hub(levering, interval, transport);
+        fhubs.push_back(H);
+
         for (
                 TiXmlElement *thirdElement = hub->FirstChildElement("CENTRA")->FirstChildElement();
                 thirdElement != NULL;
                 thirdElement = thirdElement->NextSiblingElement()
                 ) {
+            if(thirdElement->GetText() == NULL){
+                cerr << "Een vaccinatiecentrum werd niet correct meegegeven." << endl;
+                errors.push_back(MISSING_TAG);
+            }
+            else if(vaccinatieCentra[thirdElement->GetText()] != NULL){
+                H->addCentrum(vaccinatieCentra[thirdElement->GetText()]);
+            }
+
             string thirdName = thirdElement->Value();
             if (thirdName != "centrum") {
                 cerr << "Er zit een foute tag op locatie: " << locationToString(thirdElement) << " !" << endl;
@@ -309,14 +321,6 @@ Parser::Parser(const string &filename) : _initCheck(this) {
             }
         }
 
-        Hub *H = new Hub(levering, interval, transport);
-        fhubs.push_back(H);
-
-        for (TiXmlElement *centrum = hub->FirstChildElement("CENTRA");
-             centrum != NULL; centrum = centrum->NextSiblingElement("CENTRA")) {
-            cout << centrum->FirstChildElement()->GetText() << endl;
-            H->addCentrum(vaccinatieCentra[centrum->FirstChildElement()->GetText()]);
-        }
 
         for (
                 TiXmlElement *secondElement = hub->FirstChildElement();
@@ -326,12 +330,11 @@ Parser::Parser(const string &filename) : _initCheck(this) {
             string secondName = secondElement->Value();
             if (secondName != "levering" && secondName != "interval" && secondName != "transport" &&
                 secondName != "CENTRA") {
-                cerr << secondName << " wordt niet herkent als tag!" <<
-                     endl;
+                cerr << secondName << "(" << secondElement->Row() << ", " << secondElement->Column()
+                     << ") wordt niet herkent als tag!" << endl;
                 errors.push_back(UNKNOWN_TAG);
             }
         }
-
     }
 
     ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");

@@ -1,4 +1,4 @@
-<!--extra vaccinsinatie centrum met negatief aantal inwoners, en niet ronde capaciteit-->
+<!--extra vaccinsinatie centrum met negatief aantal inwoners, en niet ronde capaciteit = geen error-->
 <root>
     <HUB>
         <levering>90000</levering>

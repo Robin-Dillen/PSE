@@ -1,4 +1,4 @@
-<!-- capaciteit en aantal inwoners van -1, lege naam en address-->
+<!-- capaciteit en aantal inwoners van -1, lege naam en address = geen error-->
 <root>
     <HUB>
         <levering>81000</levering>

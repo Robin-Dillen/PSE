@@ -1,7 +1,9 @@
-<!-- error -->
+<!--Hub met element binnenin leveringen = error-->
 <root>
-<!--    <HUB>-->
-        <levering>93000</levering>
+    <HUB>
+        <levering>
+            <blub>1221</blub>
+        </levering>
         <interval>6</interval>
         <transport>2000</transport>
         <CENTRA>
@@ -10,7 +12,7 @@
             <centrum>De Zoerla</centrum>
             <centrum>Flanders Expo</centrum>
         </CENTRA>
-    <!--    </HUB>-->
+    </HUB>
     <VACCINATIECENTRUM>
         <naam>Park Spoor Oost</naam>
         <adres>Noordersingel 40, Antwerpen</adres>

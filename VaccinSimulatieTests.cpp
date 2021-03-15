@@ -44,7 +44,7 @@ TEST_F(VaccinSimulatieTest, DefaultConstructor) {
 
     Parser *P = new Parser("../XMLfiles/test001.xml");
     vector<Hub *> hubs = P->getFhubs();
-    for (int i = 0; i < hubs.size(); i++) {
+    for (unsigned int i = 0; i < hubs.size(); i++) {
         EXPECT_TRUE(hubs[i]->isProperlyInitialized());
         unsigned int zero = 0;
         EXPECT_NE(zero, hubs[i]->getFverbondenCentra().size());
@@ -81,13 +81,6 @@ TEST_F(VaccinSimulatieTest, HappyDay1) {
         H->nieuweDag();
     }
 
-    int years = current_day / 356;
-    current_day -= years * 356;
-    int months = current_day / 30;
-    current_day -= months * 30;
-    int weeks = current_day / 7;
-    current_day -= weeks * 7;
-
     // tests
     EXPECT_GE(current_day, 1);
 
@@ -119,13 +112,6 @@ TEST_F(VaccinSimulatieTest, HappyDay2) {
         // stuur signaal nieuwe dag
         H->nieuweDag();
     }
-
-    int years = current_day / 356;
-    current_day -= years * 356;
-    int months = current_day / 30;
-    current_day -= months * 30;
-    int weeks = current_day / 7;
-    current_day -= weeks * 7;
 
     // tests
     EXPECT_GE(current_day, 1);
@@ -159,13 +145,6 @@ TEST_F(VaccinSimulatieTest, HappyDay3) {
         H->nieuweDag();
     }
 
-    int years = current_day / 356;
-    current_day -= years * 356;
-    int months = current_day / 30;
-    current_day -= months * 30;
-    int weeks = current_day / 7;
-    current_day -= weeks * 7;
-
     // tests
     EXPECT_GE(current_day, 1);
 
@@ -197,13 +176,6 @@ TEST_F(VaccinSimulatieTest, HappyDay4) {
         // stuur signaal nieuwe dag
         H->nieuweDag();
     }
-
-    int years = current_day / 356;
-    current_day -= years * 356;
-    int months = current_day / 30;
-    current_day -= months * 30;
-    int weeks = current_day / 7;
-    current_day -= weeks * 7;
 
     // tests
     EXPECT_GE(current_day, 1);
@@ -475,15 +447,46 @@ TEST_F(VaccinSimulatieTest, ParserDeath) {
     EXPECT_DEATH(Parser P("../XMLfiles/test006.xml"), "");
     EXPECT_DEATH(Parser P("../XMLfiles/test008.xml"), "");
     EXPECT_DEATH(Parser P("../XMLfiles/test009.xml"), "");
+    EXPECT_DEATH(Parser P("../XMLfiles/test011.xml"), "");
+    EXPECT_DEATH(Parser P("../XMLfiles/test014.xml"), "");
 }
 
-TEST_F(VaccinSimulatieTest, ParserExeption) {
+TEST_F(VaccinSimulatieTest, ParserExeption1) {
     {
         Parser P("../XMLfiles/test005.xml");
         EXPECT_EQ(1, P.errorOccured(WRONG_VALUE));
     }
 }
 
+TEST_F(VaccinSimulatieTest, ParserExeption2) {
+    {
+        Parser P("../XMLfiles/test010.xml");
+        EXPECT_EQ(2, P.errorOccured(WRONG_VALUE));
+        EXPECT_EQ(3, P.errorOccured(MISSING_TAG));
+    }
+}
+
+TEST_F(VaccinSimulatieTest, ParserExeption3) {
+    {
+        Parser P("../XMLfiles/test012.xml");
+        EXPECT_EQ(3, P.errorOccured(UNKNOWN_TAG));
+    }
+}
+
+TEST_F(VaccinSimulatieTest, ParserExeption4) {
+    {
+        Parser P("../XMLfiles/test013.xml");
+        EXPECT_EQ(3, P.errorOccured(UNKNOWN_TAG));
+        EXPECT_EQ(2, P.errorOccured(WRONG_VALUE));
+    }
+}
+
+TEST_F(VaccinSimulatieTest, ParserExeption5) {
+    {
+        Parser P("../XMLfiles/test015.xml");
+        EXPECT_EQ(1, P.errorOccured(UNKNOWN_TAG));
+    }
+}
 
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);

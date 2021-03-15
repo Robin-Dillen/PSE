@@ -1,27 +1,23 @@
-<!-- error -->
+<!--extra elementen = geen error-->
 <root>
-<!--    <HUB>-->
-        <levering>93000</levering>
+    <HUB>
+        <levering>81000</levering>
         <interval>6</interval>
+        <rand1>A</rand1>
         <transport>2000</transport>
         <CENTRA>
-            <centrum>Park Spoor Oost</centrum>
             <centrum>AED Studios</centrum>
             <centrum>De Zoerla</centrum>
             <centrum>Flanders Expo</centrum>
         </CENTRA>
-    <!--    </HUB>-->
-    <VACCINATIECENTRUM>
-        <naam>Park Spoor Oost</naam>
-        <adres>Noordersingel 40, Antwerpen</adres>
-        <inwoners>540173</inwoners>
-        <capaciteit>7500</capaciteit>
-    </VACCINATIECENTRUM>
+    </HUB>
     <VACCINATIECENTRUM>
         <naam>AED Studios</naam>
         <adres>Fabriekstraat 38, Lint</adres>
         <inwoners>76935</inwoners>
         <capaciteit>2000</capaciteit>
+        <rand2>B</rand2>
+        <rand3>C</rand3>
     </VACCINATIECENTRUM>
     <VACCINATIECENTRUM>
         <naam>De Zoerla</naam>
@@ -36,5 +32,6 @@
         <capaciteit>3000</capaciteit>
     </VACCINATIECENTRUM>
 </root>
+
 
 

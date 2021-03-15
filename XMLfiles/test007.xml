@@ -1,4 +1,4 @@
-<!--leveringen interval, dat langer dan een week duurt-->
+<!--leveringen interval, dat langer dan een week duurt = geen error-->
 <root>
     <HUB>
         <levering>120000</levering>

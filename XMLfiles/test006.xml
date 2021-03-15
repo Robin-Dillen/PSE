@@ -1,4 +1,4 @@
-<!--negatief leveringen interval-->
+<!--negatief leveringen interval = error-->
 <root>
     <HUB>
         <levering>90000</levering>
