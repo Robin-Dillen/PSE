@@ -146,7 +146,7 @@ Parser::Parser(const string &filename) : _initCheck(this) {
 
         } else if (centrumName != "HUB") {
             cerr << "Het element " << centrumName << locationToString(centrum) << " wordt niet herkent!" << endl;
-            errors.push_back(UNKNOWN_ELEMENT);
+            errors.push_back(UNKNOWN_TAG);
         }
     }
 
