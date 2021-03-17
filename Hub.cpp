@@ -11,7 +11,7 @@
 
 Hub::Hub(const int kaantal_vaccins_per_levering,
          const int kleveringen_interval, const int kaantal_vaccins_per_lading)
-        : kaantal_vaccins_per_levering(kaantal_vaccins_per_levering), kleveringen_interval(kleveringen_interval),
+        : kaantal_vaccins_per_levering(kaantal_vaccins_per_levering), kleveringen_interval(kleveringen_interval+1),
           kaantal_vaccins_per_lading(kaantal_vaccins_per_lading), _initCheck(this),
           aantal_vaccins(kaantal_vaccins_per_levering) {
     ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
