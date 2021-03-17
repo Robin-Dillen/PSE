@@ -343,7 +343,7 @@ TEST_F(VaccinSimulatieTest, Hub_AantalVaccins) {
 
 TEST_F(VaccinSimulatieTest, Hub_getLeveringenInterval) {
     Hub *H = new Hub(100, 3, 500);
-    EXPECT_EQ(3, H->getLeveringenInterval());
+    EXPECT_EQ(4, H->getLeveringenInterval());
     delete H;
 }
 
