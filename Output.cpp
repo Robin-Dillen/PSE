@@ -9,6 +9,7 @@
 #include "Output.h"
 #include "Hub.h"
 #include "VaccinatieCentrum.h"
+#include "Utils.h"
 
 bool Output::isProperlyInitialized() const {
     return _initCheck == this;
@@ -54,7 +55,5 @@ string Output::dateToString(int y, int m, int w, int d) {
 
 void Output::makeOutputFile(const string &filename) {
     // maakt een output file of maakt een outputfile leeg
-    std::ofstream ofs;
-    ofs.open((OUTPUT_FILE_LOCATION + filename + ".txt").c_str(), std::ofstream::out | std::ofstream::trunc);
-    ofs.close();
+    makeEmptyFile(OUTPUT_FILE_LOCATION + filename + ".txt");
 }
