@@ -297,8 +297,6 @@ TEST_F(VaccinSimulatieTest, Hub_addFverbondenCentra1) {
     i = 2;
     EXPECT_EQ(i, H->getFverbondenCentra().size());
     delete H;
-    delete V1;
-    delete V2;
 }
 
 TEST_F(VaccinSimulatieTest, Hub_addFverbondenCentra2) {
@@ -315,8 +313,6 @@ TEST_F(VaccinSimulatieTest, Hub_addFverbondenCentra2) {
     i = 2;
     EXPECT_EQ(i, H->getFverbondenCentra().size());
     delete H;
-    delete V1;
-    delete V2;
 }
 
 TEST_F(VaccinSimulatieTest, Hub_AantalVaccins) {
