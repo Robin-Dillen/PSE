@@ -469,20 +469,20 @@ TEST_F(VaccinSimulatieTest, ParserExeption5) {
 }
 
 TEST_F(VaccinSimulatieTest, OutputFileTest) {
-    int i = 1;
+    int temp[] = {1, 3, 4, 5, 7, 10, 12, 13, 15, 16};
+    vector<int> files = reinterpret_cast<const vector<int, allocator<int> > &>(temp);
+    vector<int>::iterator it = files.begin();
     string prefix = "test";
     string prefix_test = "Expected_";
     string output = "Output_";
     string filename = prefix + "001";
     while (FileExists(filename + ".xml")) {
         cout << filename << endl;
-        try {
-            Simulatie(filename + ".xml", false);
-            EXPECT_TRUE(FileCompare(OUTPUT_FILE_LOCATION + output + filename + ".txt",
-                                    OUTPUT_FILE_LOCATION + prefix_test + output + filename + ".txt"));
-        } catch (...) {};
-        i++;
-        filename = to_string(i);
+        Simulatie(filename + ".xml", false);
+        EXPECT_TRUE(FileCompare(OUTPUT_FILE_LOCATION + output + filename + ".txt",
+                                OUTPUT_FILE_LOCATION + prefix_test + output + filename + ".txt"));
+        it++;
+        filename = to_string(*it);
         while (filename.size() != 3) {
             filename.insert(0, "0");
         }
