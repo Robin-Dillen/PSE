@@ -46,8 +46,8 @@ Declares the variables your tests want to use.
 
 TEST_F(VaccinSimulatieTest, DefaultConstructor) {
 
-    Parser *P = new Parser("../XMLfiles/test001.xml");
-    Hub *hub = P->getFhubs()[0];
+    Parser P("../XMLfiles/test001.xml");
+    Hub *hub = P.getFhubs()[0];
     EXPECT_TRUE(hub->isProperlyInitialized());
     unsigned int zero = 0;
     EXPECT_NE(zero, hub->getFverbondenCentra().size());
@@ -58,7 +58,6 @@ TEST_F(VaccinSimulatieTest, DefaultConstructor) {
         EXPECT_EQ(0, it->second->getAantalGeleverdeVaccins());
         EXPECT_EQ(0, it->second->getAantalVaccins());
     }
-    delete P;
 }
 
 //SYSTEM TESTS
@@ -194,107 +193,93 @@ TEST_F(VaccinSimulatieTest, HappyDay4) {
 //UNIT TESTS
 //VACCINATIECENTRUM
 TEST_F(VaccinSimulatieTest, VaccinatieCentrum_getname) {
-    VaccinatieCentrum *V = new VaccinatieCentrum(10, 10, "A", "B");
-    EXPECT_EQ("A", V->getKfname());
-    delete V;
+    VaccinatieCentrum V(10, 10, "A", "B");
+    EXPECT_EQ("A", V.getKfname());
 }
 
 TEST_F(VaccinSimulatieTest, VaccinatieCentrum_getaddress) {
-    VaccinatieCentrum *V = new VaccinatieCentrum(10, 10, "A", "B");
-    EXPECT_EQ("B", V->getKfaddress());
-    delete V;
+    VaccinatieCentrum V(10, 10, "A", "B");
+    EXPECT_EQ("B", V.getKfaddress());
 }
 
 TEST_F(VaccinSimulatieTest, VaccinatieCentrum_AantalVaccinaties) {
-    VaccinatieCentrum *V = new VaccinatieCentrum(10, 10, "A", "B");
-    V->setAantalVaccinaties(10);
-    EXPECT_EQ(10, V->getAantalVaccinaties());
-    delete V;
+    VaccinatieCentrum V(10, 10, "A", "B");
+    V.setAantalVaccinaties(10);
+    EXPECT_EQ(10, V.getAantalVaccinaties());
 }
 
 TEST_F(VaccinSimulatieTest, VaccinatieCentrum_AantalVaccins) {
-    VaccinatieCentrum *V = new VaccinatieCentrum(10, 10, "A", "B");
-    V->setVaccins(10);
-    EXPECT_EQ(10, V->getAantalVaccins());
-    delete V;
+    VaccinatieCentrum V(10, 10, "A", "B");
+    V.setVaccins(10);
+    EXPECT_EQ(10, V.getAantalVaccins());
 }
 
 TEST_F(VaccinSimulatieTest, VaccinatieCentrum_getAantalInwoners) {
-    VaccinatieCentrum *V = new VaccinatieCentrum(20, 10, "A", "B");
-    EXPECT_EQ(10, V->getKaantalInwoners());
-    delete V;
+    VaccinatieCentrum V(20, 10, "A", "B");
+    EXPECT_EQ(10, V.getKaantalInwoners());
 }
 
 TEST_F(VaccinSimulatieTest, VaccinatieCentrum_getCapaciteit) {
-    VaccinatieCentrum *V = new VaccinatieCentrum(20, 10, "A", "B");
-    EXPECT_EQ(20, V->getKcapaciteit());
-    delete V;
+    VaccinatieCentrum V(20, 10, "A", "B");
+    EXPECT_EQ(20, V.getKcapaciteit());
 }
 
 TEST_F(VaccinSimulatieTest, VaccinatieCentrum_getMaxStock) {
-    VaccinatieCentrum *V = new VaccinatieCentrum(20, 10, "A", "B");
-    EXPECT_EQ(40, V->getMaxStock());
-    delete V;
+    VaccinatieCentrum V(20, 10, "A", "B");
+    EXPECT_EQ(40, V.getMaxStock());
 }
 
 TEST_F(VaccinSimulatieTest, VaccinatieCentrum_AantalGeleverdeVaccins) {
-    VaccinatieCentrum *V = new VaccinatieCentrum(20, 10, "A", "B");
-    EXPECT_EQ(0, V->getAantalGeleverdeVaccins());
-    V->ontvangLevering(3);
-    EXPECT_EQ(3, V->getAantalGeleverdeVaccins());
-    delete V;
+    VaccinatieCentrum V(20, 10, "A", "B");
+    EXPECT_EQ(0, V.getAantalGeleverdeVaccins());
+    V.ontvangLevering(3);
+    EXPECT_EQ(3, V.getAantalGeleverdeVaccins());
 }
 
 TEST_F(VaccinSimulatieTest, VaccinatieCentrum_isVol) {
-    VaccinatieCentrum *V = new VaccinatieCentrum(20, 10, "A", "B");
-    EXPECT_FALSE(V->isVol());
-    V->setVaccins(40);
-    EXPECT_TRUE(V->isVol());
-    delete V;
+    VaccinatieCentrum V(20, 10, "A", "B");
+    EXPECT_FALSE(V.isVol());
+    V.setVaccins(40);
+    EXPECT_TRUE(V.isVol());
 }
 
 TEST_F(VaccinSimulatieTest, VaccinatieCentrum_isVolNaLevering) {
-    VaccinatieCentrum *V = new VaccinatieCentrum(20, 10, "A", "B");
-    EXPECT_FALSE(V->isVolNaLevering(36));
-    EXPECT_TRUE(V->isVolNaLevering(80));
-    delete V;
+    VaccinatieCentrum V(20, 10, "A", "B");
+    EXPECT_FALSE(V.isVolNaLevering(36));
+    EXPECT_TRUE(V.isVolNaLevering(80));
 }
 
 TEST_F(VaccinSimulatieTest, VaccinatieCentrum_isIedereenGevaccineerd) {
-    VaccinatieCentrum *V = new VaccinatieCentrum(20, 10, "A", "B");
-    EXPECT_FALSE(V->isIedereenGevaccineerd());
-    V->setAantalVaccinaties(10);
-    EXPECT_TRUE(V->isIedereenGevaccineerd());
-    delete V;
+    VaccinatieCentrum V(20, 10, "A", "B");
+    EXPECT_FALSE(V.isIedereenGevaccineerd());
+    V.setAantalVaccinaties(10);
+    EXPECT_TRUE(V.isIedereenGevaccineerd());
 }
 
 TEST_F(VaccinSimulatieTest, VaccinatieCentrum_nieuweDag1) {
-    VaccinatieCentrum *V = new VaccinatieCentrum(20, 10, "A", "B");
-    V->ontvangLevering(10);
-    V->nieuweDag();
-    EXPECT_EQ(0, V->getAantalGeleverdeVaccins());
-    EXPECT_EQ(10, V->getAantalVaccinaties());
-    delete V;
+    VaccinatieCentrum V(20, 10, "A", "B");
+    V.ontvangLevering(10);
+    V.nieuweDag();
+    EXPECT_EQ(0, V.getAantalGeleverdeVaccins());
+    EXPECT_EQ(10, V.getAantalVaccinaties());
 }
 
 TEST_F(VaccinSimulatieTest, VaccinatieCentrum_nieuweDag2) {
-    VaccinatieCentrum *V = new VaccinatieCentrum(10, 40, "A", "B");
-    V->ontvangLevering(15);
-    V->nieuweDag();
-    EXPECT_EQ(0, V->getAantalGeleverdeVaccins());
-    EXPECT_EQ(10, V->getAantalVaccinaties());
-    EXPECT_EQ(5, V->getAantalVaccins());
-    delete V;
+    VaccinatieCentrum V(10, 40, "A", "B");
+    V.ontvangLevering(15);
+    V.nieuweDag();
+    EXPECT_EQ(0, V.getAantalGeleverdeVaccins());
+    EXPECT_EQ(10, V.getAantalVaccinaties());
+    EXPECT_EQ(5, V.getAantalVaccins());
 }
 
 TEST_F(VaccinSimulatieTest, VaccinatieCentrum_nieuweDag3) {
-    VaccinatieCentrum *V = new VaccinatieCentrum(10, 5, "A", "B");
-    V->ontvangLevering(15);
-    V->nieuweDag();
-    EXPECT_EQ(0, V->getAantalGeleverdeVaccins());
-    EXPECT_EQ(5, V->getAantalVaccinaties());
-    EXPECT_EQ(10, V->getAantalVaccins());
-    delete V;
+    VaccinatieCentrum V(10, 5, "A", "B");
+    V.ontvangLevering(15);
+    V.nieuweDag();
+    EXPECT_EQ(0, V.getAantalGeleverdeVaccins());
+    EXPECT_EQ(5, V.getAantalVaccinaties());
+    EXPECT_EQ(10, V.getAantalVaccins());
 }
 
 //HUB
@@ -380,25 +365,20 @@ TEST_F(VaccinSimulatieTest, Hub_minAantalLeveringen) {
     map<string, VaccinatieCentrum *>::const_iterator it = H->getFverbondenCentra().begin();
     EXPECT_EQ(2, H->minAantalLeveringen(it));
     delete H;
-    delete V;
 }
 
 TEST_F(VaccinSimulatieTest, Hub_verdeelVaccins) {
     Hub *H = new Hub(30, 10, 3);
     VaccinatieCentrum *V1 = new VaccinatieCentrum(10, 10, "A", "B");
     VaccinatieCentrum *V2 = new VaccinatieCentrum(5, 12, "C", "D");
-    vector<VaccinatieCentrum *> centra;
-    centra.push_back(V1);
-    centra.push_back(V2);
-    H->addFverbondenCentra(centra);
+    H->addCentrum(V1);
+    H->addCentrum(V2);
     H->verdeelVaccins();
     EXPECT_EQ(18, V1->getAantalGeleverdeVaccins());
     EXPECT_EQ(9, V2->getAantalGeleverdeVaccins());
     EXPECT_EQ(3, H->getAantalVaccins());
 
     delete H;
-    delete V1;
-    delete V2;
 }
 
 TEST_F(VaccinSimulatieTest, Hub_ontvangLevering) {
@@ -411,16 +391,13 @@ TEST_F(VaccinSimulatieTest, Hub_ontvangLevering) {
 TEST_F(VaccinSimulatieTest, Hub_nieuweDag) {
     Hub *H = new Hub(10, 10, 10);
     VaccinatieCentrum *V = new VaccinatieCentrum(10, 10, "A", "B");
-    vector<VaccinatieCentrum *> centra;
-    centra.push_back(V);
-    H->addFverbondenCentra(centra);
+    H->addCentrum(V);
     V->ontvangLevering(10);
     EXPECT_EQ(10, V->getAantalGeleverdeVaccins());
     H->nieuweDag();
     EXPECT_EQ(0, V->getAantalGeleverdeVaccins());
     EXPECT_TRUE(V->isIedereenGevaccineerd());
     delete H;
-    delete V;
 }
 
 
