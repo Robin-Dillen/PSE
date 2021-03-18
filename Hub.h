@@ -30,6 +30,11 @@ public:
     Hub(const int kaantal_vaccins_per_levering, const int kleveringen_interval, const int kaantal_vaccins_per_lading);
 
     /**
+     * Verwijdert alle centra van deze hub
+     */
+    virtual ~Hub();
+
+    /**
      * @return geeft terug of het object correct is geïnitialiseert
      */
     bool isProperlyInitialized() const;
