@@ -160,4 +160,11 @@ void Hub::addCentrum(VaccinatieCentrum *centrum) {
     ENSURE(fverbonden_centra.size() == og_size + 1, "Het vaccinatie centrum is niet toegevoegt!");
 }
 
+Hub::~Hub() {
+    map<string, VaccinatieCentrum*>::iterator it;
+    for(it = fverbonden_centra.begin(); it != fverbonden_centra.end(); it++){
+        delete it->second;
+    }
+}
+
 
