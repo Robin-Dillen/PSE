@@ -20,7 +20,7 @@ using namespace std;
 
 // converts a all types supporting << to strings
 template<typename AType>
-string to_string(AType var) {
+inline string to_string(AType var) {
     string str; // a variable of str data type
 
     // using the stringstream class to insert an int and
@@ -32,7 +32,7 @@ string to_string(AType var) {
 }
 
 // converts an int to a string
-int to_int(const string &s) {
+inline int to_int(const string &s) {
     int ret;
     stringstream ss;
     ss << s;
@@ -41,12 +41,12 @@ int to_int(const string &s) {
 }
 
 // volgende functies zijn van het TicTacToe voorbeeld
-bool DirectoryExists(const std::string dirname) {
+inline bool DirectoryExists(const std::string &dirname) {
     struct stat st;
     return stat(dirname.c_str(), &st) == 0;
 }
 
-bool FileExists(const std::string filename) {
+inline bool FileExists(const std::string &filename) {
     struct stat st;
     if (stat(filename.c_str(), &st) != 0) return false;
     ifstream f(filename.c_str());
@@ -59,13 +59,13 @@ bool FileExists(const std::string filename) {
     }
 }
 
-bool FileIsEmpty(const std::string filename) {
+inline bool FileIsEmpty(const std::string &filename) {
     struct stat st;
     if (stat(filename.c_str(), &st) != 0) return true; // File does not exist; thus it is empty
     return st.st_size == 0;
 }
 
-bool FileCompare(const std::string leftFileName, const std::string rightFileName) {
+inline bool FileCompare(const std::string &leftFileName, const std::string &rightFileName) {
     ifstream leftFile, rightFile;
     char leftRead, rightRead;
     bool result;
@@ -95,6 +95,38 @@ bool FileCompare(const std::string leftFileName, const std::string rightFileName
     leftFile.close();
     rightFile.close();
     return result;
+}
+
+/**
+ * clears a file, if it exists, doesn't create a new file
+ * @param filename Full path to the file with extension!
+ * ENSURE(FileIsEmpty(filename), "Failed emptying the file!");
+ */
+inline void emptyFile(const string &filename) {
+    if (!FileExists(filename) || FileIsEmpty(filename)) {
+        return;
+    }
+    std::ofstream ofs;
+    ofs.open(filename.c_str(), std::ofstream::out | std::ofstream::trunc);
+    ofs.close();
+    ENSURE(FileIsEmpty(filename), "Failed emptying the file!");
+}
+
+/**
+ * clears a file, or creates one if it doesn't exist
+ * @param filename Full path to the file with extension!
+ * ENSURE(FileExists(filename), "Failed creating the file!");
+ * ENSURE(FileIsEmpty(filename), "Failed emptying the file!");
+ */
+inline void makeEmptyFile(const string &filename) {
+    if (FileIsEmpty(filename)) {
+        return;
+    }
+    std::ofstream ofs;
+    ofs.open(filename.c_str(), std::ofstream::out | std::ofstream::trunc);
+    ofs.close();
+    ENSURE(FileExists(filename), "Failed creating the file!");
+    ENSURE(FileIsEmpty(filename), "Failed emptying the file!");
 }
 // einde van de gekopieerde functies
 

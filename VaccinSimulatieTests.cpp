@@ -11,6 +11,9 @@
 #include "VaccinatieCentrum.h"
 #include "Parser.h"
 #include "Lib.h"
+#include "Utils.h"
+
+#define ERROR_FILE "../err.txt"
 
 class VaccinSimulatieTest : public ::testing::Test {
 protected:
@@ -28,6 +31,7 @@ should define it if you need to initialize the variables.
 Otherwise, this can be skipped.
 */
     virtual void SetUp() {
+        freopen(ERROR_FILE, "a+", stderr);
     }
 
 /**
@@ -36,16 +40,17 @@ You should define it if there is cleanup work to do.  Otherwise,
 you don't have to provide it.
 */
     virtual void TearDown() {
+        fclose(stderr);
     }
 
 /**
 Declares the variables your tests want to use.
 */
+
 };
 
 
 TEST_F(VaccinSimulatieTest, DefaultConstructor) {
-
     Parser P("../XMLfiles/test001.xml");
     Hub *hub = P.getFhubs()[0];
     EXPECT_TRUE(hub->isProperlyInitialized());
@@ -464,6 +469,7 @@ TEST_F(VaccinSimulatieTest, ParserExeption5) {
 }
 
 int main(int argc, char **argv) {
+    emptyFile("../err.txt");
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
 }
