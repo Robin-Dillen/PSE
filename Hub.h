@@ -80,6 +80,7 @@ public:
      * @param aantalVaccins: int
      * @return void
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling setAantalVaccins");
+     * \n ENSURE(aantalVaccins == getAantalVaccins(), "Het setten van het aantal vaccins is mislukt!");
      */
     void setAantalVaccins(int aantalVaccins);
 
@@ -88,6 +89,7 @@ public:
      * @param fverbondenCentra: een map met als key een string(naam van vaccinatie centrum) en als value een pointer naar een vaccinatie centrum
      * @return void
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling addFverbondenCentra");
+     * \n ENSURE(fverbonden_centra.size() == fverbondenCentra.size() + start_size, "De centra zijn niet (volledig) Toegevoegd");
      */
     void addFverbondenCentra(const map<string, VaccinatieCentrum *> &fverbondenCentra);
 
@@ -125,6 +127,7 @@ public:
      * ontvangt een levering, voegt het aantal geleverde vaccins toe aan het aantal vaccins van de hub.
      * @param aantal_vaccins het aantal geleverde vaccins
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling ontvangLevering");
+     * \n ENSURE(aantal_geleverde_vaccins + begin_aantal_vaccins == getAantalVaccins(), "De vaccins werden niet succesvol ontvangen!");
      */
     void ontvangLevering(int aantal_vaccins);
 

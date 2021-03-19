@@ -63,30 +63,39 @@ int VaccinatieCentrum::getMaxStock() const {
 void VaccinatieCentrum::setVaccins(int vaccins) {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling setVaccins");
     aantal_vaccins = vaccins;
+    ENSURE(vaccins == getAantalVaccins(), "De vaccins zijn niet succesvol ge-set!");
 }
 
 void VaccinatieCentrum::setAantalVaccinaties(int aantalVaccinaties) {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling setAantalVaccinaties");
     aantal_vaccinaties = aantalVaccinaties;
+    ENSURE(aantal_vaccinaties == getAantalVaccinaties(), "Het aantal vaccinaties is niet succesvol ge-set!");
 }
 
 void VaccinatieCentrum::nieuweDag() {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling nieuweDag");
     // update het aantal vaccins
+    int begin_aantal_vaccins = getAantalVaccins();
     aantal_vaccins += aantal_geleverde_vaccins;
     ENSURE(aantal_vaccins <= getMaxStock(), "Error, er zijn te veel vaccins geleverd!");
+    ENSURE(begin_aantal_vaccins + getAantalGeleverdeVaccins() == aantal_vaccins,
+           "De vaccinaties zijn niet succesvol ontvangen!");
     aantal_geleverde_vaccins_buffer = aantal_geleverde_vaccins;
     aantal_geleverde_vaccins = 0;
+    ENSURE(getAantalGeleverdeVaccins() == 0, "Het aantal geleverde vaccins is niet succesvol gereset!");
 
     // check hoeveel mensen gevaccineerd kunnen worden
     int vaccinaties = min(aantal_vaccins, kcapaciteit);
     vaccinaties = min(vaccinaties, kaantal_inwoners - aantal_vaccinaties);
 
+    begin_aantal_vaccins = getAantalVaccins();
+    int begin_aantal_vaccinaties = getAantalVaccinaties();
     // verminder het aantal vaccins en vermeerder het aantal gevaccineerden
     aantal_vaccins -= vaccinaties;
     aantal_vaccinaties += vaccinaties;
-    //cout << "er werden " << vaccinaties << " inwoners gevaccineerd in " << kfname << ". "
-    //    << ((double) aantal_vaccinaties / kaantal_inwoners) * 100 << "% is reeds gevaccineerd" << endl;
+    ENSURE(begin_aantal_vaccins - vaccinaties == getAantalVaccins(), "Het aantal vaccins is niet geüpdate!");
+    ENSURE(begin_aantal_vaccinaties + vaccinaties == getAantalVaccinaties(),
+           "Het aantal vaccinaties is niet succesvol geüpdate!");
 }
 
 bool VaccinatieCentrum::isVol() const {
@@ -101,7 +110,10 @@ bool VaccinatieCentrum::isVolNaLevering(int vaccins_in_levering) const {
 
 void VaccinatieCentrum::ontvangLevering(int vaccins_in_levering) {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling ontvangLevering");
+    int begin_aantal_geleverde_vaccins = getAantalGeleverdeVaccins();
     aantal_geleverde_vaccins += vaccins_in_levering;
+    ENSURE(begin_aantal_geleverde_vaccins + vaccins_in_levering == getAantalGeleverdeVaccins(),
+           "De vaccins zijn niet succesvol geleverd!");
 }
 
 bool VaccinatieCentrum::isIedereenGevaccineerd() const {
