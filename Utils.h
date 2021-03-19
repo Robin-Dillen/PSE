@@ -31,7 +31,7 @@ inline string to_string(AType var) {
     return str;
 }
 
-// converts an int to a string
+// converts an string to an int
 inline int to_int(const string &s) {
     int ret;
     stringstream ss;
