@@ -85,6 +85,7 @@ public:
      * update het aantal_vaccins
      * @param vaccins: int
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling setVaccins");
+     * \n ENSURE(aantal_vaccins_begin + vaccins == getAantalVaccins(), "De vaccins zijn niet succesvol toegevoegt!");
      */
     void setVaccins(int vaccins);
 
@@ -92,12 +93,18 @@ public:
      * update het aantal_vaccinaties
      * @param aantalVaccinaties: int
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling setAantalVaccinaties");
+     * \n ENSURE(aantal_vaccinaties == getAantalVaccinaties(), "Het aantal vaccinaties is niet succesvol ge-set!");
      */
     void setAantalVaccinaties(int aantalVaccinaties);
 
     /*!
      *start een nieuwe dag
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling nieuweDag");
+     * \n ENSURE(aantal_vaccins <= getMaxStock(), "Error, er zijn te veel vaccins geleverd!");
+     * \n ENSURE(begin_aantal_vaccins + getAantalGeleverdeVaccins() == aantal_vaccins, "De vaccinaties zijn niet succesvol ontvangen!");
+     * \n ENSURE(getAantalGeleverdeVaccins() = 0, "Het aantal geleverde vaccins is niet succesvol gereset!");
+     * \n ENSURE(begin_aantal_vaccins - vaccinaties == getAantalVaccins(), "Het aantal vaccins is niet geüpdate!");
+     * \n ENSURE(begin_aantal_vaccinaties + vaccinaties == getAantalVaccinaties(), "Het aantal vaccinaties is niet succesvol geüpdate!");
      */
     void nieuweDag();
 
@@ -116,6 +123,7 @@ public:
     /*!
      * ontvangt een levering en plaatst de vaccinaties in de stock
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling ontvangLevering");
+     * \n ENSURE(begin_aantal_geleverde_vaccins + vaccins_in_levering == getAantalGeleverdeVaccins(), "De vaccins zijn niet succesvol geleverd!");
      */
     void ontvangLevering(int vaccins_in_levering);
 

@@ -4,6 +4,7 @@
 #include "Parser.h"
 #include "Output.h"
 #include "Hub.h"
+#include "Utils.h"
 
 using namespace std;
 

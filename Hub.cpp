@@ -60,12 +60,16 @@ const map<string, VaccinatieCentrum *> &Hub::getFverbondenCentra() const {
 void Hub::setAantalVaccins(int aantalVaccins) {
     REQUIRE(isProperlyInitialized(), "Parser wasn't initialized when calling setAantalVaccins");
     aantal_vaccins = aantalVaccins;
+    ENSURE(aantalVaccins == getAantalVaccins(), "Het setten van het aantal vaccins is mislukt!");
 }
 
 void Hub::addFverbondenCentra(const map<string, VaccinatieCentrum *> &fverbondenCentra) {
     REQUIRE(isProperlyInitialized(), "Parser wasn't initialized when calling addFverbondenCentra(map)");
     //Voegt centra toe aan de hub
+    int start_size = fverbonden_centra.size();
     fverbonden_centra = fverbondenCentra;
+    ENSURE(fverbonden_centra.size() == fverbondenCentra.size() + start_size,
+           "De centra zijn niet (volledig) Toegevoegd");
 }
 
 void Hub::addFverbondenCentra(const vector<VaccinatieCentrum *> &fverbondenCentra) {
@@ -107,7 +111,10 @@ void Hub::nieuweDag() {
 void Hub::ontvangLevering( int aantal_geleverde_vaccins) {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling ontvangLevering");
     //voegt geleverde vaccins toe aan de stock
+    int begin_aantal_vaccins = getAantalVaccins();
     aantal_vaccins += aantal_geleverde_vaccins;
+    ENSURE(aantal_geleverde_vaccins + begin_aantal_vaccins == getAantalVaccins(),
+           "De vaccins werden niet succesvol ontvangen!");
 }
 
 void Hub::verdeelVaccins() {
