@@ -3,6 +3,10 @@ cmake-build*
 gtest
 googletest-release-1.10.0.zip
 Output.txt
+/Outputfiles/
+err.txt
+*.zip
+*.docx
 
 # Created by https://www.toptal.com/developers/gitignore/api/c++
 # Edit at https://www.toptal.com/developers/gitignore?templates=c++
