@@ -67,34 +67,53 @@ inline bool FileIsEmpty(const std::string &filename) {
 
 inline bool FileCompare(const std::string &leftFileName, const std::string &rightFileName) {
     ifstream leftFile, rightFile;
-    char leftRead, rightRead;
-    bool result;
 
-    // Open the two files.
-    leftFile.open(leftFileName.c_str());
-    if (!leftFile.is_open()) {
-        return false;
-    };
-    rightFile.open(rightFileName.c_str());
-    if (!rightFile.is_open()) {
-        leftFile.close();
-        return false;
-    };
+//    // Open the two files.
+//    leftFile.open(leftFileName.c_str());
+//    if (!leftFile.is_open()) {
+//        return false;
+//    };
+//    rightFile.open(rightFileName.c_str());
+//    if (!rightFile.is_open()) {
+//        leftFile.close();
+//        return false;
+//    };
+//
+//    result = true; // files exist and are open; assume equality unless a counterexamples shows up.
+//    while (result && leftFile.good() && rightFile.good()) {
+//        leftFile.get(leftRead);
+//        rightFile.get(rightRead);
+//        result = (leftRead == rightRead);
+//    };
+//    if (result) {
+//        // last read was still equal; are we at the end of both files ?
+//        result = (!leftFile.good()) && (!rightFile.good());
+//    };
+//
+//    leftFile.close();
+//    rightFile.close();
+//    return result;
 
-    result = true; // files exist and are open; assume equality unless a counterexamples shows up.
-    while (result && leftFile.good() && rightFile.good()) {
-        leftFile.get(leftRead);
-        rightFile.get(rightRead);
-        result = (leftRead == rightRead);
-    };
-    if (result) {
-        // last read was still equal; are we at the end of both files ?
-        result = (!leftFile.good()) && (!rightFile.good());
-    };
-
-    leftFile.close();
-    rightFile.close();
-    return result;
+//https://stackoverflow.com/a/48877081/10875953
+    std::string lineA;
+    std::string lineB;
+    while (getline(leftFile, lineA)) {
+        bool found(false);
+        // read File2 until match is found
+        while (getline(rightFile, lineB)) {
+            if (lineA == lineB) {
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            return false;
+        }
+        // clear the state of File2 stream
+        rightFile.clear();
+        rightFile.seekg(0, ios::beg);
+    }
+    return true;
 }
 
 /**

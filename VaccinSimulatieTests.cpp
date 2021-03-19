@@ -473,10 +473,10 @@ TEST_F(VaccinSimulatieTest, OutputFileTest) {
     string prefix_test = "Expected_";
     string output = "Output_";
     string filename = prefix + "001";
-    for (int i = 0; !FileExists(filename + ".xml"); i++) {
+    for (int i = 2; FileExists(filename + ".xml"); i++) {
         if (FileExists(OUTPUT_FILE_LOCATION + prefix_test + output + filename + ".txt")) {
             Simulatie(filename + ".xml", false);
-            EXPECT_TRUE(FileCompare(OUTPUT_FILE_LOCATION + output + filename + ".txt", // not working TODO
+            EXPECT_TRUE(FileCompare(OUTPUT_FILE_LOCATION + output + filename + ".txt",
                                     OUTPUT_FILE_LOCATION + prefix_test + output + filename + ".txt"));
         }
         filename = to_string(i);
