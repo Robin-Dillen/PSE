@@ -5,21 +5,21 @@
 // Copyright   : Project Software Engineering - BA1 Informatica - Niels Van den Broeck, Robin Dillen - University of Antwerp
 // Description : defines a VaccinatieCentrum
 //============================================================================
-
 #include "gtest/gtest.h"
 #include "Hub.h"
 #include "VaccinatieCentrum.h"
 #include "Parser.h"
-#include "Lib.h"
 #include "Utils.h"
+#include "VaccinSimulatie.h"
+#include "Lib.h"
 
 #define ERROR_FILE "../err.txt"
 
 class VaccinSimulatieTest : public ::testing::Test {
 protected:
 //    friend class Hub;
-//    // You should make the members protected s.t. they can be
-//    // accessed from sub-classes.
+    // You should make the members protected s.t. they can be
+    // accessed from sub-classes.
 //
 //    friend class VaccinatieCentrum;
 //    // You should make the members protected s.t. they can be
@@ -465,6 +465,25 @@ TEST_F(VaccinSimulatieTest, ParserExeption5) {
     {
         Parser P("../XMLfiles/test015.xml");
         EXPECT_EQ(1, P.errorOccured(UNKNOWN_TAG));
+    }
+}
+
+TEST_F(VaccinSimulatieTest, OutputFileTest) {
+    string prefix = "test";
+    string prefix_test = "Expected_";
+    string output = "Output_";
+    string filename = prefix + "001";
+    for (int i = 2; FileExists(filename + ".xml"); i++) {
+        if (FileExists(OUTPUT_FILE_LOCATION + prefix_test + output + filename + ".txt")) {
+            Simulatie(filename + ".xml", false);
+            EXPECT_TRUE(FileCompare(OUTPUT_FILE_LOCATION + output + filename + ".txt",
+                                    OUTPUT_FILE_LOCATION + prefix_test + output + filename + ".txt"));
+        }
+        filename = to_string(i);
+        while (filename.size() != 3) {
+            filename.insert(0, "0");
+        }
+        filename = prefix + filename;
     }
 }
 

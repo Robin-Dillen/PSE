@@ -9,6 +9,8 @@
 #ifndef PSE_LIB_H
 #define PSE_LIB_H
 
-#define OUTPUT_FILE_LOCATION "../"
+#include <string>
+
+#define OUTPUT_FILE_LOCATION string("../Outputfiles/")
 
 #endif //PSE_LIB_H
