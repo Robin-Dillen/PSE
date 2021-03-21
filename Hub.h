@@ -16,6 +16,7 @@
 #include <iostream> // for testing
 
 #include "lib/DesignByContract.h"
+#include "Lib.h"
 
 using namespace std;
 
@@ -27,7 +28,9 @@ public:
     /**
     \n ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
     */
-    Hub(const int kaantal_vaccins_per_levering, const int kleveringen_interval, const int kaantal_vaccins_per_lading);
+//    Hub(const int kaantal_vaccins_per_levering, const int kleveringen_interval, const int kaantal_vaccins_per_lading);
+
+    Hub(const map<string, Vaccin *> &vaccins);
 
     /**
      * Verwijdert alle centra van deze hub
@@ -40,16 +43,18 @@ public:
     bool isProperlyInitialized() const;
 
     /**
+     * @param type: naam van het vaccin 
      * @return int :geeft terug om de hoeveel dagen een levering vaccins binnenkomt
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getFhub()");
      */
-    int getAantalVaccins() const;
+    int getAantalVaccins(const string &type) const;
 
     /**
+     * @param type: naam van het vaccin waarvan we het interval willen weten
      * @return int :geeft terug om de hoeveel dagen een levering vaccins binnenkomt
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getFhub()");
      */
-    int getLeveringenInterval() const;
+    int getLeveringenInterval(const string &type) const;
 
     /*!
      * @return geeft het totaal aantal vaccinaties terug: som van de vaccinaties van de vaccinatie centra
@@ -58,16 +63,18 @@ public:
     int getTotaalAantalVaccinaties() const; // wordt wss niet gebruikt
 
     /*!
+     * @param type: naam van het vaccin 
      * @return geeft het aantal vaccins per levering terug
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getKaantalVaccinsPerLevering");
      */
-    const int getKaantalVaccinsPerLevering() const;
+    const int getKaantalVaccinsPerLevering(const string &type) const;
 
     /*!
+     * @param type: naam van het vaccin 
      * @return geeft het aantal vaccins per lading terug
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getKaantalVaccinsPerLading");
      */
-    const int getKaantalVaccinsPerLading() const;
+    const int getKaantalVaccinsPerLading(const string &type) const;
 
     /*!
      * @return geeft de verbonden centra terug
@@ -77,12 +84,13 @@ public:
 
     /**
      * update het aantal vaccins
+     * @param type: naam van het vaccin 
      * @param aantalVaccins: int
      * @return void
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling setAantalVaccins");
      * \n ENSURE(aantalVaccins == getAantalVaccins(), "Het setten van het aantal vaccins is mislukt!");
      */
-    void setAantalVaccins(int aantalVaccins);
+    void setAantalVaccins(const string &type, int aantalVaccins);
 
     /**
      * update de verbonden centra
@@ -125,11 +133,12 @@ public:
 
     /*!
      * ontvangt een levering, voegt het aantal geleverde vaccins toe aan het aantal vaccins van de hub.
+     * @param type: naam van het vaccin
      * @param aantal_vaccins het aantal geleverde vaccins
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling ontvangLevering");
      * \n ENSURE(aantal_geleverde_vaccins + begin_aantal_vaccins == getAantalVaccins(), "De vaccins werden niet succesvol ontvangen!");
      */
-    void ontvangLevering(int aantal_vaccins);
+    void ontvangLevering(const string &type, int aantal_vaccins);
 
     /*!
      * verdeelt de vaccins over alle verbonden vaccinatie centra
@@ -144,21 +153,23 @@ public:
      * @return het minimum aantal leveringen
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling minAantalLeveringen");
      */
-    int minAantalLeveringen(const map<string, VaccinatieCentrum *>::const_iterator &it) const;
+//    int minAantalLeveringen(const map<string, VaccinatieCentrum *>::const_iterator &it) const;
 
 private:
 
     // const attributes
-    const int kaantal_vaccins_per_levering;
-    const int kleveringen_interval;
-    const int kaantal_vaccins_per_lading;
+//    const int kaantal_vaccins_per_levering;
+//    const int kleveringen_interval;
+//    const int kaantal_vaccins_per_lading;
+    const map<string, Vaccin *> vaccins;
 
     const Hub *_initCheck; // pointer naar zichzelf om te checken of het object correct geïnitialseert is
 
     // changing attributes
     map<string, VaccinatieCentrum *> fverbonden_centra; // slaagt alle vaccinatie centra op met zoeksleutel: name
 
-    int aantal_vaccins; // aantal vaccins in de hub
+//    int aantal_vaccins; // aantal vaccins in de hub
+    map<string, int> aantal_vaccins;
 };
 
 

@@ -13,4 +13,17 @@
 
 #define OUTPUT_FILE_LOCATION string("../Outputfiles/")
 
+struct Vaccin {
+    Vaccin(const std::string &type, const int levering, const int interval, const int transport, const int hernieuwing,
+           const int temperatuur) : type(type), levering(levering), interval(interval), transport(transport),
+                                    hernieuwing(hernieuwing), temperatuur(temperatuur) {}
+
+    const std::string type;
+    const int levering;
+    const int interval;
+    const int transport;
+    const int hernieuwing;
+    const int temperatuur;
+};
+
 #endif //PSE_LIB_H
