@@ -12,11 +12,14 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <list>
 
 #include "Lib.h"
 #include "lib/DesignByContract.h"
 
 using namespace std;
+
+class Batch; //TODO
 
 
 class VaccinatieCentrum {
@@ -148,11 +151,22 @@ private:
 
     const VaccinatieCentrum *_initCheck; // pointer naar zichzelf om te checken of het object correct geïnitialseert is
 
+    list<vector<Batch *> > aantal_eerste_prikken;
+    // elke loop getten en verwijderen we front, en loopen we door de batches(van front), we checken of we ze een 2de prik kunnen geven etc...
+    // -> voeg toe bij aantal vaccinaties(mss voor statistiche verwerking, ook in aantal vaccinaties alles gescheiden houden)
+    // als er nog vaccins over zijn, gaan we een nieuwe batch aanmaken(als hernieuwbaar), we checken of aantal_eerste_prikken.size() >= hernieuwbaar
+    // zo ja, voeg nieuwe batch toe op plaats hernieuwbaar
+    // zo nee aantal_eerste_prikken.resize(hernieuwbaar) !!niet reserve!!
+    // we gebruiken een list omdat we front vaak moeten verwijderen(geeft shifts zoals bij vector)
+
     // changing attributes
-    vector<pair<Vaccin*,int> > vaccinTypes; //vaccin: Vaccintype, int: aantal vaccins van dit type
+    vector<pair<Vaccin *, int> > vaccinTypes; //vaccin: Vaccintype, int: aantal vaccins van dit type
     //int aantal_vaccins;
+
     int aantal_vaccinaties; // aantal mensen dat gevaccineert is
-    vector<pair<Vaccin*,int> > aantal_geleverde_vaccins; // aantal vaccins dat toegevoegd wordt na een levering
+    // we kunnen gwn een map<vaccin_naam, aantal> bijhouden
+
+    vector<pair<Vaccin *, int> > aantal_geleverde_vaccins; // aantal vaccins dat toegevoegd wordt na een levering
     int aantal_geleverde_vaccins_buffer; // aantal vaccins dat toegevoegd wordt na een levering(buffer for output)
 };
 
