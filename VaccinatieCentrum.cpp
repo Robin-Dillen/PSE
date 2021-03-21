@@ -102,8 +102,8 @@ void VaccinatieCentrum::nieuweDag() {
                     vaccinaties = 0;
                 }
             }
-            if(aantal_vaccins.at(it->first).second > 0 && vaccinaties > 0){
-                vaccinaties = min(vaccinaties, kaantal_inwoners-aantal_niet_vaccinaties);
+            vaccinaties = min(vaccinaties, kaantal_inwoners-aantal_niet_vaccinaties);
+            if(aantal_vaccins.at(it->first).second > vaccinaties && vaccinaties > 0){
                 aantal_niet_vaccinaties += vaccinaties;
                 if(aantal_eerste_prikken.size() < aantal_vaccins.at(it->first).first->hernieuwing){
                     aantal_eerste_prikken.resize(aantal_vaccins.at(it->first).first->hernieuwing);
