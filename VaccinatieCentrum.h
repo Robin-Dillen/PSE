@@ -11,16 +11,23 @@
 
 #include <string>
 #include <vector>
+#include <map>
 #include <iostream>
 #include <list>
+#include <deque>
 
 #include "Lib.h"
 #include "lib/DesignByContract.h"
 
 using namespace std;
 
-class Batch; //TODO
-
+/*
+class Batch{
+private:
+    Vaccin* vaccinType;
+    int aantal_inwoners;
+};
+*/
 
 class VaccinatieCentrum {
 public:
@@ -48,7 +55,7 @@ public:
      * @return geeft het aantal gevacineerde mensen terug
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getAantalVaccinaties");
      */
-    int getAantalVaccinaties() const;
+    int getAantalVaccinaties(const string &type) const;
 
     /**
      * @return geeft het adres van het vaccinatie centrum terug
@@ -92,7 +99,7 @@ public:
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling setVaccins");
      * \n ENSURE(aantal_vaccins_begin + vaccins == getAantalVaccins(), "De vaccins zijn niet succesvol toegevoegt!");
      */
-    void setVaccins(int vaccins,const string &type);
+    void setVaccins(int vaccins, const string &type);
 
     /**
      * update het aantal_vaccinaties
@@ -100,7 +107,7 @@ public:
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling setAantalVaccinaties");
      * \n ENSURE(aantal_vaccinaties == getAantalVaccinaties(), "Het aantal vaccinaties is niet succesvol ge-set!");
      */
-    void setAantalVaccinaties(int aantalVaccinaties);
+    void setAantalVaccinaties(int aantalVaccinaties,const string &type);
 
     /*!
      *start een nieuwe dag
@@ -151,7 +158,7 @@ private:
 
     const VaccinatieCentrum *_initCheck; // pointer naar zichzelf om te checken of het object correct geïnitialseert is
 
-    list<vector<Batch *> > aantal_eerste_prikken;
+    deque<map<string,int> > aantal_eerste_prikken;
     // elke loop getten en verwijderen we front, en loopen we door de batches(van front), we checken of we ze een 2de prik kunnen geven etc...
     // -> voeg toe bij aantal vaccinaties(mss voor statistiche verwerking, ook in aantal vaccinaties alles gescheiden houden)
     // als er nog vaccins over zijn, gaan we een nieuwe batch aanmaken(als hernieuwbaar), we checken of aantal_eerste_prikken.size() >= hernieuwbaar
@@ -160,13 +167,15 @@ private:
     // we gebruiken een list omdat we front vaak moeten verwijderen(geeft shifts zoals bij vector)
 
     // changing attributes
-    vector<pair<Vaccin *, int> > vaccinTypes; //vaccin: Vaccintype, int: aantal vaccins van dit type
+    map<string,pair<Vaccin *, int> > aantal_vaccins; //vaccin: Vaccintype, int: aantal vaccins van dit type
     //int aantal_vaccins;
 
-    int aantal_vaccinaties; // aantal mensen dat gevaccineert is
+    int aantal_niet_vaccinaties; //aantal mensen die nog geen vaccinatie hebben gekregen.
+
+    map<string, int> aantal_vaccinaties; // aantal mensen dat gevaccineert is
     // we kunnen gwn een map<vaccin_naam, aantal> bijhouden
 
-    vector<pair<Vaccin *, int> > aantal_geleverde_vaccins; // aantal vaccins dat toegevoegd wordt na een levering
+    map<string, int> aantal_geleverde_vaccins; // aantal vaccins dat toegevoegd wordt na een levering
     int aantal_geleverde_vaccins_buffer; // aantal vaccins dat toegevoegd wordt na een levering(buffer for output)
 };
 
