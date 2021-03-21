@@ -14,9 +14,7 @@ VaccinatieCentrum::VaccinatieCentrum(const int kcapaciteit, const int kaantalInw
                                                                                       kfname(kfname),
                                                                                       kfaddress(kfaddress),
                                                                                       _initCheck(this) {
-    aantal_vaccins = 0;
     aantal_vaccinaties = 0;
-    aantal_geleverde_vaccins = 0;
     aantal_geleverde_vaccins_buffer = 0;
     ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
 }
@@ -48,11 +46,11 @@ const int VaccinatieCentrum::getKcapaciteit() const {
     return kcapaciteit;
 }
 
-int VaccinatieCentrum::getAantalVaccins() const {
+int VaccinatieCentrum::getAantalVaccins(const string &type) const {
     return aantal_vaccins;
 }
 
-int VaccinatieCentrum::getAantalGeleverdeVaccins() const {
+int VaccinatieCentrum::getAantalGeleverdeVaccins(const string &type) const {
     return aantal_geleverde_vaccins;
 }
 
@@ -60,10 +58,10 @@ int VaccinatieCentrum::getMaxStock() const {
     return kcapaciteit * 2;
 }
 
-void VaccinatieCentrum::setVaccins(int vaccins) {
+void VaccinatieCentrum::setVaccins(int vaccins,const string &type) {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling setVaccins");
     aantal_vaccins = vaccins;
-    ENSURE(vaccins == getAantalVaccins(), "De vaccins zijn niet succesvol ge-set!");
+    ENSURE(vaccins == getAantalVaccins(type), "De vaccins zijn niet succesvol ge-set!");
 }
 
 void VaccinatieCentrum::setAantalVaccinaties(int aantalVaccinaties) {
@@ -75,10 +73,10 @@ void VaccinatieCentrum::setAantalVaccinaties(int aantalVaccinaties) {
 void VaccinatieCentrum::nieuweDag() {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling nieuweDag");
     // update het aantal vaccins
-    int begin_aantal_vaccins = getAantalVaccins();
+    int begin_aantal_vaccins = getAantalVaccins(type);
     aantal_vaccins += aantal_geleverde_vaccins;
     ENSURE(aantal_vaccins <= getMaxStock(), "Error, er zijn te veel vaccins geleverd!");
-    ENSURE(begin_aantal_vaccins + getAantalGeleverdeVaccins() == aantal_vaccins,
+    ENSURE(begin_aantal_vaccins + getAantalGeleverdeVaccins(type) == aantal_vaccins,
            "De vaccinaties zijn niet succesvol ontvangen!");
     aantal_geleverde_vaccins_buffer = aantal_geleverde_vaccins;
     aantal_geleverde_vaccins = 0;
@@ -88,12 +86,12 @@ void VaccinatieCentrum::nieuweDag() {
     int vaccinaties = min(aantal_vaccins, kcapaciteit);
     vaccinaties = min(vaccinaties, kaantal_inwoners - aantal_vaccinaties);
 
-    begin_aantal_vaccins = getAantalVaccins();
+    begin_aantal_vaccins = getAantalVaccins(type);
     int begin_aantal_vaccinaties = getAantalVaccinaties();
     // verminder het aantal vaccins en vermeerder het aantal gevaccineerden
     aantal_vaccins -= vaccinaties;
     aantal_vaccinaties += vaccinaties;
-    ENSURE(begin_aantal_vaccins - vaccinaties == getAantalVaccins(), "Het aantal vaccins is niet geüpdate!");
+    ENSURE(begin_aantal_vaccins - vaccinaties == getAantalVaccins(type), "Het aantal vaccins is niet geüpdate!");
     ENSURE(begin_aantal_vaccinaties + vaccinaties == getAantalVaccinaties(),
            "Het aantal vaccinaties is niet succesvol geüpdate!");
 }
@@ -108,7 +106,7 @@ bool VaccinatieCentrum::isVolNaLevering(int vaccins_in_levering) const {
     return (aantal_vaccins + vaccins_in_levering) > getMaxStock();
 }
 
-void VaccinatieCentrum::ontvangLevering(int vaccins_in_levering) {
+void VaccinatieCentrum::ontvangLevering(int vaccins_in_levering,const string &type) {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling ontvangLevering");
     int begin_aantal_geleverde_vaccins = getAantalGeleverdeVaccins();
     aantal_geleverde_vaccins += vaccins_in_levering;
@@ -126,6 +124,16 @@ int VaccinatieCentrum::getAantalGeleverdeVaccinsBuffer() const {
     return aantal_geleverde_vaccins_buffer;
 }
 
+void VaccinatieCentrum::addVaccinType(Vaccin* v){
+    for(int i =0; i<vaccinTypes.size();i++){
+        if(vaccinTypes[i].first->type == v->type){
+            return;
+        }
+    }
+    vaccinTypes.push_back(make_pair(v, 0));
+    aantal_geleverde_vaccins.push_back(make_pair(v, 0));
+    return;
+}
 
 
 

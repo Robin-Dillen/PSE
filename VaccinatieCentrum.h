@@ -10,8 +10,10 @@
 #define PSE_VACCINATIECENTRUM_H
 
 #include <string>
+#include <vector>
 #include <iostream>
 
+#include "Lib.h"
 #include "lib/DesignByContract.h"
 
 using namespace std;
@@ -67,7 +69,7 @@ public:
      * @return geeft het aantal vaccins van het vaccinatie centrum terug die momenteel beschikbaar zijn
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getKfaddress");
      */
-    int getAantalVaccins() const;
+    int getAantalVaccins(const string &type) const;
 
     /**
      * @return geeft het de maximum opslag weer van het vaccinatiecentrum
@@ -79,7 +81,7 @@ public:
      * @return geeft het aantal geleverde vaccinaties weer van het vaccinatie centrum terug
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getKfaddress");
      */
-    int getAantalGeleverdeVaccins() const;
+    int getAantalGeleverdeVaccins(const string &type) const;
 
     /**
      * update het aantal_vaccins
@@ -87,7 +89,7 @@ public:
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling setVaccins");
      * \n ENSURE(aantal_vaccins_begin + vaccins == getAantalVaccins(), "De vaccins zijn niet succesvol toegevoegt!");
      */
-    void setVaccins(int vaccins);
+    void setVaccins(int vaccins,const string &type);
 
     /**
      * update het aantal_vaccinaties
@@ -125,13 +127,15 @@ public:
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling ontvangLevering");
      * \n ENSURE(begin_aantal_geleverde_vaccins + vaccins_in_levering == getAantalGeleverdeVaccins(), "De vaccins zijn niet succesvol geleverd!");
      */
-    void ontvangLevering(int vaccins_in_levering);
+    void ontvangLevering(int vaccins_in_levering, const string &type);
 
     /*!
      * Kijkt na of iedereen gevaccineerd is.
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling isIedereenGevaccineerd");
      */
     bool isIedereenGevaccineerd() const;
+
+    void addVaccinType(Vaccin* v);
 
 private:
 
@@ -145,9 +149,10 @@ private:
     const VaccinatieCentrum *_initCheck; // pointer naar zichzelf om te checken of het object correct geïnitialseert is
 
     // changing attributes
-    int aantal_vaccins;
+    vector<pair<Vaccin*,int> > vaccinTypes; //vaccin: Vaccintype, int: aantal vaccins van dit type
+    //int aantal_vaccins;
     int aantal_vaccinaties; // aantal mensen dat gevaccineert is
-    int aantal_geleverde_vaccins; // aantal vaccins dat toegevoegd wordt na een levering
+    vector<pair<Vaccin*,int> > aantal_geleverde_vaccins; // aantal vaccins dat toegevoegd wordt na een levering
     int aantal_geleverde_vaccins_buffer; // aantal vaccins dat toegevoegd wordt na een levering(buffer for output)
 };
 

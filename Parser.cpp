@@ -318,6 +318,9 @@ Parser::Parser(const string &filename) : _initCheck(this) {
                 errors.push_back(MISSING_TAG);
             } else if(vaccinatieCentra[thirdElement->GetText()] != NULL){
                 H->addCentrum(vaccinatieCentra[thirdElement->GetText()]);
+                for(map<string, Vaccin*>::iterator it = vaccins.begin(); it != vaccins.end(); it++){
+                    vaccinatieCentra[thirdElement->GetText()]->addVaccinType(vaccins[it->first]);
+                }
             }
 
             // check of er extra, foute, tags aanwezig zijn
