@@ -156,9 +156,6 @@ Parser::Parser(const string &filename) : _initCheck(this) {
 
     // maak de hubs aan
     for (TiXmlElement *hub = root->FirstChildElement("HUB"); hub != NULL; hub = hub->NextSiblingElement("HUB")) {
-        int levering = -1;
-        int interval = -1;
-        int transport = -1;
 
 //        // leveringen moet bestaan
 //        ENSURE(hub->FirstChildElement("levering") != NULL, "levering does not exist");
@@ -190,21 +187,124 @@ Parser::Parser(const string &filename) : _initCheck(this) {
         ENSURE(hub->FirstChildElement("CENTRA") != NULL,
                ("Hub" + locationToString(hub) + "bevat geen 'CENTRA' tag").c_str());
 
+        ENSURE(hub->FirstChildElement("VACCIN") != NULL,
+               ("Hub" + locationToString(hub) + " moet een vaccin gedefineerd hebben").c_str());
         // lees vaccins in
+        map<string, Vaccin *> vaccins;
         for (TiXmlElement *vaccin = hub->FirstChildElement("VACCIN");
-             vaccin != NULL; vaccin = vaccin->NextSiblingElement("Vaccin")) {
-            ENSURE(vaccin->FirstChildElement("type") != NULL, "...");
+             vaccin != NULL; vaccin = vaccin->NextSiblingElement("VACCIN")) {
+            //TODO
+            bool correct = true;
+            int levering = -1;
+            int interval = -1;
+            int transport = -1;
+            int hernieuwing = 0;
+            int temperatuur = 25;
+
+            //ENSURE(vaccin->FirstChildElement("type") != NULL, ("Type van het vaccin" + locationToString(vaccin) + " bestaat niet!").c_str());
+            if (vaccin->FirstChildElement("type") == NULL) {
+                errors.push_back(MISSING_TAG);
+                cerr << "het element 'type' van het vaccin" + locationToString(vaccin) + " bestaat niet!";
+                correct = false;
+            }
             string naam = vaccin->FirstChildElement("type")->GetText();
-            ENSURE(vaccin->FirstChildElement("levering") != NULL, "...");
+            //ENSURE(!naam.empty(), ("Het type" + locationToString(vaccin->FirstChildElement("type")) + " van het vaccin heeft een ongeldige waarde").c_str());
+            if (naam.empty()) {
+                errors.push_back(WRONG_VALUE);
+                cerr << "Het type" + locationToString(vaccin->FirstChildElement("type")) +
+                        " van het vaccin heeft een ongeldige waarde";
+                correct = false;
+            }
+
+            //ENSURE(vaccin->FirstChildElement("levering") != NULL, "...");
+            if (("levering") == NULL) {
+                errors.push_back(MISSING_TAG);
+                cerr << "Het element 'levering' van het vaccin" + locationToString(vaccin) + " bestaat niet!";
+                correct = false;
+            }
             levering = to_int(vaccin->FirstChildElement("levering")->GetText());
-            ENSURE(vaccin->FirstChildElement("interval") != NULL, "...");
+            //ENSURE(levering > 0, "...");
+            if (levering <= 0) {
+                errors.push_back(WRONG_VALUE);
+                cerr << "de levering" + locationToString(vaccin->FirstChildElement("type")) +
+                        " van het vaccin heeft een ongeldige waarde";
+                correct = false;
+            }
+
+            //ENSURE(vaccin->FirstChildElement("interval") != NULL, "...");
+            if (vaccin->FirstChildElement("interval") == NULL) {
+                errors.push_back(MISSING_TAG);
+                cerr << "Het element 'interval' van het vaccin" + locationToString(vaccin) + " bestaat niet!";
+                correct = false;
+            }
             interval = to_int(vaccin->FirstChildElement("interval")->GetText());
-            ENSURE(vaccin->FirstChildElement("transport") != NULL, "...");
+            //ENSURE(interval > 0, "...");
+            if (interval <= 0) {
+                errors.push_back(WRONG_VALUE);
+                cerr << "Het element 'interval'" + locationToString(vaccin->FirstChildElement("type")) +
+                        " van het vaccin heeft een ongeldige waarde";
+                correct = false;
+            }
+
+            //ENSURE(vaccin->FirstChildElement("transport") != NULL, "...");
+            if (vaccin->FirstChildElement("transport") == NULL) {
+                errors.push_back(MISSING_TAG);
+                cerr << "Het element 'transport' van het vaccin" + locationToString(vaccin) + " bestaat niet!";
+                correct = false;
+            }
             transport = to_int(vaccin->FirstChildElement("transport")->GetText());
+            //ENSURE(transport > 0, "...");
+            if (transport <= 0) {
+                errors.push_back(WRONG_VALUE);
+                cerr << "Het element 'transport'" + locationToString(vaccin->FirstChildElement("type")) +
+                        " van het vaccin heeft een ongeldige waarde";
+                correct = false;
+            }
+
+            if (vaccin->FirstChildElement("hernieuwing") == NULL) {
+                errors.push_back(MISSING_TAG);
+                cerr << "Het element 'hernieuwing' van het vaccin" + locationToString(vaccin) + " bestaat niet!";
+                correct = false;
+            }
+            hernieuwing = to_int(vaccin->FirstChildElement("hernieuwing")->GetText());
+            if (hernieuwing < 0) {
+                errors.push_back(WRONG_VALUE);
+                cerr << "Het element 'hernieuwing'" + locationToString(vaccin->FirstChildElement("type")) +
+                        " van het vaccin heeft een ongeldige waarde";
+                correct = false;
+            }
+
+            if (vaccin->FirstChildElement("temperatuur") == NULL) {
+                errors.push_back(MISSING_TAG);
+                cerr << "Het element 'temperatuur' van het vaccin" + locationToString(vaccin) + " bestaat niet!";
+                correct = false;
+            }
+            temperatuur = to_int(vaccin->FirstChildElement("temperatuur")->GetText());
+            if (to_string(vaccin->FirstChildElement("temperatuur")->GetText()).empty()) {
+                errors.push_back(WRONG_VALUE);
+                cerr << "Het element 'temperatuur'" + locationToString(vaccin->FirstChildElement("type")) +
+                        " van het vaccin heeft een ongeldige waarde";
+                correct = false;
+            }
+
+            if (!correct) continue;
+
+            vaccins[naam] = new Vaccin(naam, levering, interval, transport, hernieuwing, temperatuur);
+
+            for (TiXmlElement *el = vaccin->FirstChildElement();
+                 el != NULL; el = el->NextSiblingElement("VACCIN")) {
+                string el_name = el->Value();
+                if (el_name != "type" && el_name != "levering" && el_name != "interval" && el_name != "transport" &&
+                    el_name != "hernieuwing" && el_name != "temperatuur") {
+                    errors.push_back(UNKNOWN_TAG);
+                    cerr << "Het element " << el_name << locationToString(el) << " wordt niet herkent!";
+                }
+            }
+
         }
+        ENSURE(vaccins.size() > 0, ("Er zijn geen geldige vaccin voor hub" + locationToString(hub) + " !").c_str());
 
-
-        Hub *H = new Hub(levering, interval, transport);
+        Hub *H = new Hub(vaccins);
         fhubs.push_back(H);
 
         for (
