@@ -160,34 +160,48 @@ Parser::Parser(const string &filename) : _initCheck(this) {
         int interval = -1;
         int transport = -1;
 
-        // leveringen moet bestaan
-        ENSURE(hub->FirstChildElement("levering") != NULL, "levering does not exist");
-        ENSURE(hub->FirstChildElement("levering")->GetText() != NULL, "levering heeft een ongeldige waarde");
-        stringstream g(hub->FirstChildElement("levering")->GetText());
-        g >> levering;
+//        // leveringen moet bestaan
+//        ENSURE(hub->FirstChildElement("levering") != NULL, "levering does not exist");
+//        ENSURE(hub->FirstChildElement("levering")->GetText() != NULL, "levering heeft een ongeldige waarde");
+//        stringstream g(hub->FirstChildElement("levering")->GetText());
+//        g >> levering;
+//
+//        // interval moet bestaan
+//        ENSURE(hub->FirstChildElement("interval") != NULL, "interval does not exist");
+//        ENSURE(hub->FirstChildElement("interval")->GetText() != NULL, "interval heeft een ongeldige waarde");
+//        stringstream h(hub->FirstChildElement("interval")->GetText());
+//        h >> interval;
+//
+//        // transport moet bestaan
+//        ENSURE(hub->FirstChildElement("transport") != NULL, "Transport does not exist");
+//        ENSURE(hub->FirstChildElement("transport")->GetText() != NULL, "Transport heeft een ongeldige waarde");
+//        stringstream i(hub->FirstChildElement("transport")->GetText());
+//        i >> transport;
+//
+//        ENSURE(levering > 0,
+//               ("Levering" + locationToString(hub->FirstChildElement("levering")) + " in hub" + locationToString(hub) +
+//                       "heeft een waarde kleiner dan 1").c_str());
+//        ENSURE(interval > 0,
+//               ("Interval" + locationToString(hub->FirstChildElement("interval")) + " in hub" + locationToString(hub) +
+//                       "heeft een waarde kleiner dan 1").c_str());
+//        ENSURE(transport > 0, ("Transport" + locationToString(hub->FirstChildElement("transport")) + " in hub" +
+//                locationToString(hub) + "heeft een waarde kleiner dan 1").c_str());
 
-        // interval moet bestaan
-        ENSURE(hub->FirstChildElement("interval") != NULL, "interval does not exist");
-        ENSURE(hub->FirstChildElement("interval")->GetText() != NULL, "interval heeft een ongeldige waarde");
-        stringstream h(hub->FirstChildElement("interval")->GetText());
-        h >> interval;
-
-        // transport moet bestaan
-        ENSURE(hub->FirstChildElement("transport") != NULL, "Transport does not exist");
-        ENSURE(hub->FirstChildElement("transport")->GetText() != NULL, "Transport heeft een ongeldige waarde");
-        stringstream i(hub->FirstChildElement("transport")->GetText());
-        i >> transport;
-
-        ENSURE(levering > 0,
-               ("Levering" + locationToString(hub->FirstChildElement("levering")) + " in hub" + locationToString(hub) +
-                       "heeft een waarde kleiner dan 1").c_str());
-        ENSURE(interval > 0,
-               ("Interval" + locationToString(hub->FirstChildElement("interval")) + " in hub" + locationToString(hub) +
-                       "heeft een waarde kleiner dan 1").c_str());
-        ENSURE(transport > 0, ("Transport" + locationToString(hub->FirstChildElement("transport")) + " in hub" +
-                locationToString(hub) + "heeft een waarde kleiner dan 1").c_str());
         ENSURE(hub->FirstChildElement("CENTRA") != NULL,
                ("Hub" + locationToString(hub) + "bevat geen 'CENTRA' tag").c_str());
+
+        // lees vaccins in
+        for (TiXmlElement *vaccin = hub->FirstChildElement("VACCIN");
+             vaccin != NULL; vaccin = vaccin->NextSiblingElement("Vaccin")) {
+            ENSURE(vaccin->FirstChildElement("type") != NULL, "...");
+            string naam = vaccin->FirstChildElement("type")->GetText();
+            ENSURE(vaccin->FirstChildElement("levering") != NULL, "...");
+            levering = to_int(vaccin->FirstChildElement("levering")->GetText());
+            ENSURE(vaccin->FirstChildElement("interval") != NULL, "...");
+            interval = to_int(vaccin->FirstChildElement("interval")->GetText());
+            ENSURE(vaccin->FirstChildElement("transport") != NULL, "...");
+            transport = to_int(vaccin->FirstChildElement("transport")->GetText());
+        }
 
 
         Hub *H = new Hub(levering, interval, transport);
