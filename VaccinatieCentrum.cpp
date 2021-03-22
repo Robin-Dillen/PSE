@@ -140,7 +140,11 @@ void VaccinatieCentrum::nieuweDag() {
                 aantal_niet_vaccinaties += vaccinaties;
                 int i = aantal_eerste_prikken.size();
                 if(i < aantal_vaccins.at(it->first).first->hernieuwing){
-                    aantal_eerste_prikken.resize(aantal_vaccins.at(it->first).first->hernieuwing);
+                    map<string, int> m;
+                    for(map<string, pair<Vaccin*, int> >::const_iterator type = aantal_vaccins.begin(); it != aantal_vaccins.end(); it++){
+                        m[type->first] = 0;
+                    }
+                    aantal_eerste_prikken.resize(aantal_vaccins.at(it->first).first->hernieuwing, m);
                 }
                 aantal_eerste_prikken[aantal_vaccins.at(it->first).first->hernieuwing].at(it->first) +=vaccinaties;
                 capaciteit -= vaccinaties;
