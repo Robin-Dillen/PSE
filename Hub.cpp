@@ -128,7 +128,7 @@ void Hub::verdeelVaccins() {
     //TEMPERATUUR = //TODO
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling verdeelVaccins");
     //eerste verdeling om alle eerste_prikken van die dag opnieuw te laten vaccineren.
-    for (map<string, VaccinatieCentrum *>::const_iterator centrum = fverbonden_centra.begin(), end = fverbonden_centra.end(); centrum != end; centrum++) {
+    for (map<string, VaccinatieCentrum *>::const_iterator centrum = fverbonden_centra.begin(); centrum != fverbonden_centra.end(); centrum++) {
         int capaciteit = centrum->second->getKcapaciteit();
         for(map<string,Vaccin*>::const_iterator vaccintype = vaccins.begin(); vaccintype != vaccins.end(); vaccintype++){
             if (centrum->second->getTodaysBatch(vaccintype->first) == 0 ||capaciteit <= 0) {
@@ -153,7 +153,7 @@ void Hub::verdeelVaccins() {
         }
     }
     //tweede verdeling zorgt ervoor dat alle centra voor het capaciteit kan vaccineren
-    for (map<string, VaccinatieCentrum *>::const_iterator centrum = fverbonden_centra.begin(), end = fverbonden_centra.end(); centrum != end; centrum++) {
+    for (map<string, VaccinatieCentrum *>::const_iterator centrum = fverbonden_centra.begin(); centrum != fverbonden_centra.end(); centrum++) {
         int capaciteit = centrum->second->getKcapaciteit()-centrum->second->getTotaalAantalGeleverdeVaccins();
         for(map<string,Vaccin*>::const_iterator vaccintype = vaccins.begin(); vaccintype != vaccins.end(); vaccintype++){
             if(centrum->second->getAantalVaccins(vaccintype->first) >= capaciteit || capaciteit <= 0){
@@ -171,12 +171,16 @@ void Hub::verdeelVaccins() {
         }
     }
     //derde verdeling zorgt ervoor dat zoveel mogelijk vaccins kunnen worden uitgedeeld
-    for(map<string,Vaccin*>::const_iterator vaccintype = vaccins.begin(); vaccintype != vaccins.end(); vaccintype++){
+    for(map<string,Vaccin*>::const_iterator vaccintype = vaccins.begin(); vaccintype != vaccins.end(); vaccintype++) {
         bool change = true;
-        while(aantal_vaccins.at(vaccintype->first) > vaccintype->second->transport || change){
+        while (aantal_vaccins.at(vaccintype->first) > vaccintype->second->transport && change) {
             change = false;
-            for (map<string, VaccinatieCentrum *>::const_iterator it = fverbonden_centra.begin(), end = fverbonden_centra.end(); it != end; it++) {
-                if(aantal_vaccins.at(vaccintype->first) < vaccintype->second->transport || it->second->getAantalVaccins(vaccintype->first) + it->second->getAantalGeleverdeVaccins(vaccintype->first) + vaccintype->second->transport > it->second->getMaxStock()){
+            for (map<string, VaccinatieCentrum *>::const_iterator it = fverbonden_centra.begin(), end = fverbonden_centra.end();
+                 it != end; it++) {
+                if (aantal_vaccins.at(vaccintype->first) < vaccintype->second->transport ||
+                    it->second->getAantalVaccins(vaccintype->first) +
+                    it->second->getAantalGeleverdeVaccins(vaccintype->first) + vaccintype->second->transport >
+                    it->second->getMaxStock()) {
                     continue;
                 }
                 it->second->ontvangLevering(vaccintype->second->transport, vaccintype->first);
@@ -185,7 +189,6 @@ void Hub::verdeelVaccins() {
             }
         }
     }
-
 
 
 //    // eerste verdeling zorgt ervoor dat alle centra genoeg vaccins hebben om voor 1 dag het maximum aantal personen te vaccineren

@@ -14,6 +14,8 @@ VaccinatieCentrum::VaccinatieCentrum(const int kcapaciteit, const int kaantalInw
                                                                                       kfname(kfname),
                                                                                       kfaddress(kfaddress),
                                                                                       _initCheck(this) {
+    map<string,int> m;
+    aantal_eerste_prikken.push_back(m);
     aantal_geleverde_vaccins_buffer = 0;
     ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
 }
@@ -229,6 +231,7 @@ void VaccinatieCentrum::addVaccinType(Vaccin* v){
             return;
         }
     }
+    aantal_eerste_prikken[0][v->type] = 0;
     aantal_vaccins[v->type] = make_pair(v,0);
     aantal_geleverde_vaccins[v->type] = 0;
     aantal_vaccinaties[v->type] = 0;
