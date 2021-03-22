@@ -149,11 +149,12 @@ public:
 
     /*!
      * geeft het minimum aantal leveringen terug dat nodig is om de capaciteit van het gegeven vaccinaticentrum te bereiken
-     * @param it iterator
+     * @param centrum iterator
      * @return het minimum aantal leveringen
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling minAantalLeveringen");
      */
-    int minAantalLeveringen(const map<string, VaccinatieCentrum *>::const_iterator &it, const string &type) const;
+    int
+    minAantalLeveringen(const map<string, VaccinatieCentrum *>::const_iterator &centrum, const Vaccin *vaccin) const;
 
     int minAantalBatchLeveringen(const map<string, VaccinatieCentrum *>::const_iterator &it, const string &type) const;
 

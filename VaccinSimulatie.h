@@ -2,6 +2,7 @@
 #include <vector>
 
 #include "Parser.h"
+#include "VaccinatieCentrum.h"
 #include "Output.h"
 #include "Hub.h"
 #include "Utils.h"
@@ -11,6 +12,16 @@ using namespace std;
 inline void Simulatie(const string &testfilename, bool c_out = true) {
     Parser P(testfilename);
     vector<Hub *> hubs = P.getFhubs();
+    std::vector<VaccinatieCentrum *> vaccinatie_centra;
+
+    for (unsigned int i = 0; i < hubs.size(); i++) {
+        for (map<string, VaccinatieCentrum *>::const_iterator centrum = hubs[i]->getFverbondenCentra().begin();
+             centrum != hubs[i]->getFverbondenCentra().end(); centrum++) {
+            if (find(vaccinatie_centra.begin(), vaccinatie_centra.end(), centrum->second) == vaccinatie_centra.end()) {
+                vaccinatie_centra.push_back(centrum->second);
+            }
+        }
+    }
 
     size_t pos = testfilename.find("test");
     ENSURE(pos != string::npos, "Given argument doesn't include a test file!");
@@ -21,7 +32,7 @@ inline void Simulatie(const string &testfilename, bool c_out = true) {
 
     // start simulatie
 
-    int end_day = 0; // we kunnen ook een grens zetten op de duur van de simulatie, zet op 0 om geen grens te hebben
+    int end_day = 30; // we kunnen ook een grens zetten op de duur van de simulatie, zet op 0 om geen grens te hebben
 
     int current_day = 0; // we houden de datum hier bij zodat we aan het einde van de simulatie de duur van de simulatie kunnen opvragen
     bool break_ = false;
@@ -54,6 +65,9 @@ inline void Simulatie(const string &testfilename, bool c_out = true) {
 
             // output
             Output::addToOutputFile(hubs[i], current_day, filename);
+        }
+        for (unsigned int i = 0; i < vaccinatie_centra.size(); i++) {
+            vaccinatie_centra[i]->nieuweDag();
         }
     }
 

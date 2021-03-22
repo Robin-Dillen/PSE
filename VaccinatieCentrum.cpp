@@ -50,10 +50,12 @@ const int VaccinatieCentrum::getKcapaciteit() const {
 }
 
 int VaccinatieCentrum::getAantalVaccins(const string &type) const {
+    if (aantal_vaccins.find(type) == aantal_vaccins.end()) return 0;
     return aantal_vaccins.at(type).second;
 }
 
 int VaccinatieCentrum::getAantalGeleverdeVaccins(const string &type) const {
+    if (aantal_geleverde_vaccins.find(type) == aantal_geleverde_vaccins.end()) return 0;
     return aantal_geleverde_vaccins.at(type);
 }
 
@@ -61,7 +63,8 @@ int VaccinatieCentrum::getMaxStock() const {
     return kcapaciteit * 2;
 }
 
-Vaccin *VaccinatieCentrum::getVaccinType(const string &type) {
+Vaccin *const VaccinatieCentrum::getVaccinType(const string &type) {
+    if (aantal_vaccins.find(type) == aantal_vaccins.end()) return NULL;
     return aantal_vaccins.at(type).first;
 }
 
@@ -112,56 +115,89 @@ void VaccinatieCentrum::setAantalVaccinaties(int aantalVaccinaties, const string
 
 void VaccinatieCentrum::nieuweDag() {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling nieuweDag");
-    map<string,pair<Vaccin *, int> >::iterator it;
-    int capaciteit = kcapaciteit;
-    // check hoeveel mensen gevaccineerd kunnen worden
-    for(it = aantal_vaccins.begin(); it != aantal_vaccins.end(); it++){
-        int begin_aantal_vaccins = getAantalVaccins(it->first);
-        aantal_vaccins.at(it->first).second += aantal_geleverde_vaccins.at(it->first);
-        ENSURE(begin_aantal_vaccins + getAantalGeleverdeVaccins(it->first) == aantal_vaccins.at(it->first).second,"De vaccinaties zijn niet succesvol ontvangen!");
-        aantal_geleverde_vaccins.at(it->first) = 0;
-        int vaccinaties = min(aantal_vaccins.at(it->first).second, kcapaciteit);
-        ENSURE(getAantalGeleverdeVaccins(it->first) == 0, "Het aantal geleverde vaccins is niet succesvol gereset!");
-        if(vaccinaties > 0){
-            //kijk eerst de batch na voor 2de vaccinatie
-            if(aantal_eerste_prikken.front().at(it->first) > 0){
-                //Alle wachtende personen vaccineren
-                if(vaccinaties >= aantal_eerste_prikken.front().at(it->first)){
-                    aantal_vaccins.at(it->first).second -= aantal_eerste_prikken.front().at(it->first);
-                    aantal_eerste_prikken.front().at(it->first) = 0;
-                    aantal_vaccinaties.at(it->first) += aantal_eerste_prikken.front().at(it->first);
-                    aantal_niet_vaccinaties -= aantal_eerste_prikken.front().at(it->first);
-                    capaciteit-=aantal_eerste_prikken.front().at(it->first);
-                    vaccinaties-=aantal_eerste_prikken.front().at(it->first);
-                }
-                else{
-                    aantal_eerste_prikken.front().at(it->first) -= vaccinaties;
-                    aantal_vaccinaties.at(it->first) += vaccinaties;
-                    aantal_eerste_prikken[1].at(it->first) +=  aantal_eerste_prikken.front().at(it->first);
-                    aantal_eerste_prikken.front().at(it->first) = 0;
-                    capaciteit-=vaccinaties;
-                    vaccinaties = 0;
-                }
-            }
-            vaccinaties = min(vaccinaties, kaantal_inwoners-aantal_niet_vaccinaties);
-            if(aantal_vaccins.at(it->first).second > vaccinaties && vaccinaties > 0){
-                aantal_niet_vaccinaties += vaccinaties;
-                int i = aantal_eerste_prikken.size();
-                if(i < aantal_vaccins.at(it->first).first->hernieuwing){
-                    map<string, int> m;
-                    for(map<string, pair<Vaccin*, int> >::const_iterator type = aantal_vaccins.begin(); it != aantal_vaccins.end(); it++){
-                        m[type->first] = 0;
-                    }
-                    aantal_eerste_prikken.resize(aantal_vaccins.at(it->first).first->hernieuwing, m);
-                }
-                aantal_eerste_prikken[aantal_vaccins.at(it->first).first->hernieuwing].at(it->first) +=vaccinaties;
-                capaciteit -= vaccinaties;
-                vaccinaties = 0;
-            }
-            ENSURE(aantal_eerste_prikken.front().at(it->first) == 0, "Het 2de maal vaccineren van een groep mensen is niet correct verlopen.");
+
+    for (map<string, int>::iterator geleverde_vaccins = aantal_geleverde_vaccins.begin();
+         geleverde_vaccins != aantal_geleverde_vaccins.end(); geleverde_vaccins++) {
+        aantal_vaccins[geleverde_vaccins->first].second += geleverde_vaccins->second;
+        geleverde_vaccins->second = 0;
+    }
+
+    deque<map<string, int> >::iterator today = aantal_eerste_prikken.begin();
+    for (map<string, int>::iterator batch = today->begin(); batch != today->end(); batch++) {
+        int min_ = min(getAantalVaccins(batch->first), kcapaciteit);
+        batch->second -= min(batch->second, min_);
+        if (batch->second != 0) {
+            std::cout << today->at(batch->first) << endl;
+            //(today++)->at(batch->first) += batch->second;
         }
     }
+
+    int capaciteit = kcapaciteit;
+    for (map<string, pair<Vaccin *, int> >::iterator vaccin = aantal_vaccins.begin();
+         vaccin != aantal_vaccins.end() && capaciteit != 0; vaccin++) {
+        int aantal_prikken = min(capaciteit, vaccin->second.second);
+        if (vaccin->second.first->hernieuwing == 0) {
+            if (aantal_vaccinaties.find(vaccin->first) == aantal_vaccinaties.end()) {
+                aantal_vaccinaties[vaccin->first] = aantal_prikken;
+            } else aantal_vaccinaties[vaccin->first] += aantal_prikken;
+        } else {
+            aantal_eerste_prikken[vaccin->second.first->hernieuwing - 1][vaccin->first] = aantal_prikken;
+        }
+        capaciteit -= aantal_prikken;
+        vaccin->second.second -= aantal_prikken;
+    }
     aantal_eerste_prikken.pop_front();
+
+//    map<string,pair<Vaccin *, int> >::iterator it;
+//    int capaciteit = kcapaciteit;
+//    // check hoeveel mensen gevaccineerd kunnen worden
+//    for(it = aantal_vaccins.begin(); it != aantal_vaccins.end(); it++){
+//        int begin_aantal_vaccins = getAantalVaccins(it->first);
+//        aantal_vaccins.at(it->first).second += aantal_geleverde_vaccins.at(it->first);
+//        ENSURE(begin_aantal_vaccins + getAantalGeleverdeVaccins(it->first) == aantal_vaccins.at(it->first).second,"De vaccinaties zijn niet succesvol ontvangen!");
+//        aantal_geleverde_vaccins.at(it->first) = 0;
+//        int vaccinaties = min(aantal_vaccins.at(it->first).second, kcapaciteit);
+//        ENSURE(getAantalGeleverdeVaccins(it->first) == 0, "Het aantal geleverde vaccins is niet succesvol gereset!");
+//        if(vaccinaties > 0){
+//            //kijk eerst de batch na voor 2de vaccinatie
+//            if(aantal_eerste_prikken.front().at(it->first) > 0){
+//                //Alle wachtende personen vaccineren
+//                if(vaccinaties >= aantal_eerste_prikken.front().at(it->first)){
+//                    aantal_vaccins.at(it->first).second -= aantal_eerste_prikken.front().at(it->first);
+//                    aantal_eerste_prikken.front().at(it->first) = 0;
+//                    aantal_vaccinaties.at(it->first) += aantal_eerste_prikken.front().at(it->first);
+//                    aantal_niet_vaccinaties -= aantal_eerste_prikken.front().at(it->first);
+//                    capaciteit-=aantal_eerste_prikken.front().at(it->first);
+//                    vaccinaties-=aantal_eerste_prikken.front().at(it->first);
+//                }
+//                else{
+//                    aantal_eerste_prikken.front().at(it->first) -= vaccinaties;
+//                    aantal_vaccinaties.at(it->first) += vaccinaties;
+//                    aantal_eerste_prikken[1].at(it->first) +=  aantal_eerste_prikken.front().at(it->first);
+//                    aantal_eerste_prikken.front().at(it->first) = 0;
+//                    capaciteit-=vaccinaties;
+//                    vaccinaties = 0;
+//                }
+//            }
+//            vaccinaties = min(vaccinaties, kaantal_inwoners-aantal_niet_vaccinaties);
+//            if(aantal_vaccins.at(it->first).second > vaccinaties && vaccinaties > 0){
+//                aantal_niet_vaccinaties += vaccinaties;
+//                int i = aantal_eerste_prikken.size();
+//                if(i < aantal_vaccins.at(it->first).first->hernieuwing){
+//                    map<string, int> m;
+//                    for(map<string, pair<Vaccin*, int> >::const_iterator type = aantal_vaccins.begin(); it != aantal_vaccins.end(); it++){
+//                        m[type->first] = 0;
+//                    }
+//                    aantal_eerste_prikken.resize(aantal_vaccins.at(it->first).first->hernieuwing, m);
+//                }
+//                aantal_eerste_prikken[aantal_vaccins.at(it->first).first->hernieuwing].at(it->first) +=vaccinaties;
+//                capaciteit -= vaccinaties;
+//                vaccinaties = 0;
+//            }
+//            ENSURE(aantal_eerste_prikken.front().at(it->first) == 0, "Het 2de maal vaccineren van een groep mensen is niet correct verlopen.");
+//        }
+//    }
+//    aantal_eerste_prikken.pop_front();
 
 
 
@@ -213,11 +249,17 @@ bool VaccinatieCentrum::isVolNaLevering(int vaccins_in_levering) const {
     return VaccinsNaLevering > getMaxStock();
 }
 
-void VaccinatieCentrum::ontvangLevering(int vaccins_in_levering, const string &type) {
+void VaccinatieCentrum::ontvangLevering(int vaccins_in_levering, Vaccin *vaccin) {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling ontvangLevering");
-    int begin_aantal_geleverde_vaccins = getAantalGeleverdeVaccins(type);
-    aantal_geleverde_vaccins.at(type) += vaccins_in_levering;
-    ENSURE(begin_aantal_geleverde_vaccins + vaccins_in_levering == getAantalGeleverdeVaccins(type),
+
+    if (vaccin->hernieuwing > (int) aantal_eerste_prikken.size()) aantal_eerste_prikken.resize(vaccin->hernieuwing);
+    if (aantal_vaccins.find(vaccin->type) == aantal_vaccins.end()) {
+        aantal_vaccins[vaccin->type].first = vaccin;
+    }
+
+    int begin_aantal_geleverde_vaccins = getAantalGeleverdeVaccins(vaccin->type);
+    aantal_geleverde_vaccins[vaccin->type] += vaccins_in_levering;
+    ENSURE(begin_aantal_geleverde_vaccins + vaccins_in_levering == getAantalGeleverdeVaccins(vaccin->type),
            "De vaccins zijn niet succesvol geleverd!");
 }
 

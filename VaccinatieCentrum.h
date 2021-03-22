@@ -95,7 +95,7 @@ public:
      */
     int getAantalGeleverdeVaccins(const string &type) const;
 
-    Vaccin* getVaccinType(const string &type);
+    Vaccin *const getVaccinType(const string &type);
 
     int getTodaysBatch(const string &type);
 
@@ -149,7 +149,7 @@ public:
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling ontvangLevering");
      * \n ENSURE(begin_aantal_geleverde_vaccins + vaccins_in_levering == getAantalGeleverdeVaccins(), "De vaccins zijn niet succesvol geleverd!");
      */
-    void ontvangLevering(int vaccins_in_levering, const string &type);
+    void ontvangLevering(int vaccins_in_levering, Vaccin *vaccin);
 
     /*!
      * Kijkt na of iedereen gevaccineerd is.
@@ -170,7 +170,7 @@ private:
 
     const VaccinatieCentrum *_initCheck; // pointer naar zichzelf om te checken of het object correct geïnitialseert is
 
-    deque<map<string,int> > aantal_eerste_prikken;
+    deque<map<string, int> > aantal_eerste_prikken;
     // elke loop getten en verwijderen we front, en loopen we door de batches(van front), we checken of we ze een 2de prik kunnen geven etc...
     // -> voeg toe bij aantal vaccinaties(mss voor statistiche verwerking, ook in aantal vaccinaties alles gescheiden houden)
     // als er nog vaccins over zijn, gaan we een nieuwe batch aanmaken(als hernieuwbaar), we checken of aantal_eerste_prikken.size() >= hernieuwbaar
@@ -179,7 +179,7 @@ private:
     // we gebruiken een list omdat we front vaak moeten verwijderen(geeft shifts zoals bij vector)
 
     // changing attributes
-    map<string,pair<Vaccin *, int> > aantal_vaccins; //vaccin: Vaccintype, int: aantal vaccins van dit type
+    map<string, pair<Vaccin *, int> > aantal_vaccins; //vaccin: Vaccintype, int: aantal vaccins van dit type
     //int aantal_vaccins;
 
     int aantal_niet_vaccinaties; //aantal mensen die nog geen vaccinatie hebben gekregen.
