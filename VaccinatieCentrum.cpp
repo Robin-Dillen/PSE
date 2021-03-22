@@ -14,9 +14,11 @@ VaccinatieCentrum::VaccinatieCentrum(const int kcapaciteit, const int kaantalInw
                                                                                       kfname(kfname),
                                                                                       kfaddress(kfaddress),
                                                                                       _initCheck(this) {
-    map<string,int> m;
+    map<string, int> m;
     aantal_eerste_prikken.push_back(m);
     aantal_geleverde_vaccins_buffer = 0;
+    aantal_niet_vaccinaties = kaantal_inwoners;
+    aantal_eerste_prikken.resize(1);
     ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
 }
 
@@ -59,32 +61,37 @@ int VaccinatieCentrum::getMaxStock() const {
     return kcapaciteit * 2;
 }
 
-Vaccin* VaccinatieCentrum::getVaccinType(const string &type) {
+Vaccin *VaccinatieCentrum::getVaccinType(const string &type) {
     return aantal_vaccins.at(type).first;
 }
 
 int VaccinatieCentrum::getTodaysBatch(const string &type) {
+    if (aantal_eerste_prikken.front().find(type) == aantal_eerste_prikken.front().end()) return 0;
     return aantal_eerste_prikken.front().at(type);
 }
 
 int VaccinatieCentrum::getTotaalAantalVaccinaties() const {
     int totaalAantalVaccinaties = 0;
-    for(map<string,int>::const_iterator it = aantal_vaccinaties.begin(); it != aantal_vaccinaties.end(); it++){
-        totaalAantalVaccinaties+=getAantalVaccinaties(it->first);
+    for (map<string, int>::const_iterator it = aantal_vaccinaties.begin(); it != aantal_vaccinaties.end(); it++) {
+        totaalAantalVaccinaties += getAantalVaccinaties(it->first);
     }
     return totaalAantalVaccinaties;
 }
+
 int VaccinatieCentrum::getTotaalAantalVaccins() const {
     int totaalAantalVaccins = 0;
-    for(map<string,pair<Vaccin*, int> >::const_iterator it = aantal_vaccins.begin(); it != aantal_vaccins.end(); it++){
-        totaalAantalVaccins+=getAantalVaccins(it->first);
+    for (map<string, pair<Vaccin *, int> >::const_iterator it = aantal_vaccins.begin();
+         it != aantal_vaccins.end(); it++) {
+        totaalAantalVaccins += getAantalVaccins(it->first);
     }
     return totaalAantalVaccins;
 }
+
 int VaccinatieCentrum::getTotaalAantalGeleverdeVaccins() const {
     int totaalAantalGeleverdeVaccins = 0;
-    for(map<string,int>::const_iterator it = aantal_geleverde_vaccins.begin(); it != aantal_geleverde_vaccins.end(); it++){
-        totaalAantalGeleverdeVaccins+=getAantalGeleverdeVaccins(it->first);
+    for (map<string, int>::const_iterator it = aantal_geleverde_vaccins.begin();
+         it != aantal_geleverde_vaccins.end(); it++) {
+        totaalAantalGeleverdeVaccins += getAantalGeleverdeVaccins(it->first);
     }
     return totaalAantalGeleverdeVaccins;
 }
@@ -96,10 +103,11 @@ void VaccinatieCentrum::setVaccins(int vaccins, const string &type) {
     ENSURE(vaccins == getAantalVaccins(type), "De vaccins zijn niet succesvol ge-set!");
 }
 
-void VaccinatieCentrum::setAantalVaccinaties(int aantalVaccinaties,const string &type) {
+void VaccinatieCentrum::setAantalVaccinaties(int aantalVaccinaties, const string &type) {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling setAantalVaccinaties");
     aantal_vaccinaties[type] = aantalVaccinaties;
-    ENSURE(aantal_vaccinaties.at(type) == getAantalVaccinaties(type), "Het aantal vaccinaties is niet succesvol ge-set!");
+    ENSURE(aantal_vaccinaties.at(type) == getAantalVaccinaties(type),
+           "Het aantal vaccinaties is niet succesvol ge-set!");
 }
 
 void VaccinatieCentrum::nieuweDag() {
@@ -187,9 +195,9 @@ void VaccinatieCentrum::nieuweDag() {
 bool VaccinatieCentrum::isVol() const {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling isVol");
     int totaalAantalVaccins = 0;
-    map<string,pair<Vaccin *, int> >::const_iterator it;
-    for(it = aantal_vaccins.begin(); it != aantal_vaccins.end(); it++){
-        totaalAantalVaccins+=aantal_vaccins.at(it->first).second;
+    map<string, pair<Vaccin *, int> >::const_iterator it;
+    for (it = aantal_vaccins.begin(); it != aantal_vaccins.end(); it++) {
+        totaalAantalVaccins += aantal_vaccins.at(it->first).second;
     }
     return totaalAantalVaccins == getMaxStock();
 }
@@ -197,15 +205,15 @@ bool VaccinatieCentrum::isVol() const {
 bool VaccinatieCentrum::isVolNaLevering(int vaccins_in_levering) const {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling isVolNaLevering");
     int VaccinsNaLevering = 0;
-    map<string,pair<Vaccin *, int> >::const_iterator it;
-    for(it = aantal_vaccins.begin(); it != aantal_vaccins.end(); it++){
-        VaccinsNaLevering+=aantal_vaccins.at(it->first).second;
-        VaccinsNaLevering+=aantal_geleverde_vaccins.at(it->first);
+    map<string, pair<Vaccin *, int> >::const_iterator it;
+    for (it = aantal_vaccins.begin(); it != aantal_vaccins.end(); it++) {
+        VaccinsNaLevering += aantal_vaccins.at(it->first).second;
+        VaccinsNaLevering += aantal_geleverde_vaccins.at(it->first);
     }
     return VaccinsNaLevering > getMaxStock();
 }
 
-void VaccinatieCentrum::ontvangLevering(int vaccins_in_levering,const string &type) {
+void VaccinatieCentrum::ontvangLevering(int vaccins_in_levering, const string &type) {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling ontvangLevering");
     int begin_aantal_geleverde_vaccins = getAantalGeleverdeVaccins(type);
     aantal_geleverde_vaccins.at(type) += vaccins_in_levering;
@@ -216,9 +224,9 @@ void VaccinatieCentrum::ontvangLevering(int vaccins_in_levering,const string &ty
 bool VaccinatieCentrum::isIedereenGevaccineerd() const {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling isIedereenGevaccineerd");
     int totaalAantalVaccinaties = 0;
-    map<string,int >::const_iterator it;
-    for(it = aantal_vaccinaties.begin(); it != aantal_vaccinaties.end(); it++){
-        totaalAantalVaccinaties+=aantal_vaccinaties.at(it->first);
+    map<string, int>::const_iterator it;
+    for (it = aantal_vaccinaties.begin(); it != aantal_vaccinaties.end(); it++) {
+        totaalAantalVaccinaties += aantal_vaccinaties.at(it->first);
     }
     return totaalAantalVaccinaties == kaantal_inwoners;
 }
@@ -228,15 +236,16 @@ int VaccinatieCentrum::getAantalGeleverdeVaccinsBuffer() const {
     return aantal_geleverde_vaccins_buffer;
 }
 
-void VaccinatieCentrum::addVaccinType(Vaccin* v){
-    map<string,pair<Vaccin *, int> >::iterator it;
-    for(it = aantal_vaccins.begin(); it != aantal_vaccins.end(); it++){
-        if(it->first == v->type){
+void VaccinatieCentrum::addVaccinType(Vaccin *v) {
+    map<string, pair<Vaccin *, int> >::iterator it;
+    for (it = aantal_vaccins.begin(); it != aantal_vaccins.end(); it++) {
+        if (it->first == v->type) {
             return;
         }
     }
+    aantal_eerste_prikken.resize(v->hernieuwing);
     aantal_eerste_prikken[0][v->type] = 0;
-    aantal_vaccins[v->type] = make_pair(v,0);
+    aantal_vaccins[v->type] = make_pair(v, 0);
     aantal_geleverde_vaccins[v->type] = 0;
     aantal_vaccinaties[v->type] = 0;
     return;
