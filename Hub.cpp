@@ -125,6 +125,7 @@ void Hub::ontvangLevering(const string &type, int aantal_geleverde_vaccins) {
 }
 
 void Hub::verdeelVaccins() {
+    //TEMPERATUUR = //TODO
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling verdeelVaccins");
     //eerste verdeling om alle eerste_prikken van die dag opnieuw te laten vaccineren.
     for (map<string, VaccinatieCentrum *>::const_iterator centrum = fverbonden_centra.begin(), end = fverbonden_centra.end(); centrum != end; centrum++) {
@@ -142,12 +143,12 @@ void Hub::verdeelVaccins() {
                 continue;
             }
             int batchLadingen = minAantalBatchLeveringen(centrum,vaccintype->first); //min aantal leveringen om de volledige batch te vaccineren
-            while(batchLadingen * vaccintype->second->levering > aantal_vaccins.at(vaccintype->first)) { //zolang er teveel vaccins voorzien zijn dan er aanwezig zijn, verwijder een levering.
-                batchLadingen -= vaccintype->second->levering;
+            while(batchLadingen * vaccintype->second->transport > aantal_vaccins.at(vaccintype->first)) { //zolang er teveel vaccins voorzien zijn dan er aanwezig zijn, verwijder een levering.
+                batchLadingen -= vaccintype->second->transport;
             }
-            aantal_vaccins.at(vaccintype->first) -= batchLadingen*vaccintype->second->levering;
-            centrum->second->ontvangLevering(batchLadingen*vaccintype->second->levering, vaccintype->first); //stuurt de vaccins naar het centrum
-            capaciteit -= batchLadingen*vaccintype->second->levering; //niet volledige levering moet gevaccineerd worden-> dus ook niet volledig van capaciteit aftrekken //TODO
+            aantal_vaccins.at(vaccintype->first) -= batchLadingen*vaccintype->second->transport;
+            centrum->second->ontvangLevering(batchLadingen*vaccintype->second->transport, vaccintype->first); //stuurt de vaccins naar het centrum
+            capaciteit -= batchLadingen*vaccintype->second->transport; //niet volledige levering moet gevaccineerd worden-> dus ook niet volledig van capaciteit aftrekken //TODO
             capaciteit -= aantal_vaccins.at(vaccintype->first); //kan zijn dat niet alle vaccins worden gebruikt dus ook niet van capaciteit aftrekken //TODO
         }
     }
@@ -160,17 +161,30 @@ void Hub::verdeelVaccins() {
             }
             capaciteit -= centrum->second->getAantalVaccins(vaccintype->first);
             int ladingen = minAantalLeveringen(centrum,vaccintype->first);
-            while(ladingen * vaccintype->second->levering > aantal_vaccins.at(vaccintype->first)) { //zolang er teveel vaccins voorzien zijn dan er aanwezig zijn, verwijder een levering.
-                ladingen -= vaccintype->second->levering;
+            while(ladingen * vaccintype->second->transport > aantal_vaccins.at(vaccintype->first)) { //zolang er teveel vaccins voorzien zijn dan er aanwezig zijn, verwijder een levering.
+                ladingen -= vaccintype->second->transport;
             }
-            aantal_vaccins.at(vaccintype->first) -= ladingen*vaccintype->second->levering;
-            centrum->second->ontvangLevering(ladingen*vaccintype->second->levering, vaccintype->first); //stuurt de vaccins naar het centrum
-            capaciteit -= ladingen*vaccintype->second->levering; //niet volledige levering moet gevaccineerd worden-> dus ook niet volledig van capaciteit aftrekken //TODO
+            aantal_vaccins.at(vaccintype->first) -= ladingen*vaccintype->second->transport;
+            centrum->second->ontvangLevering(ladingen*vaccintype->second->transport, vaccintype->first); //stuurt de vaccins naar het centrum
+            capaciteit -= ladingen*vaccintype->second->transport; //niet volledige levering moet gevaccineerd worden-> dus ook niet volledig van capaciteit aftrekken //TODO
             capaciteit -= aantal_vaccins.at(vaccintype->first); //kan zijn dat niet alle vaccins worden gebruikt dus ook niet van capaciteit aftrekken //TODO
         }
     }
     //derde verdeling zorgt ervoor dat zoveel mogelijk vaccins kunnen worden uitgedeeld
-    //TODO
+    for(map<string,Vaccin*>::const_iterator vaccintype = vaccins.begin(); vaccintype != vaccins.end(); vaccintype++){
+        bool change = true;
+        while(aantal_vaccins.at(vaccintype->first) > vaccintype->second->transport || change){
+            change = false;
+            for (map<string, VaccinatieCentrum *>::const_iterator it = fverbonden_centra.begin(), end = fverbonden_centra.end(); it != end; it++) {
+                if(aantal_vaccins.at(vaccintype->first) < vaccintype->second->transport || it->second->getAantalVaccins(vaccintype->first) + it->second->getAantalGeleverdeVaccins(vaccintype->first) + vaccintype->second->transport > it->second->getMaxStock()){
+                    continue;
+                }
+                it->second->ontvangLevering(vaccintype->second->transport, vaccintype->first);
+                aantal_vaccins.at(vaccintype->first) -= vaccintype->second->transport;
+                change = true;
+            }
+        }
+    }
 
 
 
@@ -211,14 +225,14 @@ int Hub::minAantalLeveringen(const map<string, VaccinatieCentrum *>::const_itera
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling minAantalLeveringen");
     //Berekent hoeveel ladingen er kunnen geleverd worden om de capaciteit van het centrum te bereiken
     return ceil(((float) max((int) it->second->getKcapaciteit() - (int) it->second->getAantalVaccins(type), 0) /
-    it->second->getVaccinType(type)->levering));
+    it->second->getVaccinType(type)->transport));
 }
 
 int Hub::minAantalBatchLeveringen(const map<string, VaccinatieCentrum *>::const_iterator &it, const string &type) const {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling minAantalLeveringen");
     //Berekent hoeveel ladingen er kunnen geleverd worden om alle personen te vaccineren die een 2de spuit nodig hebben
     return ceil(((float) max((int) it->second->getTodaysBatch(type) - (int) it->second->getAantalVaccins(type), 0) /
-                 it->second->getVaccinType(type)->levering));
+                 it->second->getVaccinType(type)->transport));
 }
 
 
