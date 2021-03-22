@@ -57,6 +57,8 @@ public:
      */
     int getAantalVaccinaties(const string &type) const;
 
+
+
     /**
      * @return geeft het adres van het vaccinatie centrum terug
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getKfaddress");
@@ -92,6 +94,16 @@ public:
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getKfaddress");
      */
     int getAantalGeleverdeVaccins(const string &type) const;
+
+    Vaccin* getVaccinType(const string &type);
+
+    int getTodaysBatch(const string &type);
+
+    int getTotaalAantalVaccinaties() const;
+
+    int getTotaalAantalVaccins() const;
+
+    int getTotaalAantalGeleverdeVaccins() const;
 
     /**
      * update het aantal_vaccins

@@ -153,7 +153,11 @@ public:
      * @return het minimum aantal leveringen
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling minAantalLeveringen");
      */
-//    int minAantalLeveringen(const map<string, VaccinatieCentrum *>::const_iterator &it) const;
+    int minAantalLeveringen(const map<string, VaccinatieCentrum *>::const_iterator &it, const string &type) const;
+
+    int minAantalBatchLeveringen(const map<string, VaccinatieCentrum *>::const_iterator &it, const string &type) const;
+
+    map<string, Vaccin *> getVaccins();
 
 private:
 

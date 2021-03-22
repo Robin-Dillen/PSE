@@ -39,11 +39,15 @@ inline void Simulatie(const string &testfilename, bool c_out = true) {
             break_ = false;
             // increase current_day
 
-            if (current_day % hubs[i]->getLeveringenInterval() == 0) {
-                // door in de simulatie het aantal vaccins mee te geven kunnen we war randomness toevoegen aan het aantal
-                // geleverde vaccins. Want ze zijn toch niet te vertrouwen die farmareuzen!
-                hubs[i]->ontvangLevering(hubs[i]->getKaantalVaccinsPerLevering());
+            map<string, Vaccin *> vaccins = hubs[i]->getVaccins();
+            for(map<string,Vaccin*>::iterator it = vaccins.begin(); it != vaccins.end(); it++){
+                if (current_day % it->second->interval == 0) {
+                    // door in de simulatie het aantal vaccins mee te geven kunnen we war randomness toevoegen aan het aantal
+                    // geleverde vaccins. Want ze zijn toch niet te vertrouwen die farmareuzen!
+                    hubs[i]->ontvangLevering( it->first, it->second->levering);
+                }
             }
+
 
             // stuur signaal nieuwe dag
             hubs[i]->nieuweDag();

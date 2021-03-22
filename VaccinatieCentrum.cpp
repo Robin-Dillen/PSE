@@ -57,6 +57,37 @@ int VaccinatieCentrum::getMaxStock() const {
     return kcapaciteit * 2;
 }
 
+Vaccin* VaccinatieCentrum::getVaccinType(const string &type) {
+    return aantal_vaccins.at(type).first;
+}
+
+int VaccinatieCentrum::getTodaysBatch(const string &type) {
+    return aantal_eerste_prikken.front().at(type);
+}
+
+int VaccinatieCentrum::getTotaalAantalVaccinaties() const {
+    int totaalAantalVaccinaties = 0;
+    for(map<string,int>::const_iterator it = aantal_vaccinaties.begin(); it != aantal_vaccinaties.end(); it++){
+        totaalAantalVaccinaties+=getAantalVaccinaties(it->first);
+    }
+    return totaalAantalVaccinaties;
+}
+int VaccinatieCentrum::getTotaalAantalVaccins() const {
+    int totaalAantalVaccins = 0;
+    for(map<string,pair<Vaccin*, int> >::const_iterator it = aantal_vaccins.begin(); it != aantal_vaccins.end(); it++){
+        totaalAantalVaccins+=getAantalVaccins(it->first);
+    }
+    return totaalAantalVaccins;
+}
+int VaccinatieCentrum::getTotaalAantalGeleverdeVaccins() const {
+    int totaalAantalGeleverdeVaccins = 0;
+    for(map<string,int>::const_iterator it = aantal_geleverde_vaccins.begin(); it != aantal_geleverde_vaccins.end(); it++){
+        totaalAantalGeleverdeVaccins+=getAantalGeleverdeVaccins(it->first);
+    }
+    return totaalAantalGeleverdeVaccins;
+}
+
+
 void VaccinatieCentrum::setVaccins(int vaccins, const string &type) {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling setVaccins");
     aantal_vaccins[type].second = vaccins;
@@ -105,7 +136,8 @@ void VaccinatieCentrum::nieuweDag() {
             vaccinaties = min(vaccinaties, kaantal_inwoners-aantal_niet_vaccinaties);
             if(aantal_vaccins.at(it->first).second > vaccinaties && vaccinaties > 0){
                 aantal_niet_vaccinaties += vaccinaties;
-                if(aantal_eerste_prikken.size() < aantal_vaccins.at(it->first).first->hernieuwing){
+                int i = aantal_eerste_prikken.size();
+                if(i < aantal_vaccins.at(it->first).first->hernieuwing){
                     aantal_eerste_prikken.resize(aantal_vaccins.at(it->first).first->hernieuwing);
                 }
                 aantal_eerste_prikken[aantal_vaccins.at(it->first).first->hernieuwing].at(it->first) +=vaccinaties;
