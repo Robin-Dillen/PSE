@@ -43,7 +43,7 @@ inline int to_int(const string &s) {
 }
 
 inline int min(int num_args, ...) {
-    int min_ = numeric_limits<int>::infinity();
+    int min_ = numeric_limits<int>::max();
     va_list ap;
     int i;
 

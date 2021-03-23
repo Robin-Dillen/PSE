@@ -125,7 +125,7 @@ void Hub::ontvangLevering(const string &type, int aantal_geleverde_vaccins) {
 }
 
 void Hub::verdeelVaccins() {
-    //TEMPERATUUR = //TODO
+    //TEMPERATUUR = TODO
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling verdeelVaccins");
 
 
@@ -151,8 +151,8 @@ void Hub::verdeelVaccins() {
                 continue; // we hebben al genoeg vaccins of capaciteit is gevuld
 
             int min_ = min(3, capaciteit, todays_batch, aantal_vaccins[vaccin->first]);
+            capaciteit -= min_;
             int ladingen = ceil((float) min_ / vaccin->second->transport);
-            capaciteit -= ladingen * vaccin->second->transport;
             aantal_vaccins[vaccin->first] -= ladingen * vaccin->second->transport;
             centrum->second->ontvangLevering(ladingen * vaccin->second->transport,
                                              vaccin->second);
@@ -177,16 +177,15 @@ void Hub::verdeelVaccins() {
             aantal_vaccins[vaccin->first] -= ladingen * vaccin->second->transport;
             centrum->second->ontvangLevering(ladingen * vaccin->second->transport,
                                              vaccin->second); //stuurt de vaccins naar het centrum
-
-            if (capaciteit < ladingen * vaccin->second->transport) capaciteit = 0;
-            else capaciteit -= ladingen * vaccin->second->transport;
+            ENSURE(capaciteit >= 0, "Er is iets foutgelopen bij de capaciteit!");
         }
     }
     //derde verdeling zorgt ervoor dat zoveel mogelijk vaccins kunnen worden uitgedeeld
     for (map<string, Vaccin *>::const_iterator vaccin = vaccins.begin(); vaccin != vaccins.end(); vaccin++) {
         for (map<string, VaccinatieCentrum *>::const_iterator centrum = fverbonden_centra.begin(), end = fverbonden_centra.end();
              centrum != end; centrum++) {
-            while (centrum->second->getTotaalAantalVaccins() + vaccin->second->transport <=
+            while (centrum->second->getTotaalAantalVaccins() + vaccin->second->transport +
+                   centrum->second->getTotaalAantalGeleverdeVaccins() <=
                    centrum->second->getMaxStock()) {
                 if (aantal_vaccins[vaccin->first] - vaccin->second->transport < 0) break;
                 centrum->second->ontvangLevering(vaccin->second->transport, vaccin->second);

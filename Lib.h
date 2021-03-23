@@ -17,7 +17,7 @@ struct Vaccin {
     Vaccin(const std::string &type, const int levering, const int interval, const int transport, const int hernieuwing,
            const int temperatuur) : type(type), levering(levering), interval(interval), transport(transport),
                                     hernieuwing(hernieuwing), temperatuur(temperatuur),
-                                    tijd_tot_nieuwe_levering(levering) {}
+                                    tijd_tot_nieuwe_levering(interval) {}
 
     const std::string type;
     const int levering; // geleverd aan hub

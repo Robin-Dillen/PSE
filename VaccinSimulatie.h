@@ -52,10 +52,10 @@ inline void Simulatie(const string &testfilename, bool c_out = true) {
 
             map<string, Vaccin *> vaccins = hubs[i]->getVaccins();
             for(map<string,Vaccin*>::iterator it = vaccins.begin(); it != vaccins.end(); it++){
-                if (current_day % it->second->interval == 0) {
+                if (current_day % (it->second->interval + 1) == 0) {
                     // door in de simulatie het aantal vaccins mee te geven kunnen we war randomness toevoegen aan het aantal
                     // geleverde vaccins. Want ze zijn toch niet te vertrouwen die farmareuzen!
-                    hubs[i]->ontvangLevering( it->first, it->second->levering);
+                    hubs[i]->ontvangLevering(it->first, it->second->levering);
                 }
             }
 

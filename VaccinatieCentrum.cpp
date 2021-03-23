@@ -7,6 +7,7 @@
 //============================================================================
 
 #include "VaccinatieCentrum.h"
+#include "Utils.h"
 
 VaccinatieCentrum::VaccinatieCentrum(const int kcapaciteit, const int kaantalInwoners,
                                      const string &kfname, const string &kfaddress) : kcapaciteit(kcapaciteit),
@@ -122,10 +123,14 @@ void VaccinatieCentrum::nieuweDag() {
         geleverde_vaccins->second = 0;
     }
 
+    int capaciteit = kcapaciteit;
     deque<map<string, int> >::iterator today = aantal_eerste_prikken.begin();
     for (map<string, int>::iterator batch = today->begin(); batch != today->end(); batch++) {
-        int min_ = min(getAantalVaccins(batch->first), kcapaciteit);
-        batch->second -= min(batch->second, min_);
+        cout << getAantalVaccins(batch->first) << " " << kcapaciteit << " " << batch->second << endl;
+        int min_ = min(3, getAantalVaccins(batch->first), kcapaciteit, batch->second);
+        batch->second -= min_;
+        aantal_vaccinaties[batch->first] += min_;
+        capaciteit -= min_;
         if (batch->second != 0) {
             if ((today++)->find(batch->first) == (today++)->end()) {
                 std::cout << today->at(batch->first) << endl;
@@ -136,7 +141,6 @@ void VaccinatieCentrum::nieuweDag() {
         }
     }
 
-    int capaciteit = kcapaciteit;
     for (map<string, pair<Vaccin *, int> >::iterator vaccin = aantal_vaccins.begin();
          vaccin != aantal_vaccins.end() && capaciteit != 0; vaccin++) {
         int aantal_prikken = min(capaciteit, vaccin->second.second);
@@ -260,6 +264,7 @@ void VaccinatieCentrum::ontvangLevering(int vaccins_in_levering, Vaccin *vaccin)
     if (vaccin->hernieuwing > (int) aantal_eerste_prikken.size()) aantal_eerste_prikken.resize(vaccin->hernieuwing);
     if (aantal_vaccins.find(vaccin->type) == aantal_vaccins.end()) {
         aantal_vaccins[vaccin->type].first = vaccin;
+        aantal_vaccins[vaccin->type].second = 0;
     }
 
     int begin_aantal_geleverde_vaccins = getAantalGeleverdeVaccins(vaccin->type);
@@ -284,6 +289,7 @@ int VaccinatieCentrum::getAantalGeleverdeVaccinsBuffer() const {
 }
 
 int VaccinatieCentrum::getAantalTweedePrikken(const string &vaccin, int dag) const {
+    if ((int) aantal_eerste_prikken.size() <= dag) return 0;
     map<string, int>::const_iterator aantal = aantal_eerste_prikken[dag].find(vaccin);
     if (aantal == aantal_eerste_prikken[dag].end()) return 0;
     return aantal->second;
