@@ -128,7 +128,11 @@ void VaccinatieCentrum::nieuweDag() {
         batch->second -= min(batch->second, min_);
         if (batch->second != 0) {
             std::cout << today->at(batch->first) << endl;
-            //(today++)->at(batch->first) += batch->second;
+            if ((today++)->find(batch->first) == (today++)->end()) {
+                (*(today++))[batch->first] = batch->second;
+            } else {
+                (*(today++))[batch->first] += batch->second;
+            }
         }
     }
 
@@ -147,6 +151,7 @@ void VaccinatieCentrum::nieuweDag() {
         vaccin->second.second -= aantal_prikken;
     }
     aantal_eerste_prikken.pop_front();
+    aantal_eerste_prikken.resize(aantal_eerste_prikken.size() + 1);
 
 //    map<string,pair<Vaccin *, int> >::iterator it;
 //    int capaciteit = kcapaciteit;
