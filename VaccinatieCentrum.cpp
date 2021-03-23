@@ -127,8 +127,8 @@ void VaccinatieCentrum::nieuweDag() {
         int min_ = min(getAantalVaccins(batch->first), kcapaciteit);
         batch->second -= min(batch->second, min_);
         if (batch->second != 0) {
-            std::cout << today->at(batch->first) << endl;
             if ((today++)->find(batch->first) == (today++)->end()) {
+                std::cout << today->at(batch->first) << endl;
                 (*(today++))[batch->first] = batch->second;
             } else {
                 (*(today++))[batch->first] += batch->second;
@@ -283,20 +283,12 @@ int VaccinatieCentrum::getAantalGeleverdeVaccinsBuffer() const {
     return aantal_geleverde_vaccins_buffer;
 }
 
-void VaccinatieCentrum::addVaccinType(Vaccin *v) {
-    map<string, pair<Vaccin *, int> >::iterator it;
-    for (it = aantal_vaccins.begin(); it != aantal_vaccins.end(); it++) {
-        if (it->first == v->type) {
-            return;
-        }
-    }
-    aantal_eerste_prikken.resize(v->hernieuwing);
-    aantal_eerste_prikken[0][v->type] = 0;
-    aantal_vaccins[v->type] = make_pair(v, 0);
-    aantal_geleverde_vaccins[v->type] = 0;
-    aantal_vaccinaties[v->type] = 0;
-    return;
+int VaccinatieCentrum::getAantalTweedePrikken(const string &vaccin, int dag) const {
+    map<string, int>::const_iterator aantal = aantal_eerste_prikken[dag].find(vaccin);
+    if (aantal == aantal_eerste_prikken[dag].end()) return 0;
+    return aantal->second;
 }
+
 
 
 
