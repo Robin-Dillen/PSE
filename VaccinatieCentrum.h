@@ -157,7 +157,13 @@ public:
      */
     bool isIedereenGevaccineerd() const;
 
-    void addVaccinType(Vaccin* v);
+    /*!
+     * geeft terug hoeveel 2de prikken er gezet moeten worden in 'dagen' dagen
+     * @param vaccin type van het vaccin
+     * @param dagen binnen hoeveel dagen we moeten kijken
+     * @return aantal 2de prikken: int
+     */
+    int getAantalTweedePrikken(const string &vaccin, int dagen) const;
 
 private:
 

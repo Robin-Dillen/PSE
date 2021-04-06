@@ -15,6 +15,8 @@
 #include <sys/stat.h>
 #include <cstdio>
 #include <string>
+#include <cstdarg>
+#include <limits>
 
 using namespace std;
 
@@ -38,6 +40,21 @@ inline int to_int(const string &s) {
     ss << s;
     ss >> ret;
     return ret;
+}
+
+inline int min(int num_args, ...) {
+    int min_ = numeric_limits<int>::max();
+    va_list ap;
+    int i;
+
+    va_start(ap, num_args);
+    for (i = 0; i < num_args; i++) {
+        int n = va_arg(ap, int);
+        if (n < min_) min_ = n;
+    }
+    va_end(ap);
+
+    return min_;
 }
 
 // volgende functies zijn van het TicTacToe voorbeeld

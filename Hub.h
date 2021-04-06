@@ -175,6 +175,7 @@ private:
 
 //    int aantal_vaccins; // aantal vaccins in de hub
     map<string, int> aantal_vaccins;
+    map<string, int> gereserveerd_2de_prik;
 };
 
 
