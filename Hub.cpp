@@ -9,6 +9,7 @@
 #include "Hub.h"
 #include "VaccinatieCentrum.h"
 #include "Utils.h"
+#include "StatisticsSingleton.h"
 
 //Hub::Hub(const int kaantal_vaccins_per_levering,
 //         const int kleveringen_interval, const int kaantal_vaccins_per_lading)
@@ -107,6 +108,7 @@ bool Hub::isIedereenGevaccineerd() const {
 
 void Hub::nieuweDag() {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling nieuweDag");
+
     // verdeel de vaccins als er nog op voorraad zijn
     for (map<string, Vaccin *>::const_iterator vaccin = vaccins.begin(); vaccin != vaccins.end(); vaccin++) {
         vaccin->second->tijd_tot_nieuwe_levering =

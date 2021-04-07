@@ -8,6 +8,8 @@
 
 #include "VaccinatieCentrum.h"
 #include "Utils.h"
+#include "StatisticsSingleton.h"
+
 
 VaccinatieCentrum::VaccinatieCentrum(const int kcapaciteit, const int kaantalInwoners,
                                      const string &kfname, const string &kfaddress) : kcapaciteit(kcapaciteit),
@@ -117,9 +119,13 @@ void VaccinatieCentrum::setAantalVaccinaties(int aantalVaccinaties, const string
 void VaccinatieCentrum::nieuweDag() {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling nieuweDag");
 
+    StatisticsSingleton &stats = StatisticsSingleton::getInstance();
+
     for (map<string, int>::iterator geleverde_vaccins = aantal_geleverde_vaccins.begin();
          geleverde_vaccins != aantal_geleverde_vaccins.end(); geleverde_vaccins++) {
         aantal_vaccins[geleverde_vaccins->first].second += geleverde_vaccins->second;
+        stats.addGeleverdeVaccins(geleverde_vaccins->first, geleverde_vaccins->second);
+        // reset
         geleverde_vaccins->second = 0;
     }
 
@@ -131,6 +137,7 @@ void VaccinatieCentrum::nieuweDag() {
         batch->second -= min_;
         aantal_vaccinaties[batch->first] += min_;
         capaciteit -= min_;
+        stats.addVaccinatie(kfname, batch->first, min_);
         if (batch->second != 0) {
             if ((today++)->find(batch->first) == (today++)->end()) {
                 std::cout << today->at(batch->first) << endl;
@@ -157,85 +164,6 @@ void VaccinatieCentrum::nieuweDag() {
     }
     aantal_eerste_prikken.pop_front();
     aantal_eerste_prikken.resize(aantal_eerste_prikken.size() + 1);
-
-//    map<string,pair<Vaccin *, int> >::iterator it;
-//    int capaciteit = kcapaciteit;
-//    // check hoeveel mensen gevaccineerd kunnen worden
-//    for(it = aantal_vaccins.begin(); it != aantal_vaccins.end(); it++){
-//        int begin_aantal_vaccins = getAantalVaccins(it->first);
-//        aantal_vaccins.at(it->first).second += aantal_geleverde_vaccins.at(it->first);
-//        ENSURE(begin_aantal_vaccins + getAantalGeleverdeVaccins(it->first) == aantal_vaccins.at(it->first).second,"De vaccinaties zijn niet succesvol ontvangen!");
-//        aantal_geleverde_vaccins.at(it->first) = 0;
-//        int vaccinaties = min(aantal_vaccins.at(it->first).second, kcapaciteit);
-//        ENSURE(getAantalGeleverdeVaccins(it->first) == 0, "Het aantal geleverde vaccins is niet succesvol gereset!");
-//        if(vaccinaties > 0){
-//            //kijk eerst de batch na voor 2de vaccinatie
-//            if(aantal_eerste_prikken.front().at(it->first) > 0){
-//                //Alle wachtende personen vaccineren
-//                if(vaccinaties >= aantal_eerste_prikken.front().at(it->first)){
-//                    aantal_vaccins.at(it->first).second -= aantal_eerste_prikken.front().at(it->first);
-//                    aantal_eerste_prikken.front().at(it->first) = 0;
-//                    aantal_vaccinaties.at(it->first) += aantal_eerste_prikken.front().at(it->first);
-//                    aantal_niet_vaccinaties -= aantal_eerste_prikken.front().at(it->first);
-//                    capaciteit-=aantal_eerste_prikken.front().at(it->first);
-//                    vaccinaties-=aantal_eerste_prikken.front().at(it->first);
-//                }
-//                else{
-//                    aantal_eerste_prikken.front().at(it->first) -= vaccinaties;
-//                    aantal_vaccinaties.at(it->first) += vaccinaties;
-//                    aantal_eerste_prikken[1].at(it->first) +=  aantal_eerste_prikken.front().at(it->first);
-//                    aantal_eerste_prikken.front().at(it->first) = 0;
-//                    capaciteit-=vaccinaties;
-//                    vaccinaties = 0;
-//                }
-//            }
-//            vaccinaties = min(vaccinaties, kaantal_inwoners-aantal_niet_vaccinaties);
-//            if(aantal_vaccins.at(it->first).second > vaccinaties && vaccinaties > 0){
-//                aantal_niet_vaccinaties += vaccinaties;
-//                int i = aantal_eerste_prikken.size();
-//                if(i < aantal_vaccins.at(it->first).first->hernieuwing){
-//                    map<string, int> m;
-//                    for(map<string, pair<Vaccin*, int> >::const_iterator type = aantal_vaccins.begin(); it != aantal_vaccins.end(); it++){
-//                        m[type->first] = 0;
-//                    }
-//                    aantal_eerste_prikken.resize(aantal_vaccins.at(it->first).first->hernieuwing, m);
-//                }
-//                aantal_eerste_prikken[aantal_vaccins.at(it->first).first->hernieuwing].at(it->first) +=vaccinaties;
-//                capaciteit -= vaccinaties;
-//                vaccinaties = 0;
-//            }
-//            ENSURE(aantal_eerste_prikken.front().at(it->first) == 0, "Het 2de maal vaccineren van een groep mensen is niet correct verlopen.");
-//        }
-//    }
-//    aantal_eerste_prikken.pop_front();
-
-
-
-    /*
-    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling nieuweDag");
-    // update het aantal vaccins
-    int begin_aantal_vaccins = getAantalVaccins();
-    aantal_vaccins += aantal_geleverde_vaccins;
-    ENSURE(aantal_vaccins <= getMaxStock(), "Error, er zijn te veel vaccins geleverd!");
-    ENSURE(begin_aantal_vaccins + getAantalGeleverdeVaccins(type) == aantal_vaccins,
-           "De vaccinaties zijn niet succesvol ontvangen!");
-    aantal_geleverde_vaccins_buffer = aantal_geleverde_vaccins;
-    aantal_geleverde_vaccins = 0;
-    ENSURE(getAantalGeleverdeVaccins() == 0, "Het aantal geleverde vaccins is niet succesvol gereset!");
-
-    // check hoeveel mensen gevaccineerd kunnen worden
-    int vaccinaties = min(aantal_vaccins, kcapaciteit);
-    vaccinaties = min(vaccinaties, kaantal_inwoners - aantal_vaccinaties);
-
-    begin_aantal_vaccins = getAantalVaccins();
-    int begin_aantal_vaccinaties = getAantalVaccinaties();
-    // verminder het aantal vaccins en vermeerder het aantal gevaccineerden
-    aantal_vaccins -= vaccinaties;
-    aantal_vaccinaties += vaccinaties;
-    ENSURE(begin_aantal_vaccins - vaccinaties == getAantalVaccins(), "Het aantal vaccins is niet geüpdate!");
-    ENSURE(begin_aantal_vaccinaties + vaccinaties == getAantalVaccinaties(),
-           "Het aantal vaccinaties is niet succesvol geüpdate!");
-           */
 }
 
 bool VaccinatieCentrum::isVol() const {
