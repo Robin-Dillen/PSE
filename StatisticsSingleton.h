@@ -27,9 +27,9 @@ public:
         return instance;
     }
 
-    void addGeleverdeVaccins(const VaccinatieCentrum *const, const string &type, int aantal);
+    void addGeleverdeVaccins(const VaccinatieCentrum *const centrum, const string &type, int aantal);
 
-    int getGeleverdeVaccins(const VaccinatieCentrum *const, const string &type) const;
+    int getGeleverdeVaccins(const VaccinatieCentrum *const centrum, const string &type) const;
 
     void addVaccinatie(const VaccinatieCentrum *const centrum, const string &type, int aantal);
 
