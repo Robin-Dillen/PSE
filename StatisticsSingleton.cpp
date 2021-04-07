@@ -36,3 +36,6 @@ int StatisticsSingleton::getAantalVaccinaties(const string &centrum, const strin
     return aantal->second;
 
 }
+
+StatisticsSingletonData::StatisticsSingletonData(int aantalVaccinaties, int aantalGeleverdeVaccins)
+        : aantal_vaccinaties(aantalVaccinaties), aantal_geleverde_vaccins(aantalGeleverdeVaccins) {}

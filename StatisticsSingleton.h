@@ -11,6 +11,13 @@ class Vaccin;
 
 class VaccinatieCentrum;
 
+struct StatisticsSingletonData {
+    StatisticsSingletonData(int aantalVaccinaties, int aantalGeleverdeVaccins);
+
+    int aantal_vaccinaties;
+    int aantal_geleverde_vaccins;
+};
+
 //https://stackoverflow.com/a/1008289/10875953
 class StatisticsSingleton {
 public:
@@ -41,8 +48,7 @@ private:
     StatisticsSingleton(StatisticsSingleton const &);              // Don't Implement
     void operator=(StatisticsSingleton const &); // Don't implement
 
-    map<string, int> aantal_geleverde_vaccins;
-    map<string, map<string, int> > aantal_vaccinaties;
+    map<string, map<string, StatisticsSingletonData> > data;
 };
 
 

@@ -43,7 +43,11 @@ set(DEBUG_SOURCE_FILES
         TinyXML/tinyxmlerror.cpp
         TinyXML/tinyxmlparser.cpp
         Output.cpp
-        Output.h)
+        Output.h
+        Lib.h
+        Utils.h
+        VaccinSimulatie.h
+        StatisticsSingleton.cpp StatisticsSingleton.h)
 
 # Create RELEASE target
 add_executable(PSE ${RELEASE_SOURCE_FILES})
