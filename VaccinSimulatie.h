@@ -6,6 +6,7 @@
 #include "Output.h"
 #include "Hub.h"
 #include "Utils.h"
+#include "StatisticsSingleton.h"
 
 using namespace std;
 

@@ -8,6 +8,8 @@
 
 #include "VaccinatieCentrum.h"
 #include "Utils.h"
+#include "StatisticsSingleton.h"
+
 
 VaccinatieCentrum::VaccinatieCentrum(const int kcapaciteit, const int kaantalInwoners,
                                      const string &kfname, const string &kfaddress) : kcapaciteit(kcapaciteit),
@@ -117,9 +119,13 @@ void VaccinatieCentrum::setAantalVaccinaties(int aantalVaccinaties, const string
 void VaccinatieCentrum::nieuweDag() {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling nieuweDag");
 
+    StatisticsSingleton &stats = StatisticsSingleton::getInstance();
+
     for (map<string, int>::iterator geleverde_vaccins = aantal_geleverde_vaccins.begin();
          geleverde_vaccins != aantal_geleverde_vaccins.end(); geleverde_vaccins++) {
         aantal_vaccins[geleverde_vaccins->first].second += geleverde_vaccins->second;
+        stats.addGeleverdeVaccins(geleverde_vaccins->first, geleverde_vaccins->second);
+        // reset
         geleverde_vaccins->second = 0;
     }
 
@@ -131,6 +137,7 @@ void VaccinatieCentrum::nieuweDag() {
         batch->second -= min_;
         aantal_vaccinaties[batch->first] += min_;
         capaciteit -= min_;
+        stats.addVaccinatie(kfname, batch->first, min_);
         if (batch->second != 0) {
             if ((today++)->find(batch->first) == (today++)->end()) {
                 std::cout << today->at(batch->first) << endl;

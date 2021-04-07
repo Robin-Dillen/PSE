@@ -24,7 +24,11 @@ set(RELEASE_SOURCE_FILES
         TinyXML/tinyxmlerror.cpp
         TinyXML/tinyxmlparser.cpp
         Output.cpp
-        Output.h Lib.h Utils.h VaccinSimulatie.h)
+        Output.h
+        Lib.h
+        Utils.h
+        VaccinSimulatie.h
+        StatisticsSingleton.cpp StatisticsSingleton.h)
 
 # Set source files for DEBUG target
 set(DEBUG_SOURCE_FILES
