@@ -27,13 +27,13 @@ public:
         return instance;
     }
 
-    void addGeleverdeVaccins(const string &type, int aantal);
+    void addGeleverdeVaccins(const VaccinatieCentrum *const, const string &type, int aantal);
 
-    int getGeleverdeVaccins(const string &type) const;
+    int getGeleverdeVaccins(const VaccinatieCentrum *const, const string &type) const;
 
-    void addVaccinatie(const string &centrum, const string &type, int aantal);
+    void addVaccinatie(const VaccinatieCentrum *const centrum, const string &type, int aantal);
 
-    int getAantalVaccinaties(const string &centrum, const string &type) const;
+    int getAantalVaccinaties(const VaccinatieCentrum *const centrum, const string &type) const;
 
 private:
     StatisticsSingleton() {
@@ -48,7 +48,7 @@ private:
     StatisticsSingleton(StatisticsSingleton const &);              // Don't Implement
     void operator=(StatisticsSingleton const &); // Don't implement
 
-    map<string, map<string, StatisticsSingletonData> > data;
+    map<const VaccinatieCentrum *const, map<string, StatisticsSingletonData> > data;
 };
 
 

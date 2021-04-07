@@ -2,38 +2,39 @@
 #include "StatisticsSingleton.h"
 #include "lib/DesignByContract.h"
 
-void StatisticsSingleton::addGeleverdeVaccins(const string &type, int aantal) {
-    if (aantal_geleverde_vaccins.find(type) == aantal_geleverde_vaccins.end()) {
-        aantal_geleverde_vaccins[type] = aantal;
+void StatisticsSingleton::addGeleverdeVaccins(const VaccinatieCentrum *const centrum, const string &type, int aantal) {
+    if (data.find(centrum) == data.end() || data[centrum].find(type) == data[centrum].end()) {
+        data[centrum][type] = StatisticsSingletonData(0, aantal);
         return;
     }
-    aantal_geleverde_vaccins[type] += aantal;
+
+    data[centrum][type].aantal_geleverde_vaccins += aantal;
 }
 
-void StatisticsSingleton::addVaccinatie(const string &centrum, const string &type, int aantal) {
-    if (aantal_vaccinaties.find(centrum) == aantal_vaccinaties.end()) {
-        aantal_vaccinaties[centrum][type] = aantal;
+void
+StatisticsSingleton::addVaccinatie(const VaccinatieCentrum *const centrum, const string &centrum, const string &type,
+                                   int aantal) {
+    if (data.find(centrum) == data.end() || data[centrum].find(type) == data[centrum].end()) {
+        data[centrum][type] = StatisticsSingletonData(aantal, 0);
         return;
     }
-    if (aantal_vaccinaties[centrum].find(type) == aantal_vaccinaties[centrum].end()) {
-        aantal_vaccinaties[centrum][type] = aantal;
-        return;
-    }
-    aantal_vaccinaties[centrum][type] += aantal;
+    data[centrum][type].aantal_vaccinaties += aantal;
 }
 
-int StatisticsSingleton::getGeleverdeVaccins(const string &type) const {
-    map<string, int>::const_iterator aantal = aantal_geleverde_vaccins.find(type);
-    if (aantal == aantal_geleverde_vaccins.end()) return 0;
-    return aantal->second;
+int StatisticsSingleton::getGeleverdeVaccins(const VaccinatieCentrum *const centrum, const string &type) const {
+    map<const VaccinatieCentrum *const, map<string, StatisticsSingletonData> >::const_iterator c = data.find(centrum);
+    if (c == data.end()) return 0;
+    map<string, StatisticsSingletonData>::const_iterator aantal = data.at(centrum).find(type);
+    if (aantal == data.at(centrum).end()) return 0;
+    return aantal->second.aantal_geleverde_vaccins;
 }
 
-int StatisticsSingleton::getAantalVaccinaties(const string &centrum, const string &type) const {
-    map<string, map<string, int> >::const_iterator c = aantal_vaccinaties.find(centrum);
-    if (c == aantal_vaccinaties.end()) return 0;
-    map<string, int>::const_iterator aantal = aantal_vaccinaties.at(centrum).find(type);
-    if (aantal == aantal_vaccinaties.at(centrum).end()) return 0;
-    return aantal->second;
+int StatisticsSingleton::getAantalVaccinaties(const VaccinatieCentrum *const centrum, const string &type) const {
+    map<const VaccinatieCentrum *const, map<string, StatisticsSingletonData> >::const_iterator c = data.find(centrum);
+    if (c == data.end()) return 0;
+    map<string, StatisticsSingletonData>::const_iterator aantal = data.at(centrum).find(type);
+    if (aantal == data.at(centrum).end()) return 0;
+    return aantal->second.aantal_vaccinaties;
 
 }
 
