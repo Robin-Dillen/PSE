@@ -12,8 +12,7 @@ void StatisticsSingleton::addGeleverdeVaccins(const VaccinatieCentrum *const cen
 }
 
 void
-StatisticsSingleton::addVaccinatie(const VaccinatieCentrum *const centrum, const string &centrum, const string &type,
-                                   int aantal) {
+StatisticsSingleton::addVaccinatie(const VaccinatieCentrum *const centrum, const string &type, int aantal) {
     if (data.find(centrum) == data.end() || data[centrum].find(type) == data[centrum].end()) {
         data[centrum][type] = StatisticsSingletonData(aantal, 0);
         return;
