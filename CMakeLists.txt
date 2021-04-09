@@ -51,6 +51,7 @@ set(DEBUG_SOURCE_FILES
         StatisticsSingleton.cpp StatisticsSingleton.h
         Vaccins.cpp Vaccins.h)
 
+
 # Create RELEASE target
 add_executable(PSE ${RELEASE_SOURCE_FILES})
 

@@ -193,7 +193,7 @@ Parser::Parser(const string &filename) : _initCheck(this) {
             }
 
             //ENSURE(vaccin->FirstChildElement("levering") != NULL, "...");
-            if (("levering") == NULL) {
+            if (vaccin->FirstChildElement("levering") == NULL) {
                 errors.push_back(MISSING_TAG);
                 cerr << "Het element 'levering' van het vaccin" + locationToString(vaccin) + " bestaat niet!";
                 correct = false;
