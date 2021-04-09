@@ -11,9 +11,12 @@
 #include "VaccinatieCentrum.h"
 #include "Hub.h"
 #include "Utils.h"
+#include "Vaccins.h"
 
 Parser::Parser(const string &filename) : _initCheck(this) {
     TiXmlDocument doc;
+    VaccinsSingletonFactory &vaccin_factory = VaccinsSingletonFactory::getInstance();
+
     //Kijkt na of de file is ingeladen
     ENSURE(doc.LoadFile(filename.c_str()), doc.ErrorDesc());
     //Kijkt na of er een root aanwezig is
@@ -157,33 +160,6 @@ Parser::Parser(const string &filename) : _initCheck(this) {
     // maak de hubs aan
     for (TiXmlElement *hub = root->FirstChildElement("HUB"); hub != NULL; hub = hub->NextSiblingElement("HUB")) {
 
-//        // leveringen moet bestaan
-//        ENSURE(hub->FirstChildElement("levering") != NULL, "levering does not exist");
-//        ENSURE(hub->FirstChildElement("levering")->GetText() != NULL, "levering heeft een ongeldige waarde");
-//        stringstream g(hub->FirstChildElement("levering")->GetText());
-//        g >> levering;
-//
-//        // interval moet bestaan
-//        ENSURE(hub->FirstChildElement("interval") != NULL, "interval does not exist");
-//        ENSURE(hub->FirstChildElement("interval")->GetText() != NULL, "interval heeft een ongeldige waarde");
-//        stringstream h(hub->FirstChildElement("interval")->GetText());
-//        h >> interval;
-//
-//        // transport moet bestaan
-//        ENSURE(hub->FirstChildElement("transport") != NULL, "Transport does not exist");
-//        ENSURE(hub->FirstChildElement("transport")->GetText() != NULL, "Transport heeft een ongeldige waarde");
-//        stringstream i(hub->FirstChildElement("transport")->GetText());
-//        i >> transport;
-//
-//        ENSURE(levering > 0,
-//               ("Levering" + locationToString(hub->FirstChildElement("levering")) + " in hub" + locationToString(hub) +
-//                       "heeft een waarde kleiner dan 1").c_str());
-//        ENSURE(interval > 0,
-//               ("Interval" + locationToString(hub->FirstChildElement("interval")) + " in hub" + locationToString(hub) +
-//                       "heeft een waarde kleiner dan 1").c_str());
-//        ENSURE(transport > 0, ("Transport" + locationToString(hub->FirstChildElement("transport")) + " in hub" +
-//                locationToString(hub) + "heeft een waarde kleiner dan 1").c_str());
-
         ENSURE(hub->FirstChildElement("CENTRA") != NULL,
                ("Hub" + locationToString(hub) + "bevat geen 'CENTRA' tag").c_str());
 
@@ -289,7 +265,7 @@ Parser::Parser(const string &filename) : _initCheck(this) {
 
             if (!correct) continue;
 
-            vaccins[naam] = new Vaccin(naam, levering, interval, transport, hernieuwing, temperatuur);
+            vaccins[naam] = vaccin_factory.getVaccin(naam, levering, interval, transport, hernieuwing, temperatuur);
 
             for (TiXmlElement *el = vaccin->FirstChildElement();
                  el != NULL; el = el->NextSiblingElement("VACCIN")) {
