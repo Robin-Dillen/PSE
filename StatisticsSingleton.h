@@ -8,11 +8,12 @@
 using namespace std;
 
 class Vaccin;
-
 class VaccinatieCentrum;
 
 struct StatisticsSingletonData {
     StatisticsSingletonData(int aantalVaccinaties, int aantalGeleverdeVaccins);
+
+    StatisticsSingletonData();
 
     int aantal_vaccinaties;
     int aantal_geleverde_vaccins;
@@ -26,6 +27,15 @@ public:
         // Instantiated on first use.
         return instance;
     }
+
+    //https://stackoverflow.com/a/46432381/10875953
+    typedef map<const VaccinatieCentrum *const, map<string, StatisticsSingletonData> > container_type;
+    typedef container_type::iterator iterator;
+    typedef container_type::const_iterator const_iterator;
+
+    inline iterator begin() { return data.begin(); }
+
+    inline iterator end() { return data.end(); }
 
     void addGeleverdeVaccins(const VaccinatieCentrum *const centrum, const string &type, int aantal);
 
