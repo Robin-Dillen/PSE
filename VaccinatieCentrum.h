@@ -16,7 +16,6 @@
 #include <list>
 #include <deque>
 
-#include "Lib.h"
 #include "lib/DesignByContract.h"
 
 using namespace std;
@@ -28,6 +27,8 @@ private:
     int aantal_inwoners;
 };
 */
+
+class Vaccin;
 
 class VaccinatieCentrum {
 public:

@@ -9,6 +9,7 @@
 #include "VaccinatieCentrum.h"
 #include "Utils.h"
 #include "StatisticsSingleton.h"
+#include "Vaccins.h"
 
 
 VaccinatieCentrum::VaccinatieCentrum(const int kcapaciteit, const int kaantalInwoners,

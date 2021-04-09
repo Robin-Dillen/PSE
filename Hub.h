@@ -16,11 +16,12 @@
 #include <iostream> // for testing
 
 #include "lib/DesignByContract.h"
-#include "Lib.h"
 
 using namespace std;
 
 class VaccinatieCentrum;
+
+class Vaccin;
 
 class Hub {
 public:
