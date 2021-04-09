@@ -10,6 +10,7 @@
 #include "VaccinatieCentrum.h"
 #include "Utils.h"
 #include "StatisticsSingleton.h"
+#include "Vaccins.h"
 
 //Hub::Hub(const int kaantal_vaccins_per_levering,
 //         const int kleveringen_interval, const int kaantal_vaccins_per_lading)

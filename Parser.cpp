@@ -11,9 +11,12 @@
 #include "VaccinatieCentrum.h"
 #include "Hub.h"
 #include "Utils.h"
+#include "Vaccins.h"
 
 Parser::Parser(const string &filename) : _initCheck(this) {
     TiXmlDocument doc;
+    VaccinsSingletonFactory &vaccin_factory = VaccinsSingletonFactory::getInstance();
+
     //Kijkt na of de file is ingeladen
     ENSURE(doc.LoadFile(filename.c_str()), doc.ErrorDesc());
     //Kijkt na of er een root aanwezig is
@@ -262,7 +265,7 @@ Parser::Parser(const string &filename) : _initCheck(this) {
 
             if (!correct) continue;
 
-            vaccins[naam] = new Vaccin(naam, levering, interval, transport, hernieuwing, temperatuur);
+            vaccins[naam] = vaccin_factory.getVaccin(naam, levering, interval, transport, hernieuwing, temperatuur);
 
             for (TiXmlElement *el = vaccin->FirstChildElement();
                  el != NULL; el = el->NextSiblingElement("VACCIN")) {

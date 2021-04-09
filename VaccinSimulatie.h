@@ -7,6 +7,7 @@
 #include "Hub.h"
 #include "Utils.h"
 #include "StatisticsSingleton.h"
+#include "Vaccins.h"
 
 using namespace std;
 
