@@ -15,7 +15,7 @@
 
 Parser::Parser(const string &filename) : _initCheck(this) {
     TiXmlDocument doc;
-    VaccinsSingletonFactory &vaccin_factory = VaccinsSingletonFactory::getInstance();
+    VaccinsFactorySingleton &vaccin_factory = VaccinsFactorySingleton::getInstance();
 
     //Kijkt na of de file is ingeladen
     ENSURE(doc.LoadFile(filename.c_str()), doc.ErrorDesc());

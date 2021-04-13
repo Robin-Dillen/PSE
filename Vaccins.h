@@ -23,16 +23,16 @@ struct Vaccin {
 };
 
 
-class VaccinsSingletonFactory {
+class VaccinsFactorySingleton {
 public:
-    virtual ~VaccinsSingletonFactory() {
+    virtual ~VaccinsFactorySingleton() {
         for (map<string, Vaccin *>::iterator v = types.begin(); v != types.end(); v++) {
             delete v->second;
         }
     }
 
-    static VaccinsSingletonFactory &getInstance() {
-        static VaccinsSingletonFactory instance; // Guaranteed to be destroyed.
+    static VaccinsFactorySingleton &getInstance() {
+        static VaccinsFactorySingleton instance; // Guaranteed to be destroyed.
         // Instantiated on first use.
         return instance;
     }
@@ -49,15 +49,15 @@ public:
     }
 
 private:
-    VaccinsSingletonFactory() {}                    // Constructor? (the {} brackets) are needed here.
+    VaccinsFactorySingleton() {}                    // Constructor? (the {} brackets) are needed here.
 
     // C++ 03
     // ========
     // Don't forget to declare these two. You want to make sure they
     // are inaccessible(especially from outside), otherwise, you may accidentally get copies of
     // your singleton appearing.
-    VaccinsSingletonFactory(VaccinsSingletonFactory const &); // Don't Implement
-    void operator=(VaccinsSingletonFactory const &); // Don't implement
+    VaccinsFactorySingleton(VaccinsFactorySingleton const &); // Don't Implement
+    void operator=(VaccinsFactorySingleton const &); // Don't implement
 
     map<string, Vaccin *> types;
 };
