@@ -142,7 +142,7 @@ void VaccinatieCentrum::nieuweDag() {
         capaciteit -= min_;
         stats.addVaccinatie(this, batch->first, min_);
         if (batch->second != 0) {
-            if (tomorrow->find(batch->first) == (today++)->end()) {
+            if (tomorrow->find(batch->first) == tomorrow->end()) {
                 std::cout << today->at(batch->first) << endl;
                 (*tomorrow)[batch->first] = batch->second;
             } else {
