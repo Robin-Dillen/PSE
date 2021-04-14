@@ -132,19 +132,21 @@ void VaccinatieCentrum::nieuweDag() {
 
     int capaciteit = kcapaciteit;
     deque<map<string, int> >::iterator today = aantal_eerste_prikken.begin();
+    deque<map<string, int> >::iterator tomorrow = aantal_eerste_prikken.begin() + 1;
     for (map<string, int>::iterator batch = today->begin(); batch != today->end(); batch++) {
-        int min_ = min(3, getAantalVaccins(batch->first), kcapaciteit, batch->second);
+        cout << batch->first << endl;
+        int min_ = min(3, getAantalVaccins(batch->first), capaciteit, batch->second);
         cout << "Er zijn " << min_ << " aantal 2de prikken met " << batch->first << " gezet!" << endl;
         batch->second -= min_;
         aantal_vaccinaties[batch->first] += min_;
         capaciteit -= min_;
         stats.addVaccinatie(this, batch->first, min_);
         if (batch->second != 0) {
-            if ((today++)->find(batch->first) == (today++)->end()) {
+            if (tomorrow->find(batch->first) == (today++)->end()) {
                 std::cout << today->at(batch->first) << endl;
-                (*(today++))[batch->first] = batch->second;
+                (*tomorrow)[batch->first] = batch->second;
             } else {
-                (*(today++))[batch->first] += batch->second;
+                (*tomorrow)[batch->first] += batch->second;
             }
         }
     }
