@@ -50,6 +50,8 @@ public:
      */
     int getAantalVaccins(const string &type) const;
 
+    int getTotaalAantalvaccins() const;
+
     /**
      * @param type: naam van het vaccin waarvan we het interval willen weten
      * @return int :geeft terug om de hoeveel dagen een levering vaccins binnenkomt

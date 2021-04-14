@@ -40,6 +40,17 @@ int Hub::getAantalVaccins(const string &type) const {
     return aantal_vaccins.at(type);
 }
 
+int Hub::getTotaalAantalvaccins() const{
+    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getTotaalAantalVaccinaties");
+    int totaal = 0;
+    //loopt over alle vaccinatiecentra van deze hub om het totale aantal vaccinaties te verkrijgen
+    for (map<string, VaccinatieCentrum *>::const_iterator it = fverbonden_centra.begin(), end = fverbonden_centra.end();
+         it != end; it++) {
+        totaal += it->second->getTotaalAantalVaccins();
+    }
+    return totaal;
+}
+
 int Hub::getLeveringenInterval(const string &type) const {
     REQUIRE(isProperlyInitialized(), "Parser wasn't initialized when calling getLeveringenInterval");
     return vaccins.at(type)->interval;
@@ -172,9 +183,8 @@ void Hub::verdeelVaccins() {
         for (map<string, Vaccin *>::const_iterator vaccin = vaccins.begin(); vaccin != vaccins.end(); vaccin++) {
             if (centrum->second->getTotaalAantalVaccins() >= capaciteit || capaciteit == 0) break;
             if (centrum->second->getTotaalAantalVaccins() + vaccin->second->transport >=
-                centrum->second->getMaxStock())
+                centrum->second->getMaxStock() || aantal_vaccins[vaccin->first] - gereserveerd_2de_prik[vaccin->first] < 0)
                 continue;
-
             int min_ = min(3, capaciteit, aantal_vaccins[vaccin->first] - gereserveerd_2de_prik[vaccin->first],
                            centrum->second->getMaxStock() - centrum->second->getTotaalAantalVaccins());
 
