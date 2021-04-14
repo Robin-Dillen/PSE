@@ -23,7 +23,7 @@ void Output::addToOutputFile(Hub *h, int y, int m, int w, int d, const string &f
 
     for (map<string, VaccinatieCentrum *>::const_iterator it = h->getFverbondenCentra().begin();
          it != h->getFverbondenCentra().end(); it++) {
-        outputFile << "\t-> " << it->first << " (" << it->second->getAantalGeleverdeVaccinsBuffer() << " vaccins)\n";
+        outputFile << "\t-> " << it->first << " (" << it->second->getTotaalAantalVaccins() << " vaccins)\n";
     }
     outputFile << "\n";
     for (map<string, VaccinatieCentrum *>::const_iterator it = h->getFverbondenCentra().begin();

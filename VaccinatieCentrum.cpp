@@ -153,7 +153,7 @@ void VaccinatieCentrum::nieuweDag() {
 
     for (map<string, pair<Vaccin *, int> >::iterator vaccin = aantal_vaccins.begin();
          vaccin != aantal_vaccins.end() && capaciteit != 0; vaccin++) {
-        int aantal_prikken = min(capaciteit, vaccin->second.second);
+        int aantal_prikken = min(3,capaciteit, vaccin->second.second,aantal_niet_vaccinaties);
         cout << "Er zijn " << aantal_prikken << " 1ste prikken met " << vaccin->first << " gezet!" << endl;
         if (vaccin->second.first->hernieuwing == 0) {
             if (aantal_vaccinaties.find(vaccin->first) == aantal_vaccinaties.end()) {
@@ -162,6 +162,7 @@ void VaccinatieCentrum::nieuweDag() {
         } else {
             aantal_eerste_prikken[vaccin->second.first->hernieuwing - 1][vaccin->first] = aantal_prikken;
         }
+        aantal_niet_vaccinaties -= aantal_prikken;
         capaciteit -= aantal_prikken;
         vaccin->second.second -= aantal_prikken;
     }
