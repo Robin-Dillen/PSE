@@ -3,7 +3,7 @@
 #define PSE_VACCINS_H
 
 #include <string>
-#include <map>
+#include <vector>
 
 using namespace std;
 
@@ -26,8 +26,8 @@ struct Vaccin {
 class VaccinsFactorySingleton {
 public:
     virtual ~VaccinsFactorySingleton() {
-        for (map<string, Vaccin *>::iterator v = types.begin(); v != types.end(); v++) {
-            delete v->second;
+        for (vector<Vaccin *>::iterator v = vaccins.begin(); v != vaccins.end(); v++) {
+            delete *v;
         }
     }
 
@@ -40,11 +40,8 @@ public:
     Vaccin *
     getVaccin(const string &type, const int levering, const int interval, const int transport, const int hernieuwing,
               const int temperatuur) {
-        if (types.find(type) != types.end()) {
-            return types.at(type);
-        }
         Vaccin *V = new Vaccin(type, levering, interval, transport, hernieuwing, temperatuur);
-        types[type] = V;
+        vaccins.push_back(V);
         return V;
     }
 
@@ -59,7 +56,7 @@ private:
     VaccinsFactorySingleton(VaccinsFactorySingleton const &); // Don't Implement
     void operator=(VaccinsFactorySingleton const &); // Don't implement
 
-    map<string, Vaccin *> types;
+    vector<Vaccin *> vaccins;
 };
 
 
