@@ -71,6 +71,7 @@ inline void Simulatie(const string &testfilename, bool c_out = true) {
         }
         for (unsigned int i = 0; i < vaccinatie_centra.size(); i++) {
             vaccinatie_centra[i]->nieuweDag();
+            Output::addToOutputFile(vaccinatie_centra[i], current_day, filename);
         }
     }
 

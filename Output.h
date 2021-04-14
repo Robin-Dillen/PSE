@@ -19,6 +19,8 @@ using namespace std;
 
 class Hub;
 
+class VaccinatieCentrum;
+
 class Output {
 public:
 
@@ -41,6 +43,8 @@ public:
      */
     static void addToOutputFile(Hub *h, int y, int m, int w, int d, const string &filename);
 
+    static void addToOutputFile(VaccinatieCentrum *v, int y, int m, int w, int d, const string &filename);
+
     /**
      * voegt info toe aan het outputbestand
      * @param h: hub
@@ -49,6 +53,7 @@ public:
      */
     static void addToOutputFile(Hub *h, int days, const string &filename);
 
+    static void addToOutputFile(VaccinatieCentrum *v, int days, const string &filename);
 
 private:
     /**
