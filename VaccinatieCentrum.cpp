@@ -194,6 +194,9 @@ bool VaccinatieCentrum::isVolNaLevering(int vaccins_in_levering) const {
 void VaccinatieCentrum::ontvangLevering(int vaccins_in_levering, Vaccin *vaccin) {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling ontvangLevering");
 
+    if (vaccins_in_levering + getTotaalAantalVaccins() > getMaxStock()) {
+        cout << "error" << endl;
+    }
     if (vaccin->hernieuwing > (int) aantal_eerste_prikken.size()) aantal_eerste_prikken.resize(vaccin->hernieuwing);
     if (aantal_vaccins.find(vaccin->type) == aantal_vaccins.end()) {
         aantal_vaccins[vaccin->type].first = vaccin;

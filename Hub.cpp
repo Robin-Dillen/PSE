@@ -40,7 +40,7 @@ int Hub::getAantalVaccins(const string &type) const {
     return aantal_vaccins.at(type);
 }
 
-int Hub::getTotaalAantalvaccins() const{
+int Hub::getTotaalAantalvaccins() const {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getTotaalAantalVaccinaties");
     int totaal = 0;
     //loopt over alle vaccinatiecentra van deze hub om het totale aantal vaccinaties te verkrijgen
@@ -127,7 +127,8 @@ void Hub::nieuweDag() {
                 (vaccin->second->interval + 1 + (((vaccin->second->tijd_tot_nieuwe_levering - 1) %
                                                   (vaccin->second->interval + 1)))) %
                 (vaccin->second->interval + 1); // python modulo (wraps around)
-        cout << "aantal dagen tot levering van "<< vaccin->first<<": " << vaccin->second->tijd_tot_nieuwe_levering << endl;
+        cout << "aantal dagen tot levering van " << vaccin->first << ": " << vaccin->second->tijd_tot_nieuwe_levering
+             << endl;
     }
 
     verdeelVaccins();
@@ -167,9 +168,18 @@ void Hub::verdeelVaccins() {
             if (centrum->second->getAantalVaccins(vaccin->first) >= todays_batch || capaciteit == 0)
                 continue; // we hebben al genoeg vaccins of capaciteit is gevuld
 
-            int min_ = min(3, capaciteit, todays_batch, aantal_vaccins[vaccin->first]);
+            int min_ = min(4, capaciteit, todays_batch, aantal_vaccins[vaccin->first],
+                           centrum->second->getMaxStock() - centrum->second->getTotaalAantalVaccins() -
+                           centrum->second->getTotaalAantalGeleverdeVaccins());
+            if (min_ < 0) {
+                cout << "error" << endl;
+            }
             capaciteit -= min_;
             int ladingen = ceil((float) min_ / vaccin->second->transport);
+            if (ladingen * vaccin->second->transport + centrum->second->getTotaalAantalVaccins() +
+                centrum->second->getTotaalAantalGeleverdeVaccins() > centrum->second->getMaxStock()) {
+                ladingen = floor((float) min_ / vaccin->second->transport);
+            }
             aantal_vaccins[vaccin->first] -= ladingen * vaccin->second->transport;
             centrum->second->ontvangLevering(ladingen * vaccin->second->transport,
                                              vaccin->second);
@@ -183,13 +193,23 @@ void Hub::verdeelVaccins() {
         for (map<string, Vaccin *>::const_iterator vaccin = vaccins.begin(); vaccin != vaccins.end(); vaccin++) {
             if (centrum->second->getTotaalAantalVaccins() >= capaciteit || capaciteit == 0) break;
             if (centrum->second->getTotaalAantalVaccins() + vaccin->second->transport >=
-                centrum->second->getMaxStock() || aantal_vaccins[vaccin->first] - gereserveerd_2de_prik[vaccin->first] < 0)
+                centrum->second->getMaxStock() ||
+                aantal_vaccins[vaccin->first] - gereserveerd_2de_prik[vaccin->first] < 0)
                 continue;
             int min_ = min(3, capaciteit, aantal_vaccins[vaccin->first] - gereserveerd_2de_prik[vaccin->first],
-                           centrum->second->getMaxStock() - centrum->second->getTotaalAantalVaccins());
+                           centrum->second->getMaxStock() - centrum->second->getTotaalAantalVaccins() -
+                           centrum->second->getTotaalAantalGeleverdeVaccins());
 
+            if (min_ < 0) {
+                cout << "error" << endl;
+            }
             capaciteit -= min_;
             int ladingen = ceil((float) min_ / vaccin->second->transport);
+            if (ladingen * vaccin->second->transport + centrum->second->getTotaalAantalVaccins() +
+                centrum->second->getTotaalAantalGeleverdeVaccins() >
+                centrum->second->getMaxStock()) {
+                ladingen = floor((float) min_ / vaccin->second->transport);
+            }
             aantal_vaccins[vaccin->first] -= ladingen * vaccin->second->transport;
             centrum->second->ontvangLevering(ladingen * vaccin->second->transport,
                                              vaccin->second); //stuurt de vaccins naar het centrum
