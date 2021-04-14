@@ -44,6 +44,7 @@ inline void Simulatie(const string &testfilename, bool c_out = true) {
     }
     while ((!end_day || current_day < end_day) && !break_) {
         current_day++;
+        cout<<"dag "<<current_day<<": "<<endl;
         for (unsigned int i = 0; i < hubs.size(); i++) {
             if (hubs[i]->isIedereenGevaccineerd()) {
                 break_ = true;
@@ -62,6 +63,7 @@ inline void Simulatie(const string &testfilename, bool c_out = true) {
             }
 
             // stuur signaal nieuwe dag
+            cout<<"\thub "<<i+1<<": "<<endl;
             hubs[i]->nieuweDag();
 
             // output

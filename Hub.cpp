@@ -127,7 +127,7 @@ void Hub::nieuweDag() {
                 (vaccin->second->interval + 1 + (((vaccin->second->tijd_tot_nieuwe_levering - 1) %
                                                   (vaccin->second->interval + 1)))) %
                 (vaccin->second->interval + 1); // python modulo (wraps around)
-        cout << "aantal dagen tot levering: " << vaccin->second->tijd_tot_nieuwe_levering << endl;
+        cout << "aantal dagen tot levering van "<< vaccin->first<<": " << vaccin->second->tijd_tot_nieuwe_levering << endl;
     }
 
     verdeelVaccins();
