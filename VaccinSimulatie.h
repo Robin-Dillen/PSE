@@ -34,7 +34,7 @@ inline void Simulatie(const string &testfilename, bool c_out = true) {
 
     // start simulatie
 
-    int end_day = 30; // we kunnen ook een grens zetten op de duur van de simulatie, zet op 0 om geen grens te hebben
+    int end_day = 0; // we kunnen ook een grens zetten op de duur van de simulatie, zet op 0 om geen grens te hebben
 
     int current_day = 0; // we houden de datum hier bij zodat we aan het einde van de simulatie de duur van de simulatie kunnen opvragen
     bool break_ = false;
@@ -60,7 +60,6 @@ inline void Simulatie(const string &testfilename, bool c_out = true) {
                     hubs[i]->ontvangLevering(it->first, it->second->levering);
                 }
             }
-
 
             // stuur signaal nieuwe dag
             hubs[i]->nieuweDag();

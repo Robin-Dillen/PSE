@@ -44,9 +44,9 @@ int Hub::getTotaalAantalvaccins() const{
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getTotaalAantalVaccinaties");
     int totaal = 0;
     //loopt over alle vaccinatiecentra van deze hub om het totale aantal vaccinaties te verkrijgen
-    for (map<string, VaccinatieCentrum *>::const_iterator it = fverbonden_centra.begin(), end = fverbonden_centra.end();
+    for (map<string, int>::const_iterator it = aantal_vaccins.begin(), end = aantal_vaccins.end();
          it != end; it++) {
-        totaal += it->second->getTotaalAantalVaccins();
+        totaal += it->second;
     }
     return totaal;
 }
