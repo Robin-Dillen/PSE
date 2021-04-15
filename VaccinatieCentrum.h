@@ -189,7 +189,12 @@ private:
     map<string, pair<Vaccin *, int> > aantal_vaccins; //vaccin: Vaccintype, int: aantal vaccins van dit type
     //int aantal_vaccins;
 
-    int aantal_niet_vaccinaties; //aantal mensen die nog geen vaccinatie hebben gekregen.
+    int aantal_niet_vaccinaties;
+public:
+    int getAantalNietVaccinaties() const;
+
+private:
+    //aantal mensen die nog geen vaccinatie hebben gekregen.
 
     map<string, int> aantal_vaccinaties; // aantal mensen dat gevaccineert is
     // we kunnen gwn een map<vaccin_naam, aantal> bijhouden

@@ -15,11 +15,11 @@ bool Output::isProperlyInitialized() const {
     return _initCheck == this;
 }
 
-void Output::addToOutputFile(Hub *h, int y, int m, int w, int d, const string &filename) {
+void Output::addToOutputFile(Hub *h,int i, int y, int m, int w, int d, const string &filename) {
     // voegt content toe aan de output file, het is dus de bedoeling dat je de file opvoorhand leeg maakt
     ofstream outputFile((OUTPUT_FILE_LOCATION + filename + ".txt").c_str(), ios_base::app);
     outputFile << "Overzicht van vaccinaties na: " << dateToString(y, m, w, d) << string(".\n\n");
-    outputFile << "Hub (" << h->getTotaalAantalvaccins() << " vaccins)\n";
+    outputFile << "Hub "<<i<<" (" << h->getTotaalAantalvaccins() << " vaccins)\n";
 
     for (map<string, VaccinatieCentrum *>::const_iterator it = h->getFverbondenCentra().begin();
          it != h->getFverbondenCentra().end(); it++) {
@@ -36,10 +36,19 @@ void Output::addToOutputFile(Hub *h, int y, int m, int w, int d, const string &f
     outputFile.close();
 }
 
-void Output::addToOutputFile(VaccinatieCentrum *v, int y, int m, int w, int d, const string &filename) {
+void Output::addToOutputFile(Hub *h,int i, int days, const string &filename) {
+    int years = days / 356;
+    days -= years * 356;
+    int months = days / 30;
+    days -= months * 30;
+    int weeks = days / 7;
+    days -= weeks * 7;
+    addToOutputFile(h,i, years, months, weeks, days, filename);
+}
+
+void Output::addToGIFile(VaccinatieCentrum *v, const string &filename) {
     // voegt content toe aan de output file, het is dus de bedoeling dat je de file opvoorhand leeg maakt
     ofstream outputFile((OUTPUT_FILE_LOCATION + filename + ".txt").c_str(), ios_base::app);
-    outputFile << "Overzicht van vaccinaties na: " << dateToString(y, m, w, d) << string(".\n\n");
     outputFile << v->getKfname() << ":\n";
     outputFile << "\t- vaccins\t\t[";
     int vaccinpercentage = round((v->getTotaalAantalVaccins()*100)/v->getMaxStock());
@@ -51,7 +60,19 @@ void Output::addToOutputFile(VaccinatieCentrum *v, int y, int m, int w, int d, c
             outputFile << " ";
         }
     }
-    outputFile <<" "<<vaccinpercentage<< "%\n";
+    outputFile <<"] "<<vaccinpercentage<< "%\n";
+    outputFile << "\t- 1ste prik\t\t[";
+    int aantal1steprik = v->getKaantalInwoners()-(v->getTotaalAantalVaccinaties()+v->getAantalNietVaccinaties());
+    int eersteprikpercentage = round((aantal1steprik*100)/v->getKaantalInwoners());
+    for(int i = 1; i<=20; i++){
+        if(i<eersteprikpercentage/5){
+            outputFile << "=";
+        }
+        else{
+            outputFile << " ";
+        }
+    }
+    outputFile <<"] "<<eersteprikpercentage<< "%\n";
     outputFile << "\t- gevaccineerd\t[";
     int gevaccineerdpercentage = round((v->getTotaalAantalVaccinaties()*100)/v->getKaantalInwoners());
     for(int i = 1; i<=20; i++){
@@ -62,30 +83,23 @@ void Output::addToOutputFile(VaccinatieCentrum *v, int y, int m, int w, int d, c
             outputFile << " ";
         }
     }
-    outputFile <<" "<<gevaccineerdpercentage<< "%\n";
+    outputFile <<"] "<<gevaccineerdpercentage<< "%\n";
     outputFile << "\r";
     outputFile.close();
 }
 
-void Output::addToOutputFile(Hub *h, int days, const string &filename) {
+
+
+void Output::addDateToFile(int days, const string &filename) {
     int years = days / 356;
     days -= years * 356;
     int months = days / 30;
     days -= months * 30;
     int weeks = days / 7;
     days -= weeks * 7;
-    addToOutputFile(h, years, months, weeks, days, filename);
-}
-
-
-void Output::addToOutputFile(VaccinatieCentrum *v, int days, const string &filename) {
-    int years = days / 356;
-    days -= years * 356;
-    int months = days / 30;
-    days -= months * 30;
-    int weeks = days / 7;
-    days -= weeks * 7;
-    addToOutputFile(v, years, months, weeks, days, filename);
+    ofstream outputFile((OUTPUT_FILE_LOCATION + filename + ".txt").c_str(), ios_base::app);
+    outputFile << "Overzicht van vaccinaties na: " << dateToString(years, months, weeks, days) << string(".\n\n");
+    outputFile.close();
 }
 
 string Output::dateToString(int y, int m, int w, int d) {

@@ -231,6 +231,10 @@ int VaccinatieCentrum::getAantalTweedePrikken(const string &vaccin, int dag) con
     return aantal->second;
 }
 
+int VaccinatieCentrum::getAantalNietVaccinaties() const {
+    return aantal_niet_vaccinaties;
+}
+
 
 
 
