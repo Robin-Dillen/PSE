@@ -20,8 +20,9 @@
 using namespace std;
 
 class VaccinatieCentrum;
-
 class Vaccin;
+
+class VaccinsRequest;
 
 class Hub {
 public:

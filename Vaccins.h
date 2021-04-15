@@ -59,5 +59,18 @@ private:
     vector<Vaccin *> vaccins;
 };
 
+enum EVaccinsPriority {
+    hoog, zeer_hoog
+};
+
+struct VaccinsRequest {
+    VaccinsRequest(const string &type, const int aantal, const EVaccinsPriority priority) : type(type), aantal(aantal),
+                                                                                            priority(priority) {}
+
+    const string type;
+    const int aantal;
+    const EVaccinsPriority priority;
+};
+
 
 #endif //PSE_VACCINS_H

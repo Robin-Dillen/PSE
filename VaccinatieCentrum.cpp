@@ -235,6 +235,22 @@ int VaccinatieCentrum::getAantalNietVaccinaties() const {
     return aantal_niet_vaccinaties;
 }
 
+void VaccinatieCentrum::requestVaccins() {
+    vaccin_requests.clear();
+    int capaciteit = kcapaciteit;
+    deque<map<string, int> >::iterator today = aantal_eerste_prikken.begin();
+    for (map<string, int>::iterator batch = today->begin(); batch != today->end(); batch++) {
+        vaccin_requests.push_back(VaccinsRequest(batch->first, batch->second, zeer_hoog));
+        capaciteit -= batch->second;
+    }
+    if (capaciteit > 0)
+        vaccin_requests.push_back(VaccinsRequest("any", capaciteit, hoog));
+}
+
+const vector<VaccinsRequest> &VaccinatieCentrum::getVaccinRequests() const {
+    return vaccin_requests;
+}
+
 
 
 
