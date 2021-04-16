@@ -34,17 +34,17 @@ bool VaccinatieCentrum::isProperlyInitialized() const {
 }
 
 const string &VaccinatieCentrum::getKfname() const {
-    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getKfname");
+    REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling getKfname");
     return kfname;
 }
 
 const string &VaccinatieCentrum::getKfaddress() const {
-    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getKfaddress");
+    REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling getKfaddress");
     return kfaddress;
 }
 
 int VaccinatieCentrum::getAantalVaccinaties(const string &type) const {
-    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getAantalVaccinaties");
+    REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling getAantalVaccinaties");
     MapSICIterator aantal = aantal_vaccinaties.find(type);
     if (aantal == aantal_vaccinaties.end()) return 0;
     ENSURE(aantal->second >= 0, "Het aantal vaccinaties ligt onder nul!");
@@ -52,19 +52,19 @@ int VaccinatieCentrum::getAantalVaccinaties(const string &type) const {
 }
 
 const int VaccinatieCentrum::getKaantalInwoners() const {
-    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getKaantalInwoners()");
+    REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling getKaantalInwoners()");
     ENSURE(kaantal_inwoners >= 0, "Het aantal inwoners is kleiner dan nul!");
     return kaantal_inwoners;
 }
 
 const int VaccinatieCentrum::getKcapaciteit() const {
-    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getKcapaciteit()");
+    REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling getKcapaciteit()");
     ENSURE(kcapaciteit >= 0, "de capaciteit is kleiner dan nul!");
     return kcapaciteit;
 }
 
 int VaccinatieCentrum::getAantalVaccins(const string &type) const {
-    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getAantalVaccins()");
+    REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling getAantalVaccins()");
     MapSP_VI_CIterator aantal = aantal_vaccins.find(type);
     if (aantal == aantal_vaccins.end()) return 0;
     ENSURE(aantal->second.second >= 0, "Er is een negatief aantal vaccins!");
@@ -72,7 +72,7 @@ int VaccinatieCentrum::getAantalVaccins(const string &type) const {
 }
 
 int VaccinatieCentrum::getAantalGeleverdeVaccins(const string &type) const {
-    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getAantalGeleverdeVaccins()");
+    REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling getAantalGeleverdeVaccins()");
     MapSICIterator aantal = aantal_geleverde_vaccins.find(type);
     if (aantal == aantal_geleverde_vaccins.end()) return 0;
     ENSURE(aantal->second >= 0, "Het aantal gelverde vaccins is negatief!");
@@ -80,13 +80,13 @@ int VaccinatieCentrum::getAantalGeleverdeVaccins(const string &type) const {
 }
 
 int VaccinatieCentrum::getMaxStock() const {
-    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getMaxStock()");
+    REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling getMaxStock()");
     ENSURE(kcapaciteit >= 0, "De capaciteit is negatief!");
     return kcapaciteit * 2;
 }
 
 int VaccinatieCentrum::getTodaysBatch(const string &type) {
-    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getTodaysBatch()");
+    REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling getTodaysBatch()");
     MapSIIterator aantal = aantal_eerste_prikken.front().find(type);
     if (aantal == aantal_eerste_prikken.front().end()) return 0;
     ENSURE(aantal->second >= 0, "Er moet een negatief aantal inwoners gevaccineert worden!");
@@ -94,7 +94,7 @@ int VaccinatieCentrum::getTodaysBatch(const string &type) {
 }
 
 int VaccinatieCentrum::getTotaalAantalVaccinaties() const {
-    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getTotaalAantalVaccinaties()");
+    REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling getTotaalAantalVaccinaties()");
     int totaal_vaccinaties = 0;
     for (map<string, int>::const_iterator it = aantal_vaccinaties.begin(); it != aantal_vaccinaties.end(); it++) {
         totaal_vaccinaties += getAantalVaccinaties(it->first);
@@ -104,7 +104,7 @@ int VaccinatieCentrum::getTotaalAantalVaccinaties() const {
 }
 
 int VaccinatieCentrum::getTotaalAantalVaccins() const {
-    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getTotaalAantalVaccins()");
+    REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling getTotaalAantalVaccins()");
     int totaal_vaccins = 0;
     for (map<string, pair<Vaccin *, int> >::const_iterator it = aantal_vaccins.begin();
          it != aantal_vaccins.end(); it++) {
@@ -115,7 +115,7 @@ int VaccinatieCentrum::getTotaalAantalVaccins() const {
 }
 
 int VaccinatieCentrum::getTotaalAantalGeleverdeVaccins() const {
-    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getTotaalAantalGeleverdeVaccins()");
+    REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling getTotaalAantalGeleverdeVaccins()");
     int totaal_geleverde_vaccins = 0;
     for (map<string, int>::const_iterator it = aantal_geleverde_vaccins.begin();
          it != aantal_geleverde_vaccins.end(); it++) {
@@ -127,20 +127,20 @@ int VaccinatieCentrum::getTotaalAantalGeleverdeVaccins() const {
 
 
 void VaccinatieCentrum::setVaccins(int vaccins, const string &type) {
-    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling setVaccins");
+    REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling setVaccins");
     aantal_vaccins[type].second = vaccins;
     ENSURE(vaccins == getAantalVaccins(type), "De vaccins zijn niet succesvol ge-set!");
 }
 
 void VaccinatieCentrum::setAantalVaccinaties(int aantalVaccinaties, const string &type) {
-    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling setAantalVaccinaties");
+    REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling setAantalVaccinaties");
     aantal_vaccinaties[type] = aantalVaccinaties;
     ENSURE(aantal_vaccinaties.at(type) == getAantalVaccinaties(type),
            "Het aantal vaccinaties is niet succesvol ge-set!");
 }
 
 void VaccinatieCentrum::nieuweDag() {
-    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling nieuweDag");
+    REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling nieuweDag");
 
     StatisticsSingleton &stats = StatisticsSingleton::getInstance();
 
@@ -214,7 +214,7 @@ void VaccinatieCentrum::nieuweDag() {
 }
 
 bool VaccinatieCentrum::isVol() const {
-    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling isVol");
+    REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling isVol");
     int totaalAantalVaccins = 0;
     map<string, pair<Vaccin *, int> >::const_iterator it;
     for (it = aantal_vaccins.begin(); it != aantal_vaccins.end(); it++) {
@@ -224,7 +224,7 @@ bool VaccinatieCentrum::isVol() const {
 }
 
 bool VaccinatieCentrum::isVolNaLevering(int vaccins_in_levering) const {
-    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling isVolNaLevering");
+    REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling isVolNaLevering");
     int vaccinsNaLevering = 0;
     map<string, pair<Vaccin *, int> >::const_iterator it;
     for (it = aantal_vaccins.begin(); it != aantal_vaccins.end(); it++) {
@@ -235,7 +235,7 @@ bool VaccinatieCentrum::isVolNaLevering(int vaccins_in_levering) const {
 }
 
 void VaccinatieCentrum::ontvangLevering(int vaccins_in_levering, Vaccin *vaccin) {
-    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling ontvangLevering");
+    REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling ontvangLevering");
 
     if (vaccin->hernieuwing > (int) aantal_eerste_prikken.size()) aantal_eerste_prikken.resize(vaccin->hernieuwing);
     if (aantal_vaccins.find(vaccin->type) == aantal_vaccins.end()) {
@@ -250,7 +250,7 @@ void VaccinatieCentrum::ontvangLevering(int vaccins_in_levering, Vaccin *vaccin)
 }
 
 bool VaccinatieCentrum::isIedereenGevaccineerd() const {
-    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling isIedereenGevaccineerd");
+    REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling isIedereenGevaccineerd");
     int totaalAantalVaccinaties = 0;
     map<string, int>::const_iterator it;
     for (it = aantal_vaccinaties.begin(); it != aantal_vaccinaties.end(); it++) {
@@ -260,7 +260,7 @@ bool VaccinatieCentrum::isIedereenGevaccineerd() const {
 }
 
 int VaccinatieCentrum::getAantalTweedePrikken(const string &vaccin, int dag) const {
-    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getAantalTweedePrikken");
+    REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling getAantalTweedePrikken");
     if (aantal_eerste_prikken.size() <= dag) return 0;
     MapSICIterator aantal = aantal_eerste_prikken[dag].find(vaccin);
     if (aantal == aantal_eerste_prikken[dag].end()) return 0;
@@ -269,7 +269,7 @@ int VaccinatieCentrum::getAantalTweedePrikken(const string &vaccin, int dag) con
 }
 
 int VaccinatieCentrum::getAantalNietVaccinaties() const {
-    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getAantalNietVaccinaties()");
+    REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling getAantalNietVaccinaties()");
     ENSURE(aantal_niet_vaccinaties >= 0, "We kunnen niet een negatief aantal niet vaccinaties hebben!");
     return aantal_niet_vaccinaties;
 }
