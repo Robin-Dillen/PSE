@@ -20,28 +20,18 @@
 
 using namespace std;
 
-/*
-class Batch{
-private:
-    Vaccin* vaccinType;
-    int aantal_inwoners;
-};
-*/
-
 class Vaccin;
-
-class VaccinsRequest;
 
 class VaccinatieCentrum {
 public:
 
     /**
-    \n ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
+     * \n ENSURE(kcapaciteit >= 0, "De capaciteit is negatief!");
+     * \n ENSURE(kaantalInwoners >= 0, "het aantal inwoners is negatief!");
+     * \n ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
     */
     VaccinatieCentrum(const int kcapaciteit, const int kaantalInwoners, const string &kfname,
                       const string &kfaddress);
-
-    int getAantalGeleverdeVaccinsBuffer() const;
 
     /**
      * @return geeft terug of het object correct is geïnitialiseert
@@ -57,10 +47,9 @@ public:
     /**
      * @return geeft het aantal gevacineerde mensen terug
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getAantalVaccinaties");
+     * \n ENSURE(aantal->second >= 0, "Het aantal vaccinaties ligt onder nul!");
      */
     int getAantalVaccinaties(const string &type) const;
-
-
 
     /**
      * @return geeft het adres van het vaccinatie centrum terug
@@ -70,42 +59,70 @@ public:
 
     /**
      * @return geeft het aantal inwoners van de plaats, waar het vaccinatie centrum zich bevind, terug
-     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getKfaddress");
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getKaantalInwoners()");
+     * \n ENSURE(kaantal_inwoners >= 0, "Het aantal inwoners is minder dan nul!");
      */
     const int getKaantalInwoners() const;
 
     /**
      * @return geeft capaciteit van het vaccinatie centrum terug
-     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getKfaddress");
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getKcapaciteit()");
+     * \n ENSURE(kcapaciteit >= 0, "de capaciteit is kleiner dan nul!");
      */
     const int getKcapaciteit() const;
 
     /**
      * @return geeft het aantal vaccins van het vaccinatie centrum terug die momenteel beschikbaar zijn
-     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getKfaddress");
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getAantalVaccins()");
+     * \n ENSURE(aantal->second.second >= 0, "Er is een negatief aantal vaccins!");
      */
     int getAantalVaccins(const string &type) const;
 
     /**
      * @return geeft het de maximum opslag weer van het vaccinatiecentrum
-     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getKfaddress");
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getMaxStock()");
+     * \n ENSURE(kcapaciteit >= 0, "De capaciteit is negatief!");
      */
     int getMaxStock() const;
 
     /**
      * @return geeft het aantal geleverde vaccinaties weer van het vaccinatie centrum terug
-     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getKfaddress");
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getAantalGeleverdeVaccins()");
+     * \n ENSURE(aantal->second >= 0, "Het aantal gelverde vaccins is negatief!");
      */
     int getAantalGeleverdeVaccins(const string &type) const;
 
-    Vaccin *const getVaccinType(const string &type);
-
+    /*!
+     * geeft terug hoeveel 2de prikken er gezet moeten worden vandaag
+     * @param type naam van het vaccin
+     * @return aantal 2de prikken
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getTodaysBatch()");
+     * \n ENSURE(aantal->second >= 0, "Er moet een negatief aantal inwoners gevaccineert worden!");
+     */
     int getTodaysBatch(const string &type);
 
+    /*!
+     * geeft het totaal aantal vaccinaties terug
+     * @return int
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getTotaalAantalVaccinaties()");
+     * \n ENSURE(totaalAantalVaccinaties >= 0, "Het totaal aantal vaccinaties kan niet negatief zijn!");
+     */
     int getTotaalAantalVaccinaties() const;
 
+    /*!
+     * geeft het totaal aantal vaccins terug
+     * @return int
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getTotaalAantalVaccins()");
+     * \n ENSURE(totaal_vaccins >= 0, "Het totaal aantal vaccins kan niet negatief zijn!");
+     */
     int getTotaalAantalVaccins() const;
 
+    /*!
+     * geeft het totaal aantal vaccins terug dat vandag geleverd wordt
+     * @return int
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getTotaalAantalGeleverdeVaccins()");
+     * \n ENSURE(totaal_geleverde_vaccins >= 0, "Het totaal aantal geleverde vaccins kan niet negatief zijn!");
+     */
     int getTotaalAantalGeleverdeVaccins() const;
 
     /**
@@ -129,7 +146,7 @@ public:
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling nieuweDag");
      * \n ENSURE(aantal_vaccins <= getMaxStock(), "Error, er zijn te veel vaccins geleverd!");
      * \n ENSURE(begin_aantal_vaccins + getAantalGeleverdeVaccins() == aantal_vaccins, "De vaccinaties zijn niet succesvol ontvangen!");
-     * \n ENSURE(getAantalGeleverdeVaccins() = 0, "Het aantal geleverde vaccins is niet succesvol gereset!");
+     * \n ENSURE(getAantalGeleverdeVaccins(geleverde_vaccins->first) == 0, "Het aantal geleverde vaccins is niet succesvol gereset!");
      * \n ENSURE(begin_aantal_vaccins - vaccinaties == getAantalVaccins(), "Het aantal vaccins is niet geüpdate!");
      * \n ENSURE(begin_aantal_vaccinaties + vaccinaties == getAantalVaccinaties(), "Het aantal vaccinaties is niet succesvol geüpdate!");
      */
@@ -165,14 +182,20 @@ public:
      * @param vaccin type van het vaccin
      * @param dagen binnen hoeveel dagen we moeten kijken
      * @return aantal 2de prikken: int
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getAantalTweedePrikken");
+     * \n ENSURE(aantal->second >= 0, "We kunnen niet een negatief aantal 2de prikken hebben!");
      */
     int getAantalTweedePrikken(const string &vaccin, int dagen) const;
 
-    const vector<VaccinsRequest> &getVaccinRequests() const;
+    /*!
+     * geeft terug hoeveel mensen er nog geen vaccinatie hebben gehad
+     * @return int
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getAantalNietVaccinaties()");
+     * \n ENSURE(aantal_niet_vaccinaties >= 0, "We kunnen niet een negatief aantal niet vaccinaties hebben!");
+     */
+    int getAantalNietVaccinaties() const;
 
 private:
-
-    void requestVaccins();
 
     // const attributes
     const int kcapaciteit;
@@ -196,10 +219,7 @@ private:
     //int aantal_vaccins;
 
     int aantal_niet_vaccinaties;
-public:
-    int getAantalNietVaccinaties() const;
 
-private:
     //aantal mensen die nog geen vaccinatie hebben gekregen.
 
     map<string, int> aantal_vaccinaties; // aantal mensen dat gevaccineert is
@@ -207,7 +227,6 @@ private:
 
     map<string, int> aantal_geleverde_vaccins; // aantal vaccins dat toegevoegd wordt na een levering
     int aantal_geleverde_vaccins_buffer; // aantal vaccins dat toegevoegd wordt na een levering(buffer for output)
-    vector<VaccinsRequest> vaccin_requests;
 };
 
 

@@ -4,6 +4,7 @@
 
 #include <string>
 #include <vector>
+#include "lib/DesignByContract.h"
 
 using namespace std;
 
@@ -31,22 +32,39 @@ public:
         }
     }
 
+    /*!
+     * geeft de instance van de factory terug
+     * @return VaccinsFactorySingleton&
+     */
     static VaccinsFactorySingleton &getInstance() {
         static VaccinsFactorySingleton instance; // Guaranteed to be destroyed.
         // Instantiated on first use.
         return instance;
     }
 
+    /*!
+     * maakt een vaccin aan en geeft een pointer van dit nieuwe vaccin terug
+     * @param type naam van het vaccin
+     * @param levering hoe veel vaccins aan hub geleverd wordt
+     * @param interval hoe vaak geleverd wordt aan Hub
+     * @param transport per hoeveel vaccins er naar VaccinatieCentrum gestuurd wordt
+     * @param hernieuwing hoeveel tijd er zit tussen de eerste en de 2de prik
+     * @param temperatuur bij welke temperatuur de vaccins bijgehouden moeten worden
+     * @return pointer naar het nieuwe vaccin
+     * \n REQUIRE(this == _initCheck, "Object wasn't initialized when calling getInstance");
+     */
     Vaccin *
     getVaccin(const string &type, const int levering, const int interval, const int transport, const int hernieuwing,
               const int temperatuur) {
+        REQUIRE(this == _initCheck, "Object wasn't initialized when calling getInstance");
         Vaccin *V = new Vaccin(type, levering, interval, transport, hernieuwing, temperatuur);
         vaccins.push_back(V);
         return V;
     }
 
 private:
-    VaccinsFactorySingleton() {}                    // Constructor? (the {} brackets) are needed here.
+    VaccinsFactorySingleton() : _initCheck(
+            this) {}                    // Constructor? (the {} brackets) are needed here.
 
     // C++ 03
     // ========
@@ -57,19 +75,7 @@ private:
     void operator=(VaccinsFactorySingleton const &); // Don't implement
 
     vector<Vaccin *> vaccins;
-};
-
-enum EVaccinsPriority {
-    hoog, zeer_hoog
-};
-
-struct VaccinsRequest {
-    VaccinsRequest(const string &type, const int aantal, const EVaccinsPriority priority) : type(type), aantal(aantal),
-                                                                                            priority(priority) {}
-
-    const string type;
-    const int aantal;
-    const EVaccinsPriority priority;
+    VaccinsFactorySingleton *const _initCheck;
 };
 
 

@@ -28,11 +28,12 @@ inline void Simulatie(const string &testfilename, bool c_out = true) {
     size_t pos = testfilename.find("test");
     ENSURE(pos != string::npos, "Given argument doesn't include a test file!");
     string filename1 = "Simpele_Uitvoer_" + testfilename.substr(pos, 7);
+    OutputSingleton &output = OutputSingleton::getInstance();
     // clear/create the output file
-    Output::makeOutputFile(filename1);
+    output.makeOutputFile(filename1);
 
     string filename2 = "Grafische_Impressie" + testfilename.substr(pos, 7);
-    Output::makeOutputFile(filename2);
+    output.makeOutputFile(filename2);
 
     // start simulatie
 
@@ -42,7 +43,7 @@ inline void Simulatie(const string &testfilename, bool c_out = true) {
     bool break_ = false;
     for (unsigned int i = 0; i < hubs.size(); i++) {
         // output
-        Output::addToOutputFile(hubs[i],i+1, current_day, filename1);
+        output.addToOutputFile(hubs[i], i + 1, current_day, filename1);
     }
     while ((!end_day || current_day < end_day) && !break_) {
         current_day++;
@@ -69,12 +70,12 @@ inline void Simulatie(const string &testfilename, bool c_out = true) {
             hubs[i]->nieuweDag();
 
             // output
-            Output::addToOutputFile(hubs[i], i+1, current_day, filename1);
+            output.addToOutputFile(hubs[i], i + 1, current_day, filename1);
         }
-        Output::addDateToFile(current_day, filename2);
+        output.addDateToFile(current_day, filename2);
         for (unsigned int i = 0; i < vaccinatie_centra.size(); i++) {
             vaccinatie_centra[i]->nieuweDag();
-            Output::addToGIFile(vaccinatie_centra[i], filename2);
+            output.addToGIFile(vaccinatie_centra[i], filename2);
         }
     }
 
