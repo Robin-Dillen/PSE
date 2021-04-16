@@ -10,6 +10,7 @@
 #include "Hub.h"
 #include "VaccinatieCentrum.h"
 #include "Utils.h"
+#include "Lib.h"
 
 bool OutputSingleton::isProperlyInitialized() const {
     return _initCheck == this;
@@ -19,7 +20,7 @@ void OutputSingleton::addToOutputFile(Hub *h, int i, int y, int m, int w, int d,
     // voegt content toe aan de output file, het is dus de bedoeling dat je de file opvoorhand leeg maakt
     ofstream outputFile((OUTPUT_FILE_LOCATION + filename + ".txt").c_str(), ios_base::app);
     outputFile << "Overzicht van vaccinaties na: " << dateToString(y, m, w, d) << string(".\n\n");
-    outputFile << "Hub " << i << " (" << h->getTotaalAantalvaccins() << " vaccins)\n";
+    outputFile << "Hub " << i << " (" << h->getTotaalAantalVaccins() << " vaccins)\n";
 
     for (map<string, VaccinatieCentrum *>::const_iterator it = h->getFverbondenCentra().begin();
          it != h->getFverbondenCentra().end(); it++) {

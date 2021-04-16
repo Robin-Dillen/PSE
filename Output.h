@@ -13,7 +13,6 @@
 #include <string>
 #include <fstream>
 #include "lib/DesignByContract.h"
-#include "Lib.h"
 
 using namespace std;
 

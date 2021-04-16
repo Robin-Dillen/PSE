@@ -21,7 +21,6 @@
 using namespace std;
 
 class Vaccin;
-class VaccinsRequest;
 
 class VaccinatieCentrum {
 public:
@@ -228,7 +227,6 @@ private:
 
     map<string, int> aantal_geleverde_vaccins; // aantal vaccins dat toegevoegd wordt na een levering
     int aantal_geleverde_vaccins_buffer; // aantal vaccins dat toegevoegd wordt na een levering(buffer for output)
-    vector<VaccinsRequest> vaccin_requests;
 };
 
 
