@@ -30,6 +30,8 @@ private:
 
 class Vaccin;
 
+class VaccinsRequest;
+
 class VaccinatieCentrum {
 public:
 
@@ -166,7 +168,11 @@ public:
      */
     int getAantalTweedePrikken(const string &vaccin, int dagen) const;
 
+    const vector<VaccinsRequest> &getVaccinRequests() const;
+
 private:
+
+    void requestVaccins();
 
     // const attributes
     const int kcapaciteit;
@@ -189,13 +195,19 @@ private:
     map<string, pair<Vaccin *, int> > aantal_vaccins; //vaccin: Vaccintype, int: aantal vaccins van dit type
     //int aantal_vaccins;
 
-    int aantal_niet_vaccinaties; //aantal mensen die nog geen vaccinatie hebben gekregen.
+    int aantal_niet_vaccinaties;
+public:
+    int getAantalNietVaccinaties() const;
+
+private:
+    //aantal mensen die nog geen vaccinatie hebben gekregen.
 
     map<string, int> aantal_vaccinaties; // aantal mensen dat gevaccineert is
     // we kunnen gwn een map<vaccin_naam, aantal> bijhouden
 
     map<string, int> aantal_geleverde_vaccins; // aantal vaccins dat toegevoegd wordt na een levering
     int aantal_geleverde_vaccins_buffer; // aantal vaccins dat toegevoegd wordt na een levering(buffer for output)
+    vector<VaccinsRequest> vaccin_requests;
 };
 
 

@@ -19,6 +19,8 @@ using namespace std;
 
 class Hub;
 
+class VaccinatieCentrum;
+
 class Output {
 public:
 
@@ -39,7 +41,9 @@ public:
      * @param y,m,w,d: jaren, maanden, weken en dagen na start simulatie
      * @return void
      */
-    static void addToOutputFile(Hub *h, int y, int m, int w, int d, const string &filename);
+    static void addToOutputFile(Hub *h,int i, int y, int m, int w, int d, const string &filename);
+
+    static void addToGIFile(VaccinatieCentrum *v, const string &filename);
 
     /**
      * voegt info toe aan het outputbestand
@@ -47,8 +51,11 @@ public:
      * @param days:dagen na start simulatie
      * @return void
      */
-    static void addToOutputFile(Hub *h, int days, const string &filename);
+    static void addToOutputFile(Hub *h,int i, int days, const string &filename);
 
+    static void addToGIFile(VaccinatieCentrum *v, int days, const string &filename);
+
+    static void addDateToFile(int days,const string &filename);
 
 private:
     /**

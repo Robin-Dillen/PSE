@@ -14,14 +14,16 @@
 #include <vector>
 #include <cmath> // voor ceil
 #include <iostream> // for testing
+#include <algorithm>
 
 #include "lib/DesignByContract.h"
 
 using namespace std;
 
 class VaccinatieCentrum;
-
 class Vaccin;
+
+class VaccinsRequest;
 
 class Hub {
 public:
