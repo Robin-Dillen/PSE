@@ -17,6 +17,7 @@ bool OutputSingleton::isProperlyInitialized() const {
 }
 
 void OutputSingleton::addToOutputFile(Hub *h, int i, int y, int m, int w, int d, const string &filename) {
+    REQUIRE(isProperlyInitialized(), "Object wasn't initialized when calling addToOutputFile");
     // voegt content toe aan de output file, het is dus de bedoeling dat je de file opvoorhand leeg maakt
     ofstream outputFile((OUTPUT_FILE_LOCATION + filename + ".txt").c_str(), ios_base::app);
     outputFile << "Overzicht van vaccinaties na: " << dateToString(y, m, w, d) << string(".\n\n");
@@ -38,6 +39,7 @@ void OutputSingleton::addToOutputFile(Hub *h, int i, int y, int m, int w, int d,
 }
 
 void OutputSingleton::addToOutputFile(Hub *h, int i, int days, const string &filename) {
+    REQUIRE(isProperlyInitialized(), "Object wasn't initialized when calling addToOutputFile");
     int years = days / 356;
     days -= years * 356;
     int months = days / 30;
@@ -48,6 +50,7 @@ void OutputSingleton::addToOutputFile(Hub *h, int i, int days, const string &fil
 }
 
 void OutputSingleton::addToGIFile(VaccinatieCentrum *v, const string &filename) {
+    REQUIRE(isProperlyInitialized(), "Object wasn't initialized when calling addToGIFile");
     // voegt content toe aan de output file, het is dus de bedoeling dat je de file opvoorhand leeg maakt
     ofstream outputFile((OUTPUT_FILE_LOCATION + filename + ".txt").c_str(), ios_base::app);
     outputFile << v->getKfname() << ":\n";
@@ -89,7 +92,8 @@ void OutputSingleton::addToGIFile(VaccinatieCentrum *v, const string &filename) 
 }
 
 
-void OutputSingleton::addDateToFile(int days, const string &filename) {
+void OutputSingleton::addDateToFile(int days, const string &filename) const {
+    REQUIRE(isProperlyInitialized(), "Object wasn't initialized when calling addToGIFile");
     int years = days / 356;
     days -= years * 356;
     int months = days / 30;

@@ -49,9 +49,16 @@ public:
      * @param h: hub
      * @param y,m,w,d: jaren, maanden, weken en dagen na start simulatie
      * @return void
+     * \n REQUIRE(isProperlyInitialized(), "Object wasn't initialized when calling addToOutputFile");
      */
     void addToOutputFile(Hub *h, int i, int y, int m, int w, int d, const string &filename);
 
+    /*!
+     * TODO
+     * @param v
+     * @param filename
+     * \n REQUIRE(isProperlyInitialized(), "Object wasn't initialized when calling addToGIFile");
+     */
     void addToGIFile(VaccinatieCentrum *v, const string &filename);
 
     /**
@@ -59,12 +66,19 @@ public:
      * @param h: hub
      * @param days:dagen na start simulatie
      * @return void
+     * \n REQUIRE(isProperlyInitialized(), "Object wasn't initialized when calling addToOutputFile");
      */
     void addToOutputFile(Hub *h, int i, int days, const string &filename);
 
     void addToGIFile(VaccinatieCentrum *v, int days, const string &filename);
 
-    void addDateToFile(int days, const string &filename);
+    /*!
+     * TODO
+     * @param days
+     * @param filename
+     * \n REQUIRE(isProperlyInitialized(), "Object wasn't initialized when calling addToGIFile");
+     */
+    void addDateToFile(int days, const string &filename) const;
 
 private:
 
