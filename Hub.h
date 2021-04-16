@@ -14,6 +14,7 @@
 #include <vector>
 #include <cmath> // voor ceil
 #include <iostream> // for testing
+#include <algorithm>
 
 #include "lib/DesignByContract.h"
 
