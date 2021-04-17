@@ -147,6 +147,7 @@ void VaccinatieCentrum::nieuweDag() {
     int begin_aantal_vaccins = getTotaalAantalVaccins();
     int aantal_vaccinaties_vandaag = 0;
     int begin_aantal_vaccinaties = getTotaalAantalVaccinaties();
+    int totaal_aantal_geleverde_vaccins = getTotaalAantalGeleverdeVaccins();
 
     for (map<string, int>::iterator geleverde_vaccins = aantal_geleverde_vaccins.begin();
          geleverde_vaccins != aantal_geleverde_vaccins.end(); geleverde_vaccins++) {
@@ -159,9 +160,12 @@ void VaccinatieCentrum::nieuweDag() {
                "Het aantal geleverde vaccins is niet succesvol gereset!");
     }
 
-    ENSURE(begin_aantal_vaccins + getTotaalAantalGeleverdeVaccins() == getTotaalAantalVaccins(),
+    ENSURE(begin_aantal_vaccins + totaal_aantal_geleverde_vaccins == getTotaalAantalVaccins(),
            "De vaccinaties zijn niet succesvol ontvangen!");
+
     ENSURE(getTotaalAantalVaccins() <= getMaxStock(), "Error, er zijn te veel vaccins geleverd!");
+
+    begin_aantal_vaccins = getTotaalAantalVaccins();
 
     int capaciteit = kcapaciteit;
     deque<map<string, int> >::iterator today = aantal_eerste_prikken.begin();
@@ -172,7 +176,8 @@ void VaccinatieCentrum::nieuweDag() {
         cout << "Er zijn " << min_ << " aantal 2de prikken met " << batch->first << " gezet!" << endl;
 
         batch->second -= min_;
-        aantal_vaccinaties[batch->first] += min_;
+        aantal_vaccinaties[batch->first] += min_; // bestaat zeker (wordt aangemaakt bij het ontvangen van een levering)
+        aantal_vaccins[batch->first].second -= min_; // bestaat zeker (wordt aangemaakt bij het ontvangen van een levering)
         capaciteit -= min_;
         aantal_vaccinaties_vandaag += min_;
 
@@ -189,7 +194,8 @@ void VaccinatieCentrum::nieuweDag() {
 
     for (map<string, pair<Vaccin *, int> >::iterator vaccin = aantal_vaccins.begin();
          vaccin != aantal_vaccins.end() && capaciteit != 0; vaccin++) {
-        int aantal_prikken = min(3,capaciteit, vaccin->second.second,aantal_niet_vaccinaties);
+        int aantal_prikken = min(4, capaciteit, vaccin->second.second, aantal_niet_vaccinaties,
+                                 getAantalVaccins(vaccin->first));
         cout << "Er zijn " << aantal_prikken << " 1ste prikken met " << vaccin->first << " gezet!" << endl;
         if (vaccin->second.first->hernieuwing == 0) {
             if (aantal_vaccinaties.find(vaccin->first) == aantal_vaccinaties.end()) {
@@ -198,9 +204,10 @@ void VaccinatieCentrum::nieuweDag() {
         } else {
             aantal_eerste_prikken[vaccin->second.first->hernieuwing - 1][vaccin->first] = aantal_prikken;
         }
+        aantal_vaccinaties[vaccin->first] += aantal_prikken; // bestaat zeker (wordt aangemaakt bij het ontvangen van een levering)
+        vaccin->second.second -= aantal_prikken; // update het aantal beschikbare vaccins
         aantal_niet_vaccinaties -= aantal_prikken;
         capaciteit -= aantal_prikken;
-        vaccin->second.second -= aantal_prikken;
         aantal_vaccinaties_vandaag += aantal_prikken;
     }
 
@@ -241,6 +248,7 @@ void VaccinatieCentrum::ontvangLevering(int vaccins_in_levering, Vaccin *vaccin)
     if (aantal_vaccins.find(vaccin->type) == aantal_vaccins.end()) {
         aantal_vaccins[vaccin->type].first = vaccin;
         aantal_vaccins[vaccin->type].second = 0;
+        aantal_vaccinaties[vaccin->type] = 0;
     }
 
     int begin_aantal_geleverde_vaccins = getAantalGeleverdeVaccins(vaccin->type);
