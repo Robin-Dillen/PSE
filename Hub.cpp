@@ -128,6 +128,10 @@ void Hub::ontvangLevering(const string &type, int aantal_geleverde_vaccins) {
            "De Kvaccins werden niet succesvol ontvangen!");
 }
 
+void Hub::verdeelVaccin(const string &type) {
+
+}
+
 void Hub::verdeelVaccins() {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling verdeelVaccins");
 

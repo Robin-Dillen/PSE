@@ -16,14 +16,13 @@
 #include <iostream> // for testing
 #include <algorithm>
 
+
 #include "lib/DesignByContract.h"
 
 using namespace std;
 
 class VaccinatieCentrum;
 class Vaccin;
-
-class VaccinsRequest;
 
 class Hub {
 public:
@@ -170,6 +169,8 @@ public:
     map<string, Vaccin *> getVaccins();
 
 private:
+
+    void verdeelVaccin(const string &type);
 
     // const attributes
 //    const int kaantal_vaccins_per_levering;

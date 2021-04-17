@@ -175,10 +175,8 @@ void VaccinatieCentrum::nieuweDag() {
         int min_ = min(3, getAantalVaccins(batch->first), capaciteit, batch->second);
         cout << "Er zijn " << min_ << " aantal 2de prikken met " << batch->first << " gezet!" << endl;
 
+        zetVaccins(batch->first, min_, capaciteit);
         batch->second -= min_;
-        aantal_vaccinaties[batch->first] += min_; // bestaat zeker (wordt aangemaakt bij het ontvangen van een levering)
-        aantal_vaccins[batch->first].second -= min_; // bestaat zeker (wordt aangemaakt bij het ontvangen van een levering)
-        capaciteit -= min_;
         aantal_vaccinaties_vandaag += min_;
 
         stats.addVaccinatie(this, batch->first, min_);
@@ -204,10 +202,7 @@ void VaccinatieCentrum::nieuweDag() {
         } else {
             aantal_eerste_prikken[vaccin->second.first->hernieuwing - 1][vaccin->first] = aantal_prikken;
         }
-        aantal_vaccinaties[vaccin->first] += aantal_prikken; // bestaat zeker (wordt aangemaakt bij het ontvangen van een levering)
-        vaccin->second.second -= aantal_prikken; // update het aantal beschikbare vaccins
-        aantal_niet_vaccinaties -= aantal_prikken;
-        capaciteit -= aantal_prikken;
+        zetVaccins(vaccin->first, aantal_prikken, capaciteit);
         aantal_vaccinaties_vandaag += aantal_prikken;
     }
 
@@ -218,6 +213,13 @@ void VaccinatieCentrum::nieuweDag() {
 
     aantal_eerste_prikken.pop_front();
     aantal_eerste_prikken.resize(aantal_eerste_prikken.size() + 1);
+}
+
+void VaccinatieCentrum::zetVaccins(const string &type, int aantal, int &capaciteit) {
+    aantal_vaccinaties[type] += aantal; // bestaat zeker (wordt aangemaakt bij het ontvangen van een levering)
+    aantal_vaccins[type].second -= aantal; // update het aantal beschikbare vaccins
+    aantal_niet_vaccinaties -= aantal;
+    capaciteit -= aantal;
 }
 
 bool VaccinatieCentrum::isVol() const {
