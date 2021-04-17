@@ -126,6 +126,8 @@ void Hub::ontvangLevering(const string &type, int aantal_geleverde_vaccins) {
     aantal_vaccins[type] += aantal_geleverde_vaccins;
     ENSURE(aantal_geleverde_vaccins + begin_aantal_vaccins == getAantalVaccins(type),
            "De Kvaccins werden niet succesvol ontvangen!");
+    int interval = Kvaccins[type].
+            setVaccinsPerDag(type, aantal_vaccins[type], interval);
 }
 
 void Hub::verdeelVaccin(const string &type) {
@@ -254,6 +256,11 @@ map<string, Vaccin *> Hub::getVaccins() {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getVaccins()");
     return Kvaccins;
 }
+
+void Hub::setVaccinsPerDag(int vaccins, int interval) {
+
+}
+
 
 Hub::~Hub() {}
 

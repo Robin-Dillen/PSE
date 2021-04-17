@@ -168,6 +168,8 @@ public:
      */
     map<string, Vaccin *> getVaccins();
 
+    void setVaccinsPerDag(const string &type, int vaccins, int interval);
+
 private:
 
     void verdeelVaccin(const string &type);
