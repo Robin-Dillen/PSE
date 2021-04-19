@@ -218,7 +218,7 @@ void VaccinatieCentrum::nieuweDag() {
     aantal_eerste_prikken.resize(aantal_eerste_prikken.size() + 1);
 
     nog_te_reserveren_vaccins.pop_front();
-    nog_te_reserveren_vaccins.resize(aantal_eerste_prikken.size() + 1);
+    nog_te_reserveren_vaccins.resize(nog_te_reserveren_vaccins.size() + 1);
 }
 
 void VaccinatieCentrum::zetVaccins(const string &type, int aantal, int &capaciteit) {
@@ -253,6 +253,8 @@ void VaccinatieCentrum::ontvangLevering(int vaccins_in_levering, Vaccin *vaccin)
     REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling ontvangLevering");
 
     if (vaccin->hernieuwing > (int) aantal_eerste_prikken.size()) aantal_eerste_prikken.resize(vaccin->hernieuwing);
+    if (vaccin->hernieuwing > (int) nog_te_reserveren_vaccins.size()) nog_te_reserveren_vaccins.resize(vaccin->hernieuwing);
+    //nieuwe type vaccin toevoegen aan map
     if (aantal_vaccins.find(vaccin->type) == aantal_vaccins.end()) {
         aantal_vaccins[vaccin->type].first = vaccin;
         aantal_vaccins[vaccin->type].second = 0;

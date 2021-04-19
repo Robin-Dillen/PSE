@@ -186,7 +186,6 @@ private:
 
 //    int aantal_vaccins; // aantal Kvaccins in de hub
     map<string, int> aantal_vaccins;
-    map<string, int> gereserveerd_2de_prik;
 
     deque<map<string, map<string, int> > > gereserveerde_vaccins;
 };

@@ -17,11 +17,11 @@ Hub::Hub(const map<string, Vaccin *> &vaccins) : Kvaccins(vaccins), _initCheck(t
         aantal_vaccins[vaccin->first] = vaccin->second->levering;
         for (map<string, Vaccin *>::const_iterator vaccin_it = vaccins.begin();
              vaccin_it != vaccins.end(); vaccin_it++) {
-            gereserveerd_2de_prik[vaccin_it->first] = 0;
         }
     }
     map<string, map<string, int> > m;
     gereserveerde_vaccins.push_back(m);
+    gereserveerde_vaccins.resize(1);
     ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
 }
 
@@ -131,15 +131,15 @@ void Hub::ontvangLevering(const string &type, int aantal_geleverde_vaccins) {
     addReservations(type);
 }
 
-
 void Hub::addReservations(const string &type) {
     int interval = getVaccins().at(type)->interval;
     int lading = getVaccins().at(type)->transport;
+    if((int) gereserveerde_vaccins.size() < interval) gereserveerde_vaccins.resize(interval);
     //1ste reservatie om alle 2de prikken te voorzien
     for (map<string, VaccinatieCentrum *>::const_iterator it = fverbonden_centra.begin(), end = fverbonden_centra.end(); it != end; it++) {
         for(int i = 0; i < interval; i++){
             int vaccins = it->second->getNogTeReserverenVaccins(type, i);
-            vaccins = ceil(vaccins/lading);
+            vaccins = ceil(vaccins/lading)*lading;
             while(vaccins > 0 && aantal_vaccins[type] > 0){
                 vaccins -= lading;
                 aantal_vaccins[type] -= lading;
@@ -149,15 +149,68 @@ void Hub::addReservations(const string &type) {
         }
     }
     //2de reservatie zoekt het gemiddelde om alle vaccins te verdelen
-    //TODO
-
+    if(aantal_vaccins[type] > lading) {
+        for (map<string, VaccinatieCentrum *>::const_iterator it = fverbonden_centra.begin(), end = fverbonden_centra.end();
+             it != end; it++) {
+            int vaccins = floor(aantal_vaccins[type] / (lading * fverbonden_centra.size())) * lading;
+            while(vaccins > lading){
+                for(int i = 0; i < interval; i++){
+                    if(vaccins < lading){
+                        break;
+                    }
+                    vaccins -= lading;
+                    aantal_vaccins[type] -= lading;
+                    gereserveerde_vaccins[i][it->first][type] += lading;
+                    it->second->reserveerVaccins(type, i, lading);
+                }
+            }
+        }
+    }
 }
 
 void Hub::verdeelVaccins() {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling verdeelVaccins");
+    for (map<string, VaccinatieCentrum *>::iterator centrum = fverbonden_centra.begin(); centrum != fverbonden_centra.end(); centrum++) {
+        map<string, int>  gereserveerd_2de_prik = gereserveerde_vaccins.front()[centrum->first];
+        //1ste verdeling
+        for (map<string, Vaccin *>::const_iterator vaccin = Kvaccins.begin(); vaccin != Kvaccins.end(); vaccin++) {
+            //aantal gereserveerde vaccins leveren
+            centrum->second->ontvangLevering(gereserveerd_2de_prik[vaccin->first], vaccin->second);
+        }
+        int totaal_vaccins = centrum->second->getTotaalAantalVaccins() + centrum->second->getTotaalAantalGeleverdeVaccins();
+        int capaciteit = centrum->second->getKcapaciteit() - totaal_vaccins;
+        if (totaal_vaccins >= capaciteit) continue;
+        //2de verdeling
+        for (map<string, Vaccin *>::const_iterator vaccin = Kvaccins.begin(); vaccin != Kvaccins.end(); vaccin++) {
+            if (capaciteit <= 0) break;
+            ENSURE(totaal_vaccins <= centrum->second->getMaxStock(), "Te veel vaccins!");
 
+            int min_ = min(4,
+                           capaciteit,
+                           aantal_vaccins[vaccin->first],
+                           centrum->second->getMaxStock() - totaal_vaccins,
+                           centrum->second->getAantalNietVaccinaties());
+
+            // we checken of we met het afronden niet te veel Kvaccins leveren, zo ja ronden we naar beneden af(en leveren we dus te weinig Kvaccins)
+            int ladingen = ceil((float) min_ / vaccin->second->transport);
+            if (ladingen * vaccin->second->transport + totaal_vaccins > centrum->second->getMaxStock() ||
+                ladingen * vaccin->second->transport - gereserveerd_2de_prik[vaccin->first] < 0) {
+                ladingen = floor((float) min_ / vaccin->second->transport);
+            }
+            int vaccins_in_levering = ladingen * vaccin->second->transport;
+            ENSURE(vaccins_in_levering >= 0, "Er wordt een negatief aantal vaccins geleverd!");
+            // we verminderen de capaciteit, aantal Kvaccins en we sturen de Kvaccins op
+            capaciteit -= vaccins_in_levering;
+            aantal_vaccins[vaccin->first] -= vaccins_in_levering;
+            centrum->second->ontvangLevering(vaccins_in_levering, vaccin->second); //stuurt de Kvaccins naar het centrum
+        }
+    }
+    gereserveerde_vaccins.pop_front();
+
+    /*
+    map<string, int>  gereserveerd_2de_prik;
     for (map<string, Vaccin *>::const_iterator vaccin = Kvaccins.begin(); vaccin != Kvaccins.end(); vaccin++) {
-//        if (vaccin->second->tijd_tot_nieuwe_levering != vaccin->second->interval) continue;
+        //if (vaccin->second->tijd_tot_nieuwe_levering != vaccin->second->interval) continue;
         gereserveerd_2de_prik[vaccin->first] = 0;
         for (map<string, VaccinatieCentrum *>::iterator centrum = fverbonden_centra.begin();
              centrum != fverbonden_centra.end(); centrum++) {
@@ -239,6 +292,7 @@ void Hub::verdeelVaccins() {
             centrum->second->ontvangLevering(vaccins_in_levering, vaccin->second); //stuurt de Kvaccins naar het centrum
         }
     }
+     */
     //derde verdeling zorgt ervoor dat zoveel mogelijk Kvaccins kunnen worden uitgedeeld
 //    for (map<string, Vaccin *>::const_iterator vaccin = Kvaccins.begin(); vaccin != Kvaccins.end(); vaccin++) {
 //        for (map<string, VaccinatieCentrum *>::const_iterator centrum = fverbonden_centra.begin(), end = fverbonden_centra.end();
