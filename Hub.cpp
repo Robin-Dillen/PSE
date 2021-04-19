@@ -20,6 +20,8 @@ Hub::Hub(const map<string, Vaccin *> &vaccins) : Kvaccins(vaccins), _initCheck(t
             gereserveerd_2de_prik[vaccin_it->first] = 0;
         }
     }
+    map<string, map<string, int> > m;
+    gereserveerde_vaccins.push_back(m);
     ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
 }
 
@@ -126,11 +128,28 @@ void Hub::ontvangLevering(const string &type, int aantal_geleverde_vaccins) {
     aantal_vaccins[type] += aantal_geleverde_vaccins;
     ENSURE(aantal_geleverde_vaccins + begin_aantal_vaccins == getAantalVaccins(type),
            "De Kvaccins werden niet succesvol ontvangen!");
-    int interval = Kvaccins[type].
-            setVaccinsPerDag(type, aantal_vaccins[type], interval);
+    addReservations(type);
 }
 
-void Hub::verdeelVaccin(const string &type) {
+
+void Hub::addReservations(const string &type) {
+    int interval = getVaccins().at(type)->interval;
+    int lading = getVaccins().at(type)->transport;
+    //1ste reservatie om alle 2de prikken te voorzien
+    for (map<string, VaccinatieCentrum *>::const_iterator it = fverbonden_centra.begin(), end = fverbonden_centra.end(); it != end; it++) {
+        for(int i = 0; i < interval; i++){
+            int vaccins = it->second->getNogTeReserverenVaccins(type, i);
+            vaccins = ceil(vaccins/lading);
+            while(vaccins > 0 && aantal_vaccins[type] > 0){
+                vaccins -= lading;
+                aantal_vaccins[type] -= lading;
+                gereserveerde_vaccins[i][it->first][type] += lading;
+                it->second->reserveerVaccins(type, i, lading);
+            }
+        }
+    }
+    //2de reservatie zoekt het gemiddelde om alle vaccins te verdelen
+    //TODO
 
 }
 
@@ -255,10 +274,6 @@ void Hub::addCentrum(VaccinatieCentrum *centrum) {
 map<string, Vaccin *> Hub::getVaccins() {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getVaccins()");
     return Kvaccins;
-}
-
-void Hub::setVaccinsPerDag(int vaccins, int interval) {
-
 }
 
 

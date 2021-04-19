@@ -21,9 +21,11 @@ VaccinatieCentrum::VaccinatieCentrum(const int kcapaciteit, const int kaantalInw
                                                                                       _initCheck(this) {
     map<string, int> m;
     aantal_eerste_prikken.push_back(m);
+    nog_te_reserveren_vaccins.push_back(m);
     aantal_geleverde_vaccins_buffer = 0;
     aantal_niet_vaccinaties = kaantal_inwoners;
     aantal_eerste_prikken.resize(1);
+    nog_te_reserveren_vaccins.resize(1);
     ENSURE(kcapaciteit >= 0, "De capaciteit is negatief!");
     ENSURE(kaantalInwoners >= 0, "het aantal inwoners is negatief!");
     ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
@@ -201,6 +203,7 @@ void VaccinatieCentrum::nieuweDag() {
             } else aantal_vaccinaties[vaccin->first] += aantal_prikken;
         } else {
             aantal_eerste_prikken[vaccin->second.first->hernieuwing - 1][vaccin->first] = aantal_prikken;
+            nog_te_reserveren_vaccins[vaccin->second.first->hernieuwing - 1][vaccin->first] = aantal_prikken;
         }
         zetVaccins(vaccin->first, aantal_prikken, capaciteit);
         aantal_vaccinaties_vandaag += aantal_prikken;
@@ -213,6 +216,9 @@ void VaccinatieCentrum::nieuweDag() {
 
     aantal_eerste_prikken.pop_front();
     aantal_eerste_prikken.resize(aantal_eerste_prikken.size() + 1);
+
+    nog_te_reserveren_vaccins.pop_front();
+    nog_te_reserveren_vaccins.resize(aantal_eerste_prikken.size() + 1);
 }
 
 void VaccinatieCentrum::zetVaccins(const string &type, int aantal, int &capaciteit) {
@@ -282,6 +288,17 @@ int VaccinatieCentrum::getAantalNietVaccinaties() const {
     REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling getAantalNietVaccinaties()");
     ENSURE(aantal_niet_vaccinaties >= 0, "We kunnen niet een negatief aantal niet vaccinaties hebben!");
     return aantal_niet_vaccinaties;
+}
+
+int VaccinatieCentrum::getNogTeReserverenVaccins(const string &type, int dag) {
+    return nog_te_reserveren_vaccins[dag][type];
+}
+
+void VaccinatieCentrum::reserveerVaccins(const string &type, int dag, int vaccins) {
+    nog_te_reserveren_vaccins[dag][type] -= vaccins;
+    if(nog_te_reserveren_vaccins[dag][type] < 0){
+        nog_te_reserveren_vaccins[dag][type] = 0;
+    }
 }
 
 

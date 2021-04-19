@@ -195,6 +195,9 @@ public:
      */
     int getAantalNietVaccinaties() const;
 
+    int getNogTeReserverenVaccins(const string &type, int dag);
+
+    void reserveerVaccins(const string &type, int dag, int vaccins);
 private:
 
     /*!
@@ -219,6 +222,8 @@ private:
     // zo ja, voeg nieuwe batch toe op plaats hernieuwbaar
     // zo nee aantal_eerste_prikken.resize(hernieuwbaar) !!niet reserve!!
     // we gebruiken een list omdat we front vaak moeten verwijderen(geeft shifts zoals bij vector)
+
+    deque<map<string, int> > nog_te_reserveren_vaccins;
 
     // changing attributes
     map<string, pair<Vaccin *, int> > aantal_vaccins; //vaccin: Vaccintype, int: aantal vaccins van dit type
