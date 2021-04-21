@@ -154,6 +154,7 @@ void VaccinatieCentrum::nieuweDag() {
     for (map<string, int>::iterator geleverde_vaccins = aantal_geleverde_vaccins.begin();
          geleverde_vaccins != aantal_geleverde_vaccins.end(); geleverde_vaccins++) {
         aantal_vaccins[geleverde_vaccins->first].second += geleverde_vaccins->second;
+
         stats.addGeleverdeVaccins(this, geleverde_vaccins->first, geleverde_vaccins->second); // TODO
         // het verzamelen van statistische gegevens mag niet in de klassen zelf gebeuren
         // reset
@@ -173,8 +174,12 @@ void VaccinatieCentrum::nieuweDag() {
     deque<map<string, int> >::iterator today = aantal_eerste_prikken.begin();
     deque<map<string, int> >::iterator tomorrow = aantal_eerste_prikken.begin() + 1;
     for (map<string, int>::iterator batch = today->begin(); batch != today->end(); batch++) {
-        cout << batch->first << endl;
-        int min_ = min(3, getAantalVaccins(batch->first), capaciteit, batch->second);
+
+        int min_ = min(3,
+                       getAantalVaccins(batch->first),
+                       capaciteit,
+                       batch->second);
+
         cout << "Er zijn " << min_ << " aantal 2de prikken met " << batch->first << " gezet!" << endl;
 
         zetVaccins(batch->first, min_, capaciteit);
@@ -182,9 +187,10 @@ void VaccinatieCentrum::nieuweDag() {
         aantal_vaccinaties_vandaag += min_;
 
         stats.addVaccinatie(this, batch->first, min_);
+
+        // if the batch is not empty, add the batch to de next day
         if (batch->second != 0) {
             if (tomorrow->find(batch->first) == tomorrow->end()) {
-                std::cout << today->at(batch->first) << endl;
                 (*tomorrow)[batch->first] = batch->second;
             } else {
                 (*tomorrow)[batch->first] += batch->second;
@@ -192,10 +198,14 @@ void VaccinatieCentrum::nieuweDag() {
         }
     }
 
-    for (map<string, pair<Vaccin *, int> >::iterator vaccin = aantal_vaccins.begin();
+    for (MapSP_VI_Iterator vaccin = aantal_vaccins.begin();
          vaccin != aantal_vaccins.end() && capaciteit != 0; vaccin++) {
-        int aantal_prikken = min(4, capaciteit, vaccin->second.second, aantal_niet_vaccinaties,
+        int aantal_prikken = min(4,
+                                 capaciteit,
+                                 vaccin->second.second,
+                                 aantal_niet_vaccinaties,
                                  getAantalVaccins(vaccin->first));
+
         cout << "Er zijn " << aantal_prikken << " 1ste prikken met " << vaccin->first << " gezet!" << endl;
         if (vaccin->second.first->hernieuwing == 0) {
             if (aantal_vaccinaties.find(vaccin->first) == aantal_vaccinaties.end()) {
@@ -251,9 +261,11 @@ bool VaccinatieCentrum::isVolNaLevering(int vaccins_in_levering) const {
 
 void VaccinatieCentrum::ontvangLevering(int vaccins_in_levering, Vaccin *vaccin) {
     REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling ontvangLevering");
+    REQUIRE(vaccins_in_levering >= 0, "Er is een negatief aantal vaccins geleverd!");
 
     if (vaccin->hernieuwing > (int) aantal_eerste_prikken.size()) aantal_eerste_prikken.resize(vaccin->hernieuwing);
-    if (vaccin->hernieuwing > (int) nog_te_reserveren_vaccins.size()) nog_te_reserveren_vaccins.resize(vaccin->hernieuwing);
+    if (vaccin->hernieuwing > (int) nog_te_reserveren_vaccins.size())
+        nog_te_reserveren_vaccins.resize(vaccin->hernieuwing);
     //nieuwe type vaccin toevoegen aan map
     if (aantal_vaccins.find(vaccin->type) == aantal_vaccins.end()) {
         aantal_vaccins[vaccin->type].first = vaccin;

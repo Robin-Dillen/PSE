@@ -167,6 +167,7 @@ public:
     /*!
      * ontvangt een levering en plaatst de vaccinaties in de stock
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling ontvangLevering");
+     * \n REQUIRE(vaccins_in_levering >= 0, "Er is een negatief aantal vaccins geleverd!");
      * \n ENSURE(begin_aantal_geleverde_vaccins + vaccins_in_levering == getAantalGeleverdeVaccins(), "De vaccins zijn niet succesvol geleverd!");
      */
     void ontvangLevering(int vaccins_in_levering, Vaccin *vaccin);
