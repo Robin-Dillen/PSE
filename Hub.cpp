@@ -14,14 +14,11 @@
 
 Hub::Hub(const map<string, Vaccin *> &vaccins) : Kvaccins(vaccins), _initCheck(this) {
     for (map<string, Vaccin *>::const_iterator vaccin = vaccins.begin(); vaccin != vaccins.end(); vaccin++) {
-        aantal_vaccins[vaccin->first] = vaccin->second->levering;
+        ontvangLevering(vaccin->first, vaccin->second->levering);
         for (map<string, Vaccin *>::const_iterator vaccin_it = vaccins.begin();
              vaccin_it != vaccins.end(); vaccin_it++) {
         }
     }
-    map<string, map<string, int> > m;
-    gereserveerde_vaccins.push_back(m);
-    gereserveerde_vaccins.resize(1);
     ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
 }
 
@@ -134,6 +131,7 @@ void Hub::ontvangLevering(const string &type, int aantal_geleverde_vaccins) {
 void Hub::addReservations(const string &type) {
     int interval = getVaccins().at(type)->interval;
     int lading = getVaccins().at(type)->transport;
+    std::cout << gereserveerde_vaccins.size() << std::endl;
     if((int) gereserveerde_vaccins.size() < interval) gereserveerde_vaccins.resize(interval);
     //1ste reservatie om alle 2de prikken te voorzien
     for (map<string, VaccinatieCentrum *>::const_iterator it = fverbonden_centra.begin(), end = fverbonden_centra.end(); it != end; it++) {
@@ -155,9 +153,7 @@ void Hub::addReservations(const string &type) {
             int vaccins = floor(aantal_vaccins[type] / (lading * fverbonden_centra.size())) * lading;
             while(vaccins > lading){
                 for(int i = 0; i < interval; i++){
-                    if(vaccins < lading){
-                        break;
-                    }
+                    if (vaccins < lading) break;
                     vaccins -= lading;
                     aantal_vaccins[type] -= lading;
                     gereserveerde_vaccins[i][it->first][type] += lading;
@@ -171,13 +167,16 @@ void Hub::addReservations(const string &type) {
 void Hub::verdeelVaccins() {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling verdeelVaccins");
     for (map<string, VaccinatieCentrum *>::iterator centrum = fverbonden_centra.begin(); centrum != fverbonden_centra.end(); centrum++) {
-        map<string, int>  gereserveerd_2de_prik = gereserveerde_vaccins.front()[centrum->first];
+        map<string, int> gereserveerd_2de_prik;
+        if (!gereserveerde_vaccins.empty())
+            gereserveerd_2de_prik = gereserveerde_vaccins.front()[centrum->first];
         //1ste verdeling
         for (map<string, Vaccin *>::const_iterator vaccin = Kvaccins.begin(); vaccin != Kvaccins.end(); vaccin++) {
             //aantal gereserveerde vaccins leveren
             centrum->second->ontvangLevering(gereserveerd_2de_prik[vaccin->first], vaccin->second);
         }
-        int totaal_vaccins = centrum->second->getTotaalAantalVaccins() + centrum->second->getTotaalAantalGeleverdeVaccins();
+        int totaal_vaccins =
+                centrum->second->getTotaalAantalVaccins() + centrum->second->getTotaalAantalGeleverdeVaccins();
         int capaciteit = centrum->second->getKcapaciteit() - totaal_vaccins;
         if (totaal_vaccins >= capaciteit) continue;
         //2de verdeling
