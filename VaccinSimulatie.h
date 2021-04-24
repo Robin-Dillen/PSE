@@ -46,7 +46,6 @@ inline void Simulatie(const string &testfilename, bool c_out = true) {
         output.addToOutputFile(hubs[i], i + 1, current_day, filename1);
     }
     while ((!end_day || current_day < end_day) && !break_) {
-        current_day++;
         cout<<"dag "<<current_day<<": "<<endl;
         for (unsigned int i = 0; i < hubs.size(); i++) {
             if (hubs[i]->isIedereenGevaccineerd()) {
@@ -77,6 +76,7 @@ inline void Simulatie(const string &testfilename, bool c_out = true) {
             vaccinatie_centra[i]->nieuweDag();
             output.addToGIFile(vaccinatie_centra[i], filename2);
         }
+        current_day++;
     }
 
     int years = current_day / 356;

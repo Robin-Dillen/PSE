@@ -147,7 +147,8 @@ void VaccinatieCentrum::nieuweDag() {
     StatisticsSingleton &stats = StatisticsSingleton::getInstance();
 
     int begin_aantal_vaccins = getTotaalAantalVaccins();
-    int aantal_vaccinaties_vandaag = 0;
+    int aantal_tweede_prik = 0;
+    int aantal_eerste_prik = 0;
     int begin_aantal_vaccinaties = getTotaalAantalVaccinaties();
     int totaal_aantal_geleverde_vaccins = getTotaalAantalGeleverdeVaccins();
 
@@ -180,11 +181,11 @@ void VaccinatieCentrum::nieuweDag() {
                        capaciteit,
                        batch->second);
 
-        cout << "Er zijn " << min_ << " aantal 2de prikken met " << batch->first << " gezet!" << endl;
+        cout << "Er zijn " << min_ << " 2de prikken met " << batch->first << " gezet in "<< kfname <<"!" << endl;
 
-        zetVaccins(batch->first, min_, capaciteit);
+        zet2dePrikVaccins(batch->first, min_, capaciteit);
         batch->second -= min_;
-        aantal_vaccinaties_vandaag += min_;
+        aantal_tweede_prik += min_;
 
         stats.addVaccinatie(this, batch->first, min_);
 
@@ -200,28 +201,31 @@ void VaccinatieCentrum::nieuweDag() {
 
     for (MapSP_VI_Iterator vaccin = aantal_vaccins.begin();
          vaccin != aantal_vaccins.end() && capaciteit != 0; vaccin++) {
-        int aantal_prikken = min(4,
+        int aantal_prikken = min(3,
                                  capaciteit,
-                                 vaccin->second.second,
                                  aantal_niet_vaccinaties,
                                  getAantalVaccins(vaccin->first));
 
-        cout << "Er zijn " << aantal_prikken << " 1ste prikken met " << vaccin->first << " gezet!" << endl;
+        cout<<kfname<<": "<< capaciteit << endl << getAantalVaccins(vaccin->first)<< endl<< aantal_niet_vaccinaties <<endl;
+        ENSURE(aantal_prikken >= 0, "Het aantal vaccinaties mag niet negatief zijn!");
+        cout << "Er zijn " << aantal_prikken << " 1ste prikken met " << vaccin->first << " gezet in "<< kfname <<"!" << endl;
         if (vaccin->second.first->hernieuwing == 0) {
             if (aantal_vaccinaties.find(vaccin->first) == aantal_vaccinaties.end()) {
                 aantal_vaccinaties[vaccin->first] = aantal_prikken;
             } else aantal_vaccinaties[vaccin->first] += aantal_prikken;
+            zet2dePrikVaccins(vaccin->first, aantal_prikken, capaciteit);
+            aantal_tweede_prik += aantal_prikken;
         } else {
-            aantal_eerste_prikken[vaccin->second.first->hernieuwing - 1][vaccin->first] = aantal_prikken;
-            nog_te_reserveren_vaccins[vaccin->second.first->hernieuwing - 1][vaccin->first] = aantal_prikken;
+            aantal_eerste_prikken[vaccin->second.first->hernieuwing - 1][vaccin->first] += aantal_prikken;
+            nog_te_reserveren_vaccins[vaccin->second.first->hernieuwing - 1][vaccin->first] += aantal_prikken;
+            zet1stePrikVaccins(vaccin->first, aantal_prikken, capaciteit);
+            aantal_eerste_prik += aantal_prikken;
         }
-        zetVaccins(vaccin->first, aantal_prikken, capaciteit);
-        aantal_vaccinaties_vandaag += aantal_prikken;
     }
 
-    ENSURE(begin_aantal_vaccins - aantal_vaccinaties_vandaag == getTotaalAantalVaccins(),
+    ENSURE(begin_aantal_vaccins - aantal_tweede_prik - aantal_eerste_prik == getTotaalAantalVaccins(),
            "Het aantal vaccins is niet geüpdate!");
-    ENSURE(begin_aantal_vaccinaties + aantal_vaccinaties_vandaag == getTotaalAantalVaccinaties(),
+    ENSURE(begin_aantal_vaccinaties + aantal_tweede_prik == getTotaalAantalVaccinaties(),
            "Het aantal vaccinaties is niet succesvol geüpdate!");
 
     aantal_eerste_prikken.pop_front();
@@ -231,8 +235,13 @@ void VaccinatieCentrum::nieuweDag() {
     nog_te_reserveren_vaccins.resize(nog_te_reserveren_vaccins.size() + 1);
 }
 
-void VaccinatieCentrum::zetVaccins(const string &type, int aantal, int &capaciteit) {
+void VaccinatieCentrum::zet2dePrikVaccins(const string &type, int aantal, int &capaciteit) {
     aantal_vaccinaties[type] += aantal; // bestaat zeker (wordt aangemaakt bij het ontvangen van een levering)
+    aantal_vaccins[type].second -= aantal; // update het aantal beschikbare vaccins
+    capaciteit -= aantal;
+}
+
+void VaccinatieCentrum::zet1stePrikVaccins(const string &type, int aantal, int &capaciteit) {
     aantal_vaccins[type].second -= aantal; // update het aantal beschikbare vaccins
     aantal_niet_vaccinaties -= aantal;
     capaciteit -= aantal;
@@ -305,6 +314,9 @@ int VaccinatieCentrum::getAantalNietVaccinaties() const {
 }
 
 int VaccinatieCentrum::getNogTeReserverenVaccins(const string &type, int dag) {
+    if((int) nog_te_reserveren_vaccins.size()-1 < dag){
+        return 0;
+    }
     return nog_te_reserveren_vaccins[dag][type];
 }
 
