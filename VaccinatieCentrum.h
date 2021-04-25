@@ -198,8 +198,25 @@ public:
      */
     int getAantalNietVaccinaties() const;
 
+    /*!
+     * geeft terug hoeveel vaccins er nog gereserveerd moeten worden voor een bepaalde dag
+     * @return int
+     * @param type
+     * @param dag
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getAantalNietVaccinaties()");
+     * \n REQUIRE(nog_te_reserveren_vaccins[dag][type] >= 0, "Er mag geen negatief aantal te reserveren vaccins zijn");
+     */
     int getNogTeReserverenVaccins(const string &type, int dag);
 
+    /*!
+     * geeft terug hoeveel vaccins er nog gereserveerd moeten worden voor een bepaalde dag
+     * @return void
+     * @param type
+     * @param dag
+     * @param vaccins: aantal te reserveren vaccins
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getAantalNietVaccinaties()");
+     * \n ENSURE(nog_te_reserveren_vaccins[dag][type] >= 0, "Er mag geen negatief aantal te reserveren vaccins zijn");
+     */
     void reserveerVaccins(const string &type, int dag, int vaccins);
 private:
 

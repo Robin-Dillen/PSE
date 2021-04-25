@@ -218,7 +218,6 @@ void VaccinatieCentrum::nieuweDag() {
                                  aantal_niet_vaccinaties,
                                  getAantalVaccins(vaccin->first));
 
-        cout<<kfname<<": "<< capaciteit << endl << getAantalVaccins(vaccin->first)<< endl<< aantal_niet_vaccinaties <<endl;
         ENSURE(aantal_prikken >= 0, "Het aantal vaccinaties mag niet negatief zijn!");
         cout << "Er zijn " << aantal_prikken << " 1ste prikken met " << vaccin->first << " gezet in "<< kfname <<"!" << endl;
         if (vaccin->second.first->hernieuwing == 0) {
@@ -326,17 +325,21 @@ int VaccinatieCentrum::getAantalNietVaccinaties() const {
 }
 
 int VaccinatieCentrum::getNogTeReserverenVaccins(const string &type, int dag) {
+    REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling getNogTeReserverenVaccins()");
     if((int) nog_te_reserveren_vaccins.size()-1 < dag){
         return 0;
     }
+    REQUIRE(nog_te_reserveren_vaccins[dag][type] >= 0, "Er mag geen negatief aantal te reserveren vaccins zijn");
     return nog_te_reserveren_vaccins[dag][type];
 }
 
 void VaccinatieCentrum::reserveerVaccins(const string &type, int dag, int vaccins) {
+    REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling reserveerVaccins()");
     nog_te_reserveren_vaccins[dag][type] -= vaccins;
     if(nog_te_reserveren_vaccins[dag][type] < 0){
         nog_te_reserveren_vaccins[dag][type] = 0;
     }
+    ENSURE(nog_te_reserveren_vaccins[dag][type] >= 0, "Er mag geen negatief aantal te reserveren vaccins zijn");
 }
 
 
