@@ -1,5 +1,25 @@
-<!--centra zonder hub = error-->
+<!--1 Hub-->
+<!--1 Vaccin type-->
+<!--genoeg vaccins-->
+<!--negatieve temperatuur-->
+<!--geen hernieuwing-->
 <root>
+    <HUB>
+        <VACCIN>
+            <type>PfizerXJ_J</type>
+            <levering>93000</levering>
+            <interval>6</interval>
+            <transport>2000</transport>
+            <hernieuwing>0</hernieuwing>
+            <temperatuur>-70</temperatuur>
+        </VACCIN>
+        <CENTRA>
+            <centrum>Park Spoor Oost</centrum>
+            <centrum>AED Studios</centrum>
+            <centrum>De Zoerla</centrum>
+            <centrum>Flanders Expo</centrum>
+        </CENTRA>
+    </HUB>
     <VACCINATIECENTRUM>
         <naam>Park Spoor Oost</naam>
         <adres>Noordersingel 40, Antwerpen</adres>
@@ -24,12 +44,4 @@
         <inwoners>257029</inwoners>
         <capaciteit>3000</capaciteit>
     </VACCINATIECENTRUM>
-    <VACCINATIECENTRUM>
-        <naam>Negatieve inwoners</naam>
-        <adres>dorpsstraat 3</adres>
-        <inwoners>2</inwoners>
-        <capaciteit>1646</capaciteit>
-    </VACCINATIECENTRUM>
 </root>
-
-

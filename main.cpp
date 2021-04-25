@@ -15,7 +15,20 @@ using namespace std;
 
 int main(int argc, char const *argv[]) {
     vector<string> args = vector<string>(argv + 1, argv + argc);
-    Simulatie(args[0]);
+
+    Parser P(args[0]);
+    vector<Hub *> hubs = P.getFhubs();
+    std::vector<VaccinatieCentrum *> vaccinatie_centra;
+
+    for (unsigned int i = 0; i < hubs.size(); i++) {
+        for (map<string, VaccinatieCentrum *>::const_iterator centrum = hubs[i]->getFverbondenCentra().begin();
+             centrum != hubs[i]->getFverbondenCentra().end(); centrum++) {
+            if (find(vaccinatie_centra.begin(), vaccinatie_centra.end(), centrum->second) == vaccinatie_centra.end()) {
+                vaccinatie_centra.push_back(centrum->second);
+            }
+        }
+    }
+    Simulatie(hubs, vaccinatie_centra, args[0]);
     return 0;
 }
 

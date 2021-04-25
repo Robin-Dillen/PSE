@@ -1,9 +1,18 @@
-<!--te weinnig vaccins om aan iedereen tu 'vullen' = geen error-->
+<!--1 Hub-->
+<!--1 Vaccin type-->
+<!--niet genoeg vaccins-->
+<!--negatieve temperatuur-->
+<!--hernieuwing-->
 <root>
     <HUB>
-        <levering>50000</levering>
-        <interval>6</interval>
-        <transport>2000</transport>
+        <VACCIN>
+            <type>Moderna</type>
+            <levering>50000</levering>
+            <interval>13</interval>
+            <transport>1000</transport>
+            <hernieuwing>20</hernieuwing>
+            <temperatuur>-20</temperatuur>
+        </VACCIN>
         <CENTRA>
             <centrum>Park Spoor Oost</centrum>
             <centrum>AED Studios</centrum>
@@ -36,5 +45,3 @@
         <capaciteit>3000</capaciteit>
     </VACCINATIECENTRUM>
 </root>
-
-

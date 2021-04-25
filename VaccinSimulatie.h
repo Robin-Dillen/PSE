@@ -11,19 +11,9 @@
 
 using namespace std;
 
-inline void Simulatie(const string &testfilename, bool c_out = true) {
-    Parser P(testfilename);
-    vector<Hub *> hubs = P.getFhubs();
-    std::vector<VaccinatieCentrum *> vaccinatie_centra;
-
-    for (unsigned int i = 0; i < hubs.size(); i++) {
-        for (map<string, VaccinatieCentrum *>::const_iterator centrum = hubs[i]->getFverbondenCentra().begin();
-             centrum != hubs[i]->getFverbondenCentra().end(); centrum++) {
-            if (find(vaccinatie_centra.begin(), vaccinatie_centra.end(), centrum->second) == vaccinatie_centra.end()) {
-                vaccinatie_centra.push_back(centrum->second);
-            }
-        }
-    }
+inline void
+Simulatie(vector<Hub *> &hubs, std::vector<VaccinatieCentrum *> &vaccinatie_centra, const string &testfilename,
+          bool c_out = true) {
 
     size_t pos = testfilename.find("test");
     ENSURE(pos != string::npos, "Given argument doesn't include a test file!");
@@ -46,7 +36,6 @@ inline void Simulatie(const string &testfilename, bool c_out = true) {
         output.addToOutputFile(hubs[i], i + 1, current_day, filename1);
     }
     while ((!end_day || current_day < end_day) && !break_) {
-        current_day++;
         cout<<"dag "<<current_day<<": "<<endl;
         for (unsigned int i = 0; i < hubs.size(); i++) {
             if (hubs[i]->isIedereenGevaccineerd()) {
@@ -77,6 +66,7 @@ inline void Simulatie(const string &testfilename, bool c_out = true) {
             vaccinatie_centra[i]->nieuweDag();
             output.addToGIFile(vaccinatie_centra[i], filename2);
         }
+        current_day++;
     }
 
     int years = current_day / 356;

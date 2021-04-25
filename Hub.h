@@ -15,6 +15,8 @@
 #include <cmath> // voor ceil
 #include <iostream> // for testing
 #include <algorithm>
+#include <deque>
+
 
 #include "lib/DesignByContract.h"
 
@@ -22,8 +24,6 @@ using namespace std;
 
 class VaccinatieCentrum;
 class Vaccin;
-
-class VaccinsRequest;
 
 class Hub {
 public:
@@ -34,6 +34,12 @@ public:
 //    Hub(const int kaantal_vaccins_per_levering, const int kleveringen_interval, const int kaantal_vaccins_per_lading);
 
     Hub(const map<string, Vaccin *> &vaccins);
+
+    /*!
+     * default constructor
+     * \n ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
+     */
+    Hub();
 
     /**
      * Verwijdert alle centra van deze hub
@@ -169,13 +175,15 @@ public:
      */
     map<string, Vaccin *> getVaccins();
 
+    void addReservations(const string &type);
+
 private:
 
     // const attributes
 //    const int kaantal_vaccins_per_levering;
 //    const int kleveringen_interval;
 //    const int kaantal_vaccins_per_lading;
-    const map<string, Vaccin *> Kvaccins;
+    const map<string, Vaccin *> kvaccins;
 
     const Hub *_initCheck; // pointer naar zichzelf om te checken of het object correct geïnitialseert is
 
@@ -184,7 +192,7 @@ private:
 
 //    int aantal_vaccins; // aantal Kvaccins in de hub
     map<string, int> aantal_vaccins;
-    map<string, int> gereserveerd_2de_prik;
+    deque<map<string, map<string, int> > > gereserveerde_vaccins;
 };
 
 

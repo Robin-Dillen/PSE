@@ -1,23 +1,69 @@
-<!--extra elementen = geen error-->
+<!--3 Hubs-->
+<!--2 Vaccin type-->
+<!--genoeg vaccins-->
+<!--positieve en negatieve temperatuur-->
+<!--(geen) hernieuwing-->
 <root>
     <HUB>
-        <levering>81000</levering>
-        <interval>6</interval>
-        <rand1>A</rand1>
-        <transport>2000</transport>
+        <VACCIN>
+            <type>J_J</type>
+            <levering>100000</levering>
+            <interval>13</interval>
+            <transport>1000</transport>
+            <hernieuwing>0</hernieuwing>
+            <temperatuur>5</temperatuur>
+        </VACCIN>
+        <CENTRA>
+            <centrum>Park Spoor Oost</centrum>
+        </CENTRA>
+    </HUB>
+    <HUB>
+        <VACCIN>
+            <type>Moderna</type>
+            <levering>23000</levering>
+            <interval>13</interval>
+            <transport>1000</transport>
+            <hernieuwing>28</hernieuwing>
+            <temperatuur>-20</temperatuur>
+        </VACCIN>
+        <VACCIN>
+            <type>Pfizer</type>
+            <levering>93000</levering>
+            <interval>6</interval>
+            <transport>2000</transport>
+            <hernieuwing>21</hernieuwing>
+            <temperatuur>-70</temperatuur>
+        </VACCIN>
         <CENTRA>
             <centrum>AED Studios</centrum>
-            <centrum>De Zoerla</centrum>
             <centrum>Flanders Expo</centrum>
         </CENTRA>
     </HUB>
+    <HUB>
+        <VACCIN>
+            <type>AstraZeneca</type>
+            <levering>67000</levering>
+            <interval>4</interval>
+            <transport>1500</transport>
+            <hernieuwing>28</hernieuwing>
+            <temperatuur>5</temperatuur>
+        </VACCIN>
+        <CENTRA>
+            <centrum>AED Studios</centrum>
+            <centrum>De Zoerla</centrum>
+        </CENTRA>
+    </HUB>
+    <VACCINATIECENTRUM>
+        <naam>Park Spoor Oost</naam>
+        <adres>Noordersingel 40, Antwerpen</adres>
+        <inwoners>540173</inwoners>
+        <capaciteit>7500</capaciteit>
+    </VACCINATIECENTRUM>
     <VACCINATIECENTRUM>
         <naam>AED Studios</naam>
         <adres>Fabriekstraat 38, Lint</adres>
         <inwoners>76935</inwoners>
         <capaciteit>2000</capaciteit>
-        <rand2>B</rand2>
-        <rand3>C</rand3>
     </VACCINATIECENTRUM>
     <VACCINATIECENTRUM>
         <naam>De Zoerla</naam>
@@ -32,6 +78,3 @@
         <capaciteit>3000</capaciteit>
     </VACCINATIECENTRUM>
 </root>
-
-
-

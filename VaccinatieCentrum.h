@@ -33,6 +33,8 @@ public:
     VaccinatieCentrum(const int kcapaciteit, const int kaantalInwoners, const string &kfname,
                       const string &kfaddress);
 
+    VaccinatieCentrum();
+
     /**
      * @return geeft terug of het object correct is geïnitialiseert
      */
@@ -167,6 +169,7 @@ public:
     /*!
      * ontvangt een levering en plaatst de vaccinaties in de stock
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling ontvangLevering");
+     * \n REQUIRE(vaccins_in_levering >= 0, "Er is een negatief aantal vaccins geleverd!");
      * \n ENSURE(begin_aantal_geleverde_vaccins + vaccins_in_levering == getAantalGeleverdeVaccins(), "De vaccins zijn niet succesvol geleverd!");
      */
     void ontvangLevering(int vaccins_in_levering, Vaccin *vaccin);
@@ -195,7 +198,18 @@ public:
      */
     int getAantalNietVaccinaties() const;
 
+    int getNogTeReserverenVaccins(const string &type, int dag);
+
+    void reserveerVaccins(const string &type, int dag, int vaccins);
 private:
+
+    /*!
+     * update alle variabelen
+     * @param aantal het aantal vaccins dat gezet moet worden
+     */
+    void zet2dePrikVaccins(const string &type, int aantal, int &capaciteit);
+
+    void zet1stePrikVaccins(const string &type, int aantal, int &capaciteit);
 
     // const attributes
     const int kcapaciteit;
@@ -213,6 +227,8 @@ private:
     // zo ja, voeg nieuwe batch toe op plaats hernieuwbaar
     // zo nee aantal_eerste_prikken.resize(hernieuwbaar) !!niet reserve!!
     // we gebruiken een list omdat we front vaak moeten verwijderen(geeft shifts zoals bij vector)
+
+    deque<map<string, int> > nog_te_reserveren_vaccins;
 
     // changing attributes
     map<string, pair<Vaccin *, int> > aantal_vaccins; //vaccin: Vaccintype, int: aantal vaccins van dit type

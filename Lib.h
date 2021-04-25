@@ -13,6 +13,7 @@
 #include <map>
 
 #define OUTPUT_FILE_LOCATION string("../Outputfiles/")
+#define INPUT_FILE_LOCATION string("../XMLfiles/")
 
 typedef map<string, int>::iterator MapSIIterator;
 typedef map<string, int>::const_iterator MapSICIterator;

@@ -32,11 +32,16 @@ enum EExeption {
 class Parser {
 public:
     /**
-    \n ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
+    * \n ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
     */
     Parser(const string &filename);
 
-    virtual ~Parser();
+    /**
+    * \n ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
+    */
+    Parser();
+
+    ~Parser();
 
     /**
      * @return geeft een pointer naar de hub terug
