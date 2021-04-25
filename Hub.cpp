@@ -202,9 +202,9 @@ void Hub::verdeelVaccins() {
             }
         }
         //2de verdeling
-        for (map<string, Vaccin *>::const_iterator vaccin = Kvaccins.begin(); vaccin != Kvaccins.end(); vaccin++) {
+        for (map<string, Vaccin *>::const_iterator vaccin = kvaccins.begin(); vaccin != kvaccins.end(); vaccin++) {
             //aantal gereserveerde vaccins leveren
-            int lading = Kvaccins.at(vaccin->first)->transport;
+            int lading = kvaccins.at(vaccin->first)->transport;
             while (gereserveerd_1ste_prik[vaccin->first] > 0 && capaciteit > 0 && totaal_vaccins + lading < maxStock){
                 centrum->second->ontvangLevering(lading, vaccin->second);
                 gereserveerd_1ste_prik[vaccin->first] -= lading;
@@ -243,7 +243,7 @@ map<string, Vaccin *> Hub::getVaccins() {
 
 int Hub::getGereserveerdevaccins(map<string, int> dag) {
     int vaccins = 0;
-    for (map<string, Vaccin *>::const_iterator vaccin = Kvaccins.begin(); vaccin != Kvaccins.end(); vaccin++) {
+    for (map<string, Vaccin *>::const_iterator vaccin = kvaccins.begin(); vaccin != kvaccins.end(); vaccin++) {
          vaccins += dag[vaccin->first];
     }
     return vaccins;
