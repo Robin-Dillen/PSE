@@ -217,6 +217,7 @@ void VaccinatieCentrum::nieuweDag() {
                                  capaciteit,
                                  aantal_niet_vaccinaties,
                                  getAantalVaccins(vaccin->first));
+        cout<<"\t"<<aantal_niet_vaccinaties<<endl;
 
         ENSURE(aantal_prikken >= 0, "Het aantal vaccinaties mag niet negatief zijn!");
         cout << "Er zijn " << aantal_prikken << " 1ste prikken met " << vaccin->first << " gezet in "<< kfname <<"!" << endl;
@@ -227,6 +228,7 @@ void VaccinatieCentrum::nieuweDag() {
             }else{
                 zet2dePrikVaccins(vaccin->first, aantal_prikken, capaciteit);
                 aantal_tweede_prik += aantal_prikken;
+                aantal_niet_vaccinaties -= aantal_prikken;
             }
         } else {
             aantal_eerste_prikken[vaccin->second.first->hernieuwing - 1][vaccin->first] += aantal_prikken;
