@@ -113,6 +113,8 @@ TEST_F(VaccinSimulatieDomainTest, HubContractViolations) {
 }
 
 TEST_F(VaccinSimulatieDomainTest, VaccinatieCentrumContractViolations) {
+    VaccinsFactorySingleton &VFS = VaccinsFactorySingleton::getInstance();
+
     EXPECT_DEATH(VaccinatieCentrum(0, 1, "test", "teststraat, 1"), "");
     EXPECT_DEATH(VaccinatieCentrum(1, 0, "test", "teststraat, 1"), "");
     EXPECT_DEATH(VaccinatieCentrum(1, 1, "", "teststraat, 1"), "");
@@ -129,6 +131,13 @@ TEST_F(VaccinSimulatieDomainTest, VaccinatieCentrumContractViolations) {
     EXPECT_DEATH(V.zet2dePrikVaccins("Test", 100, capaciteit), "");
     V.setVaccins(200, "Test");
     EXPECT_DEATH(V.zet2dePrikVaccins("Test", 200, capaciteit), "");
-    V.getAantalVaccinaties("");
-
+    Vaccin *V1 = VFS.getVaccin("Test", 1, 1, 1, 1, 1);
+    EXPECT_DEATH(V.ontvangLevering(-100, V1), "");
+    EXPECT_DEATH(V.getAantalTweedePrikken("", 1), "");
+    EXPECT_DEATH(V.getAantalTweedePrikken("Test", -1), "");
+    EXPECT_DEATH(V.getNogTeReserverenVaccins("", 1), "");
+    EXPECT_DEATH(V.getNogTeReserverenVaccins("Test", -1), "");
+    EXPECT_DEATH(V.reserveerVaccins("", 1, 1), "");
+    EXPECT_DEATH(V.reserveerVaccins("Test", -1, 1), "");
+    EXPECT_DEATH(V.reserveerVaccins("Test", 1, -1), "");
 }
