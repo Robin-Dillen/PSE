@@ -14,6 +14,9 @@
 
 #define OUTPUT_FILE_LOCATION string("../Outputfiles/")
 #define INPUT_FILE_LOCATION string("../XMLfiles/")
+#define DEATH_TESTS_FILE_LOCATION string(INPUT_FILE_LOCATION + "DeathTests/")
+#define WARNING_TESTS_FILE_LOCATION string(INPUT_FILE_LOCATION + "WarningTests/")
+#define HAPPY_DAY_TESTS_FILE_LOCATION string(INPUT_FILE_LOCATION + "HappyDayTests/")
 
 typedef map<string, int>::iterator MapSIIterator;
 typedef map<string, int>::const_iterator MapSICIterator;
