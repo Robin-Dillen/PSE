@@ -92,8 +92,18 @@ void OutputSingleton::addToGIFile(VaccinatieCentrum *v, const string &filename) 
     }
     outputFile <<"] "<<gevaccineerdpercentage<< "%\n";
     map<string, int>::const_iterator it;
+    int max = 0;
     for (it = v->getAantalVaccinaties1().begin(); it != v->getAantalVaccinaties1().end(); it++) {
-        outputFile << "\t\t- "<< it->first <<"\t[";
+        if((int) it->first.size() > max) max = it->first.size();
+    }
+    for (it = v->getAantalVaccinaties1().begin(); it != v->getAantalVaccinaties1().end(); it++) {
+        outputFile << "\t\t- "<< it->first << "\t";
+        int x = 0;
+        while((int) it->first.size() + x <= max){
+            outputFile << "\t";
+            x+=4;
+        }
+        outputFile << "[";
         int typeVaccinPercentage;
         if(gevaccineerdpercentage == 0){
             typeVaccinPercentage = 0;
