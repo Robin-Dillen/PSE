@@ -315,14 +315,18 @@ Parser::Parser(const string &filename) : _initCheck(this) {
                 ) {
             string secondName = secondElement->Value();
             if (secondName != "levering" && secondName != "interval" && secondName != "transport" &&
-                    secondName != "CENTRA" && secondName != "VACCIN") {
+                secondName != "CENTRA" && secondName != "VACCIN") {
                 cerr << secondName << "(" << secondElement->Row() << ", " << secondElement->Column()
-                        << ") wordt niet herkent als tag!" << endl;
+                     << ") wordt niet herkent als tag!" << endl;
                 errors.push_back(UNKNOWN_TAG);
             }
         }
     }
 
+    ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
+}
+
+Parser::Parser() : _initCheck(this) {
     ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
 }
 

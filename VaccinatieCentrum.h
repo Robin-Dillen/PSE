@@ -33,6 +33,8 @@ public:
     VaccinatieCentrum(const int kcapaciteit, const int kaantalInwoners, const string &kfname,
                       const string &kfaddress);
 
+    VaccinatieCentrum();
+
     /**
      * @return geeft terug of het object correct is geïnitialiseert
      */

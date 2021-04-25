@@ -1,16 +1,25 @@
-<!-- error -->
+<!--1 Hub-->
+<!--1 Vaccin type-->
+<!--genoeg vaccins-->
+<!--positieve temperatuur-->
+<!--hernieuwing-->
 <root>
-<!--    <HUB>-->
-        <levering>93000</levering>
-        <interval>6</interval>
-        <transport>2000</transport>
+    <HUB>
+        <VACCIN>
+            <type>AstraZenica</type>
+            <levering>100000</levering>
+            <interval>13</interval>
+            <transport>1000</transport>
+            <hernieuwing>28</hernieuwing>
+            <temperatuur>5</temperatuur>
+        </VACCIN>
         <CENTRA>
             <centrum>Park Spoor Oost</centrum>
             <centrum>AED Studios</centrum>
             <centrum>De Zoerla</centrum>
             <centrum>Flanders Expo</centrum>
         </CENTRA>
-    <!--    </HUB>-->
+    </HUB>
     <VACCINATIECENTRUM>
         <naam>Park Spoor Oost</naam>
         <adres>Noordersingel 40, Antwerpen</adres>
@@ -36,5 +45,3 @@
         <capaciteit>3000</capaciteit>
     </VACCINATIECENTRUM>
 </root>
-
-

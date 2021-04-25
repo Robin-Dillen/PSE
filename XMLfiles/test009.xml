@@ -1,9 +1,18 @@
-<!-- interval van 0 dagen = error -->
+<!--1 Hub-->
+<!--1 Vaccin type-->
+<!--niet genoeg vaccins-->
+<!--positieve temperatuur-->
+<!--geen hernieuwing-->
 <root>
     <HUB>
-        <levering>81000</levering>
-        <interval>0</interval>
-        <transport>2000</transport>
+        <VACCIN>
+            <type>J_J</type>
+            <levering>20000</levering>
+            <interval>10</interval>
+            <transport>1000</transport>
+            <hernieuwing>0</hernieuwing>
+            <temperatuur>5</temperatuur>
+        </VACCIN>
         <CENTRA>
             <centrum>Park Spoor Oost</centrum>
             <centrum>AED Studios</centrum>
@@ -36,5 +45,3 @@
         <capaciteit>3000</capaciteit>
     </VACCINATIECENTRUM>
 </root>
-
-

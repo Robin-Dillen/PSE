@@ -35,6 +35,12 @@ public:
 
     Hub(const map<string, Vaccin *> &vaccins);
 
+    /*!
+     * default constructor
+     * \n ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
+     */
+    Hub();
+
     /**
      * Verwijdert alle centra van deze hub
      */
@@ -179,7 +185,7 @@ private:
 //    const int kaantal_vaccins_per_levering;
 //    const int kleveringen_interval;
 //    const int kaantal_vaccins_per_lading;
-    const map<string, Vaccin *> Kvaccins;
+    const map<string, Vaccin *> kvaccins;
 
     const Hub *_initCheck; // pointer naar zichzelf om te checken of het object correct geïnitialseert is
 
@@ -188,7 +194,6 @@ private:
 
 //    int aantal_vaccins; // aantal Kvaccins in de hub
     map<string, int> aantal_vaccins;
-
     deque<map<string, map<string, int> > > gereserveerde_vaccins;
     deque<map<string, map<string, int> > > extra_reservatie;
 };

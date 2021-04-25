@@ -19,16 +19,28 @@ VaccinatieCentrum::VaccinatieCentrum(const int kcapaciteit, const int kaantalInw
                                                                                       kfname(kfname),
                                                                                       kfaddress(kfaddress),
                                                                                       _initCheck(this) {
-    map<string, int> m;
-    aantal_eerste_prikken.push_back(m);
-    nog_te_reserveren_vaccins.push_back(m);
     aantal_geleverde_vaccins_buffer = 0;
     aantal_niet_vaccinaties = kaantal_inwoners;
-    aantal_eerste_prikken.resize(1);
-    nog_te_reserveren_vaccins.resize(1);
+    aantal_eerste_prikken.resize(2);
+    nog_te_reserveren_vaccins.resize(2);
     ENSURE(kcapaciteit >= 0, "De capaciteit is negatief!");
     ENSURE(kaantalInwoners >= 0, "het aantal inwoners is negatief!");
     ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
+}
+
+VaccinatieCentrum::VaccinatieCentrum() : kcapaciteit(0),
+                                         kaantal_inwoners(0),
+                                         kfname(""),
+                                         kfaddress(""),
+                                         _initCheck(this) {
+    aantal_geleverde_vaccins_buffer = 0;
+    aantal_niet_vaccinaties = 0;
+    aantal_eerste_prikken.resize(2);
+    nog_te_reserveren_vaccins.resize(2);
+    ENSURE(kcapaciteit >= 0, "De capaciteit is negatief!");
+    ENSURE(kaantal_inwoners >= 0, "het aantal inwoners is negatief!");
+    ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
+
 }
 
 bool VaccinatieCentrum::isProperlyInitialized() const {

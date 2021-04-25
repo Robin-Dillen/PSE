@@ -14,6 +14,9 @@ struct Vaccin {
                                     hernieuwing(hernieuwing), temperatuur(temperatuur),
                                     tijd_tot_nieuwe_levering(interval) {}
 
+    Vaccin() : levering(0), interval(0), transport(0), hernieuwing(0), temperatuur(0),
+               tijd_tot_nieuwe_levering(interval) {}
+
     const string type;
     const int levering; // geleverd aan hub
     const int interval;
@@ -60,6 +63,13 @@ public:
         Vaccin *V = new Vaccin(type, levering, interval, transport, hernieuwing, temperatuur);
         vaccins.push_back(V);
         return V;
+    }
+
+    /**
+  * @return geeft terug of het object correct is geïnitialiseert
+  */
+    bool isProperlyInitialized() const {
+        return this == _initCheck;
     }
 
 private:
