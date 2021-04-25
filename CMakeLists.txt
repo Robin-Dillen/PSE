@@ -49,14 +49,14 @@ set(DEBUG_SOURCE_FILES
         Utils.h
         VaccinSimulatie.h
         StatisticsSingleton.cpp StatisticsSingleton.h
-        Vaccins.cpp Vaccins.h)
+        Vaccins.cpp Vaccins.h VaccinSimulatieOutputTests.cpp VaccinSimulatieInputTests.cpp VaccinSimulatieDomainTests.cpp)
 
 
 # Create RELEASE target
 add_executable(PSE ${RELEASE_SOURCE_FILES})
 
 # Create DEBUG target
-add_executable(PSE_debug ${DEBUG_SOURCE_FILES})
+add_executable(PSE_debug ${DEBUG_SOURCE_FILES} VaccinSimulatieOutputTests.cpp VaccinSimulatieInputTests.cpp VaccinSimulatieDomainTests.cpp)
 
 # Link library
 target_link_libraries(PSE_debug gtest)

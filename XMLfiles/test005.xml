@@ -1,15 +1,31 @@
-<!--extra vaccinsinatie centrum met negatief aantal inwoners, en niet ronde capaciteit = geen error-->
+<!--1 Hub-->
+<!--2 Vaccin types-->
+<!--niet genoeg vaccins-->
+<!--negatieve temperatuur-->
+<!--hernieuwing-->
 <root>
     <HUB>
-        <levering>90000</levering>
-        <interval>6</interval>
-        <transport>2000</transport>
+        <VACCIN>
+            <type>Moderna</type>
+            <levering>30000</levering>
+            <interval>10</interval>
+            <transport>1000</transport>
+            <hernieuwing>20</hernieuwing>
+            <temperatuur>-20</temperatuur>
+        </VACCIN>
+        <VACCIN>
+            <type>AstraZenica</type>
+            <levering>20000</levering>
+            <interval>13</interval>
+            <transport>1000</transport>
+            <hernieuwing>28</hernieuwing>
+            <temperatuur>5</temperatuur>
+        </VACCIN>
         <CENTRA>
             <centrum>Park Spoor Oost</centrum>
             <centrum>AED Studios</centrum>
             <centrum>De Zoerla</centrum>
             <centrum>Flanders Expo</centrum>
-            <centrum>Negatieve inwoners</centrum>
         </CENTRA>
     </HUB>
     <VACCINATIECENTRUM>
@@ -36,12 +52,4 @@
         <inwoners>257029</inwoners>
         <capaciteit>3000</capaciteit>
     </VACCINATIECENTRUM>
-    <VACCINATIECENTRUM>
-        <naam>Negatieve inwoners</naam>
-        <adres>dorpsstraat -1</adres>
-        <inwoners>-1</inwoners>
-        <capaciteit>1646</capaciteit>
-    </VACCINATIECENTRUM>
 </root>
-
-

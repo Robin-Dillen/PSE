@@ -1,9 +1,18 @@
-<!--juist voorbeeld bestand = geen error-->
+<!--1 Hub-->
+<!--1 Vaccin type-->
+<!--genoeg vaccins-->
+<!--positieve temperatuur-->
+<!--geen hernieuwing-->
 <root>
     <HUB>
-        <levering>93000</levering>
-        <interval>6</interval>
-        <transport>2000</transport>
+        <VACCIN>
+            <type>J_J</type>
+            <levering>100000</levering>
+            <interval>13</interval>
+            <transport>1000</transport>
+            <hernieuwing>0</hernieuwing>
+            <temperatuur>5</temperatuur>
+        </VACCIN>
         <CENTRA>
             <centrum>Park Spoor Oost</centrum>
             <centrum>AED Studios</centrum>
@@ -36,5 +45,3 @@
         <capaciteit>3000</capaciteit>
     </VACCINATIECENTRUM>
 </root>
-
-
