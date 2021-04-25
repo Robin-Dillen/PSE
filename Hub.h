@@ -181,6 +181,8 @@ public:
 
     void addReservations(const string &type);
 
+    int getGereserveerdevaccins(map<string, int> dag);
+
 private:
 
     // const attributes
@@ -197,6 +199,7 @@ private:
 //    int aantal_vaccins; // aantal Kvaccins in de hub
     map<string, int> aantal_vaccins;
     deque<map<string, map<string, int> > > gereserveerde_vaccins;
+    deque<map<string, map<string, int> > > extra_reservatie;
 };
 
 
