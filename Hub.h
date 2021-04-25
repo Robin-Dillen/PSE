@@ -150,6 +150,7 @@ public:
      * @param type: naam van het vaccin
      * @param aantal_vaccins het aantal geleverde Kvaccins
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling ontvangLevering");
+     * \n REQUIRE(aantal_geleverde_vaccins > 0, "Het aantal geleverde Vaccins is negatief/nul");
      * \n ENSURE(aantal_geleverde_vaccins + begin_aantal_vaccins == getAantalVaccins(), "De Kvaccins werden niet succesvol ontvangen!");
      */
     void ontvangLevering(const string &type, int aantal_vaccins);
