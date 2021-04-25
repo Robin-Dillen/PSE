@@ -44,7 +44,7 @@ public:
     /**
      * Verwijdert alle centra van deze hub
      */
-    virtual ~Hub();
+    ~Hub();
 
     /**
      * @return geeft terug of het object correct is geïnitialiseert
@@ -62,6 +62,7 @@ public:
      * geeft het totaal aantal Kvaccins terug
      * @return int
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getTotaalAantalVaccins()");
+     * \n ENSURE(totaal >= 0, "Het totaal aantal vaccins is negatief!");
      */
     int getTotaalAantalVaccins() const;
 
@@ -69,6 +70,7 @@ public:
      * @param type: naam van het vaccin waarvan we het interval willen weten
      * @return int :geeft terug om de hoeveel dagen een levering Kvaccins binnenkomt
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getFhub()");
+     * \n ENSURE(kvaccins.at(type)->interval >= 0, "Het leveringen interval is negatief!");
      */
     int getLeveringenInterval(const string &type) const;
 
@@ -83,6 +85,7 @@ public:
      * @param type: naam van het vaccin 
      * @return geeft het aantal Kvaccins per lading terug
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getKaantalVaccinsPerLading");
+     * \n ENSURE(kvaccins.at(type)->levering >= 0, "Het aantal vaccins per leveringen is negatief!");
      */
     const int getKaantalVaccinsPerLading(const string &type) const;
 
@@ -125,6 +128,7 @@ public:
     * @param fverbondenCentra: een vector met een aantal verbonden centra
     * @return void
     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling addCentrum");
+    * \n REQUIRE(centrum != NULL, "Het centrum is ongeldig!");
     * \n ENSURE(fverbonden_centra.size() == 1 + start_size, "De centra zijn niet (volledig) Toegevoegd");
      */
     void addCentrum(VaccinatieCentrum *centrum);

@@ -58,6 +58,22 @@ TEST_F(VaccinSimulatieDomainTest, DefaultConstructor) {
 }
 
 /**
+Tests the nondefault constructor.
+*/
+TEST_F(VaccinSimulatieDomainTest, NonDefaultConstructor) {
+    VaccinsFactorySingleton &VFS = VaccinsFactorySingleton::getInstance();
+    Vaccin *Vac = VFS.getVaccin("Test", 80000, 10, 1000, 10, 25);
+    map<string, Vaccin *> vaccins;
+    vaccins[Vac->type] = Vac;
+    Hub H(vaccins);
+    EXPECT_TRUE(H.isProperlyInitialized());
+    EXPECT_EQ(80000, H.getAantalVaccins(Vac->type));
+    EXPECT_EQ(80000, H.getKaantalVaccinsPerLading(Vac->type));
+    EXPECT_EQ(10, H.getLeveringenInterval(Vac->type));
+    EXPECT_EQ(1000, H.getKaantalVaccinsPerLevering(Vac->type));
+}
+
+/**
 Tests the "happy day" scenario
 */
 TEST_F(VaccinSimulatieDomainTest, HappyDay) {

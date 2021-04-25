@@ -40,18 +40,21 @@ int Hub::getTotaalAantalVaccins() const {
          it != end; it++) {
         totaal += it->second;
     }
+    ENSURE(totaal >= 0, "Het totaal aantal vaccins is negatief!");
     return totaal;
 }
 
 int Hub::getLeveringenInterval(const string &type) const {
     REQUIRE(isProperlyInitialized(), "Parser wasn't initialized when calling getLeveringenInterval");
     if (aantal_vaccins.find(type) == aantal_vaccins.end()) return 0;
+    ENSURE(kvaccins.at(type)->interval >= 0, "Het leveringen interval is negatief!");
     return kvaccins.at(type)->interval;
 }
 
 const int Hub::getKaantalVaccinsPerLevering(const string &type) const {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getKaantalVaccinsPerLevering");
     if (aantal_vaccins.find(type) == aantal_vaccins.end()) return 0;
+    ENSURE(kvaccins.at(type)->levering >= 0, "Het aantal vaccins per leveringen is negatief!");
     return kvaccins.at(type)->levering;
 }
 
@@ -91,6 +94,16 @@ void Hub::addFverbondenCentra(const vector<VaccinatieCentrum *> &fverbondenCentr
     ENSURE(fverbonden_centra.size() == fverbondenCentra.size() + start_size,
            "De centra zijn niet (volledig) Toegevoegd");
 }
+
+void Hub::addCentrum(VaccinatieCentrum *centrum) {
+    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling addCentrum");
+    REQUIRE(centrum != NULL, "Het centrum is ongeldig!");
+
+    unsigned int og_size = fverbonden_centra.size();
+    fverbonden_centra[centrum->getKfname()] = centrum;
+    ENSURE(fverbonden_centra.size() == og_size + 1, "Het vaccinatie centrum is niet toegevoegt!");
+}
+
 
 bool Hub::isIedereenGevaccineerd() const {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling isIedereenGevaccineerd");
@@ -300,13 +313,6 @@ Hub::minAantalLeveringen(const map<string, VaccinatieCentrum *>::const_iterator 
     //Berekent hoeveel ladingen er kunnen geleverd worden om de capaciteit van het centrum te bereiken
     return ceil(((float) max(centrum->second->getKcapaciteit() - centrum->second->getAantalVaccins(vaccin->type), 0) /
                  vaccin->transport));
-}
-
-void Hub::addCentrum(VaccinatieCentrum *centrum) {
-    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling addCentrum");
-    unsigned int og_size = fverbonden_centra.size();
-    fverbonden_centra[centrum->getKfname()] = centrum;
-    ENSURE(fverbonden_centra.size() == og_size + 1, "Het vaccinatie centrum is niet toegevoegt!");
 }
 
 map<string, Vaccin *> Hub::getVaccins() {
