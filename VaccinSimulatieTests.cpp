@@ -463,7 +463,7 @@
 //
 //TEST_F(VaccinSimulatieTest, ParserExeption5) {
 //    {
-//        Parser P("../XMLfiles/test015.xml");
+//        Parser P("../XMLfiles/test001.xml");
 //        EXPECT_EQ(1, P.errorOccured(UNKNOWN_TAG));
 //    }
 //}

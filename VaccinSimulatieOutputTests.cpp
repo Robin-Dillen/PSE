@@ -51,7 +51,7 @@ TEST_F(VaccinSimulatieOutputTest, FileCompare) {
 // *** Beware: the following does not work with older versions of libstdc++
 // *** It doesn't work with gcc version 4.0.1 (Apple Inc. build 5465)
 // *** It does work with gcc version 4.2.1
-    EXPECT_TRUE(FileCompare(OUTPUT_FILE_LOCATION + "file1.txt", OUTPUT_FILE_LOCATION + "file2.txt")));
+    EXPECT_TRUE(FileCompare(OUTPUT_FILE_LOCATION + "file1.txt", OUTPUT_FILE_LOCATION + "file2.txt"));
     EXPECT_TRUE(FileCompare(OUTPUT_FILE_LOCATION + "file2.txt", OUTPUT_FILE_LOCATION + "file1.txt"));
 
     //compare an empty and a non-empty files
@@ -99,24 +99,37 @@ Tests the output of a "happy day" scenario (everyone gets vaccinated).
 TEST_F(VaccinSimulatieOutputTest, OutputHappyDay) {
     ASSERT_TRUE(DirectoryExists(OUTPUT_FILE_LOCATION));
     //if directory doesn't exist then no need in proceeding with the test
-    Parser P(INPUT_FILE_LOCATION + "test001.xml");
-    vector<Hub *> hubs = P.getFhubs();
-    std::vector<VaccinatieCentrum *> vaccinatie_centra;
 
-    for (unsigned int i = 0; i < hubs.size(); i++) {
-        for (map<string, VaccinatieCentrum *>::const_iterator centrum = hubs[i]->getFverbondenCentra().begin();
-             centrum != hubs[i]->getFverbondenCentra().end(); centrum++) {
-            if (find(vaccinatie_centra.begin(), vaccinatie_centra.end(), centrum->second) == vaccinatie_centra.end()) {
-                vaccinatie_centra.push_back(centrum->second);
+    string testnr = "001";
+    int nr = 1;
+    string filename = HAPPY_DAY_TESTS_FILE_LOCATION + "test" + testnr + ".xml";
+    while (FileExists(filename)) {
+        Parser P(filename);
+        vector<Hub *> hubs = P.getFhubs();
+        std::vector<VaccinatieCentrum *> vaccinatie_centra;
+
+        for (unsigned int i = 0; i < hubs.size(); i++) {
+            for (map<string, VaccinatieCentrum *>::const_iterator centrum = hubs[i]->getFverbondenCentra().begin();
+                 centrum != hubs[i]->getFverbondenCentra().end(); centrum++) {
+                if (find(vaccinatie_centra.begin(), vaccinatie_centra.end(), centrum->second) ==
+                    vaccinatie_centra.end()) {
+                    vaccinatie_centra.push_back(centrum->second);
+                }
             }
         }
-    }
-    Simulatie(hubs, vaccinatie_centra, INPUT_FILE_LOCATION + "test001.xml");
+        Simulatie(hubs, vaccinatie_centra, filename);
 
-    EXPECT_TRUE(FileCompare(OUTPUT_FILE_LOCATION + "Simpele_Uitvoer_test001.txt",
-                            OUTPUT_FILE_LOCATION + "Expected_Simpele_Uitvoer_test001.txt"));
-    EXPECT_TRUE(FileCompare(OUTPUT_FILE_LOCATION + "Grafische_Impressietest_test001.txt",
-                            OUTPUT_FILE_LOCATION + "Expected_Grafische_Impressietest_test001.txt"));
+        EXPECT_TRUE(FileCompare(OUTPUT_FILE_LOCATION + "Simpele_Uitvoer_test" + testnr + ".txt",
+                                OUTPUT_FILE_LOCATION + "Expected_Simpele_Uitvoer_test" + testnr + ".txt"));
+        EXPECT_TRUE(FileCompare(OUTPUT_FILE_LOCATION + "Grafische_Impressietest_test" + testnr + ".txt",
+                                OUTPUT_FILE_LOCATION + "Expected_Grafische_Impressietest_test" + testnr + ".txt"));
+
+        nr++;
+        string new_testnr = to_string(nr);
+        while (new_testnr.size() < 3) new_testnr.insert(new_testnr.begin(), '0');
+        size_t pos = filename.find(testnr);
+        filename.replace(pos, 3, new_testnr);
+    }
 }
 
 //void auxTestOutput (TicTacToe &game, const std::string expectedOutputFilename) {

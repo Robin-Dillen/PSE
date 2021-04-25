@@ -57,7 +57,7 @@ void OutputSingleton::addToGIFile(VaccinatieCentrum *v, const string &filename) 
     outputFile << "\t- vaccins\t\t[";
     int vaccinpercentage = round((v->getTotaalAantalVaccins() * 100) / v->getMaxStock());
     for (int i = 1; i <= 20; i++) {
-        if (i < vaccinpercentage / 5) {
+        if (i <= vaccinpercentage / 5) {
             outputFile << "=";
         } else {
             outputFile << " ";
@@ -68,7 +68,7 @@ void OutputSingleton::addToGIFile(VaccinatieCentrum *v, const string &filename) 
     int aantal1steprik = v->getKaantalInwoners()-(v->getTotaalAantalVaccinaties()+v->getAantalNietVaccinaties());
     int eersteprikpercentage = round((aantal1steprik*100)/v->getKaantalInwoners());
     for(int i = 1; i<=20; i++){
-        if(i<eersteprikpercentage/5){
+        if(i<=eersteprikpercentage/5){
             outputFile << "=";
         }
         else{
@@ -79,7 +79,7 @@ void OutputSingleton::addToGIFile(VaccinatieCentrum *v, const string &filename) 
     outputFile << "\t- gevaccineerd\t[";
     int gevaccineerdpercentage = round((v->getTotaalAantalVaccinaties()*100)/v->getKaantalInwoners());
     for(int i = 1; i<=20; i++){
-        if(i<gevaccineerdpercentage/5){
+        if(i<=gevaccineerdpercentage/5){
             outputFile << "=";
         }
         else{
