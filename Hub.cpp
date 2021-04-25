@@ -134,6 +134,8 @@ void Hub::nieuweDag() {
 
 void Hub::ontvangLevering(const string &type, int aantal_geleverde_vaccins) {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling ontvangLevering");
+    REQUIRE(aantal_geleverde_vaccins > 0, "Het aantal geleverde Vaccins is negatief/nul");
+
     //voegt geleverde Kvaccins toe aan de stock
     int begin_aantal_vaccins = getAantalVaccins(type);
     aantal_vaccins[type] += aantal_geleverde_vaccins;
