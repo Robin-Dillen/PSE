@@ -221,11 +221,13 @@ void VaccinatieCentrum::nieuweDag() {
         ENSURE(aantal_prikken >= 0, "Het aantal vaccinaties mag niet negatief zijn!");
         cout << "Er zijn " << aantal_prikken << " 1ste prikken met " << vaccin->first << " gezet in "<< kfname <<"!" << endl;
         if (vaccin->second.first->hernieuwing == 0) {
+            //nieuw type bijvoegen
             if (aantal_vaccinaties.find(vaccin->first) == aantal_vaccinaties.end()) {
                 aantal_vaccinaties[vaccin->first] = aantal_prikken;
-            } else aantal_vaccinaties[vaccin->first] += aantal_prikken;
-            zet2dePrikVaccins(vaccin->first, aantal_prikken, capaciteit);
-            aantal_tweede_prik += aantal_prikken;
+            }else{
+                zet2dePrikVaccins(vaccin->first, aantal_prikken, capaciteit);
+                aantal_tweede_prik += aantal_prikken;
+            }
         } else {
             aantal_eerste_prikken[vaccin->second.first->hernieuwing - 1][vaccin->first] += aantal_prikken;
             nog_te_reserveren_vaccins[vaccin->second.first->hernieuwing - 1][vaccin->first] += aantal_prikken;
