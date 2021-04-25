@@ -247,15 +247,19 @@ void VaccinatieCentrum::nieuweDag() {
 }
 
 void VaccinatieCentrum::zet2dePrikVaccins(const string &type, int aantal, int &capaciteit) {
+    REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling zet2dePrikVaccins");
     aantal_vaccinaties[type] += aantal; // bestaat zeker (wordt aangemaakt bij het ontvangen van een levering)
     aantal_vaccins[type].second -= aantal; // update het aantal beschikbare vaccins
     capaciteit -= aantal;
+    ENSURE( aantal_vaccins[type].second >= 0, "Er zijn te weinig vaccins aanwezig");
 }
 
 void VaccinatieCentrum::zet1stePrikVaccins(const string &type, int aantal, int &capaciteit) {
+    REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling zet1stePrikVaccins");
     aantal_vaccins[type].second -= aantal; // update het aantal beschikbare vaccins
     aantal_niet_vaccinaties -= aantal;
     capaciteit -= aantal;
+    ENSURE( aantal_vaccins[type].second >= 0, "Er zijn te weinig vaccins aanwezig");
 }
 
 bool VaccinatieCentrum::isVol() const {
@@ -282,6 +286,7 @@ bool VaccinatieCentrum::isVolNaLevering(int vaccins_in_levering) const {
 void VaccinatieCentrum::ontvangLevering(int vaccins_in_levering, Vaccin *vaccin) {
     REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling ontvangLevering");
     REQUIRE(vaccins_in_levering >= 0, "Er is een negatief aantal vaccins geleverd!");
+    REQUIRE(vaccin != NULL, "Het Vaccin type is verkeerd meegegeven in ontvangLevering");
 
     if (vaccin->hernieuwing > (int) aantal_eerste_prikken.size()) aantal_eerste_prikken.resize(vaccin->hernieuwing);
     if (vaccin->hernieuwing > (int) nog_te_reserveren_vaccins.size())
@@ -340,6 +345,10 @@ void VaccinatieCentrum::reserveerVaccins(const string &type, int dag, int vaccin
         nog_te_reserveren_vaccins[dag][type] = 0;
     }
     ENSURE(nog_te_reserveren_vaccins[dag][type] >= 0, "Er mag geen negatief aantal te reserveren vaccins zijn");
+}
+
+const map<string, int> &VaccinatieCentrum::getAantalVaccinaties1() const {
+    return aantal_vaccinaties;
 }
 
 

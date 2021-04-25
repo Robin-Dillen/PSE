@@ -155,11 +155,19 @@ public:
     void nieuweDag();
 
     /*!
-    * update alle variabelen
-    * @param aantal het aantal vaccins dat gezet moet worden
-    */
+     * update het aantal gevaccineerden
+     * @param aantal: het aantal vaccins dat gezet moet worden
+     * \n REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling zet2dePrikVaccins");
+     * \n ENSURE( aantal_vaccins[type].second >= 0, "Er zijn te weinig vaccins aanwezig");
+     */
     void zet2dePrikVaccins(const string &type, int aantal, int &capaciteit);
 
+    /*!
+     * update het aantal niet gevaccineerden
+     * @param aantal: het aantal vaccins dat gezet moet worden
+     * \n REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling zet1stePrikVaccins");
+     * \n ENSURE( aantal_vaccins[type].second >= 0, "Er zijn te weinig vaccins aanwezig");
+     */
     void zet1stePrikVaccins(const string &type, int aantal, int &capaciteit);
 
     /*!
@@ -256,7 +264,12 @@ private:
 
     //aantal mensen die nog geen vaccinatie hebben gekregen.
 
-    map<string, int> aantal_vaccinaties; // aantal mensen dat gevaccineert is
+    map<string, int> aantal_vaccinaties;
+public:
+    const map<string, int> &getAantalVaccinaties1() const;
+
+private:
+    // aantal mensen dat gevaccineert is
     // we kunnen gwn een map<vaccin_naam, aantal> bijhouden
 
     map<string, int> aantal_geleverde_vaccins; // aantal vaccins dat toegevoegd wordt na een levering
