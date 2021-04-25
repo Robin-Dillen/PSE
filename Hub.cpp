@@ -239,6 +239,7 @@ void Hub::verdeelVaccins() {
 int
 Hub::minAantalLeveringen(const map<string, VaccinatieCentrum *>::const_iterator &centrum, const Vaccin *vaccin) const {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling minAantalLeveringen");
+    REQUIRE(vaccin == NULL, "Vaccin is niet geldig!");
     //Berekent hoeveel ladingen er kunnen geleverd worden om de capaciteit van het centrum te bereiken
     return ceil(((float) max(centrum->second->getKcapaciteit() - centrum->second->getAantalVaccins(vaccin->type), 0) /
                  vaccin->transport));
@@ -250,9 +251,10 @@ map<string, Vaccin *> Hub::getVaccins() {
 }
 
 int Hub::getGereserveerdevaccins(map<string, int> dag) {
+    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getGereserveerdevaccins()");
     int vaccins = 0;
     for (map<string, Vaccin *>::const_iterator vaccin = kvaccins.begin(); vaccin != kvaccins.end(); vaccin++) {
-         vaccins += dag[vaccin->first];
+        vaccins += dag[vaccin->first];
     }
     return vaccins;
 }

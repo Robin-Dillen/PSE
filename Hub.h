@@ -169,6 +169,7 @@ public:
      * @param centrum iterator
      * @return het minimum aantal leveringen
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling minAantalLeveringen");
+     * \n REQUIRE(vaccin == NULL, "Vaccin is niet geldig!");
      */
     int
     minAantalLeveringen(const map<string, VaccinatieCentrum *>::const_iterator &centrum, const Vaccin *vaccin) const;
@@ -182,6 +183,12 @@ public:
 
     void addReservations(const string &type);
 
+    /*!
+     *
+     * @param dag
+     * @return
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getGereserveerdevaccins()");
+     */
     int getGereserveerdevaccins(map<string, int> dag);
 
 private:
