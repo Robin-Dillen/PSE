@@ -77,11 +77,58 @@ TEST_F(VaccinSimulatieDomainTest, NonDefaultConstructor) {
 Tests the "happy day" scenario
 */
 TEST_F(VaccinSimulatieDomainTest, HappyDay) {
+    Hub H;
 
 }
 
 /**
 Verify whether unsatisfied pre-conditions indeed trigger failures
 */
-TEST_F(VaccinSimulatieDomainTest, ContractViolations) {
+TEST_F(VaccinSimulatieDomainTest, HubContractViolations) {
+    VaccinsFactorySingleton &VFS = VaccinsFactorySingleton::getInstance();
+    EXPECT_DEATH(VFS.getVaccin("", -80000, -10, -1000, -10, 25), "");
+    Vaccin *Vac1 = new Vaccin("", 20000, 10, 1000, 10, 25);
+    Vaccin *Vac2 = new Vaccin("Test", -25000, -10, -1000, -10, 25);
+    map<string, Vaccin *> vaccins;
+    vaccins[Vac1->type] = Vac1;
+    vaccins[Vac2->type] = Vac2;
+    Hub H(vaccins);
+
+    EXPECT_DEATH(H.getAantalVaccins(""), "");
+    EXPECT_DEATH(H.getAantalVaccins("Test"), "");
+    EXPECT_DEATH(H.getTotaalAantalVaccins(), "");
+    EXPECT_DEATH(H.getLeveringenInterval(""), "");
+    EXPECT_DEATH(H.getLeveringenInterval("Test"), "");
+    EXPECT_DEATH(H.getKaantalVaccinsPerLevering(""), "");
+    EXPECT_DEATH(H.getKaantalVaccinsPerLevering("Test"), "");
+    EXPECT_DEATH(H.getKaantalVaccinsPerLading(""), "");
+    EXPECT_DEATH(H.getKaantalVaccinsPerLading("Test"), "");
+    EXPECT_DEATH(H.addCentrum(NULL), "");
+    EXPECT_DEATH(H.ontvangLevering("", Vac1->levering), "");
+    EXPECT_DEATH(H.ontvangLevering("Test", Vac2->levering), "");
+    EXPECT_DEATH(H.addReservations(""), "");
+
+    delete Vac1;
+    delete Vac2;
+}
+
+TEST_F(VaccinSimulatieDomainTest, VaccinatieCentrumContractViolations) {
+    EXPECT_DEATH(VaccinatieCentrum(0, 1, "test", "teststraat, 1"), "");
+    EXPECT_DEATH(VaccinatieCentrum(1, 0, "test", "teststraat, 1"), "");
+    EXPECT_DEATH(VaccinatieCentrum(1, 1, "", "teststraat, 1"), "");
+    EXPECT_DEATH(VaccinatieCentrum(1, 1, "test", ""), "");
+
+    VaccinatieCentrum V(1, 1, "test", "teststraat, 1");
+    EXPECT_DEATH(V.getAantalVaccinaties(""), "");
+    EXPECT_DEATH(V.getAantalVaccins(""), "");
+    EXPECT_DEATH(V.getAantalGeleverdeVaccins(""), "");
+    int capaciteit = 100;
+    EXPECT_DEATH(V.zet2dePrikVaccins("", 100, capaciteit), "");
+    EXPECT_DEATH(V.zet2dePrikVaccins("Test", 100, capaciteit), "");
+    V.setVaccins(50, "Test");
+    EXPECT_DEATH(V.zet2dePrikVaccins("Test", 100, capaciteit), "");
+    V.setVaccins(200, "Test");
+    EXPECT_DEATH(V.zet2dePrikVaccins("Test", 200, capaciteit), "");
+    V.getAantalVaccinaties("");
+
 }

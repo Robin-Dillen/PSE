@@ -155,6 +155,14 @@ public:
     void nieuweDag();
 
     /*!
+    * update alle variabelen
+    * @param aantal het aantal vaccins dat gezet moet worden
+    */
+    void zet2dePrikVaccins(const string &type, int aantal, int &capaciteit);
+
+    void zet1stePrikVaccins(const string &type, int aantal, int &capaciteit);
+
+    /*!
      * geeft terug of de stock van vaccins vol is
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling isVol");
      */
@@ -218,15 +226,8 @@ public:
      * \n ENSURE(nog_te_reserveren_vaccins[dag][type] >= 0, "Er mag geen negatief aantal te reserveren vaccins zijn");
      */
     void reserveerVaccins(const string &type, int dag, int vaccins);
+
 private:
-
-    /*!
-     * update alle variabelen
-     * @param aantal het aantal vaccins dat gezet moet worden
-     */
-    void zet2dePrikVaccins(const string &type, int aantal, int &capaciteit);
-
-    void zet1stePrikVaccins(const string &type, int aantal, int &capaciteit);
 
     // const attributes
     const int kcapaciteit;
