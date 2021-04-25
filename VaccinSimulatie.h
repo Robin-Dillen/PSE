@@ -17,12 +17,24 @@ Simulatie(vector<Hub *> &hubs, std::vector<VaccinatieCentrum *> &vaccinatie_cent
 
     size_t pos = testfilename.find("test");
     ENSURE(pos != string::npos, "Given argument doesn't include a test file!");
-    string filename1 = "Simpele_Uitvoer_" + testfilename.substr(pos, 7);
+
+    string filename1;
+    string filename2;
+    if (testfilename.find("DeathTests") != string::npos) {
+        filename1 = "DeathTests/Simpele_Uitvoer_" + testfilename.substr(pos, 7);
+        filename2 = "DeathTests/Grafische_Impressie" + testfilename.substr(pos, 7);
+    } else if (testfilename.find("WarningTests") != string::npos) {
+        filename1 = "WarningTests/Simpele_Uitvoer_" + testfilename.substr(pos, 7);
+        filename2 = "WarningTests/Grafische_Impressie" + testfilename.substr(pos, 7);
+    } else {
+        filename1 = "HappyDayTests/Simpele_Uitvoer_" + testfilename.substr(pos, 7);
+        filename2 = "HappyDayTests/Grafische_Impressie" + testfilename.substr(pos, 7);
+    }
+
     OutputSingleton &output = OutputSingleton::getInstance();
     // clear/create the output file
     output.makeOutputFile(filename1);
 
-    string filename2 = "Grafische_Impressie" + testfilename.substr(pos, 7);
     output.makeOutputFile(filename2);
 
     // start simulatie
