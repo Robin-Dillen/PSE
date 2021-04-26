@@ -18,9 +18,17 @@ using namespace std;
 #include "Vaccins.h"
 #include "Parser.h"
 #include "StatisticsSingleton.h"
+#include "Lib.h"
 
 class VaccinSimulatieDomainTest : public ::testing::Test {
 protected:
+    virtual void SetUp() {
+        freopen(ERROR_FILE, "a+", stderr);
+    }
+
+    virtual void TearDown() {
+        fclose(stderr);
+    }
 };
 
 /**
@@ -68,9 +76,9 @@ TEST_F(VaccinSimulatieDomainTest, NonDefaultConstructor) {
     Hub H(vaccins);
     EXPECT_TRUE(H.isProperlyInitialized());
     EXPECT_EQ(80000, H.getAantalVaccins(Vac->type));
-    EXPECT_EQ(80000, H.getKaantalVaccinsPerLading(Vac->type));
+    EXPECT_EQ(80000, H.getKaantalVaccinsPerLevering(Vac->type));
     EXPECT_EQ(10, H.getLeveringenInterval(Vac->type));
-    EXPECT_EQ(1000, H.getKaantalVaccinsPerLevering(Vac->type));
+    EXPECT_EQ(1000, H.getKaantalVaccinsPerLading(Vac->type));
 }
 
 /**
@@ -89,20 +97,24 @@ TEST_F(VaccinSimulatieDomainTest, HubContractViolations) {
     EXPECT_DEATH(VFS.getVaccin("", -80000, -10, -1000, -10, 25), "");
     Vaccin *Vac1 = new Vaccin("", 20000, 10, 1000, 10, 25);
     Vaccin *Vac2 = new Vaccin("Test", -25000, -10, -1000, -10, 25);
+    Vaccin *Vac3 = new Vaccin("Test", 25000, 10, 1000, 10, 25);
     map<string, Vaccin *> vaccins;
     vaccins[Vac1->type] = Vac1;
     vaccins[Vac2->type] = Vac2;
+    EXPECT_DEATH(Hub H(vaccins), "");
+    vaccins.clear();
+    vaccins[Vac3->type] = Vac3;
     Hub H(vaccins);
 
     EXPECT_DEATH(H.getAantalVaccins(""), "");
-    EXPECT_DEATH(H.getAantalVaccins("Test"), "");
-    EXPECT_DEATH(H.getTotaalAantalVaccins(), "");
+//    EXPECT_DEATH(H.getAantalVaccins("Test"), "");
+//    EXPECT_DEATH(H.getTotaalAantalVaccins(), "");
     EXPECT_DEATH(H.getLeveringenInterval(""), "");
-    EXPECT_DEATH(H.getLeveringenInterval("Test"), "");
+//    EXPECT_DEATH(H.getLeveringenInterval("Test"), "");
     EXPECT_DEATH(H.getKaantalVaccinsPerLevering(""), "");
-    EXPECT_DEATH(H.getKaantalVaccinsPerLevering("Test"), "");
+//    EXPECT_DEATH(H.getKaantalVaccinsPerLevering("Test"), "");
     EXPECT_DEATH(H.getKaantalVaccinsPerLading(""), "");
-    EXPECT_DEATH(H.getKaantalVaccinsPerLading("Test"), "");
+//    EXPECT_DEATH(H.getKaantalVaccinsPerLading("Test"), "");
     EXPECT_DEATH(H.addCentrum(NULL), "");
     EXPECT_DEATH(H.ontvangLevering("", Vac1->levering), "");
     EXPECT_DEATH(H.ontvangLevering("Test", Vac2->levering), "");
@@ -110,6 +122,7 @@ TEST_F(VaccinSimulatieDomainTest, HubContractViolations) {
 
     delete Vac1;
     delete Vac2;
+    delete Vac3;
 }
 
 TEST_F(VaccinSimulatieDomainTest, VaccinatieCentrumContractViolations) {

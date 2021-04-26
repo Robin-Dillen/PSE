@@ -85,16 +85,16 @@ inline bool FileIsEmpty(const std::string &filename) {
 inline bool FileCompare(const std::string &leftFileName, const std::string &rightFileName) {
     ifstream leftFile, rightFile;
 
-//    // Open the two files.
-//    leftFile.open(leftFileName.c_str());
-//    if (!leftFile.is_open()) {
-//        return false;
-//    };
-//    rightFile.open(rightFileName.c_str());
-//    if (!rightFile.is_open()) {
-//        leftFile.close();
-//        return false;
-//    };
+    // Open the two files.
+    leftFile.open(leftFileName.c_str());
+    if (!leftFile.is_open()) {
+        return false;
+    };
+    rightFile.open(rightFileName.c_str());
+    if (!rightFile.is_open()) {
+        leftFile.close();
+        return false;
+    };
 //
 //    result = true; // files exist and are open; assume equality unless a counterexamples shows up.
 //    while (result && leftFile.good() && rightFile.good()) {
@@ -114,22 +114,21 @@ inline bool FileCompare(const std::string &leftFileName, const std::string &righ
 //https://stackoverflow.com/a/48877081/10875953
     std::string lineA;
     std::string lineB;
-    while (getline(leftFile, lineA)) {
-        bool found(false);
+    getline(leftFile, lineA);
+    do {
         // read File2 until match is found
         while (getline(rightFile, lineB)) {
             if (lineA == lineB) {
-                found = true;
                 break;
             }
         }
-        if (!found) {
+        if (lineA != lineB) {
             return false;
         }
         // clear the state of File2 stream
         rightFile.clear();
         rightFile.seekg(0, ios::beg);
-    }
+    } while (getline(leftFile, lineA));
     return true;
 }
 

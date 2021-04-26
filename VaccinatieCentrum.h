@@ -49,6 +49,7 @@ public:
     /**
      * @return geeft het aantal gevacineerde mensen terug
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getAantalVaccinaties");
+     * \n REQUIRE(!type.empty(), "Het Vaccin type mag geen lege string zijn!");
      * \n ENSURE(aantal->second >= 0, "Het aantal vaccinaties ligt onder nul!");
      */
     int getAantalVaccinaties(const string &type) const;
@@ -76,6 +77,7 @@ public:
     /**
      * @return geeft het aantal vaccins van het vaccinatie centrum terug die momenteel beschikbaar zijn
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getAantalVaccins()");
+     * \n REQUIRE(!type.empty(), "Het Vaccin type mag geen lege string zijn!");
      * \n ENSURE(aantal->second.second >= 0, "Er is een negatief aantal vaccins!");
      */
     int getAantalVaccins(const string &type) const;
@@ -90,6 +92,7 @@ public:
     /**
      * @return geeft het aantal geleverde vaccinaties weer van het vaccinatie centrum terug
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getAantalGeleverdeVaccins()");
+     * \n REQUIRE(!type.empty(), "Het Vaccin type mag geen lege string zijn!");
      * \n ENSURE(aantal->second >= 0, "Het aantal gelverde vaccins is negatief!");
      */
     int getAantalGeleverdeVaccins(const string &type) const;
@@ -158,6 +161,8 @@ public:
      * update het aantal gevaccineerden
      * @param aantal: het aantal vaccins dat gezet moet worden
      * \n REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling zet2dePrikVaccins");
+     * \n REQUIRE(!type.empty(), "Het Vaccin type mag geen lege string zijn!");
+     * \n REQUIRE(capaciteit >= aantal, "Er kunnen niet meer dan capaciteit aantal vaccins gezet worden!");
      * \n ENSURE( aantal_vaccins[type].second >= 0, "Er zijn te weinig vaccins aanwezig");
      */
     void zet2dePrikVaccins(const string &type, int aantal, int &capaciteit);
@@ -202,6 +207,8 @@ public:
      * @param dagen binnen hoeveel dagen we moeten kijken
      * @return aantal 2de prikken: int
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getAantalTweedePrikken");
+     * \n REQUIRE(!vaccin.empty(), "Het Vaccin type mag geen lege string zijn!");
+     * \n REQUIRE(dag > 0, "De dag moet positief zijn!");
      * \n ENSURE(aantal->second >= 0, "We kunnen niet een negatief aantal 2de prikken hebben!");
      */
     int getAantalTweedePrikken(const string &vaccin, int dagen) const;
@@ -221,6 +228,8 @@ public:
      * @param dag
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getAantalNietVaccinaties()");
      * \n REQUIRE(nog_te_reserveren_vaccins[dag][type] >= 0, "Er mag geen negatief aantal te reserveren vaccins zijn");
+     * \n REQUIRE(!type.empty(), "Het Vaccin type mag geen lege string zijn!");
+     * \n REQUIRE(dag > 0, "De dag moet positief zijn!");
      */
     int getNogTeReserverenVaccins(const string &type, int dag);
 
@@ -231,6 +240,9 @@ public:
      * @param dag
      * @param vaccins: aantal te reserveren vaccins
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getAantalNietVaccinaties()");
+     * \n REQUIRE(!type.empty(), "Het Vaccin type mag geen lege string zijn!");
+     * \n REQUIRE(dag > 0, "De dag moet positief zijn!");
+     * \n REQUIRE(vaccins > 0, "het aantal vaccins moet positief zijn!");
      * \n ENSURE(nog_te_reserveren_vaccins[dag][type] >= 0, "Er mag geen negatief aantal te reserveren vaccins zijn");
      */
     void reserveerVaccins(const string &type, int dag, int vaccins);

@@ -19,12 +19,14 @@ VaccinatieCentrum::VaccinatieCentrum(const int kcapaciteit, const int kaantalInw
                                                                                       kfname(kfname),
                                                                                       kfaddress(kfaddress),
                                                                                       _initCheck(this) {
+    REQUIRE(kcapaciteit > 0, "Capaciteit moet groter dan 0 zijn!");
+    REQUIRE(kaantalInwoners > 0, "Aantal inwoners moet groter dan 0 zijn!");
+    REQUIRE(!kfname.empty(), "De naam mag niet leeg zijn!");
+    REQUIRE(!kfaddress.empty(), "Het adress mag niet leeg zijn!");
     aantal_geleverde_vaccins_buffer = 0;
     aantal_niet_vaccinaties = kaantal_inwoners;
     aantal_eerste_prikken.resize(2);
     nog_te_reserveren_vaccins.resize(2);
-    ENSURE(kcapaciteit >= 0, "De capaciteit is negatief!");
-    ENSURE(kaantalInwoners >= 0, "het aantal inwoners is negatief!");
     ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
 }
 
@@ -59,6 +61,7 @@ const string &VaccinatieCentrum::getKfaddress() const {
 
 int VaccinatieCentrum::getAantalVaccinaties(const string &type) const {
     REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling getAantalVaccinaties");
+    REQUIRE(!type.empty(), "Het Vaccin type mag geen lege string zijn!");
     MapSICIterator aantal = aantal_vaccinaties.find(type);
     if (aantal == aantal_vaccinaties.end()) return 0;
     ENSURE(aantal->second >= 0, "Het aantal vaccinaties ligt onder nul!");
@@ -79,6 +82,7 @@ const int VaccinatieCentrum::getKcapaciteit() const {
 
 int VaccinatieCentrum::getAantalVaccins(const string &type) const {
     REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling getAantalVaccins()");
+    REQUIRE(!type.empty(), "Het Vaccin type mag geen lege string zijn!");
     MapSP_VI_CIterator aantal = aantal_vaccins.find(type);
     if (aantal == aantal_vaccins.end()) return 0;
     ENSURE(aantal->second.second >= 0, "Er is een negatief aantal vaccins!");
@@ -87,6 +91,7 @@ int VaccinatieCentrum::getAantalVaccins(const string &type) const {
 
 int VaccinatieCentrum::getAantalGeleverdeVaccins(const string &type) const {
     REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling getAantalGeleverdeVaccins()");
+    REQUIRE(!type.empty(), "Het Vaccin type mag geen lege string zijn!");
     MapSICIterator aantal = aantal_geleverde_vaccins.find(type);
     if (aantal == aantal_geleverde_vaccins.end()) return 0;
     ENSURE(aantal->second >= 0, "Het aantal gelverde vaccins is negatief!");
@@ -193,7 +198,7 @@ void VaccinatieCentrum::nieuweDag() {
                        capaciteit,
                        batch->second);
 
-        cout << "Er zijn " << min_ << " 2de prikken met " << batch->first << " gezet in "<< kfname <<"!" << endl;
+//        cout << "Er zijn " << min_ << " 2de prikken met " << batch->first << " gezet in "<< kfname <<"!" << endl;
 
         zet2dePrikVaccins(batch->first, min_, capaciteit);
         batch->second -= min_;
@@ -225,10 +230,10 @@ void VaccinatieCentrum::nieuweDag() {
                                  capaciteit,
                                  aantal_niet_vaccinaties,
                                  getAantalVaccins(vaccin->first));
-        cout<<"\t"<<aantal_niet_vaccinaties<<endl;
+//        cout<<"\t"<<aantal_niet_vaccinaties<<endl;
 
         ENSURE(aantal_prikken >= 0, "Het aantal vaccinaties mag niet negatief zijn!");
-        cout << "Er zijn " << aantal_prikken << " 1ste prikken met " << vaccin->first << " gezet in "<< kfname <<"!" << endl;
+//        cout << "Er zijn " << aantal_prikken << " 1ste prikken met " << vaccin->first << " gezet in "<< kfname <<"!" << endl;
         if (vaccin->second.first->hernieuwing == 0) {
             //nieuw type bijvoegen
             if (aantal_vaccinaties.find(vaccin->first) == aantal_vaccinaties.end()) {
@@ -260,10 +265,12 @@ void VaccinatieCentrum::nieuweDag() {
 
 void VaccinatieCentrum::zet2dePrikVaccins(const string &type, int aantal, int &capaciteit) {
     REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling zet2dePrikVaccins");
+    REQUIRE(!type.empty(), "Het Vaccin type mag geen lege string zijn!");
+    REQUIRE(capaciteit >= aantal, "Er kunnen niet meer dan capaciteit aantal vaccins gezet worden!");
     aantal_vaccinaties[type] += aantal; // bestaat zeker (wordt aangemaakt bij het ontvangen van een levering)
     aantal_vaccins[type].second -= aantal; // update het aantal beschikbare vaccins
     capaciteit -= aantal;
-    ENSURE( aantal_vaccins[type].second >= 0, "Er zijn te weinig vaccins aanwezig");
+    ENSURE(aantal_vaccins[type].second >= 0, "Er zijn te weinig vaccins aanwezig");
 }
 
 void VaccinatieCentrum::zet1stePrikVaccins(const string &type, int aantal, int &capaciteit) {
@@ -328,6 +335,8 @@ bool VaccinatieCentrum::isIedereenGevaccineerd() const {
 
 int VaccinatieCentrum::getAantalTweedePrikken(const string &vaccin, int dag) const {
     REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling getAantalTweedePrikken");
+    REQUIRE(!vaccin.empty(), "Het Vaccin type mag geen lege string zijn!");
+    REQUIRE(dag > 0, "De dag moet positief zijn!");
     if ((int) aantal_eerste_prikken.size() <= dag) return 0;
     MapSICIterator aantal = aantal_eerste_prikken[dag].find(vaccin);
     if (aantal == aantal_eerste_prikken[dag].end()) return 0;
@@ -343,7 +352,9 @@ int VaccinatieCentrum::getAantalNietVaccinaties() const {
 
 int VaccinatieCentrum::getNogTeReserverenVaccins(const string &type, int dag) {
     REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling getNogTeReserverenVaccins()");
-    if((int) nog_te_reserveren_vaccins.size()-1 < dag){
+    REQUIRE(!type.empty(), "Het Vaccin type mag geen lege string zijn!");
+    REQUIRE(dag >= 0, "De dag moet positief zijn!");
+    if ((int) nog_te_reserveren_vaccins.size() - 1 < dag) {
         return 0;
     }
     REQUIRE(nog_te_reserveren_vaccins[dag][type] >= 0, "Er mag geen negatief aantal te reserveren vaccins zijn");
@@ -352,8 +363,11 @@ int VaccinatieCentrum::getNogTeReserverenVaccins(const string &type, int dag) {
 
 void VaccinatieCentrum::reserveerVaccins(const string &type, int dag, int vaccins) {
     REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling reserveerVaccins()");
+    REQUIRE(!type.empty(), "Het Vaccin type mag geen lege string zijn!");
+    REQUIRE(dag >= 0, "De dag moet positief zijn!");
+    REQUIRE(vaccins > 0, "het aantal vaccins moet positief zijn!");
     nog_te_reserveren_vaccins[dag][type] -= vaccins;
-    if(nog_te_reserveren_vaccins[dag][type] < 0){
+    if (nog_te_reserveren_vaccins[dag][type] < 0) {
         nog_te_reserveren_vaccins[dag][type] = 0;
     }
     ENSURE(nog_te_reserveren_vaccins[dag][type] >= 0, "Er mag geen negatief aantal te reserveren vaccins zijn");
