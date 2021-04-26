@@ -213,7 +213,15 @@ void VaccinatieCentrum::nieuweDag() {
 
     for (MapSP_VI_Iterator vaccin = aantal_vaccins.begin();
          vaccin != aantal_vaccins.end() && capaciteit != 0; vaccin++) {
-        int aantal_prikken = min(3,
+        int Gereserveerde2deprikken = 0;
+        for (MapSP_VI_Iterator vaccintype = aantal_vaccins.begin(); vaccintype != aantal_vaccins.end() && capaciteit != 0; vaccintype++) {
+            Gereserveerde2deprikken += aantal_eerste_prikken[vaccin->second.first->hernieuwing - 1][vaccintype->first];
+        }
+        int prikkenLeft = capaciteit - Gereserveerde2deprikken;
+
+        if(prikkenLeft < 0) prikkenLeft = 0;
+        int aantal_prikken = min(4,
+                                 prikkenLeft,
                                  capaciteit,
                                  aantal_niet_vaccinaties,
                                  getAantalVaccins(vaccin->first));
