@@ -48,7 +48,7 @@ Simulatie(vector<Hub *> &hubs, std::vector<VaccinatieCentrum *> &vaccinatie_cent
         output.addToOutputFile(hubs[i], i + 1, current_day, filename1);
     }
     while ((!end_day || current_day < end_day) && !break_) {
-//        cout<<"dag "<<current_day<<": "<<endl;
+        cout << "dag " << current_day << ": " << endl;
         for (unsigned int i = 0; i < hubs.size(); i++) {
             if (hubs[i]->isIedereenGevaccineerd()) {
                 break_ = true;
@@ -67,7 +67,7 @@ Simulatie(vector<Hub *> &hubs, std::vector<VaccinatieCentrum *> &vaccinatie_cent
             }
 
             // stuur signaal nieuwe dag
-//            cout<<"\thub "<<i+1<<": "<<endl;
+            cout << "\thub " << i + 1 << ": " << endl;
             hubs[i]->nieuweDag();
 
             // output

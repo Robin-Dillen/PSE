@@ -153,6 +153,8 @@ void Hub::verdeelVaccins() {
     for (map<string, VaccinatieCentrum *>::const_iterator centrum = fverbonden_centra.begin();
          centrum != fverbonden_centra.end(); centrum++) {
         int capaciteit = centrum->second->getKcapaciteit();
+        int totaal_vaccins =
+                centrum->second->getTotaalAantalVaccins() + centrum->second->getTotaalAantalGeleverdeVaccins();
         for (map<string, Vaccin *>::const_iterator vaccin = Kvaccins.begin(); vaccin != Kvaccins.end(); vaccin++) {
             if (capaciteit <= 0) break;
             int todays_batch = centrum->second->getTodaysBatch(vaccin->first);
@@ -165,15 +167,11 @@ void Hub::verdeelVaccins() {
                            centrum->second->getAantalVaccins(vaccin->first), // is groter dan 0, zie vorige if statement
                            capaciteit,
                            aantal_vaccins[vaccin->first],
-                           centrum->second->getMaxStock() - centrum->second->getTotaalAantalVaccins() -
-                           centrum->second->getTotaalAantalGeleverdeVaccins());
+                           centrum->second->getMaxStock() - totaal_vaccins);
 
             // we checken of we met het afronden niet te veel Kvaccins leveren, zo ja ronden we naar beneden af(en leveren we dus te weinig Kvaccins)
-            int ladingen = ceil((float) min_ / vaccin->second->transport);
-            if (ladingen * vaccin->second->transport + centrum->second->getTotaalAantalVaccins() +
-                centrum->second->getTotaalAantalGeleverdeVaccins() > centrum->second->getMaxStock()) {
-                ladingen = floor((float) min_ / vaccin->second->transport);
-            }
+            int ladingen = floor((float) min_ / vaccin->second->transport);
+
             // we verminderen de capaciteit, aantal Kvaccins en we sturen de Kvaccins op
             int vaccins_in_levering = ladingen * vaccin->second->transport;
             ENSURE(vaccins_in_levering >= 0, "Er wordt een negatief aantal vaccins geleverd!");
@@ -205,11 +203,8 @@ void Hub::verdeelVaccins() {
                            centrum->second->getAantalNietVaccinaties());
 
             // we checken of we met het afronden niet te veel Kvaccins leveren, zo ja ronden we naar beneden af(en leveren we dus te weinig Kvaccins)
-            int ladingen = ceil((float) min_ / vaccin->second->transport);
-            if (ladingen * vaccin->second->transport + totaal_vaccins > centrum->second->getMaxStock() ||
-                ladingen * vaccin->second->transport - gereserveerd_2de_prik[vaccin->first] < 0) {
-                ladingen = floor((float) min_ / vaccin->second->transport);
-            }
+            int ladingen = floor((float) min_ / vaccin->second->transport);
+
             int vaccins_in_levering = ladingen * vaccin->second->transport;
             ENSURE(vaccins_in_levering >= 0, "Er wordt een negatief aantal vaccins geleverd!");
             // we verminderen de capaciteit, aantal Kvaccins en we sturen de Kvaccins op
@@ -218,21 +213,6 @@ void Hub::verdeelVaccins() {
             centrum->second->ontvangLevering(vaccins_in_levering, vaccin->second); //stuurt de Kvaccins naar het centrum
         }
     }
-    //derde verdeling zorgt ervoor dat zoveel mogelijk Kvaccins kunnen worden uitgedeeld
-//    for (map<string, Vaccin *>::const_iterator vaccin = Kvaccins.begin(); vaccin != Kvaccins.end(); vaccin++) {
-//        for (map<string, VaccinatieCentrum *>::const_iterator centrum = fverbonden_centra.begin(), end = fverbonden_centra.end();
-//             centrum != end; centrum++) {
-//            int capaciteit = centrum->second->getKcapaciteit() - centrum->second->getTotaalAantalGeleverdeVaccins();
-//            while (centrum->second->getTotaalAantalVaccins() + vaccin->second->transport +
-//                   centrum->second->getTotaalAantalGeleverdeVaccins() < centrum->second->getMaxStock()) {
-//                if (aantal_vaccins[vaccin->first] - vaccin->second->transport < 0) break;
-//                if (vaccin->second->temperatuur < 0 && vaccin->second->transport > capaciteit) break;
-//                centrum->second->ontvangLevering(vaccin->second->transport, vaccin->second);
-//                aantal_vaccins[vaccin->first] -= vaccin->second->transport;
-//                capaciteit -= vaccin->second->transport;
-//            }
-//        }
-//    }
 }
 
 int

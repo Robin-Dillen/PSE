@@ -204,6 +204,7 @@ void VaccinatieCentrum::nieuweDag() {
         }
         zetVaccins(vaccin->first, aantal_prikken, capaciteit);
         aantal_vaccinaties_vandaag += aantal_prikken;
+        aantal_niet_vaccinaties -= aantal_prikken;
     }
 
     ENSURE(begin_aantal_vaccins - aantal_vaccinaties_vandaag == getTotaalAantalVaccins(),
@@ -218,7 +219,6 @@ void VaccinatieCentrum::nieuweDag() {
 void VaccinatieCentrum::zetVaccins(const string &type, int aantal, int &capaciteit) {
     aantal_vaccinaties[type] += aantal; // bestaat zeker (wordt aangemaakt bij het ontvangen van een levering)
     aantal_vaccins[type].second -= aantal; // update het aantal beschikbare vaccins
-    aantal_niet_vaccinaties -= aantal;
     capaciteit -= aantal;
 }
 
