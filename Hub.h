@@ -34,6 +34,8 @@ public:
 
     Hub(const map<string, Vaccin *> &vaccins);
 
+    Hub();
+
     /**
      * Verwijdert alle centra van deze hub
      */
@@ -176,7 +178,7 @@ private:
 //    const int kaantal_vaccins_per_levering;
 //    const int kleveringen_interval;
 //    const int kaantal_vaccins_per_lading;
-    const map<string, Vaccin *> Kvaccins;
+    const map<string, Vaccin *> kvaccins;
 
     const Hub *_initCheck; // pointer naar zichzelf om te checken of het object correct geïnitialseert is
 

@@ -12,14 +12,14 @@
 #include "StatisticsSingleton.h"
 #include "Vaccins.h"
 
-Hub::Hub(const map<string, Vaccin *> &vaccins) : Kvaccins(vaccins), _initCheck(this) {
+Hub::Hub(const map<string, Vaccin *> &vaccins) : kvaccins(vaccins), _initCheck(this) {
     for (map<string, Vaccin *>::const_iterator vaccin = vaccins.begin(); vaccin != vaccins.end(); vaccin++) {
-        aantal_vaccins[vaccin->first] = vaccin->second->levering;
-        for (map<string, Vaccin *>::const_iterator vaccin_it = vaccins.begin();
-             vaccin_it != vaccins.end(); vaccin_it++) {
-            gereserveerd_2de_prik[vaccin_it->first] = 0;
-        }
+        ontvangLevering(vaccin->first, vaccin->second->levering);
     }
+    ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
+}
+
+Hub::Hub() : kvaccins(map<string, Vaccin *>()), _initCheck(this) {
     ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
 }
 
@@ -29,6 +29,7 @@ bool Hub::isProperlyInitialized() const {
 
 int Hub::getAantalVaccins(const string &type) const {
     REQUIRE(isProperlyInitialized(), "Parser wasn't initialized when calling getAantalVaccins");
+    REQUIRE(!type.empty(), "Type of vaccin cannot be empty.");
     if (aantal_vaccins.find(type) == aantal_vaccins.end()) return 0;
     return aantal_vaccins.at(type);
 }
@@ -40,25 +41,31 @@ int Hub::getTotaalAantalVaccins() const {
          it != end; it++) {
         totaal += it->second;
     }
+    ENSURE(totaal >= 0, "Het totaal aantal vaccins is negatief!");
     return totaal;
 }
 
 int Hub::getLeveringenInterval(const string &type) const {
     REQUIRE(isProperlyInitialized(), "Parser wasn't initialized when calling getLeveringenInterval");
+    REQUIRE(!type.empty(), "Type of vaccin cannot be empty.");
     if (aantal_vaccins.find(type) == aantal_vaccins.end()) return 0;
-    return Kvaccins.at(type)->interval;
+    ENSURE(kvaccins.at(type)->interval >= 0, "Het leveringen interval is negatief!");
+    return kvaccins.at(type)->interval;
 }
 
 const int Hub::getKaantalVaccinsPerLevering(const string &type) const {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getKaantalVaccinsPerLevering");
+    REQUIRE(!type.empty(), "Type of vaccin cannot be empty.");
     if (aantal_vaccins.find(type) == aantal_vaccins.end()) return 0;
-    return Kvaccins.at(type)->levering;
+    ENSURE(kvaccins.at(type)->levering >= 0, "Het aantal vaccins per leveringen is negatief!");
+    return kvaccins.at(type)->levering;
 }
 
 const int Hub::getKaantalVaccinsPerLading(const string &type) const {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getKaantalVaccinsPerLading");
+    REQUIRE(!type.empty(), "Type of vaccin cannot be empty.");
     if (aantal_vaccins.find(type) == aantal_vaccins.end()) return 0;
-    return Kvaccins.at(type)->transport;
+    return kvaccins.at(type)->transport;
 }
 
 const map<string, VaccinatieCentrum *> &Hub::getFverbondenCentra() const {
@@ -68,8 +75,9 @@ const map<string, VaccinatieCentrum *> &Hub::getFverbondenCentra() const {
 
 void Hub::setAantalVaccins(const string &type, int aantalVaccins) {
     REQUIRE(isProperlyInitialized(), "Parser wasn't initialized when calling setAantalVaccins");
+    REQUIRE(!type.empty(), "Type of vaccin cannot be empty.");
     aantal_vaccins[type] = aantalVaccins;
-    ENSURE(aantalVaccins == getAantalVaccins(type), "Het setten van het aantal Kvaccins is mislukt!");
+    ENSURE(aantalVaccins == getAantalVaccins(type), "Het setten van het aantal kvaccins is mislukt!");
 }
 
 void Hub::addFverbondenCentra(const map<string, VaccinatieCentrum *> &fverbondenCentra) {
@@ -92,6 +100,16 @@ void Hub::addFverbondenCentra(const vector<VaccinatieCentrum *> &fverbondenCentr
            "De centra zijn niet (volledig) Toegevoegd");
 }
 
+void Hub::addCentrum(VaccinatieCentrum *centrum) {
+    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling addCentrum");
+    REQUIRE(centrum != NULL, "Het centrum is ongeldig!");
+
+    unsigned int og_size = fverbonden_centra.size();
+    fverbonden_centra[centrum->getKfname()] = centrum;
+    ENSURE(fverbonden_centra.size() == og_size + 1, "Het vaccinatie centrum is niet toegevoegt!");
+}
+
+
 bool Hub::isIedereenGevaccineerd() const {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling isIedereenGevaccineerd");
     //Kijkt na of iedereen in alle centra al gevaccineerd is of niet
@@ -105,15 +123,15 @@ bool Hub::isIedereenGevaccineerd() const {
 void Hub::nieuweDag() {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling nieuweDag");
 
-    // verdeel de Kvaccins als er nog op voorraad zijn
-    for (map<string, Vaccin *>::const_iterator vaccin = Kvaccins.begin(); vaccin != Kvaccins.end(); vaccin++) {
+    // verdeel de kvaccins als er nog op voorraad zijn
+    for (map<string, Vaccin *>::const_iterator vaccin = kvaccins.begin(); vaccin != kvaccins.end(); vaccin++) {
         vaccin->second->tijd_tot_nieuwe_levering =
                 (vaccin->second->interval + 1 + (((vaccin->second->tijd_tot_nieuwe_levering - 1) %
                                                   (vaccin->second->interval + 1)))) %
                 (vaccin->second->interval + 1); // python modulo (wraps around)
-        cout << "\t\taantal dagen tot levering van " << vaccin->first << ": "
-             << vaccin->second->tijd_tot_nieuwe_levering
-             << endl;
+//        cout << "\t\taantal dagen tot levering van " << vaccin->first << ": "
+//             << vaccin->second->tijd_tot_nieuwe_levering
+//             << endl;
     }
 
     verdeelVaccins();
@@ -121,11 +139,14 @@ void Hub::nieuweDag() {
 
 void Hub::ontvangLevering(const string &type, int aantal_geleverde_vaccins) {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling ontvangLevering");
-    //voegt geleverde Kvaccins toe aan de stock
+    REQUIRE(!type.empty(), "Type of vaccin cannot be empty.");
+    REQUIRE(aantal_geleverde_vaccins > 0, "Het aantal geleverde Vaccins is negatief/nul");
+
+    //voegt geleverde kvaccins toe aan de stock
     int begin_aantal_vaccins = getAantalVaccins(type);
     aantal_vaccins[type] += aantal_geleverde_vaccins;
     ENSURE(aantal_geleverde_vaccins + begin_aantal_vaccins == getAantalVaccins(type),
-           "De Kvaccins werden niet succesvol ontvangen!");
+           "De kvaccins werden niet succesvol ontvangen!");
 }
 
 void Hub::verdeelVaccin(const string &type) {
@@ -135,7 +156,7 @@ void Hub::verdeelVaccin(const string &type) {
 void Hub::verdeelVaccins() {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling verdeelVaccins");
 
-    for (map<string, Vaccin *>::const_iterator vaccin = Kvaccins.begin(); vaccin != Kvaccins.end(); vaccin++) {
+    for (map<string, Vaccin *>::const_iterator vaccin = kvaccins.begin(); vaccin != kvaccins.end(); vaccin++) {
 //        if (vaccin->second->tijd_tot_nieuwe_levering != vaccin->second->interval) continue;
         gereserveerd_2de_prik[vaccin->first] = 0;
         for (map<string, VaccinatieCentrum *>::iterator centrum = fverbonden_centra.begin();
@@ -145,7 +166,7 @@ void Hub::verdeelVaccins() {
                                                                                                 interval);
             }
         }
-        cout << "\t\tAantal Kvaccins gereserveerd voor de 2de prik met " << vaccin->first << " : "
+        cout << "\t\tAantal kvaccin gereserveerd voor de 2de prik met " << vaccin->first << " : "
              << gereserveerd_2de_prik[vaccin->first] << endl;
     }
 
@@ -155,12 +176,12 @@ void Hub::verdeelVaccins() {
         int capaciteit = centrum->second->getKcapaciteit();
         int totaal_vaccins =
                 centrum->second->getTotaalAantalVaccins() + centrum->second->getTotaalAantalGeleverdeVaccins();
-        for (map<string, Vaccin *>::const_iterator vaccin = Kvaccins.begin(); vaccin != Kvaccins.end(); vaccin++) {
+        for (map<string, Vaccin *>::const_iterator vaccin = kvaccins.begin(); vaccin != kvaccins.end(); vaccin++) {
             if (capaciteit <= 0) break;
             int todays_batch = centrum->second->getTodaysBatch(vaccin->first);
 
             if (centrum->second->getAantalVaccins(vaccin->first) >= todays_batch || aantal_vaccins[vaccin->first] == 0)
-                continue; // we hebben al genoeg Kvaccins of capaciteit is gevuld
+                continue; // we hebben al genoeg kvaccin of capaciteit is gevuld
 
             int min_ = min(4,
                            todays_batch -
@@ -169,13 +190,13 @@ void Hub::verdeelVaccins() {
                            aantal_vaccins[vaccin->first],
                            centrum->second->getMaxStock() - totaal_vaccins);
 
-            // we checken of we met het afronden niet te veel Kvaccins leveren, zo ja ronden we naar beneden af(en leveren we dus te weinig Kvaccins)
+            // we checken of we met het afronden niet te veel kvaccin leveren, zo ja ronden we naar beneden af(en leveren we dus te weinig kvaccin)
             int ladingen = floor((float) min_ / vaccin->second->transport);
             if (centrum->second->getAantalNietVaccinaties() == 0 &&
                 centrum->second->getMaxStock() - totaal_vaccins - vaccin->second->transport > 0)
                 ladingen = 1;
 
-            // we verminderen de capaciteit, aantal Kvaccins en we sturen de Kvaccins op
+            // we verminderen de capaciteit, aantal kvaccins en we sturen de kvaccins op
             int vaccins_in_levering = ladingen * vaccin->second->transport;
             ENSURE(vaccins_in_levering >= 0, "Er wordt een negatief aantal vaccins geleverd!");
 
@@ -193,7 +214,7 @@ void Hub::verdeelVaccins() {
         int capaciteit = centrum->second->getKcapaciteit() - totaal_vaccins;
         if (totaal_vaccins >= capaciteit) continue;
 
-        for (map<string, Vaccin *>::const_iterator vaccin = Kvaccins.begin(); vaccin != Kvaccins.end(); vaccin++) {
+        for (map<string, Vaccin *>::const_iterator vaccin = kvaccins.begin(); vaccin != kvaccins.end(); vaccin++) {
             if (capaciteit <= 0) break;
 
             ENSURE(totaal_vaccins <= centrum->second->getMaxStock(), "Te veel vaccins!");
@@ -205,7 +226,7 @@ void Hub::verdeelVaccins() {
                            centrum->second->getMaxStock() - totaal_vaccins,
                            centrum->second->getAantalNietVaccinaties());
 
-            // we checken of we met het afronden niet te veel Kvaccins leveren, zo ja ronden we naar beneden af(en leveren we dus te weinig Kvaccins)
+            // we checken of we met het afronden niet te veel kvaccins leveren, zo ja ronden we naar beneden af(en leveren we dus te weinig kvaccins)
             int ladingen = floor((float) min_ / vaccin->second->transport);
             if (centrum->second->getAantalNietVaccinaties() < vaccin->second->transport &&
                 centrum->second->getMaxStock() - totaal_vaccins - vaccin->second->transport > 0)
@@ -213,10 +234,10 @@ void Hub::verdeelVaccins() {
 
             int vaccins_in_levering = ladingen * vaccin->second->transport;
             ENSURE(vaccins_in_levering >= 0, "Er wordt een negatief aantal vaccins geleverd!");
-            // we verminderen de capaciteit, aantal Kvaccins en we sturen de Kvaccins op
+            // we verminderen de capaciteit, aantal kvaccins en we sturen de kvaccins op
             capaciteit -= vaccins_in_levering;
             aantal_vaccins[vaccin->first] -= vaccins_in_levering;
-            centrum->second->ontvangLevering(vaccins_in_levering, vaccin->second); //stuurt de Kvaccins naar het centrum
+            centrum->second->ontvangLevering(vaccins_in_levering, vaccin->second); //stuurt de kvaccins naar het centrum
         }
     }
 }
@@ -224,21 +245,15 @@ void Hub::verdeelVaccins() {
 int
 Hub::minAantalLeveringen(const map<string, VaccinatieCentrum *>::const_iterator &centrum, const Vaccin *vaccin) const {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling minAantalLeveringen");
+    REQUIRE(vaccin == NULL, "Vaccin is niet geldig!");
     //Berekent hoeveel ladingen er kunnen geleverd worden om de capaciteit van het centrum te bereiken
     return ceil(((float) max(centrum->second->getKcapaciteit() - centrum->second->getAantalVaccins(vaccin->type), 0) /
                  vaccin->transport));
 }
 
-void Hub::addCentrum(VaccinatieCentrum *centrum) {
-    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling addCentrum");
-    unsigned int og_size = fverbonden_centra.size();
-    fverbonden_centra[centrum->getKfname()] = centrum;
-    ENSURE(fverbonden_centra.size() == og_size + 1, "Het vaccinatie centrum is niet toegevoegt!");
-}
-
 map<string, Vaccin *> Hub::getVaccins() {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getVaccins()");
-    return Kvaccins;
+    return kvaccins;
 }
 
 Hub::~Hub() {}

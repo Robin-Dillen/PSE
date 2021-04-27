@@ -85,7 +85,6 @@ TEST_F(VaccinSimulatieDomainTest, NonDefaultConstructor) {
 Tests the "happy day" scenario
 */
 TEST_F(VaccinSimulatieDomainTest, HappyDay) {
-    Hub H;
 
 }
 
@@ -107,18 +106,12 @@ TEST_F(VaccinSimulatieDomainTest, HubContractViolations) {
     Hub H(vaccins);
 
     EXPECT_DEATH(H.getAantalVaccins(""), "");
-//    EXPECT_DEATH(H.getAantalVaccins("Test"), "");
-//    EXPECT_DEATH(H.getTotaalAantalVaccins(), "");
     EXPECT_DEATH(H.getLeveringenInterval(""), "");
-//    EXPECT_DEATH(H.getLeveringenInterval("Test"), "");
     EXPECT_DEATH(H.getKaantalVaccinsPerLevering(""), "");
-//    EXPECT_DEATH(H.getKaantalVaccinsPerLevering("Test"), "");
     EXPECT_DEATH(H.getKaantalVaccinsPerLading(""), "");
-//    EXPECT_DEATH(H.getKaantalVaccinsPerLading("Test"), "");
     EXPECT_DEATH(H.addCentrum(NULL), "");
     EXPECT_DEATH(H.ontvangLevering("", Vac1->levering), "");
     EXPECT_DEATH(H.ontvangLevering("Test", Vac2->levering), "");
-    EXPECT_DEATH(H.addReservations(""), "");
 
     delete Vac1;
     delete Vac2;
@@ -137,20 +130,8 @@ TEST_F(VaccinSimulatieDomainTest, VaccinatieCentrumContractViolations) {
     EXPECT_DEATH(V.getAantalVaccinaties(""), "");
     EXPECT_DEATH(V.getAantalVaccins(""), "");
     EXPECT_DEATH(V.getAantalGeleverdeVaccins(""), "");
-    int capaciteit = 100;
-    EXPECT_DEATH(V.zet2dePrikVaccins("", 100, capaciteit), "");
-    EXPECT_DEATH(V.zet2dePrikVaccins("Test", 100, capaciteit), "");
-    V.setVaccins(50, "Test");
-    EXPECT_DEATH(V.zet2dePrikVaccins("Test", 100, capaciteit), "");
-    V.setVaccins(200, "Test");
-    EXPECT_DEATH(V.zet2dePrikVaccins("Test", 200, capaciteit), "");
     Vaccin *V1 = VFS.getVaccin("Test", 1, 1, 1, 1, 1);
     EXPECT_DEATH(V.ontvangLevering(-100, V1), "");
     EXPECT_DEATH(V.getAantalTweedePrikken("", 1), "");
     EXPECT_DEATH(V.getAantalTweedePrikken("Test", -1), "");
-    EXPECT_DEATH(V.getNogTeReserverenVaccins("", 1), "");
-    EXPECT_DEATH(V.getNogTeReserverenVaccins("Test", -1), "");
-    EXPECT_DEATH(V.reserveerVaccins("", 1, 1), "");
-    EXPECT_DEATH(V.reserveerVaccins("Test", -1, 1), "");
-    EXPECT_DEATH(V.reserveerVaccins("Test", 1, -1), "");
 }
