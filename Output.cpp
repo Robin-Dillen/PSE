@@ -51,78 +51,78 @@ void OutputSingleton::addToOutputFile(Hub *h, int i, int days, const string &fil
 }
 
 void OutputSingleton::addToGIFile(VaccinatieCentrum *v, const string &filename) {
-//    REQUIRE(isProperlyInitialized(), "Object wasn't initialized when calling addToGIFile");
-//    // voegt content toe aan de output file, het is dus de bedoeling dat je de file opvoorhand leeg maakt
-//    ofstream outputFile((OUTPUT_FILE_LOCATION + filename + ".txt").c_str(), ios_base::app);
-//    outputFile << v->getKfname() << ":\n";
-//    outputFile << "\t- vaccins\t\t[";
-//    //Percentage van hoeveel vaccins er aanwezig zijn in cnetrum
-//    int vaccinpercentage = round((v->getTotaalAantalVaccins() * 100) / v->getMaxStock());
-//    for (int i = 1; i <= 20; i++) {
-//        if (i <= vaccinpercentage / 5) {
-//            outputFile << "=";
-//        } else {
-//            outputFile << " ";
-//        }
-//    }
-//    outputFile <<"] "<<vaccinpercentage<< "%\n";
-//    outputFile << "\t- 1ste prik\t\t[";
-//    //Percentage van hoeveel mensen al een 1ste prik hebben gekregen (maar nog geen 2de prik)
-//    int aantal1steprik = v->getKaantalInwoners()-(v->getTotaalAantalVaccinaties()+v->getAantalNietVaccinaties());
-//    int eersteprikpercentage = round((aantal1steprik*100)/v->getKaantalInwoners());
-//    for(int i = 1; i<=20; i++){
-//        if(i<=eersteprikpercentage/5){
-//            outputFile << "=";
-//        }
-//        else{
-//            outputFile << " ";
-//        }
-//    }
-//    outputFile <<"] "<<eersteprikpercentage<< "%\n";
-//    outputFile << "\t- gevaccineerd\t[";
-//    //Percentage van hoeveel mensen er volledig gevaccineerd zijn
-//    int gevaccineerdpercentage = round((v->getTotaalAantalVaccinaties()*100)/v->getKaantalInwoners());
-//    for(int i = 1; i<=20; i++){
-//        if(i<=gevaccineerdpercentage/5){
-//            outputFile << "=";
-//        }
-//        else{
-//            outputFile << " ";
-//        }
-//    }
-//    outputFile <<"] "<<gevaccineerdpercentage<< "%\n";
-//    map<string, int>::const_iterator it;
-//    int max = 0;
-//    for (it = v->getAantalVaccinaties1().begin(); it != v->getAantalVaccinaties1().end(); it++) {
-//        if((int) it->first.size() > max) max = it->first.size();
-//    }
-//    for (it = v->getAantalVaccinaties1().begin(); it != v->getAantalVaccinaties1().end(); it++) {
-//        outputFile << "\t\t- "<< it->first << "\t";
-//        int x = 0;
-//        while((int) it->first.size() + x <= max){
-//            outputFile << "\t";
-//            x+=4;
-//        }
-//        outputFile << "[";
-//        int typeVaccinPercentage;
-//        if(gevaccineerdpercentage == 0){
-//            typeVaccinPercentage = 0;
-//        }
-//        else{
-//            typeVaccinPercentage = (it->second*100)/v->getTotaalAantalVaccinaties();
-//        }
-//        for(int i = 1; i<=20; i++){
-//            if(i<=typeVaccinPercentage/5){
-//                outputFile << "=";
-//            }
-//            else{
-//                outputFile << " ";
-//            }
-//        }
-//        outputFile <<"] "<<typeVaccinPercentage<< "%\n";
-//    }
-//    outputFile << "\r";
-//    outputFile.close();
+    REQUIRE(isProperlyInitialized(), "Object wasn't initialized when calling addToGIFile");
+    // voegt content toe aan de output file, het is dus de bedoeling dat je de file opvoorhand leeg maakt
+    ofstream outputFile((OUTPUT_FILE_LOCATION + filename + ".txt").c_str(), ios_base::app);
+    outputFile << v->getKfname() << ":\n";
+    outputFile << "\t- vaccins\t\t[";
+    //Percentage van hoeveel vaccins er aanwezig zijn in cnetrum
+    int vaccinpercentage = round((v->getTotaalAantalVaccins() * 100) / v->getMaxStock());
+    for (int i = 1; i <= 20; i++) {
+        if (i <= vaccinpercentage / 5) {
+            outputFile << "=";
+        } else {
+            outputFile << " ";
+        }
+    }
+    outputFile <<"] "<<vaccinpercentage<< "%\n";
+    outputFile << "\t- 1ste prik\t\t[";
+    //Percentage van hoeveel mensen al een 1ste prik hebben gekregen (maar nog geen 2de prik)
+    int aantal1steprik = v->getKaantalInwoners()-(v->getTotaalAantalVaccinaties()+v->getAantalNietVaccinaties());
+    int eersteprikpercentage = round((aantal1steprik*100)/v->getKaantalInwoners());
+    for(int i = 1; i<=20; i++){
+        if(i<=eersteprikpercentage/5){
+            outputFile << "=";
+        }
+        else{
+            outputFile << " ";
+        }
+    }
+    outputFile <<"] "<<eersteprikpercentage<< "%\n";
+    outputFile << "\t- gevaccineerd\t[";
+    //Percentage van hoeveel mensen er volledig gevaccineerd zijn
+    int gevaccineerdpercentage = round((v->getTotaalAantalVaccinaties()*100)/v->getKaantalInwoners());
+    for(int i = 1; i<=20; i++){
+        if(i<=gevaccineerdpercentage/5){
+            outputFile << "=";
+        }
+        else{
+            outputFile << " ";
+        }
+    }
+    outputFile <<"] "<<gevaccineerdpercentage<< "%\n";
+    map<string, int>::const_iterator it;
+    int max = 0;
+    for (it = v->getAantalVaccinaties1().begin(); it != v->getAantalVaccinaties1().end(); it++) {
+        if((int) it->first.size() > max) max = it->first.size();
+    }
+    for (it = v->getAantalVaccinaties1().begin(); it != v->getAantalVaccinaties1().end(); it++) {
+        outputFile << "\t\t- "<< it->first << "\t";
+        int x = 0;
+        while((int) it->first.size() + x <= max){
+            outputFile << "\t";
+            x+=4;
+        }
+        outputFile << "[";
+        int typeVaccinPercentage;
+        if(gevaccineerdpercentage == 0){
+            typeVaccinPercentage = 0;
+        }
+        else{
+            typeVaccinPercentage = (it->second*100)/v->getTotaalAantalVaccinaties();
+        }
+        for(int i = 1; i<=20; i++){
+            if(i<=typeVaccinPercentage/5){
+                outputFile << "=";
+            }
+            else{
+                outputFile << " ";
+            }
+        }
+        outputFile <<"] "<<typeVaccinPercentage<< "%\n";
+    }
+    outputFile << "\r";
+    outputFile.close();
 }
 
 

@@ -49,12 +49,15 @@ Simulatie(vector<Hub *> &hubs, std::vector<VaccinatieCentrum *> &vaccinatie_cent
     }
     while ((!end_day || current_day < end_day) && !break_) {
         cout << "dag " << current_day << ": " << endl;
+        break_ = true;
         for (unsigned int i = 0; i < hubs.size(); i++) {
-            if (hubs[i]->isIedereenGevaccineerd()) {
-                break_ = true;
+            if (!hubs[i]->isIedereenGevaccineerd()) {
+                break_ = false;
+            }
+            else{
                 continue;
             }
-            break_ = false;
+
             // increase current_day
 
             map<string, Vaccin *> vaccins = hubs[i]->getVaccins();
@@ -73,10 +76,12 @@ Simulatie(vector<Hub *> &hubs, std::vector<VaccinatieCentrum *> &vaccinatie_cent
             // output
             output.addToOutputFile(hubs[i], i + 1, current_day, filename1);
         }
-        output.addDateToFile(current_day, filename2);
-        for (unsigned int i = 0; i < vaccinatie_centra.size(); i++) {
-            vaccinatie_centra[i]->nieuweDag();
-            output.addToGIFile(vaccinatie_centra[i], filename2);
+        if(!break_){
+            output.addDateToFile(current_day, filename2);
+            for (unsigned int i = 0; i < vaccinatie_centra.size(); i++) {
+                vaccinatie_centra[i]->nieuweDag();
+                output.addToGIFile(vaccinatie_centra[i], filename2);
+            }
         }
         current_day++;
     }

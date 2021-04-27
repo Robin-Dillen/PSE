@@ -200,11 +200,14 @@ void VaccinatieCentrum::nieuweDag() {
             if (aantal_vaccinaties.find(vaccin->first) == aantal_vaccinaties.end()) {
                 aantal_vaccinaties[vaccin->first] = aantal_prikken;
             } else aantal_vaccinaties[vaccin->first] += aantal_prikken;
+            aantal_vaccinaties_vandaag += aantal_prikken;
+            aantal_vaccins[vaccin->first].second -= aantal_prikken;
+            capaciteit -= aantal_prikken;
         } else {
             aantal_eerste_prikken[vaccin->second.first->hernieuwing - 1][vaccin->first] = aantal_prikken;
+            zetVaccins(vaccin->first, aantal_prikken, capaciteit);
+            eerste_prikken += aantal_prikken;
         }
-        zetVaccins(vaccin->first, aantal_prikken, capaciteit);
-        eerste_prikken += aantal_prikken;
         aantal_niet_vaccinaties -= aantal_prikken;
     }
 
@@ -282,6 +285,10 @@ int VaccinatieCentrum::getAantalNietVaccinaties() const {
     REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling getAantalNietVaccinaties()");
     ENSURE(aantal_niet_vaccinaties >= 0, "We kunnen niet een negatief aantal niet vaccinaties hebben!");
     return aantal_niet_vaccinaties;
+}
+
+const map<string, int> &VaccinatieCentrum::getAantalVaccinaties1() const {
+    return aantal_vaccinaties;
 }
 
 
