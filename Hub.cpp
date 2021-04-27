@@ -171,6 +171,9 @@ void Hub::verdeelVaccins() {
 
             // we checken of we met het afronden niet te veel Kvaccins leveren, zo ja ronden we naar beneden af(en leveren we dus te weinig Kvaccins)
             int ladingen = floor((float) min_ / vaccin->second->transport);
+            if (centrum->second->getAantalNietVaccinaties() == 0 &&
+                centrum->second->getMaxStock() - totaal_vaccins - vaccin->second->transport > 0)
+                ladingen = 1;
 
             // we verminderen de capaciteit, aantal Kvaccins en we sturen de Kvaccins op
             int vaccins_in_levering = ladingen * vaccin->second->transport;
@@ -204,6 +207,9 @@ void Hub::verdeelVaccins() {
 
             // we checken of we met het afronden niet te veel Kvaccins leveren, zo ja ronden we naar beneden af(en leveren we dus te weinig Kvaccins)
             int ladingen = floor((float) min_ / vaccin->second->transport);
+            if (centrum->second->getAantalNietVaccinaties() < vaccin->second->transport &&
+                centrum->second->getMaxStock() - totaal_vaccins - vaccin->second->transport > 0)
+                ladingen = 1;
 
             int vaccins_in_levering = ladingen * vaccin->second->transport;
             ENSURE(vaccins_in_levering >= 0, "Er wordt een negatief aantal vaccins geleverd!");
