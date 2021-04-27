@@ -41,6 +41,7 @@ public:
     /**
      * maakt een output file aan of maakt een output file leeg
      * @param filename file dat aangemaakt/leeggemaakt moet worden (zonder path of extensie)
+     * \n REQUIRE(isProperlyInitialized(), "Object wasn't initialized when calling makeOutputFile");
      */
     void makeOutputFile(const string &filename);
 
@@ -54,8 +55,8 @@ public:
     void addToOutputFile(Hub *h, int i, int y, int m, int w, int d, const string &filename);
 
     /*!
-     * TODO
-     * @param v
+     * voegt info toe aan het GI outputbestand
+     * @param v: vaccinatiecentrum
      * @param filename
      * \n REQUIRE(isProperlyInitialized(), "Object wasn't initialized when calling addToGIFile");
      */
@@ -70,12 +71,20 @@ public:
      */
     void addToOutputFile(Hub *h, int i, int days, const string &filename);
 
+    /**
+     * voegt info toe aan het GI outputbestand
+     * @param v: vaccinatiecentrum
+     * @param days:dagen na start simulatie
+     * @param filename: naam van file waarin geschreven wordt
+     * @return void
+     * \n REQUIRE(isProperlyInitialized(), "Object wasn't initialized when calling addToOutputFile");
+     */
     void addToGIFile(VaccinatieCentrum *v, int days, const string &filename);
 
     /*!
-     * TODO
+     * Voegt een datum toe aan het outputbestand (in dagen na start simulatie)
      * @param days
-     * @param filename
+     * @param filename: naam van file waarin geschreven wordt
      * \n REQUIRE(isProperlyInitialized(), "Object wasn't initialized when calling addToGIFile");
      */
     void addDateToFile(int days, const string &filename) const;

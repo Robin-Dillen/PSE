@@ -1,0 +1,10 @@
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 0 weken en 0 dagen.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 1%
+	- gevaccineerd	[                    ] 0%
+		- AstraZeneca		[                    ] 0%
+		- Moderna			[                    ] 0%
+		- Pfizer			[                    ] 0%
+

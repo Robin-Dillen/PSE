@@ -55,11 +55,22 @@ public:
      * @param temperatuur bij welke temperatuur de vaccins bijgehouden moeten worden
      * @return pointer naar het nieuwe vaccin
      * \n REQUIRE(this == _initCheck, "Object wasn't initialized when calling getInstance");
+     * \n REQUIRE(!type.empty(), "Type name cannot be empty!");
+     * \n REQUIRE(levering > 0, "levering moet groter zijn dan 0!");
+     * \n REQUIRE(interval > 0, "Interval moet groter zijn dan 0!");
+     * \n REQUIRE(transport > 0, "Transport moet groter zijn dan 0!");
+     * \n REQUIRE(hernieuwing >= 0, "Hernieuwing mag niet negatief zijn!");
      */
     Vaccin *
     getVaccin(const string &type, const int levering, const int interval, const int transport, const int hernieuwing,
               const int temperatuur) {
         REQUIRE(this == _initCheck, "Object wasn't initialized when calling getInstance");
+        REQUIRE(!type.empty(), "Type name cannot be empty!");
+        REQUIRE(levering > 0, "levering moet groter zijn dan 0!");
+        REQUIRE(interval > 0, "Interval moet groter zijn dan 0!");
+        REQUIRE(transport > 0, "Transport moet groter zijn dan 0!");
+        REQUIRE(hernieuwing >= 0, "Hernieuwing mag niet negatief zijn!");
+
         Vaccin *V = new Vaccin(type, levering, interval, transport, hernieuwing, temperatuur);
         vaccins.push_back(V);
         return V;

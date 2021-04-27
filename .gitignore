@@ -2,8 +2,6 @@ cmake-build*
 .idea
 gtest
 googletest-release-1.10.0.zip
-OutputSingleton.txt
-/Outputfiles/
 err.txt
 *.zip
 *.docx

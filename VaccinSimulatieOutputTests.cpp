@@ -18,12 +18,12 @@ using namespace std;
 
 class VaccinSimulatieOutputTest : public ::testing::Test {
 protected:
-    friend class TicTacToe;
-
     virtual void SetUp() {
+        freopen(ERROR_FILE, "a+", stderr);
     }
 
     virtual void TearDown() {
+        fclose(stderr);
     }
 };
 
@@ -34,6 +34,9 @@ TEST_F(VaccinSimulatieOutputTest, FileCompare) {
 // Author      : Serge Demeyer
 
     ASSERT_TRUE(DirectoryExists(OUTPUT_FILE_LOCATION));
+
+    makeEmptyFile(OUTPUT_FILE_LOCATION + "file1.txt");
+    makeEmptyFile(OUTPUT_FILE_LOCATION + "file2.txt");
 
     ofstream myfile;
     myfile.open((OUTPUT_FILE_LOCATION + "file1.txt").c_str());
