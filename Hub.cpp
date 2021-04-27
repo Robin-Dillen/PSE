@@ -12,14 +12,14 @@
 #include "StatisticsSingleton.h"
 #include "Vaccins.h"
 
-Hub::Hub(const map<string, Vaccin *> &vaccins) : kvaccins(vaccins), _initCheck(this) {
+Hub::Hub(const map<string, Vaccin *> &vaccins) : Kvaccins(vaccins), _initCheck(this) {
     for (map<string, Vaccin *>::const_iterator vaccin = vaccins.begin(); vaccin != vaccins.end(); vaccin++) {
-        ontvangLevering(vaccin->first, vaccin->second->levering);
+        aantal_vaccins[vaccin->first] = vaccin->second->levering;
+        for (map<string, Vaccin *>::const_iterator vaccin_it = vaccins.begin();
+             vaccin_it != vaccins.end(); vaccin_it++) {
+            gereserveerd_2de_prik[vaccin_it->first] = 0;
+        }
     }
-    ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
-}
-
-Hub::Hub() : kvaccins(map<string, Vaccin *>()), _initCheck(this) {
     ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
 }
 
@@ -29,7 +29,6 @@ bool Hub::isProperlyInitialized() const {
 
 int Hub::getAantalVaccins(const string &type) const {
     REQUIRE(isProperlyInitialized(), "Parser wasn't initialized when calling getAantalVaccins");
-    REQUIRE(!type.empty(), "Type of vaccin cannot be empty.");
     if (aantal_vaccins.find(type) == aantal_vaccins.end()) return 0;
     return aantal_vaccins.at(type);
 }
@@ -41,31 +40,25 @@ int Hub::getTotaalAantalVaccins() const {
          it != end; it++) {
         totaal += it->second;
     }
-    ENSURE(totaal >= 0, "Het totaal aantal vaccins is negatief!");
     return totaal;
 }
 
 int Hub::getLeveringenInterval(const string &type) const {
     REQUIRE(isProperlyInitialized(), "Parser wasn't initialized when calling getLeveringenInterval");
-    REQUIRE(!type.empty(), "Type of vaccin cannot be empty.");
     if (aantal_vaccins.find(type) == aantal_vaccins.end()) return 0;
-    ENSURE(kvaccins.at(type)->interval >= 0, "Het leveringen interval is negatief!");
-    return kvaccins.at(type)->interval;
+    return Kvaccins.at(type)->interval;
 }
 
 const int Hub::getKaantalVaccinsPerLevering(const string &type) const {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getKaantalVaccinsPerLevering");
-    REQUIRE(!type.empty(), "Type of vaccin cannot be empty.");
     if (aantal_vaccins.find(type) == aantal_vaccins.end()) return 0;
-    ENSURE(kvaccins.at(type)->levering >= 0, "Het aantal vaccins per leveringen is negatief!");
-    return kvaccins.at(type)->levering;
+    return Kvaccins.at(type)->levering;
 }
 
 const int Hub::getKaantalVaccinsPerLading(const string &type) const {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getKaantalVaccinsPerLading");
-    REQUIRE(!type.empty(), "Type of vaccin cannot be empty.");
     if (aantal_vaccins.find(type) == aantal_vaccins.end()) return 0;
-    return kvaccins.at(type)->transport;
+    return Kvaccins.at(type)->transport;
 }
 
 const map<string, VaccinatieCentrum *> &Hub::getFverbondenCentra() const {
@@ -75,7 +68,6 @@ const map<string, VaccinatieCentrum *> &Hub::getFverbondenCentra() const {
 
 void Hub::setAantalVaccins(const string &type, int aantalVaccins) {
     REQUIRE(isProperlyInitialized(), "Parser wasn't initialized when calling setAantalVaccins");
-    REQUIRE(!type.empty(), "Type of vaccin cannot be empty.");
     aantal_vaccins[type] = aantalVaccins;
     ENSURE(aantalVaccins == getAantalVaccins(type), "Het setten van het aantal Kvaccins is mislukt!");
 }
@@ -100,16 +92,6 @@ void Hub::addFverbondenCentra(const vector<VaccinatieCentrum *> &fverbondenCentr
            "De centra zijn niet (volledig) Toegevoegd");
 }
 
-void Hub::addCentrum(VaccinatieCentrum *centrum) {
-    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling addCentrum");
-    REQUIRE(centrum != NULL, "Het centrum is ongeldig!");
-
-    unsigned int og_size = fverbonden_centra.size();
-    fverbonden_centra[centrum->getKfname()] = centrum;
-    ENSURE(fverbonden_centra.size() == og_size + 1, "Het vaccinatie centrum is niet toegevoegt!");
-}
-
-
 bool Hub::isIedereenGevaccineerd() const {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling isIedereenGevaccineerd");
     //Kijkt na of iedereen in alle centra al gevaccineerd is of niet
@@ -124,14 +106,14 @@ void Hub::nieuweDag() {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling nieuweDag");
 
     // verdeel de Kvaccins als er nog op voorraad zijn
-    for (map<string, Vaccin *>::const_iterator vaccin = kvaccins.begin(); vaccin != kvaccins.end(); vaccin++) {
+    for (map<string, Vaccin *>::const_iterator vaccin = Kvaccins.begin(); vaccin != Kvaccins.end(); vaccin++) {
         vaccin->second->tijd_tot_nieuwe_levering =
                 (vaccin->second->interval + 1 + (((vaccin->second->tijd_tot_nieuwe_levering - 1) %
                                                   (vaccin->second->interval + 1)))) %
                 (vaccin->second->interval + 1); // python modulo (wraps around)
-//        cout << "\t\taantal dagen tot levering van " << vaccin->first << ": "
-//             << vaccin->second->tijd_tot_nieuwe_levering
-//             << endl;
+        cout << "\t\taantal dagen tot levering van " << vaccin->first << ": "
+             << vaccin->second->tijd_tot_nieuwe_levering
+             << endl;
     }
 
     verdeelVaccins();
@@ -139,189 +121,124 @@ void Hub::nieuweDag() {
 
 void Hub::ontvangLevering(const string &type, int aantal_geleverde_vaccins) {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling ontvangLevering");
-    REQUIRE(!type.empty(), "Type of vaccin cannot be empty.");
-    REQUIRE(aantal_geleverde_vaccins > 0, "Het aantal geleverde Vaccins is negatief/nul");
-
     //voegt geleverde Kvaccins toe aan de stock
     int begin_aantal_vaccins = getAantalVaccins(type);
     aantal_vaccins[type] += aantal_geleverde_vaccins;
     ENSURE(aantal_geleverde_vaccins + begin_aantal_vaccins == getAantalVaccins(type),
            "De Kvaccins werden niet succesvol ontvangen!");
-    addReservations(type);
 }
 
-void Hub::addReservations(const string &type) {
-    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling addReservation");
-    REQUIRE(!type.empty(), "Type of vaccin cannot be empty.");
-    int interval = kvaccins.at(type)->interval;
-    int lading = kvaccins.at(type)->transport;
-    //resize deques om reservaties te kunnen toevoegen
-    if((int) gereserveerde_vaccins.size() < interval) gereserveerde_vaccins.resize(interval);
-    if((int) extra_reservatie.size() < interval) extra_reservatie.resize(interval);
-    //1ste reservatie om alle 2de prikken te voorzien
-    for (map<string, VaccinatieCentrum *>::const_iterator it = fverbonden_centra.begin(), end = fverbonden_centra.end();
-         it != end; it++) {
-        //loop over alle dagen tussen vandaag en volgende levering van type vaccin
-        for (int i = 0; i < interval; i++) {
-            //Aantal 2de prikken voor die dag
-            int vaccins = it->second->getNogTeReserverenVaccins(type, i);
-            vaccins = ceil(vaccins / lading) * lading;
-            //Zolang er voldoende vaccins zijn, ladingen reserveren
-            while (vaccins > 0 && aantal_vaccins[type] > 0) {
-                vaccins -= lading;
-                //gereserveerde vaccins worden appart opgeslagen
-                aantal_vaccins[type] -= lading;
-                gereserveerde_vaccins[i][it->first][type] += lading;
-                it->second->reserveerVaccins(type, i, lading);
-            }
-            ENSURE(extra_reservatie[i][it->first][type] + gereserveerde_vaccins[i][it->first][type] <= it->second->getKcapaciteit()*2, "Er zijn teveel vaccins gereserveerd");
-        }
-    }
-    ENSURE(aantal_vaccins[type] >= 0, "Er Zijn teveel vaccins gereserveerd");
-    //2de reservatie zoekt het gemiddelde om alle vaccins te verdelen, maar niet meer dan capaciteit
-    if(aantal_vaccins[type] > lading) {
-        for (map<string, VaccinatieCentrum *>::const_iterator it = fverbonden_centra.begin(); it != fverbonden_centra.end(); it++) {
-            int vaccins = floor(aantal_vaccins[type] / (lading * fverbonden_centra.size())) * lading;
-            bool done = false;
-            int nietVaccinaties = it->second->getAantalNietVaccinaties();
-            for(int i = 0; i < interval; i++){
-                for (map<string, Vaccin *>::const_iterator vaccin = kvaccins.begin(); vaccin != kvaccins.end(); vaccin++) {
-                    for(int j = 0; j < (int) gereserveerde_vaccins.size(); j++){
-                        nietVaccinaties -= getGereserveerdevaccins(gereserveerde_vaccins[j][vaccin->first]);
-                    }
-                    for(int j = 0; j < (int) gereserveerde_vaccins.size(); j++){
-                        nietVaccinaties -= getGereserveerdevaccins(extra_reservatie[j][vaccin->first]);
-                    }
-                }
-            }
-            //Zolang er voldoende vaccins zijn en niet alle centra gevuld zijn tot capaciteit, ladingen reserveren
-            while(vaccins >= lading && !done){
-                //loop over alle dagen vannaf vandaag tot nieuwe levering van type vaccin
-                for(int i = 0; i < interval; i++){
-                    //Check hoeveel vaccins er nog gereserveerd kunnen worden om aan capaciteit te bekomen die dag, of hoeveel mensen nog gevaccineerd moeten worden
-                    //, it->second->getAantalNietVaccinaties() - getGereserveerdevaccins(extra_reservatie[i][it->first]))
-                    int capaciteit = it->second->getKcapaciteit() - getGereserveerdevaccins(gereserveerde_vaccins[i][it->first]) - getGereserveerdevaccins(extra_reservatie[i][it->first]);
-                    if (vaccins < lading) break;
-                    //Als gereserveerde vaccins boven capaciteit komt, geen vaccins meer leveren
-                    if (extra_reservatie[i][it->first][type] > capaciteit){
-                        done = true;
-                        continue;
-                    }
-                    else{
-                        done = false;
-                    }
-                    if(nietVaccinaties < lading){
-                        int resVaccins = 0;
-                        for (map<string, Vaccin *>::const_iterator vaccin = kvaccins.begin(); vaccin != kvaccins.end(); vaccin++) {
-                            for(int j = 0; j < (int) gereserveerde_vaccins.size(); j++){
-                                resVaccins += getGereserveerdevaccins(gereserveerde_vaccins[j][vaccin->first]);
-                            }
-                            for(int j = 0; j < (int) extra_reservatie.size(); j++){
-                                resVaccins += getGereserveerdevaccins(extra_reservatie[j][vaccin->first]);
-                            }
-                        }
-                        if(resVaccins != 0){
-                            continue;
-                        }
-                    }
-                    //lading reserveren voor die dag
-                    nietVaccinaties -= lading;
-                    vaccins -= lading;
-                    aantal_vaccins[type] -= lading;
-                    extra_reservatie[i][it->first][type] += lading;
-                    ENSURE(extra_reservatie[i][it->first][type] + gereserveerde_vaccins[i][it->first][type] <= it->second->getKcapaciteit()*2, "Er zijn teveel vaccins gereserveerd");
-                }
-            }
-        }
-        ENSURE(aantal_vaccins[type] >= 0, "Er Zijn teveel vaccins gereserveerd");
-    }
+void Hub::verdeelVaccin(const string &type) {
 
 }
 
 void Hub::verdeelVaccins() {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling verdeelVaccins");
-    for (map<string, VaccinatieCentrum *>::iterator centrum = fverbonden_centra.begin(); centrum != fverbonden_centra.end(); centrum++) {
-        map<string, int> gereserveerd_2de_prik;
-        map<string, int> gereserveerd_1ste_prik;
-        //Als er geen vaccins gereserveerd zijn, moet er ook niks verdeeld worden
-        if (gereserveerde_vaccins.empty() && extra_reservatie.empty()) {
-            return;
-        }
-        gereserveerd_2de_prik = gereserveerde_vaccins.front()[centrum->first];
-        gereserveerd_1ste_prik = extra_reservatie.front()[centrum->first];
-        int totaal_vaccins = centrum->second->getTotaalAantalVaccins() + centrum->second->getTotaalAantalGeleverdeVaccins();
-        int capaciteit = centrum->second->getKcapaciteit() - totaal_vaccins;
-        int maxStock = centrum ->second->getMaxStock();
-        //1ste verdeling om alle 2de prikken te leveren
-        for (map<string, Vaccin *>::const_iterator vaccin = kvaccins.begin(); vaccin != kvaccins.end(); vaccin++) {
-            //aantal gereserveerde vaccins leveren
-            int lading = kvaccins.at(vaccin->first)->transport;
-            //Blijft ladingen leveren tot alle vaccins op zijn, of tot capaciteit is bereikt
-            while (gereserveerd_2de_prik[vaccin->first] >= lading && totaal_vaccins + lading < maxStock) {
-                centrum->second->ontvangLevering(lading, vaccin->second);
-                gereserveerd_2de_prik[vaccin->first] -= lading;
-                capaciteit -= lading;
-                totaal_vaccins += lading;
-            }
-            ENSURE(gereserveerd_2de_prik[vaccin->first] >= 0, "Er zijn meer vaccins geleverd dan gereserveerd");
-            //Als er nog gereserveerde vaccins over zijn, mogen die terug in vaccins opgeslagen worden voor later
-            if (gereserveerd_2de_prik[vaccin->first] > 0) {
-                aantal_vaccins[vaccin->first] += gereserveerd_2de_prik[vaccin->first];
-                gereserveerd_2de_prik[vaccin->first] = 0;
+
+    for (map<string, Vaccin *>::const_iterator vaccin = Kvaccins.begin(); vaccin != Kvaccins.end(); vaccin++) {
+//        if (vaccin->second->tijd_tot_nieuwe_levering != vaccin->second->interval) continue;
+        gereserveerd_2de_prik[vaccin->first] = 0;
+        for (map<string, VaccinatieCentrum *>::iterator centrum = fverbonden_centra.begin();
+             centrum != fverbonden_centra.end(); centrum++) {
+            for (int interval = 0; interval <= vaccin->second->tijd_tot_nieuwe_levering; interval++) {
+                gereserveerd_2de_prik[vaccin->first] += centrum->second->getAantalTweedePrikken(vaccin->first,
+                                                                                                interval);
             }
         }
-        //2de verdeling om capaciteit te bekomen
-        for (map<string, Vaccin *>::const_iterator vaccin = kvaccins.begin(); vaccin != kvaccins.end(); vaccin++) {
-            //aantal gereserveerde vaccins leveren
-            int lading = kvaccins.at(vaccin->first)->transport;
-            //int temperatuur = kvaccins.at(vaccin->first)->temperatuur;
-            //Blijft ladingen leveren tot alle vaccins op zijn, of tot capaciteit is bereikt
-            while (gereserveerd_1ste_prik[vaccin->first] >= lading && capaciteit > 0 && totaal_vaccins + lading < maxStock){
-                centrum->second->ontvangLevering(lading, vaccin->second);
-                /*if(temperatuur < 0 && capaciteit < lading){
-                    break;
-                }
-                 */
-                gereserveerd_1ste_prik[vaccin->first] -= lading;
-                capaciteit -= lading;
-                totaal_vaccins += lading;
-            }
-            ENSURE(gereserveerd_1ste_prik[vaccin->first] >= 0, "Er zijn meer vaccins geleverd dan gereserveerd");
-            //Als er nog gereserveerde vaccins over zijn, mogen die terug in vaccins opgeslagen worden voor later
-            if(gereserveerd_1ste_prik[vaccin->first] > 0){
-                aantal_vaccins[vaccin->first] += gereserveerd_1ste_prik[vaccin->first];
-                gereserveerd_1ste_prik[vaccin->first] = 0;
-            }
-        }
-        ENSURE(getGereserveerdevaccins(gereserveerd_1ste_prik) == 0, "Er zitten nog vaccins in een verlopen reservatie");
-        ENSURE(getGereserveerdevaccins(gereserveerd_2de_prik) == 0, "Er zitten nog vaccins in een verlopen reservatie");
+        cout << "\t\tAantal Kvaccins gereserveerd voor de 2de prik met " << vaccin->first << " : "
+             << gereserveerd_2de_prik[vaccin->first] << endl;
     }
-    gereserveerde_vaccins.pop_front();
-    extra_reservatie.pop_front();
+
+    //eerste verdeling om alle eerste_prikken van die dag opnieuw te laten vaccineren.
+    for (map<string, VaccinatieCentrum *>::const_iterator centrum = fverbonden_centra.begin();
+         centrum != fverbonden_centra.end(); centrum++) {
+        int capaciteit = centrum->second->getKcapaciteit();
+        int totaal_vaccins =
+                centrum->second->getTotaalAantalVaccins() + centrum->second->getTotaalAantalGeleverdeVaccins();
+        for (map<string, Vaccin *>::const_iterator vaccin = Kvaccins.begin(); vaccin != Kvaccins.end(); vaccin++) {
+            if (capaciteit <= 0) break;
+            int todays_batch = centrum->second->getTodaysBatch(vaccin->first);
+
+            if (centrum->second->getAantalVaccins(vaccin->first) >= todays_batch || aantal_vaccins[vaccin->first] == 0)
+                continue; // we hebben al genoeg Kvaccins of capaciteit is gevuld
+
+            int min_ = min(4,
+                           todays_batch -
+                           centrum->second->getAantalVaccins(vaccin->first), // is groter dan 0, zie vorige if statement
+                           capaciteit,
+                           aantal_vaccins[vaccin->first],
+                           centrum->second->getMaxStock() - totaal_vaccins);
+
+            // we checken of we met het afronden niet te veel Kvaccins leveren, zo ja ronden we naar beneden af(en leveren we dus te weinig Kvaccins)
+            int ladingen = floor((float) min_ / vaccin->second->transport);
+            if (centrum->second->getAantalNietVaccinaties() == 0 &&
+                centrum->second->getMaxStock() - totaal_vaccins - vaccin->second->transport > 0)
+                ladingen = 1;
+
+            // we verminderen de capaciteit, aantal Kvaccins en we sturen de Kvaccins op
+            int vaccins_in_levering = ladingen * vaccin->second->transport;
+            ENSURE(vaccins_in_levering >= 0, "Er wordt een negatief aantal vaccins geleverd!");
+
+            capaciteit -= vaccins_in_levering;
+            aantal_vaccins[vaccin->first] -= vaccins_in_levering;
+            centrum->second->ontvangLevering(vaccins_in_levering, vaccin->second);
+        }
+    }
+    //tweede verdeling zorgt ervoor dat alle centra met de volle capaciteit kan vaccineren
+    for (map<string, VaccinatieCentrum *>::const_iterator centrum = fverbonden_centra.begin();
+         centrum != fverbonden_centra.end(); centrum++) {
+
+        int totaal_vaccins =
+                centrum->second->getTotaalAantalVaccins() + centrum->second->getTotaalAantalGeleverdeVaccins();
+        int capaciteit = centrum->second->getKcapaciteit() - totaal_vaccins;
+        if (totaal_vaccins >= capaciteit) continue;
+
+        for (map<string, Vaccin *>::const_iterator vaccin = Kvaccins.begin(); vaccin != Kvaccins.end(); vaccin++) {
+            if (capaciteit <= 0) break;
+
+            ENSURE(totaal_vaccins <= centrum->second->getMaxStock(), "Te veel vaccins!");
+            if (aantal_vaccins[vaccin->first] - gereserveerd_2de_prik[vaccin->first] <= 0) continue;
+
+            int min_ = min(4,
+                           capaciteit,
+                           aantal_vaccins[vaccin->first] - gereserveerd_2de_prik[vaccin->first],
+                           centrum->second->getMaxStock() - totaal_vaccins,
+                           centrum->second->getAantalNietVaccinaties());
+
+            // we checken of we met het afronden niet te veel Kvaccins leveren, zo ja ronden we naar beneden af(en leveren we dus te weinig Kvaccins)
+            int ladingen = floor((float) min_ / vaccin->second->transport);
+            if (centrum->second->getAantalNietVaccinaties() < vaccin->second->transport &&
+                centrum->second->getMaxStock() - totaal_vaccins - vaccin->second->transport > 0)
+                ladingen = 1;
+
+            int vaccins_in_levering = ladingen * vaccin->second->transport;
+            ENSURE(vaccins_in_levering >= 0, "Er wordt een negatief aantal vaccins geleverd!");
+            // we verminderen de capaciteit, aantal Kvaccins en we sturen de Kvaccins op
+            capaciteit -= vaccins_in_levering;
+            aantal_vaccins[vaccin->first] -= vaccins_in_levering;
+            centrum->second->ontvangLevering(vaccins_in_levering, vaccin->second); //stuurt de Kvaccins naar het centrum
+        }
+    }
 }
 
 int
 Hub::minAantalLeveringen(const map<string, VaccinatieCentrum *>::const_iterator &centrum, const Vaccin *vaccin) const {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling minAantalLeveringen");
-    REQUIRE(vaccin == NULL, "Vaccin is niet geldig!");
     //Berekent hoeveel ladingen er kunnen geleverd worden om de capaciteit van het centrum te bereiken
     return ceil(((float) max(centrum->second->getKcapaciteit() - centrum->second->getAantalVaccins(vaccin->type), 0) /
                  vaccin->transport));
 }
 
-map<string, Vaccin *> Hub::getVaccins() {
-    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getVaccins()");
-    return kvaccins;
+void Hub::addCentrum(VaccinatieCentrum *centrum) {
+    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling addCentrum");
+    unsigned int og_size = fverbonden_centra.size();
+    fverbonden_centra[centrum->getKfname()] = centrum;
+    ENSURE(fverbonden_centra.size() == og_size + 1, "Het vaccinatie centrum is niet toegevoegt!");
 }
 
-int Hub::getGereserveerdevaccins(map<string, int> dag) {
-    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getGereserveerdevaccins()");
-    int vaccins = 0;
-    for (map<string, Vaccin *>::const_iterator vaccin = kvaccins.begin(); vaccin != kvaccins.end(); vaccin++) {
-        vaccins += dag[vaccin->first];
-    }
-    return vaccins;
+map<string, Vaccin *> Hub::getVaccins() {
+    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getVaccins()");
+    return Kvaccins;
 }
 
 Hub::~Hub() {}
-

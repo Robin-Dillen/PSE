@@ -15,7 +15,6 @@
 #include <cmath> // voor ceil
 #include <iostream> // for testing
 #include <algorithm>
-#include <deque>
 
 
 #include "lib/DesignByContract.h"
@@ -35,16 +34,10 @@ public:
 
     Hub(const map<string, Vaccin *> &vaccins);
 
-    /*!
-     * default constructor
-     * \n ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
-     */
-    Hub();
-
     /**
      * Verwijdert alle centra van deze hub
      */
-    ~Hub();
+    virtual ~Hub();
 
     /**
      * @return geeft terug of het object correct is geïnitialiseert
@@ -52,10 +45,9 @@ public:
     bool isProperlyInitialized() const;
 
     /**
-     * @param type: naam van het vaccin 
+     * @param type: naam van het vaccin
      * @return int :geeft terug om de hoeveel dagen een levering Kvaccins binnenkomt
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getFhub()");
-     * \n REQUIRE(!type.empty(), "Type of vaccin cannot be empty.");
      */
     int getAantalVaccins(const string &type) const;
 
@@ -63,7 +55,6 @@ public:
      * geeft het totaal aantal Kvaccins terug
      * @return int
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getTotaalAantalVaccins()");
-     * \n ENSURE(totaal >= 0, "Het totaal aantal vaccins is negatief!");
      */
     int getTotaalAantalVaccins() const;
 
@@ -71,25 +62,20 @@ public:
      * @param type: naam van het vaccin waarvan we het interval willen weten
      * @return int :geeft terug om de hoeveel dagen een levering Kvaccins binnenkomt
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getFhub()");
-     * \n ENSURE(kvaccins.at(type)->interval >= 0, "Het leveringen interval is negatief!");
-     * \n REQUIRE(!type.empty(), "Type of vaccin cannot be empty.");
      */
     int getLeveringenInterval(const string &type) const;
 
     /*!
-     * @param type: naam van het vaccin 
+     * @param type: naam van het vaccin
      * @return geeft het aantal Kvaccins per levering terug
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getKaantalVaccinsPerLevering");
-     * \n REQUIRE(!type.empty(), "Type of vaccin cannot be empty.");
      */
     const int getKaantalVaccinsPerLevering(const string &type) const;
 
     /*!
-     * @param type: naam van het vaccin 
+     * @param type: naam van het vaccin
      * @return geeft het aantal Kvaccins per lading terug
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getKaantalVaccinsPerLading");
-     * \n ENSURE(kvaccins.at(type)->levering >= 0, "Het aantal vaccins per leveringen is negatief!");
-     * \n REQUIRE(!type.empty(), "Type of vaccin cannot be empty.");
      */
     const int getKaantalVaccinsPerLading(const string &type) const;
 
@@ -101,12 +87,11 @@ public:
 
     /**
      * update het aantal Kvaccins
-     * @param type: naam van het vaccin 
+     * @param type: naam van het vaccin
      * @param aantalVaccins: int
      * @return void
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling setAantalVaccins");
      * \n ENSURE(aantalVaccins == getAantalVaccins(), "Het setten van het aantal Kvaccins is mislukt!");
-     * \n REQUIRE(!type.empty(), "Type of vaccin cannot be empty.");
      */
     void setAantalVaccins(const string &type, int aantalVaccins);
 
@@ -133,7 +118,6 @@ public:
     * @param fverbondenCentra: een vector met een aantal verbonden centra
     * @return void
     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling addCentrum");
-    * \n REQUIRE(centrum != NULL, "Het centrum is ongeldig!");
     * \n ENSURE(fverbonden_centra.size() == 1 + start_size, "De centra zijn niet (volledig) Toegevoegd");
      */
     void addCentrum(VaccinatieCentrum *centrum);
@@ -155,8 +139,6 @@ public:
      * @param type: naam van het vaccin
      * @param aantal_vaccins het aantal geleverde Kvaccins
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling ontvangLevering");
-     * \n REQUIRE(aantal_geleverde_vaccins > 0, "Het aantal geleverde Vaccins is negatief/nul");
-     * \n REQUIRE(!type.empty(), "Type of vaccin cannot be empty.");
      * \n ENSURE(aantal_geleverde_vaccins + begin_aantal_vaccins == getAantalVaccins(), "De Kvaccins werden niet succesvol ontvangen!");
      */
     void ontvangLevering(const string &type, int aantal_vaccins);
@@ -164,10 +146,9 @@ public:
     /*!
      * verdeelt de Kvaccins over alle verbonden vaccinatie centra
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling verdeelVaccins");
-     * \n ENSURE(gereserveerd_2de_prik[vaccin->first] >= 0, "Er zijn meer vaccins geleverd dan gereserveerd");
-     * \n ENSURE(gereserveerd_1ste_prik[vaccin->first] >= 0, "Er zijn meer vaccins geleverd dan gereserveerd");
-     * \n ENSURE(getGereserveerdevaccins(gereserveerd_1ste_prik) == 0, "Er zitten nog vaccins in een verlopen reservatie");
-     * \n ENSURE(getGereserveerdevaccins(gereserveerd_2de_prik) == 0, "Er zitten nog vaccins in een verlopen reservatie");
+     * \n ENSURE(aantal Kvaccins >= 0, "You can't have less than 0 Kvaccins!");
+     * \n ENSURE(vaccins_in_levering >= 0, "Er wordt een negatief aantal vaccins geleverd!");
+     * \n ENSURE(totaal_vaccins <= centrum->second->getMaxStock(), "Te veel vaccins!");
      */
     void verdeelVaccins();
 
@@ -176,7 +157,6 @@ public:
      * @param centrum iterator
      * @return het minimum aantal leveringen
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling minAantalLeveringen");
-     * \n REQUIRE(vaccin == NULL, "Vaccin is niet geldig!");
      */
     int
     minAantalLeveringen(const map<string, VaccinatieCentrum *>::const_iterator &centrum, const Vaccin *vaccin) const;
@@ -188,32 +168,15 @@ public:
      */
     map<string, Vaccin *> getVaccins();
 
-
-    /*!
-     * Maakt reservaties voor de centra voor bepaald type vaccin
-     * @param type: type van vaccin
-     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling verdeelVaccins");
-     * \n REQUIRE(!type.empty(), "Type of vaccin cannot be empty.");
-     * \n ENSURE(extra_reservatie[i][it->first][type] + gereserveerde_vaccins[i][it->first][type] <= it->second->getKcapaciteit()*2, "Er zijn teveel vaccins gereserveerd");
-     * \n ENSURE(aantal_vaccins[type] >= 0, "Er Zijn teveel vaccins gereserveerd");
-     */
-    void addReservations(const string &type);
-
-    /*!
-     *
-     * @param dag: een batch van gereserveerde vaccins van een bepaalde dag
-     * @return: totaan aantal vaccins die gereserveerd zijn die dag
-     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getGereserveerdevaccins()");
-     */
-    int getGereserveerdevaccins(map<string, int> dag);
-
 private:
+
+    void verdeelVaccin(const string &type);
 
     // const attributes
 //    const int kaantal_vaccins_per_levering;
 //    const int kleveringen_interval;
 //    const int kaantal_vaccins_per_lading;
-    const map<string, Vaccin *> kvaccins;
+    const map<string, Vaccin *> Kvaccins;
 
     const Hub *_initCheck; // pointer naar zichzelf om te checken of het object correct geïnitialseert is
 
@@ -222,8 +185,7 @@ private:
 
 //    int aantal_vaccins; // aantal Kvaccins in de hub
     map<string, int> aantal_vaccins;
-    deque<map<string, map<string, int> > > gereserveerde_vaccins;
-    deque<map<string, map<string, int> > > extra_reservatie;
+    map<string, int> gereserveerd_2de_prik;
 };
 
 
