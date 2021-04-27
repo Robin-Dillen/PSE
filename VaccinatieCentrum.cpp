@@ -250,6 +250,21 @@ void VaccinatieCentrum::nieuweDag() {
             aantal_eerste_prik += aantal_prikken;
         }
     }
+    /*bool koudeVaccins = true;
+    for (MapSP_VI_Iterator vaccin = aantal_vaccins.begin(); vaccin != aantal_vaccins.end() && capaciteit != 0; vaccin++) {
+        if(vaccin->second.first->temperatuur >= 0){
+            koudeVaccins = false;
+            break;
+        }
+    }
+    if(!koudeVaccins){
+        for (MapSP_VI_Iterator vaccin = aantal_vaccins.begin(); vaccin != aantal_vaccins.end() && capaciteit != 0; vaccin++) {
+            if (vaccin->second.first->temperatuur < 0) {
+                ENSURE( vaccin->second.second == 0, "Er zijn Vaccins over die vandaag gezet moesten worden." );
+            }
+        }
+    }
+     */
 
     ENSURE(begin_aantal_vaccins - aantal_tweede_prik - aantal_eerste_prik == getTotaalAantalVaccins(),
            "Het aantal vaccins is niet geüpdate!");

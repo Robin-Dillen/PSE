@@ -274,9 +274,14 @@ void Hub::verdeelVaccins() {
         for (map<string, Vaccin *>::const_iterator vaccin = kvaccins.begin(); vaccin != kvaccins.end(); vaccin++) {
             //aantal gereserveerde vaccins leveren
             int lading = kvaccins.at(vaccin->first)->transport;
+            //int temperatuur = kvaccins.at(vaccin->first)->temperatuur;
             //Blijft ladingen leveren tot alle vaccins op zijn, of tot capaciteit is bereikt
             while (gereserveerd_1ste_prik[vaccin->first] >= lading && capaciteit > 0 && totaal_vaccins + lading < maxStock){
                 centrum->second->ontvangLevering(lading, vaccin->second);
+                /*if(temperatuur < 0 && capaciteit < lading){
+                    break;
+                }
+                 */
                 gereserveerd_1ste_prik[vaccin->first] -= lading;
                 capaciteit -= lading;
                 totaal_vaccins += lading;
