@@ -1,0 +1,35 @@
+<!--1 Hub-->
+<!--1 Vaccin type-->
+<!--genoeg vaccins-->
+<!--positieve temperatuur-->
+<!--geen hernieuwing-->
+<!--(3) extra tags-->
+<root>
+    <HUB>
+        <VACCIN>
+            <type></type>
+            <levering>100000</levering>
+            <interval>13</interval>
+            <transport>5000</transport>
+            <hernieuwing>0</hernieuwing>
+            <temperatuur>5</temperatuur>
+        </VACCIN>
+        <VACCIN>
+            <type>Moderna</type>
+            <levering>23000</levering>
+            <interval>13</interval>
+            <transport>1000</transport>
+            <hernieuwing>28</hernieuwing>
+            <temperatuur>-20</temperatuur>
+        </VACCIN>
+        <CENTRA>
+            <centrum>Park Spoor Oost</centrum>
+        </CENTRA>
+    </HUB>
+    <VACCINATIECENTRUM>
+        <naam>Park Spoor Oost</naam>
+        <adres>Noordersingel 40, Antwerpen</adres>
+        <inwoners>540173</inwoners>
+        <capaciteit>7500</capaciteit>
+    </VACCINATIECENTRUM>
+</root>
