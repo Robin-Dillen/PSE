@@ -85,6 +85,10 @@ TEST_F(VaccinSimulatieInputTest, InputXMLWarning004) {
 
 TEST_F(VaccinSimulatieInputTest, InputXMLWarning005) {
     Parser P("../XMLfiles/WarningTests/test005.xml");
-    EXPECT_EQ(3, P.errorOccured(MISSING_TAG));
+    EXPECT_EQ(2, P.errorOccured(MISSING_TAG));
 }
 
+TEST_F(VaccinSimulatieInputTest, InputXMLWarning006) {
+    Parser P("../XMLfiles/WarningTests/test006.xml");
+    EXPECT_EQ(1, P.errorOccured(MISSING_TAG));
+}
