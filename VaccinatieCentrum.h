@@ -236,7 +236,12 @@ private:
 
     //aantal mensen die nog geen vaccinatie hebben gekregen.
 
-    map<string, int> aantal_vaccinaties; // aantal mensen dat gevaccineert is
+    map<string, int> aantal_vaccinaties;
+public:
+    const map<string, int> &getAantalVaccinaties1() const;
+
+private:
+    // aantal mensen dat gevaccineert is
     // we kunnen gwn een map<vaccin_naam, aantal> bijhouden
 
     map<string, int> aantal_geleverde_vaccins; // aantal vaccins dat toegevoegd wordt na een levering

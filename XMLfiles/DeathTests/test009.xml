@@ -1,19 +1,11 @@
 <!--1 Hub-->
-<!--1 Vaccin type-->
+<!--geen Vaccin type-->
 <!--genoeg vaccins-->
 <!--positieve temperatuur-->
 <!--geen hernieuwing-->
-<!--fout vaccinatiecentrum-->
+<!--ERROR-->
 <root>
     <HUB>
-        <VACCIN>
-            <type>J_J</type>
-            <levering>100000</levering>
-            <interval>13</interval>
-            <transport>1000</transport>
-            <hernieuwing>0</hernieuwing>
-            <temperatuur>5</temperatuur>
-        </VACCIN>
         <CENTRA>
             <centrum>Park Spoor Oost</centrum>
             <centrum>AED Studios</centrum>
@@ -34,9 +26,9 @@
         <capaciteit>2000</capaciteit>
     </VACCINATIECENTRUM>
     <VACCINATIECENTRUM>
-        <naam></naam>
+        <naam>De Zoerla</naam>
         <adres>Gevaertlaan 1, Westerlo</adres>
-        <inwoners>-500</inwoners>
+        <inwoners>49451</inwoners>
         <capaciteit>1000</capaciteit>
     </VACCINATIECENTRUM>
     <VACCINATIECENTRUM>

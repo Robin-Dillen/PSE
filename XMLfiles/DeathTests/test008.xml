@@ -1,8 +1,10 @@
-<!--3 Hubs-->
-<!--2 Vaccin type-->
+<!--1 Hub-->
+<!--1 Vaccin type-->
 <!--genoeg vaccins-->
-<!--positieve en negatieve temperatuur-->
-<!--(geen) hernieuwing-->
+<!--positieve temperatuur-->
+<!--geen hernieuwing-->
+<!--capaciteit van 0-->
+<!--ERROR-->
 <root>
     <HUB>
         <VACCIN>
@@ -15,42 +17,9 @@
         </VACCIN>
         <CENTRA>
             <centrum>Park Spoor Oost</centrum>
-        </CENTRA>
-    </HUB>
-    <HUB>
-        <VACCIN>
-            <type>Moderna</type>
-            <levering>23000</levering>
-            <interval>13</interval>
-            <transport>1000</transport>
-            <hernieuwing>28</hernieuwing>
-            <temperatuur>-20</temperatuur>
-        </VACCIN>
-        <VACCIN>
-            <type>Pfizer</type>
-            <levering>93000</levering>
-            <interval>6</interval>
-            <transport>2000</transport>
-            <hernieuwing>21</hernieuwing>
-            <temperatuur>-70</temperatuur>
-        </VACCIN>
-        <CENTRA>
-            <centrum>AED Studios</centrum>
-            <centrum>Flanders Expo</centrum>
-        </CENTRA>
-    </HUB>
-    <HUB>
-        <VACCIN>
-            <type>AstraZeneca</type>
-            <levering>67000</levering>
-            <interval>4</interval>
-            <transport>1500</transport>
-            <hernieuwing>28</hernieuwing>
-            <temperatuur>5</temperatuur>
-        </VACCIN>
-        <CENTRA>
             <centrum>AED Studios</centrum>
             <centrum>De Zoerla</centrum>
+            <centrum>Flanders Expo</centrum>
         </CENTRA>
     </HUB>
     <VACCINATIECENTRUM>
@@ -63,13 +32,13 @@
         <naam>AED Studios</naam>
         <adres>Fabriekstraat 38, Lint</adres>
         <inwoners>76935</inwoners>
-        <capaciteit>2000</capaciteit>
+        <capaciteit>0</capaciteit>
     </VACCINATIECENTRUM>
     <VACCINATIECENTRUM>
         <naam>De Zoerla</naam>
         <adres>Gevaertlaan 1, Westerlo</adres>
         <inwoners>49451</inwoners>
-        <capaciteit>1500</capaciteit>
+        <capaciteit>1000</capaciteit>
     </VACCINATIECENTRUM>
     <VACCINATIECENTRUM>
         <naam>Flanders Expo</naam>

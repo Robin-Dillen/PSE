@@ -1,56 +1,25 @@
-<!--3 Hubs-->
-<!--2 Vaccin type-->
+<!--1 Hub-->
+<!--1 Vaccin type-->
 <!--genoeg vaccins-->
-<!--positieve en negatieve temperatuur-->
-<!--(geen) hernieuwing-->
+<!--positieve temperatuur-->
+<!--geen hernieuwing-->
+<!--ongeldig type in transport-->
+<!--ERROR-->
 <root>
     <HUB>
         <VACCIN>
             <type>J_J</type>
             <levering>100000</levering>
             <interval>13</interval>
-            <transport>1000</transport>
+            <transport><voertuig>auto</voertuig></transport>
             <hernieuwing>0</hernieuwing>
             <temperatuur>5</temperatuur>
         </VACCIN>
         <CENTRA>
             <centrum>Park Spoor Oost</centrum>
-        </CENTRA>
-    </HUB>
-    <HUB>
-        <VACCIN>
-            <type>Moderna</type>
-            <levering>23000</levering>
-            <interval>13</interval>
-            <transport>1000</transport>
-            <hernieuwing>28</hernieuwing>
-            <temperatuur>-20</temperatuur>
-        </VACCIN>
-        <VACCIN>
-            <type>Pfizer</type>
-            <levering>93000</levering>
-            <interval>6</interval>
-            <transport>2000</transport>
-            <hernieuwing>21</hernieuwing>
-            <temperatuur>-70</temperatuur>
-        </VACCIN>
-        <CENTRA>
-            <centrum>AED Studios</centrum>
-            <centrum>Flanders Expo</centrum>
-        </CENTRA>
-    </HUB>
-    <HUB>
-        <VACCIN>
-            <type>AstraZeneca</type>
-            <levering>67000</levering>
-            <interval>4</interval>
-            <transport>1500</transport>
-            <hernieuwing>28</hernieuwing>
-            <temperatuur>5</temperatuur>
-        </VACCIN>
-        <CENTRA>
             <centrum>AED Studios</centrum>
             <centrum>De Zoerla</centrum>
+            <centrum>Flanders Expo</centrum>
         </CENTRA>
     </HUB>
     <VACCINATIECENTRUM>
@@ -69,7 +38,7 @@
         <naam>De Zoerla</naam>
         <adres>Gevaertlaan 1, Westerlo</adres>
         <inwoners>49451</inwoners>
-        <capaciteit>1500</capaciteit>
+        <capaciteit>1000</capaciteit>
     </VACCINATIECENTRUM>
     <VACCINATIECENTRUM>
         <naam>Flanders Expo</naam>
