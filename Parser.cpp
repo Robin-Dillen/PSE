@@ -45,67 +45,58 @@ Parser::Parser(const string &filename) : _initCheck(this) {
             // naam moet bestaan
             if (centrum->FirstChildElement("naam") == NULL) {
                 valid = false;
-                cerr << "de naam"
-                        << " van het vaccinatiecentrum" << locationToString(centrum)
-                        << locationToString(centrum) << " werd niet correct meegegeven." << endl;
+                cerr << "de tag naam"
+                     << " van het vaccinatiecentrum" << locationToString(centrum)
+                     << locationToString(centrum) << " werd niet correct meegegeven." << endl;
                 errors.push_back(MISSING_TAG);
-            }else{
-                centrum->FirstChildElement("naam")->InsertEndChild(space);
+            } else if (centrum->FirstChildElement("naam")->GetText() == NULL) {
+                valid = false;
+                cerr << "de naam" << locationToString(centrum->FirstChildElement("naam"))
+                     << " van het vaccinatiecentrum" << locationToString(centrum)
+                     << " heeft een niet toegestaane waarde(leeg)." << endl;
+                errors.push_back(WRONG_VALUE);
+            } else {
                 naam = centrum->FirstChildElement("naam")->GetText();
-                if (naam == " ") {
-                    valid = false;
-                    cerr << "de naam" << locationToString(centrum->FirstChildElement("naam"))
-                            << " van het vaccinatiecentrum" << locationToString(centrum)
-                            << " heeft een niet toegestaane waarde(leeg)." << endl;
-                    errors.push_back(WRONG_VALUE);
-                }
-                //naam = naam.substr(0, naam.size()-1);
             }
 
             // adres moet bestaan
             if (centrum->FirstChildElement("adres") == NULL) {
                 valid = false;
                 cerr << "het adres"
-                        << " van het vaccinatiecentrum" << locationToString(centrum)
-                        << " werd niet correct meegegeven." << endl;
+                     << " van het vaccinatiecentrum" << locationToString(centrum)
+                     << " werd niet correct meegegeven." << endl;
                 errors.push_back(MISSING_TAG);
+
+            } else if (centrum->FirstChildElement("adres")->GetText() == NULL) {
+                valid = false;
+                cerr << "het adres" << locationToString(centrum->FirstChildElement("adres"))
+                     << " van het vaccinatiecentrum" << locationToString(centrum)
+                     << " heeft een niet toegestaane waarde(leeg)." << endl;
+                errors.push_back(WRONG_VALUE);
             } else {
                 centrum->FirstChildElement("adres")->InsertEndChild(space);
                 adres = centrum->FirstChildElement("adres")->GetText();
-                if (adres == " ") {
-                    valid = false;
-                    cerr << "het adres" << locationToString(centrum->FirstChildElement("adres"))
-                            << " van het vaccinatiecentrum" << locationToString(centrum)
-                            << " heeft een niet toegestaane waarde(leeg)." << endl;
-                    errors.push_back(WRONG_VALUE);
-                }
-                //adres = adres.substr(0, adres.size()-1);
             }
 
             // inwoners moet bestaan
             if (centrum->FirstChildElement("inwoners") == NULL) {
                 valid = false;
                 cerr << "het aantal inwoners"
-                        << " van het vaccinatiecentrum" <<  locationToString(centrum)<< " werd niet meegegeven." << endl;
+                     << " van het vaccinatiecentrum" << locationToString(centrum) << " werd niet meegegeven." << endl;
                 errors.push_back(MISSING_TAG);
-            } else{
-                centrum->FirstChildElement("adres")->InsertEndChild(space);
-                string Str_inwoners = centrum->FirstChildElement("inwoners")->GetText();
-                if(Str_inwoners == " ") {
+            } else if (centrum->FirstChildElement("inwoners")->GetText() == NULL) {
+                valid = false;
+                cerr << "het aantal inwoners" << locationToString(centrum->FirstChildElement("inwoners"))
+                     << " van het vaccinatiecentrum" << locationToString(centrum)
+                     << " heeft een niet toegestaane waarde(negatief)." << endl;
+                errors.push_back(WRONG_VALUE);
+            } else {
+                inwoners = to_int(centrum->FirstChildElement("inwoners")->GetText());
+                if (inwoners < 0) {
                     valid = false;
                     cerr << "het aantal inwoners" << locationToString(centrum->FirstChildElement("inwoners"))
                          << " van het vaccinatiecentrum" << locationToString(centrum)
                          << " heeft een niet toegestaane waarde(negatief)." << endl;
-                    errors.push_back(WRONG_VALUE);
-                }
-                //Str_inwoners = Str_inwoners.substr(0, Str_inwoners.size()-1);
-                inwoners = to_int(Str_inwoners);
-                cout<<Str_inwoners << endl << inwoners;
-                if (inwoners < 0) {
-                    valid = false;
-                    cerr << "het aantal inwoners" << locationToString(centrum->FirstChildElement("inwoners"))
-                            << " van het vaccinatiecentrum" << locationToString(centrum)
-                            << " heeft een niet toegestaane waarde(negatief)." << endl;
                     errors.push_back(WRONG_VALUE);
                 }
             }
@@ -114,25 +105,21 @@ Parser::Parser(const string &filename) : _initCheck(this) {
             if (centrum->FirstChildElement("capaciteit") == NULL) {
                 valid = false;
                 cerr << "de capaciteit van het vaccinatiecentrum " << locationToString(centrum)
-                        << " werd niet meegegeven." << endl;
+                     << " werd niet meegegeven." << endl;
                 errors.push_back(MISSING_TAG);
+            } else if (centrum->FirstChildElement("capaciteit")->GetText() == NULL) {
+                valid = false;
+                cerr << "de capaciteit" << locationToString(centrum->FirstChildElement("inwoners"))
+                     << " van het vaccinatiecentrum" << locationToString(centrum)
+                     << " heeft een niet toegestaane waarde(negatief)." << endl;
+                errors.push_back(WRONG_VALUE);
             } else {
-                centrum->FirstChildElement("capaciteit")->InsertEndChild(space);
-                string Str_capaciteit = centrum->FirstChildElement("capaciteit")->GetText();
-                if (Str_capaciteit == " ") {
+                capaciteit = to_int(centrum->FirstChildElement("capaciteit")->GetText());
+                if (capaciteit < 0) {
                     valid = false;
                     cerr << "de capaciteit" << locationToString(centrum->FirstChildElement("inwoners"))
                          << " van het vaccinatiecentrum" << locationToString(centrum)
                          << " heeft een niet toegestaane waarde(negatief)." << endl;
-                    errors.push_back(WRONG_VALUE);
-                }
-                capaciteit = to_int(Str_capaciteit.substr(0, Str_capaciteit.size()-1));
-                cout<<Str_capaciteit << endl << capaciteit;
-                if (capaciteit < 0) {
-                    valid = false;
-                    cerr << "de capaciteit" << locationToString(centrum->FirstChildElement("inwoners"))
-                            << " van het vaccinatiecentrum" << locationToString(centrum)
-                            << " heeft een niet toegestaane waarde(negatief)." << endl;
                     errors.push_back(WRONG_VALUE);
                 }
             }
@@ -206,58 +193,39 @@ Parser::Parser(const string &filename) : _initCheck(this) {
                 errors.push_back(MISSING_TAG);
                 cerr << "het element 'type' van het vaccin" + locationToString(vaccin) + " bestaat niet!";
                 correct = false;
-            }
-            else{
-                vaccin->FirstChildElement("type")->InsertEndChild(space);
+            } else if (vaccin->FirstChildElement("type")->GetText() == NULL) {
+                correct = false;
+                cerr << "Het type" << locationToString(vaccin->FirstChildElement("type"))
+                     << " van het vaccin" << locationToString(vaccin)
+                     << " heeft een niet toegestaane waarde (leeg)." << endl;
+                errors.push_back(WRONG_VALUE);
+            } else {
                 naam = vaccin->FirstChildElement("type")->GetText();
-                //ENSURE(!naam.empty(), ("Het type" + locationToString(vaccin->FirstChildElement("type")) + " van het vaccin heeft een ongeldige waarde").c_str());
-                if (naam == " ") {
-                    errors.push_back(WRONG_VALUE);
-                    cerr << "Het type" + locationToString(vaccin->FirstChildElement("type")) +
-                            " van het vaccin heeft een ongeldige waarde";
-                    correct = false;
-                }
-                //naam = naam.substr(0, naam.size()-1);
             }
             //ENSURE(vaccin->FirstChildElement("levering") != NULL, "...");
             if (vaccin->FirstChildElement("levering") == NULL) {
                 errors.push_back(MISSING_TAG);
                 cerr << "Het element 'levering' van het vaccin" + locationToString(vaccin) + " bestaat niet!";
                 correct = false;
-            }else{
-                vaccin->FirstChildElement("levering")->InsertEndChild(space);
-                string Str_levering = vaccin->FirstChildElement("levering")->GetText();
-                if (Str_levering == " ") {
-                    errors.push_back(WRONG_VALUE);
-                    cerr << "de levering" + locationToString(vaccin->FirstChildElement("type")) +
-                            " van het vaccin heeft een ongeldige waarde";
-                    correct = false;
-                }
-                levering = to_int(Str_levering.substr(0, Str_levering.size()-1));
-                if (levering <= 0) {
-                    errors.push_back(WRONG_VALUE);
-                    cerr << "de levering" + locationToString(vaccin->FirstChildElement("type")) +
-                            " van het vaccin heeft een ongeldige waarde";
-                    correct = false;
-                }
+            } else if (vaccin->FirstChildElement("levering")->GetText() == NULL) {
+                correct = false;
+                cerr << "de levering" + locationToString(vaccin->FirstChildElement("type")) +
+                        " van het vaccin heeft een ongeldige waarde";
+                errors.push_back(WRONG_VALUE);
+            } else {
+                levering = to_int(vaccin->FirstChildElement("levering")->GetText());
             }
-            //ENSURE(vaccin->FirstChildElement("interval") != NULL, "...");
             if (vaccin->FirstChildElement("interval") == NULL) {
                 errors.push_back(MISSING_TAG);
                 cerr << "Het element 'interval' van het vaccin" + locationToString(vaccin) + " bestaat niet!";
                 correct = false;
-            }
-            else{
-                vaccin->FirstChildElement("interval")->InsertEndChild(space);
-                string Str_interval = vaccin->FirstChildElement("interval")->GetText();
-                if (Str_interval  == " ") {
-                    errors.push_back(WRONG_VALUE);
-                    cerr << "Het element 'interval'" + locationToString(vaccin->FirstChildElement("type")) +
-                            " van het vaccin heeft een ongeldige waarde";
-                    correct = false;
-                }
-                interval = to_int(Str_interval.substr(0, Str_interval.size()-1));
-                //ENSURE(interval > 0, "...");
+            } else if (vaccin->FirstChildElement("interval")->GetText() == NULL) {
+                errors.push_back(WRONG_VALUE);
+                cerr << "Het element 'interval'" + locationToString(vaccin->FirstChildElement("type")) +
+                        " van het vaccin heeft een ongeldige waarde";
+                correct = false;
+            } else {
+                interval = to_int(vaccin->FirstChildElement("interval")->GetText());
                 if (interval <= 0) {
                     errors.push_back(WRONG_VALUE);
                     cerr << "Het element 'interval'" + locationToString(vaccin->FirstChildElement("type")) +
@@ -265,23 +233,18 @@ Parser::Parser(const string &filename) : _initCheck(this) {
                     correct = false;
                 }
             }
-            //ENSURE(vaccin->FirstChildElement("transport") != NULL, "...");
+
             if (vaccin->FirstChildElement("transport") == NULL) {
                 errors.push_back(MISSING_TAG);
                 cerr << "Het element 'transport' van het vaccin" + locationToString(vaccin) + " bestaat niet!";
                 correct = false;
-            }
-            else{
-                vaccin->FirstChildElement("transport")->InsertEndChild(space);
-                string Str_transport = vaccin->FirstChildElement("transport")->GetText();
-                //ENSURE(transport > 0, "...");
-                if (Str_transport == " ") {
-                    errors.push_back(WRONG_VALUE);
-                    cerr << "Het element 'transport'" + locationToString(vaccin->FirstChildElement("type")) +
-                            " van het vaccin heeft een ongeldige waarde";
-                    correct = false;
-                }
-                transport = to_int(Str_transport.substr(0, Str_transport.size()-1));
+            } else if (vaccin->FirstChildElement("transport")->GetText() == NULL) {
+                errors.push_back(WRONG_VALUE);
+                cerr << "Het element 'transport'" + locationToString(vaccin->FirstChildElement("type")) +
+                        " van het vaccin heeft een ongeldige waarde";
+                correct = false;
+            } else {
+                transport = to_int(vaccin->FirstChildElement("transport")->GetText());
                 if (transport <= 0) {
                     errors.push_back(WRONG_VALUE);
                     cerr << "Het element 'transport'" + locationToString(vaccin->FirstChildElement("type")) +
@@ -293,17 +256,13 @@ Parser::Parser(const string &filename) : _initCheck(this) {
                 errors.push_back(MISSING_TAG);
                 cerr << "Het element 'hernieuwing' van het vaccin" + locationToString(vaccin) + " bestaat niet!";
                 correct = false;
-            }
-            else{
-                vaccin->FirstChildElement("hernieuwing")->InsertEndChild(space);
-                string Str_hernieuwing = vaccin->FirstChildElement("hernieuwing")->GetText();
-                if (Str_hernieuwing == " ") {
-                    errors.push_back(WRONG_VALUE);
-                    cerr << "Het element 'hernieuwing'" + locationToString(vaccin->FirstChildElement("type")) +
-                            " van het vaccin heeft een ongeldige waarde";
-                    correct = false;
-                }
-                hernieuwing = to_int(Str_hernieuwing.substr(0, Str_hernieuwing.size()-1));
+            } else if (vaccin->FirstChildElement("hernieuwing")->GetText() == NULL) {
+                errors.push_back(WRONG_VALUE);
+                cerr << "Het element 'hernieuwing'" + locationToString(vaccin->FirstChildElement("type")) +
+                        " van het vaccin heeft een ongeldige waarde";
+                correct = false;
+            } else {
+                hernieuwing = to_int(vaccin->FirstChildElement("hernieuwing")->GetText());
                 if (hernieuwing < 0) {
                     errors.push_back(WRONG_VALUE);
                     cerr << "Het element 'hernieuwing'" + locationToString(vaccin->FirstChildElement("type")) +
@@ -316,18 +275,13 @@ Parser::Parser(const string &filename) : _initCheck(this) {
                 errors.push_back(MISSING_TAG);
                 cerr << "Het element 'temperatuur' van het vaccin" + locationToString(vaccin) + " bestaat niet!";
                 correct = false;
-            }
-            else{
-                vaccin->FirstChildElement("temperatuur")->InsertEndChild(space);
-                string Str_temperatuur = vaccin->FirstChildElement("temperatuur")->GetText();
-
-                if (Str_temperatuur == " ") {
-                    errors.push_back(WRONG_VALUE);
-                    cerr << "Het element 'temperatuur'" + locationToString(vaccin->FirstChildElement("type")) +
-                            " van het vaccin heeft een ongeldige waarde";
-                    correct = false;
-                }
-                temperatuur = to_int(Str_temperatuur.substr(0, Str_temperatuur.size()-1));
+            } else if (vaccin->FirstChildElement("temperatuur")->GetText() == NULL) {
+                errors.push_back(WRONG_VALUE);
+                cerr << "Het element 'temperatuur'" + locationToString(vaccin->FirstChildElement("type")) +
+                        " van het vaccin heeft een ongeldige waarde";
+                correct = false;
+            } else {
+                temperatuur = to_int(vaccin->FirstChildElement("temperatuur")->GetText());
             }
             if (!correct) continue;
 
