@@ -488,7 +488,7 @@
 //}
 
 int main(int argc, char **argv) {
-    emptyFile("../err.txt");
+    makeEmptyFile(OUTPUT_FILE_LOCATION + "err.txt");
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
 }

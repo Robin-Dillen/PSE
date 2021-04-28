@@ -295,7 +295,7 @@ bool VaccinatieCentrum::isIedereenGevaccineerd() const {
 int VaccinatieCentrum::getAantalTweedePrikken(const string &vaccin, int dag) const {
     REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling getAantalTweedePrikken");
     REQUIRE(!vaccin.empty(), "Het Vaccin type mag geen lege string zijn!");
-    REQUIRE(dag > 0, "De dag moet positief zijn!");
+    REQUIRE(dag >= 0, "De dag moet positief zijn!");
     if ((int) aantal_eerste_prikken.size() <= dag) return 0;
     MapSICIterator aantal = aantal_eerste_prikken[dag].find(vaccin);
     if (aantal == aantal_eerste_prikken[dag].end()) return 0;

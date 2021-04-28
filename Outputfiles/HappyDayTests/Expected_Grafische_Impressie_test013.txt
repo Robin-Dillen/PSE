@@ -5002,31 +5002,4 @@ Park Spoor Oost:
 	- gevaccineerd	[====================] 100%
 		- AstraZeneca		[=================== ] 99%
 		- Moderna			[                    ] 0%
-Overzicht van vaccinaties na: 0 jaren, 6 maanden, 2 weken en 3 dagen.
-
-Park Spoor Oost:
-	- vaccins		[=======             ] 37%
-	- 1ste prik		[                    ] 0%
-	- gevaccineerd	[====================] 100%
-		- AstraZeneca		[                    ] 0%
-		- Moderna			[=======             ] 37%
-		- Pfizer			[============        ] 61%
-AED Studios:
-	- vaccins		[========            ] 40%
-	- 1ste prik		[                    ] 0%
-	- gevaccineerd	[====================] 100%
-		- AstraZeneca		[====================] 100%
-		- Moderna			[                    ] 0%
-De Zoerla:
-	- vaccins		[===============     ] 79%
-	- 1ste prik		[                    ] 0%
-	- gevaccineerd	[====================] 100%
-		- AstraZeneca		[                    ] 2%
-		- Moderna			[=================== ] 97%
-Flanders Expo:
-	- vaccins		[===                 ] 15%
-	- 1ste prik		[                    ] 0%
-	- gevaccineerd	[====================] 100%
-		- AstraZeneca		[=================== ] 99%
-		- Moderna			[                    ] 0%
 
