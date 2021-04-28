@@ -1,9 +1,9 @@
 <!--1 Hub-->
-<!--1 Vaccin type-->
+<!--2 Vaccin types-->
 <!--genoeg vaccins-->
 <!--positieve temperatuur-->
 <!--geen hernieuwing-->
-<!--(2) fout vaccinatiecentrum-->
+<!--(3) lege tag in vaccinatiecentrum-->
 <root>
     <HUB>
         <VACCIN>
@@ -14,6 +14,14 @@
             <hernieuwing>0</hernieuwing>
             <temperatuur>5</temperatuur>
         </VACCIN>
+        <VACCIN>
+            <type>Spoetnik_V</type>
+            <levering>23000</levering>
+            <interval>13</interval>
+            <transport>2000</transport>
+            <hernieuwing>0</hernieuwing>
+            <temperatuur>25</temperatuur>
+        </VACCIN>
         <CENTRA>
             <centrum>Park Spoor Oost</centrum>
             <centrum>AED Studios</centrum>
@@ -22,10 +30,10 @@
         </CENTRA>
     </HUB>
     <VACCINATIECENTRUM>
-        <naam>Park Spoor Oost</naam>
+        <naam></naam>
         <adres>Noordersingel 40, Antwerpen</adres>
         <inwoners>540173</inwoners>
-        <capaciteit>7500</capaciteit>
+        <capaciteit></capaciteit>
     </VACCINATIECENTRUM>
     <VACCINATIECENTRUM>
         <naam>AED Studios</naam>
@@ -34,15 +42,15 @@
         <capaciteit>2000</capaciteit>
     </VACCINATIECENTRUM>
     <VACCINATIECENTRUM>
-        <naam>de Zoerla</naam>
+        <naam>De Zoerla</naam>
         <adres>Gevaertlaan 1, Westerlo</adres>
-        <inwoners>-21</inwoners>
+        <inwoners></inwoners>
         <capaciteit>1000</capaciteit>
     </VACCINATIECENTRUM>
     <VACCINATIECENTRUM>
         <naam>Flanders Expo</naam>
         <adres>Maaltekouter 1, Sint-Denijs-Westrem</adres>
         <inwoners>257029</inwoners>
-        <capaciteit>-50550</capaciteit>
+        <capaciteit>3000</capaciteit>
     </VACCINATIECENTRUM>
 </root>
