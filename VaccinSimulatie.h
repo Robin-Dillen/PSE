@@ -90,11 +90,4 @@ Simulatie(vector<Hub *> &hubs, std::vector<VaccinatieCentrum *> &vaccinatie_cent
     current_day -= months * 30;
     int weeks = current_day / 7;
     current_day -= weeks * 7;
-
-    if (c_out) {
-        cout << "de simulatie duurde " << years << " jaren, " << months
-             << string(" ") + (months == 1 ? "maand, " : "maanden, ") << weeks
-             << string(" ") + (weeks == 1 ? "week" : "weken") + " en " << current_day
-             << string(" ") + +(current_day == 1 ? "dag" : "dagen") + +"." << endl;
-    }
 }

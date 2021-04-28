@@ -312,7 +312,7 @@ Parser::Parser(const string &filename) : _initCheck(this) {
 
             if(thirdElement->GetText() == NULL){
                 cerr << "Een vaccinatiecentrum werd niet correct meegegeven." << endl;
-                errors.push_back(MISSING_TAG);
+                errors.push_back(WRONG_VALUE);
             } else if(vaccinatieCentra[thirdElement->GetText()] != NULL){
                 H->addCentrum(vaccinatieCentra[thirdElement->GetText()]);
 //                for(map<string, Vaccin*>::iterator it = vaccins.begin(); it != vaccins.end(); it++){

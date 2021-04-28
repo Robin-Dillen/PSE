@@ -1,22 +1,32 @@
 <!--1 Hub-->
-<!--1 Vaccin type-->
+<!--2 Vaccin types-->
 <!--genoeg vaccins-->
 <!--positieve temperatuur-->
 <!--geen hernieuwing-->
-<!--(3) extra tags-->
+<!--(3) lege tag in hub-->
 <root>
     <HUB>
         <VACCIN>
             <type>J_J</type>
             <levering>100000</levering>
             <interval>13</interval>
-            <transport>5000</transport>
+            <transport>1000</transport>
             <hernieuwing>0</hernieuwing>
             <temperatuur>5</temperatuur>
         </VACCIN>
+        <VACCIN>
+            <type>Spoetnik_V</type>
+            <levering>23000</levering>
+            <interval>13</interval>
+            <transport>2000</transport>
+            <hernieuwing>0</hernieuwing>
+            <temperatuur>25</temperatuur>
+        </VACCIN>
         <CENTRA>
-            <centrum>Park Spoor Oost</centrum>
-            <centrum>AED Studios</centrum>
+            <centrum></centrum>
+            <centrum></centrum>
+            <centrum></centrum>
+            <centrum>Flanders Expo</centrum>
         </CENTRA>
     </HUB>
     <VACCINATIECENTRUM>
@@ -30,5 +40,17 @@
         <adres>Fabriekstraat 38, Lint</adres>
         <inwoners>76935</inwoners>
         <capaciteit>2000</capaciteit>
+    </VACCINATIECENTRUM>
+    <VACCINATIECENTRUM>
+        <naam>De Zoerla</naam>
+        <adres>Gevaertlaan 1, Westerlo</adres>
+        <inwoners>49451</inwoners>
+        <capaciteit>1000</capaciteit>
+    </VACCINATIECENTRUM>
+    <VACCINATIECENTRUM>
+        <naam>Flanders Expo</naam>
+        <adres>Maaltekouter 1, Sint-Denijs-Westrem</adres>
+        <inwoners>257029</inwoners>
+        <capaciteit>3000</capaciteit>
     </VACCINATIECENTRUM>
 </root>
