@@ -33,6 +33,8 @@ public:
     VaccinatieCentrum(const int kcapaciteit, const int kaantalInwoners, const string &kfname,
                       const string &kfaddress);
 
+    VaccinatieCentrum();
+
     /**
      * @return geeft terug of het object correct is geïnitialiseert
      */
@@ -47,6 +49,7 @@ public:
     /**
      * @return geeft het aantal gevacineerde mensen terug
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getAantalVaccinaties");
+     * \n REQUIRE(!type.empty(), "Het Vaccin type mag geen lege string zijn!");
      * \n ENSURE(aantal->second >= 0, "Het aantal vaccinaties ligt onder nul!");
      */
     int getAantalVaccinaties(const string &type) const;
@@ -74,6 +77,7 @@ public:
     /**
      * @return geeft het aantal vaccins van het vaccinatie centrum terug die momenteel beschikbaar zijn
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getAantalVaccins()");
+     * \n REQUIRE(!type.empty(), "Het Vaccin type mag geen lege string zijn!");
      * \n ENSURE(aantal->second.second >= 0, "Er is een negatief aantal vaccins!");
      */
     int getAantalVaccins(const string &type) const;
@@ -88,6 +92,7 @@ public:
     /**
      * @return geeft het aantal geleverde vaccinaties weer van het vaccinatie centrum terug
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getAantalGeleverdeVaccins()");
+     * \n REQUIRE(!type.empty(), "Het Vaccin type mag geen lege string zijn!");
      * \n ENSURE(aantal->second >= 0, "Het aantal gelverde vaccins is negatief!");
      */
     int getAantalGeleverdeVaccins(const string &type) const;
@@ -167,6 +172,7 @@ public:
     /*!
      * ontvangt een levering en plaatst de vaccinaties in de stock
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling ontvangLevering");
+     * \n REQUIRE(vaccins_in_levering >= 0, "Er is een negatief aantal vaccins geleverd!");
      * \n ENSURE(begin_aantal_geleverde_vaccins + vaccins_in_levering == getAantalGeleverdeVaccins(), "De vaccins zijn niet succesvol geleverd!");
      */
     void ontvangLevering(int vaccins_in_levering, Vaccin *vaccin);
@@ -183,6 +189,8 @@ public:
      * @param dagen binnen hoeveel dagen we moeten kijken
      * @return aantal 2de prikken: int
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getAantalTweedePrikken");
+     * \n REQUIRE(!vaccin.empty(), "Het Vaccin type mag geen lege string zijn!");
+     * \n REQUIRE(dag > 0, "De dag moet positief zijn!");
      * \n ENSURE(aantal->second >= 0, "We kunnen niet een negatief aantal 2de prikken hebben!");
      */
     int getAantalTweedePrikken(const string &vaccin, int dagen) const;
