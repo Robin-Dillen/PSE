@@ -5,7 +5,7 @@
 <!--geen hernieuwing-->
 <!--(3) missing tags-->
 <root>
-    <HUB
+    <HUB>
         <VACCIN>
             <type>J_J</type>
             <levering>100000</levering>
@@ -23,13 +23,14 @@
     <VACCINATIECENTRUM>
         <naam>Park Spoor Oost</naam>
         <adres>Noordersingel 40, Antwerpen</adres>
+        <inwoners>540173</inwoners>
         <capaciteit>7500</capaciteit>
-        <extra_element>extra</extra_element>
     </VACCINATIECENTRUM>
     <VACCINATIECENTRUM>
         <naam>AED Studios</naam>
         <adres>Fabriekstraat 38, Lint</adres>
         <inwoners>76935</inwoners>
+        <capaciteit>2000</capaciteit>
     </VACCINATIECENTRUM>
     <VACCINATIECENTRUM>
         <naam>De Zoerla</naam>
