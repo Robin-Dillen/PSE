@@ -3,23 +3,14 @@
 <!--genoeg vaccins-->
 <!--positieve temperatuur-->
 <!--geen hernieuwing-->
-<!--(3) nog meer extra elementen-->
+<!--(3) missing tags-->
 <root>
-    <blub>3</blub>
-    <hallo>
-        <h>2</h>
-        <i>
-            <j>i</j>
-        </i>
-    </hallo>
-    <HUB>
-        <uhu>654654</uhu>
+    <HUB
         <VACCIN>
             <type>J_J</type>
             <levering>100000</levering>
             <interval>13</interval>
             <transport>1000</transport>
-            <hernieuwing>0</hernieuwing>
             <temperatuur>5</temperatuur>
         </VACCIN>
         <CENTRA>
@@ -32,14 +23,13 @@
     <VACCINATIECENTRUM>
         <naam>Park Spoor Oost</naam>
         <adres>Noordersingel 40, Antwerpen</adres>
-        <inwoners>540173</inwoners>
         <capaciteit>7500</capaciteit>
+        <extra_element>extra</extra_element>
     </VACCINATIECENTRUM>
     <VACCINATIECENTRUM>
         <naam>AED Studios</naam>
         <adres>Fabriekstraat 38, Lint</adres>
         <inwoners>76935</inwoners>
-        <capaciteit>2000</capaciteit>
     </VACCINATIECENTRUM>
     <VACCINATIECENTRUM>
         <naam>De Zoerla</naam>
