@@ -83,6 +83,8 @@ inline bool FileIsEmpty(const std::string &filename) {
 }
 
 inline bool FileCompare(const std::string &leftFileName, const std::string &rightFileName) {
+//    REQUIRE(FileExists(leftFileName), "De linkerfile bestaat niet!");
+//    REQUIRE(FileExists(rightFileName), "De rechterfile bestaat niet!");
     ifstream leftFile, rightFile;
 
     // Open the two files.

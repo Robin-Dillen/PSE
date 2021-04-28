@@ -187,7 +187,8 @@ void Hub::verdeelVaccins() {
             // we checken of we met het afronden niet te veel kvaccin leveren, zo ja ronden we naar beneden af(en leveren we dus te weinig kvaccin)
             int ladingen = floor((float) min_ / vaccin->second->transport);
             if (centrum->second->getAantalNietVaccinaties() == 0 &&
-                centrum->second->getMaxStock() - totaal_vaccins - vaccin->second->transport > 0)
+                centrum->second->getMaxStock() - totaal_vaccins - vaccin->second->transport > 0 &&
+                aantal_vaccins[vaccin->first] >= vaccin->second->transport)
                 ladingen = 1;
 
             // we verminderen de capaciteit, aantal kvaccins en we sturen de kvaccins op
@@ -214,6 +215,10 @@ void Hub::verdeelVaccins() {
             ENSURE(totaal_vaccins <= centrum->second->getMaxStock(), "Te veel vaccins!");
             if (aantal_vaccins[vaccin->first] - gereserveerd_2de_prik[vaccin->first] <= 0) continue;
 
+            cout << capaciteit << " " << aantal_vaccins[vaccin->first] << "-" << gereserveerd_2de_prik[vaccin->first]
+                 << " " << centrum->second->getMaxStock() << "-" << totaal_vaccins << " "
+                 << centrum->second->getAantalNietVaccinaties() << endl;
+
             int min_ = min(4,
                            capaciteit,
                            aantal_vaccins[vaccin->first] - gereserveerd_2de_prik[vaccin->first],
@@ -222,8 +227,10 @@ void Hub::verdeelVaccins() {
 
             // we checken of we met het afronden niet te veel kvaccins leveren, zo ja ronden we naar beneden af(en leveren we dus te weinig kvaccins)
             int ladingen = floor((float) min_ / vaccin->second->transport);
-            if (centrum->second->getAantalNietVaccinaties() < vaccin->second->transport &&
-                centrum->second->getMaxStock() - totaal_vaccins - vaccin->second->transport > 0)
+            if ((centrum->second->getKcapaciteit() < vaccin->second->transport ||
+                 centrum->second->getAantalNietVaccinaties() < vaccin->second->transport) &&
+                centrum->second->getMaxStock() - totaal_vaccins - vaccin->second->transport >= 0 &&
+                aantal_vaccins[vaccin->first] >= vaccin->second->transport)
                 ladingen = 1;
 
             int vaccins_in_levering = ladingen * vaccin->second->transport;

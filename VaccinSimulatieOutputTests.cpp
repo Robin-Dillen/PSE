@@ -121,10 +121,12 @@ TEST_F(VaccinSimulatieOutputTest, OutputHappyDay) {
             }
         }
         Simulatie(hubs, vaccinatie_centra, filename);
+        EXPECT_TRUE(FileExists(OUTPUT_FILE_LOCATION + "Expected_Simpele_Uitvoer_test" + testnr + ".txt"));
+        EXPECT_TRUE(FileExists(OUTPUT_FILE_LOCATION + "Expected_Grafische_Impressie_test" + testnr + ".txt"));
 
         EXPECT_TRUE(FileCompare(OUTPUT_FILE_LOCATION + "Simpele_Uitvoer_test" + testnr + ".txt",
                                 OUTPUT_FILE_LOCATION + "Expected_Simpele_Uitvoer_test" + testnr + ".txt"));
-        EXPECT_TRUE(FileCompare(OUTPUT_FILE_LOCATION + "Grafische_Impressietest_test" + testnr + ".txt",
+        EXPECT_TRUE(FileCompare(OUTPUT_FILE_LOCATION + "Grafische_Impressie_test" + testnr + ".txt",
                                 OUTPUT_FILE_LOCATION + "Expected_Grafische_Impressietest_test" + testnr + ".txt"));
 
         nr++;
