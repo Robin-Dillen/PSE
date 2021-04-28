@@ -162,8 +162,6 @@ void Hub::verdeelVaccins() {
                                                                                                 interval);
             }
         }
-        cout << "\t\tAantal kvaccin gereserveerd voor de 2de prik met " << vaccin->first << " : "
-             << gereserveerd_2de_prik[vaccin->first] << endl;
     }
 
     //eerste verdeling om alle eerste_prikken van die dag opnieuw te laten vaccineren.
