@@ -171,9 +171,6 @@ public:
     map<string, Vaccin *> getVaccins();
 
 private:
-
-    void verdeelVaccin(const string &type);
-
     // const attributes
 //    const int kaantal_vaccins_per_levering;
 //    const int kleveringen_interval;
