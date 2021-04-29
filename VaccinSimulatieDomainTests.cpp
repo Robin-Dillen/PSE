@@ -19,6 +19,8 @@ using namespace std;
 #include "Parser.h"
 #include "StatisticsSingleton.h"
 #include "Lib.h"
+#include "Utils.h"
+#include "VaccinSimulatie.h"
 
 class VaccinSimulatieDomainTest : public ::testing::Test {
 protected:
@@ -85,7 +87,45 @@ TEST_F(VaccinSimulatieDomainTest, NonDefaultConstructor) {
 Tests the "happy day" scenario
 */
 TEST_F(VaccinSimulatieDomainTest, HappyDay) {
+    string testnr = "001";
+    int nr = 1;
+    string filename = HAPPY_DAY_TESTS_FILE_LOCATION + "test" + testnr + ".xml";
+    while (FileExists(filename)) {
+        Parser P(filename);
+        vector<Hub *> hubs = P.getFhubs();
+        std::vector<VaccinatieCentrum *> vaccinatie_centra;
 
+        for (unsigned int i = 0; i < hubs.size(); i++) {
+            for (map<string, VaccinatieCentrum *>::const_iterator centrum = hubs[i]->getFverbondenCentra().begin();
+                 centrum != hubs[i]->getFverbondenCentra().end(); centrum++) {
+                if (find(vaccinatie_centra.begin(), vaccinatie_centra.end(), centrum->second) ==
+                    vaccinatie_centra.end()) {
+                    vaccinatie_centra.push_back(centrum->second);
+                }
+            }
+        }
+        Simulatie(hubs, vaccinatie_centra, filename);
+
+        for (vector<VaccinatieCentrum *>::iterator V = vaccinatie_centra.begin(); V != vaccinatie_centra.end(); V++) {
+            EXPECT_EQ(0, (*V)->getAantalNietVaccinaties());
+            EXPECT_GE((*V)->getTotaalAantalVaccins(), 0);
+            EXPECT_LE((*V)->getTotaalAantalVaccins(), (*V)->getMaxStock());
+            EXPECT_TRUE((*V)->getTotaalAantalVaccinaties() == (*V)->getKaantalInwoners());
+            EXPECT_TRUE((*V)->isIedereenGevaccineerd());
+        }
+
+        for (vector<Hub *>::iterator H = hubs.begin(); H != hubs.end(); H++) {
+            EXPECT_TRUE((*H)->isIedereenGevaccineerd());
+            EXPECT_GE((*H)->getTotaalAantalVaccins(), 0);
+        }
+
+        nr++;
+        string new_testnr = to_string(nr);
+        while (new_testnr.size() < 3) new_testnr.insert(new_testnr.begin(), '0');
+        size_t pos = filename.find(testnr);
+        filename.replace(pos, 3, new_testnr);
+        testnr = new_testnr;
+    }
 }
 
 /**

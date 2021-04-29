@@ -8,6 +8,7 @@
 #include "Utils.h"
 #include "StatisticsSingleton.h"
 #include "Vaccins.h"
+#include "Lib.h"
 
 using namespace std;
 
@@ -21,21 +22,23 @@ Simulatie(vector<Hub *> &hubs, std::vector<VaccinatieCentrum *> &vaccinatie_cent
     string filename1;
     string filename2;
     if (testfilename.find("DeathTests") != string::npos) {
-        filename1 = "DeathTests/Simpele_Uitvoer_" + testfilename.substr(pos, 7);
-        filename2 = "DeathTests/Grafische_Impressie" + testfilename.substr(pos, 7);
+        filename1 = DEATH_OUTPUT_FILE_LOCATION;
+        filename2 = DEATH_OUTPUT_FILE_LOCATION;
     } else if (testfilename.find("WarningTests") != string::npos) {
-        filename1 = "WarningTests/Simpele_Uitvoer_" + testfilename.substr(pos, 7);
-        filename2 = "WarningTests/Grafische_Impressie" + testfilename.substr(pos, 7);
+        filename1 = WARNING_OUTPUT_FILE_LOCATION;
+        filename2 = WARNING_OUTPUT_FILE_LOCATION;
     } else {
-        filename1 = "HappyDayTests/Simpele_Uitvoer_" + testfilename.substr(pos, 7);
-        filename2 = "HappyDayTests/Grafische_Impressie" + testfilename.substr(pos, 7);
+        filename1 = HAPPY_DAY_OUTPUT_FILE_LOCATION;
+        filename2 = HAPPY_DAY_OUTPUT_FILE_LOCATION;
     }
+
+    filename1 += "Simpele_Uitvoer_" + testfilename.substr(pos, 7);
+    filename2 += "Grafische_Impressie_" + testfilename.substr(pos, 7);
 
     OutputSingleton &output = OutputSingleton::getInstance();
     // clear/create the output file
-    output.makeOutputFile(filename1);
-
-    output.makeOutputFile(filename2);
+    output.makeOutputFile(filename1 + ".txt");
+    output.makeOutputFile(filename2 + ".txt");
 
     // start simulatie
 
@@ -48,7 +51,6 @@ Simulatie(vector<Hub *> &hubs, std::vector<VaccinatieCentrum *> &vaccinatie_cent
         output.addToOutputFile(hubs[i], i + 1, current_day, filename1);
     }
     while ((!end_day || current_day < end_day) && !break_) {
-        cout << "dag " << current_day << ": " << endl;
         break_ = true;
         for (unsigned int i = 0; i < hubs.size(); i++) {
             if (!hubs[i]->isIedereenGevaccineerd()) {
@@ -70,7 +72,6 @@ Simulatie(vector<Hub *> &hubs, std::vector<VaccinatieCentrum *> &vaccinatie_cent
             }
 
             // stuur signaal nieuwe dag
-            cout << "\thub " << i + 1 << ": " << endl;
             hubs[i]->nieuweDag();
 
             // output
@@ -92,11 +93,4 @@ Simulatie(vector<Hub *> &hubs, std::vector<VaccinatieCentrum *> &vaccinatie_cent
     current_day -= months * 30;
     int weeks = current_day / 7;
     current_day -= weeks * 7;
-
-    if (c_out) {
-        cout << "de simulatie duurde " << years << " jaren, " << months
-             << string(" ") + (months == 1 ? "maand, " : "maanden, ") << weeks
-             << string(" ") + (weeks == 1 ? "week" : "weken") + " en " << current_day
-             << string(" ") + +(current_day == 1 ? "dag" : "dagen") + +"." << endl;
-    }
 }

@@ -162,8 +162,6 @@ void Hub::verdeelVaccins() {
                                                                                                 interval);
             }
         }
-        cout << "\t\tAantal kvaccin gereserveerd voor de 2de prik met " << vaccin->first << " : "
-             << gereserveerd_2de_prik[vaccin->first] << endl;
     }
 
     //eerste verdeling om alle eerste_prikken van die dag opnieuw te laten vaccineren.
@@ -189,7 +187,8 @@ void Hub::verdeelVaccins() {
             // we checken of we met het afronden niet te veel kvaccin leveren, zo ja ronden we naar beneden af(en leveren we dus te weinig kvaccin)
             int ladingen = floor((float) min_ / vaccin->second->transport);
             if (centrum->second->getAantalNietVaccinaties() == 0 &&
-                centrum->second->getMaxStock() - totaal_vaccins - vaccin->second->transport > 0)
+                centrum->second->getMaxStock() - totaal_vaccins - vaccin->second->transport > 0 &&
+                aantal_vaccins[vaccin->first] >= vaccin->second->transport)
                 ladingen = 1;
 
             // we verminderen de capaciteit, aantal kvaccins en we sturen de kvaccins op
@@ -224,8 +223,10 @@ void Hub::verdeelVaccins() {
 
             // we checken of we met het afronden niet te veel kvaccins leveren, zo ja ronden we naar beneden af(en leveren we dus te weinig kvaccins)
             int ladingen = floor((float) min_ / vaccin->second->transport);
-            if (centrum->second->getAantalNietVaccinaties() < vaccin->second->transport &&
-                centrum->second->getMaxStock() - totaal_vaccins - vaccin->second->transport > 0)
+            if ((centrum->second->getKcapaciteit() < vaccin->second->transport ||
+                 centrum->second->getAantalNietVaccinaties() < vaccin->second->transport) &&
+                centrum->second->getMaxStock() - totaal_vaccins - vaccin->second->transport >= 0 &&
+                aantal_vaccins[vaccin->first] >= vaccin->second->transport)
                 ladingen = 1;
 
             int vaccins_in_levering = ladingen * vaccin->second->transport;

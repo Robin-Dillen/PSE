@@ -3,7 +3,7 @@
 <!--genoeg vaccins-->
 <!--positieve temperatuur-->
 <!--geen hernieuwing-->
-<!--fout vaccinatiecentrum-->
+<!--(2) fout vaccinatiecentrum-->
 <root>
     <HUB>
         <VACCIN>
@@ -34,15 +34,15 @@
         <capaciteit>2000</capaciteit>
     </VACCINATIECENTRUM>
     <VACCINATIECENTRUM>
-        <naam></naam>
+        <naam>de Zoerla</naam>
         <adres>Gevaertlaan 1, Westerlo</adres>
-        <inwoners>-500</inwoners>
+        <inwoners>-21</inwoners>
         <capaciteit>1000</capaciteit>
     </VACCINATIECENTRUM>
     <VACCINATIECENTRUM>
         <naam>Flanders Expo</naam>
         <adres>Maaltekouter 1, Sint-Denijs-Westrem</adres>
         <inwoners>257029</inwoners>
-        <capaciteit>3000</capaciteit>
+        <capaciteit>-50550</capaciteit>
     </VACCINATIECENTRUM>
 </root>

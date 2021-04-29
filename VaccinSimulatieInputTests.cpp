@@ -43,6 +43,7 @@ TEST_F(VaccinSimulatieInputTest, InputHappyDay) {
         while (new_testnr.size() < 3) new_testnr.insert(new_testnr.begin(), '0');
         size_t pos = filename.find(testnr);
         filename.replace(pos, 3, new_testnr);
+        testnr = new_testnr;
     }
 }
 
@@ -57,23 +58,109 @@ TEST_F(VaccinSimulatieInputTest, InputXMLSyntaxErrors) {
         while (new_testnr.size() < 3) new_testnr.insert(new_testnr.begin(), '0');
         size_t pos = filename.find(testnr);
         filename.replace(pos, 3, new_testnr);
+        testnr = new_testnr;
     }
 }
 
 /*!
  * tests wether too many tags were give, or when an unknown element is read
  */
-TEST_F(VaccinSimulatieInputTest, InputXMLWarnings) {
-//    string testnr = "001";
-//    int nr = 1;
-//    string filename = WARNING_TESTS_FILE_LOCATION + "test" + testnr + ".xml";
-//    while (FileExists(filename)) {
-//        EXPECT_DEATH(Parser P(filename), "");
-//        nr++;
-//        string new_testnr = to_string(nr);
-//        while (new_testnr.size() < 3) new_testnr.insert(new_testnr.begin(), '0');
-//        size_t pos = filename.find(testnr);
-//        filename.replace(pos, 3, new_testnr);
-//    }
+TEST_F(VaccinSimulatieInputTest, InputXMLWarning001) {
+    Parser P("../XMLfiles/WarningTests/test001.xml");
+    EXPECT_EQ(3, P.errorOccured(UNKNOWN_TAG));
 }
 
+TEST_F(VaccinSimulatieInputTest, InputXMLWarning002) {
+    Parser P("../XMLfiles/WarningTests/test002.xml");
+    EXPECT_EQ(1, P.errorOccured(WRONG_VALUE));
+}
+
+TEST_F(VaccinSimulatieInputTest, InputXMLWarning003) {
+    Parser P("../XMLfiles/WarningTests/test003.xml");
+    EXPECT_EQ(2, P.errorOccured(WRONG_VALUE));
+}
+
+TEST_F(VaccinSimulatieInputTest, InputXMLWarning004) {
+    Parser P("../XMLfiles/WarningTests/test004.xml");
+    EXPECT_EQ(3, P.errorOccured(UNKNOWN_TAG));
+}
+
+TEST_F(VaccinSimulatieInputTest, InputXMLWarning005) {
+    Parser P("../XMLfiles/WarningTests/test005.xml");
+    EXPECT_EQ(2, P.errorOccured(MISSING_TAG));
+}
+
+TEST_F(VaccinSimulatieInputTest, InputXMLWarning006) {
+    Parser P("../XMLfiles/WarningTests/test006.xml");
+    EXPECT_EQ(1, P.errorOccured(MISSING_TAG));
+}
+
+TEST_F(VaccinSimulatieInputTest, InputXMLWarning007) {
+    Parser P("../XMLfiles/WarningTests/test007.xml");
+    EXPECT_EQ(2, P.errorOccured(WRONG_VALUE));
+}
+
+TEST_F(VaccinSimulatieInputTest, InputXMLWarning008) {
+    Parser P("../XMLfiles/WarningTests/test008.xml");
+    EXPECT_EQ(3, P.errorOccured(WRONG_VALUE));
+}
+
+TEST_F(VaccinSimulatieInputTest, InputXMLWarning009) {
+    Parser P("../XMLfiles/WarningTests/test009.xml");
+    EXPECT_EQ(1, P.errorOccured(WRONG_VALUE));
+}
+
+TEST_F(VaccinSimulatieInputTest, InputXMLWarning010) {
+    Parser P("../XMLfiles/WarningTests/test010.xml");
+    EXPECT_EQ(3, P.errorOccured(WRONG_VALUE));
+}
+
+TEST_F(VaccinSimulatieInputTest, InputXMLWarning011) {
+    Parser P("../XMLfiles/WarningTests/test011.xml");
+    EXPECT_EQ(1, P.errorOccured(WRONG_VALUE));
+}
+
+TEST_F(VaccinSimulatieInputTest, InputXMLWarning012) {
+    Parser P("../XMLfiles/WarningTests/test012.xml");
+    EXPECT_EQ(1, P.errorOccured(WRONG_VALUE));
+}
+
+TEST_F(VaccinSimulatieInputTest, InputXMLWarning013) {
+    Parser P("../XMLfiles/WarningTests/test013.xml");
+    EXPECT_EQ(1, P.errorOccured(WRONG_VALUE));
+}
+
+TEST_F(VaccinSimulatieInputTest, InputXMLWarning014) {
+    Parser P("../XMLfiles/WarningTests/test014.xml");
+    EXPECT_EQ(4, P.errorOccured(MISSING_TAG));
+}
+
+TEST_F(VaccinSimulatieInputTest, InputXMLWarning015) {
+    Parser P("../XMLfiles/WarningTests/test015.xml");
+    EXPECT_EQ(1, P.errorOccured(WRONG_VALUE));
+}
+
+TEST_F(VaccinSimulatieInputTest, InputXMLWarning016) {
+    Parser P("../XMLfiles/WarningTests/test016.xml");
+    EXPECT_EQ(1, P.errorOccured(WRONG_VALUE));
+}
+
+TEST_F(VaccinSimulatieInputTest, InputXMLWarning017) {
+    Parser P("../XMLfiles/WarningTests/test017.xml");
+    EXPECT_EQ(1, P.errorOccured(WRONG_VALUE));
+}
+
+TEST_F(VaccinSimulatieInputTest, InputXMLWarning018) {
+    Parser P("../XMLfiles/WarningTests/test018.xml");
+    EXPECT_EQ(1, P.errorOccured(WRONG_VALUE));
+}
+
+TEST_F(VaccinSimulatieInputTest, InputXMLWarning019) {
+    Parser P("../XMLfiles/WarningTests/test019.xml");
+    EXPECT_EQ(1, P.errorOccured(WRONG_VALUE));
+}
+
+TEST_F(VaccinSimulatieInputTest, InputXMLWarning020) {
+    Parser P("../XMLfiles/WarningTests/test020.xml");
+    EXPECT_EQ(1, P.errorOccured(WRONG_VALUE));
+}

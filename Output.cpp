@@ -149,5 +149,5 @@ string OutputSingleton::dateToString(int y, int m, int w, int d) {
 
 void OutputSingleton::makeOutputFile(const string &filename) {
     // maakt een output file of maakt een outputfile leeg
-    makeEmptyFile(OUTPUT_FILE_LOCATION + filename + ".txt");
+    makeEmptyFile(filename);
 }
