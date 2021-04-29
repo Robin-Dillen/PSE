@@ -215,10 +215,6 @@ void Hub::verdeelVaccins() {
             ENSURE(totaal_vaccins <= centrum->second->getMaxStock(), "Te veel vaccins!");
             if (aantal_vaccins[vaccin->first] - gereserveerd_2de_prik[vaccin->first] <= 0) continue;
 
-            cout << capaciteit << " " << aantal_vaccins[vaccin->first] << "-" << gereserveerd_2de_prik[vaccin->first]
-                 << " " << centrum->second->getMaxStock() << "-" << totaal_vaccins << " "
-                 << centrum->second->getAantalNietVaccinaties() << endl;
-
             int min_ = min(4,
                            capaciteit,
                            aantal_vaccins[vaccin->first] - gereserveerd_2de_prik[vaccin->first],

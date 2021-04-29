@@ -156,7 +156,7 @@ inline void emptyFile(const string &filename) {
  * ENSURE(FileIsEmpty(filename), "Failed emptying the file!");
  */
 inline void makeEmptyFile(const string &filename) {
-    if (FileIsEmpty(filename)) {
+    if (FileExists(filename) && FileIsEmpty(filename)) {
         return;
     }
     std::ofstream ofs;

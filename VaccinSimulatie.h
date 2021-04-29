@@ -8,6 +8,7 @@
 #include "Utils.h"
 #include "StatisticsSingleton.h"
 #include "Vaccins.h"
+#include "Lib.h"
 
 using namespace std;
 
@@ -21,21 +22,23 @@ Simulatie(vector<Hub *> &hubs, std::vector<VaccinatieCentrum *> &vaccinatie_cent
     string filename1;
     string filename2;
     if (testfilename.find("DeathTests") != string::npos) {
-        filename1 = "DeathTests/Simpele_Uitvoer_" + testfilename.substr(pos, 7);
-        filename2 = "DeathTests/Grafische_Impressie_" + testfilename.substr(pos, 7);
+        filename1 = DEATH_OUTPUT_FILE_LOCATION;
+        filename2 = DEATH_OUTPUT_FILE_LOCATION;
     } else if (testfilename.find("WarningTests") != string::npos) {
-        filename1 = "WarningTests/Simpele_Uitvoer_" + testfilename.substr(pos, 7);
-        filename2 = "WarningTests/Grafische_Impressie_" + testfilename.substr(pos, 7);
+        filename1 = WARNING_OUTPUT_FILE_LOCATION;
+        filename2 = WARNING_OUTPUT_FILE_LOCATION;
     } else {
-        filename1 = "HappyDayTests/Simpele_Uitvoer_" + testfilename.substr(pos, 7);
-        filename2 = "HappyDayTests/Grafische_Impressie_" + testfilename.substr(pos, 7);
+        filename1 = HAPPY_DAY_OUTPUT_FILE_LOCATION;
+        filename2 = HAPPY_DAY_OUTPUT_FILE_LOCATION;
     }
+
+    filename1 += "Simpele_Uitvoer_" + testfilename.substr(pos, 7);
+    filename2 += "Grafische_Impressie_" + testfilename.substr(pos, 7);
 
     OutputSingleton &output = OutputSingleton::getInstance();
     // clear/create the output file
-    output.makeOutputFile(filename1);
-
-    output.makeOutputFile(filename2);
+    output.makeOutputFile(filename1 + ".txt");
+    output.makeOutputFile(filename2 + ".txt");
 
     // start simulatie
 

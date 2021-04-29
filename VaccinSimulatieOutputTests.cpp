@@ -121,19 +121,23 @@ TEST_F(VaccinSimulatieOutputTest, OutputHappyDay) {
             }
         }
         Simulatie(hubs, vaccinatie_centra, filename);
-        EXPECT_TRUE(FileExists(OUTPUT_FILE_LOCATION + "Expected_Simpele_Uitvoer_test" + testnr + ".txt"));
-        EXPECT_TRUE(FileExists(OUTPUT_FILE_LOCATION + "Expected_Grafische_Impressie_test" + testnr + ".txt"));
+        EXPECT_TRUE(FileExists(HAPPY_DAY_OUTPUT_FILE_LOCATION + "Simpele_Uitvoer_test" + testnr + ".txt"));
+        EXPECT_TRUE(FileExists(HAPPY_DAY_OUTPUT_FILE_LOCATION + "Expected_Simpele_Uitvoer_test" + testnr + ".txt"));
+        EXPECT_TRUE(FileExists(HAPPY_DAY_OUTPUT_FILE_LOCATION + "Grafische_Impressie_test" + testnr + ".txt"));
+        EXPECT_TRUE(FileExists(HAPPY_DAY_OUTPUT_FILE_LOCATION + "Expected_Grafische_Impressie_test" + testnr + ".txt"));
 
-        EXPECT_TRUE(FileCompare(OUTPUT_FILE_LOCATION + "Simpele_Uitvoer_test" + testnr + ".txt",
-                                OUTPUT_FILE_LOCATION + "Expected_Simpele_Uitvoer_test" + testnr + ".txt"));
-        EXPECT_TRUE(FileCompare(OUTPUT_FILE_LOCATION + "Grafische_Impressie_test" + testnr + ".txt",
-                                OUTPUT_FILE_LOCATION + "Expected_Grafische_Impressietest_test" + testnr + ".txt"));
+        EXPECT_TRUE(FileCompare(HAPPY_DAY_OUTPUT_FILE_LOCATION + "Simpele_Uitvoer_test" + testnr + ".txt",
+                                HAPPY_DAY_OUTPUT_FILE_LOCATION + "Expected_Simpele_Uitvoer_test" + testnr + ".txt"));
+        EXPECT_TRUE(FileCompare(HAPPY_DAY_OUTPUT_FILE_LOCATION + "Grafische_Impressie_test" + testnr + ".txt",
+                                HAPPY_DAY_OUTPUT_FILE_LOCATION + "Expected_Grafische_Impressie_test" + testnr +
+                                ".txt"));
 
         nr++;
         string new_testnr = to_string(nr);
         while (new_testnr.size() < 3) new_testnr.insert(new_testnr.begin(), '0');
         size_t pos = filename.find(testnr);
         filename.replace(pos, 3, new_testnr);
+        testnr = new_testnr;
     }
 }
 

@@ -43,6 +43,7 @@ TEST_F(VaccinSimulatieInputTest, InputHappyDay) {
         while (new_testnr.size() < 3) new_testnr.insert(new_testnr.begin(), '0');
         size_t pos = filename.find(testnr);
         filename.replace(pos, 3, new_testnr);
+        testnr = new_testnr;
     }
 }
 
@@ -57,6 +58,7 @@ TEST_F(VaccinSimulatieInputTest, InputXMLSyntaxErrors) {
         while (new_testnr.size() < 3) new_testnr.insert(new_testnr.begin(), '0');
         size_t pos = filename.find(testnr);
         filename.replace(pos, 3, new_testnr);
+        testnr = new_testnr;
     }
 }
 

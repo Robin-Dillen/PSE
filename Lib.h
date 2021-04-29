@@ -14,6 +14,9 @@
 #include "Vaccins.h"
 
 #define OUTPUT_FILE_LOCATION string("../Outputfiles/")
+#define HAPPY_DAY_OUTPUT_FILE_LOCATION string(OUTPUT_FILE_LOCATION + "HappyDayTests/")
+#define WARNING_OUTPUT_FILE_LOCATION string(OUTPUT_FILE_LOCATION + "WarningTests/")
+#define DEATH_OUTPUT_FILE_LOCATION string(OUTPUT_FILE_LOCATION + "DeathTests/")
 #define INPUT_FILE_LOCATION string("../XMLfiles/")
 #define DEATH_TESTS_FILE_LOCATION string(INPUT_FILE_LOCATION + "DeathTests/")
 #define WARNING_TESTS_FILE_LOCATION string(INPUT_FILE_LOCATION + "WarningTests/")

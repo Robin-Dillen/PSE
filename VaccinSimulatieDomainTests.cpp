@@ -124,6 +124,7 @@ TEST_F(VaccinSimulatieDomainTest, HappyDay) {
         while (new_testnr.size() < 3) new_testnr.insert(new_testnr.begin(), '0');
         size_t pos = filename.find(testnr);
         filename.replace(pos, 3, new_testnr);
+        testnr = new_testnr;
     }
 }
 
