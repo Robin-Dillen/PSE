@@ -1,0 +1,3455 @@
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 0 weken en 0 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 2%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 1%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 0 weken en 1 dag.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 5%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 1%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 2%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 0 weken en 2 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 7%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 2%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 3%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 0 weken en 3 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 10%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 3%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 4%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 0 weken en 4 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 12%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 3%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 4%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 0 weken en 5 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 12%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 3%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 4%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 0 weken en 6 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 12%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 3%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 4%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 1 week en 0 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 12%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 3%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 4%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 1 week en 1 dag.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 12%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 3%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 4%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 1 week en 2 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 12%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 3%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 4%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 1 week en 3 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 12%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 3%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 4%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 1 week en 4 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 12%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 3%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 4%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 1 week en 5 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 12%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 3%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 4%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 1 week en 6 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 12%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 3%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 4%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 2 weken en 0 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 15%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 4%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 5%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 2 weken en 1 dag.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 18%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 5%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 7%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 2 weken en 2 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 20%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 5%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 7%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 2 weken en 3 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 20%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 5%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 7%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 2 weken en 4 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 20%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 5%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 7%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 2 weken en 5 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 20%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 5%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 7%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 2 weken en 6 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 20%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 5%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 7%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 3 weken en 0 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 20%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 5%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 7%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 3 weken en 1 dag.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 20%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 5%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 7%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 3 weken en 2 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 20%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 5%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 7%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 3 weken en 3 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 20%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 5%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 7%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 3 weken en 4 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 20%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 5%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 7%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 3 weken en 5 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 20%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 5%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 7%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 3 weken en 6 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 20%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 5%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 7%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 4 weken en 0 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 23%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 6%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 8%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 4 weken en 1 dag.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=====               ] 25%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 7%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 9%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 1 maand, 0 weken en 0 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=====               ] 28%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 7%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 9%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 1 maand, 0 weken en 1 dag.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=====               ] 28%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 7%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 9%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 1 maand, 0 weken en 2 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=====               ] 28%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 7%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 9%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 1 maand, 0 weken en 3 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=====               ] 28%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 7%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 9%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 1 maand, 0 weken en 4 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=====               ] 28%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 7%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 9%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 1 maand, 0 weken en 5 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=====               ] 28%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 7%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 9%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 1 maand, 0 weken en 6 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=====               ] 28%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 7%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 9%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 1 maand, 1 week en 0 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=====               ] 28%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 7%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 9%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 1 maand, 1 week en 1 dag.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=====               ] 28%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 7%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 9%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 1 maand, 1 week en 2 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=====               ] 28%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 7%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 9%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 1 maand, 1 week en 3 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=====               ] 28%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 7%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 9%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 1 maand, 1 week en 4 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=====               ] 28%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 7%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 9%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 1 maand, 1 week en 5 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[======              ] 31%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 8%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 10%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 1 maand, 1 week en 6 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[======              ] 33%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 9%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 11%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 1 maand, 2 weken en 0 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=======             ] 36%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 9%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 11%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 1 maand, 2 weken en 1 dag.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=======             ] 36%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 9%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 11%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 1 maand, 2 weken en 2 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=======             ] 36%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 9%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 11%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 1 maand, 2 weken en 3 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=======             ] 36%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 9%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 11%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 1 maand, 2 weken en 4 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=======             ] 36%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 9%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 11%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 1 maand, 2 weken en 5 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=======             ] 36%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 9%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 11%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 1 maand, 2 weken en 6 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=======             ] 36%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 9%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 11%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 1 maand, 3 weken en 0 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=======             ] 36%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 9%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 11%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 1 maand, 3 weken en 1 dag.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=======             ] 36%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 9%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 11%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 1 maand, 3 weken en 2 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=======             ] 36%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 9%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 11%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 1 maand, 3 weken en 3 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=======             ] 36%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 9%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 11%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 1 maand, 3 weken en 4 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=======             ] 36%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 9%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 11%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 1 maand, 3 weken en 5 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=======             ] 38%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 10%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 12%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 1 maand, 3 weken en 6 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[========            ] 41%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 10%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 13%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 1 maand, 4 weken en 0 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[========            ] 44%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 11%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 13%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 1 maand, 4 weken en 1 dag.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[========            ] 44%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 11%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 13%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 2 maanden, 0 weken en 0 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[========            ] 44%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 11%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 13%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 2 maanden, 0 weken en 1 dag.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[========            ] 44%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 11%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 13%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 2 maanden, 0 weken en 2 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[========            ] 44%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 11%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 13%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 2 maanden, 0 weken en 3 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[========            ] 44%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 11%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 13%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 2 maanden, 0 weken en 4 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[========            ] 44%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 11%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 13%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 2 maanden, 0 weken en 5 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[========            ] 44%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 11%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 13%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 2 maanden, 0 weken en 6 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[========            ] 44%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 11%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 13%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 2 maanden, 1 week en 0 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[========            ] 44%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 11%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 13%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 2 maanden, 1 week en 1 dag.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[========            ] 44%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 11%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 13%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 2 maanden, 1 week en 2 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[========            ] 44%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 11%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 13%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 2 maanden, 1 week en 3 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=========           ] 46%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 12%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 14%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 2 maanden, 1 week en 4 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=========           ] 49%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 13%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 15%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 2 maanden, 1 week en 5 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==========          ] 51%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 13%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 15%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 2 maanden, 1 week en 6 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==========          ] 51%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 13%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 15%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 2 maanden, 2 weken en 0 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==========          ] 51%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 13%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 15%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 2 maanden, 2 weken en 1 dag.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==========          ] 51%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 13%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 15%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 2 maanden, 2 weken en 2 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==========          ] 51%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 13%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 15%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 2 maanden, 2 weken en 3 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==========          ] 51%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 13%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 15%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 2 maanden, 2 weken en 4 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==========          ] 51%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 13%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 15%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 2 maanden, 2 weken en 5 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==========          ] 51%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 13%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 15%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 2 maanden, 2 weken en 6 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==========          ] 51%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 13%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 15%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 2 maanden, 3 weken en 0 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==========          ] 51%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 13%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 15%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 2 maanden, 3 weken en 1 dag.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==========          ] 51%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 13%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 15%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 2 maanden, 3 weken en 2 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==========          ] 51%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 13%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 15%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 2 maanden, 3 weken en 3 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==========          ] 54%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 14%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 17%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 2 maanden, 3 weken en 4 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===========         ] 57%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 14%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 18%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 2 maanden, 3 weken en 5 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===========         ] 59%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 15%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 18%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 2 maanden, 3 weken en 6 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===========         ] 59%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 15%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 18%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 2 maanden, 4 weken en 0 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===========         ] 59%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 15%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 18%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 2 maanden, 4 weken en 1 dag.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===========         ] 59%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 15%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 18%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 3 maanden, 0 weken en 0 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===========         ] 59%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 15%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 18%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 3 maanden, 0 weken en 1 dag.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===========         ] 59%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 15%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 18%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 3 maanden, 0 weken en 2 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===========         ] 59%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 15%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 18%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 3 maanden, 0 weken en 3 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===========         ] 59%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 15%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 18%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 3 maanden, 0 weken en 4 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===========         ] 59%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 15%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 18%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 3 maanden, 0 weken en 5 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===========         ] 59%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 15%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 18%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 3 maanden, 0 weken en 6 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===========         ] 59%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 15%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 18%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 3 maanden, 1 week en 0 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===========         ] 59%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 15%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 18%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 3 maanden, 1 week en 1 dag.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[============        ] 62%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 16%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 19%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 3 maanden, 1 week en 2 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[============        ] 64%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 17%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 20%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 3 maanden, 1 week en 3 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=============       ] 67%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 17%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 20%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 3 maanden, 1 week en 4 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=============       ] 67%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 17%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 20%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 3 maanden, 1 week en 5 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=============       ] 67%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 17%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 20%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 3 maanden, 1 week en 6 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=============       ] 67%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 17%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 20%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 3 maanden, 2 weken en 0 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=============       ] 67%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 17%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 20%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 3 maanden, 2 weken en 1 dag.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=============       ] 67%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 17%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 20%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 3 maanden, 2 weken en 2 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=============       ] 67%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 17%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 20%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 3 maanden, 2 weken en 3 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=============       ] 67%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 17%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 20%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 3 maanden, 2 weken en 4 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=============       ] 67%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 17%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 20%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 3 maanden, 2 weken en 5 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=============       ] 67%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 17%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 20%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 3 maanden, 2 weken en 6 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=============       ] 67%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 17%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 20%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 3 maanden, 3 weken en 0 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=============       ] 67%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 17%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 20%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 3 maanden, 3 weken en 1 dag.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==============      ] 70%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 17%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 21%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 3 maanden, 3 weken en 2 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==============      ] 72%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 18%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 22%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 3 maanden, 3 weken en 3 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===============     ] 75%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 19%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 22%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 3 maanden, 3 weken en 4 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===============     ] 75%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 19%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 22%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 3 maanden, 3 weken en 5 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===============     ] 75%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 19%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 22%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 3 maanden, 3 weken en 6 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===============     ] 75%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 19%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 22%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 3 maanden, 4 weken en 0 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===============     ] 75%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 19%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 22%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 3 maanden, 4 weken en 1 dag.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===============     ] 75%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 19%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 22%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 4 maanden, 0 weken en 0 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===============     ] 75%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 19%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 22%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 4 maanden, 0 weken en 1 dag.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===============     ] 75%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 19%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 22%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 4 maanden, 0 weken en 2 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===============     ] 75%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 19%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 22%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 4 maanden, 0 weken en 3 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===============     ] 75%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 19%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 22%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 4 maanden, 0 weken en 4 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===============     ] 75%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 19%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 22%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 4 maanden, 0 weken en 5 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===============     ] 75%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 19%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 22%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 4 maanden, 0 weken en 6 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===============     ] 77%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 20%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 23%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 4 maanden, 1 week en 0 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[================    ] 80%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 21%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 24%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 4 maanden, 1 week en 1 dag.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[================    ] 83%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 21%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 24%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 4 maanden, 1 week en 2 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[================    ] 83%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 21%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 24%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 4 maanden, 1 week en 3 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[================    ] 83%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 21%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 24%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 4 maanden, 1 week en 4 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[================    ] 83%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 21%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 24%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 4 maanden, 1 week en 5 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[================    ] 83%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 21%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 24%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 4 maanden, 1 week en 6 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[================    ] 83%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 21%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 24%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 4 maanden, 2 weken en 0 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[================    ] 83%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 21%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 24%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 4 maanden, 2 weken en 1 dag.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[================    ] 83%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 21%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 24%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 4 maanden, 2 weken en 2 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[================    ] 83%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 21%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 24%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 4 maanden, 2 weken en 3 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[================    ] 83%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 21%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 24%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 4 maanden, 2 weken en 4 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[================    ] 83%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 21%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 24%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 4 maanden, 2 weken en 5 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[================    ] 83%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 21%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 24%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 4 maanden, 2 weken en 6 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=================   ] 85%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 21%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=====               ] 25%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 4 maanden, 3 weken en 0 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=================   ] 88%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 22%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=====               ] 27%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 4 maanden, 3 weken en 1 dag.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==================  ] 90%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 23%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=====               ] 27%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 4 maanden, 3 weken en 2 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==================  ] 90%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 23%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=====               ] 27%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 4 maanden, 3 weken en 3 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==================  ] 90%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 23%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=====               ] 27%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 4 maanden, 3 weken en 4 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==================  ] 90%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 23%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=====               ] 27%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 4 maanden, 3 weken en 5 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==================  ] 90%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 23%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=====               ] 27%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 4 maanden, 3 weken en 6 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==================  ] 90%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 23%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=====               ] 27%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 4 maanden, 4 weken en 0 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==================  ] 90%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 23%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=====               ] 27%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 4 maanden, 4 weken en 1 dag.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==================  ] 90%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 23%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=====               ] 27%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 5 maanden, 0 weken en 0 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==================  ] 90%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 23%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=====               ] 27%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 5 maanden, 0 weken en 1 dag.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==================  ] 90%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 23%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=====               ] 27%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 5 maanden, 0 weken en 2 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==================  ] 90%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 23%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=====               ] 27%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 5 maanden, 0 weken en 3 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==================  ] 90%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 23%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=====               ] 27%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 5 maanden, 0 weken en 4 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==================  ] 93%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 24%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=====               ] 28%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 5 maanden, 0 weken en 5 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=================== ] 96%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 24%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=====               ] 29%
+		- Spoetnik_V		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 5 maanden, 0 weken en 6 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=================== ] 98%
+		- Spoetnik_V		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+		- Spoetnik_V		[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====                ] 24%
+		- Spoetnik_V		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=====               ] 29%
+		- Spoetnik_V		[====================] 100%
+

@@ -1,0 +1,426 @@
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 0 weken en 0 dagen.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 1%
+	- gevaccineerd	[                    ] 0%
+		- Modern		[                    ] 0%
+		- Pfize		[                    ] 0%
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 1%
+	- gevaccineerd	[                    ] 0%
+		- AstraZenec		[                    ] 0%
+		- Modern			[                    ] 0%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 2%
+	- gevaccineerd	[                    ] 0%
+		- AstraZenec		[                    ] 0%
+		- Modern			[                    ] 0%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 1%
+	- gevaccineerd	[                    ] 0%
+		- AstraZenec		[                    ] 0%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 0 weken en 1 dag.
+
+Park Spoor Oost:
+	- vaccins		[========            ] 43%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 1%
+		- Modern		[====================] 100%
+		- Pfize		[                    ] 0%
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 1%
+		- AstraZenec		[====================] 100%
+		- Modern			[                    ] 0%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 2%
+		- AstraZenec		[                    ] 0%
+		- Modern			[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 1%
+		- AstraZenec		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 0 weken en 2 dagen.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 1%
+	- gevaccineerd	[                    ] 1%
+		- Modern		[====================] 100%
+		- Pfize		[                    ] 0%
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 1%
+	- gevaccineerd	[                    ] 1%
+		- AstraZenec		[====================] 100%
+		- Modern			[                    ] 0%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 2%
+	- gevaccineerd	[                    ] 2%
+		- AstraZenec		[                    ] 0%
+		- Modern			[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 1%
+	- gevaccineerd	[                    ] 1%
+		- AstraZenec		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 0 weken en 3 dagen.
+
+Park Spoor Oost:
+	- vaccins		[======              ] 30%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 2%
+		- Modern		[====================] 100%
+		- Pfize		[                    ] 0%
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 3%
+		- AstraZenec		[====================] 100%
+		- Modern			[                    ] 0%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 4%
+		- AstraZenec		[                    ] 0%
+		- Modern			[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 2%
+		- AstraZenec		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 0 weken en 4 dagen.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 2%
+		- Modern		[====================] 100%
+		- Pfize		[                    ] 0%
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 1%
+	- gevaccineerd	[                    ] 3%
+		- AstraZenec		[====================] 100%
+		- Modern			[                    ] 0%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 2%
+	- gevaccineerd	[                    ] 4%
+		- AstraZenec		[                    ] 0%
+		- Modern			[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 1%
+	- gevaccineerd	[                    ] 2%
+		- AstraZenec		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 0 weken en 5 dagen.
+
+Park Spoor Oost:
+	- vaccins		[===                 ] 16%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 3%
+		- Modern		[====================] 100%
+		- Pfize		[                    ] 0%
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 5%
+		- AstraZenec		[====================] 100%
+		- Modern			[                    ] 0%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 6%
+		- AstraZenec		[                    ] 0%
+		- Modern			[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 3%
+		- AstraZenec		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 0 weken en 6 dagen.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 4%
+		- Modern		[====================] 100%
+		- Pfize		[                    ] 0%
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 1%
+	- gevaccineerd	[=                   ] 5%
+		- AstraZenec		[====================] 100%
+		- Modern			[                    ] 0%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 2%
+	- gevaccineerd	[=                   ] 6%
+		- AstraZenec		[                    ] 0%
+		- Modern			[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 1%
+	- gevaccineerd	[                    ] 3%
+		- AstraZenec		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 1 week en 0 dagen.
+
+Park Spoor Oost:
+	- vaccins		[==                  ] 10%
+	- 1ste prik		[                    ] 1%
+	- gevaccineerd	[                    ] 4%
+		- Modern		[====================] 100%
+		- Pfize		[                    ] 0%
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 7%
+		- AstraZenec		[====================] 100%
+		- Modern			[                    ] 0%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 8%
+		- AstraZenec		[                    ] 0%
+		- Modern			[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[                    ] 4%
+		- AstraZenec		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 1 week en 1 dag.
+
+Park Spoor Oost:
+	- vaccins		[==                  ] 13%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 5%
+		- Modern		[====================] 100%
+		- Pfize		[                    ] 0%
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 1%
+	- gevaccineerd	[=                   ] 7%
+		- AstraZenec		[====================] 100%
+		- Modern			[                    ] 0%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 2%
+	- gevaccineerd	[=                   ] 8%
+		- AstraZenec		[                    ] 0%
+		- Modern			[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 1%
+	- gevaccineerd	[                    ] 4%
+		- AstraZenec		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 1 week en 2 dagen.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 5%
+		- Modern		[====================] 100%
+		- Pfize		[                    ] 0%
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 9%
+		- AstraZenec		[====================] 100%
+		- Modern			[                    ] 0%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 10%
+		- AstraZenec		[                    ] 0%
+		- Modern			[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 5%
+		- AstraZenec		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 1 week en 3 dagen.
+
+Park Spoor Oost:
+	- vaccins		[===                 ] 16%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 6%
+		- Modern		[====================] 100%
+		- Pfize		[                    ] 0%
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 1%
+	- gevaccineerd	[=                   ] 9%
+		- AstraZenec		[====================] 100%
+		- Modern			[                    ] 0%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 2%
+	- gevaccineerd	[==                  ] 10%
+		- AstraZenec		[                    ] 0%
+		- Modern			[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 1%
+	- gevaccineerd	[=                   ] 5%
+		- AstraZenec		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 1 week en 4 dagen.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 7%
+		- Modern		[====================] 100%
+		- Pfize		[                    ] 0%
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 11%
+		- AstraZenec		[====================] 100%
+		- Modern			[                    ] 0%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 12%
+		- AstraZenec		[                    ] 0%
+		- Modern			[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 7%
+		- AstraZenec		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 1 week en 5 dagen.
+
+Park Spoor Oost:
+	- vaccins		[===                 ] 16%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 8%
+		- Modern		[====================] 100%
+		- Pfize		[                    ] 0%
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 1%
+	- gevaccineerd	[==                  ] 11%
+		- AstraZenec		[====================] 100%
+		- Modern			[                    ] 0%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 2%
+	- gevaccineerd	[==                  ] 12%
+		- AstraZenec		[                    ] 0%
+		- Modern			[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 1%
+	- gevaccineerd	[=                   ] 7%
+		- AstraZenec		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 1 week en 6 dagen.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 8%
+		- Modern		[====================] 100%
+		- Pfize		[                    ] 0%
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 13%
+		- AstraZenec		[====================] 100%
+		- Modern			[                    ] 0%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 14%
+		- AstraZenec		[                    ] 0%
+		- Modern			[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 8%
+		- AstraZenec		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 2 weken en 0 dagen.
+
+Park Spoor Oost:
+	- vaccins		[===                 ] 16%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 9%
+		- Modern		[====================] 100%
+		- Pfize		[                    ] 0%
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 1%
+	- gevaccineerd	[==                  ] 13%
+		- AstraZenec		[====================] 100%
+		- Modern			[                    ] 0%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 2%
+	- gevaccineerd	[==                  ] 14%
+		- AstraZenec		[                    ] 0%
+		- Modern			[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 1%
+	- gevaccineerd	[=                   ] 8%
+		- AstraZenec		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 2 weken en 1 dag.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 10%
+		- Modern		[====================] 100%
+		- Pfize		[                    ] 0%
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 15%
+		- AstraZenec		[====================] 100%
+		- Modern			[                    ] 0%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[===                 ] 16%
+		- AstraZenec		[                    ] 0%
+		- Modern			[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=                   ] 9%
+		- AstraZenec		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 2 weken en 2 dagen.
+
+Park Spoor Oost:
+	- vaccins		[===                 ] 16%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[==                  ] 11%
+		- Modern		[====================] 100%
+		- Pfize		[                    ] 0%
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 1%
+	- gevaccineerd	[===                 ] 15%
+		- AstraZenec		[====================] 100%
+		- Modern			[                    ] 0%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 2%
+	- gevaccineerd	[===                 ] 16%
+		- AstraZenec		[                    ] 0%
+		- Modern			[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 1%
+	- gevaccineerd	[=                   ] 9%
+		- AstraZenec		[====================] 100%
+
