@@ -220,7 +220,7 @@ private:
 
     const VaccinatieCentrum *_initCheck; // pointer naar zichzelf om te checken of het object correct geïnitialseert is
 
-    deque<map<string, int> > aantal_eerste_prikken;
+    map<string, deque<int> > aantal_eerste_prikken; // TODO omdraaien
     // elke loop getten en verwijderen we front, en loopen we door de batches(van front), we checken of we ze een 2de prik kunnen geven etc...
     // -> voeg toe bij aantal vaccinaties(mss voor statistiche verwerking, ook in aantal vaccinaties alles gescheiden houden)
     // als er nog vaccins over zijn, gaan we een nieuwe batch aanmaken(als hernieuwbaar), we checken of aantal_eerste_prikken.size() >= hernieuwbaar
