@@ -52,6 +52,12 @@ set(DEBUG_SOURCE_FILES
         Vaccins.cpp Vaccins.h VaccinSimulatieOutputTests.cpp VaccinSimulatieInputTests.cpp VaccinSimulatieDomainTests.cpp)
 
 
+# QT
+set(Qt5Core_DIR "C:\\Qt\\5.15.2\\mingw81_64\\lib\\cmake\\Qt5Core")
+set(Qt5Widgets_DIR "C:\\Qt\\5.15.2\\mingw81_64\\lib\\cmake\\Qt5Widgets")
+set(Qt5Gui_DIR "C:\\Qt\\5.15.2\\mingw81_64\\lib\\cmake\\Qt5Gui")
+
+
 # Create RELEASE target
 add_executable(PSE ${RELEASE_SOURCE_FILES})
 
