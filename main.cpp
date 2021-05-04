@@ -8,12 +8,14 @@
 
 #include <iostream>
 #include <vector>
+#include <QApplication>
 
 #include "VaccinSimulatie.h"
 
 using namespace std;
 
-int main(int argc, char const *argv[]) {
+int main(int argc, char *argv[]) {
+    QApplication a(argc, argv);
     vector<string> args = vector<string>(argv + 1, argv + argc);
 
     Parser P(args[0]);
@@ -29,6 +31,6 @@ int main(int argc, char const *argv[]) {
         }
     }
     Simulatie(hubs, vaccinatie_centra, args[0]);
-    return 0;
+    return a.exec();
 }
 
