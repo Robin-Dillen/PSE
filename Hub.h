@@ -15,7 +15,7 @@
 #include <cmath> // voor ceil
 #include <iostream> // for testing
 #include <algorithm>
-
+#include <deque>
 
 #include "lib/DesignByContract.h"
 
@@ -170,6 +170,25 @@ public:
      */
     map<string, Vaccin *> getVaccins();
 
+
+    /*!
+     * Maakt reservaties voor de centra voor bepaald type vaccin
+     * @param type: type van vaccin
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling verdeelVaccins");
+     * \n REQUIRE(!type.empty(), "Type of vaccin cannot be empty.");
+     * \n ENSURE(extra_reservatie[i][it->first][type] + gereserveerde_vaccins[i][it->first][type] <= it->second->getKcapaciteit()*2, "Er zijn teveel vaccins gereserveerd");
+     * \n ENSURE(aantal_vaccins[type] >= 0, "Er Zijn teveel vaccins gereserveerd");
+     */
+    void addReservations(const string &type);
+
+    /*!
+     *
+     * @param dag: een batch van gereserveerde vaccins van een bepaalde dag
+     * @return: totaan aantal vaccins die gereserveerd zijn die dag
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getGereserveerdevaccins()");
+     */
+    int getGereserveerdevaccins(map<string, int> dag);
+
 private:
     // const attributes
 //    const int kaantal_vaccins_per_levering;
@@ -184,7 +203,8 @@ private:
 
 //    int aantal_vaccins; // aantal Kvaccins in de hub
     map<string, int> aantal_vaccins;
-    map<string, int> gereserveerd_2de_prik;
+    deque<map<string, map<string, int> > > gereserveerde_vaccins;
+    deque<map<string, map<string, int> > > extra_reservatie;
 };
 
 

@@ -203,6 +203,52 @@ public:
      */
     int getAantalNietVaccinaties() const;
 
+    /*!
+     * geeft terug hoeveel vaccins er nog gereserveerd moeten worden voor een bepaalde dag
+     * @return int
+     * @param type
+     * @param dag
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getAantalNietVaccinaties()");
+     * \n REQUIRE(nog_te_reserveren_vaccins[dag][type] >= 0, "Er mag geen negatief aantal te reserveren vaccins zijn");
+     * \n REQUIRE(!type.empty(), "Het Vaccin type mag geen lege string zijn!");
+     * \n REQUIRE(dag > 0, "De dag moet positief zijn!");
+     */
+    int getNogTeReserverenVaccins(const string &type, int dag);
+
+
+    /*!
+     * geeft terug hoeveel vaccins er nog gereserveerd moeten worden voor een bepaalde dag
+     * @return void
+     * @param type
+     * @param dag
+     * @param vaccins: aantal te reserveren vaccins
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getAantalNietVaccinaties()");
+     * \n REQUIRE(!type.empty(), "Het Vaccin type mag geen lege string zijn!");
+     * \n REQUIRE(dag > 0, "De dag moet positief zijn!");
+     * \n REQUIRE(vaccins > 0, "het aantal vaccins moet positief zijn!");
+     * \n ENSURE(nog_te_reserveren_vaccins[dag][type] >= 0, "Er mag geen negatief aantal te reserveren vaccins zijn");
+     */
+    void reserveerVaccins(const string &type, int dag, int vaccins);
+
+
+    /*!
+     * update het aantal gevaccineerden
+     * @param aantal: het aantal vaccins dat gezet moet worden
+     * \n REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling zet2dePrikVaccins");
+     * \n REQUIRE(!type.empty(), "Het Vaccin type mag geen lege string zijn!");
+     * \n REQUIRE(capaciteit >= aantal, "Er kunnen niet meer dan capaciteit aantal vaccins gezet worden!");
+     * \n ENSURE( aantal_vaccins[type].second >= 0, "Er zijn te weinig vaccins aanwezig");
+     */
+    void zet2dePrikVaccins(const string &type, int aantal, int &capaciteit);
+
+    /*!
+     * update het aantal niet gevaccineerden
+     * @param aantal: het aantal vaccins dat gezet moet worden
+     * \n REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling zet1stePrikVaccins");
+     * \n ENSURE( aantal_vaccins[type].second >= 0, "Er zijn te weinig vaccins aanwezig");
+     */
+    void zet1stePrikVaccins(const string &type, int aantal, int &capaciteit);
+
 private:
 
     /*!
@@ -227,6 +273,9 @@ private:
     // zo ja, voeg nieuwe batch toe op plaats hernieuwbaar
     // zo nee aantal_eerste_prikken.resize(hernieuwbaar) !!niet reserve!!
     // we gebruiken een list omdat we front vaak moeten verwijderen(geeft shifts zoals bij vector)
+
+    deque<map<string, int> > nog_te_reserveren_vaccins;
+
 
     // changing attributes
     map<string, pair<Vaccin *, int> > aantal_vaccins; //vaccin: Vaccintype, int: aantal vaccins van dit type
