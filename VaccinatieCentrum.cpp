@@ -173,9 +173,7 @@ void VaccinatieCentrum::nieuweDag() {
          geleverde_vaccins != aantal_geleverde_vaccins.end(); geleverde_vaccins++) {
         aantal_vaccins[geleverde_vaccins->first].second += geleverde_vaccins->second;
 
-        stats.addGeleverdeVaccins(this, geleverde_vaccins->first, geleverde_vaccins->second); // TODO
-        // het verzamelen van statistische gegevens mag niet in de klassen zelf gebeuren
-        // reset
+        stats.addGeleverdeVaccins(this, geleverde_vaccins->first, geleverde_vaccins->second);
         geleverde_vaccins->second = 0;
         ENSURE(getAantalGeleverdeVaccins(geleverde_vaccins->first) == 0,
                "Het aantal geleverde vaccins is niet succesvol gereset!");
@@ -187,18 +185,17 @@ void VaccinatieCentrum::nieuweDag() {
     ENSURE(getTotaalAantalVaccins() <= getMaxStock(), "Error, er zijn te veel vaccins geleverd!");
 
     begin_aantal_vaccins = getTotaalAantalVaccins();
-
+    int verwijderde_vaccins = 0;
     int capaciteit = kcapaciteit;
     deque<map<string, int> >::iterator today = aantal_eerste_prikken.begin();
     deque<map<string, int> >::iterator tomorrow = aantal_eerste_prikken.begin() + 1;
+    //eerste vaccinatie om 2de prikken te zetten
     for (map<string, int>::iterator batch = today->begin(); batch != today->end(); batch++) {
 
         int min_ = min(3,
                        getAantalVaccins(batch->first),
                        capaciteit,
                        batch->second);
-
-//        cout << "Er zijn " << min_ << " 2de prikken met " << batch->first << " gezet in "<< kfname <<"!" << endl;
 
         zet2dePrikVaccins(batch->first, min_, capaciteit);
         batch->second -= min_;
@@ -215,25 +212,14 @@ void VaccinatieCentrum::nieuweDag() {
             }
         }
     }
-
+    //2de vaccinatie om nog niet gevaccineerden te vaccineren
     for (MapSP_VI_Iterator vaccin = aantal_vaccins.begin();
          vaccin != aantal_vaccins.end() && capaciteit != 0; vaccin++) {
-        int Gereserveerde2deprikken = 0;
-        for (MapSP_VI_Iterator vaccintype = aantal_vaccins.begin(); vaccintype != aantal_vaccins.end() && capaciteit != 0; vaccintype++) {
-            Gereserveerde2deprikken += aantal_eerste_prikken[vaccin->second.first->hernieuwing - 1][vaccintype->first];
-        }
-        int prikkenLeft = capaciteit - Gereserveerde2deprikken;
-
-        if(prikkenLeft < 0) prikkenLeft = 0;
-        int aantal_prikken = min(4,
-                                 prikkenLeft,
+        int aantal_prikken = min(3,
                                  capaciteit,
                                  aantal_niet_vaccinaties,
                                  getAantalVaccins(vaccin->first));
-//        cout<<"\t"<<aantal_niet_vaccinaties<<endl;
-
         ENSURE(aantal_prikken >= 0, "Het aantal vaccinaties mag niet negatief zijn!");
-//        cout << "Er zijn " << aantal_prikken << " 1ste prikken met " << vaccin->first << " gezet in "<< kfname <<"!" << endl;
         if (vaccin->second.first->hernieuwing == 0) {
             //nieuw type bijvoegen
             if (aantal_vaccinaties.find(vaccin->first) == aantal_vaccinaties.end()) {
@@ -249,7 +235,19 @@ void VaccinatieCentrum::nieuweDag() {
             zet1stePrikVaccins(vaccin->first, aantal_prikken, capaciteit);
             aantal_eerste_prik += aantal_prikken;
         }
+        //verwijder vaccins als ze nooit meer gebruikt kunnen worden
+        if(aantal_niet_vaccinaties == 0){
+            int nogtevaccineren = 0;
+            for(int i = 0; i < (int) aantal_eerste_prikken.size(); i++){
+                nogtevaccineren += aantal_eerste_prikken[0][vaccin->first];
+            }
+            if(nogtevaccineren == 0){
+                verwijderde_vaccins += aantal_vaccins[vaccin->first].second;
+                aantal_vaccins[vaccin->first].second = 0;
+            }
+        }
     }
+
     /*bool koudeVaccins = true;
     for (MapSP_VI_Iterator vaccin = aantal_vaccins.begin(); vaccin != aantal_vaccins.end() && capaciteit != 0; vaccin++) {
         if(vaccin->second.first->temperatuur >= 0){
@@ -266,7 +264,7 @@ void VaccinatieCentrum::nieuweDag() {
     }
      */
 
-    ENSURE(begin_aantal_vaccins - aantal_tweede_prik - aantal_eerste_prik == getTotaalAantalVaccins(),
+    ENSURE(begin_aantal_vaccins - aantal_tweede_prik - aantal_eerste_prik - verwijderde_vaccins == getTotaalAantalVaccins(),
            "Het aantal vaccins is niet geüpdate!");
     ENSURE(begin_aantal_vaccinaties + aantal_tweede_prik == getTotaalAantalVaccinaties(),
            "Het aantal vaccinaties is niet succesvol geüpdate!");
