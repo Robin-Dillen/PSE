@@ -44,19 +44,23 @@ Simulatie(vector<Hub *> &hubs, std::vector<VaccinatieCentrum *> &vaccinatie_cent
 
     int end_day = 0; // we kunnen ook een grens zetten op de duur van de simulatie, zet op 0 om geen grens te hebben
 
-    int current_day = 0; // we houden de datum hier bij zodat we aan het einde van de simulatie de duur van de simulatie kunnen opvragen
+    int current_day = 1; // we houden de datum hier bij zodat we aan het einde van de simulatie de duur van de simulatie kunnen opvragen
     bool break_ = false;
     for (unsigned int i = 0; i < hubs.size(); i++) {
         // output
         output.addToOutputFile(hubs[i], i + 1, current_day, filename1);
     }
+
+    for (unsigned int i = 0; i < vaccinatie_centra.size(); i++) {
+        vaccinatie_centra[i]->nieuweDag(); // eerste keer reserveren TODO
+    }
+
     while ((!end_day || current_day < end_day) && !break_) {
         break_ = true;
         for (unsigned int i = 0; i < hubs.size(); i++) {
             if (!hubs[i]->isIedereenGevaccineerd()) {
                 break_ = false;
-            }
-            else{
+            } else {
                 continue;
             }
 
