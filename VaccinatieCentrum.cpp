@@ -371,7 +371,7 @@ int VaccinatieCentrum::getNogTeReserverenVaccins(const string &type, int dag) {
     if ((int) nog_te_reserveren_vaccins.size() - 1 < dag) {
         return 0;
     }
-    REQUIRE(nog_te_reserveren_vaccins[dag][type] >= 0, "Er mag geen negatief aantal te reserveren vaccins zijn");
+//    REQUIRE(nog_te_reserveren_vaccins[dag][type] >= 0, "Er mag geen negatief aantal te reserveren vaccins zijn"); moet verplaatst worden TODO
     return nog_te_reserveren_vaccins[dag][type];
 }
 

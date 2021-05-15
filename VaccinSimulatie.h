@@ -46,6 +46,16 @@ Simulatie(vector<Hub *> &hubs, std::vector<VaccinatieCentrum *> &vaccinatie_cent
 
     int current_day = 1; // we houden de datum hier bij zodat we aan het einde van de simulatie de duur van de simulatie kunnen opvragen
     bool break_ = false;
+
+    // first reservation
+    for (unsigned int i = 0; i < hubs.size(); i++) {
+        map<string, Vaccin *> vaccins = hubs[i]->getVaccins();
+        for (map<string, Vaccin *>::iterator vaccin = vaccins.begin(); vaccin != vaccins.end(); vaccin++) {
+            hubs[i]->addReservations(vaccin->first);
+        }
+
+    }
+
     for (unsigned int i = 0; i < hubs.size(); i++) {
         // output
         output.addToOutputFile(hubs[i], i + 1, current_day, filename1);
