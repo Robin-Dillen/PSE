@@ -190,24 +190,22 @@ void Hub::addReservations(const string &type) {
             //Zolang er voldoende vaccins zijn en niet alle centra gevuld zijn tot capaciteit, ladingen reserveren
             while (vaccins >= lading && !done) {
                 //loop over alle dagen vannaf vandaag tot nieuwe levering van type vaccin
-                for (int i = 0; i < interval && vaccins > lading; i++) {
+                for (int dag = 0; dag < interval && vaccins > lading; dag++) {
                     //Check hoeveel vaccins er nog gereserveerd kunnen worden om aan capaciteit te bekomen die dag, of hoeveel mensen nog gevaccineerd moeten worden
-                    int max_stock = centrum->second->getMaxStock() -
-                                    getGereserveerdevaccins(gereserveerde_vaccins[i][centrum->first]) -
-                                    getGereserveerdevaccins(extra_reservatie[i][centrum->first]);
+                    int free_capaciteit = getFreeStock(centrum->second, dag);
 
                     //Als gereserveerde vaccins boven capaciteit komt, geen vaccins meer leveren
-                    if (lading > max_stock) {
+                    done = false;
+                    if (free_capaciteit <= 0) {
                         done = true;
                         continue;
-                    } else {
-                        done = false;
                     }
                     //lading reserveren voor die dag
                     vaccins -= lading;
                     aantal_vaccins[type] -= lading;
-                    extra_reservatie[i][centrum->first][type] += lading;
-                    ENSURE(extra_reservatie[i][centrum->first][type] + gereserveerde_vaccins[i][centrum->first][type] <=
+                    extra_reservatie[dag][centrum->first][type] += lading;
+                    ENSURE(extra_reservatie[dag][centrum->first][type] +
+                           gereserveerde_vaccins[dag][centrum->first][type] <=
                            centrum->second->getKcapaciteit() * 2, "Er zijn teveel vaccins gereserveerd");
                 }
             }
@@ -304,3 +302,17 @@ int Hub::getGereserveerdevaccins(map<string, int> dag) {
 }
 
 Hub::~Hub() {}
+
+int Hub::getFreeStock(VaccinatieCentrum *centrum, int dag) {
+    int overschot = 0;
+    for (int d = 0; d < dag; d++) {
+        int aantal = getGereserveerdevaccins(gereserveerde_vaccins[d][centrum->getKfname()]) +
+                     getGereserveerdevaccins(extra_reservatie[d][centrum->getKfname()]) - centrum->getKcapaciteit();
+        overschot += aantal;
+    }
+    int stock = centrum->getKcapaciteit() -
+                getGereserveerdevaccins(gereserveerde_vaccins[dag][centrum->getKfname()]) -
+                getGereserveerdevaccins(extra_reservatie[dag][centrum->getKfname()]);
+    if (overschot <= 0) return stock;
+    return stock - overschot;
+}

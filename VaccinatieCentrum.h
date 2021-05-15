@@ -251,12 +251,6 @@ public:
 
 private:
 
-    /*!
-     * update alle variabelen
-     * @param aantal het aantal vaccins dat gezet moet worden
-     */
-    void zetVaccins(const string &type, int aantal, int &capaciteit);
-
     // const attributes
     const int kcapaciteit;
     const int kaantal_inwoners;

@@ -184,10 +184,12 @@ public:
     /*!
      *
      * @param dag: een batch van gereserveerde vaccins van een bepaalde dag
-     * @return: totaan aantal vaccins die gereserveerd zijn die dag
+     * @return: totaal aantal vaccins die gereserveerd zijn die dag
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getGereserveerdevaccins()");
      */
     int getGereserveerdevaccins(map<string, int> dag);
+
+    int getFreeStock(VaccinatieCentrum *centrum, int dag);
 
 private:
     // const attributes
@@ -203,6 +205,7 @@ private:
 
 //    int aantal_vaccins; // aantal Kvaccins in de hub
     map<string, int> aantal_vaccins;
+    //TODO pas datastructuren aan
     deque<map<string, map<string, int> > > gereserveerde_vaccins;
     deque<map<string, map<string, int> > > extra_reservatie;
 };
