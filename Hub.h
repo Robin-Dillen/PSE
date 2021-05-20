@@ -50,6 +50,7 @@ public:
      * @param type: naam van het vaccin
      * @return int :geeft terug om de hoeveel dagen een levering Kvaccins binnenkomt
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getFhub()");
+     * \n ENSURE(kvaccins.at(type)->aantal >= 0, "Er is een negatief aantal vaccins!");
      */
     int getAantalVaccins(const string &type) const;
 
@@ -72,14 +73,14 @@ public:
      * @return geeft het aantal Kvaccins per levering terug
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getKaantalVaccinsPerLevering");
      */
-    const int getKaantalVaccinsPerLevering(const string &type) const;
+    int getKaantalVaccinsPerLevering(const string &type) const;
 
     /*!
      * @param type: naam van het vaccin
      * @return geeft het aantal Kvaccins per lading terug
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getKaantalVaccinsPerLading");
      */
-    const int getKaantalVaccinsPerLading(const string &type) const;
+    int getKaantalVaccinsPerLading(const string &type) const;
 
     /*!
      * @return geeft de verbonden centra terug
@@ -196,18 +197,16 @@ private:
 //    const int kaantal_vaccins_per_levering;
 //    const int kleveringen_interval;
 //    const int kaantal_vaccins_per_lading;
-    const map<string, Vaccin *> kvaccins;
+    map<string, Vaccin *> kvaccins;
 
     const Hub *_initCheck; // pointer naar zichzelf om te checken of het object correct geïnitialseert is
 
     // changing attributes
     map<string, VaccinatieCentrum *> fverbonden_centra; // slaagt alle vaccinatie centra op met zoeksleutel: name
 
-//    int aantal_vaccins; // aantal Kvaccins in de hub
-    map<string, int> aantal_vaccins;
-    //TODO pas datastructuren aan
-    deque<map<string, map<string, int> > > gereserveerde_vaccins;
-    deque<map<string, map<string, int> > > extra_reservatie;
+//    map<string, int> aantal_vaccins;
+//    deque<map<string, map<string, int> > > gereserveerde_vaccins;
+//    deque<map<string, map<string, int> > > extra_reservatie;
 };
 
 
