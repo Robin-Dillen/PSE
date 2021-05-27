@@ -9,13 +9,14 @@
 #include "StatisticsSingleton.h"
 #include "Vaccins.h"
 #include "Lib.h"
+#include "MainWindow.h"
 
 using namespace std;
 
 inline void
 Simulatie(vector<Hub *> &hubs, std::vector<VaccinatieCentrum *> &vaccinatie_centra, const string &testfilename,
           bool c_out = true) {
-
+    MainWindow w;
     size_t pos = testfilename.find("test");
     ENSURE(pos != string::npos, "Given argument doesn't include a test file!");
 
