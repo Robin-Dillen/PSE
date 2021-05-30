@@ -11,6 +11,16 @@ include_directories(gtest/include)
 # Set Library dir
 link_directories(gtest/lib)
 
+# QT
+set(Qt5Core_DIR "\\mnt\\c\\Qt\\5.15.2\\mingw81_64\\lib\\cmake\\Qt5Core")
+set(Qt5Widgets_DIR "\\mnt\\c\\Qt\\5.15.2\\mingw81_64\\lib\\cmake\\Qt5Widgets")
+set(Qt5Gui_DIR "\\mnt\\c\\Qt\\5.15.2\\mingw81_64\\lib\\cmake\\Qt5Gui")
+
+find_package( Qt5Core REQUIRED )
+find_package( Qt5Widgets REQUIRED )
+find_package( Qt5Gui REQUIRED )
+
+
 # Set source files for RELEASE target
 set(RELEASE_SOURCE_FILES
         main.cpp
@@ -23,13 +33,17 @@ set(RELEASE_SOURCE_FILES
         TinyXML/tinyxml.h
         TinyXML/tinyxmlerror.cpp
         TinyXML/tinyxmlparser.cpp
-        Output.cpp
-        Output.h
+        Output.cpp Output.h
         Lib.h
         Utils.h
         VaccinSimulatie.h
         StatisticsSingleton.cpp StatisticsSingleton.h
-        Vaccins.cpp Vaccins.h)
+        Vaccins.cpp Vaccins.h
+        MainWindow.cpp MainWindow.h)
+
+
+
+
 
 # Set source files for DEBUG target
 set(DEBUG_SOURCE_FILES
@@ -37,29 +51,20 @@ set(DEBUG_SOURCE_FILES
         Parser.cpp Parser.h
         Hub.cpp Hub.h
         VaccinatieCentrum.cpp VaccinatieCentrum.h
-        TinyXML/tinystr.cpp
-        TinyXML/tinystr.h
-        TinyXML/tinyxml.cpp
-        TinyXML/tinyxml.h
+        TinyXML/tinystr.cpp TinyXML/tinystr.h
+        TinyXML/tinyxml.cpp TinyXML/tinyxml.h
         TinyXML/tinyxmlerror.cpp
         TinyXML/tinyxmlparser.cpp
-        Output.cpp
-        Output.h
+        Output.cpp Output.h
         Lib.h
         Utils.h
         VaccinSimulatie.h
         StatisticsSingleton.cpp StatisticsSingleton.h
-        Vaccins.cpp Vaccins.h VaccinSimulatieOutputTests.cpp VaccinSimulatieInputTests.cpp VaccinSimulatieDomainTests.cpp)
+        Vaccins.cpp Vaccins.h
+        VaccinSimulatieOutputTests.cpp
+        VaccinSimulatieInputTests.cpp
+        VaccinSimulatieDomainTests.cpp)
 
-
-# QT
-set(Qt5Core_DIR "\\mnt\\c\\Qt\\5.15.2\\mingw81_64\\lib\\cmake\\Qt5Core")
-set(Qt5Widgets_DIR "\\mnt\\c\\Qt\\5.15.2\\mingw81_64\\lib\\cmake\\Qt5Widgets")
-set(Qt5Gui_DIR "\\mnt\\c\\Qt\\5.15.2\\mingw81_64\\lib\\cmake\\Qt5Gui")
-
-find_package( Qt5Core REQUIRED )
-find_package( Qt5Widgets REQUIRED )
-find_package( Qt5Gui REQUIRED )
 
 # Create RELEASE target
 add_executable(PSE ${RELEASE_SOURCE_FILES})

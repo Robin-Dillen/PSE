@@ -31,6 +31,6 @@ int main(int argc, char *argv[]) {
         }
     }
     Simulatie(hubs, vaccinatie_centra, args[0]);
-    return a.exec();
+    return QApplication::exec();
 }
 
