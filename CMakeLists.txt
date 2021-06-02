@@ -11,25 +11,40 @@ include_directories(gtest/include)
 # Set Library dir
 link_directories(gtest/lib)
 
+# QT
+#set(Qt5Core_DIR "\\mnt\\c\\Qt\\5.15.2\\mingw81_64\\lib\\cmake\\Qt5Core")
+#set(Qt5Widgets_DIR "\\mnt\\c\\Qt\\5.15.2\\mingw81_64\\lib\\cmake\\Qt5Widgets")
+#set(Qt5Gui_DIR "\\mnt\\c\\Qt\\5.15.2\\mingw81_64\\lib\\cmake\\Qt5Gui")
+
+set( Qt5Core_DIR "/home/niels/Qt5.12.10/5.12.10/gcc_64/lib/cmake/Qt5Core")
+set( Qt5Widgets_DIR "/home/niels/Qt5.12.10/5.12.10/gcc_64/lib/cmake/Qt5Widgets")
+set( Qt5Gui_DIR "/home/niels/Qt5.12.10/5.12.10/gcc_64/lib/cmake/Qt5Gui")
+
+find_package( Qt5Core REQUIRED )
+find_package( Qt5Widgets REQUIRED )
+find_package( Qt5Gui REQUIRED )
+
+
 # Set source files for RELEASE target
 set(RELEASE_SOURCE_FILES
         main.cpp
         Parser.cpp Parser.h
         Hub.cpp Hub.h
         VaccinatieCentrum.cpp VaccinatieCentrum.h
-        TinyXML/tinystr.cpp
-        TinyXML/tinystr.h
-        TinyXML/tinyxml.cpp
-        TinyXML/tinyxml.h
+        TinyXML/tinystr.cpp TinyXML/tinystr.h
+        TinyXML/tinyxml.cpp TinyXML/tinyxml.h
         TinyXML/tinyxmlerror.cpp
         TinyXML/tinyxmlparser.cpp
-        Output.cpp
-        Output.h
+        Output.cpp Output.h
         Lib.h
         Utils.h
         VaccinSimulatie.h
         StatisticsSingleton.cpp StatisticsSingleton.h
         Vaccins.cpp Vaccins.h)
+
+
+
+
 
 # Set source files for DEBUG target
 set(DEBUG_SOURCE_FILES
@@ -37,19 +52,19 @@ set(DEBUG_SOURCE_FILES
         Parser.cpp Parser.h
         Hub.cpp Hub.h
         VaccinatieCentrum.cpp VaccinatieCentrum.h
-        TinyXML/tinystr.cpp
-        TinyXML/tinystr.h
-        TinyXML/tinyxml.cpp
-        TinyXML/tinyxml.h
+        TinyXML/tinystr.cpp TinyXML/tinystr.h
+        TinyXML/tinyxml.cpp TinyXML/tinyxml.h
         TinyXML/tinyxmlerror.cpp
         TinyXML/tinyxmlparser.cpp
-        Output.cpp
-        Output.h
+        Output.cpp Output.h
         Lib.h
         Utils.h
         VaccinSimulatie.h
         StatisticsSingleton.cpp StatisticsSingleton.h
-        Vaccins.cpp Vaccins.h VaccinSimulatieOutputTests.cpp VaccinSimulatieInputTests.cpp VaccinSimulatieDomainTests.cpp)
+        Vaccins.cpp Vaccins.h
+        VaccinSimulatieOutputTests.cpp
+        VaccinSimulatieInputTests.cpp
+        VaccinSimulatieDomainTests.cpp)
 
 
 # QT
@@ -70,4 +85,4 @@ add_executable(PSE_debug ${DEBUG_SOURCE_FILES} VaccinSimulatieOutputTests.cpp Va
 # Link library
 target_link_libraries(PSE_debug gtest)
 
-#qt5_use_modules(PSE Core Widgets Gui)
+qt5_use_modules(PSE Core Widgets Gui)
