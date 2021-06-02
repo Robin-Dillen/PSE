@@ -56,19 +56,12 @@ Simulatie(vector<Hub *> &hubs, std::vector<VaccinatieCentrum *> &vaccinatie_cent
 
     }
 
-    for (unsigned int i = 0; i < hubs.size(); i++) {
-        // output
-        output.addToOutputFile(hubs[i], i + 1, current_day, filename1);
-    }
-
-    for (unsigned int i = 0; i < vaccinatie_centra.size(); i++) {
-        vaccinatie_centra[i]->nieuweDag(); // eerste keer reserveren TODO
-    }
-
     while ((!end_day || current_day < end_day) && !break_) {
-        std::cout << current_day << std::endl;
+
         break_ = true;
         for (unsigned int i = 0; i < hubs.size(); i++) {
+            // output
+            output.addToOutputFile(hubs[i], i + 1, current_day, filename1);
             if (!hubs[i]->isIedereenGevaccineerd()) {
                 break_ = false;
             } else {
@@ -78,7 +71,7 @@ Simulatie(vector<Hub *> &hubs, std::vector<VaccinatieCentrum *> &vaccinatie_cent
             // increase current_day
 
             map<string, Vaccin *> vaccins = hubs[i]->getVaccins();
-            for(map<string,Vaccin*>::iterator it = vaccins.begin(); it != vaccins.end(); it++){
+            for (map<string, Vaccin *>::iterator it = vaccins.begin(); it != vaccins.end(); it++) {
                 if (current_day % (it->second->interval + 1) == 0) {
                     // door in de simulatie het aantal vaccins mee te geven kunnen we war randomness toevoegen aan het aantal
                     // geleverde vaccins. Want ze zijn toch niet te vertrouwen die farmareuzen!
@@ -88,9 +81,6 @@ Simulatie(vector<Hub *> &hubs, std::vector<VaccinatieCentrum *> &vaccinatie_cent
 
             // stuur signaal nieuwe dag
             hubs[i]->nieuweDag();
-
-            // output
-            output.addToOutputFile(hubs[i], i + 1, current_day, filename1);
         }
         if(!break_){
             output.addDateToFile(current_day, filename2);
