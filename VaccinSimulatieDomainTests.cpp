@@ -104,7 +104,7 @@ TEST_F(VaccinSimulatieDomainTest, HappyDay) {
                 }
             }
         }
-        Simulatie(hubs, vaccinatie_centra, filename);
+        VaccinSimulatie(hubs, vaccinatie_centra, filename);
 
         for (vector<VaccinatieCentrum *>::iterator V = vaccinatie_centra.begin(); V != vaccinatie_centra.end(); V++) {
             EXPECT_EQ(0, (*V)->getAantalNietVaccinaties());

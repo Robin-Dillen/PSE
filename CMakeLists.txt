@@ -41,7 +41,7 @@ set(RELEASE_SOURCE_FILES
         Output.cpp Output.h
         Lib.h
         Utils.h
-        VaccinSimulatie.h
+        VaccinSimulatie.cpp VaccinSimulatie.h
         StatisticsSingleton.cpp StatisticsSingleton.h
         Vaccins.cpp Vaccins.h
         mainwindow.cpp mainwindow.h mainwindow.ui)
@@ -63,7 +63,7 @@ set(DEBUG_SOURCE_FILES
         Output.cpp Output.h
         Lib.h
         Utils.h
-        VaccinSimulatie.h
+        VaccinSimulatie.cpp VaccinSimulatie.h
         StatisticsSingleton.cpp StatisticsSingleton.h
         Vaccins.cpp Vaccins.h
         VaccinSimulatieOutputTests.cpp

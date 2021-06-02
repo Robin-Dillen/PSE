@@ -1,10 +1,12 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include<iostream>
 
-MainWindow::MainWindow(QWidget *parent) :
+MainWindow::MainWindow(VaccinSimulatie* s, QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    simulatie = s;
     ui->setupUi(this);
 }
 
@@ -13,6 +15,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::printSomething(){
-    cout<<"yess"<<endl;
+void MainWindow::startSimulation(){
+    simulatie->start();
 }
