@@ -12,13 +12,18 @@
 #include <QGraphicsScene>
 #include <QGraphicsView>
 #include <QGraphicsRectItem>
+
+#include "mainwindow.h"
 #include "VaccinSimulatie.h"
 
 using namespace std;
 
 int main(int argc, char *argv[]) {
     QApplication a(argc, argv);
+    MainWindow w;
+    w.showNormal();
 
+    /*
     QGraphicsScene* scene = new QGraphicsScene();
 
     QGraphicsRectItem* rect = new QGraphicsRectItem();
@@ -28,6 +33,7 @@ int main(int argc, char *argv[]) {
     QGraphicsView * view = new QGraphicsView();
     view->setScene(scene);
     view->show();
+    */
 
     vector<string> args = vector<string>(argv + 1, argv + argc);
 
@@ -44,6 +50,7 @@ int main(int argc, char *argv[]) {
         }
     }
     Simulatie(hubs, vaccinatie_centra, args[0]);
+
     return a.exec();
 }
 

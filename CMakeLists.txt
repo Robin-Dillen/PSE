@@ -24,6 +24,9 @@ find_package( Qt5Core REQUIRED )
 find_package( Qt5Widgets REQUIRED )
 find_package( Qt5Gui REQUIRED )
 
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTOUIC ON)
+
 
 # Set source files for RELEASE target
 set(RELEASE_SOURCE_FILES
@@ -40,7 +43,8 @@ set(RELEASE_SOURCE_FILES
         Utils.h
         VaccinSimulatie.h
         StatisticsSingleton.cpp StatisticsSingleton.h
-        Vaccins.cpp Vaccins.h)
+        Vaccins.cpp Vaccins.h
+        mainwindow.cpp mainwindow.h mainwindow.ui)
 
 
 
@@ -75,7 +79,5 @@ add_executable(PSE_debug ${DEBUG_SOURCE_FILES} VaccinSimulatieOutputTests.cpp Va
 
 # Link library
 target_link_libraries(PSE_debug gtest)
-
-qt5_use_modules(PSE Core Widgets Gui)
 
 qt5_use_modules(PSE Core Widgets Gui)
