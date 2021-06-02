@@ -16,13 +16,15 @@ link_directories(gtest/lib)
 #set(Qt5Widgets_DIR "\\mnt\\c\\Qt\\5.15.2\\mingw81_64\\lib\\cmake\\Qt5Widgets")
 #set(Qt5Gui_DIR "\\mnt\\c\\Qt\\5.15.2\\mingw81_64\\lib\\cmake\\Qt5Gui")
 
-set( Qt5Core_DIR "/home/niels/Qt5.12.10/5.12.10/gcc_64/lib/cmake/Qt5Core")
-set( Qt5Widgets_DIR "/home/niels/Qt5.12.10/5.12.10/gcc_64/lib/cmake/Qt5Widgets")
-set( Qt5Gui_DIR "/home/niels/Qt5.12.10/5.12.10/gcc_64/lib/cmake/Qt5Gui")
+set(Qt5Core_DIR "/home/robin/Qt5.12.10/5.12.10/gcc_64/lib/cmake/Qt5Core")
+set(Qt5Widgets_DIR "/home/robin/Qt5.12.10/5.12.10/gcc_64/lib/cmake/Qt5Widgets")
+set(Qt5Gui_DIR "/home/robin/Qt5.12.10/5.12.10/gcc_64/lib/cmake/Qt5Gui")
+set(Qt5Network_DIR "/home/robin/Qt5.12.10/5.12.10/gcc_64/lib/cmake/Qt5Network")
 
-find_package( Qt5Core REQUIRED )
-find_package( Qt5Widgets REQUIRED )
-find_package( Qt5Gui REQUIRED )
+find_package(Qt5Core REQUIRED)
+find_package(Qt5Widgets REQUIRED)
+find_package(Qt5Gui REQUIRED)
+find_package(Qt5Network REQUIRED)
 
 
 # Set source files for RELEASE target
