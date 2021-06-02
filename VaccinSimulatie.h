@@ -66,6 +66,7 @@ Simulatie(vector<Hub *> &hubs, std::vector<VaccinatieCentrum *> &vaccinatie_cent
     }
 
     while ((!end_day || current_day < end_day) && !break_) {
+        std::cout << current_day << std::endl;
         break_ = true;
         for (unsigned int i = 0; i < hubs.size(); i++) {
             if (!hubs[i]->isIedereenGevaccineerd()) {

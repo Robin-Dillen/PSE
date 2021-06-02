@@ -30,8 +30,9 @@ void OutputSingleton::addToOutputFile(Hub *h, int i, int y, int m, int w, int d,
     outputFile << "\n";
     for (map<string, VaccinatieCentrum *>::const_iterator it = h->getFverbondenCentra().begin();
          it != h->getFverbondenCentra().end(); it++) {
-        outputFile << it->first << ": " << it->second->getTotaalAantalVaccinaties() << " gevacineerd, nog "
-                   << it->second->getKaantalInwoners() - it->second->getTotaalAantalVaccinaties()
+        outputFile << it->first << ": " << it->second->getKaantalInwoners() - it->second->getAantalNietVaccinaties()
+                   << " gevacineerd, nog "
+                   << it->second->getAantalNietVaccinaties()
                    << " inwoners niet gevaccineerd.\n";
     }
     outputFile << "\r";

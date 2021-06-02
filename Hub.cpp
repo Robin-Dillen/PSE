@@ -323,15 +323,22 @@ int Hub::getFreeStock(VaccinatieCentrum *centrum, int dag) {
     int overschot = 0;
     for (int d = 0; d < dag; d++) {
         for (map<string, Vaccin *>::const_iterator vaccin = kvaccins.begin(); vaccin != kvaccins.end(); ++vaccin) {
+            if ((int) vaccin->second->gereserveerd[centrum->getKfname()].size() <= d &&
+                (int) vaccin->second->extra_gereserveerd[centrum->getKfname()].size() <= d)
+                continue;
             int aantal = (vaccin->second->gereserveerd[centrum->getKfname()][d] +
                           vaccin->second->extra_gereserveerd[centrum->getKfname()][d]) - centrum->getKcapaciteit();
             overschot += aantal;
         }
     }
-    int stock = 0;
+    int stock = centrum->getKcapaciteit();
     for (map<string, Vaccin *>::const_iterator vaccin = kvaccins.begin(); vaccin != kvaccins.end(); ++vaccin) {
-        stock += centrum->getKcapaciteit() - vaccin->second->gereserveerd[centrum->getKfname()][dag] -
-                 vaccin->second->extra_gereserveerd[centrum->getKfname()][dag];
+        if ((int) vaccin->second->gereserveerd[centrum->getKfname()].size() <= dag &&
+            (int) vaccin->second->extra_gereserveerd[centrum->getKfname()].size() <= dag)
+            continue;
+        else
+            stock -= (vaccin->second->gereserveerd[centrum->getKfname()][dag] +
+                      vaccin->second->extra_gereserveerd[centrum->getKfname()][dag]);
     }
     if (overschot <= 0) return stock;
     return stock - overschot;
