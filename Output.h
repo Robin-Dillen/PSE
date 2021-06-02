@@ -48,6 +48,7 @@ public:
     /**
      * voegt info toe aan het outputbestand
      * @param h: hub
+     * @param i nummer van de hub
      * @param y,m,w,d: jaren, maanden, weken en dagen na start simulatie
      * @return void
      * \n REQUIRE(isProperlyInitialized(), "Object wasn't initialized when calling addToOutputFile");

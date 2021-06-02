@@ -44,26 +44,34 @@ Simulatie(vector<Hub *> &hubs, std::vector<VaccinatieCentrum *> &vaccinatie_cent
 
     int end_day = 0; // we kunnen ook een grens zetten op de duur van de simulatie, zet op 0 om geen grens te hebben
 
-    int current_day = 0; // we houden de datum hier bij zodat we aan het einde van de simulatie de duur van de simulatie kunnen opvragen
+    int current_day = 1; // we houden de datum hier bij zodat we aan het einde van de simulatie de duur van de simulatie kunnen opvragen
     bool break_ = false;
+
+    // first reservation
     for (unsigned int i = 0; i < hubs.size(); i++) {
-        // output
-        output.addToOutputFile(hubs[i], i + 1, current_day, filename1);
+        map<string, Vaccin *> vaccins = hubs[i]->getVaccins();
+        for (map<string, Vaccin *>::iterator vaccin = vaccins.begin(); vaccin != vaccins.end(); vaccin++) {
+            hubs[i]->addReservations(vaccin->first);
+        }
+
     }
+
     while ((!end_day || current_day < end_day) && !break_) {
+
         break_ = true;
         for (unsigned int i = 0; i < hubs.size(); i++) {
+            // output
+            output.addToOutputFile(hubs[i], i + 1, current_day, filename1);
             if (!hubs[i]->isIedereenGevaccineerd()) {
                 break_ = false;
-            }
-            else{
+            } else {
                 continue;
             }
 
             // increase current_day
 
             map<string, Vaccin *> vaccins = hubs[i]->getVaccins();
-            for(map<string,Vaccin*>::iterator it = vaccins.begin(); it != vaccins.end(); it++){
+            for (map<string, Vaccin *>::iterator it = vaccins.begin(); it != vaccins.end(); it++) {
                 if (current_day % (it->second->interval + 1) == 0) {
                     // door in de simulatie het aantal vaccins mee te geven kunnen we war randomness toevoegen aan het aantal
                     // geleverde vaccins. Want ze zijn toch niet te vertrouwen die farmareuzen!
@@ -73,9 +81,6 @@ Simulatie(vector<Hub *> &hubs, std::vector<VaccinatieCentrum *> &vaccinatie_cent
 
             // stuur signaal nieuwe dag
             hubs[i]->nieuweDag();
-
-            // output
-            output.addToOutputFile(hubs[i], i + 1, current_day, filename1);
         }
         if(!break_){
             output.addDateToFile(current_day, filename2);
