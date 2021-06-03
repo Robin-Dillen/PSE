@@ -4,6 +4,7 @@
 #include<iostream>
 
 #include <QtCharts>
+#include <QtWidgets>
 #include <QChartView>
 #include <QPieSeries>
 
@@ -23,6 +24,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
     QChartView *view = new QChartView(chart);
     view->setParent(ui->horizontalFrame_page1);
+    QLabel *label = new QLabel("centum 0");
+    label->setGeometry(100,100,100,50);
+    ui->tabWidget->widget(0)->;
+
 }
 
 void MainWindow::setSimulation(VaccinSimulatie* s){
@@ -38,8 +43,27 @@ void MainWindow::startSimulation(){
     simulatie->start();
 }
 
+void MainWindow::stopSimulation(){
+  simulatie->stop();
+}
+
+void MainWindow::nextDay(){
+    simulatie->nextDay();
+}
+
+void MainWindow::previousDay(){
+    simulatie->previousDay();
+}
+
+
 void MainWindow::changeDay(int day){
     string daytext = "day: "+to_string(day);
+    QString time = QString::fromStdString(daytext);
+    ui->DayText->setText(time);
+}
+
+void MainWindow::endOfSimulation(int day){
+    string daytext = "vaccination ended at day: "+to_string(day);
     QString time = QString::fromStdString(daytext);
     ui->DayText->setText(time);
 }

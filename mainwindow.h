@@ -21,6 +21,7 @@ public:
     void setSimulation(VaccinSimulatie* s);
     ~MainWindow();
     void changeDay(int day);
+    void endOfSimulation(int day);
 
 private:
     Ui::MainWindow *ui;
@@ -28,6 +29,9 @@ private:
 
 private slots:
         void startSimulation();
+        void stopSimulation();
+        void nextDay();
+        void previousDay();
 };
 
 #endif // MAINWINDOW_H

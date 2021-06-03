@@ -25,8 +25,9 @@ public:
     bool c_out = true);
     void setWindow(MainWindow* w);
     void start();
+    void stop();
     void nextDay();
-    void PreviousDay();
+    void previousDay();
 
 private:
     /*!
@@ -35,6 +36,7 @@ private:
      */
     void delay(int time);
 
+    bool pause = true;
     MainWindow* window;
     int day = 0;
     vector<Hub*> hubs;
