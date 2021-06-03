@@ -3,6 +3,7 @@
 //
 
 #include "VaccinSimulatie.h"
+#include "mainwindow.h"
 
 VaccinSimulatie::VaccinSimulatie(vector<Hub *> &h, std::vector<VaccinatieCentrum *> &v, const string &testfilename,
 bool c_out) {
@@ -31,8 +32,12 @@ bool c_out) {
     output.makeOutputFile(filename2 + ".txt");
 }
 
+void VaccinSimulatie::setWindow(MainWindow *w){
+    window = w;
+}
+
 void VaccinSimulatie::start(){
-    int end_day = 0; // we kunnen ook een grens zetten op de duur van de simulatie, zet op 0 om geen grens te hebben
+    int end_day = 20; // we kunnen ook een grens zetten op de duur van de simulatie, zet op 0 om geen grens te hebben
         OutputSingleton &output = OutputSingleton::getInstance();
         int current_day = 0; // we houden de datum hier bij zodat we aan het einde van de simulatie de duur van de simulatie kunnen opvragen
         bool break_ = false;
@@ -41,7 +46,9 @@ void VaccinSimulatie::start(){
             output.addToOutputFile(hubs[i], i + 1, current_day, filename1);
         }
         while ((!end_day || current_day < end_day) && !break_) {
-            break_ = true;
+            nextDay();
+            delay(1000);
+            /*break_ = true;
             for (unsigned int i = 0; i < hubs.size(); i++) {
                 if (!hubs[i]->isIedereenGevaccineerd()) {
                     break_ = false;
@@ -69,19 +76,61 @@ void VaccinSimulatie::start(){
                 output.addToOutputFile(hubs[i], i + 1, current_day, filename1);
             }
             if(!break_){
-            output.addDateToFile(current_day, filename2);
-            for (unsigned int i = 0; i < vaccinatieCentra.size(); i++) {
-            vaccinatieCentra[i]->nieuweDag();
-            output.addToGIFile(vaccinatieCentra[i], filename2);
+                output.addDateToFile(current_day, filename2);
+                for (unsigned int i = 0; i < vaccinatieCentra.size(); i++) {
+                    vaccinatieCentra[i]->nieuweDag();
+                    output.addToGIFile(vaccinatieCentra[i], filename2);
+                }
             }
+            current_day++;
+            */
         }
-        current_day++;
+}
+
+void VaccinSimulatie::nextDay(){
+    OutputSingleton &output = OutputSingleton::getInstance();
+    for (unsigned int i = 0; i < hubs.size(); i++) {
+        if (!hubs[i]->isIedereenGevaccineerd()) {
+            //break_ = false;
+        }
+        else{
+            continue;
         }
 
-        int years = current_day / 356;
-        current_day -= years * 356;
-        int months = current_day / 30;
-        current_day -= months * 30;
-        int weeks = current_day / 7;
-        current_day -= weeks * 7;
+        // increase current_day
+
+        map<string, Vaccin *> vaccins = hubs[i]->getVaccins();
+        for(map<string,Vaccin*>::iterator it = vaccins.begin(); it != vaccins.end(); it++){
+            if (day % (it->second->interval + 1) == 0) {
+            // door in de simulatie het aantal vaccins mee te geven kunnen we war randomness toevoegen aan het aantal
+            // geleverde vaccins. Want ze zijn toch niet te vertrouwen die farmareuzen!
+            hubs[i]->ontvangLevering(it->first, it->second->levering);
+            }
+        }
+
+
+        // stuur signaal nieuwe dag
+        hubs[i]->nieuweDag();
+
+        // output
+        output.addToOutputFile(hubs[i], i + 1, day, filename1);
+    }
+    //if(!break_){
+        output.addDateToFile(day, filename2);
+        for (unsigned int i = 0; i < vaccinatieCentra.size(); i++) {
+            vaccinatieCentra[i]->nieuweDag();
+            output.addToGIFile(vaccinatieCentra[i], filename2);
+        }
+    //} 
+
+    day++;
+    window->changeDay(day);
 }
+
+void VaccinSimulatie::delay(int time) {
+    QTime dieTime = QTime::currentTime().addMSecs(time);
+    while (QTime::currentTime() < dieTime)
+        QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
+}
+
+

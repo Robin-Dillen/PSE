@@ -2,7 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "VaccinSimulatie.h"
+
+class VaccinSimulatie;
 
 namespace Ui {
 class MainWindow;
@@ -19,6 +20,7 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     void setSimulation(VaccinSimulatie* s);
     ~MainWindow();
+    void changeDay(int day);
 
 private:
     Ui::MainWindow *ui;

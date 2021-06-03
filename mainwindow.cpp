@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "VaccinSimulatie.h"
 #include<iostream>
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -20,4 +21,10 @@ MainWindow::~MainWindow()
 
 void MainWindow::startSimulation(){
     simulatie->start();
+}
+
+void MainWindow::changeDay(int day){
+    string daytext = "day: "+to_string(day);
+    QString time = QString::fromStdString(daytext);
+    ui->DayText->setText(time);
 }
