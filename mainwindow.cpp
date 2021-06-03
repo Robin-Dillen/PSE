@@ -24,10 +24,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     QChartView *view = new QChartView(chart);
     view->setParent(ui->horizontalFrame_page1);
-    QLabel *label = new QLabel("centum 0");
+    /*QLabel *label = new QLabel("centum 0");
     label->setGeometry(100,100,100,50);
-    ui->tabWidget->widget(0)->;
-
+    */
 }
 
 void MainWindow::setSimulation(VaccinSimulatie* s){
