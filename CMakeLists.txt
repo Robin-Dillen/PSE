@@ -11,20 +11,29 @@ include_directories(gtest/include)
 # Set Library dir
 link_directories(gtest/lib)
 
-# QT
-#set(Qt5Core_DIR "\\mnt\\c\\Qt\\5.15.2\\mingw81_64\\lib\\cmake\\Qt5Core")
-#set(Qt5Widgets_DIR "\\mnt\\c\\Qt\\5.15.2\\mingw81_64\\lib\\cmake\\Qt5Widgets")
-#set(Qt5Gui_DIR "\\mnt\\c\\Qt\\5.15.2\\mingw81_64\\lib\\cmake\\Qt5Gui")
-
-set(Qt5Core_DIR "/home/robin/Qt5.12.10/5.12.10/gcc_64/lib/cmake/Qt5Core")
-set(Qt5Widgets_DIR "/home/robin/Qt5.12.10/5.12.10/gcc_64/lib/cmake/Qt5Widgets")
-set(Qt5Gui_DIR "/home/robin/Qt5.12.10/5.12.10/gcc_64/lib/cmake/Qt5Gui")
-set(Qt5Network_DIR "/home/robin/Qt5.12.10/5.12.10/gcc_64/lib/cmake/Qt5Network")
+IF (WIN32)
+    # QT
+    set(Qt5Core_DIR "\\mnt\\c\\Qt\\5.15.2\\mingw81_64\\lib\\cmake\\Qt5Core")
+    set(Qt5Widgets_DIR "\\mnt\\c\\Qt\\5.15.2\\mingw81_64\\lib\\cmake\\Qt5Widgets")
+    set(Qt5Gui_DIR "\\mnt\\c\\Qt\\5.15.2\\mingw81_64\\lib\\cmake\\Qt5Gui")
+else ()
+    IF (EXISTS /home/niels)
+        set(Qt5Core_DIR "/home/niels/Qt5.12.10/5.12.10/gcc_64/lib/cmake/Qt5Core")
+        set(Qt5Widgets_DIR "/home/niels/Qt5.12.10/5.12.10/gcc_64/lib/cmake/Qt5Widgets")
+        set(Qt5Gui_DIR "/home/niels/Qt5.12.10/5.12.10/gcc_64/lib/cmake/Qt5Gui")
+    ELSEIF (EXISTS /home/robin)
+        set(Qt5Core_DIR "/home/robin/Qt5.12.10/5.12.10/gcc_64/lib/cmake/Qt5Core")
+        set(Qt5Widgets_DIR "/home/robin/Qt5.12.10/5.12.10/gcc_64/lib/cmake/Qt5Widgets")
+        set(Qt5Gui_DIR "/home/robin/Qt5.12.10/5.12.10/gcc_64/lib/cmake/Qt5Gui")
+    ENDIF ()
+endif ()
 
 find_package(Qt5Core REQUIRED)
 find_package(Qt5Widgets REQUIRED)
 find_package(Qt5Gui REQUIRED)
-find_package(Qt5Network REQUIRED)
+
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTOUIC ON)
 
 
 # Set source files for RELEASE target
@@ -40,9 +49,10 @@ set(RELEASE_SOURCE_FILES
         Output.cpp Output.h
         Lib.h
         Utils.h
-        VaccinSimulatie.h
+        VaccinSimulatie.cpp VaccinSimulatie.h
         StatisticsSingleton.cpp StatisticsSingleton.h
-        Vaccins.cpp Vaccins.h)
+        Vaccins.cpp Vaccins.h
+        mainwindow.cpp mainwindow.h mainwindow.ui)
 
 
 
@@ -61,22 +71,13 @@ set(DEBUG_SOURCE_FILES
         Output.cpp Output.h
         Lib.h
         Utils.h
-        VaccinSimulatie.h
+        VaccinSimulatie.cpp VaccinSimulatie.h
         StatisticsSingleton.cpp StatisticsSingleton.h
         Vaccins.cpp Vaccins.h
         VaccinSimulatieOutputTests.cpp
         VaccinSimulatieInputTests.cpp
         VaccinSimulatieDomainTests.cpp)
 
-
-# QT
-#set(Qt5Core_DIR "\\mnt\\c\\Qt\\5.15.2\\mingw81_64\\lib\\cmake\\Qt5Core")
-#set(Qt5Widgets_DIR "\\mnt\\c\\Qt\\5.15.2\\mingw81_64\\lib\\cmake\\Qt5Widgets")
-#set(Qt5Gui_DIR "\\mnt\\c\\Qt\\5.15.2\\mingw81_64\\lib\\cmake\\Qt5Gui")
-
-#find_package( Qt5Core REQUIRED )
-#find_package( Qt5Widgets REQUIRED )
-#find_package( Qt5Gui REQUIRED )
 
 # Create RELEASE target
 add_executable(PSE ${RELEASE_SOURCE_FILES})
