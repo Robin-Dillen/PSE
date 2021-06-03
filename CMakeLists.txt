@@ -52,7 +52,7 @@ set(RELEASE_SOURCE_FILES
         VaccinSimulatie.h
         StatisticsSingleton.cpp StatisticsSingleton.h
         Vaccins.cpp Vaccins.h
-        mainwindow.cpp mainwindow.h mainwindow.ui)
+        )
 
 
 
