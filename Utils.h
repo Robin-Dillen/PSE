@@ -167,13 +167,30 @@ inline void makeEmptyFile(const string &filename) {
 }
 // einde van de gekopieerde functies
 
+/*!
+ * zet een address om naar latitude, longitude
+ * @param address het address dat wordt omgezet
+ * @return std::pair<double, double>
+ */
 inline std::pair<double, double> addressToCoords(const std::string &address) {
-    system(("python ../AddressToCoords.py '" + address + "'").c_str());
+//    kleinste lat: 49.497041, grootste lat: 51.505022
+//    kleinste lon: 2.545403, grootste lon: 6.407907
     std::string coords;
-    std::ifstream file("location.txt");
-    getline(file, coords);
-    size_t delim = coords.find(',');
-    return std::make_pair(std::stod(coords.substr(0, delim - 1)), std::stod(coords.substr(delim + 1, coords.size())));
+    double lat, lon;
+    for (int x = 0; x < 3 && coords.empty(); x++) {
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32)
+        system(("python ../AddressToCoords.py '" + address + "'").c_str());
+#else
+        system(("python3 ../AddressToCoords.py '" + address + "'").c_str());
+#endif
+        std::ifstream file("location.txt");
+        getline(file, coords);
+        std::cout << coords << std::endl;
+        size_t delim = coords.find(',');
+        lat = std::stod(coords.substr(0, delim - 1));
+        lon = std::stod(coords.substr(delim + 1, coords.size()));
+    }
+    return std::make_pair(lat, lon);
 }
 
 #endif //PSE_UTILS_H
