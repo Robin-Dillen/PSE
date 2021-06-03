@@ -49,7 +49,7 @@ set(RELEASE_SOURCE_FILES
         Output.cpp Output.h
         Lib.h
         Utils.h
-        VaccinSimulatie.cpp VaccinSimulatie.h
+        VaccinSimulatie.h
         StatisticsSingleton.cpp StatisticsSingleton.h
         Vaccins.cpp Vaccins.h
         mainwindow.cpp mainwindow.h mainwindow.ui)
@@ -71,7 +71,7 @@ set(DEBUG_SOURCE_FILES
         Output.cpp Output.h
         Lib.h
         Utils.h
-        VaccinSimulatie.cpp VaccinSimulatie.h
+        VaccinSimulatie.h
         StatisticsSingleton.cpp StatisticsSingleton.h
         Vaccins.cpp Vaccins.h
         VaccinSimulatieOutputTests.cpp
@@ -83,7 +83,7 @@ set(DEBUG_SOURCE_FILES
 add_executable(PSE ${RELEASE_SOURCE_FILES})
 
 # Create DEBUG target
-add_executable(PSE_debug ${DEBUG_SOURCE_FILES} VaccinSimulatieOutputTests.cpp VaccinSimulatieInputTests.cpp VaccinSimulatieDomainTests.cpp)
+add_executable(PSE_debug ${DEBUG_SOURCE_FILES})
 
 # Link library
 target_link_libraries(PSE_debug gtest)
