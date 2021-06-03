@@ -32,8 +32,9 @@ int main(int argc, char *argv[]) {
             }
         }
     }
-    VaccinSimulatie s(hubs, vaccinatie_centra, args[0]);
-    MainWindow w(s);
+    VaccinSimulatie* s = new VaccinSimulatie(hubs, vaccinatie_centra, args[0]);
+    MainWindow w;
+    w.setSimulation(s);
     w.showNormal();
     return a.exec();
 }

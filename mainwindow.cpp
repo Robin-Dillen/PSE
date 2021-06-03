@@ -2,12 +2,15 @@
 #include "ui_mainwindow.h"
 #include<iostream>
 
-MainWindow::MainWindow(VaccinSimulatie* s, QWidget *parent) :
+MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    simulatie = s;
     ui->setupUi(this);
+}
+
+void MainWindow::setSimulation(VaccinSimulatie* s){
+    simulatie = s;
 }
 
 MainWindow::~MainWindow()

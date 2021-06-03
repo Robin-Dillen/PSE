@@ -99,7 +99,7 @@ private:
     // are inaccessible(especially from outside), otherwise, you may accidentally get copies of
     // your singleton appearing.
     OutputSingleton(OutputSingleton const &); // Don't Implement
-
+    void operator=(OutputSingleton const &); // Don't implement
 
     /**
      * zet een datum in int formaat om naar een string
@@ -109,7 +109,6 @@ private:
     static string dateToString(int y, int m, int w, int d);
 
     OutputSingleton *const _initCheck; // pointer naar zichzelf om te checken of het object correct geïnitialseert is
-    void operator=(OutputSingleton const &); // Don't implement
 };
 
 

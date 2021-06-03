@@ -22,7 +22,6 @@ public:
     void start();
 
 private:
-    OutputSingleton output;
     vector<Hub*> hubs;
     vector<VaccinatieCentrum*> vaccinatieCentra;
     string filename1;

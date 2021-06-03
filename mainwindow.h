@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <VaccinSimulatie.h>
+#include "VaccinSimulatie.h"
 
 namespace Ui {
 class MainWindow;
@@ -16,7 +16,8 @@ class MainWindow : public QMainWindow
 
 public:
 
-    explicit MainWindow(VaccinSimulatie* s, QWidget *parent = nullptr);
+    explicit MainWindow(QWidget *parent = nullptr);
+    void setSimulation(VaccinSimulatie* s);
     ~MainWindow();
 
 private:
