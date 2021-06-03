@@ -167,4 +167,13 @@ inline void makeEmptyFile(const string &filename) {
 }
 // einde van de gekopieerde functies
 
+inline std::pair<double, double> addressToCoords(const std::string &address) {
+    system(("python ../AddressToCoords.py '" + address + "'").c_str());
+    std::string coords;
+    std::ifstream file("location.txt");
+    getline(file, coords);
+    size_t delim = coords.find(',');
+    return std::make_pair(std::stod(coords.substr(0, delim - 1)), std::stod(coords.substr(delim + 1, coords.size())));
+}
+
 #endif //PSE_UTILS_H
