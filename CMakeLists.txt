@@ -16,24 +16,29 @@ IF (WIN32)
     set(Qt5Core_DIR "\\mnt\\c\\Qt\\5.15.2\\mingw81_64\\lib\\cmake\\Qt5Core")
     set(Qt5Widgets_DIR "\\mnt\\c\\Qt\\5.15.2\\mingw81_64\\lib\\cmake\\Qt5Widgets")
     set(Qt5Gui_DIR "\\mnt\\c\\Qt\\5.15.2\\mingw81_64\\lib\\cmake\\Qt5Gui")
+    set(Qt5Charts_DIR "\\mnt\\c\\Qt\\5.15.2\\mingw81_64\\lib\\cmake\\Qt5Charts")
 else ()
     IF (EXISTS /home/niels)
         set(Qt5Core_DIR "/home/niels/Qt5.12.10/5.12.10/gcc_64/lib/cmake/Qt5Core")
         set(Qt5Widgets_DIR "/home/niels/Qt5.12.10/5.12.10/gcc_64/lib/cmake/Qt5Widgets")
         set(Qt5Gui_DIR "/home/niels/Qt5.12.10/5.12.10/gcc_64/lib/cmake/Qt5Gui")
+        set(Qt5Charts_DIR "/home/niels/Qt5.12.10/5.12.10/gcc_64/lib/cmake/Qt5Charts")
     ELSEIF (EXISTS /home/robin)
         set(Qt5Core_DIR "/home/robin/Qt5.12.10/5.12.10/gcc_64/lib/cmake/Qt5Core")
         set(Qt5Widgets_DIR "/home/robin/Qt5.12.10/5.12.10/gcc_64/lib/cmake/Qt5Widgets")
         set(Qt5Gui_DIR "/home/robin/Qt5.12.10/5.12.10/gcc_64/lib/cmake/Qt5Gui")
+        set(Qt5Charts_DIR "/home/robin/Qt5.12.10/5.12.10/gcc_64/lib/cmake/Qt5Charts")
     ENDIF ()
 endif ()
 
 find_package( Qt5Core REQUIRED )
 find_package( Qt5Widgets REQUIRED )
-find_package( Qt5Gui REQUIRED )
+find_package(Qt5Gui REQUIRED)
+find_package(Qt5Charts REQUIRED)
 
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTORCC ON)
 
 
 # Set source files for RELEASE target
@@ -53,10 +58,6 @@ set(RELEASE_SOURCE_FILES
         StatisticsSingleton.cpp StatisticsSingleton.h
         Vaccins.cpp Vaccins.h
         mainwindow.cpp mainwindow.h mainwindow.ui)
-
-
-
-
 
 # Set source files for DEBUG target
 set(DEBUG_SOURCE_FILES
@@ -83,9 +84,9 @@ set(DEBUG_SOURCE_FILES
 add_executable(PSE ${RELEASE_SOURCE_FILES})
 
 # Create DEBUG target
-add_executable(PSE_debug ${DEBUG_SOURCE_FILES} VaccinSimulatieOutputTests.cpp VaccinSimulatieInputTests.cpp VaccinSimulatieDomainTests.cpp)
+add_executable(PSE_debug ${DEBUG_SOURCE_FILES})
 
 # Link library
 target_link_libraries(PSE_debug gtest)
 
-qt5_use_modules(PSE Core Widgets Gui)
+qt5_use_modules(PSE Core Widgets Gui Charts)
