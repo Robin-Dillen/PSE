@@ -146,6 +146,7 @@ int VaccinatieCentrum::getTotaalAantalGeleverdeVaccins() const {
 void VaccinatieCentrum::setVaccins(int vaccins, const string &type) {
     REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling setVaccins");
     aantal_vaccins[type].second = vaccins;
+    emit setVaccinesInDialog(this->getKfname(),make_pair(type,vaccins));
     ENSURE(vaccins == getAantalVaccins(type), "De vaccins zijn niet succesvol ge-set!");
 }
 
