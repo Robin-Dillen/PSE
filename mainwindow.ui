@@ -21,7 +21,7 @@
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="Simulation">
        <attribute name="title">
@@ -163,22 +163,6 @@
  <resources/>
  <connections>
   <connection>
-   <sender>StartButton</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>startSimulation()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>91</x>
-     <y>89</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>248</x>
-     <y>271</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>MainWindow</sender>
    <signal>windowIconTextChanged(QString)</signal>
    <receiver>DayText</receiver>
@@ -228,22 +212,6 @@
   </connection>
   <connection>
    <sender>StopButton</sender>
-   <signal>clicked()</signal>
-   <receiver>StartButton</receiver>
-   <slot>show()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>60</x>
-     <y>117</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>60</x>
-     <y>87</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>StopButton</sender>
    <signal>released()</signal>
    <receiver>StopButton</receiver>
    <slot>hide()</slot>
@@ -261,48 +229,16 @@
   <connection>
    <sender>StopButton</sender>
    <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>stopSimulation()</slot>
+   <receiver>StartButton</receiver>
+   <slot>show()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>60</x>
      <y>117</y>
     </hint>
     <hint type="destinationlabel">
-     <x>474</x>
-     <y>277</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>NextDayButton</sender>
-   <signal>pressed()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>nextDay()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>150</x>
+     <x>60</x>
      <y>87</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>474</x>
-     <y>277</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>PreviousDayButton</sender>
-   <signal>pressed()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>previousDay()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>151</x>
-     <y>117</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>474</x>
-     <y>277</y>
     </hint>
    </hints>
   </connection>

@@ -3,7 +3,6 @@
 //
 
 #include "VaccinSimulatie.h"
-#include "mainwindow.h"
 #include <iostream>
 
 VaccinSimulatie::VaccinSimulatie(vector<Hub *> &h, std::vector<VaccinatieCentrum *> &v, const string &testfilename,
@@ -41,10 +40,6 @@ bool c_out) {
     connect(qTimer, SIGNAL(timeout()), this, SLOT(nextDay()));
 }
 
-void VaccinSimulatie::setWindow(MainWindow *w){
-    window = w;
-}
-
 void VaccinSimulatie::start() {
     std::cout << "start" << std::endl;
     qTimer->start();
@@ -57,7 +52,7 @@ void VaccinSimulatie::stop() {
 
 void VaccinSimulatie::nextDay() {
     std::cout << "next day" << std::endl;
-    /*OutputSingleton &output = OutputSingleton::getInstance();
+    OutputSingleton &output = OutputSingleton::getInstance();
     bool endOfSimulation = true;
     for (unsigned int i = 0; i < hubs.size(); i++) {
         if (!hubs[i]->isIedereenGevaccineerd()) {
@@ -72,9 +67,9 @@ void VaccinSimulatie::nextDay() {
         map<string, Vaccin *> vaccins = hubs[i]->getVaccins();
         for(map<string,Vaccin*>::iterator it = vaccins.begin(); it != vaccins.end(); it++){
             if (day % (it->second->interval + 1) == 0) {
-            // door in de simulatie het aantal vaccins mee te geven kunnen we war randomness toevoegen aan het aantal
-            // geleverde vaccins. Want ze zijn toch niet te vertrouwen die farmareuzen!
-            hubs[i]->ontvangLevering(it->first, it->second->levering);
+                // door in de simulatie het aantal vaccins mee te geven kunnen we war randomness toevoegen aan het aantal
+                // geleverde vaccins. Want ze zijn toch niet te vertrouwen die farmareuzen!
+                hubs[i]->ontvangLevering(it->first, it->second->levering);
             }
         }
 
@@ -92,26 +87,28 @@ void VaccinSimulatie::nextDay() {
             output.addToGIFile(vaccinatieCentra[i], filename2);
         }
         day++;
-        window->changeDay(day);
+        emit dayNrChanged(day);
     }
     else{
-        window->endOfSimulation(day);
+        emit endSimulation(day);
         stop();
-    }*/
+    }
 }
 
 
 void VaccinSimulatie::previousDay() {
     std::cout << "prev day" << std::endl;
-//    day--;
-//    window->changeDay(day);
+    day--;
+    emit dayNrChanged(day);
 }
 
-
-void VaccinSimulatie::delay(int time) {
-    QTime dieTime = QTime::currentTime().addMSecs(time);
-    while (QTime::currentTime() < dieTime)
-        QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
+const vector<Hub *> &VaccinSimulatie::getHubs() const {
+    return hubs;
 }
+
+const vector<VaccinatieCentrum *> &VaccinSimulatie::getVaccinatieCentra() const {
+    return vaccinatieCentra;
+}
+
 
 

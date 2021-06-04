@@ -15,7 +15,7 @@
 #include <cmath> // voor ceil
 #include <iostream> // for testing
 #include <algorithm>
-
+#include <QApplication>
 
 #include "lib/DesignByContract.h"
 
@@ -24,7 +24,8 @@ using namespace std;
 class VaccinatieCentrum;
 class Vaccin;
 
-class Hub {
+class Hub  : public QObject {
+    Q_OBJECT
 public:
 
     /**

@@ -31,15 +31,6 @@ private:
     Ui::MainWindow *ui;
 //    VaccinSimulatie* simulatie;
 
-private slots:
-
-    void startSimulation();
-
-    void stopSimulation();
-
-    void nextDay();
-
-    void previousDay();
 };
 
 #endif // MAINWINDOW_H

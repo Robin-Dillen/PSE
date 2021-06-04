@@ -18,8 +18,6 @@
 #include <QTime>
 #include <QTimer>
 
-class MainWindow;
-
 class VaccinSimulatie : public QObject {
 Q_OBJECT
 public:
@@ -27,11 +25,9 @@ public:
                     const string &testfilename,
                     bool c_out = true);
 
-    void setWindow(MainWindow *w);
-//    void start();
-//    void stop();
-//    void nextDay();
-//    void previousDay();
+    const vector<Hub *> &getHubs() const;
+
+    const vector<VaccinatieCentrum *> &getVaccinatieCentra() const;
 
 public slots:
 
@@ -43,15 +39,12 @@ public slots:
 
     void previousDay();
 
-private:
-    /*!
-     * pauzes the simulation for a given time length
-     * @param time how long the simulation is pauzes (in micro secs)
-     */
-    void delay(int time);
+    signals:
+        void dayNrChanged(int dayNr);
+        void endSimulation(int dayNr);
 
-    bool pause = true;
-    MainWindow *window;
+private:
+
     int day = 0;
     vector<Hub*> hubs;
     vector<VaccinatieCentrum*> vaccinatieCentra;

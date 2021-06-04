@@ -15,6 +15,7 @@
 #include <iostream>
 #include <list>
 #include <deque>
+#include <QApplication>
 
 #include "lib/DesignByContract.h"
 
@@ -22,7 +23,8 @@ using namespace std;
 
 class Vaccin;
 
-class VaccinatieCentrum {
+class VaccinatieCentrum : public QObject {
+    Q_OBJECT
 public:
 
     /**
@@ -202,6 +204,10 @@ public:
      * \n ENSURE(aantal_niet_vaccinaties >= 0, "We kunnen niet een negatief aantal niet vaccinaties hebben!");
      */
     int getAantalNietVaccinaties() const;
+
+
+signals:
+    void changeProgressBar(int value);
 
 private:
 

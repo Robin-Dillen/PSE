@@ -7,6 +7,7 @@
 #include <QtWidgets>
 #include <QChartView>
 #include <QPieSeries>
+#include <QProgressBar>
 
 MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
         QMainWindow(parent),
@@ -31,6 +32,34 @@ MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
     QObject::connect(ui->NextDayButton, SIGNAL(clicked()), sim, SLOT(nextDay()));
     QObject::connect(ui->PreviousDayButton, SIGNAL(clicked()), sim, SLOT(stop()));
     QObject::connect(ui->PreviousDayButton, SIGNAL(clicked()), sim, SLOT(previousDay()));
+    QObject::connect(sim, &VaccinSimulatie::dayNrChanged, this, &MainWindow::changeDay);
+    QObject::connect(sim, &VaccinSimulatie::endSimulation, this, &MainWindow::endOfSimulation);
+
+    QVBoxLayout *layout = new QVBoxLayout(this);
+
+    vector<Hub*> hubs = sim->getHubs();
+    int yPos = 50;
+    for(auto it = hubs.begin(); it != hubs.end(); it++){
+        QPushButton *but = new QPushButton("Hub");
+        //but->setGeometry(200,yPos,50,20);
+        layout->addWidget(but);
+        yPos += 30;
+    }
+    vector<VaccinatieCentrum*> centra = sim->getVaccinatieCentra();
+    for(auto it = centra.begin(); it != centra.end(); it++){
+        string name = (*it)->getKfname();
+        QPushButton *but = new QPushButton(QString::fromStdString(name));
+        //but->setGeometry(200,yPos,50,20);
+        layout->addWidget(but);
+        QProgressBar *progress = new QProgressBar();
+        progress->setMaximum((*it)->getKaantalInwoners());
+        progress->setMinimum(0);
+        layout->addWidget(progress);
+        QObject::connect((*it), &VaccinatieCentrum::changeProgressBar, this, SLOT(progress->setValue()));
+        yPos += 30;
+    }
+
+    ui->tabWidget->currentWidget()->setLayout(layout);
     /*QLabel *label = new QLabel("centum 0");
     label->setGeometry(100,100,100,50);
     */
@@ -42,22 +71,6 @@ MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
 
 MainWindow::~MainWindow() {
     delete ui;
-}
-
-void MainWindow::startSimulation() {
-//    simulatie->start();
-}
-
-void MainWindow::stopSimulation(){
-//  simulatie->stop();
-}
-
-void MainWindow::nextDay(){
-//    simulatie->nextDay();
-}
-
-void MainWindow::previousDay(){
-//    simulatie->previousDay();
 }
 
 
