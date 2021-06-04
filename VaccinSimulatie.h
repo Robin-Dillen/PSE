@@ -47,6 +47,7 @@ public slots:
 private:
     void addToFile();
 
+    TiXmlDocument doc;
     int day = 0;
     vector<Hub*> hubs;
     vector<VaccinatieCentrum*> vaccinatieCentra;
