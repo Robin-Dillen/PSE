@@ -25,13 +25,13 @@ public:
 //    void setSimulation(VaccinSimulatie* s);
     ~MainWindow();
 
-    void changeDay(int day);
-
     void endOfSimulation(int day);
 
 public slots:
 
     void dataChanged() const;
+
+    void changeDay(int day);
 
 protected:
     void paintEvent(QPaintEvent *event) override;

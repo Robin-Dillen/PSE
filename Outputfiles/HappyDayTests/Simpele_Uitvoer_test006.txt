@@ -16,4 +16,418 @@ Hub 2 (40000 vaccins)
 De Zoerla: 0 gevacineerd, nog 49451 inwoners niet gevaccineerd.
 Flanders Expo: 0 gevacineerd, nog 257029 inwoners niet gevaccineerd.
 Park Spoor Oost: 0 gevacineerd, nog 540173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 0 weken en 0 dagen.
+
+Hub 1 (91000 vaccins)
+	-> AED Studios (0 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+AED Studios: 0 gevacineerd, nog 76935 inwoners niet gevaccineerd.
+Park Spoor Oost: 0 gevacineerd, nog 540173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 0 weken en 0 dagen.
+
+Hub 2 (76000 vaccins)
+	-> De Zoerla (0 vaccins)
+	-> Flanders Expo (0 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+De Zoerla: 0 gevacineerd, nog 49451 inwoners niet gevaccineerd.
+Flanders Expo: 0 gevacineerd, nog 257029 inwoners niet gevaccineerd.
+Park Spoor Oost: 0 gevacineerd, nog 540173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 0 weken en 1 dag.
+
+Hub 1 (82000 vaccins)
+	-> AED Studios (0 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+AED Studios: 0 gevacineerd, nog 76935 inwoners niet gevaccineerd.
+Park Spoor Oost: 0 gevacineerd, nog 540173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 0 weken en 1 dag.
+
+Hub 2 (72000 vaccins)
+	-> De Zoerla (0 vaccins)
+	-> Flanders Expo (0 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+De Zoerla: 0 gevacineerd, nog 49451 inwoners niet gevaccineerd.
+Flanders Expo: 0 gevacineerd, nog 257029 inwoners niet gevaccineerd.
+Park Spoor Oost: 0 gevacineerd, nog 540173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 0 weken en 2 dagen.
+
+Hub 1 (73000 vaccins)
+	-> AED Studios (0 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+AED Studios: 0 gevacineerd, nog 76935 inwoners niet gevaccineerd.
+Park Spoor Oost: 0 gevacineerd, nog 540173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 0 weken en 2 dagen.
+
+Hub 2 (68000 vaccins)
+	-> De Zoerla (0 vaccins)
+	-> Flanders Expo (0 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+De Zoerla: 0 gevacineerd, nog 49451 inwoners niet gevaccineerd.
+Flanders Expo: 0 gevacineerd, nog 257029 inwoners niet gevaccineerd.
+Park Spoor Oost: 0 gevacineerd, nog 540173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 0 weken en 3 dagen.
+
+Hub 1 (64000 vaccins)
+	-> AED Studios (0 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+AED Studios: 0 gevacineerd, nog 76935 inwoners niet gevaccineerd.
+Park Spoor Oost: 0 gevacineerd, nog 540173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 0 weken en 3 dagen.
+
+Hub 2 (64000 vaccins)
+	-> De Zoerla (0 vaccins)
+	-> Flanders Expo (0 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+De Zoerla: 0 gevacineerd, nog 49451 inwoners niet gevaccineerd.
+Flanders Expo: 0 gevacineerd, nog 257029 inwoners niet gevaccineerd.
+Park Spoor Oost: 0 gevacineerd, nog 540173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 0 weken en 4 dagen.
+
+Hub 1 (55000 vaccins)
+	-> AED Studios (0 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+AED Studios: 0 gevacineerd, nog 76935 inwoners niet gevaccineerd.
+Park Spoor Oost: 0 gevacineerd, nog 540173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 0 weken en 4 dagen.
+
+Hub 2 (60000 vaccins)
+	-> De Zoerla (0 vaccins)
+	-> Flanders Expo (0 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+De Zoerla: 0 gevacineerd, nog 49451 inwoners niet gevaccineerd.
+Flanders Expo: 0 gevacineerd, nog 257029 inwoners niet gevaccineerd.
+Park Spoor Oost: 0 gevacineerd, nog 540173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 0 weken en 5 dagen.
+
+Hub 1 (46000 vaccins)
+	-> AED Studios (0 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+AED Studios: 0 gevacineerd, nog 76935 inwoners niet gevaccineerd.
+Park Spoor Oost: 0 gevacineerd, nog 540173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 0 weken en 5 dagen.
+
+Hub 2 (56000 vaccins)
+	-> De Zoerla (0 vaccins)
+	-> Flanders Expo (0 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+De Zoerla: 0 gevacineerd, nog 49451 inwoners niet gevaccineerd.
+Flanders Expo: 0 gevacineerd, nog 257029 inwoners niet gevaccineerd.
+Park Spoor Oost: 0 gevacineerd, nog 540173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 0 weken en 6 dagen.
+
+Hub 1 (37000 vaccins)
+	-> AED Studios (0 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+AED Studios: 0 gevacineerd, nog 76935 inwoners niet gevaccineerd.
+Park Spoor Oost: 0 gevacineerd, nog 540173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 0 weken en 6 dagen.
+
+Hub 2 (52000 vaccins)
+	-> De Zoerla (0 vaccins)
+	-> Flanders Expo (0 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+De Zoerla: 0 gevacineerd, nog 49451 inwoners niet gevaccineerd.
+Flanders Expo: 0 gevacineerd, nog 257029 inwoners niet gevaccineerd.
+Park Spoor Oost: 0 gevacineerd, nog 540173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 1 week en 0 dagen.
+
+Hub 1 (28000 vaccins)
+	-> AED Studios (0 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+AED Studios: 0 gevacineerd, nog 76935 inwoners niet gevaccineerd.
+Park Spoor Oost: 0 gevacineerd, nog 540173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 1 week en 0 dagen.
+
+Hub 2 (88000 vaccins)
+	-> De Zoerla (0 vaccins)
+	-> Flanders Expo (0 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+De Zoerla: 0 gevacineerd, nog 49451 inwoners niet gevaccineerd.
+Flanders Expo: 0 gevacineerd, nog 257029 inwoners niet gevaccineerd.
+Park Spoor Oost: 0 gevacineerd, nog 540173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 1 week en 1 dag.
+
+Hub 1 (19000 vaccins)
+	-> AED Studios (0 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+AED Studios: 0 gevacineerd, nog 76935 inwoners niet gevaccineerd.
+Park Spoor Oost: 0 gevacineerd, nog 540173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 1 week en 1 dag.
+
+Hub 2 (84000 vaccins)
+	-> De Zoerla (0 vaccins)
+	-> Flanders Expo (0 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+De Zoerla: 0 gevacineerd, nog 49451 inwoners niet gevaccineerd.
+Flanders Expo: 0 gevacineerd, nog 257029 inwoners niet gevaccineerd.
+Park Spoor Oost: 0 gevacineerd, nog 540173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 1 week en 2 dagen.
+
+Hub 1 (10000 vaccins)
+	-> AED Studios (0 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+AED Studios: 0 gevacineerd, nog 76935 inwoners niet gevaccineerd.
+Park Spoor Oost: 0 gevacineerd, nog 540173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 1 week en 2 dagen.
+
+Hub 2 (80000 vaccins)
+	-> De Zoerla (0 vaccins)
+	-> Flanders Expo (0 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+De Zoerla: 0 gevacineerd, nog 49451 inwoners niet gevaccineerd.
+Flanders Expo: 0 gevacineerd, nog 257029 inwoners niet gevaccineerd.
+Park Spoor Oost: 0 gevacineerd, nog 540173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 1 week en 3 dagen.
+
+Hub 1 (1000 vaccins)
+	-> AED Studios (0 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+AED Studios: 0 gevacineerd, nog 76935 inwoners niet gevaccineerd.
+Park Spoor Oost: 0 gevacineerd, nog 540173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 1 week en 3 dagen.
+
+Hub 2 (76000 vaccins)
+	-> De Zoerla (0 vaccins)
+	-> Flanders Expo (0 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+De Zoerla: 0 gevacineerd, nog 49451 inwoners niet gevaccineerd.
+Flanders Expo: 0 gevacineerd, nog 257029 inwoners niet gevaccineerd.
+Park Spoor Oost: 0 gevacineerd, nog 540173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 1 week en 4 dagen.
+
+Hub 1 (22000 vaccins)
+	-> AED Studios (0 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+AED Studios: 0 gevacineerd, nog 76935 inwoners niet gevaccineerd.
+Park Spoor Oost: 0 gevacineerd, nog 540173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 1 week en 4 dagen.
+
+Hub 2 (72000 vaccins)
+	-> De Zoerla (0 vaccins)
+	-> Flanders Expo (0 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+De Zoerla: 0 gevacineerd, nog 49451 inwoners niet gevaccineerd.
+Flanders Expo: 0 gevacineerd, nog 257029 inwoners niet gevaccineerd.
+Park Spoor Oost: 0 gevacineerd, nog 540173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 1 week en 5 dagen.
+
+Hub 1 (13000 vaccins)
+	-> AED Studios (0 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+AED Studios: 0 gevacineerd, nog 76935 inwoners niet gevaccineerd.
+Park Spoor Oost: 0 gevacineerd, nog 540173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 1 week en 5 dagen.
+
+Hub 2 (68000 vaccins)
+	-> De Zoerla (0 vaccins)
+	-> Flanders Expo (0 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+De Zoerla: 0 gevacineerd, nog 49451 inwoners niet gevaccineerd.
+Flanders Expo: 0 gevacineerd, nog 257029 inwoners niet gevaccineerd.
+Park Spoor Oost: 0 gevacineerd, nog 540173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 1 week en 6 dagen.
+
+Hub 1 (4000 vaccins)
+	-> AED Studios (0 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+AED Studios: 0 gevacineerd, nog 76935 inwoners niet gevaccineerd.
+Park Spoor Oost: 0 gevacineerd, nog 540173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 1 week en 6 dagen.
+
+Hub 2 (64000 vaccins)
+	-> De Zoerla (0 vaccins)
+	-> Flanders Expo (0 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+De Zoerla: 0 gevacineerd, nog 49451 inwoners niet gevaccineerd.
+Flanders Expo: 0 gevacineerd, nog 257029 inwoners niet gevaccineerd.
+Park Spoor Oost: 0 gevacineerd, nog 540173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 2 weken en 0 dagen.
+
+Hub 1 (15000 vaccins)
+	-> AED Studios (0 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+AED Studios: 0 gevacineerd, nog 76935 inwoners niet gevaccineerd.
+Park Spoor Oost: 0 gevacineerd, nog 540173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 2 weken en 0 dagen.
+
+Hub 2 (100000 vaccins)
+	-> De Zoerla (0 vaccins)
+	-> Flanders Expo (0 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+De Zoerla: 0 gevacineerd, nog 49451 inwoners niet gevaccineerd.
+Flanders Expo: 0 gevacineerd, nog 257029 inwoners niet gevaccineerd.
+Park Spoor Oost: 0 gevacineerd, nog 540173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 2 weken en 1 dag.
+
+Hub 1 (6000 vaccins)
+	-> AED Studios (0 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+AED Studios: 0 gevacineerd, nog 76935 inwoners niet gevaccineerd.
+Park Spoor Oost: 0 gevacineerd, nog 540173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 2 weken en 1 dag.
+
+Hub 2 (96000 vaccins)
+	-> De Zoerla (0 vaccins)
+	-> Flanders Expo (0 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+De Zoerla: 0 gevacineerd, nog 49451 inwoners niet gevaccineerd.
+Flanders Expo: 0 gevacineerd, nog 257029 inwoners niet gevaccineerd.
+Park Spoor Oost: 0 gevacineerd, nog 540173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 2 weken en 2 dagen.
+
+Hub 1 (0 vaccins)
+	-> AED Studios (0 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+AED Studios: 0 gevacineerd, nog 76935 inwoners niet gevaccineerd.
+Park Spoor Oost: 0 gevacineerd, nog 540173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 2 weken en 2 dagen.
+
+Hub 2 (92000 vaccins)
+	-> De Zoerla (0 vaccins)
+	-> Flanders Expo (0 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+De Zoerla: 0 gevacineerd, nog 49451 inwoners niet gevaccineerd.
+Flanders Expo: 0 gevacineerd, nog 257029 inwoners niet gevaccineerd.
+Park Spoor Oost: 0 gevacineerd, nog 540173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 2 weken en 3 dagen.
+
+Hub 1 (0 vaccins)
+	-> AED Studios (0 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+AED Studios: 0 gevacineerd, nog 76935 inwoners niet gevaccineerd.
+Park Spoor Oost: 0 gevacineerd, nog 540173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 2 weken en 3 dagen.
+
+Hub 2 (82000 vaccins)
+	-> De Zoerla (0 vaccins)
+	-> Flanders Expo (0 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+De Zoerla: 0 gevacineerd, nog 49451 inwoners niet gevaccineerd.
+Flanders Expo: 0 gevacineerd, nog 257029 inwoners niet gevaccineerd.
+Park Spoor Oost: 0 gevacineerd, nog 540173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 2 weken en 4 dagen.
+
+Hub 1 (0 vaccins)
+	-> AED Studios (0 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+AED Studios: 0 gevacineerd, nog 76935 inwoners niet gevaccineerd.
+Park Spoor Oost: 0 gevacineerd, nog 540173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 2 weken en 4 dagen.
+
+Hub 2 (72000 vaccins)
+	-> De Zoerla (0 vaccins)
+	-> Flanders Expo (0 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+De Zoerla: 0 gevacineerd, nog 49451 inwoners niet gevaccineerd.
+Flanders Expo: 0 gevacineerd, nog 257029 inwoners niet gevaccineerd.
+Park Spoor Oost: 0 gevacineerd, nog 540173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 2 weken en 5 dagen.
+
+Hub 1 (0 vaccins)
+	-> AED Studios (0 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+AED Studios: 0 gevacineerd, nog 76935 inwoners niet gevaccineerd.
+Park Spoor Oost: 0 gevacineerd, nog 540173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 2 weken en 5 dagen.
+
+Hub 2 (62000 vaccins)
+	-> De Zoerla (0 vaccins)
+	-> Flanders Expo (0 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+De Zoerla: 0 gevacineerd, nog 49451 inwoners niet gevaccineerd.
+Flanders Expo: 0 gevacineerd, nog 257029 inwoners niet gevaccineerd.
+Park Spoor Oost: 0 gevacineerd, nog 540173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 2 weken en 6 dagen.
+
+Hub 1 (0 vaccins)
+	-> AED Studios (0 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+AED Studios: 0 gevacineerd, nog 76935 inwoners niet gevaccineerd.
+Park Spoor Oost: 0 gevacineerd, nog 540173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 2 weken en 6 dagen.
+
+Hub 2 (52000 vaccins)
+	-> De Zoerla (0 vaccins)
+	-> Flanders Expo (0 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+De Zoerla: 0 gevacineerd, nog 49451 inwoners niet gevaccineerd.
+Flanders Expo: 0 gevacineerd, nog 257029 inwoners niet gevaccineerd.
+Park Spoor Oost: 0 gevacineerd, nog 540173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 3 weken en 0 dagen.
+
+Hub 1 (0 vaccins)
+	-> AED Studios (0 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+AED Studios: 0 gevacineerd, nog 76935 inwoners niet gevaccineerd.
+Park Spoor Oost: 0 gevacineerd, nog 540173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 3 weken en 0 dagen.
+
+Hub 2 (82000 vaccins)
+	-> De Zoerla (0 vaccins)
+	-> Flanders Expo (0 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+De Zoerla: 0 gevacineerd, nog 49451 inwoners niet gevaccineerd.
+Flanders Expo: 0 gevacineerd, nog 257029 inwoners niet gevaccineerd.
+Park Spoor Oost: 0 gevacineerd, nog 540173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 3 weken en 1 dag.
+
+Hub 1 (21000 vaccins)
+	-> AED Studios (0 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+AED Studios: 0 gevacineerd, nog 76935 inwoners niet gevaccineerd.
+Park Spoor Oost: 0 gevacineerd, nog 540173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 3 weken en 1 dag.
+
+Hub 2 (78000 vaccins)
+	-> De Zoerla (0 vaccins)
+	-> Flanders Expo (0 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+De Zoerla: 0 gevacineerd, nog 49451 inwoners niet gevaccineerd.
+Flanders Expo: 0 gevacineerd, nog 257029 inwoners niet gevaccineerd.
+Park Spoor Oost: 0 gevacineerd, nog 540173 inwoners niet gevaccineerd.
 

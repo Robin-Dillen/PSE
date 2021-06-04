@@ -52,13 +52,7 @@ void VaccinSimulatie::stop() {
 
 void VaccinSimulatie::nextDay() {
     std::cout << "next day" << std::endl;
-    static map<string, int> vaccinaties = {{"Pfizer",  0},
-                                           {"Moderna", 0}};
-    vaccinaties["Pfizer"] += 100000;
-    vaccinaties["Moderna"] += 50000;
     StatisticsSingleton &stats = StatisticsSingleton::getInstance();
-    stats.setAantalVaccinaties(vaccinaties);
-    emit stats.dataChange();
     OutputSingleton &output = OutputSingleton::getInstance();
     bool endOfSimulation = true;
     for (unsigned int i = 0; i < hubs.size(); i++) {
@@ -96,11 +90,11 @@ void VaccinSimulatie::nextDay() {
         }
         day++;
         emit dayNrChanged(day);
-    }
-    else{
+    } else {
         emit endSimulation(day);
         stop();
     }
+    emit stats.dataChange();
 }
 
 

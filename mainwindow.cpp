@@ -34,7 +34,7 @@ MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
     QObject::connect(ui->PreviousDayButton, SIGNAL(clicked()), sim, SLOT(stop()));
     QObject::connect(ui->PreviousDayButton, SIGNAL(clicked()), sim, SLOT(previousDay()));
     QObject::connect(&StatisticsSingleton::getInstance(), SIGNAL(dataChange()), this, SLOT(dataChanged()));
-    QObject::connect(sim, &VaccinSimulatie::dayNrChanged, this, &MainWindow::changeDay);
+    QObject::connect(sim, SIGNAL(dayNrChanged(int)), this, SLOT(changeDay(int)));
     QObject::connect(sim, &VaccinSimulatie::endSimulation, this, &MainWindow::endOfSimulation);
 
     QVBoxLayout *layout = new QVBoxLayout(this);

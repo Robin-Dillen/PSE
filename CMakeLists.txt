@@ -40,7 +40,6 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
 
-
 # Set source files for RELEASE target
 set(RELEASE_SOURCE_FILES
         main.cpp

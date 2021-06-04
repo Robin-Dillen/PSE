@@ -209,7 +209,7 @@ public:
 
     const map<string, int> &getAantalGeleverdeVaccins1() const;
 
-    const deque<map<string, int> > &getAantalEerstePrikken() const;
+    const map<string, deque<int>> &getAantalEerstePrikken() const;
 
 signals:
     void changeProgressBar(int value);
@@ -230,7 +230,7 @@ private:
 
     const VaccinatieCentrum *_initCheck; // pointer naar zichzelf om te checken of het object correct geïnitialseert is
 
-    deque<map<string, int> > aantal_eerste_prikken;
+    map<string, deque<int> > aantal_eerste_prikken;
 
     // elke loop getten en verwijderen we front, en loopen we door de batches(van front), we checken of we ze een 2de prik kunnen geven etc...
     // -> voeg toe bij aantal vaccinaties(mss voor statistiche verwerking, ook in aantal vaccinaties alles gescheiden houden)
