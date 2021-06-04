@@ -41,12 +41,10 @@ bool c_out) {
 }
 
 void VaccinSimulatie::start() {
-    std::cout << "start" << std::endl;
     qTimer->start();
 }
 
 void VaccinSimulatie::stop() {
-    std::cout << "stop" << std::endl;
     qTimer->stop();
 }
 
@@ -112,5 +110,8 @@ const vector<VaccinatieCentrum *> &VaccinSimulatie::getVaccinatieCentra() const 
     return vaccinatieCentra;
 }
 
+void addToFile(){
+
+}
 
 

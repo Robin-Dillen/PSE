@@ -13,6 +13,7 @@
 #include "StatisticsSingleton.h"
 #include "Vaccins.h"
 #include "Lib.h"
+#include "TinyXML/tinyxml.h"
 
 #include <QApplication>
 #include <QTime>
@@ -44,6 +45,7 @@ public slots:
         void endSimulation(int dayNr);
 
 private:
+    void addToFile();
 
     int day = 0;
     vector<Hub*> hubs;
