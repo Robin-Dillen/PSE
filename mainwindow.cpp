@@ -63,7 +63,8 @@ MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
         //pop op venster voor info van centrum
         QDialog *dialog = new QDialog(this);
         QObject::connect(but, SIGNAL(pressed()), dialog, SLOT(exec()));
-
+        QLabel *inwoners = new QLabel(QString::fromStdString("inhabitants: " + to_string((*it)->getKaantalInwoners())));
+        inwoners->setParent(dialog);
 
 //        QGroupBox *groupBox = new QGroupBox(QString::fromStdString(name));
 //        QVBoxLayout *vbox = new QVBoxLayout;

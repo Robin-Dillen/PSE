@@ -58,6 +58,9 @@ int VaccinatieCentrum::getAantalVaccinaties(const string &type) const {
     REQUIRE(!type.empty(), "Het Vaccin type mag geen lege string zijn!");
     MapSICIterator aantal = aantal_vaccinaties.find(type);
     if (aantal == aantal_vaccinaties.end()) return 0;
+    if (aantal->second < 0) {
+        cout << "error" << std::endl;
+    }
     ENSURE(aantal->second >= 0, "Het aantal vaccinaties ligt onder nul!");
     return aantal->second;
 }
@@ -213,13 +216,10 @@ void VaccinatieCentrum::nieuweDag() {
         ENSURE(aantal_prikken >= 0, "Het aantal vaccinaties mag niet negatief zijn!");
         if (vaccin->second.first->hernieuwing == 0) {
             //nieuw type bijvoegen
-            if (aantal_vaccinaties.find(vaccin->first) == aantal_vaccinaties.end()) {
-                aantal_vaccinaties[vaccin->first] = aantal_prikken;
-            } else {
+
                 zet2dePrikVaccins(vaccin->first, aantal_prikken, capaciteit);
                 aantal_tweede_prik += aantal_prikken;
                 aantal_niet_vaccinaties -= aantal_prikken;
-            }
         } else {
             aantal_eerste_prikken[vaccin->first][vaccin->second.first->hernieuwing - 1] += aantal_prikken;
             nog_te_reserveren_vaccins[vaccin->first][vaccin->second.first->hernieuwing - 1] += aantal_prikken;
@@ -229,16 +229,20 @@ void VaccinatieCentrum::nieuweDag() {
         //verwijder vaccins als ze nooit meer gebruikt kunnen worden
         if (aantal_niet_vaccinaties == 0) {
             int nogtevaccineren = 0;
-            for (int i = 0; i < (int) aantal_eerste_prikken.size(); i++) {
-                nogtevaccineren += aantal_eerste_prikken[vaccin->first].front();
+            if (vaccin->second.first->hernieuwing != 0) {
+                for (int i = 0; i < (int) aantal_eerste_prikken.size(); i++) {
+                    nogtevaccineren += aantal_eerste_prikken[vaccin->first].front();
+                }
             }
             if (nogtevaccineren == 0) {
                 verwijderde_vaccins += aantal_vaccins[vaccin->first].second;
                 aantal_vaccins[vaccin->first].second = 0;
             }
         }
-        aantal_eerste_prikken[vaccin->first].pop_front();
-        aantal_eerste_prikken[vaccin->first].resize(aantal_eerste_prikken[vaccin->first].size() + 1);
+        if (vaccin->second.first->hernieuwing != 0) {
+            aantal_eerste_prikken[vaccin->first].pop_front();
+            aantal_eerste_prikken[vaccin->first].resize(aantal_eerste_prikken[vaccin->first].size() + 1);
+        }
 
         nog_te_reserveren_vaccins[vaccin->first].pop_front();
         nog_te_reserveren_vaccins[vaccin->first].resize(nog_te_reserveren_vaccins[vaccin->first].size() + 1);
@@ -310,9 +314,9 @@ void VaccinatieCentrum::ontvangLevering(int vaccins_in_levering, Vaccin *vaccin)
     REQUIRE(vaccins_in_levering >= 0, "Er is een negatief aantal vaccins geleverd!");
     REQUIRE(vaccin != NULL, "Het Vaccin type is verkeerd meegegeven in ontvangLevering");
 
-    if (vaccin->hernieuwing > (int) aantal_eerste_prikken.size())
+    if (vaccin->hernieuwing != 0 && vaccin->hernieuwing > (int) aantal_eerste_prikken[vaccin->type].size())
         aantal_eerste_prikken[vaccin->type].resize(vaccin->hernieuwing);
-    if (vaccin->hernieuwing > (int) nog_te_reserveren_vaccins.size())
+    if (vaccin->hernieuwing != 0 && vaccin->hernieuwing > (int) nog_te_reserveren_vaccins[vaccin->type].size())
         nog_te_reserveren_vaccins[vaccin->type].resize(vaccin->hernieuwing);
     //nieuwe type vaccin toevoegen aan map
     if (aantal_vaccins.find(vaccin->type) == aantal_vaccins.end()) {
