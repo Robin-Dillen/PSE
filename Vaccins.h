@@ -4,6 +4,8 @@
 
 #include <string>
 #include <vector>
+#include <deque>
+#include <map>
 #include "lib/DesignByContract.h"
 
 using namespace std;
@@ -23,7 +25,11 @@ struct Vaccin {
     const int transport; // geleverd aan VaccinatieCentrum
     const int hernieuwing;
     const int temperatuur;
+
     int tijd_tot_nieuwe_levering;
+    int aantal;
+    map<string, deque<int> > gereserveerd;
+    map<string, deque<int> > extra_gereserveerd;
 };
 
 
