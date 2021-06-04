@@ -38,8 +38,7 @@ bool c_out) {
     }
     qTimer = new QTimer(this);
     qTimer->setInterval(200);
-    qTimer.
-            connect(qTimer, SIGNAL(), this, SLOT(update()));
+    connect(qTimer, SIGNAL(timeout()), this, SLOT(nextDay()));
 }
 
 void VaccinSimulatie::setWindow(MainWindow *w){
@@ -113,10 +112,6 @@ void VaccinSimulatie::delay(int time) {
     QTime dieTime = QTime::currentTime().addMSecs(time);
     while (QTime::currentTime() < dieTime)
         QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
-}
-
-void VaccinSimulatie::timerEvent(QTimerEvent *event) {
-    nextDay();
 }
 
 

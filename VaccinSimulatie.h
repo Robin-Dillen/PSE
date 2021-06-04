@@ -43,9 +43,6 @@ public slots:
 
     void previousDay();
 
-protected:
-    void timerEvent(QTimerEvent *event) override;
-
 private:
     /*!
      * pauzes the simulation for a given time length
