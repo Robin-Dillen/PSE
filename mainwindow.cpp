@@ -40,34 +40,39 @@ MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
     QObject::connect(sim, SIGNAL(endSimulation(int)), this, SLOT(endOfSimulation(int)));
 
 
-    QVBoxLayout *layout = new QVBoxLayout(this);
+    QVBoxLayout *layout = new QVBoxLayout();
 
     vector<Hub*> hubs = sim->getHubs();
-    int yPos = 50;
+
     for(auto it = hubs.begin(); it != hubs.end(); it++){
         QPushButton *but = new QPushButton("Hub");
-        //but->setGeometry(200,yPos,50,20);
         layout->addWidget(but);
-        yPos += 30;
+
     }
     vector<VaccinatieCentrum*> centra = sim->getVaccinatieCentra();
     for (vector<VaccinatieCentrum *>::iterator it = centra.begin(); it != centra.end(); it++) {
         string name = (*it)->getKfname();
         QPushButton *but = new QPushButton(QString::fromStdString(name));
-        //but->setGeometry(200,yPos,50,20);
         layout->addWidget(but);
         QProgressBar *progress = new QProgressBar();
         progress->setMaximum((*it)->getKaantalInwoners());
         progress->setMinimum(0);
         layout->addWidget(progress);
         QObject::connect(*it, SIGNAL(changeProgressBar(int)), progress, SLOT(setValue(int)));
-        yPos += 30;
+
+        //pop op venster voor info van centrum
+        QGroupBox *groupBox = new QGroupBox(QString::fromStdString(name));
+        QVBoxLayout *vbox = new QVBoxLayout;
+        QLabel *inwoners = new QLabel(QString::fromStdString("inhabitants: "+ to_string((*it)->getKaantalInwoners())));
+        vbox->addWidget(inwoners);
+        groupBox->setLayout(vbox);
+        groupBox->setGeometry(100,100,100,100);
+        ui->tabWidget->addTab(groupBox,QString::fromStdString(name));
+        //groupBox->setVisible(false);
+        groupBox->hide();
     }
 
     ui->tabWidget->currentWidget()->setLayout(layout);
-    /*QLabel *label = new QLabel("centum 0");
-    label->setGeometry(100,100,100,50);
-    */
 }
 
 //void MainWindow::setSimulation(VaccinSimulatie* s){
