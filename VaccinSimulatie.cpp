@@ -60,9 +60,7 @@ void VaccinSimulatie::nextDay() {
         else{
             continue;
         }
-
         // increase current_day
-
         map<string, Vaccin *> vaccins = hubs[i]->getVaccins();
         for(map<string,Vaccin*>::iterator it = vaccins.begin(); it != vaccins.end(); it++){
             if (day % (it->second->interval + 1) == 0) {
@@ -72,7 +70,6 @@ void VaccinSimulatie::nextDay() {
             }
         }
 
-
         // stuur signaal nieuwe dag
         hubs[i]->nieuweDag();
 
@@ -81,14 +78,40 @@ void VaccinSimulatie::nextDay() {
     }
     if(!endOfSimulation){
         output.addDateToFile(day, filename2);
+        map<string, int> totaal_vaccinaties;
+        map<string, int> totaal_eerste_prikken;
         for (unsigned int i = 0; i < vaccinatieCentra.size(); i++) {
-//            StatisticsSingleton& stats = StatisticsSingleton::getInstance();
+            stats.addGeleverdeVaccins(vaccinatieCentra[i]->getAantalGeleverdeVaccins1());
             vaccinatieCentra[i]->nieuweDag();
+            const map<string, int> &vaccinaties = vaccinatieCentra[i]->getAantalVaccinaties1();
+            for (map<string, int>::const_iterator aantal_vaccinaties = vaccinaties.begin();
+                 aantal_vaccinaties != vaccinaties.end(); ++aantal_vaccinaties) {
+                if (totaal_vaccinaties.find(aantal_vaccinaties->first) == totaal_vaccinaties.end())
+                    totaal_vaccinaties[aantal_vaccinaties->first] = aantal_vaccinaties->second;
+                else
+                    totaal_vaccinaties[aantal_vaccinaties->first] += aantal_vaccinaties->second;
+            }
+
+            const map<string, deque<int>> &eerste_prikken = vaccinatieCentra[i]->getAantalEerstePrikken();
+            for (map<string, deque<int>>::const_iterator aantal_eerste_prikken = eerste_prikken.begin();
+                 aantal_eerste_prikken != eerste_prikken.end(); ++aantal_eerste_prikken) {
+                int sum = std::accumulate(aantal_eerste_prikken->second.begin(), aantal_eerste_prikken->second.end(),
+                                          0);
+                if (totaal_eerste_prikken.find(aantal_eerste_prikken->first) == totaal_eerste_prikken.end())
+                    totaal_eerste_prikken[aantal_eerste_prikken->first] = sum;
+                else
+                    totaal_eerste_prikken[aantal_eerste_prikken->first] += sum;
+            }
+
             output.addToGIFile(vaccinatieCentra[i], filename2);
         }
+        stats.setEerstePrikken(totaal_eerste_prikken);
+        stats.setAantalVaccinaties(totaal_vaccinaties);
+
         day++;
         emit dayNrChanged(day);
     } else {
+        emit stats.dataChange();
         emit endSimulation(day);
         stop();
     }

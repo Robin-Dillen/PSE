@@ -14,10 +14,10 @@ struct Vaccin {
     Vaccin(const string &type, const int levering, const int interval, const int transport, const int hernieuwing,
            const int temperatuur) : type(type), levering(levering), interval(interval), transport(transport),
                                     hernieuwing(hernieuwing), temperatuur(temperatuur),
-                                    tijd_tot_nieuwe_levering(interval) {}
+                                    tijd_tot_nieuwe_levering(interval), aantal(0) {}
 
     Vaccin() : levering(0), interval(0), transport(0), hernieuwing(0), temperatuur(0),
-               tijd_tot_nieuwe_levering(interval) {}
+               tijd_tot_nieuwe_levering(interval), aantal(0) {}
 
     const string type;
     const int levering; // geleverd aan hub

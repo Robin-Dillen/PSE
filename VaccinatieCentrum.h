@@ -280,11 +280,9 @@ private:
     // zo nee aantal_eerste_prikken.resize(hernieuwbaar) !!niet reserve!!
     // we gebruiken een list omdat we front vaak moeten verwijderen(geeft shifts zoals bij vector)
 
-    deque<map<string, int> > nog_te_reserveren_vaccins;
-
-
     // changing attributes
     map<string, pair<Vaccin *, int> > aantal_vaccins; //vaccin: Vaccintype, int: aantal vaccins van dit type
+    map<string, deque<int> > nog_te_reserveren_vaccins;
 
     int aantal_niet_vaccinaties;
 

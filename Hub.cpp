@@ -118,7 +118,9 @@ bool Hub::isIedereenGevaccineerd() const {
     //Kijkt na of iedereen in alle centra al gevaccineerd is of niet
     for (map<string, VaccinatieCentrum *>::const_iterator it = fverbonden_centra.begin(), end = fverbonden_centra.end();
          it != end; it++) {
-        if (it->second->getTotaalAantalVaccinaties() != it->second->getKaantalInwoners()) return false;
+        int totaalV = it->second->getTotaalAantalVaccinaties();
+        int totaalI = it->second->getKaantalInwoners();
+        if (totaalV != totaalI) return false;
     }
     return true;
 }

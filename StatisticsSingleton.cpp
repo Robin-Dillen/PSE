@@ -2,6 +2,8 @@
 #include "StatisticsSingleton.h"
 #include "lib/DesignByContract.h"
 
+#include <algorithm>
+
 
 StatisticsSingletonData::StatisticsSingletonData(int aantalVaccinaties, int aantalGeleverdeVaccins)
         : aantal_vaccinaties(aantalVaccinaties), aantal_geleverde_vaccins(aantalGeleverdeVaccins) {}
@@ -20,13 +22,27 @@ void StatisticsSingleton::addGeleverdeVaccins(const map<string, int> &geleverd) 
     }
 }
 
-void StatisticsSingleton::setAantalVaccinaties(const map<string, int> &aantal) {
-    for (map<string, int>::const_iterator levering = aantal.begin(); levering != aantal.end(); ++levering) {
-        if (data.find(levering->first) == data.end()) {
-            data[levering->first].aantal_geleverde_vaccins = 0;
-            data[levering->first].aantal_eerste_prikken = 0;
+void StatisticsSingleton::setEerstePrikken(const map<string, int> &eerste_prikken) {
+    for (map<string, int>::const_iterator eerste_prik = eerste_prikken.begin();
+         eerste_prik != eerste_prikken.end(); ++eerste_prik) {
+        if (data.find(eerste_prik->first) == data.end()) {
+            data[eerste_prik->first].aantal_geleverde_vaccins = 0;
+            data[eerste_prik->first].aantal_vaccinaties = 0;
+            data[eerste_prik->first].aantal_eerste_prikken = eerste_prik->second;
+        } else {
+            data[eerste_prik->first].aantal_eerste_prikken = eerste_prik->second;
         }
-        data[levering->first].aantal_vaccinaties = levering->second;
+    }
+}
+
+void StatisticsSingleton::setAantalVaccinaties(const map<string, int> &aantal) {
+    for (map<string, int>::const_iterator aantal_vaccins = aantal.begin();
+         aantal_vaccins != aantal.end(); ++aantal_vaccins) {
+        if (data.find(aantal_vaccins->first) == data.end()) {
+            data[aantal_vaccins->first].aantal_geleverde_vaccins = 0;
+            data[aantal_vaccins->first].aantal_eerste_prikken = 0;
+        }
+        data[aantal_vaccins->first].aantal_vaccinaties = aantal_vaccins->second;
     }
 }
 
@@ -53,3 +69,4 @@ int StatisticsSingleton::getTotaalVolledigeVaccinaties() const {
     }
     return totaal;
 }
+

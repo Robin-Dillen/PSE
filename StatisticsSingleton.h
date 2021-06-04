@@ -3,6 +3,7 @@
 #define PSE_STATISTICSSINGLETON_H
 
 #include <map>
+#include <deque>
 #include <string>
 #include <QObject>
 
@@ -36,7 +37,7 @@ public:
 
     void addGeleverdeVaccins(const map<string, int> &geleverd);
 
-//    void setEerstePrikken(const deque<map<string, int>>& eerste_prikken);
+    void setEerstePrikken(const map<string, int> &eerste_prikken);
 
     void setAantalVaccinaties(const map<string, int> &aantal);
 

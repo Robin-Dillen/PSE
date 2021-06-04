@@ -83,10 +83,6 @@ void MainWindow::changeDay(int day) {
     ui->DayText->setText(time);
 }
 
-void MainWindow::paintEvent(QPaintEvent *event) {
-    QWidget::paintEvent(event);
-}
-
 void MainWindow::endOfSimulation(int day) {
     string daytext = "vaccination ended at day: " + to_string(day);
     QString time = QString::fromStdString(daytext);
@@ -96,8 +92,8 @@ void MainWindow::endOfSimulation(int day) {
 void MainWindow::dataChanged() const {
     StatisticsSingleton &stats = StatisticsSingleton::getInstance();
     float totaal = stats.getTotaalAantalMensen();
-    float pEerstePrikken = stats.getTotaalEerstePrikken() / totaal;
-    float pVolledigeVaccinaties = stats.getTotaalVolledigeVaccinaties() / totaal;
+    float pEerstePrikken = (stats.getTotaalEerstePrikken() / totaal) * 100;
+    float pVolledigeVaccinaties = (stats.getTotaalVolledigeVaccinaties() / totaal) * 100;
     float pRest = 100 - (pEerstePrikken + pVolledigeVaccinaties);
     pieChart->slices().at(0)->setValue(pRest);
     pieChart->slices().at(1)->setValue(pEerstePrikken);

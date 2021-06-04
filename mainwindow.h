@@ -33,8 +33,6 @@ public slots:
 
     void dataChanged() const;
 
-protected:
-    void paintEvent(QPaintEvent *event) override;
 
 private:
     Ui::MainWindow *ui;
