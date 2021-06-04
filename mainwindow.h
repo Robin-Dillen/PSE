@@ -9,29 +9,37 @@ namespace Ui {
 class MainWindow;
 }
 
-class MainWindow : public QMainWindow
-{
-    Q_OBJECT
-
+class MainWindow : public QMainWindow {
+Q_OBJECT
 
 
 public:
 
-    explicit MainWindow(QWidget *parent = nullptr);
-    void setSimulation(VaccinSimulatie* s);
+    explicit MainWindow(VaccinSimulatie *sim, QWidget *parent = nullptr);
+
+//    void setSimulation(VaccinSimulatie* s);
     ~MainWindow();
+
     void changeDay(int day);
+
     void endOfSimulation(int day);
+
+protected:
+    void paintEvent(QPaintEvent *event) override;
 
 private:
     Ui::MainWindow *ui;
-    VaccinSimulatie* simulatie;
+//    VaccinSimulatie* simulatie;
 
 private slots:
-        void startSimulation();
-        void stopSimulation();
-        void nextDay();
-        void previousDay();
+
+    void startSimulation();
+
+    void stopSimulation();
+
+    void nextDay();
+
+    void previousDay();
 };
 
 #endif // MAINWINDOW_H

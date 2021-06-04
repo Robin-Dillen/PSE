@@ -16,18 +16,35 @@
 
 #include <QApplication>
 #include <QTime>
+#include <QTimer>
 
 class MainWindow;
 
-class VaccinSimulatie {
+class VaccinSimulatie : public QObject {
+Q_OBJECT
 public:
-    VaccinSimulatie(vector<Hub *> &hubs, std::vector<VaccinatieCentrum *> &vaccinatie_centra, const string &testfilename,
-    bool c_out = true);
-    void setWindow(MainWindow* w);
+    VaccinSimulatie(vector<Hub *> &hubs, std::vector<VaccinatieCentrum *> &vaccinatie_centra,
+                    const string &testfilename,
+                    bool c_out = true);
+
+    void setWindow(MainWindow *w);
+//    void start();
+//    void stop();
+//    void nextDay();
+//    void previousDay();
+
+public slots:
+
     void start();
+
     void stop();
+
     void nextDay();
+
     void previousDay();
+
+protected:
+    void timerEvent(QTimerEvent *event) override;
 
 private:
     /*!
@@ -37,13 +54,13 @@ private:
     void delay(int time);
 
     bool pause = true;
-    MainWindow* window;
+    MainWindow *window;
     int day = 0;
     vector<Hub*> hubs;
     vector<VaccinatieCentrum*> vaccinatieCentra;
     string filename1;
     string filename2;
-
+    QTimer *qTimer;
 };
 
 

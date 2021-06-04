@@ -4,6 +4,7 @@
 
 #include "VaccinSimulatie.h"
 #include "mainwindow.h"
+#include <iostream>
 
 VaccinSimulatie::VaccinSimulatie(vector<Hub *> &h, std::vector<VaccinatieCentrum *> &v, const string &testfilename,
 bool c_out) {
@@ -35,26 +36,29 @@ bool c_out) {
         // output
         output.addToOutputFile(hubs[i], i + 1, 0, filename1);
     }
+    qTimer = new QTimer(this);
+    qTimer->setInterval(200);
+    qTimer.
+            connect(qTimer, SIGNAL(), this, SLOT(update()));
 }
 
 void VaccinSimulatie::setWindow(MainWindow *w){
     window = w;
 }
 
-void VaccinSimulatie::start(){
-    pause = false;
-    while (!pause) {
-        nextDay();
-        delay(1000);
-    }
+void VaccinSimulatie::start() {
+    std::cout << "start" << std::endl;
+    qTimer->start();
 }
 
-void VaccinSimulatie::stop(){
-    pause = true;
+void VaccinSimulatie::stop() {
+    std::cout << "stop" << std::endl;
+    qTimer->stop();
 }
 
-void VaccinSimulatie::nextDay(){
-    OutputSingleton &output = OutputSingleton::getInstance();
+void VaccinSimulatie::nextDay() {
+    std::cout << "next day" << std::endl;
+    /*OutputSingleton &output = OutputSingleton::getInstance();
     bool endOfSimulation = true;
     for (unsigned int i = 0; i < hubs.size(); i++) {
         if (!hubs[i]->isIedereenGevaccineerd()) {
@@ -94,13 +98,14 @@ void VaccinSimulatie::nextDay(){
     else{
         window->endOfSimulation(day);
         stop();
-    }
+    }*/
 }
 
 
-void VaccinSimulatie::previousDay(){
-    day--;
-    window->changeDay(day);
+void VaccinSimulatie::previousDay() {
+    std::cout << "prev day" << std::endl;
+//    day--;
+//    window->changeDay(day);
 }
 
 
@@ -108,6 +113,10 @@ void VaccinSimulatie::delay(int time) {
     QTime dieTime = QTime::currentTime().addMSecs(time);
     while (QTime::currentTime() < dieTime)
         QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
+}
+
+void VaccinSimulatie::timerEvent(QTimerEvent *event) {
+    nextDay();
 }
 
 

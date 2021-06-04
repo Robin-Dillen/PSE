@@ -1,5 +1,5 @@
 #include "mainwindow.h"
-#include "ui_mainwindow.h"
+#include "cmake-build-debug/PSE_autogen/include/ui_mainwindow.h"
 #include "VaccinSimulatie.h"
 #include<iostream>
 
@@ -8,7 +8,7 @@
 #include <QChartView>
 #include <QPieSeries>
 
-MainWindow::MainWindow(QWidget *parent) :
+MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
         QMainWindow(parent),
         ui(new Ui::MainWindow) {
     ui->setupUi(this);
@@ -24,45 +24,55 @@ MainWindow::MainWindow(QWidget *parent) :
 
     QChartView *view = new QChartView(chart);
     view->setParent(ui->horizontalFrame_page1);
+
+    QObject::connect(ui->StartButton, SIGNAL(clicked()), sim, SLOT(start()));
+    QObject::connect(ui->StopButton, SIGNAL(clicked()), sim, SLOT(stop()));
+    QObject::connect(ui->NextDayButton, SIGNAL(clicked()), sim, SLOT(stop()));
+    QObject::connect(ui->NextDayButton, SIGNAL(clicked()), sim, SLOT(nextDay()));
+    QObject::connect(ui->PreviousDayButton, SIGNAL(clicked()), sim, SLOT(stop()));
+    QObject::connect(ui->PreviousDayButton, SIGNAL(clicked()), sim, SLOT(previousDay()));
     /*QLabel *label = new QLabel("centum 0");
     label->setGeometry(100,100,100,50);
     */
 }
 
-void MainWindow::setSimulation(VaccinSimulatie* s){
-    simulatie = s;
-}
+//void MainWindow::setSimulation(VaccinSimulatie* s){
+//    simulatie = s;
+//}
 
-MainWindow::~MainWindow()
-{
+MainWindow::~MainWindow() {
     delete ui;
 }
 
-void MainWindow::startSimulation(){
-    simulatie->start();
+void MainWindow::startSimulation() {
+//    simulatie->start();
 }
 
 void MainWindow::stopSimulation(){
-  simulatie->stop();
+//  simulatie->stop();
 }
 
 void MainWindow::nextDay(){
-    simulatie->nextDay();
+//    simulatie->nextDay();
 }
 
 void MainWindow::previousDay(){
-    simulatie->previousDay();
+//    simulatie->previousDay();
 }
 
 
-void MainWindow::changeDay(int day){
-    string daytext = "day: "+to_string(day);
+void MainWindow::changeDay(int day) {
+    string daytext = "day: " + to_string(day);
     QString time = QString::fromStdString(daytext);
     ui->DayText->setText(time);
 }
 
-void MainWindow::endOfSimulation(int day){
-    string daytext = "vaccination ended at day: "+to_string(day);
+void MainWindow::paintEvent(QPaintEvent *event) {
+    QWidget::paintEvent(event);
+}
+
+void MainWindow::endOfSimulation(int day) {
+    string daytext = "vaccination ended at day: " + to_string(day);
     QString time = QString::fromStdString(daytext);
     ui->DayText->setText(time);
 }
