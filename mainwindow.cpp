@@ -48,7 +48,7 @@ MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
         yPos += 30;
     }
     vector<VaccinatieCentrum*> centra = sim->getVaccinatieCentra();
-    for(auto it = centra.begin(); it != centra.end(); it++){
+    for (vector<VaccinatieCentrum *>::iterator it = centra.begin(); it != centra.end(); it++) {
         string name = (*it)->getKfname();
         QPushButton *but = new QPushButton(QString::fromStdString(name));
         //but->setGeometry(200,yPos,50,20);
@@ -57,7 +57,7 @@ MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
         progress->setMaximum((*it)->getKaantalInwoners());
         progress->setMinimum(0);
         layout->addWidget(progress);
-        QObject::connect((*it), &VaccinatieCentrum::changeProgressBar, this, SLOT(progress->setValue()));
+        QObject::connect(*it, SIGNAL(changeProgressBar(int)), progress, SLOT(setValue(int)));
         yPos += 30;
     }
 

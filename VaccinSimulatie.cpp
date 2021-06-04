@@ -90,7 +90,7 @@ void VaccinSimulatie::nextDay() {
     if(!endOfSimulation){
         output.addDateToFile(day, filename2);
         for (unsigned int i = 0; i < vaccinatieCentra.size(); i++) {
-            StatisticsSingleton& stats = StatisticsSingleton::getInstance();
+//            StatisticsSingleton& stats = StatisticsSingleton::getInstance();
             vaccinatieCentra[i]->nieuweDag();
             output.addToGIFile(vaccinatieCentra[i], filename2);
         }
