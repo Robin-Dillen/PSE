@@ -82,29 +82,29 @@
        <widget class="QLabel" name="DayText">
         <property name="geometry">
          <rect>
-          <x>300</x>
-          <y>20</y>
-          <width>251</width>
-          <height>16</height>
+             <x>290</x>
+             <y>20</y>
+             <width>101</width>
+             <height>20</height>
          </rect>
         </property>
         <property name="text">
          <string>Day: 0</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="pushButton">
-        <property name="geometry">
-         <rect>
-             <x>779</x>
-             <y>20</y>
-             <width>121</width>
-             <height>23</height>
-         </rect>
-        </property>
-           <property name="text">
-               <string>Distribute vaccines</string>
-           </property>
-       </widget>
+          <widget class="QPushButton" name="pushButton">
+              <property name="geometry">
+                  <rect>
+                      <x>779</x>
+                      <y>20</y>
+                      <width>121</width>
+                      <height>23</height>
+                  </rect>
+              </property>
+              <property name="text">
+                  <string>Distribute vaccines</string>
+              </property>
+          </widget>
           <widget class="QPushButton" name="NextDayButton_2">
               <property name="geometry">
                   <rect>
@@ -131,6 +131,34 @@
                   <string>Return</string>
               </property>
           </widget>
+          <widget class="QSlider" name="SpeedSlider">
+              <property name="geometry">
+                  <rect>
+                      <x>600</x>
+                      <y>20</y>
+                      <width>160</width>
+                      <height>22</height>
+                  </rect>
+              </property>
+              <property name="accessibleName">
+                  <string/>
+              </property>
+              <property name="minimum">
+                  <number>1</number>
+              </property>
+              <property name="maximum">
+                  <number>500</number>
+              </property>
+              <property name="value">
+                  <number>200</number>
+              </property>
+              <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="invertedAppearance">
+                  <bool>false</bool>
+              </property>
+          </widget>
           <zorder>ReturnButton</zorder>
           <zorder>StopButton</zorder>
           <zorder>StartButton</zorder>
@@ -139,6 +167,7 @@
           <zorder>DayText</zorder>
           <zorder>pushButton</zorder>
           <zorder>NextDayButton_2</zorder>
+          <zorder>SpeedSlider</zorder>
       </widget>
       <widget class="QWidget" name="Statistics">
        <attribute name="title">
@@ -260,51 +289,19 @@
     </hint>
    </hints>
   </connection>
-  <connection>
-   <sender>StopButton</sender>
-   <signal>clicked()</signal>
-      <receiver>StartButton</receiver>
-      <slot>show()</slot>
-      <hints>
-          <hint type="sourcelabel">
-              <x>60</x>
-              <y>117</y>
-          </hint>
-          <hint type="destinationlabel">
-              <x>60</x>
-              <y>87</y>
-          </hint>
-      </hints>
-  </connection>
      <connection>
-         <sender>NextDayButton</sender>
-         <signal>clicked()</signal>
-         <receiver>StopButton</receiver>
-         <slot>hide()</slot>
-         <hints>
-             <hint type="sourcelabel">
-                 <x>150</x>
-                 <y>83</y>
-             </hint>
-             <hint type="destinationlabel">
-                 <x>60</x>
-                 <y>83</y>
-             </hint>
-         </hints>
-     </connection>
-     <connection>
-         <sender>NextDayButton</sender>
+         <sender>StopButton</sender>
          <signal>clicked()</signal>
          <receiver>StartButton</receiver>
          <slot>show()</slot>
          <hints>
              <hint type="sourcelabel">
-                 <x>150</x>
-                 <y>83</y>
+                 <x>60</x>
+                 <y>117</y>
              </hint>
              <hint type="destinationlabel">
                  <x>60</x>
-                 <y>83</y>
+                 <y>87</y>
              </hint>
          </hints>
      </connection>
@@ -409,6 +406,38 @@
          <signal>clicked()</signal>
          <receiver>NextDayButton_2</receiver>
          <slot>hide()</slot>
+         <hints>
+             <hint type="sourcelabel">
+                 <x>60</x>
+                 <y>83</y>
+             </hint>
+             <hint type="destinationlabel">
+                 <x>150</x>
+                 <y>83</y>
+             </hint>
+         </hints>
+     </connection>
+     <connection>
+         <sender>StartButton</sender>
+         <signal>clicked()</signal>
+         <receiver>NextDayButton</receiver>
+         <slot>hide()</slot>
+         <hints>
+             <hint type="sourcelabel">
+                 <x>60</x>
+                 <y>83</y>
+             </hint>
+             <hint type="destinationlabel">
+                 <x>150</x>
+                 <y>83</y>
+             </hint>
+         </hints>
+     </connection>
+     <connection>
+         <sender>StopButton</sender>
+         <signal>clicked()</signal>
+         <receiver>NextDayButton</receiver>
+         <slot>show()</slot>
          <hints>
              <hint type="sourcelabel">
                  <x>60</x>

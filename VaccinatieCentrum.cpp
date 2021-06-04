@@ -242,10 +242,10 @@ void VaccinatieCentrum::nieuweDag() {
         if (vaccin->second.first->hernieuwing != 0) {
             aantal_eerste_prikken[vaccin->first].pop_front();
             aantal_eerste_prikken[vaccin->first].resize(aantal_eerste_prikken[vaccin->first].size() + 1);
-        }
 
-        nog_te_reserveren_vaccins[vaccin->first].pop_front();
-        nog_te_reserveren_vaccins[vaccin->first].resize(nog_te_reserveren_vaccins[vaccin->first].size() + 1);
+            nog_te_reserveren_vaccins[vaccin->first].pop_front();
+            nog_te_reserveren_vaccins[vaccin->first].resize(nog_te_reserveren_vaccins[vaccin->first].size() + 1);
+        }
     }
     emit changeProgressBar(getTotaalAantalVaccinaties());
     /*bool koudeVaccins = true;
@@ -364,7 +364,9 @@ int VaccinatieCentrum::getNogTeReserverenVaccins(const string &type, int dag) {
     REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling getNogTeReserverenVaccins()");
     REQUIRE(!type.empty(), "Het Vaccin type mag geen lege string zijn!");
     REQUIRE(dag >= 0, "De dag moet positief zijn!");
-    if ((int) nog_te_reserveren_vaccins.size() - 1 < dag) {
+
+    if (nog_te_reserveren_vaccins.find(type) == nog_te_reserveren_vaccins.end()) return 0;
+    if ((int) nog_te_reserveren_vaccins[type].size() - 1 < dag) {
         return 0;
     }
 //    REQUIRE(nog_te_reserveren_vaccins[dag][type] >= 0, "Er mag geen negatief aantal te reserveren vaccins zijn"); moet verplaatst worden TODO

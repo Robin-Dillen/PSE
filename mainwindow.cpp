@@ -16,6 +16,9 @@ MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
         ui(new Ui::MainWindow) {
     ui->setupUi(this);
 
+    ui->NextDayButton_2->hide();
+    ui->ReturnButton->hide();
+
     pieChart = new QPieSeries();
     pieChart->append("Niet gevaccineert", 100);
     pieChart->append("half gevaccineert", 0);
@@ -34,6 +37,7 @@ MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
     QObject::connect(ui->NextDayButton, SIGNAL(clicked()), sim, SLOT(nextDay()));
     QObject::connect(ui->PreviousDayButton, SIGNAL(clicked()), sim, SLOT(stop()));
     QObject::connect(ui->PreviousDayButton, SIGNAL(clicked()), sim, SLOT(previousDay()));
+    QObject::connect(ui->SpeedSlider, SIGNAL(sliderMoved(int)), sim, SLOT(updateSpeed(int)));
     QObject::connect(&StatisticsSingleton::getInstance(), SIGNAL(dataChange()), this, SLOT(dataChanged()));
     QObject::connect(sim, SIGNAL(dayNrChanged(int)), this,SLOT(changeDay(int)));
     QObject::connect(sim, SIGNAL(endSimulation(int)), this, SLOT(endOfSimulation(int)));

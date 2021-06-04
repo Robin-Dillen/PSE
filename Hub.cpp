@@ -191,6 +191,10 @@ void Hub::addReservations(const string &type) {
                 kvaccins[type]->gereserveerd[centrum->first][dag] += lading;
                 centrum->second->reserveerVaccins(type, dag, lading);
             }
+            if (kvaccins[type]->extra_gereserveerd[centrum->first][dag] +
+                kvaccins[type]->gereserveerd[centrum->first][dag] >
+                centrum->second->getKcapaciteit() * 2)
+                cout << "error" << endl;
             ENSURE(kvaccins[type]->extra_gereserveerd[centrum->first][dag] +
                    kvaccins[type]->gereserveerd[centrum->first][dag] <=
                    centrum->second->getKcapaciteit() * 2, "Er zijn teveel vaccins gereserveerd");

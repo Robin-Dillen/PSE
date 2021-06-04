@@ -40,17 +40,21 @@ public slots:
 
     void previousDay();
 
-    signals:
-        void dayNrChanged(int dayNr);
-        void endSimulation(int dayNr);
+    void updateSpeed(int newspeed);
+
+signals:
+
+    void dayNrChanged(int dayNr);
+
+    void endSimulation(int dayNr);
 
 private:
     void addToFile();
 
     TiXmlDocument doc;
     int day = 0;
-    vector<Hub*> hubs;
-    vector<VaccinatieCentrum*> vaccinatieCentra;
+    vector<Hub *> hubs;
+    vector<VaccinatieCentrum *> vaccinatieCentra;
     string filename1;
     string filename2;
     QTimer *qTimer;

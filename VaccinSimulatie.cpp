@@ -133,7 +133,11 @@ const vector<VaccinatieCentrum *> &VaccinSimulatie::getVaccinatieCentra() const 
     return vaccinatieCentra;
 }
 
-void addToFile(){
+void VaccinSimulatie::updateSpeed(int newspeed) {
+    qTimer->setInterval(newspeed);
+}
+
+void addToFile() {
 
 }
 
