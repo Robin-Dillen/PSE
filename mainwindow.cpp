@@ -9,6 +9,7 @@
 #include <QChartView>
 #include <QPieSeries>
 #include <QProgressBar>
+#include <QDialog>
 
 MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
         QMainWindow(parent),
@@ -60,15 +61,19 @@ MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
         QObject::connect(*it, SIGNAL(changeProgressBar(int)), progress, SLOT(setValue(int)));
 
         //pop op venster voor info van centrum
-        QGroupBox *groupBox = new QGroupBox(QString::fromStdString(name));
-        QVBoxLayout *vbox = new QVBoxLayout;
-        QLabel *inwoners = new QLabel(QString::fromStdString("inhabitants: "+ to_string((*it)->getKaantalInwoners())));
-        vbox->addWidget(inwoners);
-        groupBox->setLayout(vbox);
-        groupBox->setGeometry(100,100,100,100);
-        ui->tabWidget->addTab(groupBox,QString::fromStdString(name));
-        //groupBox->setVisible(false);
-        groupBox->hide();
+        QDialog *dialog = new QDialog(this);
+        QObject::connect(but, SIGNAL(pressed()), dialog, SLOT(exec()));
+
+
+//        QGroupBox *groupBox = new QGroupBox(QString::fromStdString(name));
+//        QVBoxLayout *vbox = new QVBoxLayout;
+//        QLabel *inwoners = new QLabel(QString::fromStdString("inhabitants: "+ to_string((*it)->getKaantalInwoners())));
+//        vbox->addWidget(inwoners);
+//        groupBox->setLayout(vbox);
+//        groupBox->setGeometry(100,100,100,100);
+//        ui->tabWidget->addTab(groupBox,QString::fromStdString(name));
+//        groupBox->setVisible(false);
+//        groupBox->hide();
     }
 
     ui->tabWidget->currentWidget()->setLayout(layout);
