@@ -216,6 +216,8 @@ void VaccinatieCentrum::nieuweDag() {
         aantal_niet_vaccinaties -= aantal_prikken;
     }
 
+    emit changeProgressBar(getTotaalAantalVaccinaties());
+
     ENSURE(begin_aantal_vaccins - aantal_vaccinaties_vandaag - eerste_prikken == getTotaalAantalVaccins(),
            "Het aantal vaccins is niet geüpdate!");
     ENSURE(begin_aantal_vaccinaties + aantal_vaccinaties_vandaag == getTotaalAantalVaccinaties(),
@@ -310,3 +312,4 @@ const map<string, int> &VaccinatieCentrum::getAantalGeleverdeVaccins1() const {
 const deque<map<string, int>> &VaccinatieCentrum::getAantalEerstePrikken() const {
     return aantal_eerste_prikken;
 }
+

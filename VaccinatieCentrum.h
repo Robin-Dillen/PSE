@@ -15,6 +15,7 @@
 #include <iostream>
 #include <list>
 #include <deque>
+#include <QApplication>
 
 #include "lib/DesignByContract.h"
 
@@ -22,7 +23,8 @@ using namespace std;
 
 class Vaccin;
 
-class VaccinatieCentrum {
+class VaccinatieCentrum : public QObject {
+    Q_OBJECT
 public:
 
     /**
@@ -208,6 +210,9 @@ public:
     const map<string, int> &getAantalGeleverdeVaccins1() const;
 
     const deque<map<string, int> > &getAantalEerstePrikken() const;
+
+signals:
+    void changeProgressBar(int value);
 
 private:
     /*!

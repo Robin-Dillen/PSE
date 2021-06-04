@@ -41,15 +41,6 @@ private:
     QPieSeries *pieChart;
 //    VaccinSimulatie* simulatie;
 
-private slots:
-
-    void startSimulation();
-
-    void stopSimulation();
-
-    void nextDay();
-
-    void previousDay();
 };
 
 #endif // MAINWINDOW_H
