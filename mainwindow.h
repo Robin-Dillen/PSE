@@ -25,12 +25,9 @@ public:
 //    void setSimulation(VaccinSimulatie* s);
     ~MainWindow();
 
-    void changeDay(int day);
-
-    void endOfSimulation(int day);
-
 public slots:
-
+    void changeDay(int day);
+    void endOfSimulation(int day);
     void dataChanged() const;
 
 protected:

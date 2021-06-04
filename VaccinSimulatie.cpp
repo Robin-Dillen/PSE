@@ -41,23 +41,16 @@ bool c_out) {
 }
 
 void VaccinSimulatie::start() {
-    std::cout << "start" << std::endl;
     qTimer->start();
 }
 
 void VaccinSimulatie::stop() {
-    std::cout << "stop" << std::endl;
     qTimer->stop();
 }
 
 void VaccinSimulatie::nextDay() {
-    std::cout << "next day" << std::endl;
-    static map<string, int> vaccinaties = {{"Pfizer",  0},
-                                           {"Moderna", 0}};
-    vaccinaties["Pfizer"] += 100000;
-    vaccinaties["Moderna"] += 50000;
     StatisticsSingleton &stats = StatisticsSingleton::getInstance();
-    stats.setAantalVaccinaties(vaccinaties);
+    //stats.setAantalVaccinaties(vaccinaties);
     emit stats.dataChange();
     OutputSingleton &output = OutputSingleton::getInstance();
     bool endOfSimulation = true;
@@ -118,5 +111,8 @@ const vector<VaccinatieCentrum *> &VaccinSimulatie::getVaccinatieCentra() const 
     return vaccinatieCentra;
 }
 
+void addToFile(){
+
+}
 
 
