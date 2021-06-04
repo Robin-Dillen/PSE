@@ -24,14 +24,19 @@ int main(int argc, char *argv[]) {
     vector<Hub *> hubs = P.getFhubs();
     std::vector<VaccinatieCentrum *> vaccinatie_centra;
 
+    StatisticsSingleton &stats = StatisticsSingleton::getInstance();
+    int totaal_mensen = 0;
     for (unsigned int i = 0; i < hubs.size(); i++) {
         for (map<string, VaccinatieCentrum *>::const_iterator centrum = hubs[i]->getFverbondenCentra().begin();
              centrum != hubs[i]->getFverbondenCentra().end(); centrum++) {
             if (find(vaccinatie_centra.begin(), vaccinatie_centra.end(), centrum->second) == vaccinatie_centra.end()) {
                 vaccinatie_centra.push_back(centrum->second);
+                totaal_mensen += centrum->second->getKaantalInwoners();
             }
         }
     }
+    stats.setTotaalAantalMensen(totaal_mensen);
+
     VaccinSimulatie *s = new VaccinSimulatie(hubs, vaccinatie_centra, args[0]);
     MainWindow *w = new MainWindow(s);
 //    w->setSimulation(s);

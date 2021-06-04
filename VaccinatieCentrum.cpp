@@ -23,7 +23,6 @@ VaccinatieCentrum::VaccinatieCentrum(const int kcapaciteit, const int kaantalInw
     REQUIRE(kaantalInwoners > 0, "Aantal inwoners moet groter dan 0 zijn!");
     REQUIRE(!kfname.empty(), "De naam mag niet leeg zijn!");
     REQUIRE(!kfaddress.empty(), "Het adress mag niet leeg zijn!");
-    aantal_geleverde_vaccins_buffer = 0;
     aantal_niet_vaccinaties = kaantal_inwoners;
     aantal_eerste_prikken.resize(2);
     ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
@@ -34,7 +33,6 @@ VaccinatieCentrum::VaccinatieCentrum() : kcapaciteit(0),
                                          kfname(""),
                                          kfaddress(""),
                                          _initCheck(this) {
-    aantal_geleverde_vaccins_buffer = 0;
     aantal_niet_vaccinaties = 0;
     aantal_eerste_prikken.resize(2);
     ENSURE(kcapaciteit >= 0, "De capaciteit is negatief!");
@@ -158,8 +156,6 @@ void VaccinatieCentrum::setAantalVaccinaties(int aantalVaccinaties, const string
 void VaccinatieCentrum::nieuweDag() {
     REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling nieuweDag");
 
-    StatisticsSingleton &stats = StatisticsSingleton::getInstance();
-
     int begin_aantal_vaccins = getTotaalAantalVaccins();
     int aantal_vaccinaties_vandaag = 0;
     int begin_aantal_vaccinaties = getTotaalAantalVaccinaties();
@@ -167,9 +163,7 @@ void VaccinatieCentrum::nieuweDag() {
 
     for (map<string, int>::iterator geleverde_vaccins = aantal_geleverde_vaccins.begin();
          geleverde_vaccins != aantal_geleverde_vaccins.end(); geleverde_vaccins++) {
-        aantal_vaccins[geleverde_vaccins->first].second += geleverde_vaccins->second;
-        stats.addGeleverdeVaccins(this, geleverde_vaccins->first, geleverde_vaccins->second); // TODO
-        // het verzamelen van statistische gegevens mag niet in de klassen zelf gebeuren
+        aantal_vaccins[geleverde_vaccins->first].second += geleverde_vaccins->second;// het verzamelen van statistische gegevens mag niet in de klassen zelf gebeuren
         // reset
         geleverde_vaccins->second = 0;
         ENSURE(getAantalGeleverdeVaccins(geleverde_vaccins->first) == 0,
@@ -194,7 +188,6 @@ void VaccinatieCentrum::nieuweDag() {
         aantal_vaccinaties_vandaag += min_;
         aantal_vaccinaties[batch->first] += min_;
 
-        stats.addVaccinatie(this, batch->first, min_);
         if (batch->second != 0) {
             if (tomorrow->find(batch->first) == tomorrow->end()) {
                 (*tomorrow)[batch->first] = batch->second;
@@ -308,4 +301,12 @@ int VaccinatieCentrum::getAantalNietVaccinaties() const {
 
 const map<string, int> &VaccinatieCentrum::getAantalVaccinaties1() const {
     return aantal_vaccinaties;
+}
+
+const map<string, int> &VaccinatieCentrum::getAantalGeleverdeVaccins1() const {
+    return aantal_geleverde_vaccins;
+}
+
+const deque<map<string, int>> &VaccinatieCentrum::getAantalEerstePrikken() const {
+    return aantal_eerste_prikken;
 }

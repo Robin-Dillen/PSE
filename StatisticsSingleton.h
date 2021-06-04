@@ -4,6 +4,7 @@
 
 #include <map>
 #include <string>
+#include <QObject>
 
 using namespace std;
 
@@ -14,12 +15,14 @@ struct StatisticsSingletonData {
     StatisticsSingletonData(int aantalVaccinaties, int aantalGeleverdeVaccins);
     StatisticsSingletonData();
 
+    int aantal_eerste_prikken;
     int aantal_vaccinaties;
     int aantal_geleverde_vaccins;
 };
 
 //https://stackoverflow.com/a/1008289/10875953
-class StatisticsSingleton {
+class StatisticsSingleton : public QObject {
+Q_OBJECT
 public:
     /*!
      * geeft de enige instance van StatisticsSingleton terug
@@ -31,67 +34,26 @@ public:
         return instance;
     }
 
-    //https://stackoverflow.com/a/46432381/10875953
-    typedef map<const VaccinatieCentrum *const, map<string, StatisticsSingletonData> > container_type;
-    typedef container_type::iterator iterator;
-    typedef container_type::const_iterator const_iterator;
+    void addGeleverdeVaccins(const map<string, int> &geleverd);
 
-    /*!
-     * geeft een (begin) iterator terug
-     * @return iterator
-     */
-    inline iterator begin() { return data.begin(); }
+//    void setEerstePrikken(const deque<map<string, int>>& eerste_prikken);
 
-    /*!
-     * geeft een (end) iterator terug
-     * @return iterator
-     */
-    inline iterator end() { return data.end(); }
-
-    /*!
-     * voegt vaccins van een type aan een centrum toe aan het totaal aantal geleverde vaccins
-     * @param centrum VaccinatieCentrum
-     * @param type naam van het vaccin
-     * @param aantal aantal vaccins dat toegevoegt wordt
-     * \n REQUIRE(isProperlyInitialized(), "Object wasn't initialized when calling addGeleverdeVaccins");
-     * \n REQUIRE(aantal >= 0, "Het aantal mag niet negatief zijn!");
-     */
-    void addGeleverdeVaccins(const VaccinatieCentrum *const centrum, const string &type, int aantal);
-
-    /*!
-     * geeft het totaal aantal geleverde vaccins terug van een centrum, en een bepaald vaccin
-     * @param centrum VaccinatieCentrum
-     * @param type van het vaccins
-     * @return int
-     * \n REQUIRE(isProperlyInitialized(), "Object wasn't initialized when calling getGeleverdeVaccins");
-     * \n REQUIRE(aantal >= 0, "Het aantal mag niet negatief zijn!");
-     */
-    int getGeleverdeVaccins(const VaccinatieCentrum *const centrum, const string &type) const;
-
-    /*!
-     * voegt vaccinaties van een type aan een centrum toe aan het totaal aantal vaccinaties
-     * @param centrum VaccinatieCentrum
-     * @param type van het vaccins
-     * @param aantal aantal vaccinaties dat toegevoegt wordt
-     * \n REQUIRE(isProperlyInitialized(), "Object wasn't initialized when calling addVaccinatie");
-     * \n ENSURE(aantal->second.aantal_geleverde_vaccins >= 0, "het aantal geleverde vaccins kan niet negatief zijn!");
-     */
-    void addVaccinatie(const VaccinatieCentrum *const centrum, const string &type, int aantal);
-
-    /*!
-     * geeft het totaal aantal vaccinaties terug van een centrul en een bepaald vaccin
-     * @param centrum VaccinatieCentrum
-     * @param type naam van het vaccin
-     * @return int
-     * \n REQUIRE(isProperlyInitialized(), "Object wasn't initialized when calling getAantalVaccinaties");
-     * \n ENSURE(aantal->second.aantal_vaccinaties >= 0, "het aantal vaccinaties kan niet negatief zijn!");
-     */
-    int getAantalVaccinaties(const VaccinatieCentrum *const centrum, const string &type) const;
+    void setAantalVaccinaties(const map<string, int> &aantal);
 
     /**
      * @return geeft terug of het object correct is geïnitialiseert
      */
     bool isProperlyInitialized() const;
+
+    void setTotaalAantalMensen(int totaalAantalMensen);
+
+    int getTotaalEerstePrikken() const;
+
+    int getTotaalVolledigeVaccinaties() const;
+
+signals:
+
+    void dataChange();
 
 private:
     StatisticsSingleton() : _initCheck(this) {
@@ -106,8 +68,11 @@ private:
     StatisticsSingleton(StatisticsSingleton const &);              // Don't Implement
     void operator=(StatisticsSingleton const &); // Don't implement
 
-    map<const VaccinatieCentrum *const, map<string, StatisticsSingletonData> > data;
+    map<std::string, StatisticsSingletonData> data;
+    int totaal_aantal_mensen;
     const StatisticsSingleton *const _initCheck;
+public:
+    int getTotaalAantalMensen() const;
 };
 
 

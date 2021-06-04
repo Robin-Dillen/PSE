@@ -203,8 +203,13 @@ public:
      */
     int getAantalNietVaccinaties() const;
 
-private:
+    const map<string, int> &getAantalVaccinaties1() const;
 
+    const map<string, int> &getAantalGeleverdeVaccins1() const;
+
+    const deque<map<string, int> > &getAantalEerstePrikken() const;
+
+private:
     /*!
      * update alle variabelen
      * @param aantal het aantal vaccins dat gezet moet worden
@@ -221,6 +226,7 @@ private:
     const VaccinatieCentrum *_initCheck; // pointer naar zichzelf om te checken of het object correct geïnitialseert is
 
     deque<map<string, int> > aantal_eerste_prikken;
+
     // elke loop getten en verwijderen we front, en loopen we door de batches(van front), we checken of we ze een 2de prik kunnen geven etc...
     // -> voeg toe bij aantal vaccinaties(mss voor statistiche verwerking, ook in aantal vaccinaties alles gescheiden houden)
     // als er nog vaccins over zijn, gaan we een nieuwe batch aanmaken(als hernieuwbaar), we checken of aantal_eerste_prikken.size() >= hernieuwbaar
@@ -230,22 +236,17 @@ private:
 
     // changing attributes
     map<string, pair<Vaccin *, int> > aantal_vaccins; //vaccin: Vaccintype, int: aantal vaccins van dit type
-    //int aantal_vaccins;
 
     int aantal_niet_vaccinaties;
 
     //aantal mensen die nog geen vaccinatie hebben gekregen.
 
     map<string, int> aantal_vaccinaties;
-public:
-    const map<string, int> &getAantalVaccinaties1() const;
 
-private:
     // aantal mensen dat gevaccineert is
     // we kunnen gwn een map<vaccin_naam, aantal> bijhouden
 
     map<string, int> aantal_geleverde_vaccins; // aantal vaccins dat toegevoegd wordt na een levering
-    int aantal_geleverde_vaccins_buffer; // aantal vaccins dat toegevoegd wordt na een levering(buffer for output)
 };
 
 

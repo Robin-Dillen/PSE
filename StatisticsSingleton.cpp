@@ -2,45 +2,54 @@
 #include "StatisticsSingleton.h"
 #include "lib/DesignByContract.h"
 
-void StatisticsSingleton::addGeleverdeVaccins(const VaccinatieCentrum *const centrum, const string &type, int aantal) {
-    REQUIRE(isProperlyInitialized(), "Object wasn't initialized when calling addGeleverdeVaccins");
-    REQUIRE(aantal >= 0, "Het aantal mag niet negatief zijn!");
-    data[centrum][type].aantal_geleverde_vaccins += aantal;
-}
-
-void
-StatisticsSingleton::addVaccinatie(const VaccinatieCentrum *const centrum, const string &type, int aantal) {
-    REQUIRE(isProperlyInitialized(), "Object wasn't initialized when calling addVaccinatie");
-    REQUIRE(aantal >= 0, "Het aantal mag niet negatief zijn!");
-    data[centrum][type].aantal_vaccinaties += aantal;
-}
-
-int StatisticsSingleton::getGeleverdeVaccins(const VaccinatieCentrum *const centrum, const string &type) const {
-    REQUIRE(isProperlyInitialized(), "Object wasn't initialized when calling getGeleverdeVaccins");
-    const_iterator c = data.find(centrum);
-    if (c == data.end()) return 0;
-    map<string, StatisticsSingletonData>::const_iterator aantal = data.at(centrum).find(type);
-    if (aantal == data.at(centrum).end()) return 0;
-    ENSURE(aantal->second.aantal_geleverde_vaccins >= 0, "het aantal geleverde vaccins kan niet negatief zijn!");
-    return aantal->second.aantal_geleverde_vaccins;
-}
-
-int StatisticsSingleton::getAantalVaccinaties(const VaccinatieCentrum *const centrum, const string &type) const {
-    REQUIRE(isProperlyInitialized(), "Object wasn't initialized when calling getAantalVaccinaties");
-    const_iterator c = data.find(centrum);
-    if (c == data.end()) return 0;
-    map<string, StatisticsSingletonData>::const_iterator aantal = data.at(centrum).find(type);
-    if (aantal == data.at(centrum).end()) return 0;
-    ENSURE(aantal->second.aantal_vaccinaties >= 0, "het aantal vaccinaties kan niet negatief zijn!");
-    return aantal->second.aantal_vaccinaties;
-}
-
-bool StatisticsSingleton::isProperlyInitialized() const {
-    return _initCheck == this;
-}
 
 StatisticsSingletonData::StatisticsSingletonData(int aantalVaccinaties, int aantalGeleverdeVaccins)
         : aantal_vaccinaties(aantalVaccinaties), aantal_geleverde_vaccins(aantalGeleverdeVaccins) {}
 
 StatisticsSingletonData::StatisticsSingletonData() : aantal_vaccinaties(0), aantal_geleverde_vaccins(0) {}
 
+void StatisticsSingleton::addGeleverdeVaccins(const map<string, int> &geleverd) {
+    for (map<string, int>::const_iterator levering = geleverd.begin(); levering != geleverd.end(); ++levering) {
+        if (data.find(levering->first) == data.end()) {
+            data[levering->first].aantal_geleverde_vaccins = levering->second;
+            data[levering->first].aantal_vaccinaties = 0;
+            data[levering->first].aantal_eerste_prikken = 0;
+        } else {
+            data[levering->first].aantal_geleverde_vaccins += levering->second;
+        }
+    }
+}
+
+void StatisticsSingleton::setAantalVaccinaties(const map<string, int> &aantal) {
+    for (map<string, int>::const_iterator levering = aantal.begin(); levering != aantal.end(); ++levering) {
+        if (data.find(levering->first) == data.end()) {
+            data[levering->first].aantal_geleverde_vaccins = 0;
+            data[levering->first].aantal_eerste_prikken = 0;
+        }
+        data[levering->first].aantal_vaccinaties = levering->second;
+    }
+}
+
+void StatisticsSingleton::setTotaalAantalMensen(int totaalAantalMensen) {
+    totaal_aantal_mensen = totaalAantalMensen;
+}
+
+int StatisticsSingleton::getTotaalAantalMensen() const {
+    return totaal_aantal_mensen;
+}
+
+int StatisticsSingleton::getTotaalEerstePrikken() const {
+    int totaal = 0;
+    for (map<std::string, StatisticsSingletonData>::const_iterator d = data.begin(); d != data.end(); d++) {
+        totaal += d->second.aantal_eerste_prikken;
+    }
+    return totaal;
+}
+
+int StatisticsSingleton::getTotaalVolledigeVaccinaties() const {
+    int totaal = 0;
+    for (map<std::string, StatisticsSingletonData>::const_iterator d = data.begin(); d != data.end(); d++) {
+        totaal += d->second.aantal_vaccinaties;
+    }
+    return totaal;
+}

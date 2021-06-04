@@ -3,10 +3,15 @@
 
 #include <QMainWindow>
 
+#include <QtCharts>
+#include <QtWidgets>
+#include <QChartView>
+#include <QPieSeries>
+
 class VaccinSimulatie;
 
 namespace Ui {
-class MainWindow;
+    class MainWindow;
 }
 
 class MainWindow : public QMainWindow {
@@ -24,11 +29,16 @@ public:
 
     void endOfSimulation(int day);
 
+public slots:
+
+    void dataChanged() const;
+
 protected:
     void paintEvent(QPaintEvent *event) override;
 
 private:
     Ui::MainWindow *ui;
+    QPieSeries *pieChart;
 //    VaccinSimulatie* simulatie;
 
 private slots:
