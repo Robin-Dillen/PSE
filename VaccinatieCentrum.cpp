@@ -230,8 +230,8 @@ void VaccinatieCentrum::nieuweDag() {
         if (aantal_niet_vaccinaties == 0) {
             int nogtevaccineren = 0;
             if (vaccin->second.first->hernieuwing != 0) {
-                for (int i = 0; i < (int) aantal_eerste_prikken.size(); i++) {
-                    nogtevaccineren += aantal_eerste_prikken[vaccin->first].front();
+                for (int i = 0; i < (int) aantal_eerste_prikken[vaccin->first].size(); i++) {
+                    nogtevaccineren += aantal_eerste_prikken[vaccin->first][i];
                 }
             }
             if (nogtevaccineren == 0) {
@@ -397,5 +397,9 @@ const map<string, int> &VaccinatieCentrum::getAantalGeleverdeVaccins1() const {
 
 const map<string, deque<int>> &VaccinatieCentrum::getAantalEerstePrikken() const {
     return aantal_eerste_prikken;
+}
+
+const map<string, pair<Vaccin *, int>> &VaccinatieCentrum::getAantalVaccins1() const {
+    return aantal_vaccins;
 }
 

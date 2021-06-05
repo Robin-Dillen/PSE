@@ -256,9 +256,15 @@ public:
      */
     void zet1stePrikVaccins(const string &type, int aantal, int &capaciteit);
 
+    /*!
+     * geeft het variabele aantal vaccins terug
+     * @return map<string, pair<Vaccin *, int>> &
+     */
+    const map<string, pair<Vaccin *, int>> &getAantalVaccins1() const;
+
 signals:
 
-    void setVaccinInDialog(const std::string &centrum, const Vaccin* vaccin, int i);
+    void setVaccinInDialog(const std::string &centrum, const Vaccin *vaccin, int i);
 
     void changeProgressBar(int value);
 
@@ -297,6 +303,5 @@ private:
 
     map<string, int> aantal_geleverde_vaccins; // aantal vaccins dat toegevoegd wordt na een levering
 };
-
 
 #endif //PSE_VACCINATIECENTRUM_H

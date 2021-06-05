@@ -17,6 +17,14 @@
 #include <string>
 #include <cstdarg>
 #include <limits>
+#include <vector>
+#include <map>
+#include "TinyXML/tinystr.h"
+#include "TinyXML/tinyxml.h"
+
+#include "Hub.h"
+#include "VaccinatieCentrum.h"
+#include "VaccinSimulatie.h"
 
 using namespace std;
 
@@ -191,6 +199,76 @@ inline std::pair<double, double> addressToCoords(const std::string &address) {
         lon = std::stod(coords.substr(delim + 1, coords.size()));
     }
     return std::make_pair(lat, lon);
+}
+
+/*!
+ * exports simulation to XML file
+ * @param filename path of the file to be exported to
+ * @param simulatie simulation object
+ */
+inline void ExportSimulation(const std::string &filename, VaccinSimulatie *simulatie) {
+    TiXmlDocument doc;
+    TiXmlElement *root = new TiXmlElement("root");
+    doc.LinkEndChild(root);
+    const std::vector<Hub *> &hubs = simulatie->getHubs();
+    for (std::vector<Hub *>::const_iterator hubIterator = hubs.begin(); hubIterator != hubs.end(); ++hubIterator) {
+        TiXmlElement *hub = new TiXmlElement("HUB");
+        map<std::string, Vaccin *> vaccins = (*hubIterator)->getVaccins();
+        for (map<std::string, Vaccin *>::const_iterator vaccinIterator = vaccins.begin();
+             vaccinIterator != vaccins.end(); ++vaccinIterator) {
+            TiXmlElement *vaccin = new TiXmlElement("VACCIN");
+            TiXmlElement *type = new TiXmlElement("type");
+            TiXmlText *type_value = new TiXmlText(vaccinIterator->first.c_str());
+            type->LinkEndChild(type_value);
+            TiXmlElement *aantal = new TiXmlElement("aantal");
+            TiXmlText *aantal_value = new TiXmlText(
+                    to_string((*hubIterator)->getAantalVaccins(vaccinIterator->first)).c_str());
+            aantal->LinkEndChild(aantal_value);
+            vaccin->LinkEndChild(type);
+            vaccin->LinkEndChild(aantal);
+            hub->LinkEndChild(vaccin);
+        }
+        root->LinkEndChild(hub);
+    }
+    const std::vector<VaccinatieCentrum *> &centra = simulatie->getVaccinatieCentra();
+    for (std::vector<VaccinatieCentrum *>::const_iterator centrumIterator = centra.begin();
+         centrumIterator != centra.end(); ++centrumIterator) {
+        TiXmlElement *centrum = new TiXmlElement("CENTRUM");
+        const map<std::string, pair<Vaccin *, int>> &vaccins = (*centrumIterator)->getAantalVaccins1();
+        for (map<std::string, pair<Vaccin *, int>>::const_iterator vaccinIterator = vaccins.begin();
+             vaccinIterator != vaccins.end(); ++vaccinIterator) {
+            TiXmlElement *vaccin = new TiXmlElement("VACCIN");
+            TiXmlElement *type = new TiXmlElement("type");
+            TiXmlText *type_value = new TiXmlText(vaccinIterator->first.c_str());
+            type->LinkEndChild(type_value);
+            TiXmlElement *aantal = new TiXmlElement("aantal");
+            TiXmlText *aantal_value = new TiXmlText(
+                    to_string((*centrumIterator)->getAantalVaccins(vaccinIterator->first)).c_str());
+            aantal->LinkEndChild(aantal_value);
+            int totaal_eerste = 0;
+            const deque<int> &eerste_prikken = (*centrumIterator)->getAantalEerstePrikken().at(vaccinIterator->first);
+            for (deque<int>::const_iterator eerste_prik = eerste_prikken.begin();
+                 eerste_prik != eerste_prikken.end(); ++eerste_prik) {
+                totaal_eerste += *eerste_prik;
+            }
+            TiXmlElement *eersteprik = new TiXmlElement("1steprik");
+            TiXmlText *eersteprik_value = new TiXmlText(to_string(totaal_eerste).c_str());
+            eersteprik->LinkEndChild(eersteprik_value);
+            TiXmlElement *tweedeprik = new TiXmlElement("2deprik");
+            TiXmlText *tweedeprik_value = new TiXmlText(
+                    to_string((*centrumIterator)->getAantalVaccinaties(vaccinIterator->first)).c_str());
+            tweedeprik->LinkEndChild(tweedeprik_value);
+            vaccin->LinkEndChild(type);
+            vaccin->LinkEndChild(aantal);
+            vaccin->LinkEndChild(eersteprik);
+            vaccin->LinkEndChild(tweedeprik);
+            centrum->LinkEndChild(vaccin);
+        }
+        root->LinkEndChild(centrum);
+    }
+    FILE *f = fopen(filename.c_str(), "w");
+    doc.Print(f);
+    std::fclose(f);
 }
 
 #endif //PSE_UTILS_H

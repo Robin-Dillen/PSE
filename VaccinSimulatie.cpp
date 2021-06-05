@@ -1,9 +1,16 @@
 //
 // Created by Niels on 2/06/2021.
 //
+#include <iostream>
 
 #include "VaccinSimulatie.h"
-#include <iostream>
+#include "Utils.h"
+#include "Output.h"
+#include "StatisticsSingleton.h"
+#include "Vaccins.h"
+#include "VaccinatieCentrum.h"
+#include "Hub.h"
+
 
 VaccinSimulatie::VaccinSimulatie(vector<Hub *> &h, std::vector<VaccinatieCentrum *> &v, const string &testfilename,
                                  bool c_out) : day(1) {

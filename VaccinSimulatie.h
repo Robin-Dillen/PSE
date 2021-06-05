@@ -5,19 +5,15 @@
 #ifndef PSE_VACCINSIMULATIE_H
 #define PSE_VACCINSIMULATIE_H
 
-#include "Parser.h"
-#include "VaccinatieCentrum.h"
-#include "Output.h"
-#include "Hub.h"
-#include "Utils.h"
-#include "StatisticsSingleton.h"
-#include "Vaccins.h"
 #include "Lib.h"
-#include "TinyXML/tinyxml.h"
 
 #include <QApplication>
 #include <QTime>
 #include <QTimer>
+
+class Hub;
+
+class VaccinatieCentrum;
 
 class VaccinSimulatie : public QObject {
 Q_OBJECT
@@ -51,7 +47,6 @@ signals:
 private:
     void addToFile();
 
-    TiXmlDocument doc;
     int day;
     vector<Hub *> hubs;
     vector<VaccinatieCentrum *> vaccinatieCentra;
