@@ -30,6 +30,7 @@ MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
 
     QChartView *view = new QChartView(chart);
     view->setParent(ui->horizontalFrame_page1);
+    view->setFixedSize(ui->horizontalFrame_page1->width(), ui->horizontalFrame_page1->height());
 
     //line chart
     StatisticsSingleton &stats = StatisticsSingleton::getInstance();
@@ -41,11 +42,16 @@ MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
     axisY->setRange(0, stats.getTotaalAantalMensen() * 2);
 
     lineChartView = new QChartView(line_chart);
-    lineChartView->setParent(ui->horizontalFrame_page2_2);
+    lineChartView->setParent(ui->horizontalFrame_page2);
     lineChartView->chart()->legend()->hide();
     lineChartView->chart()->setTitle("Simple line chart example");
     lineChartView->chart()->addAxis(axisX, Qt::AlignBottom);
     lineChartView->chart()->addAxis(axisY, Qt::AlignLeft);
+    lineChartView->setRubberBand(QChartView::RectangleRubberBand);
+    lineChartView->chart()->legend()->setVisible(true);
+    lineChartView->chart()->legend()->setAlignment(Qt::AlignBottom);
+    lineChartView->chart()->setMargins(QMargins(0, 0, 0, 0));
+    lineChartView->setFixedSize(ui->horizontalFrame_page2->width(), ui->horizontalFrame_page2->height());
 
     QObject::connect(ui->StartButton, SIGNAL(clicked()), sim, SLOT(start()));
     QObject::connect(ui->StopButton, SIGNAL(clicked()), sim, SLOT(stop()));
@@ -144,6 +150,7 @@ void MainWindow::dataChanged() {
          vaccins != totaal_geleverde_vaccins.end(); ++vaccins) {
         if (series.find(vaccins->first) == series.end()) {
             series[vaccins->first] = new QLineSeries();
+            series[vaccins->first]->setName(QString::fromStdString(vaccins->first));
             lineChartView->chart()->addSeries(series[vaccins->first]);
             series[vaccins->first]->attachAxis(axes.front());
             series[vaccins->first]->attachAxis(axes.back());

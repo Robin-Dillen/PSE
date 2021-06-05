@@ -6,8 +6,8 @@
    <rect>
        <x>0</x>
        <y>0</y>
-       <width>944</width>
-       <height>782</height>
+       <width>949</width>
+       <height>776</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -69,22 +69,22 @@
        <widget class="QPushButton" name="PreviousDayButton">
         <property name="geometry">
          <rect>
-          <x>190</x>
-          <y>20</y>
-          <width>81</width>
-          <height>23</height>
+             <x>190</x>
+             <y>20</y>
+             <width>81</width>
+             <height>23</height>
          </rect>
         </property>
-        <property name="text">
-         <string>Previous Day</string>
-        </property>
+           <property name="text">
+               <string>Previous Day</string>
+           </property>
        </widget>
           <widget class="QLabel" name="DayText">
               <property name="geometry">
                   <rect>
                       <x>290</x>
                       <y>20</y>
-                      <width>101</width>
+                      <width>301</width>
                       <height>20</height>
                   </rect>
               </property>
@@ -188,51 +188,51 @@
           </item>
          </widget>
         </item>
-        <item>
-            <widget class="QStackedWidget" name="stackedWidget">
-                <property name="currentIndex">
-                    <number>0</number>
-                </property>
-                <widget class="QWidget" name="stackedWidgetPage1">
-                    <layout class="QVBoxLayout" name="verticalLayout_3">
-                        <item>
-                            <widget class="QFrame" name="horizontalFrame_page1">
-                                <layout class="QHBoxLayout" name="horizontalLayout"/>
-                            </widget>
-                        </item>
-                    </layout>
-                </widget>
-                <widget class="QWidget" name="stackedWidgetPage2">
-                    <widget class="QFrame" name="horizontalFrame_page2_2">
-                        <property name="geometry">
-                            <rect>
-                                <x>0</x>
-                                <y>0</y>
-                                <width>911</width>
-                                <height>661</height>
-                            </rect>
-                        </property>
-                        <layout class="QHBoxLayout" name="horizontalFrame_page2"/>
-                    </widget>
-                </widget>
-            </widget>
-        </item>
+           <item>
+               <widget class="QStackedWidget" name="stackedWidget">
+                   <property name="currentIndex">
+                       <number>0</number>
+                   </property>
+                   <widget class="QWidget" name="stackedWidgetPage1">
+                       <layout class="QVBoxLayout" name="verticalLayout_3">
+                           <item>
+                               <widget class="QFrame" name="horizontalFrame_page1">
+                                   <layout class="QHBoxLayout" name="horizontalLayout"/>
+                               </widget>
+                           </item>
+                       </layout>
+                   </widget>
+                   <widget class="QWidget" name="stackedWidgetPage2">
+                       <widget class="QFrame" name="horizontalFrame_page2">
+                           <property name="geometry">
+                               <rect>
+                                   <x>0</x>
+                                   <y>0</y>
+                                   <width>911</width>
+                                   <height>661</height>
+                               </rect>
+                           </property>
+                           <layout class="QHBoxLayout" name="horizontalLayout_2"/>
+                       </widget>
+                   </widget>
+               </widget>
+           </item>
        </layout>
       </widget>
      </widget>
     </item>
    </layout>
   </widget>
-  <widget class="QMenuBar" name="menubar">
-      <property name="geometry">
-          <rect>
-              <x>0</x>
-              <y>0</y>
-              <width>944</width>
-              <height>21</height>
-          </rect>
-      </property>
-  </widget>
+     <widget class="QMenuBar" name="menubar">
+         <property name="geometry">
+             <rect>
+                 <x>0</x>
+                 <y>0</y>
+                 <width>949</width>
+                 <height>21</height>
+             </rect>
+         </property>
+     </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
@@ -285,22 +285,22 @@
     </hint>
    </hints>
   </connection>
-  <connection>
-   <sender>StopButton</sender>
-   <signal>released()</signal>
-   <receiver>StopButton</receiver>
-   <slot>hide()</slot>
-      <hints>
-          <hint type="sourcelabel">
-              <x>60</x>
-              <y>117</y>
-          </hint>
-          <hint type="destinationlabel">
-              <x>60</x>
-              <y>117</y>
-          </hint>
-      </hints>
-  </connection>
+     <connection>
+         <sender>StopButton</sender>
+         <signal>released()</signal>
+         <receiver>StopButton</receiver>
+         <slot>hide()</slot>
+         <hints>
+             <hint type="sourcelabel">
+                 <x>60</x>
+                 <y>117</y>
+             </hint>
+             <hint type="destinationlabel">
+                 <x>60</x>
+                 <y>117</y>
+             </hint>
+         </hints>
+     </connection>
      <connection>
          <sender>StopButton</sender>
          <signal>clicked()</signal>
