@@ -70,3 +70,11 @@ int StatisticsSingleton::getTotaalVolledigeVaccinaties() const {
     return totaal;
 }
 
+map<string, int> StatisticsSingleton::getGeleverdeVaccins() const {
+    map<string, int> geleverde_vaccins;
+    for (map<std::string, StatisticsSingletonData>::const_iterator d = data.begin(); d != data.end(); d++) {
+        geleverde_vaccins[d->first] = d->second.aantal_geleverde_vaccins;
+    }
+    return geleverde_vaccins;
+}
+

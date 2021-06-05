@@ -52,6 +52,8 @@ public:
 
     int getTotaalVolledigeVaccinaties() const;
 
+    map<string, int> getGeleverdeVaccins() const;
+
 signals:
 
     void dataChange();

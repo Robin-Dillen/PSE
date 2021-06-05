@@ -2,11 +2,12 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
 #include <QtCharts>
 #include <QtWidgets>
 #include <QChartView>
 #include <QPieSeries>
+#include <map>
+#include <string>
 
 class VaccinSimulatie;
 
@@ -31,12 +32,15 @@ public slots:
 
     void endOfSimulation(int day);
 
-    void dataChanged() const;
+    void dataChanged();
 
 
 private:
     Ui::MainWindow *ui;
     QPieSeries *pieChart;
+
+    QChartView *lineChartView;
+    std::map<std::string, QLineSeries *> series;
 //    VaccinSimulatie* simulatie;
 
 };

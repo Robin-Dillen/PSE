@@ -26,10 +26,26 @@ MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
 
     QChart *chart = new QChart();
     chart->addSeries(pieChart);
-    chart->setTitle("Test");
+    chart->setTitle("Vaccinaties");
 
     QChartView *view = new QChartView(chart);
     view->setParent(ui->horizontalFrame_page1);
+
+    //line chart
+    StatisticsSingleton &stats = StatisticsSingleton::getInstance();
+    QChart *line_chart = new QChart();
+
+    QValueAxis *axisX = new QValueAxis;
+    axisX->setRange(0, 365);
+    QValueAxis *axisY = new QValueAxis;
+    axisY->setRange(0, stats.getTotaalAantalMensen() * 2);
+
+    lineChartView = new QChartView(line_chart);
+    lineChartView->setParent(ui->horizontalFrame_page2_2);
+    lineChartView->chart()->legend()->hide();
+    lineChartView->chart()->setTitle("Simple line chart example");
+    lineChartView->chart()->addAxis(axisX, Qt::AlignBottom);
+    lineChartView->chart()->addAxis(axisY, Qt::AlignLeft);
 
     QObject::connect(ui->StartButton, SIGNAL(clicked()), sim, SLOT(start()));
     QObject::connect(ui->StopButton, SIGNAL(clicked()), sim, SLOT(stop()));
@@ -39,10 +55,12 @@ MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
     QObject::connect(ui->PreviousDayButton, SIGNAL(clicked()), sim, SLOT(previousDay()));
     QObject::connect(ui->SpeedSlider, SIGNAL(sliderMoved(int)), sim, SLOT(updateSpeed(int)));
     QObject::connect(&StatisticsSingleton::getInstance(), SIGNAL(dataChange()), this, SLOT(dataChanged()));
-    QObject::connect(sim, SIGNAL(dayNrChanged(int)), this,SLOT(changeDay(int)));
+    QObject::connect(sim, SIGNAL(dayNrChanged(int)), this, SLOT(changeDay(int)));
     QObject::connect(sim, SIGNAL(endSimulation(int)), this, SLOT(endOfSimulation(int)));
     QObject::connect(sim, SIGNAL(endSimulation(int)), this, SLOT(endOfSimulation(int)));
     QObject::connect(sim, SIGNAL(endSimulation(int)), this, SLOT(endOfSimulation(int)));
+    QObject::connect(ui->comboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), ui->stackedWidget,
+                     &QStackedWidget::setCurrentIndex);
 
     QVBoxLayout *layout = new QVBoxLayout();
 
@@ -104,8 +122,13 @@ void MainWindow::endOfSimulation(int day) {
     ui->DayText->setText(time);
 }
 
-void MainWindow::dataChanged() const {
+void MainWindow::dataChanged() {
+    static int current_day = 0;
+    static int k = 1;
+    current_day++;
     StatisticsSingleton &stats = StatisticsSingleton::getInstance();
+
+    //pie chart
     float totaal = stats.getTotaalAantalMensen();
     float pEerstePrikken = (stats.getTotaalEerstePrikken() / totaal) * 100;
     float pVolledigeVaccinaties = (stats.getTotaalVolledigeVaccinaties() / totaal) * 100;
@@ -113,4 +136,23 @@ void MainWindow::dataChanged() const {
     pieChart->slices().at(0)->setValue(pRest);
     pieChart->slices().at(1)->setValue(pEerstePrikken);
     pieChart->slices().at(2)->setValue(pVolledigeVaccinaties);
+
+    //line chart
+    map<string, int> totaal_geleverde_vaccins = stats.getGeleverdeVaccins();
+    auto axes = lineChartView->chart()->axes();
+    if (current_day >= 365 * k) {
+        ++k;
+        axes.front()->setRange(0, 365 * k);
+    }
+    for (map<string, int>::iterator vaccins = totaal_geleverde_vaccins.begin();
+         vaccins != totaal_geleverde_vaccins.end(); ++vaccins) {
+        if (series.find(vaccins->first) == series.end()) {
+            series[vaccins->first] = new QLineSeries();
+            lineChartView->chart()->addSeries(series[vaccins->first]);
+            series[vaccins->first]->attachAxis(axes.front());
+            series[vaccins->first]->attachAxis(axes.back());
+//            series[vaccins->first]->attachAxis(m_axis);
+        }
+        series[vaccins->first]->append(current_day, vaccins->second);
+    }
 }
