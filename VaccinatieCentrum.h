@@ -269,6 +269,8 @@ signals:
 
     void changeVaccinProgressBar(const std::string &centrum,const std::string &vaccin,int value);
 
+    void newDay();
+
 private:
 
     // const attributes

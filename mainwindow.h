@@ -54,9 +54,12 @@ public slots:
 private:
     int currentDay;
     int simDay;
+    std::map<std::string, VaccinatieCentrum*> centra;
+    std::vector<Hub*> hubs;
+
 
     std::map<std::string, QGridLayout *> layouts;
-    std::map<std::string, VaccinatieCentrum*> centra;
+
     std::map<std::string, std::map<std::string, QProgressBar*>> progressBars;
     std::map<std::string, QLabel*> vaccineCount;
     Ui::MainWindow *ui;

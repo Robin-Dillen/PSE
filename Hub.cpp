@@ -292,7 +292,8 @@ void Hub::verdeelVaccins() {
             }
             vaccin->second->gereserveerd[centrum->first].pop_front();
             vaccin->second->extra_gereserveerd[centrum->first].pop_front();
-            emit changeVaccinCount(vaccin->first, vaccin->second->aantal);
+
+            emit changeVaccinCount(vaccin->first, getAllVaccins(vaccin->second));
 //            vaccin->second->gereserveerd[centrum->first].push_back(0);
 //            vaccin->second->extra_gereserveerd[centrum->first].push_back(0);
         }
@@ -349,4 +350,20 @@ int Hub::getFreeStock(VaccinatieCentrum *centrum, int dag) {
     }
     if (overschot <= 0) return stock;
     return stock - overschot;
+}
+
+int Hub::getAllVaccins(const Vaccin *type) {
+    int count = 0;
+    count += type->aantal;
+    for(map<string, deque<int> >::const_iterator centrum = type->gereserveerd.begin(); centrum != type->gereserveerd.end(); centrum++){
+        for(int i = 0; i < (int) centrum->second.size(); i++){
+            count += centrum->second[i];
+        }
+    }
+    for(map<string, deque<int> >::const_iterator centrum = type->extra_gereserveerd.begin(); centrum != type->extra_gereserveerd.end(); centrum++){
+        for(int i = 0; i < (int) centrum->second.size(); i++){
+            count += centrum->second[i];
+        }
+    }
+    return count;
 }

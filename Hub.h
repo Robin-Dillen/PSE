@@ -194,6 +194,8 @@ public:
 
     int getFreeStock(VaccinatieCentrum *centrum, int dag);
 
+    int getAllVaccins(const Vaccin *type);
+
     signals:
 
     void changeVaccinCount(std::string vaccin,int count);

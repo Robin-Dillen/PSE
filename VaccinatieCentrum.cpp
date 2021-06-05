@@ -252,6 +252,7 @@ void VaccinatieCentrum::nieuweDag() {
 
     }
     emit changeMainProgressBar(getTotaalAantalVaccinaties());
+    emit newDay();
 
     /*bool koudeVaccins = true;
     for (MapSP_VI_Iterator vaccin = aantal_vaccins.begin(); vaccin != aantal_vaccins.end() && capaciteit != 0; vaccin++) {
