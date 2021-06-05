@@ -10,6 +10,7 @@
 #include <string>
 #include <QDialog>
 #include <map>
+#include "Hub.h"
 
 #include "VaccinatieCentrum.h"
 
@@ -42,12 +43,22 @@ public slots:
 
     void setVaccinValue(const std::string &centrum,const std::string &vaccin, int value);
 
+    void setVaccinCount(std::string vaccin,int count);
+
+    void nextDay();
+
+    void previousDay();
+
+    void returnToCurrent();
 
 private:
+    int currentDay;
+    int simDay;
 
     std::map<std::string, QGridLayout *> layouts;
     std::map<std::string, VaccinatieCentrum*> centra;
     std::map<std::string, std::map<std::string, QProgressBar*>> progressBars;
+    std::map<std::string, QLabel*> vaccineCount;
     Ui::MainWindow *ui;
     QPieSeries *pieSeries;
 

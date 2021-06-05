@@ -194,6 +194,10 @@ public:
 
     int getFreeStock(VaccinatieCentrum *centrum, int dag);
 
+    signals:
+
+    void changeVaccinCount(std::string vaccin,int count);
+
 private:
     // const attributes
 //    const int kaantal_vaccins_per_levering;

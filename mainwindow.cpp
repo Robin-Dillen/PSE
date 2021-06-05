@@ -20,11 +20,14 @@ MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
     ui->ReturnButton->hide();
 
     pieSeries = new QPieSeries();
-    pieSeries->append("Niet gevaccineert", 100);
-    pieSeries->append("half gevaccineert", 0);
-    pieSeries->append("volledig gevaccineert", 0);
+    pieSeries->append("Niet gevaccineerd", 100);
+    pieSeries->append("half gevaccineerd", 0);
+    pieSeries->append("volledig gevaccineerd", 0);
     pieSeries->setLabelsVisible();
     pieSeries->setLabelsPosition(QPieSlice::LabelInsideHorizontal);
+
+    currentDay = 0;
+    simDay = 0;
 
     QChart *chart = new QChart();
     chart->addSeries(pieSeries);
@@ -61,7 +64,7 @@ MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
     QObject::connect(ui->NextDayButton, SIGNAL(clicked()), sim, SLOT(stop()));
     QObject::connect(ui->NextDayButton, SIGNAL(clicked()), sim, SLOT(nextDay()));
     QObject::connect(ui->PreviousDayButton, SIGNAL(clicked()), sim, SLOT(stop()));
-    QObject::connect(ui->PreviousDayButton, SIGNAL(clicked()), sim, SLOT(previousDay()));
+    //QObject::connect(ui->PreviousDayButton, SIGNAL(clicked()), sim, SLOT(previousDay()));
     QObject::connect(ui->SpeedSlider, SIGNAL(sliderMoved(int)), sim, SLOT(updateSpeed(int)));
     QObject::connect(&StatisticsSingleton::getInstance(), SIGNAL(dataChange()), this, SLOT(dataChanged()));
     QObject::connect(sim, SIGNAL(dayNrChanged(int)), this, SLOT(changeDay(int)));
@@ -71,14 +74,44 @@ MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
     QObject::connect(ui->comboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), ui->stackedWidget,
                      &QStackedWidget::setCurrentIndex);
 
+    QObject::connect(ui->NextDayButton_2, SIGNAL(clicked()), this, SLOT(nextDay()));
+    QObject::connect(ui->PreviousDayButton, SIGNAL(clicked()), this, SLOT(previousDay()));
+    QObject::connect(ui->ReturnButton, SIGNAL(clicked()), this, SLOT(returnToCurrent()));
+
     QVBoxLayout *layout = new QVBoxLayout();
 
     vector<Hub*> hubs = sim->getHubs();
 
+    int i = 1;
     for(auto it = hubs.begin(); it != hubs.end(); it++){
-        QPushButton *but = new QPushButton("Hub");
+        QPushButton *but = new QPushButton(QString::fromStdString("Hub"+to_string(i)));
         layout->addWidget(but);
 
+        //pop op venster voor info van centrum
+        QDialog *dialog = new QDialog(this);
+        dialog->setWindowTitle(QString::fromStdString("Hub"+to_string(i)));
+        QGridLayout *grid = new QGridLayout;
+
+        QLabel *vaccins = new QLabel("Vaccines:");
+        grid->addWidget(vaccins,0,0);
+        QLabel *count = new QLabel("Count:");
+        grid->addWidget(count,0,1);
+
+        int j = 1;
+        map<string, Vaccin*> v = (*it)->getVaccins();
+        for(map<string, Vaccin*>::iterator it2 = v.begin(); it2 != v.end(); it2++){
+            QLabel *type = new QLabel(QString::fromStdString((*it2).first));
+            grid->addWidget(type,j,0);
+            QLabel *count = new QLabel(QString::fromStdString(to_string((*it2).second->aantal)));
+            grid->addWidget(count,j,1);
+            vaccineCount[(*it2).first] = count;
+            QObject::connect((*it), SIGNAL(changeVaccinCount(std::string,int)), this, SLOT(setVaccinCount(std::string,int)));
+            j++;
+        }
+
+        dialog->setLayout(grid);
+        QObject::connect(but, SIGNAL(pressed()), dialog, SLOT(exec()));
+        i++;
     }
     vector<VaccinatieCentrum*> c = sim->getVaccinatieCentra();
     for (vector<VaccinatieCentrum *>::iterator it = c.begin(); it != c.end(); it++) {
@@ -95,22 +128,26 @@ MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
         //pop op venster voor info van centrum
         QDialog *dialog = new QDialog(this);
         dialog->setWindowTitle(QString::fromStdString(name));
-        QGridLayout *vbox = new QGridLayout;
+        QGridLayout *grid = new QGridLayout;
 
         QLabel *inwoners = new QLabel("inhabitants:");
-        vbox->addWidget(inwoners,0,0);
+        grid->addWidget(inwoners,0,0);
         QLabel *inwo = new QLabel(QString::fromStdString(to_string((*it)->getKaantalInwoners())));
-        vbox->addWidget(inwo,0,1);
+        grid->addWidget(inwo,0,1);
 
-        QLabel *gevaccineerd = new QLabel("Already vaccinated:");
-        vbox->addWidget(gevaccineerd,1,1);
+        QLabel *gevaccineerd = new QLabel("Percentage:");
+        grid->addWidget(gevaccineerd,1,1);
 
-        QLabel *leveren = new QLabel("Distribute vaccine:");
-        vbox->addWidget(leveren,1,2);
+        QLabel *leveren = new QLabel("Distribute vaccines:");
+        grid->addWidget(leveren,1,2);
+        QObject::connect(ui->StopButton, SIGNAL(clicked()), leveren, SLOT(show()));
+        QObject::connect(ui->StartButton, SIGNAL(clicked()), leveren, SLOT(hide()));
+        QObject::connect(ui->ReturnButton, SIGNAL(clicked()), leveren, SLOT(show()));
+        QObject::connect(ui->PreviousDayButton, SIGNAL(clicked()), leveren, SLOT(hide()));
 
-        layouts[name] = vbox;
+        layouts[name] = grid;
 
-        dialog->setLayout(vbox);
+        dialog->setLayout(grid);
         QObject::connect(but, SIGNAL(pressed()), dialog, SLOT(exec()));
         QObject::connect((*it), SIGNAL(setVaccinInDialog(const std::string&, const Vaccin*, int)), this,
                          SLOT(addVaccin(const std::string&,const Vaccin*,int)));
@@ -125,6 +162,8 @@ MainWindow::~MainWindow() {
 }
 
 void MainWindow::changeDay(int day) {
+    simDay = day;
+    currentDay = day;
     string daytext = "day: " + to_string(day);
     QString time = QString::fromStdString(daytext);
     ui->DayText->setText(time);
@@ -193,9 +232,38 @@ void MainWindow::addVaccin(const std::string &centrum, const Vaccin* vaccin, int
     layouts[centrum]->addWidget(vaccinSlider,i+1,2);
     layouts[centrum]->addWidget(value,i+1,3);
 
+    QObject::connect(ui->ReturnButton, SIGNAL(clicked()), vaccinSlider, SLOT(show()));
+    QObject::connect(ui->PreviousDayButton, SIGNAL(clicked()), vaccinSlider, SLOT(hide()));
+    QObject::connect(ui->StopButton, SIGNAL(clicked()), vaccinSlider, SLOT(show()));
+    QObject::connect(ui->StartButton, SIGNAL(clicked()), vaccinSlider, SLOT(hide()));
+
+    QObject::connect(ui->ReturnButton, SIGNAL(clicked()), value, SLOT(show()));
+    QObject::connect(ui->PreviousDayButton, SIGNAL(clicked()), value, SLOT(hide()));
+    QObject::connect(ui->StopButton, SIGNAL(clicked()), value, SLOT(show()));
+    QObject::connect(ui->StartButton, SIGNAL(clicked()), value, SLOT(hide()));
+
     QObject::connect(centra[centrum], SIGNAL(changeVaccinProgressBar(const std::string&,const std::string&,int)), this, SLOT(setVaccinValue(const std::string&,const std::string&,int)));
 }
 
 void MainWindow::setVaccinValue(const std::string &centrum,const std::string &vaccin,int value){
     progressBars[centrum][vaccin]->setValue(value);
+}
+
+void MainWindow::setVaccinCount(string vaccin, int count){
+    vaccineCount[vaccin]->setText(QString::fromStdString(to_string(count)));
+}
+
+void MainWindow::nextDay(){
+    currentDay++;
+
+}
+
+void MainWindow::previousDay(){
+    currentDay--;
+
+}
+
+void MainWindow::returnToCurrent(){
+    currentDay = simDay;
+
 }

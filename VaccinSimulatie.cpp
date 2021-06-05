@@ -134,11 +134,11 @@ bool VaccinSimulatie::nextDay() {
 }
 
 
-void VaccinSimulatie::previousDay() {
-    std::cout << "prev day" << std::endl;
-    day--;
-    emit dayNrChanged(day);
-}
+//void VaccinSimulatie::previousDay() {
+//    std::cout << "prev day" << std::endl;
+//    day--;
+//    emit dayNrChanged(day);
+//}
 
 const vector<Hub *> &VaccinSimulatie::getHubs() const {
     return hubs;

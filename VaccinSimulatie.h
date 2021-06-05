@@ -34,7 +34,7 @@ public slots:
 
     bool nextDay();
 
-    void previousDay();
+    //void previousDay();
 
     void updateSpeed(int newspeed);
 

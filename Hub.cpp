@@ -292,6 +292,7 @@ void Hub::verdeelVaccins() {
             }
             vaccin->second->gereserveerd[centrum->first].pop_front();
             vaccin->second->extra_gereserveerd[centrum->first].pop_front();
+            emit changeVaccinCount(vaccin->first, vaccin->second->aantal);
 //            vaccin->second->gereserveerd[centrum->first].push_back(0);
 //            vaccin->second->extra_gereserveerd[centrum->first].push_back(0);
         }
