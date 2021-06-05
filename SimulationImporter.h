@@ -41,7 +41,7 @@ public:
 
     int getCentrumVaccinCount(int centrumnr, const std::string &vaccin);
 
-    int getAantalVaccinatiesCentrum(int centrumnr, const std::string &vaccin);
+    int getAantalVaccinatiesCentrum(int centrumnr);
 
     int getAantalEerstePrikken(int centrumnr, const std::string &vaccin);
 

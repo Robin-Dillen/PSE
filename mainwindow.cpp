@@ -26,7 +26,7 @@ MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
     pieSeries->setLabelsVisible();
     pieSeries->setLabelsPosition(QPieSlice::LabelInsideHorizontal);
 
-    currentDay = 0;
+    dayOffset = 0;
     simDay = 0;
 
     QChart *chart = new QChart();
@@ -164,10 +164,7 @@ MainWindow::~MainWindow() {
 
 void MainWindow::changeDay(int day) {
     simDay = day;
-    currentDay = day;
-    string daytext = "day: " + to_string(day);
-    QString time = QString::fromStdString(daytext);
-    ui->DayText->setText(time);
+    setGuiDay(day);
 }
 
 void MainWindow::endOfSimulation(int day) {
@@ -275,17 +272,52 @@ void MainWindow::setVaccinCount(string vaccin, int count){
     vaccineCount[vaccin]->setText(QString::fromStdString(to_string(count)));
 }
 
-void MainWindow::nextDay(){
-    currentDay++;
+void MainWindow::setGuiDay(int day){
+    string daytext = "day: " + to_string(day);
+    QString time = QString::fromStdString(daytext);
+    ui->DayText->setText(time);
+}
 
+void MainWindow::nextDay(){
+    if(dayOffset == 0){
+        ui->ReturnButton->click();
+        ui->NextDayButton->click();
+    }else{
+        dayOffset--;
+        setGuiDay(simDay-dayOffset);
+        changeData();
+    }
 }
 
 void MainWindow::previousDay(){
-    currentDay--;
+    if(simDay-dayOffset != 0){
+        dayOffset++;
+        setGuiDay(simDay-dayOffset);
+        changeData();
+    }
+}
 
+void MainWindow::changeData(){
+    /*
+    string file = "dag"+to_string(dayOffset)+".txt";
+    SimulationImporter s(file);
+    int centrumnr = 0;
+    for (map<string,VaccinatieCentrum *>::iterator it = centra.begin(); it != centra.end(); it++) {
+        emit (*it).second->changeMainProgressBar(s.getAantalVaccinatiesCentrum(centrumnr));
+        for(map<string,pair<Vaccin*, int> >::iterator it2 = (*it).second->getAantalVaccins1().begin(); it2 = (*it).second->getAantalVaccins1().end(); it2++  ){
+            emit (*it).second->changeVaccinProgressBar((*it).second->getKfname(),(*it2).first,(int)(s.getCentrumVaccinCount(centrumnr,(*it2).first)*100/s.getAantalVaccinatiesCentrum(centrumnr)));
+        }
+    }
+    for(std::vector<Hub*>::iterator it = hubs.begin(); it != hubs.end(); it++){
+        for(map<string, Vaccin *>::iterator it2 = (*it)->getVaccins().begin(); it2 != (*it)->getVaccins().end(); it2++){
+            emit (*it)->changeVaccinCount((*it2)->first, (*it)->getAllVaccins((*it2)->second));
+        }
+    }
+    */
 }
 
 void MainWindow::returnToCurrent(){
-    currentDay = simDay;
+    dayOffset = 0;
+    setGuiDay(simDay-dayOffset);
 
 }
