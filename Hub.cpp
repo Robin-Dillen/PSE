@@ -292,8 +292,8 @@ void Hub::verdeelVaccins() {
             }
             vaccin->second->gereserveerd[centrum->first].pop_front();
             vaccin->second->extra_gereserveerd[centrum->first].pop_front();
-            vaccin->second->gereserveerd[centrum->first].push_back(0);
-            vaccin->second->extra_gereserveerd[centrum->first].push_back(0);
+//            vaccin->second->gereserveerd[centrum->first].push_back(0);
+//            vaccin->second->extra_gereserveerd[centrum->first].push_back(0);
         }
 //        ENSURE(getGereserveerdevaccins(gereserveerd_1ste_prik) == 0, "Er zitten nog vaccins in een verlopen reservatie");
 //        ENSURE(getGereserveerdevaccins(gereserveerd_2de_prik) == 0, "Er zitten nog vaccins in een verlopen reservatie");

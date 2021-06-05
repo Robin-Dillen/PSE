@@ -30,7 +30,7 @@ public:
 
 public slots:
 
-    void addVaccin(QString centrum);
+    void addVaccin(const std::string &centrum);
 
     void changeDay(int day);
 
@@ -39,12 +39,11 @@ public slots:
     void dataChanged();
 
 
-
 private:
 
-    std::map<std::string, QDialog*> dialogs;
+    std::map<std::string, QDialog *> dialogs;
     Ui::MainWindow *ui;
-    QPieSeries *pieChart;
+    QPieSeries *pieSeries;
 
     QChartView *lineChartView;
     std::map<std::string, QLineSeries *> series;

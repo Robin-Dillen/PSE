@@ -257,7 +257,9 @@ public:
     void zet1stePrikVaccins(const string &type, int aantal, int &capaciteit);
 
 signals:
-    void setVaccinInDialog(QString centrum);
+
+    void setVaccinInDialog(const std::string &centrum);
+
     void changeProgressBar(int value);
 
 private:

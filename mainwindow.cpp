@@ -19,14 +19,17 @@ MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
     ui->NextDayButton_2->hide();
     ui->ReturnButton->hide();
 
-    pieChart = new QPieSeries();
-    pieChart->append("Niet gevaccineert", 100);
-    pieChart->append("half gevaccineert", 0);
-    pieChart->append("volledig gevaccineert", 0);
+    pieSeries = new QPieSeries();
+    pieSeries->append("Niet gevaccineert", 100);
+    pieSeries->append("half gevaccineert", 0);
+    pieSeries->append("volledig gevaccineert", 0);
+    pieSeries->setLabelsVisible();
+    pieSeries->setLabelsPosition(QPieSlice::LabelInsideHorizontal);
 
     QChart *chart = new QChart();
-    chart->addSeries(pieChart);
+    chart->addSeries(pieSeries);
     chart->setTitle("Vaccinaties");
+//    setDisabled(chart->legend());
 
     QChartView *view = new QChartView(chart);
     view->setParent(ui->horizontalFrame_page1);
@@ -101,7 +104,8 @@ MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
 
         dialog->setLayout(vbox);
         QObject::connect(but, SIGNAL(pressed()), dialog, SLOT(exec()));
-        QObject::connect(*it, SIGNAL(setVaccinInDialog(Qstring)), this, SLOT(addVaccin(Qstring)));
+        QObject::connect((*it), SIGNAL(setVaccinInDialog(const std::string&)), this,
+                         SLOT(addVaccin(const std::string&)));
     }
 
     ui->tabWidget->currentWidget()->setLayout(layout);
@@ -135,9 +139,12 @@ void MainWindow::dataChanged() {
     float pEerstePrikken = (stats.getTotaalEerstePrikken() / totaal) * 100;
     float pVolledigeVaccinaties = (stats.getTotaalVolledigeVaccinaties() / totaal) * 100;
     float pRest = 100 - (pEerstePrikken + pVolledigeVaccinaties);
-    pieChart->slices().at(0)->setValue(pRest);
-    pieChart->slices().at(1)->setValue(pEerstePrikken);
-    pieChart->slices().at(2)->setValue(pVolledigeVaccinaties);
+    pieSeries->slices().at(0)->setValue(pRest);
+    pieSeries->slices().at(0)->setLabel(QString("%1%").arg(100 * pieSeries->slices().at(0)->percentage(), 0, 'f', 1));
+    pieSeries->slices().at(1)->setValue(pEerstePrikken);
+    pieSeries->slices().at(1)->setLabel(QString("%1%").arg(100 * pieSeries->slices().at(1)->percentage(), 0, 'f', 1));
+    pieSeries->slices().at(2)->setValue(pVolledigeVaccinaties);
+    pieSeries->slices().at(2)->setLabel(QString("%1%").arg(100 * pieSeries->slices().at(2)->percentage(), 0, 'f', 1));
 
     //line chart
     map<string, int> totaal_geleverde_vaccins = stats.getGeleverdeVaccins();
@@ -160,10 +167,10 @@ void MainWindow::dataChanged() {
     }
 }
 
-void MainWindow::addVaccin(QString centrum){
+void MainWindow::addVaccin(const std::string &centrum) {
     //QLabel *VaccineName = new QLabel(QString::fromStdString(vaccines));
     //dialogs[centrum]->layout()->addWidget(VaccineName);
     //QProgressBar *VaccineBar = new QProgressBar();
     //dialogs[centrum]->layout()->addWidget(VaccineBar);
-    cout<<"oke"<<endl;
+    cout << "oke" << endl;
 }

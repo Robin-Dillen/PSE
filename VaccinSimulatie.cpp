@@ -6,7 +6,7 @@
 #include <iostream>
 
 VaccinSimulatie::VaccinSimulatie(vector<Hub *> &h, std::vector<VaccinatieCentrum *> &v, const string &testfilename,
-bool c_out) {
+                                 bool c_out) : day(1) {
     size_t pos = testfilename.find("test");
     ENSURE(pos != string::npos, "Given argument doesn't include a test file!");
     hubs = h;
@@ -49,15 +49,22 @@ void VaccinSimulatie::stop() {
 }
 
 void VaccinSimulatie::nextDay() {
-    std::cout << "next day" << std::endl;
+    std::cout << "dag: " << day << std::endl;
     StatisticsSingleton &stats = StatisticsSingleton::getInstance();
     OutputSingleton &output = OutputSingleton::getInstance();
+
+    for (unsigned int i = 0; i < hubs.size(); i++) {
+        map<string, Vaccin *> vaccins = hubs[i]->getVaccins();
+        for (map<string, Vaccin *>::iterator vaccin = vaccins.begin(); vaccin != vaccins.end(); vaccin++) {
+            hubs[i]->addReservations(vaccin->first);
+        }
+    }
+
     bool endOfSimulation = true;
     for (unsigned int i = 0; i < hubs.size(); i++) {
         if (!hubs[i]->isIedereenGevaccineerd()) {
             endOfSimulation = false;
-        }
-        else{
+        } else {
             continue;
         }
         // increase current_day

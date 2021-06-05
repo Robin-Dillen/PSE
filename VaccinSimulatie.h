@@ -52,7 +52,7 @@ private:
     void addToFile();
 
     TiXmlDocument doc;
-    int day = 0;
+    int day;
     vector<Hub *> hubs;
     vector<VaccinatieCentrum *> vaccinatieCentra;
     string filename1;
