@@ -130,6 +130,7 @@ bool VaccinSimulatie::nextDay() {
         return false;
     }
     emit stats.dataChange();
+    ExportSimulation("../test.txt", this);
     return true;
 }
 

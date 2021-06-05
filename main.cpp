@@ -41,7 +41,6 @@ int main(int argc, char *argv[]) {
     stats.setTotaalAantalMensen(totaal_mensen);
 
     VaccinSimulatie *s = new VaccinSimulatie(hubs, vaccinatie_centra, args[0]);
-    ExportSimulation("../test.txt", s);
     MainWindow *w = new MainWindow(s);
     w->showNormal();
     return a.exec();

@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.6)
 project(PSE)
 
 set(CMAKE_CXX_STANDARD 98)
-set(CMAKE_CXX_FLAGS "-Wall -Werror")
+set(CMAKE_CXX_FLAGS "-std=c++98 -Wall -Werror")
 set(CMAKE_EXE_LINKER_FLAGS -pthread)
 
 # Set include dir
@@ -31,8 +31,8 @@ else ()
     ENDIF ()
 endif ()
 
-find_package( Qt5Core REQUIRED )
-find_package( Qt5Widgets REQUIRED )
+find_package(Qt5Core REQUIRED)
+find_package(Qt5Widgets REQUIRED)
 find_package(Qt5Gui REQUIRED)
 find_package(Qt5Charts REQUIRED)
 

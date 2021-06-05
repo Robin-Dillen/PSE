@@ -267,8 +267,11 @@ inline void ExportSimulation(const std::string &filename, VaccinSimulatie *simul
         root->LinkEndChild(centrum);
     }
     FILE *f = fopen(filename.c_str(), "w");
+    ENSURE(f != NULL, "File didn't open correctly!");
     doc.Print(f);
     std::fclose(f);
 }
+
+
 
 #endif //PSE_UTILS_H

@@ -16,7 +16,6 @@
 Parser::Parser(const string &filename) : _initCheck(this) {
     TiXmlDocument doc;
     VaccinsFactorySingleton &vaccin_factory = VaccinsFactorySingleton::getInstance();
-    TiXmlText space = " ";
     //Kijkt na of de file is ingeladen
     ENSURE(doc.LoadFile(filename.c_str()), doc.ErrorDesc());
     //Kijkt na of er een root aanwezig is
@@ -74,7 +73,6 @@ Parser::Parser(const string &filename) : _initCheck(this) {
                      << " heeft een niet toegestaane waarde(leeg)." << endl;
                 errors.push_back(WRONG_VALUE);
             } else {
-                centrum->FirstChildElement("adres")->InsertEndChild(space);
                 adres = centrum->FirstChildElement("adres")->GetText();
             }
 
