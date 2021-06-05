@@ -102,10 +102,10 @@ MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
         QLabel *inwo = new QLabel(QString::fromStdString(to_string((*it)->getKaantalInwoners())));
         vbox->addWidget(inwo,0,1);
 
-        QLabel *gevaccineerd = new QLabel("Reeds gevaccineerd.");
+        QLabel *gevaccineerd = new QLabel("Already vaccinated:");
         vbox->addWidget(gevaccineerd,1,1);
 
-        QLabel *leveren = new QLabel("Vaccins leveren.");
+        QLabel *leveren = new QLabel("Distribute vaccine:");
         vbox->addWidget(leveren,1,2);
 
         layouts[name] = vbox;
