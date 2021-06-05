@@ -259,6 +259,7 @@ public:
 signals:
     void changeProgressBar(int value);
 
+    void setVaccinesInDialog(const string &centrum, const pair<string, int> &vaccins);
 
 private:
 

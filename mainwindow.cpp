@@ -84,27 +84,23 @@ MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
 
         //pop op venster voor info van centrum
         QDialog *dialog = new QDialog(this);
-        QObject::connect(but, SIGNAL(pressed()), dialog, SLOT(exec()));
-        QLabel *inwoners = new QLabel(QString::fromStdString("inhabitants: " + to_string((*it)->getKaantalInwoners())));
-        inwoners->setParent(dialog);
+        QVBoxLayout *vbox = new QVBoxLayout;
 
-//        QGroupBox *groupBox = new QGroupBox(QString::fromStdString(name));
-//        QVBoxLayout *vbox = new QVBoxLayout;
-//        QLabel *inwoners = new QLabel(QString::fromStdString("inhabitants: "+ to_string((*it)->getKaantalInwoners())));
-//        vbox->addWidget(inwoners);
-//        groupBox->setLayout(vbox);
-//        groupBox->setGeometry(100,100,100,100);
-//        ui->tabWidget->addTab(groupBox,QString::fromStdString(name));
-//        groupBox->setVisible(false);
-//        groupBox->hide();
+        QLabel *inwoners = new QLabel(QString::fromStdString("inhabitants: "));
+        vbox->addWidget(inwoners);
+        QLabel *inwo = new QLabel(QString::fromStdString(to_string((*it)->getKaantalInwoners())));
+        vbox->addWidget(inwo);
+
+        dialogs[name] = dialog;
+
+        dialog->setLayout(vbox);
+        QObject::connect(but, SIGNAL(pressed()), dialog, SLOT(exec()));
+        QObject::connect((*it), SIGNAL(setVaccinesInDialog(string, pair<string, int>)), this, SLOT(addVaccines(string, pair<string, int>)));
     }
 
     ui->tabWidget->currentWidget()->setLayout(layout);
 }
 
-//void MainWindow::setSimulation(VaccinSimulatie* s){
-//    simulatie = s;
-//}
 
 MainWindow::~MainWindow() {
     delete ui;
@@ -155,4 +151,12 @@ void MainWindow::dataChanged() {
         }
         series[vaccins->first]->append(current_day, vaccins->second);
     }
+}
+
+void MainWindow::addVaccines(const string &centrum, const pair<string, int> &vaccines){
+    map<string, int>::const_iterator it;
+    QLabel *VaccineName = new QLabel(QString::fromStdString(vaccines.first));
+    dialogs[centrum]->layout()->addWidget(VaccineName);
+    QProgressBar *VaccineBar = new QProgressBar();
+    dialogs[centrum]->layout()->addWidget(VaccineBar);
 }

@@ -8,6 +8,8 @@
 #include <QPieSeries>
 #include <map>
 #include <string>
+#include <QDialog>
+#include <map>
 
 class VaccinSimulatie;
 
@@ -34,8 +36,11 @@ public slots:
 
     void dataChanged();
 
+    void addVaccines(const std::string &centrum, const std::pair<std::string, int> &vaccines);
 
 private:
+
+    std::map<std::string, QDialog*> dialogs;
     Ui::MainWindow *ui;
     QPieSeries *pieChart;
 
