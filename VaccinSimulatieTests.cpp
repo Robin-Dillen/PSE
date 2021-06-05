@@ -489,6 +489,7 @@
 
 int main(int argc, char **argv) {
     makeEmptyFile(OUTPUT_FILE_LOCATION + "err.txt");
+//    QApplication a(argc, argv);
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
 }

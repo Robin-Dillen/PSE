@@ -36,7 +36,7 @@ public slots:
 
     void stop();
 
-    void nextDay();
+    bool nextDay();
 
     void previousDay();
 

@@ -324,7 +324,6 @@ void VaccinatieCentrum::ontvangLevering(int vaccins_in_levering, Vaccin *vaccin)
         aantal_vaccins[vaccin->type].second = 0;
         aantal_vaccinaties[vaccin->type] = 0;
         aantal_geleverde_vaccins[vaccin->type] = 0;
-        cout << "voila" << endl;
         emit setVaccinInDialog(getKfname());
     }
 

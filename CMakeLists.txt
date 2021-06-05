@@ -61,6 +61,9 @@ set(RELEASE_SOURCE_FILES
 # Set source files for DEBUG target
 set(DEBUG_SOURCE_FILES
         VaccinSimulatieTests.cpp
+        VaccinSimulatieOutputTests.cpp
+        VaccinSimulatieInputTests.cpp
+        VaccinSimulatieDomainTests.cpp
         Parser.cpp Parser.h
         Hub.cpp Hub.h
         VaccinatieCentrum.cpp VaccinatieCentrum.h
@@ -74,9 +77,7 @@ set(DEBUG_SOURCE_FILES
         VaccinSimulatie.cpp VaccinSimulatie.h
         StatisticsSingleton.cpp StatisticsSingleton.h
         Vaccins.cpp Vaccins.h
-        VaccinSimulatieOutputTests.cpp
-        VaccinSimulatieInputTests.cpp
-        VaccinSimulatieDomainTests.cpp)
+        )
 
 
 # Create RELEASE target
@@ -89,3 +90,4 @@ add_executable(PSE_debug ${DEBUG_SOURCE_FILES})
 target_link_libraries(PSE_debug gtest)
 
 qt5_use_modules(PSE Core Widgets Gui Charts)
+qt5_use_modules(PSE_debug Core Widgets Gui Charts)

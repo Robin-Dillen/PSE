@@ -48,8 +48,7 @@ void VaccinSimulatie::stop() {
     qTimer->stop();
 }
 
-void VaccinSimulatie::nextDay() {
-    std::cout << "dag: " << day << std::endl;
+bool VaccinSimulatie::nextDay() {
     StatisticsSingleton &stats = StatisticsSingleton::getInstance();
     OutputSingleton &output = OutputSingleton::getInstance();
 
@@ -121,8 +120,10 @@ void VaccinSimulatie::nextDay() {
         emit stats.dataChange();
         emit endSimulation(day);
         stop();
+        return false;
     }
     emit stats.dataChange();
+    return true;
 }
 
 
