@@ -45,7 +45,6 @@ signals:
     void endSimulation(int dayNr);
 
 private:
-    void addToFile();
 
     int day;
     vector<Hub *> hubs;

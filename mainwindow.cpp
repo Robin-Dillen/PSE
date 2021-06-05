@@ -222,7 +222,7 @@ void MainWindow::addVaccin(const std::string &centrum, const Vaccin* vaccin, int
     layouts[centrum]->addWidget(VaccinBar,i+1,1);
     QSlider *vaccinSlider = new QSlider(Qt::Horizontal);
     QLabel *value = new QLabel("0");
-    int teLeverenvaccins = centra[centrum]->getMaxStock()-centra[centrum]->getTotaalAantalVaccins();
+    int teLeverenvaccins = round((centra[centrum]->getMaxStock()-centra[centrum]->getTotaalAantalVaccins())/vaccin->transport)*vaccin->transport;
     vaccinSlider->setMaximum(teLeverenvaccins);
     QObject::connect(vaccinSlider, &QSlider::valueChanged, this, [=] () {
         int v =  round(vaccinSlider->value()/vaccin->transport)*vaccin->transport;

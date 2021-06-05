@@ -152,8 +152,4 @@ void VaccinSimulatie::updateSpeed(int newspeed) {
     qTimer->setInterval(newspeed);
 }
 
-void addToFile() {
-
-}
-
 
