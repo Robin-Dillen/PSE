@@ -11,6 +11,8 @@
 #include <QDialog>
 #include <map>
 
+#include "VaccinatieCentrum.h"
+
 class VaccinSimulatie;
 
 namespace Ui {
@@ -30,7 +32,7 @@ public:
 
 public slots:
 
-    void addVaccin(const std::string &centrum);
+    void addVaccin(const std::string &centrum, const Vaccin* vaccin, int i);
 
     void changeDay(int day);
 
@@ -41,7 +43,8 @@ public slots:
 
 private:
 
-    std::map<std::string, QDialog *> dialogs;
+    std::map<std::string, QGridLayout *> layouts;
+    std::map<std::string, VaccinatieCentrum*> centra;
     Ui::MainWindow *ui;
     QPieSeries *pieSeries;
 
