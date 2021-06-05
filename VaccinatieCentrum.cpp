@@ -246,8 +246,13 @@ void VaccinatieCentrum::nieuweDag() {
             nog_te_reserveren_vaccins[vaccin->first].pop_front();
             nog_te_reserveren_vaccins[vaccin->first].resize(nog_te_reserveren_vaccins[vaccin->first].size() + 1);
         }
+        if(getTotaalAantalVaccinaties() != 0){
+            emit changeVaccinProgressBar(getKfname(),vaccin->first,(int)(aantal_vaccinaties[vaccin->first]*100/getTotaalAantalVaccinaties()));
+        }
+
     }
-    emit changeProgressBar(getTotaalAantalVaccinaties());
+    emit changeMainProgressBar(getTotaalAantalVaccinaties());
+
     /*bool koudeVaccins = true;
     for (MapSP_VI_Iterator vaccin = aantal_vaccins.begin(); vaccin != aantal_vaccins.end() && capaciteit != 0; vaccin++) {
         if(vaccin->second.first->temperatuur >= 0){
