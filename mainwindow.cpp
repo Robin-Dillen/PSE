@@ -101,7 +101,7 @@ MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
 
         dialog->setLayout(vbox);
         QObject::connect(but, SIGNAL(pressed()), dialog, SLOT(exec()));
-        QObject::connect((*it), SIGNAL(setVaccinesInDialog(string, pair<string, int>)), this, SLOT(addVaccines(string, pair<string, int>)));
+        QObject::connect(*it, SIGNAL(setVaccinInDialog(Qstring)), this, SLOT(addVaccin(Qstring)));
     }
 
     ui->tabWidget->currentWidget()->setLayout(layout);
@@ -160,10 +160,10 @@ void MainWindow::dataChanged() {
     }
 }
 
-void MainWindow::addVaccines(const string &centrum, const pair<string, int> &vaccines){
-    map<string, int>::const_iterator it;
-    QLabel *VaccineName = new QLabel(QString::fromStdString(vaccines.first));
-    dialogs[centrum]->layout()->addWidget(VaccineName);
-    QProgressBar *VaccineBar = new QProgressBar();
-    dialogs[centrum]->layout()->addWidget(VaccineBar);
+void MainWindow::addVaccin(QString centrum){
+    //QLabel *VaccineName = new QLabel(QString::fromStdString(vaccines));
+    //dialogs[centrum]->layout()->addWidget(VaccineName);
+    //QProgressBar *VaccineBar = new QProgressBar();
+    //dialogs[centrum]->layout()->addWidget(VaccineBar);
+    cout<<"oke"<<endl;
 }

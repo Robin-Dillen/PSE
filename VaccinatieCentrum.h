@@ -16,7 +16,7 @@
 #include <list>
 #include <deque>
 #include <QApplication>
-
+#include <QString>
 #include "lib/DesignByContract.h"
 
 using namespace std;
@@ -257,9 +257,8 @@ public:
     void zet1stePrikVaccins(const string &type, int aantal, int &capaciteit);
 
 signals:
+    void setVaccinInDialog(QString centrum);
     void changeProgressBar(int value);
-
-    void setVaccinesInDialog(const string &centrum, const pair<string, int> &vaccins);
 
 private:
 

@@ -30,13 +30,15 @@ public:
 
 public slots:
 
+    void addVaccin(QString centrum);
+
     void changeDay(int day);
 
     void endOfSimulation(int day);
 
     void dataChanged();
 
-    void addVaccines(const std::string &centrum, const std::pair<std::string, int> &vaccines);
+
 
 private:
 

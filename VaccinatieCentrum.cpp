@@ -146,7 +146,6 @@ int VaccinatieCentrum::getTotaalAantalGeleverdeVaccins() const {
 void VaccinatieCentrum::setVaccins(int vaccins, const string &type) {
     REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling setVaccins");
     aantal_vaccins[type].second = vaccins;
-    emit setVaccinesInDialog(this->getKfname(),make_pair(type,vaccins));
     ENSURE(vaccins == getAantalVaccins(type), "De vaccins zijn niet succesvol ge-set!");
 }
 
@@ -218,9 +217,9 @@ void VaccinatieCentrum::nieuweDag() {
         if (vaccin->second.first->hernieuwing == 0) {
             //nieuw type bijvoegen
 
-                zet2dePrikVaccins(vaccin->first, aantal_prikken, capaciteit);
-                aantal_tweede_prik += aantal_prikken;
-                aantal_niet_vaccinaties -= aantal_prikken;
+            zet2dePrikVaccins(vaccin->first, aantal_prikken, capaciteit);
+            aantal_tweede_prik += aantal_prikken;
+            aantal_niet_vaccinaties -= aantal_prikken;
         } else {
             aantal_eerste_prikken[vaccin->first][vaccin->second.first->hernieuwing - 1] += aantal_prikken;
             nog_te_reserveren_vaccins[vaccin->first][vaccin->second.first->hernieuwing - 1] += aantal_prikken;
@@ -325,6 +324,9 @@ void VaccinatieCentrum::ontvangLevering(int vaccins_in_levering, Vaccin *vaccin)
         aantal_vaccins[vaccin->type].second = 0;
         aantal_vaccinaties[vaccin->type] = 0;
         aantal_geleverde_vaccins[vaccin->type] = 0;
+        cout<<"voila"<<endl;
+        QString s = QString::fromStdString(getKfname());
+        emit setVaccinInDialog(s);
     }
 
     int begin_aantal_geleverde_vaccins = getAantalGeleverdeVaccins(vaccin->type);
