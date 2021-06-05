@@ -90,7 +90,7 @@ MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
         progress->setMaximum((*it)->getKaantalInwoners());
         progress->setMinimum(0);
         layout->addWidget(progress);
-        QObject::connect(*it, SIGNAL(changeProgressBar(int)), progress, SLOT(setValue(int)));
+        QObject::connect(*it, SIGNAL(changeMainProgressBar(int)), progress, SLOT(setValue(int)));
 
         //pop op venster voor info van centrum
         QDialog *dialog = new QDialog(this);
@@ -179,10 +179,12 @@ void MainWindow::addVaccin(const std::string &centrum, const Vaccin* vaccin, int
     QLabel *VaccineName = new QLabel(QString::fromStdString(vaccin->type));
     layouts[centrum]->addWidget(VaccineName,i+1,0);
     QProgressBar *VaccinBar = new QProgressBar();
+    progressBars[centrum][vaccin->type] = VaccinBar;
     layouts[centrum]->addWidget(VaccinBar,i+1,1);
     QSlider *vaccinSlider = new QSlider(Qt::Horizontal);
     QLabel *value = new QLabel("0");
-    vaccinSlider->setMaximum(5000);
+    int teLeverenvaccins = centra[centrum]->getMaxStock()-centra[centrum]->getTotaalAantalVaccins();
+    vaccinSlider->setMaximum(teLeverenvaccins);
     QObject::connect(vaccinSlider, &QSlider::valueChanged, this, [=] () {
         int v =  round(vaccinSlider->value()/vaccin->transport)*vaccin->transport;
         vaccinSlider->setValue(v);
@@ -191,5 +193,9 @@ void MainWindow::addVaccin(const std::string &centrum, const Vaccin* vaccin, int
     layouts[centrum]->addWidget(vaccinSlider,i+1,2);
     layouts[centrum]->addWidget(value,i+1,3);
 
-    //QObject::connect(centra[centrum], SIGNAL(changeProgressBar(int)), VaccinBar, SLOT(setValue(int)));
+    QObject::connect(centra[centrum], SIGNAL(changeVaccinProgressBar(const std::string&,const std::string&,int)), this, SLOT(setVaccinValue(const std::string&,const std::string&,int)));
+}
+
+void MainWindow::setVaccinValue(const std::string &centrum,const std::string &vaccin,int value){
+    progressBars[centrum][vaccin]->setValue(value);
 }

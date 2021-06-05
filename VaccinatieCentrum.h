@@ -260,7 +260,8 @@ signals:
 
     void setVaccinInDialog(const std::string &centrum, const Vaccin* vaccin, int i);
 
-    void changeProgressBar(int value);
+    void changeMainProgressBar(int value);
+    void changeVaccinProgressBar(const std::string &centrum,const std::string &vaccin,int value);
 
 private:
 

@@ -40,11 +40,14 @@ public slots:
 
     void dataChanged();
 
+    void setVaccinValue(const std::string &centrum,const std::string &vaccin, int value);
+
 
 private:
 
     std::map<std::string, QGridLayout *> layouts;
     std::map<std::string, VaccinatieCentrum*> centra;
+    std::map<std::string, std::map<std::string, QProgressBar*>> progressBars;
     Ui::MainWindow *ui;
     QPieSeries *pieSeries;
 
