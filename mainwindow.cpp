@@ -237,9 +237,10 @@ void MainWindow::addVaccin(const std::string &centrum, Vaccin *vaccin, int centr
 
     int k = 2;
     for(int j = 0; j< (int) hubs.size(); j++) {
-        if (hubs[j]->getFverbondenCentra().find(centrum) != hubs[j]->getFverbondenCentra().end()){
-            if(hubs[j]->getVaccins().find(vaccin->type) != hubs[j]->getVaccins().end()) {
-                Slider *vaccinSlider = new Slider(vaccin->transport, hubs[i], centra[centrum], vaccin);
+        const map<std::string, VaccinatieCentrum *> &verbonden_centra = hubs[j]->getFverbondenCentra();
+        if (verbonden_centra.find(centrum) != verbonden_centra.end()) {
+            if (hubs[j]->getVaccins().find(vaccin->type) != hubs[j]->getVaccins().end()) {
+                Slider *vaccinSlider = new Slider(vaccin->transport, hubs[centrumnr], centra[centrum], vaccin);
                 QLabel *value = new QLabel("0");
 
                 int totalVaccines = 0;
@@ -256,8 +257,8 @@ void MainWindow::addVaccin(const std::string &centrum, Vaccin *vaccin, int centr
                 QObject::connect(vaccinSlider, SIGNAL(changeText(const QString&)), value,
                                  SLOT(setText(const QString &)));
 
-                layouts[centrum]->addWidget(vaccinSlider, i + 1, k);
-                layouts[centrum]->addWidget(value, i + 1, k + 1);
+                layouts[centrum]->addWidget(vaccinSlider, centrumnr + 1, k);
+                layouts[centrum]->addWidget(value, centrumnr + 1, k + 1);
                 k += 2;
 
                 QObject::connect(ui->ReturnButton, SIGNAL(clicked()), vaccinSlider, SLOT(show()));
