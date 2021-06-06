@@ -10,7 +10,8 @@
 
 using namespace std;
 
-class Vaccin;
+struct Vaccin;
+
 class VaccinatieCentrum;
 
 struct StatisticsSingletonData {

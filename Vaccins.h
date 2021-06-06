@@ -70,7 +70,7 @@ public:
     Vaccin *
     getVaccin(const string &type, const int levering, const int interval, const int transport, const int hernieuwing,
               const int temperatuur) {
-        REQUIRE(this == _initCheck, "Object wasn't initialized when calling getInstance");
+        REQUIRE(isProperlyInitialized(), "Object wasn't initialized when calling getInstance");
         REQUIRE(!type.empty(), "Type name cannot be empty!");
         REQUIRE(levering > 0, "levering moet groter zijn dan 0!");
         REQUIRE(interval > 0, "Interval moet groter zijn dan 0!");
@@ -91,7 +91,9 @@ public:
 
 private:
     VaccinsFactorySingleton() : _initCheck(
-            this) {}                    // Constructor? (the {} brackets) are needed here.
+            this) {
+        ENSURE(isProperlyInitialized(), "Object wasn't properly initialized when exiting constructor!");
+    }                    // Constructor? (the {} brackets) are needed here.
 
     // C++ 03
     // ========
@@ -102,7 +104,7 @@ private:
     void operator=(VaccinsFactorySingleton const &); // Don't implement
 
     vector<Vaccin *> vaccins;
-    VaccinsFactorySingleton *const _initCheck;
+    const VaccinsFactorySingleton *const _initCheck;
 };
 
 

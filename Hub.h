@@ -23,7 +23,8 @@
 using namespace std;
 
 class VaccinatieCentrum;
-class Vaccin;
+
+struct Vaccin;
 
 class Hub  : public QObject {
     Q_OBJECT

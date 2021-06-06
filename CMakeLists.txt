@@ -55,7 +55,7 @@ set(RELEASE_SOURCE_FILES
         Utils.h
         VaccinSimulatie.cpp VaccinSimulatie.h
         StatisticsSingleton.cpp StatisticsSingleton.h
-        Vaccins.cpp Vaccins.h
+        Vaccins.h
         mainwindow.cpp mainwindow.h mainwindow.ui
         SimulationImporter.cpp SimulationImporter.h
         Slider.cpp Slider.h)
@@ -78,7 +78,7 @@ set(DEBUG_SOURCE_FILES
         Utils.h
         VaccinSimulatie.cpp VaccinSimulatie.h
         StatisticsSingleton.cpp StatisticsSingleton.h
-        Vaccins.cpp Vaccins.h
+        Vaccins.h
         )
 
 # Create RELEASE target

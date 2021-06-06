@@ -21,7 +21,7 @@
 
 using namespace std;
 
-class Vaccin;
+struct Vaccin;
 
 class VaccinatieCentrum : public QObject {
     Q_OBJECT
@@ -123,24 +123,11 @@ public:
      */
     int getTotaalAantalGeleverdeVaccins() const;
 
-    /**
-     * update het aantal_vaccins
-     * @param vaccins: int
-     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling setVaccins");
-     * \n ENSURE(aantal_vaccins_begin + vaccins == getAantalVaccins(), "De vaccins zijn niet succesvol toegevoegt!");
-     */
-    void setVaccins(int vaccins, const string &type);
-
-    /**
-     * update het aantal_vaccinaties
-     * @param aantalVaccinaties: int
-     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling setAantalVaccinaties");
-     * \n ENSURE(aantal_vaccinaties == getAantalVaccinaties(), "Het aantal vaccinaties is niet succesvol ge-set!");
-     */
-    void setAantalVaccinaties(int aantalVaccinaties,const string &type);
-
     /*!
      *start een nieuwe dag
+     * @emit void VaccinatieCentrum::changeVaccinProgressBar(const std::string &, const std::string&, int)
+     * @emit void VaccinatieCentrum::changeMainProgressBar(int)
+     * @emit void VaccinatieCentrum::newDay()
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling nieuweDag");
      * \n ENSURE(aantal_vaccins <= getMaxStock(), "Error, er zijn te veel vaccins geleverd!");
      * \n ENSURE(begin_aantal_vaccins + getAantalGeleverdeVaccins() == aantal_vaccins, "De vaccinaties zijn niet succesvol ontvangen!");
@@ -151,19 +138,8 @@ public:
     void nieuweDag();
 
     /*!
-     * geeft terug of de stock van vaccins vol is
-     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling isVol");
-     */
-    bool isVol() const;
-
-    /*!
-     * geeft terug of de stock van vaccins vol is na een nieuwe levering
-     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling isVolNaLevering");
-     */
-    bool isVolNaLevering(int vaccins_in_levering) const;
-
-    /*!
      * ontvangt een levering en plaatst de vaccinaties in de stock
+     * @emit void VaccinatieCentrum::setVaccinInDialog(const std::string&, Vaccin*, int)
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling ontvangLevering");
      * \n REQUIRE(vaccins_in_levering >= 0, "Er is een negatief aantal vaccins geleverd!");
      * \n ENSURE(begin_aantal_geleverde_vaccins + vaccins_in_levering == getAantalGeleverdeVaccins(), "De vaccins zijn niet succesvol geleverd!");
@@ -196,12 +172,28 @@ public:
      */
     int getAantalNietVaccinaties() const;
 
+    /*!
+     * geeft het aantal vaccinaties in de orginele datastructuur terug
+     * @return const map<string, int> &
+     * \n REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling this function");
+     */
     const map<string, int> &getAantalVaccinaties1() const;
 
+    /*!
+     * geeft het aantal geleverde vaccins terug in de orginele datastructuur terug
+     * @return const map<string, int> &
+     * \n REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling this function");
+     */
     const map<string, int> &getAantalGeleverdeVaccins1() const;
 
+    /*!
+     * geeft het aantal eerste prikken terug
+     * @return const map<string, deque<int>> &
+     * \n REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling this function");
+     */
     const map<string, deque<int>> &getAantalEerstePrikken() const;
-/*!
+
+    /*!
      * geeft terug hoeveel vaccins er nog gereserveerd moeten worden voor een bepaalde dag
      * @return int
      * @param type
@@ -212,7 +204,6 @@ public:
      * \n REQUIRE(dag > 0, "De dag moet positief zijn!");
      */
     int getNogTeReserverenVaccins(const string &type, int dag);
-
 
     /*!
      * geeft terug hoeveel vaccins er nog gereserveerd moeten worden voor een bepaalde dag
@@ -227,7 +218,6 @@ public:
      * \n ENSURE(nog_te_reserveren_vaccins[dag][type] >= 0, "Er mag geen negatief aantal te reserveren vaccins zijn");
      */
     void reserveerVaccins(const string &type, int dag, int vaccins);
-
 
     /*!
      * update het aantal gevaccineerden
@@ -254,12 +244,32 @@ public:
     const map<string, pair<Vaccin *, int>> &getAantalVaccins1() const;
 
 signals:
-    void setVaccinInDialog(const std::string &centrum, Vaccin* vaccin, int i);
 
+    /*!
+     * voegt een type vaccin toe aan de dialoog
+     * @param centrum centrum naam
+     * @param vaccin vaccinnaam
+     * @param centrumnr nr van het centrum
+     */
+    void setVaccinInDialog(const std::string &centrum, Vaccin *vaccin, int centrumnr);
+
+    /*!
+     * update de main progress bar naar value
+     * @param value nieuwe value
+     */
     void changeMainProgressBar(int value);
 
-    void changeVaccinProgressBar(const std::string &centrum,const std::string &vaccin,int value);
+    /*!
+     * verandert de vaccin progress bar naar value
+     * @param centrum naam van het centrum
+     * @param vaccin naam van het vaccin
+     * @param value nieuwe waarde
+     */
+    void changeVaccinProgressBar(const std::string &centrum, const std::string &vaccin, int value);
 
+    /*!
+     * update het scherm met nieuwe dag
+     */
     void newDay();
 
 private:
@@ -271,31 +281,15 @@ private:
     const string kfname;
     const string kfaddress;
 
-    const VaccinatieCentrum *_initCheck; // pointer naar zichzelf om te checken of het object correct geïnitialseert is
-
-    map<string, deque<int> > aantal_eerste_prikken;
-
-    // elke loop getten en verwijderen we front, en loopen we door de batches(van front), we checken of we ze een 2de prik kunnen geven etc...
-    // -> voeg toe bij aantal vaccinaties(mss voor statistiche verwerking, ook in aantal vaccinaties alles gescheiden houden)
-    // als er nog vaccins over zijn, gaan we een nieuwe batch aanmaken(als hernieuwbaar), we checken of aantal_eerste_prikken.size() >= hernieuwbaar
-    // zo ja, voeg nieuwe batch toe op plaats hernieuwbaar
-    // zo nee aantal_eerste_prikken.resize(hernieuwbaar) !!niet reserve!!
-    // we gebruiken een list omdat we front vaak moeten verwijderen(geeft shifts zoals bij vector)
+    const VaccinatieCentrum *const _initCheck; // pointer naar zichzelf om te checken of het object correct geïnitialseert is
 
     // changing attributes
     map<string, pair<Vaccin *, int> > aantal_vaccins; //vaccin: Vaccintype, int: aantal vaccins van dit type
     map<string, deque<int> > nog_te_reserveren_vaccins;
-
+    map<string, deque<int> > aantal_eerste_prikken;
     int aantal_niet_vaccinaties;
-
-    //aantal mensen die nog geen vaccinatie hebben gekregen.
-
     map<string, int> aantal_vaccinaties;
-
-    // aantal mensen dat gevaccineert is
-    // we kunnen gwn een map<vaccin_naam, aantal> bijhouden
-
-    map<string, int> aantal_geleverde_vaccins; // aantal vaccins dat toegevoegd wordt na een levering
+    map<string, int> aantal_geleverde_vaccins;
 };
 
 #endif //PSE_VACCINATIECENTRUM_H

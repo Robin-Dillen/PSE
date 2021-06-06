@@ -133,20 +133,6 @@ int VaccinatieCentrum::getTotaalAantalGeleverdeVaccins() const {
     return totaal_geleverde_vaccins;
 }
 
-
-void VaccinatieCentrum::setVaccins(int vaccins, const string &type) {
-    REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling setVaccins");
-    aantal_vaccins[type].second = vaccins;
-    ENSURE(vaccins == getAantalVaccins(type), "De vaccins zijn niet succesvol ge-set!");
-}
-
-void VaccinatieCentrum::setAantalVaccinaties(int aantalVaccinaties, const string &type) {
-    REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling setAantalVaccinaties");
-    aantal_vaccinaties[type] = aantalVaccinaties;
-    ENSURE(aantal_vaccinaties.at(type) == getAantalVaccinaties(type),
-           "Het aantal vaccinaties is niet succesvol ge-set!");
-}
-
 void VaccinatieCentrum::nieuweDag() {
     REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling nieuweDag");
     int begin_aantal_vaccins = getTotaalAantalVaccins();
@@ -190,9 +176,6 @@ void VaccinatieCentrum::nieuweDag() {
             // if the batch is not empty, add the batch to de next day
             if (batch->second.front() != 0) {
                 deque<int>::iterator tomorrow = batch->second.begin() + 1;
-//                kvaccins[type]->extra_gereserveerd[centrum->first][dag] +
-//                kvaccins[type]->gereserveerd[centrum->first][dag] <=
-//                centrum->second->getKcapaciteit() * 2
                 (*tomorrow) += batch->second.front();
                 int dag = 1;
                 while (batch->second.front() != 0) {
@@ -206,11 +189,6 @@ void VaccinatieCentrum::nieuweDag() {
                     batch->second.front() -= std::min(kcapaciteit - al_gereserverd, batch->second.front());
                     dag++;
                 }
-//            if (tomorrow->find(batch->first) == tomorrow->end()) {
-//                (*tomorrow)[batch->first] = batch->second;
-//            } else {
-//                (*tomorrow)[batch->first] += batch->second;
-//            }
             }
         }
     }
@@ -280,22 +258,6 @@ void VaccinatieCentrum::nieuweDag() {
     emit changeMainProgressBar(getTotaalAantalVaccinaties());
     emit newDay();
 
-    /*bool koudeVaccins = true;
-    for (MapSP_VI_Iterator vaccin = aantal_vaccins.begin(); vaccin != aantal_vaccins.end() && capaciteit != 0; vaccin++) {
-        if(vaccin->second.first->temperatuur >= 0){
-            koudeVaccins = false;
-            break;
-        }
-    }
-    if(!koudeVaccins){
-        for (MapSP_VI_Iterator vaccin = aantal_vaccins.begin(); vaccin != aantal_vaccins.end() && capaciteit != 0; vaccin++) {
-            if (vaccin->second.first->temperatuur < 0) {
-                ENSURE( vaccin->second.second == 0, "Er zijn Vaccins over die vandaag gezet moesten worden." );
-            }
-        }
-    }
-     */
-
     ENSURE(begin_aantal_vaccins - aantal_tweede_prik - aantal_eerste_prik - verwijderde_vaccins == getTotaalAantalVaccins(),
            "Het aantal vaccins is niet geüpdate!");
     ENSURE(begin_aantal_vaccinaties + aantal_tweede_prik == getTotaalAantalVaccinaties(),
@@ -318,27 +280,6 @@ void VaccinatieCentrum::zet1stePrikVaccins(const string &type, int aantal, int &
     aantal_niet_vaccinaties -= aantal;
     capaciteit -= aantal;
     ENSURE( aantal_vaccins[type].second >= 0, "Er zijn te weinig vaccins aanwezig");
-}
-
-bool VaccinatieCentrum::isVol() const {
-    REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling isVol");
-    int totaalAantalVaccins = 0;
-    map<string, pair<Vaccin *, int> >::const_iterator it;
-    for (it = aantal_vaccins.begin(); it != aantal_vaccins.end(); it++) {
-        totaalAantalVaccins += aantal_vaccins.at(it->first).second;
-    }
-    return totaalAantalVaccins == getMaxStock();
-}
-
-bool VaccinatieCentrum::isVolNaLevering(int vaccins_in_levering) const {
-    REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling isVolNaLevering");
-    int vaccinsNaLevering = 0;
-    map<string, pair<Vaccin *, int> >::const_iterator it;
-    for (it = aantal_vaccins.begin(); it != aantal_vaccins.end(); it++) {
-        vaccinsNaLevering += aantal_vaccins.at(it->first).second;
-        vaccinsNaLevering += aantal_geleverde_vaccins.at(it->first);
-    }
-    return vaccinsNaLevering > getMaxStock();
 }
 
 void VaccinatieCentrum::ontvangLevering(int vaccins_in_levering, Vaccin *vaccin) {
@@ -420,18 +361,22 @@ void VaccinatieCentrum::reserveerVaccins(const string &type, int dag, int vaccin
 }
 
 const map<string, int> &VaccinatieCentrum::getAantalVaccinaties1() const {
+    REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling this function");
     return aantal_vaccinaties;
 }
 
 const map<string, int> &VaccinatieCentrum::getAantalGeleverdeVaccins1() const {
+    REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling this function");
     return aantal_geleverde_vaccins;
 }
 
 const map<string, deque<int>> &VaccinatieCentrum::getAantalEerstePrikken() const {
+    REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling this function");
     return aantal_eerste_prikken;
 }
 
 const map<string, pair<Vaccin *, int>> &VaccinatieCentrum::getAantalVaccins1() const {
+    REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling this function");
     return aantal_vaccins;
 }
 
