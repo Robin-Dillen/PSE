@@ -251,10 +251,10 @@ inline void ExportSimulation(const std::string &filename, VaccinSimulatie *simul
                  eerste_prik != eerste_prikken.end(); ++eerste_prik) {
                 totaal_eerste += *eerste_prik;
             }
-            TiXmlElement *eersteprik = new TiXmlElement("1steprik");
+            TiXmlElement *eersteprik = new TiXmlElement("eersteprik");
             TiXmlText *eersteprik_value = new TiXmlText(to_string(totaal_eerste).c_str());
             eersteprik->LinkEndChild(eersteprik_value);
-            TiXmlElement *tweedeprik = new TiXmlElement("2deprik");
+            TiXmlElement *tweedeprik = new TiXmlElement("tweedeprik");
             TiXmlText *tweedeprik_value = new TiXmlText(
                     to_string((*centrumIterator)->getAantalVaccinaties(vaccinIterator->first)).c_str());
             tweedeprik->LinkEndChild(tweedeprik_value);
@@ -266,6 +266,7 @@ inline void ExportSimulation(const std::string &filename, VaccinSimulatie *simul
         }
         root->LinkEndChild(centrum);
     }
+//    makeEmptyFile(filename);
     FILE *f = fopen(filename.c_str(), "w");
     ENSURE(f != NULL, "File didn't open correctly!");
     doc.Print(f);

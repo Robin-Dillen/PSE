@@ -1,6 +1,11 @@
 cmake_minimum_required(VERSION 3.6)
 project(PSE)
 
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTORCC ON)
+
+set(CXX_STANDARD_REQUIRED=ON)
 set(CMAKE_CXX_FLAGS "-std=c++98")
 set(CMAKE_CXX_FLAGS "-Wall -Werror")
 set(CMAKE_EXE_LINKER_FLAGS -pthread)
@@ -36,10 +41,6 @@ find_package(Qt5Core REQUIRED)
 find_package(Qt5Widgets REQUIRED)
 find_package(Qt5Gui REQUIRED)
 find_package(Qt5Charts REQUIRED)
-
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTOUIC ON)
-set(CMAKE_AUTORCC ON)
 
 # Set source files for RELEASE target
 set(RELEASE_SOURCE_FILES
@@ -81,6 +82,7 @@ set(DEBUG_SOURCE_FILES
         Vaccins.cpp Vaccins.h
         )
 
+set(CMAKE_CXX_STANDARD 98)
 
 # Create RELEASE target
 add_executable(PSE ${RELEASE_SOURCE_FILES})

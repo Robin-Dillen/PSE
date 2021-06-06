@@ -324,18 +324,24 @@ void MainWindow::previousDay(){
 }
 
 void MainWindow::changeData(){
-    string file = "../SavedData/dag"+to_string(simDay-dayOffset)+".txt";
+    string file = "../SavedData/dag" + to_string(simDay - dayOffset) + ".xml";
     SimulationImporter s(file);
     int centrumnr = 0;
-    for (map<string,VaccinatieCentrum *>::iterator it = centra.begin(); it != centra.end(); it++) {
+    for (map<string, VaccinatieCentrum *>::iterator it = centra.begin(); it != centra.end(); it++) {
         emit (*it).second->changeMainProgressBar(s.getAantalVaccinatiesCentrum(centrumnr));
-        for(map<string,pair<Vaccin *, int> >::const_iterator it2 = (*it).second->getAantalVaccins1().begin(); it2 != (*it).second->getAantalVaccins1().end(); it2++  ){
-            emit (*it).second->changeVaccinProgressBar((*it).second->getKfname(),(*it2).first,(int)(s.getCentrumVaccinCount(centrumnr,(*it2).first)*100/s.getAantalVaccinatiesCentrum(centrumnr)));
+        for (map<string, pair<Vaccin *, int> >::const_iterator it2 = (*it).second->getAantalVaccins1().begin();
+             it2 != (*it).second->getAantalVaccins1().end(); it2++) {
+            emit (*it).second->changeVaccinProgressBar((*it).second->getKfname(), (*it2).first,
+                                                       (int) (s.getCentrumVaccinCount(centrumnr, (*it2).first) * 100 /
+                                                              s.getAantalVaccinatiesCentrum(centrumnr)));
         }
     }
-    for(std::vector<Hub*>::iterator it = hubs.begin(); it != hubs.end(); it++){
-        for(map<string, Vaccin *>::const_iterator it2 = (*it)->getVaccins().begin(); it2 != (*it)->getVaccins().end(); it2++){
-            emit (*it)->changeVaccinCount((*it2).first, (*it)->getAllVaccins((*it2).second));
+    for (std::vector<Hub *>::iterator hubIterator = hubs.begin(); hubIterator != hubs.end(); hubIterator++) {
+        const map<string, Vaccin *> &vaccins = (*hubIterator)->getVaccins();
+        for (map<string, Vaccin *>::const_iterator vaccinIterator = vaccins.begin();
+             vaccinIterator != vaccins.end(); vaccinIterator++) {
+            emit (*hubIterator)->changeVaccinCount((*vaccinIterator).first,
+                                                   (*hubIterator)->getAllVaccins((*vaccinIterator).second));
         }
     }
 }

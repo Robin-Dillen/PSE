@@ -47,11 +47,10 @@ SimulationImporter::SimulationImporter(const std::string &filename) : _initCheck
             importerData.data.insert(std::make_pair(type, SimulationImporterVaccinData()));
             // can't use [] -> requires access to constructor
             importerData.data.at(type).aantal_vaccins = to_int(vaccin->FirstChildElement("aantal")->GetText());
-            importerData.data.at(type).aantal_vaccins = to_int(vaccin->FirstChildElement("1steprik")->GetText());
-            importerData.data.at(type).aantal_vaccins = to_int(vaccin->FirstChildElement("2deprik")->GetText());
+            importerData.data.at(type).aantal_vaccins = to_int(vaccin->FirstChildElement("eersteprik")->GetText());
+            importerData.data.at(type).aantal_vaccins = to_int(vaccin->FirstChildElement("tweedeprik")->GetText());
 
         } while ((vaccin = vaccin->NextSiblingElement("VACCIN")) != NULL);
-
         centra_data.push_back(importerData);
     } while ((centrum = centrum->NextSiblingElement("HUB")) != NULL);
     ENSURE(isProperlyInitialized(), "Object isn't properly initialized when exiting the constructor");
