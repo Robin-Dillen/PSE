@@ -61,7 +61,17 @@ public:
      * \n ENSURE(isProperlyInitialized(), "Object wasn't properly initialised!");
      * \n ENSURE(count >= 0, "Het aantal vaccinaties in een centrum kan nie negatief zijn!");
      */
-    int getAantalVaccinatiesCentrum(const std::string &centrum_naam);
+    int getTotaalAantalVaccinatiesCentrum(const std::string &centrum_naam);
+
+    /*!
+    * geeft het totaal aantal volledige vaccinaties terug van het centrum
+    * @param centrum_naam naam van het vaccin
+    * @param vaccin type van het vaccin
+    * @return het totaal aantal volledige vaccinaties
+    * \n ENSURE(isProperlyInitialized(), "Object wasn't properly initialised!");
+    * \n ENSURE(count >= 0, "Het aantal vaccinaties in een centrum kan nie negatief zijn!");
+    */
+    int getAantalVaccinatiesCentrum(const std::string &centrum_naam, const std::string &vaccin);
 
     /*!
      * geeft het aantal eerste prikken van het centrum met het bepaalde type terug

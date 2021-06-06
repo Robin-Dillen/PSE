@@ -254,13 +254,12 @@ void VaccinatieCentrum::nieuweDag() {
             }
             ENSURE(aantal->second.second == 0, "Er zijn vaccins met negatieve temperatuur niet gebruikt!");
         }
-    }
-    std::cout << kfname << ": " << getTotaalAantalVaccinaties() << std::endl;
-    emit changeMainProgressBar(getTotaalAantalVaccinaties());
+    }emit changeMainProgressBar(getTotaalAantalVaccinaties());
     emit newDay();
     emit changeVaccinCount(getTotaalAantalVaccins());
 
-    ENSURE(begin_aantal_vaccins - aantal_tweede_prik - aantal_eerste_prik - verwijderde_vaccins == getTotaalAantalVaccins(),
+    ENSURE(begin_aantal_vaccins - aantal_tweede_prik - aantal_eerste_prik - verwijderde_vaccins ==
+           getTotaalAantalVaccins(),
            "Het aantal vaccins is niet geüpdate!");
     ENSURE(begin_aantal_vaccinaties + aantal_tweede_prik == getTotaalAantalVaccinaties(),
            "Het aantal vaccinaties is niet succesvol geüpdate!");

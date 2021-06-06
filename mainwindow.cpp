@@ -335,14 +335,14 @@ void MainWindow::changeData() {
     SimulationImporter importer(file);
     for (map<string, VaccinatieCentrum *>::iterator centrumIt = centra.begin();
          centrumIt != centra.end(); centrumIt++) {
-        emit (*centrumIt).second->changeMainProgressBar(importer.getAantalVaccinatiesCentrum(centrumIt->first));
+        emit (*centrumIt).second->changeMainProgressBar(importer.getTotaalAantalVaccinatiesCentrum(centrumIt->first));
         const map<string, pair<Vaccin *, int>> &vaccins = (*centrumIt).second->getAantalVaccins1();
         for (map<string, pair<Vaccin *, int> >::const_iterator vaccinIterator = vaccins.begin();
              vaccinIterator != vaccins.end(); vaccinIterator++) {
             int percentage = 0;
-            if (importer.getAantalVaccinatiesCentrum(centrumIt->first) != 0) {
+            if (importer.getTotaalAantalVaccinatiesCentrum(centrumIt->first) != 0) {
                 percentage = (importer.getCentrumVaccinCount(centrumIt->first, (*vaccinIterator).first) * 100 /
-                              importer.getAantalVaccinatiesCentrum(centrumIt->first));
+                              importer.getTotaalAantalVaccinatiesCentrum(centrumIt->first));
             }
             emit (*centrumIt).second->changeVaccinProgressBar((*centrumIt).second->getKfname(), (*vaccinIterator).first,
                                                               percentage);
@@ -366,7 +366,7 @@ void MainWindow::changeData() {
     for (map<string, VaccinatieCentrum *>::iterator centrumIt = centra.begin();
          centrumIt != centra.end(); centrumIt++) {
         totaal_eersteprik += importer.getTotaalAantalEerstePrikken(centrumIt->first);
-        totaal_tweedeprik += importer.getAantalVaccinatiesCentrum(centrumIt->first);
+        totaal_tweedeprik += importer.getTotaalAantalVaccinatiesCentrum(centrumIt->first);
     }
 
     float pEerstePrikken = (totaal_eersteprik / totaal) * 100;
