@@ -58,6 +58,9 @@ void VaccinSimulatie::stop() {
 bool VaccinSimulatie::nextDay() {
     StatisticsSingleton &stats = StatisticsSingleton::getInstance();
     OutputSingleton &output = OutputSingleton::getInstance();
+    if(day == 1){
+        ExportSimulation("../SavedData/dag" + to_string(day) + ".xml", this);
+    }
 
     bool endOfSimulation = true;
     for (unsigned int i = 0; i < hubs.size(); i++) {
@@ -119,7 +122,7 @@ bool VaccinSimulatie::nextDay() {
         }
         stats.setEerstePrikken(totaal_eerste_prikken);
         stats.setAantalVaccinaties(totaal_vaccinaties);
-        ExportSimulation("../SavedData/dag" + to_string(day) + ".xml", this);
+        ExportSimulation("../SavedData/dag" + to_string(day+1) + ".xml", this);
         day++;
         emit dayNrChanged(day);
     } else {

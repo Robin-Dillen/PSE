@@ -3,6 +3,8 @@
 //
 #include <QSlider>
 #include <math.h>
+#include "VaccinatieCentrum.h"
+#include "Hub.h"
 
 #ifndef PSE_SLIDER_H
 #define PSE_SLIDER_H
@@ -25,6 +27,9 @@ public slots:
 private:
     int interval;
     int maxValue;
+    Hub* hub;
+    VaccinatieCentrum* centrum;
+
 
 
 };

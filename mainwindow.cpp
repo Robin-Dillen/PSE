@@ -308,12 +308,12 @@ void MainWindow::setGuiDay(int day){
 }
 
 void MainWindow::nextDay(){
-    if (dayOffset == 1) {
+    if(dayOffset == 0){
         ui->ReturnButton->click();
         ui->NextDayButton->click();
-    } else {
+    }else{
         dayOffset--;
-        setGuiDay(simDay - dayOffset);
+        setGuiDay(simDay-dayOffset);
         changeData();
     }
 }
@@ -386,4 +386,5 @@ void MainWindow::changeData() {
 void MainWindow::returnToCurrent(){
     dayOffset = 0;
     setGuiDay(simDay-dayOffset);
+
 }
