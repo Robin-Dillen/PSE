@@ -37,14 +37,45 @@ class SimulationImporter {
 public:
     SimulationImporter(const std::string &filename);
 
+    /*!
+     * geeft het aantal vaccins in de gegeven hub terug (hubnr is de index van hubs in simulatie)
+     * @param hubnr nummer van de hub
+     * @param vaccin type van het vaccin
+     * @return het aantal vaccins in de hub met gegeven type
+     * \n ENSURE(isProperlyInitialized(), "Object wasn't properly initialised!");
+     * \n ENSURE(aantal >= 0, "Een hub kan geen negatief aantal vaccinaties hebben!");
+     */
     int getHubVaccinCount(int hubnr, const std::string &vaccin);
 
+    /*!
+     * geeft het aantal vaccins in het gegeven centrum terug (centrumnr is de index van centra in simulatie)
+     * @param centrumnr nummer van het centrum
+     * @param vaccin type van het vaccin
+     * @return het aantal vaccins in het centrum met gegeven type
+     * \n ENSURE(isProperlyInitialized(), "Object wasn't properly initialised!");
+     */
     int getCentrumVaccinCount(int centrumnr, const std::string &vaccin);
 
+    /*!
+     * geeft het totaal aantal volledige vaccinaties terug van het centrum
+     * @param centrumnr vaccin type van het vaccin
+     * @return het totaal aantal volledige vaccinaties
+     * \n ENSURE(isProperlyInitialized(), "Object wasn't properly initialised!");
+     */
     int getAantalVaccinatiesCentrum(int centrumnr);
 
+    /*!
+     * geeft het aantal eerste prikken van het centrum met het bepaalde type terug
+     * @param centrumnr centrumnr vaccin type van het vaccin
+     * @param vaccin type van het vaccin
+     * @return het aantal eerste prikken in hub met gegeven type
+     * \n ENSURE(isProperlyInitialized(), "Object wasn't properly initialised!");
+     */
     int getAantalEerstePrikken(int centrumnr, const std::string &vaccin);
 
+    /*!
+     * @return geeft terug of het object juist geïnitialiseert is
+     */
     bool isProperlyInitialized() const;
 
 private:

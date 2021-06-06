@@ -2,6 +2,7 @@
 // Created by Niels on 2/06/2021.
 //
 #include <iostream>
+#include <stdio.h>
 
 #include "VaccinSimulatie.h"
 #include "Utils.h"
@@ -151,6 +152,13 @@ const vector<VaccinatieCentrum *> &VaccinSimulatie::getVaccinatieCentra() const 
 
 void VaccinSimulatie::updateSpeed(int newspeed) {
     qTimer->setInterval(newspeed);
+}
+
+VaccinSimulatie::~VaccinSimulatie() {
+    for (int i = 1; i <= day; i++) {
+        remove(("../SavedData/dag" + to_string(i) + ".xml").c_str());
+    }
+
 }
 
 

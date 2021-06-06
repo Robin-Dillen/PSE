@@ -25,6 +25,8 @@ public:
 
     const vector<VaccinatieCentrum *> &getVaccinatieCentra() const;
 
+    virtual ~VaccinSimulatie();
+
 public slots:
 
     void start();

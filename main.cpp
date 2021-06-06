@@ -43,6 +43,9 @@ int main(int argc, char *argv[]) {
     VaccinSimulatie *s = new VaccinSimulatie(hubs, vaccinatie_centra, args[0]);
     MainWindow *w = new MainWindow(s);
     w->showNormal();
-    return a.exec();
+    int ret = a.exec();
+    delete s;
+    delete w;
+    return ret;
 }
 

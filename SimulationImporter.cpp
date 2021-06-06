@@ -58,21 +58,27 @@ SimulationImporter::SimulationImporter(const std::string &filename) : _initCheck
 
 int SimulationImporter::getHubVaccinCount(int hubnr, const std::string &vaccin) {
     ENSURE(isProperlyInitialized(), "Object wasn't properly initialised!");
-    return hubs_data[hubnr].data.at(vaccin).aantal_vaccins;
+    int aantal = hubs_data[hubnr].data.at(vaccin).aantal_vaccins;
+    ENSURE(aantal >= 0, "Een hub kan geen negatief aantal vaccinaties hebben!");
+    return aantal;
 }
 
 int SimulationImporter::getCentrumVaccinCount(int centrumnr, const std::string &vaccin) {
     ENSURE(isProperlyInitialized(), "Object wasn't properly initialised!");
-    return centra_data[centrumnr].data.at(vaccin).aantal_vaccins;
+    int aantal = centra_data[centrumnr].data.at(vaccin).aantal_vaccins;
+    ENSURE(aantal >= 0, "Een centrum kan geen negatief aantal vaccinaties hebben!");
+    return aantal;
 }
 
 int SimulationImporter::getAantalVaccinatiesCentrum(int centrumnr) {
     ENSURE(isProperlyInitialized(), "Object wasn't properly initialised!");
     int count = 0;
     if (centra_data.empty() || (int) centra_data.size() < centrumnr) return 0;
-    for(std::map<std::string, SimulationImporterVaccinData>::iterator it = centra_data[centrumnr].data.begin(); it != centra_data[centrumnr].data.end(); it++){
+    for (std::map<std::string, SimulationImporterVaccinData>::iterator it = centra_data[centrumnr].data.begin();
+         it != centra_data[centrumnr].data.end(); it++) {
         count += (*it).second.tweede_prikken;
     }
+    ENSURE(count >= 0, "Het aantal vaccinaties in een centrum kan nie negatief zijn!");
     return count;
 }
 
@@ -81,7 +87,9 @@ int SimulationImporter::getAantalEerstePrikken(int centrumnr, const std::string 
     if (centra_data.empty() || (int) centra_data.size() < centrumnr ||
         centra_data[centrumnr].data.find(vaccin) == centra_data[centrumnr].data.end())
         return 0;
-    return centra_data[centrumnr].data.at(vaccin).eerste_prikken;
+    int aantal = centra_data[centrumnr].data.at(vaccin).eerste_prikken;
+    ENSURE(aantal >= 0, "Een centrum kan geen negatief aantal eerste prikken hebben!");
+    return aantal;
 }
 
 bool SimulationImporter::isProperlyInitialized() const {
