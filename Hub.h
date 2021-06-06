@@ -119,6 +119,14 @@ public:
      */
     void ontvangLevering(const string &type, int aantal_vaccins);
 
+    /*!
+     * verdeelt de Kvaccins over alle verbonden vaccinatie centra
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling verdeelVaccins");
+     * \n ENSURE(aantal Kvaccins >= 0, "You can't have less than 0 Kvaccins!");
+     * \n ENSURE(vaccins_in_levering >= 0, "Er wordt een negatief aantal vaccins geleverd!");
+     * \n ENSURE(totaal_vaccins <= centrum->second->getMaxStock(), "Te veel vaccins!");
+     */
+    void verdeelVaccins();
 
     /*!
      * verdeelt alle 2de prikken aan de centra
@@ -157,6 +165,8 @@ public:
     int getAllVaccins(const Vaccin *type);
 
     void distributeManual(std::string type, int count);
+
+    void initializeCentra();
 
 public slots:
     void changeAllVaccinCount();

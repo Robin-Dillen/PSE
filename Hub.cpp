@@ -13,9 +13,6 @@
 #include "Vaccins.h"
 
 Hub::Hub(const map<string, Vaccin *> &vaccins) : _initCheck(this), kvaccins(vaccins) {
-//    for (map<string, Vaccin *>::const_iterator vaccin = vaccins.begin(); vaccin != vaccins.end(); vaccin++) {
-//        ontvangLevering(vaccin->first, vaccin->second->levering);
-//    }
     ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
 }
 
@@ -77,6 +74,7 @@ void Hub::addCentrum(VaccinatieCentrum *centrum) {
 
     unsigned int og_size = fverbonden_centra.size();
     fverbonden_centra[centrum->getKfname()] = centrum;
+
     ENSURE(fverbonden_centra.size() == og_size + 1, "Het vaccinatie centrum is niet toegevoegt!");
 }
 
@@ -353,5 +351,13 @@ void Hub::distributeManual(std::string type, int count){
 void Hub::changeAllVaccinCount(){
     for (map<string, Vaccin *>::const_iterator vaccin = kvaccins.begin(); vaccin != kvaccins.end(); ++vaccin) {
         emit changeVaccinCount(this, vaccin->first, getAllVaccins(vaccin->second));
+    }
+}
+
+void Hub::initializeCentra(){
+    for(map<string, VaccinatieCentrum *>::iterator centrum = fverbonden_centra.begin(); centrum != fverbonden_centra.end(); centrum++){
+        for (map<string, Vaccin *>::const_iterator vaccin = kvaccins.begin(); vaccin != kvaccins.end(); vaccin++) {
+            centrum->second->ontvangLevering(0, vaccin->second);
+        }
     }
 }

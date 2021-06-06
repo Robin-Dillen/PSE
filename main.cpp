@@ -42,6 +42,9 @@ int main(int argc, char *argv[]) {
 
     VaccinSimulatie *s = new VaccinSimulatie(hubs, vaccinatie_centra, args[0]);
     MainWindow *w = new MainWindow(s);
+    for(vector<Hub *>::iterator hub_iterator = hubs.begin(); hub_iterator != hubs.end(); hub_iterator++){
+        (*hub_iterator)->initializeCentra();
+    }
     w->showNormal();
     int ret = a.exec();
     delete s;
