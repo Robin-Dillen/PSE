@@ -139,6 +139,15 @@ MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
         QLabel *inwo = new QLabel(QString::fromStdString(to_string((*it)->getKaantalInwoners())));
         grid->addWidget(inwo, 0, 1);
 
+        QLabel *vaccin_label = new QLabel("Vaccins:");
+        grid->addWidget(vaccin_label, 0, 2);
+
+        QLabel *vaccin_count = new QLabel();
+        vaccin_count->setNum(0);
+        grid->addWidget(vaccin_count, 0, 3);
+
+        QObject::connect((*it), SIGNAL(changeVaccinCount(int)), vaccin_count, SLOT(setNum(int)));
+
         QLabel *gevaccineerd = new QLabel("Percentage:");
         grid->addWidget(gevaccineerd, 1, 1);
 
@@ -268,6 +277,7 @@ void MainWindow::addVaccin(const std::string &centrum, Vaccin *vaccin, int centr
                 QObject::connect(centra[centrum], SIGNAL(newDay()), vaccinSlider, SLOT(show()));
                 QObject::connect(centra[centrum], &VaccinatieCentrum::newDay, vaccinSlider, &Slider::resetSlider);
                 QObject::connect(centra[centrum], &VaccinatieCentrum::newDay, vaccinSlider, &Slider::changeMaximum);
+                QObject::connect(commits[centrum], SIGNAL(clicked()), centra[centrum], SLOT(updateVaccinCount()));
 
                 QObject::connect(commits[centrum], SIGNAL(clicked()), vaccinSlider, SLOT(sendVaccins()));
                 QObject::connect(commits[centrum], SIGNAL(clicked()), hubs[hubnr], SLOT(changeAllVaccinCount()));
