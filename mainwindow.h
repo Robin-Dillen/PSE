@@ -11,6 +11,7 @@
 #include <QDialog>
 #include <map>
 #include "Hub.h"
+#include "SimulationImporter.h"
 
 #include "VaccinatieCentrum.h"
 
@@ -52,7 +53,10 @@ public slots:
     void returnToCurrent();
 
 private:
-    int currentDay;
+    void setGuiDay(int day);
+    void changeData();
+
+    int dayOffset;
     int simDay;
     std::map<std::string, VaccinatieCentrum*> centra;
     std::vector<Hub*> hubs;
@@ -62,6 +66,7 @@ private:
 
     std::map<std::string, std::map<std::string, QProgressBar*>> progressBars;
     std::map<std::string, QLabel*> vaccineCount;
+
     Ui::MainWindow *ui;
     QPieSeries *pieSeries;
 

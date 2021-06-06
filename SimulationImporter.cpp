@@ -67,9 +67,13 @@ int SimulationImporter::getCentrumVaccinCount(int centrumnr, const std::string &
     return centra_data[centrumnr].data.at(vaccin).aantal_vaccins;
 }
 
-int SimulationImporter::getAantalVaccinatiesCentrum(int centrumnr, const std::string &vaccin) {
+int SimulationImporter::getAantalVaccinatiesCentrum(int centrumnr) {
     ENSURE(isProperlyInitialized(), "Object wasn't properly initialised!");
-    return centra_data[centrumnr].data.at(vaccin).tweede_prikken;
+    int count = 0;
+    for(std::map<std::string, SimulationImporterVaccinData>::iterator it = centra_data[centrumnr].data.begin(); it != centra_data[centrumnr].data.end(); it++){
+        count += (*it).second.tweede_prikken;
+    }
+    return count;
 }
 
 int SimulationImporter::getAantalEerstePrikken(int centrumnr, const std::string &vaccin) {

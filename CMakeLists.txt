@@ -58,7 +58,7 @@ set(RELEASE_SOURCE_FILES
         StatisticsSingleton.cpp StatisticsSingleton.h
         Vaccins.cpp Vaccins.h
         mainwindow.cpp mainwindow.h mainwindow.ui
-        )
+        SimulationImporter.cpp SimulationImporter.h)
 
 # Set source files for DEBUG target
 set(DEBUG_SOURCE_FILES
