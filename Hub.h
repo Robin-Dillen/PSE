@@ -200,6 +200,7 @@ public:
 
     int getAllVaccins(const Vaccin *type);
 
+
     signals:
 
     void changeVaccinCount(std::string vaccin,int count);

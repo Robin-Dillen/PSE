@@ -2,6 +2,8 @@
 #include "cmake-build-debug/PSE_autogen/include/ui_mainwindow.h"
 #include "VaccinSimulatie.h"
 #include "StatisticsSingleton.h"
+#include "Slider.h"
+
 #include<iostream>
 
 #include <QtCharts>
@@ -27,7 +29,7 @@ MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
     pieSeries->setLabelsPosition(QPieSlice::LabelInsideHorizontal);
 
     dayOffset = 0;
-    simDay = 0;
+    simDay = 1;
 
     QChart *chart = new QChart();
     chart->addSeries(pieSeries);
@@ -236,8 +238,10 @@ void MainWindow::addVaccin(const std::string &centrum, const Vaccin* vaccin, int
     int k = 2;
     for(int j = 0; j< (int) hubs.size(); j++){
         if(hubs[j]->getFverbondenCentra().find(centrum) != hubs[j]->getFverbondenCentra().end()){
-            QSlider *vaccinSlider = new QSlider(Qt::Horizontal);
+
+            Slider *vaccinSlider = new Slider(vaccin->transport);
             QLabel *value = new QLabel("0");
+
             int totalVaccines = 0;
             for(int l = 0; l< (int) hubs.size(); l++){
                 totalVaccines += hubs[l]->getAllVaccins(vaccin);
@@ -245,16 +249,10 @@ void MainWindow::addVaccin(const std::string &centrum, const Vaccin* vaccin, int
             int teLeverenvaccins = floor((centra[centrum]->getMaxStock()-centra[centrum]->getTotaalAantalVaccins())/vaccin->transport)*vaccin->transport;
             int maxteVerdelen = min(teLeverenvaccins, totalVaccines);
             vaccinSlider->setMaximum(maxteVerdelen);
-            //QObject::connect(vaccinSlider, SIGNAL(valueChanged()), vaccinSlider, SLOT(setValue())):
 
-            QObject::connect(vaccinSlider, &QSlider::valueChanged, this, [=] () {
-                int v =  round(vaccinSlider->value()/vaccin->transport)*vaccin->transport;
-                vaccinSlider->setValue(v);
-                if(value->text().toUtf8().constData() != to_string(v)){
-                    //cout<<"change! new value: "<<v<<endl;
-                    value->setText(QString::number(v));
-                }
-            });
+            QObject::connect(vaccinSlider, &Slider::valueChanged, vaccinSlider, &Slider::changeValue);
+            QObject::connect(vaccinSlider, SIGNAL(changeText(const QString&)), value, SLOT(setText(const QString &)));
+
             layouts[centrum]->addWidget(vaccinSlider,i+1,k);
             layouts[centrum]->addWidget(value,i+1,k+1);
             k+=2;
@@ -265,7 +263,7 @@ void MainWindow::addVaccin(const std::string &centrum, const Vaccin* vaccin, int
             QObject::connect(ui->StartButton, SIGNAL(clicked()), vaccinSlider, SLOT(hide()));
             QObject::connect(commits[centrum], SIGNAL(clicked()), vaccinSlider, SLOT(hide()));
             QObject::connect(centra[centrum], SIGNAL(newDay()), vaccinSlider, SLOT(show()));
-            //QObject::connect(centra[centrum], SIGNAL(newDay()),vaccinSlider,SLOT(setValue(0)));
+            QObject::connect(centra[centrum], &VaccinatieCentrum::newDay,vaccinSlider,&Slider::resetSlider);
 
             QObject::connect(ui->ReturnButton, SIGNAL(clicked()), value, SLOT(show()));
             QObject::connect(ui->PreviousDayButton, SIGNAL(clicked()), value, SLOT(hide()));
@@ -273,16 +271,16 @@ void MainWindow::addVaccin(const std::string &centrum, const Vaccin* vaccin, int
             QObject::connect(ui->StartButton, SIGNAL(clicked()), value, SLOT(hide()));
             QObject::connect(commits[centrum], SIGNAL(clicked()), value, SLOT(hide()));
             QObject::connect(centra[centrum], SIGNAL(newDay()), value, SLOT(show()));
-            //QObject::connect(centra[centrum], SIGNAL(newDay()),value,SLOT(setText("0")));
+
+
 
         }
     }
 
 
 
+
     /*QObject::connect(centra[centrum], &VaccinatieCentrum::newDay,this, [=] () {
-        value->setText("0");
-        vaccinSlider->setValue(0);
         int totalVaccines = 0;
         for(int i = 0; i< (int)hubs.size(); i++){
             totalVaccines += hubs[i]->getAllVaccins(vaccin);
@@ -321,7 +319,7 @@ void MainWindow::nextDay(){
 }
 
 void MainWindow::previousDay(){
-    if(simDay-dayOffset != 0){
+    if(simDay-dayOffset != 1){
         dayOffset++;
         setGuiDay(simDay-dayOffset);
         changeData();
