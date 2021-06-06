@@ -47,8 +47,8 @@ SimulationImporter::SimulationImporter(const std::string &filename) : _initCheck
             importerData.data.insert(std::make_pair(type, SimulationImporterVaccinData()));
             // can't use [] -> requires access to constructor
             importerData.data.at(type).aantal_vaccins = to_int(vaccin->FirstChildElement("aantal")->GetText());
-            importerData.data.at(type).aantal_vaccins = to_int(vaccin->FirstChildElement("eersteprik")->GetText());
-            importerData.data.at(type).aantal_vaccins = to_int(vaccin->FirstChildElement("tweedeprik")->GetText());
+            importerData.data.at(type).eerste_prikken = to_int(vaccin->FirstChildElement("eersteprik")->GetText());
+            importerData.data.at(type).tweede_prikken = to_int(vaccin->FirstChildElement("tweedeprik")->GetText());
 
         } while ((vaccin = vaccin->NextSiblingElement("VACCIN")) != NULL);
         centra_data.push_back(importerData);
