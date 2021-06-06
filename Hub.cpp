@@ -448,3 +448,29 @@ int Hub::getAllVaccins(const Vaccin *type) {
     }
     return count;
 }
+
+void Hub::distributeManual(std::string type, int count){
+    Vaccin* vaccin = kvaccins[type];
+    if(vaccin->aantal >= count){
+        vaccin->aantal -= count;
+        return;
+    }
+    else{
+        count -= vaccin->aantal;
+        vaccin->aantal = 0;
+        for(map<string, deque<int> >::iterator it = vaccin->extra_gereserveerd.begin(); it != vaccin->extra_gereserveerd.end(); it++){
+            if(count == 0) break;
+            for(deque<int>::reverse_iterator it2 = (*it).second.rbegin(); it2 != (*it).second.rend(); it++){
+                   if((*it2) >= count){
+                       (*it2) -= count;
+                       count = 0;
+                       break;
+                   }
+                   else{
+                       count -= (*it2);
+                       (*it2) = 0;
+                   }
+            }
+        }
+    }
+}

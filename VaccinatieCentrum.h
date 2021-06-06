@@ -263,7 +263,7 @@ public:
     const map<string, pair<Vaccin *, int>> &getAantalVaccins1() const;
 
 signals:
-    void setVaccinInDialog(const std::string &centrum, const Vaccin* vaccin, int i);
+    void setVaccinInDialog(const std::string &centrum, Vaccin* vaccin, int i);
 
     void changeMainProgressBar(int value);
 

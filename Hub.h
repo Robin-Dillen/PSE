@@ -200,6 +200,7 @@ public:
 
     int getAllVaccins(const Vaccin *type);
 
+    void distributeManual(std::string type, int count);
 
     signals:
 

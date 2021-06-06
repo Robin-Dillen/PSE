@@ -165,8 +165,8 @@ MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
 
         dialog->setLayout(grid);
         QObject::connect(but, SIGNAL(pressed()), dialog, SLOT(exec()));
-        QObject::connect((*it), SIGNAL(setVaccinInDialog(const std::string&, const Vaccin*, int)), this,
-                         SLOT(addVaccin(const std::string&,const Vaccin*,int)));
+        QObject::connect((*it), SIGNAL(setVaccinInDialog(const std::string&, Vaccin*, int)), this,
+                         SLOT(addVaccin(const std::string&,Vaccin*,int)));
     }
 
 
@@ -229,7 +229,7 @@ void MainWindow::dataChanged() {
     }
 }
 
-void MainWindow::addVaccin(const std::string &centrum, const Vaccin* vaccin, int i) {
+void MainWindow::addVaccin(const std::string &centrum, Vaccin* vaccin, int i) {
     QLabel *VaccineName = new QLabel(QString::fromStdString(vaccin->type));
     layouts[centrum]->addWidget(VaccineName,i+1,0);
     QProgressBar *VaccinBar = new QProgressBar();
@@ -237,26 +237,27 @@ void MainWindow::addVaccin(const std::string &centrum, const Vaccin* vaccin, int
     layouts[centrum]->addWidget(VaccinBar,i+1,1);
 
     int k = 2;
-    for(int j = 0; j< (int) hubs.size(); j++){
-        if(hubs[j]->getFverbondenCentra().find(centrum) != hubs[j]->getFverbondenCentra().end()){
+    for(int j = 0; j< (int) hubs.size(); j++) {
+        if (hubs[j]->getFverbondenCentra().find(centrum) != hubs[j]->getFverbondenCentra().end()) {
 
-            Slider *vaccinSlider = new Slider(vaccin->transport);
+            Slider *vaccinSlider = new Slider(vaccin->transport, hubs[i], centra[centrum], vaccin);
             QLabel *value = new QLabel("0");
 
             int totalVaccines = 0;
-            for(int l = 0; l< (int) hubs.size(); l++){
+            for (int l = 0; l < (int) hubs.size(); l++) {
                 totalVaccines += hubs[l]->getAllVaccins(vaccin);
             }
-            int teLeverenvaccins = floor((centra[centrum]->getMaxStock()-centra[centrum]->getTotaalAantalVaccins())/vaccin->transport)*vaccin->transport;
+            int teLeverenvaccins = floor((centra[centrum]->getMaxStock() - centra[centrum]->getTotaalAantalVaccins()) /
+                                         vaccin->transport) * vaccin->transport;
             int maxteVerdelen = min(teLeverenvaccins, totalVaccines);
             vaccinSlider->setMaximum(maxteVerdelen);
 
             QObject::connect(vaccinSlider, &Slider::valueChanged, vaccinSlider, &Slider::changeValue);
             QObject::connect(vaccinSlider, SIGNAL(changeText(const QString&)), value, SLOT(setText(const QString &)));
 
-            layouts[centrum]->addWidget(vaccinSlider,i+1,k);
-            layouts[centrum]->addWidget(value,i+1,k+1);
-            k+=2;
+            layouts[centrum]->addWidget(vaccinSlider, i + 1, k);
+            layouts[centrum]->addWidget(value, i + 1, k + 1);
+            k += 2;
 
             QObject::connect(ui->ReturnButton, SIGNAL(clicked()), vaccinSlider, SLOT(show()));
             QObject::connect(ui->PreviousDayButton, SIGNAL(clicked()), vaccinSlider, SLOT(hide()));
@@ -264,7 +265,10 @@ void MainWindow::addVaccin(const std::string &centrum, const Vaccin* vaccin, int
             QObject::connect(ui->StartButton, SIGNAL(clicked()), vaccinSlider, SLOT(hide()));
             QObject::connect(commits[centrum], SIGNAL(clicked()), vaccinSlider, SLOT(hide()));
             QObject::connect(centra[centrum], SIGNAL(newDay()), vaccinSlider, SLOT(show()));
-            QObject::connect(centra[centrum], &VaccinatieCentrum::newDay,vaccinSlider,&Slider::resetSlider);
+            QObject::connect(centra[centrum], &VaccinatieCentrum::newDay, vaccinSlider, &Slider::resetSlider);
+            QObject::connect(centra[centrum], &VaccinatieCentrum::newDay, vaccinSlider, &Slider::changeMaximum);
+
+            QObject::connect(commits[centrum], SIGNAL(clicked()), vaccinSlider, SLOT(sendVaccins()));
 
             QObject::connect(ui->ReturnButton, SIGNAL(clicked()), value, SLOT(show()));
             QObject::connect(ui->PreviousDayButton, SIGNAL(clicked()), value, SLOT(hide()));
@@ -274,23 +278,8 @@ void MainWindow::addVaccin(const std::string &centrum, const Vaccin* vaccin, int
             QObject::connect(centra[centrum], SIGNAL(newDay()), value, SLOT(show()));
 
 
-
         }
     }
-
-
-
-
-    /*QObject::connect(centra[centrum], &VaccinatieCentrum::newDay,this, [=] () {
-        int totalVaccines = 0;
-        for(int i = 0; i< (int)hubs.size(); i++){
-            totalVaccines += hubs[i]->getAllVaccins(vaccin);
-        }
-        int teLeverenvaccins = floor((centra[centrum]->getMaxStock()-centra[centrum]->getTotaalAantalVaccins())/vaccin->transport)*vaccin->transport;
-        int maxteVerdelen = min(teLeverenvaccins, totalVaccines);
-        vaccinSlider->setMaximum(maxteVerdelen);
-    });
-    */
     QObject::connect(centra[centrum], SIGNAL(changeVaccinProgressBar(const std::string&,const std::string&,int)), this, SLOT(setVaccinValue(const std::string&,const std::string&,int)));
 }
 
@@ -380,5 +369,4 @@ void MainWindow::changeData() {
 void MainWindow::returnToCurrent(){
     dayOffset = 0;
     setGuiDay(simDay-dayOffset);
-
 }

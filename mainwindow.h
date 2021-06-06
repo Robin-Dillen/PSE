@@ -34,7 +34,7 @@ public:
 
 public slots:
 
-    void addVaccin(const std::string &centrum, const Vaccin* vaccin, int i);
+    void addVaccin(const std::string &centrum, Vaccin* vaccin, int i);
 
     void changeDay(int day);
 
