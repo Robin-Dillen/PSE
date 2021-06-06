@@ -50,7 +50,7 @@ SimulationImporter::SimulationImporter(const std::string &filename) : _initCheck
             importerData.data.at(type).aantal_vaccins = to_int(vaccin->FirstChildElement("eersteprik")->GetText());
             importerData.data.at(type).aantal_vaccins = to_int(vaccin->FirstChildElement("tweedeprik")->GetText());
 
-        } while ((vaccin = vaccin->NextSiblingElement("VACCIN")) != NULL);
+        } while ((vaccin = vaccin->NextSiblingElement("CENTRUM")) != NULL);
         centra_data.push_back(importerData);
     } while ((centrum = centrum->NextSiblingElement("HUB")) != NULL);
     ENSURE(isProperlyInitialized(), "Object isn't properly initialized when exiting the constructor");
