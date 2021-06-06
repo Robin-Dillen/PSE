@@ -13,9 +13,9 @@
 #include "Vaccins.h"
 
 Hub::Hub(const map<string, Vaccin *> &vaccins) : kvaccins(vaccins), _initCheck(this) {
-    for (map<string, Vaccin *>::const_iterator vaccin = vaccins.begin(); vaccin != vaccins.end(); vaccin++) {
-        ontvangLevering(vaccin->first, vaccin->second->levering);
-    }
+//    for (map<string, Vaccin *>::const_iterator vaccin = vaccins.begin(); vaccin != vaccins.end(); vaccin++) {
+//        ontvangLevering(vaccin->first, vaccin->second->levering);
+//    }
     ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
 }
 
@@ -191,17 +191,14 @@ void Hub::addReservations(const string &type) {
                 kvaccins[type]->gereserveerd[centrum->first][dag] += lading;
                 centrum->second->reserveerVaccins(type, dag, lading);
             }
-            if (kvaccins[type]->extra_gereserveerd[centrum->first][dag] +
-                kvaccins[type]->gereserveerd[centrum->first][dag] >
-                centrum->second->getKcapaciteit() * 2)
-                cout << "error" << endl;
+
             ENSURE(kvaccins[type]->extra_gereserveerd[centrum->first][dag] +
                    kvaccins[type]->gereserveerd[centrum->first][dag] <=
                    centrum->second->getKcapaciteit() * 2, "Er zijn teveel vaccins gereserveerd");
         }
     }
     ENSURE(kvaccins[type]->aantal >= 0, "Er Zijn teveel vaccins gereserveerd");
-    //2de reservatie zoekt het gemiddelde om alle vaccins te verdelen, maar niet meer dan capaciteit
+
     if (getAantalVaccins(type) > lading) {
         for (map<string, VaccinatieCentrum *>::const_iterator centrum = fverbonden_centra.begin();
              centrum != fverbonden_centra.end(); centrum++) {
@@ -217,7 +214,7 @@ void Hub::addReservations(const string &type) {
 
                     //Als gereserveerde vaccins boven capaciteit komt, geen vaccins meer leveren
                     done = false;
-                    if (free_capaciteit <= 0) {
+                    if (free_capaciteit <= 0 || (lading > free_capaciteit && getVaccins()[type]->temperatuur < 0)) {
                         done = true;
                         continue;
                     }
@@ -254,6 +251,7 @@ void Hub::verdeelVaccins() {
             int lading = kvaccins.at(vaccin->first)->transport;
             //Blijft ladingen leveren tot alle vaccins op zijn, of tot capaciteit is bereikt
             while (gereserveerd_2de_prik >= lading && totaal_vaccins + lading <= maxStock) {
+                if (vaccin->second->temperatuur < 0 && lading > capaciteit) break;
                 centrum->second->ontvangLevering(lading, vaccin->second);
                 gereserveerd_2de_prik -= lading;
                 capaciteit -= lading;
@@ -272,9 +270,11 @@ void Hub::verdeelVaccins() {
             int gereserveerd_1ste_prik = kvaccins[vaccin->first]->extra_gereserveerd[centrum->first].front();
             //aantal gereserveerde vaccins leveren
             int lading = kvaccins[vaccin->first]->transport;
-            //int temperatuur = kvaccins.at(vaccin->first)->temperatuur;
+
             //Blijft ladingen leveren tot alle vaccins op zijn, of tot capaciteit is bereikt
-            while (gereserveerd_1ste_prik >= lading && capaciteit > 0 && totaal_vaccins + lading <= maxStock) {
+            while (gereserveerd_1ste_prik >= lading && capaciteit > 0 && totaal_vaccins + lading <= maxStock &&
+                   centrum->second->getAantalNietVaccinaties() != 0) {
+                if (vaccin->second->temperatuur < 0 && lading > capaciteit) break;
                 centrum->second->ontvangLevering(lading, vaccin->second);
                 /*if(temperatuur < 0 && capaciteit < lading){
                     break;
@@ -284,6 +284,8 @@ void Hub::verdeelVaccins() {
                 capaciteit -= lading;
                 totaal_vaccins += lading;
             }
+            if (gereserveerd_1ste_prik < 0)
+                cout << "error";
             ENSURE(gereserveerd_1ste_prik >= 0, "Er zijn meer vaccins geleverd dan gereserveerd");
             //Als er nog gereserveerde vaccins over zijn, mogen die terug in vaccins opgeslagen worden voor later
             if (gereserveerd_1ste_prik > 0) {

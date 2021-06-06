@@ -59,13 +59,6 @@ bool VaccinSimulatie::nextDay() {
     StatisticsSingleton &stats = StatisticsSingleton::getInstance();
     OutputSingleton &output = OutputSingleton::getInstance();
 
-    for (unsigned int i = 0; i < hubs.size(); i++) {
-        map<string, Vaccin *> vaccins = hubs[i]->getVaccins();
-        for (map<string, Vaccin *>::iterator vaccin = vaccins.begin(); vaccin != vaccins.end(); vaccin++) {
-            hubs[i]->addReservations(vaccin->first);
-        }
-    }
-
     bool endOfSimulation = true;
     for (unsigned int i = 0; i < hubs.size(); i++) {
         if (!hubs[i]->isIedereenGevaccineerd()) {
@@ -76,7 +69,7 @@ bool VaccinSimulatie::nextDay() {
         // increase current_day
         map<string, Vaccin *> vaccins = hubs[i]->getVaccins();
         for(map<string,Vaccin*>::iterator it = vaccins.begin(); it != vaccins.end(); it++){
-            if (day % (it->second->interval + 1) == 0) {
+            if ((day - 1) % it->second->interval == 0) {
                 // door in de simulatie het aantal vaccins mee te geven kunnen we war randomness toevoegen aan het aantal
                 // geleverde vaccins. Want ze zijn toch niet te vertrouwen die farmareuzen!
                 hubs[i]->ontvangLevering(it->first, it->second->levering);

@@ -183,74 +183,109 @@ void VaccinatieCentrum::nieuweDag() {
     int capaciteit = kcapaciteit;
 
     //eerste vaccinatie om 2de prikken te zetten
-    for (map<string, deque<int>>::iterator batch = aantal_eerste_prikken.begin();
-         batch != aantal_eerste_prikken.end(); batch++) {
+    for (int koud = 1; koud >= 0; --koud) {
+        for (map<string, deque<int>>::iterator batch = aantal_eerste_prikken.begin();
+             batch != aantal_eerste_prikken.end(); batch++) {
+            if (!((aantal_vaccins[batch->first].first->temperatuur > 0) ^ koud)) continue;
+            int min_ = min(3,
+                           getAantalVaccins(batch->first),
+                           capaciteit,
+                           batch->second.front());
 
-        int min_ = min(3,
-                       getAantalVaccins(batch->first),
-                       capaciteit,
-                       batch->second.front());
+            zet2dePrikVaccins(batch->first, min_, capaciteit);
+            batch->second.front() -= min_;
+            aantal_tweede_prik += min_;
 
-        zet2dePrikVaccins(batch->first, min_, capaciteit);
-        batch->second.front() -= min_;
-        aantal_tweede_prik += min_;
-
-        // if the batch is not empty, add the batch to de next day
-        if (batch->second.front() != 0) {
-            deque<int>::iterator tomorrow = batch->second.begin() + 1;
+            // if the batch is not empty, add the batch to de next day
+            if (batch->second.front() != 0) {
+                deque<int>::iterator tomorrow = batch->second.begin() + 1;
+//                kvaccins[type]->extra_gereserveerd[centrum->first][dag] +
+//                kvaccins[type]->gereserveerd[centrum->first][dag] <=
+//                centrum->second->getKcapaciteit() * 2
+                (*tomorrow) += batch->second.front();
+                int dag = 1;
+                while (batch->second.front() != 0) {
+                    int al_gereserverd = 0;
+                    for (map<string, deque<int>>::iterator reservatie = nog_te_reserveren_vaccins.begin();
+                         reservatie != nog_te_reserveren_vaccins.end(); ++reservatie) {
+                        al_gereserverd += reservatie->second[dag];
+                    }
+                    nog_te_reserveren_vaccins[batch->first][dag] += std::min(kcapaciteit - al_gereserverd,
+                                                                             batch->second.front());
+                    batch->second.front() -= std::min(kcapaciteit - al_gereserverd, batch->second.front());
+                    dag++;
+                }
 //            if (tomorrow->find(batch->first) == tomorrow->end()) {
 //                (*tomorrow)[batch->first] = batch->second;
 //            } else {
 //                (*tomorrow)[batch->first] += batch->second;
 //            }
-            (*tomorrow) += batch->second.front();
+            }
         }
     }
     //2de vaccinatie om nog niet gevaccineerden te vaccineren
-    for (MapSP_VI_Iterator vaccin = aantal_vaccins.begin();
-         vaccin != aantal_vaccins.end(); vaccin++) {
-        int aantal_prikken = min(3,
-                                 capaciteit,
-                                 aantal_niet_vaccinaties,
-                                 getAantalVaccins(vaccin->first));
-        ENSURE(aantal_prikken >= 0, "Het aantal vaccinaties mag niet negatief zijn!");
-        if (vaccin->second.first->hernieuwing == 0) {
-            //nieuw type bijvoegen
+    bool laatste_eerste_prikken = getAantalNietVaccinaties();
+    for (int koud = 1; koud >= 0; --koud) {
+        for (MapSP_VI_Iterator vaccin = aantal_vaccins.begin();
+             vaccin != aantal_vaccins.end(); vaccin++) {
+            if (!((vaccin->second.first->temperatuur > 0) ^ koud)) continue;
+            int aantal_prikken = min(3,
+                                     capaciteit,
+                                     aantal_niet_vaccinaties,
+                                     getAantalVaccins(vaccin->first));
+            ENSURE(aantal_prikken >= 0, "Het aantal vaccinaties mag niet negatief zijn!");
+            if (vaccin->second.first->hernieuwing == 0) {
+                //nieuw type bijvoegen
 
-            zet2dePrikVaccins(vaccin->first, aantal_prikken, capaciteit);
-            aantal_tweede_prik += aantal_prikken;
-            aantal_niet_vaccinaties -= aantal_prikken;
-        } else {
-            aantal_eerste_prikken[vaccin->first][vaccin->second.first->hernieuwing - 1] += aantal_prikken;
-            nog_te_reserveren_vaccins[vaccin->first][vaccin->second.first->hernieuwing - 1] += aantal_prikken;
-            zet1stePrikVaccins(vaccin->first, aantal_prikken, capaciteit);
-            aantal_eerste_prik += aantal_prikken;
-        }
-        //verwijder vaccins als ze nooit meer gebruikt kunnen worden
-        if (aantal_niet_vaccinaties == 0) {
-            int nogtevaccineren = 0;
-            if (vaccin->second.first->hernieuwing != 0) {
-                for (int i = 0; i < (int) aantal_eerste_prikken[vaccin->first].size(); i++) {
-                    nogtevaccineren += aantal_eerste_prikken[vaccin->first][i];
+                zet2dePrikVaccins(vaccin->first, aantal_prikken, capaciteit);
+                aantal_tweede_prik += aantal_prikken;
+                aantal_niet_vaccinaties -= aantal_prikken;
+            } else {
+                aantal_eerste_prikken[vaccin->first][vaccin->second.first->hernieuwing - 1] += aantal_prikken;
+                nog_te_reserveren_vaccins[vaccin->first][vaccin->second.first->hernieuwing - 1] += aantal_prikken;
+                zet1stePrikVaccins(vaccin->first, aantal_prikken, capaciteit);
+                aantal_eerste_prik += aantal_prikken;
+            }
+            //verwijder vaccins als ze nooit meer gebruikt kunnen worden
+            if (aantal_niet_vaccinaties == 0) {
+                int nogtevaccineren = 0;
+                if (vaccin->second.first->hernieuwing != 0) {
+                    for (int i = 0; i < (int) aantal_eerste_prikken[vaccin->first].size(); i++) {
+                        nogtevaccineren += aantal_eerste_prikken[vaccin->first][i];
+                    }
+                }
+                if (nogtevaccineren == 0) {
+                    verwijderde_vaccins += aantal_vaccins[vaccin->first].second;
+                    aantal_vaccins[vaccin->first].second = 0;
                 }
             }
-            if (nogtevaccineren == 0) {
-                verwijderde_vaccins += aantal_vaccins[vaccin->first].second;
-                aantal_vaccins[vaccin->first].second = 0;
+            if (vaccin->second.first->hernieuwing != 0) {
+                aantal_eerste_prikken[vaccin->first].pop_front();
+                aantal_eerste_prikken[vaccin->first].resize(aantal_eerste_prikken[vaccin->first].size() + 1);
+
+                nog_te_reserveren_vaccins[vaccin->first].pop_front();
+                nog_te_reserveren_vaccins[vaccin->first].resize(nog_te_reserveren_vaccins[vaccin->first].size() + 1);
             }
-        }
-        if (vaccin->second.first->hernieuwing != 0) {
-            aantal_eerste_prikken[vaccin->first].pop_front();
-            aantal_eerste_prikken[vaccin->first].resize(aantal_eerste_prikken[vaccin->first].size() + 1);
+            if (getTotaalAantalVaccinaties() != 0) {
+                emit changeVaccinProgressBar(getKfname(), vaccin->first,
+                                             (int) (aantal_vaccinaties[vaccin->first] * 100 /
+                                                    getTotaalAantalVaccinaties()));
+            }
 
-            nog_te_reserveren_vaccins[vaccin->first].pop_front();
-            nog_te_reserveren_vaccins[vaccin->first].resize(nog_te_reserveren_vaccins[vaccin->first].size() + 1);
         }
-        if(getTotaalAantalVaccinaties() != 0){
-            emit changeVaccinProgressBar(getKfname(),vaccin->first,(int)(aantal_vaccinaties[vaccin->first]*100/getTotaalAantalVaccinaties()));
-        }
-
     }
+
+    for (map<string, pair<Vaccin *, int> >::iterator aantal = aantal_vaccins.begin();
+         aantal != aantal_vaccins.end(); ++aantal) {
+        if (aantal->second.first->temperatuur < 0) {
+            if (((laatste_eerste_prikken ^ (bool) getAantalNietVaccinaties()))) {
+                verwijderde_vaccins += aantal->second.second;
+                aantal->second.second = 0;
+            }
+            ENSURE(aantal->second.second == 0, "Er zijn vaccins met negatieve temperatuur niet gebruikt!");
+        }
+    }
+
     emit changeMainProgressBar(getTotaalAantalVaccinaties());
     emit newDay();
 

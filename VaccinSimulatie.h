@@ -12,7 +12,6 @@
 #include <QTimer>
 
 class Hub;
-
 class VaccinatieCentrum;
 
 class VaccinSimulatie : public QObject {
