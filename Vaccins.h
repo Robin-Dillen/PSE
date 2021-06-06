@@ -12,13 +12,22 @@ using namespace std;
 
 struct Vaccin {
     Vaccin(const string &type, const int levering, const int interval, const int transport, const int hernieuwing,
-           const int temperatuur) : type(type), levering(levering), interval(interval), transport(transport),
+           const int temperatuur) : _initCheck(this), type(type), levering(levering), interval(interval),
+                                    transport(transport),
                                     hernieuwing(hernieuwing), temperatuur(temperatuur),
                                     tijd_tot_nieuwe_levering(interval), aantal(0) {}
 
-    Vaccin() : levering(0), interval(0), transport(0), hernieuwing(0), temperatuur(0),
+    Vaccin() : _initCheck(this), levering(0), interval(0), transport(0), hernieuwing(0), temperatuur(0),
                tijd_tot_nieuwe_levering(interval), aantal(0) {}
 
+    /*!
+    * @return geeft terug of het object correct is geïnitialiseert
+    */
+    bool isProperlyInitialized() const {
+        return this == _initCheck;
+    }
+
+    const Vaccin *const _initCheck;
     const string type;
     const int levering; // geleverd aan hub
     const int interval;

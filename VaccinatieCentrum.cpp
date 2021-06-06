@@ -182,6 +182,7 @@ void VaccinatieCentrum::nieuweDag() {
                     int al_gereserverd = 0;
                     for (map<string, deque<int>>::iterator reservatie = nog_te_reserveren_vaccins.begin();
                          reservatie != nog_te_reserveren_vaccins.end(); ++reservatie) {
+                        if ((int) reservatie->second.size() < dag) reservatie->second.push_back(0);
                         al_gereserverd += reservatie->second[dag];
                     }
                     nog_te_reserveren_vaccins[batch->first][dag] += std::min(kcapaciteit - al_gereserverd,

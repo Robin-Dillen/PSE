@@ -7,6 +7,9 @@
 
 
 Slider::Slider(int i, Hub *h, VaccinatieCentrum *c, Vaccin *v) : QSlider(Qt::Horizontal), _initCheck(this) {
+    REQUIRE(h->isProperlyInitialized(), "De hub is niet goed geïnitialiseert!");
+    REQUIRE(c->isProperlyInitialized(), "het centrum is niet goed geïnitialiseert!");
+    REQUIRE(v->isProperlyInitialized(), "het vaccin is niet goed geïnitialiseert!");
     interval = i;
     hub = h;
     centrum = c;
@@ -23,6 +26,9 @@ void Slider::resetSlider() {
     this->setValue(0);
     const QString s = QString::number(0);
     emit changeText(s);
+    ENSURE(hub->isProperlyInitialized(), "De hub is niet goed geïnitialiseert!");
+    ENSURE(centrum->isProperlyInitialized(), "het centrum is niet goed geïnitialiseert!");
+    ENSURE(vaccin->isProperlyInitialized(), "het vaccin is niet goed geïnitialiseert!");
 }
 
 void Slider::changeValue() {
@@ -31,6 +37,9 @@ void Slider::changeValue() {
     this->setValue(v);
     const QString s = QString::number(v);
     emit changeText(s);
+    ENSURE(hub->isProperlyInitialized(), "De hub is niet goed geïnitialiseert!");
+    ENSURE(centrum->isProperlyInitialized(), "het centrum is niet goed geïnitialiseert!");
+    ENSURE(vaccin->isProperlyInitialized(), "het vaccin is niet goed geïnitialiseert!");
 }
 
 
@@ -48,10 +57,16 @@ void Slider::changeMaximum() {
     }
     int maxteVerdelen = min(teLeverenvaccins, totalVaccines);
     this->setMaximum(maxteVerdelen);
+    ENSURE(hub->isProperlyInitialized(), "De hub is niet goed geïnitialiseert!");
+    ENSURE(centrum->isProperlyInitialized(), "het centrum is niet goed geïnitialiseert!");
+    ENSURE(vaccin->isProperlyInitialized(), "het vaccin is niet goed geïnitialiseert!");
 }
 
 void Slider::sendVaccins() {
     REQUIRE(isProperlyInitialized(), "Object isn't properly initialized when calling this function!");
+    ENSURE(hub->isProperlyInitialized(), "De hub is niet goed geïnitialiseert!");
+    ENSURE(centrum->isProperlyInitialized(), "het centrum is niet goed geïnitialiseert!");
+    ENSURE(vaccin->isProperlyInitialized(), "het vaccin is niet goed geïnitialiseert!");
     hub->distributeManual(vaccin->type, this->value());
     centrum->ontvangLevering(this->value(), vaccin);
 }
