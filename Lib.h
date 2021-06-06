@@ -23,9 +23,4 @@
 #define HAPPY_DAY_TESTS_FILE_LOCATION string(INPUT_FILE_LOCATION + "HappyDayTests/")
 #define ERROR_FILE "../err.txt"
 
-typedef map<string, int>::iterator MapSIIterator;
-typedef map<string, int>::const_iterator MapSICIterator;
-typedef map<string, pair<Vaccin *, int> >::iterator MapSP_VI_Iterator;
-typedef map<string, pair<Vaccin *, int> >::const_iterator MapSP_VI_CIterator;
-
 #endif //PSE_LIB_H

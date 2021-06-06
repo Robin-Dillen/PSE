@@ -50,7 +50,6 @@ public:
      * @param h: hub
      * @param i nummer van de hub
      * @param y,m,w,d: jaren, maanden, weken en dagen na start simulatie
-     * @return void
      * \n REQUIRE(isProperlyInitialized(), "Object wasn't initialized when calling addToOutputFile");
      */
     void addToOutputFile(Hub *h, int i, int y, int m, int w, int d, const string &filename);
@@ -71,16 +70,6 @@ public:
      * \n REQUIRE(isProperlyInitialized(), "Object wasn't initialized when calling addToOutputFile");
      */
     void addToOutputFile(Hub *h, int i, int days, const string &filename);
-
-    /**
-     * voegt info toe aan het GI outputbestand
-     * @param v: vaccinatiecentrum
-     * @param days:dagen na start simulatie
-     * @param filename: naam van file waarin geschreven wordt
-     * @return void
-     * \n REQUIRE(isProperlyInitialized(), "Object wasn't initialized when calling addToOutputFile");
-     */
-    void addToGIFile(VaccinatieCentrum *v, int days, const string &filename);
 
     /*!
      * Voegt een datum toe aan het outputbestand (in dagen na start simulatie)

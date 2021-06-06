@@ -36,8 +36,6 @@ public:
 
     Hub(const map<string, Vaccin *> &vaccins);
 
-    Hub();
-
     /**
      * Verwijdert alle centra van deze hub
      */
@@ -91,34 +89,6 @@ public:
     const map<string, VaccinatieCentrum *> &getFverbondenCentra() const;
 
     /**
-     * update het aantal Kvaccins
-     * @param type: naam van het vaccin
-     * @param aantalVaccins: int
-     * @return void
-     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling setAantalVaccins");
-     * \n ENSURE(aantalVaccins == getAantalVaccins(), "Het setten van het aantal Kvaccins is mislukt!");
-     */
-    void setAantalVaccins(const string &type, int aantalVaccins);
-
-    /**
-     * update de verbonden centra
-     * @param fverbondenCentra: een map met als key een string(naam van vaccinatie centrum) en als value een pointer naar een vaccinatie centrum
-     * @return void
-     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling addFverbondenCentra");
-     * \n ENSURE(fverbonden_centra.size() == fverbondenCentra.size() + start_size, "De centra zijn niet (volledig) Toegevoegd");
-     */
-    void addFverbondenCentra(const map<string, VaccinatieCentrum *> &fverbondenCentra);
-
-    /**
-     * voegt centra toe aan de verbonden centra
-     * @param fverbondenCentra: een vector met een aantal verbonden centra
-     * @return void
-     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling addFverbondenCentra");
-     * \n ENSURE(fverbonden_centra.size() == 1 + start_size, "De centra zijn niet (volledig) Toegevoegd");
-     */
-    void addFverbondenCentra(const vector<VaccinatieCentrum *> &fverbondenCentra);
-
-    /**
     * voegt een centrum toe aan de verbonden centra
     * @param fverbondenCentra: een vector met een aantal verbonden centra
     * @return void
@@ -134,7 +104,7 @@ public:
     bool isIedereenGevaccineerd() const;
 
     /*!
-     * start een nieuwe dag, verdeelt de Kvaccins en stuurt een signaal naar de vaccinatiecentra
+     * start een nieuwe dag, verdeelt de vaccins (voor de 2de prik) en stuurt een signaal naar de vaccinatiecentra
      * REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling nieuweDag");
      */
     void nieuweDag();
@@ -148,27 +118,21 @@ public:
      */
     void ontvangLevering(const string &type, int aantal_vaccins);
 
-    /*!
-     * verdeelt de Kvaccins over alle verbonden vaccinatie centra
-     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling verdeelVaccins");
-     * \n ENSURE(aantal Kvaccins >= 0, "You can't have less than 0 Kvaccins!");
-     * \n ENSURE(vaccins_in_levering >= 0, "Er wordt een negatief aantal vaccins geleverd!");
-     * \n ENSURE(totaal_vaccins <= centrum->second->getMaxStock(), "Te veel vaccins!");
-     */
-    void verdeelVaccins();
 
+    /*!
+     * verdeelt alle 2de prikken aan de centra
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling verdeelTweedePrikken");
+     * \n ENSURE(gereserveerd_2de_prik >= 0, "Er zijn meer vaccins geleverd dan gereserveerd");
+     */
     void verdeelTweedePrikken();
 
-    void verdeelEerstePrikken();
-
     /*!
-     * geeft het minimum aantal leveringen terug dat nodig is om de capaciteit van het gegeven vaccinaticentrum te bereiken
-     * @param centrum iterator
-     * @return het minimum aantal leveringen
-     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling minAantalLeveringen");
+     * verdeelt alle 1ste prikken aan de centra
+     * @emit changeVaccinCount(std::string, int)
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling verdeelEerstePrikken");
+     * \n ENSURE(gereserveerd_1ste_prik >= 0, "Er zijn meer vaccins geleverd dan gereserveerd");
      */
-    int
-    minAantalLeveringen(const map<string, VaccinatieCentrum *>::const_iterator &centrum, const Vaccin *vaccin) const;
+    void verdeelEerstePrikken();
 
     /*!
      * geeft map met de types Kvaccins terug
@@ -176,7 +140,6 @@ public:
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getVaccins()");
      */
     map<string, Vaccin *> getVaccins();
-
 
     /*!
      * Maakt reservaties voor de centra voor bepaald type vaccin
@@ -188,39 +151,20 @@ public:
      */
     void addReservations(const string &type);
 
-    /*!
-     *
-     * @param dag: een batch van gereserveerde vaccins van een bepaalde dag
-     * @return: totaal aantal vaccins die gereserveerd zijn die dag
-     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getGereserveerdevaccins()");
-     */
-    int getGereserveerdevaccins(map<string, int> dag);
-
     int getFreeStock(VaccinatieCentrum *centrum, int dag);
 
     int getAllVaccins(const Vaccin *type);
 
     void distributeManual(std::string type, int count);
 
-    signals:
+signals:
 
-    void changeVaccinCount(Hub* h,std::string vaccin,int count);
+    void changeVaccinCount(Hub *h, std::string vaccin, int count);
 
 private:
-    // const attributes
-//    const int kaantal_vaccins_per_levering;
-//    const int kleveringen_interval;
-//    const int kaantal_vaccins_per_lading;
-    map<string, Vaccin *> kvaccins;
-
     const Hub *_initCheck; // pointer naar zichzelf om te checken of het object correct geïnitialseert is
-
-    // changing attributes
+    map<string, Vaccin *> kvaccins;
     map<string, VaccinatieCentrum *> fverbonden_centra; // slaagt alle vaccinatie centra op met zoeksleutel: name
-
-//    map<string, int> aantal_vaccins;
-//    deque<map<string, map<string, int> > > gereserveerde_vaccins;
-//    deque<map<string, map<string, int> > > extra_reservatie;
 };
 
 

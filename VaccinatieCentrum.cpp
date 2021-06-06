@@ -56,7 +56,7 @@ const string &VaccinatieCentrum::getKfaddress() const {
 int VaccinatieCentrum::getAantalVaccinaties(const string &type) const {
     REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling getAantalVaccinaties");
     REQUIRE(!type.empty(), "Het Vaccin type mag geen lege string zijn!");
-    MapSICIterator aantal = aantal_vaccinaties.find(type);
+    map<string, int>::const_iterator aantal = aantal_vaccinaties.find(type);
     if (aantal == aantal_vaccinaties.end()) return 0;
     if (aantal->second < 0) {
         cout << "error" << std::endl;
@@ -80,7 +80,7 @@ const int VaccinatieCentrum::getKcapaciteit() const {
 int VaccinatieCentrum::getAantalVaccins(const string &type) const {
     REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling getAantalVaccins()");
     REQUIRE(!type.empty(), "Het Vaccin type mag geen lege string zijn!");
-    MapSP_VI_CIterator aantal = aantal_vaccins.find(type);
+    map<string, pair<Vaccin *, int>>::const_iterator aantal = aantal_vaccins.find(type);
     if (aantal == aantal_vaccins.end()) return 0;
     ENSURE(aantal->second.second >= 0, "Er is een negatief aantal vaccins!");
     return aantal->second.second;
@@ -89,7 +89,7 @@ int VaccinatieCentrum::getAantalVaccins(const string &type) const {
 int VaccinatieCentrum::getAantalGeleverdeVaccins(const string &type) const {
     REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling getAantalGeleverdeVaccins()");
     REQUIRE(!type.empty(), "Het Vaccin type mag geen lege string zijn!");
-    MapSICIterator aantal = aantal_geleverde_vaccins.find(type);
+    map<string, int>::const_iterator aantal = aantal_geleverde_vaccins.find(type);
     if (aantal == aantal_geleverde_vaccins.end()) return 0;
     ENSURE(aantal->second >= 0, "Het aantal gelverde vaccins is negatief!");
     return aantal->second;
@@ -226,7 +226,7 @@ void VaccinatieCentrum::nieuweDag() {
     //2de vaccinatie om nog niet gevaccineerden te vaccineren
     bool laatste_eerste_prikken = getAantalNietVaccinaties();
     for (int koud = 1; koud >= 0; --koud) {
-        for (MapSP_VI_Iterator vaccin = aantal_vaccins.begin();
+        for (map<string, pair<Vaccin *, int>>::iterator vaccin = aantal_vaccins.begin();
              vaccin != aantal_vaccins.end(); vaccin++) {
             if (!((vaccin->second.first->temperatuur > 0) ^ koud)) continue;
             int aantal_prikken = min(3,

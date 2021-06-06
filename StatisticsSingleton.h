@@ -35,8 +35,16 @@ public:
         return instance;
     }
 
+    /*!
+     * voegt vaccins toe aan het totaal aantal geleverde vaccins
+     * @param geleverd const map<string, int> &
+     */
     void addGeleverdeVaccins(const map<string, int> &geleverd);
 
+    /*!
+     *
+     * @param eerste_prikken
+     */
     void setEerstePrikken(const map<string, int> &eerste_prikken);
 
     void setAantalVaccinaties(const map<string, int> &aantal);
@@ -53,6 +61,8 @@ public:
     int getTotaalVolledigeVaccinaties() const;
 
     map<string, int> getGeleverdeVaccins() const;
+
+    int getTotaalAantalMensen() const;
 
 signals:
 
@@ -74,8 +84,6 @@ private:
     map<std::string, StatisticsSingletonData> data;
     int totaal_aantal_mensen;
     const StatisticsSingleton *const _initCheck;
-public:
-    int getTotaalAantalMensen() const;
 };
 
 
