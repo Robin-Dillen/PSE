@@ -62,9 +62,6 @@ TEST_F(VaccinSimulatieDomainTest, DefaultConstructor) {
 
     Parser P;
     EXPECT_TRUE(P.isProperlyInitialized());
-
-    StatisticsSingleton &S = StatisticsSingleton::getInstance();
-    EXPECT_TRUE(S.isProperlyInitialized());
 }
 
 /**
@@ -104,7 +101,8 @@ TEST_F(VaccinSimulatieDomainTest, HappyDay) {
                 }
             }
         }
-        Simulatie(hubs, vaccinatie_centra, filename);
+        VaccinSimulatie simulatie(hubs, vaccinatie_centra, filename);
+        while (simulatie.nextDay());
 
         for (vector<VaccinatieCentrum *>::iterator V = vaccinatie_centra.begin(); V != vaccinatie_centra.end(); V++) {
             EXPECT_EQ(0, (*V)->getAantalNietVaccinaties());

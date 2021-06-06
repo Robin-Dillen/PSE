@@ -1,3 +1,8 @@
+<!--1 Hub-->
+<!--1 Vaccin type-->
+<!--genoeg vaccins-->
+<!--positieve temperatuur-->
+<!--geen hernieuwing-->
 <root>
     <HUB>
         <VACCIN>
@@ -10,19 +15,12 @@
         </VACCIN>
         <CENTRA>
             <centrum>Park Spoor Oost</centrum>
-            <centrum>AED Studios</centrum>
         </CENTRA>
     </HUB>
     <VACCINATIECENTRUM>
         <naam>Park Spoor Oost</naam>
         <adres>Noordersingel 40, Antwerpen</adres>
-        <inwoners>540173</inwoners>
-        <capaciteit>7500</capaciteit>
-    </VACCINATIECENTRUM>
-    <VACCINATIECENTRUM>
-        <naam>AED Studios</naam>
-        <adres>Fabriekstraat 38, Lint</adres>
-        <inwoners>76935</inwoners>
+        <inwoners>40000</inwoners>
         <capaciteit>2000</capaciteit>
     </VACCINATIECENTRUM>
 </root>

@@ -1,5 +1,16 @@
+<!--1 Hub-->
+<!--3 Vaccin type-->
+<!--genoeg vaccins-->
 <root>
     <HUB>
+        <VACCIN>
+            <type>AstraZenica</type>
+            <levering>100000</levering>
+            <interval>13</interval>
+            <transport>1000</transport>
+            <hernieuwing>28</hernieuwing>
+            <temperatuur>5</temperatuur>
+        </VACCIN>
         <VACCIN>
             <type>Pfizer</type>
             <levering>93000</levering>
@@ -8,18 +19,13 @@
             <hernieuwing>21</hernieuwing>
             <temperatuur>-70</temperatuur>
         </VACCIN>
-        <CENTRA>
-            <centrum>Park Spoor Oost</centrum>
-        </CENTRA>
-    </HUB>
-    <HUB>
         <VACCIN>
-            <type>Pfizer</type>
-            <levering>93000</levering>
-            <interval>6</interval>
-            <transport>2000</transport>
-            <hernieuwing>21</hernieuwing>
-            <temperatuur>-70</temperatuur>
+            <type>Moderna</type>
+            <levering>30000</levering>
+            <interval>10</interval>
+            <transport>1000</transport>
+            <hernieuwing>20</hernieuwing>
+            <temperatuur>-20</temperatuur>
         </VACCIN>
         <CENTRA>
             <centrum>Park Spoor Oost</centrum>

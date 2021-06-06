@@ -15,14 +15,16 @@
 #include <iostream>
 #include <list>
 #include <deque>
-
+#include <QApplication>
+#include <QString>
 #include "lib/DesignByContract.h"
 
 using namespace std;
 
 class Vaccin;
 
-class VaccinatieCentrum {
+class VaccinatieCentrum : public QObject {
+    Q_OBJECT
 public:
 
     /**
@@ -203,7 +205,12 @@ public:
      */
     int getAantalNietVaccinaties() const;
 
-    /*!
+    const map<string, int> &getAantalVaccinaties1() const;
+
+    const map<string, int> &getAantalGeleverdeVaccins1() const;
+
+    const map<string, deque<int>> &getAantalEerstePrikken() const;
+/*!
      * geeft terug hoeveel vaccins er nog gereserveerd moeten worden voor een bepaalde dag
      * @return int
      * @param type
@@ -249,6 +256,21 @@ public:
      */
     void zet1stePrikVaccins(const string &type, int aantal, int &capaciteit);
 
+    /*!
+     * geeft het variabele aantal vaccins terug
+     * @return map<string, pair<Vaccin *, int>> &
+     */
+    const map<string, pair<Vaccin *, int>> &getAantalVaccins1() const;
+
+signals:
+    void setVaccinInDialog(const std::string &centrum, const Vaccin* vaccin, int i);
+
+    void changeMainProgressBar(int value);
+
+    void changeVaccinProgressBar(const std::string &centrum,const std::string &vaccin,int value);
+
+    void newDay();
+
 private:
 
     // const attributes
@@ -260,7 +282,8 @@ private:
 
     const VaccinatieCentrum *_initCheck; // pointer naar zichzelf om te checken of het object correct geïnitialseert is
 
-    deque<map<string, int> > aantal_eerste_prikken;
+    map<string, deque<int> > aantal_eerste_prikken;
+
     // elke loop getten en verwijderen we front, en loopen we door de batches(van front), we checken of we ze een 2de prik kunnen geven etc...
     // -> voeg toe bij aantal vaccinaties(mss voor statistiche verwerking, ook in aantal vaccinaties alles gescheiden houden)
     // als er nog vaccins over zijn, gaan we een nieuwe batch aanmaken(als hernieuwbaar), we checken of aantal_eerste_prikken.size() >= hernieuwbaar
@@ -268,28 +291,20 @@ private:
     // zo nee aantal_eerste_prikken.resize(hernieuwbaar) !!niet reserve!!
     // we gebruiken een list omdat we front vaak moeten verwijderen(geeft shifts zoals bij vector)
 
-    deque<map<string, int> > nog_te_reserveren_vaccins;
-
-
     // changing attributes
     map<string, pair<Vaccin *, int> > aantal_vaccins; //vaccin: Vaccintype, int: aantal vaccins van dit type
-    //int aantal_vaccins;
+    map<string, deque<int> > nog_te_reserveren_vaccins;
 
     int aantal_niet_vaccinaties;
 
     //aantal mensen die nog geen vaccinatie hebben gekregen.
 
     map<string, int> aantal_vaccinaties;
-public:
-    const map<string, int> &getAantalVaccinaties1() const;
 
-private:
     // aantal mensen dat gevaccineert is
     // we kunnen gwn een map<vaccin_naam, aantal> bijhouden
 
     map<string, int> aantal_geleverde_vaccins; // aantal vaccins dat toegevoegd wordt na een levering
-    int aantal_geleverde_vaccins_buffer; // aantal vaccins dat toegevoegd wordt na een levering(buffer for output)
 };
-
 
 #endif //PSE_VACCINATIECENTRUM_H

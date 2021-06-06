@@ -9,44 +9,43 @@
 #include <iostream>
 #include <vector>
 #include <QApplication>
-#include <QGraphicsScene>
-#include <QGraphicsView>
-#include <QGraphicsRectItem>
+
+#include "mainwindow.h"
 #include "VaccinSimulatie.h"
+#include "Parser.h"
+#include "StatisticsSingleton.h"
 #include "Utils.h"
 
 using namespace std;
 
 int main(int argc, char *argv[]) {
-//    QApplication a(argc, argv);
-//
-//    QGraphicsScene* scene = new QGraphicsScene();
-//
-//    QGraphicsRectItem* rect = new QGraphicsRectItem();
-//    rect->setRect(0,0,100,100);
-//    scene->addItem(rect);
-//
-//    QGraphicsView * view = new QGraphicsView();
-//    view->setScene(scene);
-//    view->show();
-//
-//    vector<string> args = vector<string>(argv + 1, argv + argc);
-//
-//    Parser P(args[0]);
-//    vector<Hub *> hubs = P.getFhubs();
-//    std::vector<VaccinatieCentrum *> vaccinatie_centra;
-//
-//    for (unsigned int i = 0; i < hubs.size(); i++) {
-//        for (map<string, VaccinatieCentrum *>::const_iterator centrum = hubs[i]->getFverbondenCentra().begin();
-//             centrum != hubs[i]->getFverbondenCentra().end(); centrum++) {
-//            if (find(vaccinatie_centra.begin(), vaccinatie_centra.end(), centrum->second) == vaccinatie_centra.end()) {
-//                vaccinatie_centra.push_back(centrum->second);
-//            }
-//        }
-//    }
-//    Simulatie(hubs, vaccinatie_centra, args[0]);
+    QApplication a(argc, argv);
 
-    std::pair<double, double> address = addressToCoords("Boonhoek 7, 2170 Merksem, Antwerpen");
-    std::cout << address.first << " " << address.second << std::endl;
-    return 0/*a.exec()*/;
+    vector<string> args = vector<string>(argv + 1, argv + argc);
+
+    Parser P(args[0]);
+    vector<Hub *> hubs = P.getFhubs();
+    std::vector<VaccinatieCentrum *> vaccinatie_centra;
+
+    StatisticsSingleton &stats = StatisticsSingleton::getInstance();
+    int totaal_mensen = 0;
+    for (unsigned int i = 0; i < hubs.size(); i++) {
+        for (map<string, VaccinatieCentrum *>::const_iterator centrum = hubs[i]->getFverbondenCentra().begin();
+             centrum != hubs[i]->getFverbondenCentra().end(); centrum++) {
+            if (find(vaccinatie_centra.begin(), vaccinatie_centra.end(), centrum->second) == vaccinatie_centra.end()) {
+                vaccinatie_centra.push_back(centrum->second);
+                totaal_mensen += centrum->second->getKaantalInwoners();
+            }
+        }
+    }
+    stats.setTotaalAantalMensen(totaal_mensen);
+
+    VaccinSimulatie *s = new VaccinSimulatie(hubs, vaccinatie_centra, args[0]);
+    MainWindow *w = new MainWindow(s);
+    w->showNormal();
+    int ret = a.exec();
+    delete s;
+    delete w;
+    return ret;
 }
+

@@ -15,6 +15,7 @@
 #include <cmath> // voor ceil
 #include <iostream> // for testing
 #include <algorithm>
+#include <QApplication>
 #include <deque>
 
 #include "lib/DesignByContract.h"
@@ -24,7 +25,8 @@ using namespace std;
 class VaccinatieCentrum;
 class Vaccin;
 
-class Hub {
+class Hub  : public QObject {
+    Q_OBJECT
 public:
 
     /**
@@ -155,6 +157,10 @@ public:
      */
     void verdeelVaccins();
 
+    void verdeelTweedePrikken();
+
+    void verdeelEerstePrikken();
+
     /*!
      * geeft het minimum aantal leveringen terug dat nodig is om de capaciteit van het gegeven vaccinaticentrum te bereiken
      * @param centrum iterator
@@ -191,6 +197,13 @@ public:
     int getGereserveerdevaccins(map<string, int> dag);
 
     int getFreeStock(VaccinatieCentrum *centrum, int dag);
+
+    int getAllVaccins(const Vaccin *type);
+
+
+    signals:
+
+    void changeVaccinCount(std::string vaccin,int count);
 
 private:
     // const attributes
