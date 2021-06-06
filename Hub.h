@@ -157,6 +157,9 @@ public:
 
     void distributeManual(std::string type, int count);
 
+public slots:
+    void changeAllVaccinCount();
+
 signals:
 
     void changeVaccinCount(Hub *h, std::string vaccin, int count);
