@@ -110,6 +110,7 @@ private:
 
     std::map<std::string, QGridLayout *> layouts;
     std::map<std::string, QPushButton *> commits;
+    std::map<std::string, QLabel *> vaccinCount;
     std::map<std::string, std::map<std::string, QProgressBar *>> progressBars;
     std::map<Hub*,std::map<std::string, QLabel*> > vaccineCount;
 

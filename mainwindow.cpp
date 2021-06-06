@@ -144,6 +144,7 @@ MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
 
         QLabel *vaccin_count = new QLabel();
         vaccin_count->setNum(0);
+        vaccinCount[name] = vaccin_count;
         grid->addWidget(vaccin_count, 0, 3);
 
         QObject::connect((*it), SIGNAL(changeVaccinCount(int)), vaccin_count, SLOT(setNum(int)));
@@ -337,16 +338,19 @@ void MainWindow::changeData() {
          centrumIt != centra.end(); centrumIt++) {
         emit (*centrumIt).second->changeMainProgressBar(importer.getTotaalAantalVaccinatiesCentrum(centrumIt->first));
         const map<string, pair<Vaccin *, int>> &vaccins = (*centrumIt).second->getAantalVaccins1();
+        int vaccin_count = 0;
         for (map<string, pair<Vaccin *, int> >::const_iterator vaccinIterator = vaccins.begin();
              vaccinIterator != vaccins.end(); vaccinIterator++) {
             int percentage = 0;
             if (importer.getTotaalAantalVaccinatiesCentrum(centrumIt->first) != 0) {
-                percentage = (importer.getCentrumVaccinCount(centrumIt->first, (*vaccinIterator).first) * 100 /
+                percentage = (importer.getAantalVaccinatiesCentrum(centrumIt->first, (*vaccinIterator).first) * 100 /
                               importer.getTotaalAantalVaccinatiesCentrum(centrumIt->first));
             }
             emit (*centrumIt).second->changeVaccinProgressBar((*centrumIt).second->getKfname(), (*vaccinIterator).first,
                                                               percentage);
+            vaccin_count += importer.getCentrumVaccinCount(centrumIt->first,(*vaccinIterator).first);
         }
+        vaccinCount[(*centrumIt).second->getKfname()]->setNum(vaccin_count);
     }
     int i = 0;
     for (std::vector<Hub *>::iterator hubIterator = hubs.begin(); hubIterator != hubs.end(); hubIterator++) {
