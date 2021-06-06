@@ -74,7 +74,7 @@ int SimulationImporter::getCentrumVaccinCount(const std::string &centrum_naam, c
 int SimulationImporter::getTotaalAantalVaccinatiesCentrum(const std::string &centrum_naam) {
     ENSURE(isProperlyInitialized(), "Object wasn't properly initialised!");
     int count = 0;
-    if (centra_data.empty() || centra_data.find(centrum_naam) == centra_data.end()) return 0;
+    if (centra_data.find(centrum_naam) == centra_data.end()) return 0;
     for (std::map<std::string, SimulationImporterVaccinData>::iterator it = centra_data.at(centrum_naam).data.begin();
          it != centra_data.at(centrum_naam).data.end(); it++) {
         count += (*it).second.tweede_prikken;
@@ -85,7 +85,7 @@ int SimulationImporter::getTotaalAantalVaccinatiesCentrum(const std::string &cen
 
 int SimulationImporter::getAantalVaccinatiesCentrum(const string &centrum_naam, const string &vaccin) {
     ENSURE(isProperlyInitialized(), "Object wasn't properly initialised!");
-    if (centra_data.empty() || centra_data.find(centrum_naam) == centra_data.end()) return 0;
+    if (centra_data.find(centrum_naam) == centra_data.end()) return 0;
     map<basic_string<char>, SimulationImporterVaccinData>::iterator vaccin_aantal = centra_data.at(
             centrum_naam).data.find(vaccin);
     if (vaccin_aantal == centra_data.at(centrum_naam).data.end()) return 0;
@@ -95,7 +95,7 @@ int SimulationImporter::getAantalVaccinatiesCentrum(const string &centrum_naam, 
 
 int SimulationImporter::getTotaalAantalEerstePrikken(const std::string &centrum_naam) {
     ENSURE(isProperlyInitialized(), "Object wasn't properly initialised!");
-    if (centra_data.empty() || centra_data.find(centrum_naam) == centra_data.end())
+    if (centra_data.find(centrum_naam) == centra_data.end())
         return 0;
     int totaal = 0;
     for (map<string, SimulationImporterVaccinData>::iterator eerste_prikken = centra_data.at(centrum_naam).data.begin();
