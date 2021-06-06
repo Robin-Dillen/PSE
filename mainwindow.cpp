@@ -385,4 +385,5 @@ void MainWindow::changeData() {
 void MainWindow::returnToCurrent() {
     dayOffset = 0;
     setGuiDay(simDay - dayOffset);
+    changeData();
 }
