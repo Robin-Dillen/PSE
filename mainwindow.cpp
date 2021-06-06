@@ -22,6 +22,7 @@ MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
     ui->ReturnButton->hide();
 
     pieSeries = new QPieSeries();
+    objects.push_back(pieSeries);
     pieSeries->append("Niet gevaccineerd", 100);
     pieSeries->append("half gevaccineerd", 0);
     pieSeries->append("volledig gevaccineerd", 0);
@@ -32,24 +33,30 @@ MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
     simDay = 1;
 
     QChart *chart = new QChart();
+    objects.push_back(chart);
     chart->addSeries(pieSeries);
     chart->setTitle("Vaccinaties");
 //    chart->legend()->hide();
 
     QChartView *view = new QChartView(chart);
+    objects.push_back(view);
     view->setParent(ui->horizontalFrame_page1);
     view->setFixedSize(ui->horizontalFrame_page1->width(), ui->horizontalFrame_page1->height());
 
     //line chart
     StatisticsSingleton &stats = StatisticsSingleton::getInstance();
     QChart *line_chart = new QChart();
+    objects.push_back(line_chart);
 
     QValueAxis *axisX = new QValueAxis;
+    objects.push_back(axisX);
     axisX->setRange(0, 365);
     QValueAxis *axisY = new QValueAxis;
+    objects.push_back(axisY);
     axisY->setRange(0, stats.getTotaalAantalMensen() * 2);
 
     lineChartView = new QChartView(line_chart);
+    objects.push_back(lineChartView);
     lineChartView->setParent(ui->horizontalFrame_page2);
     lineChartView->chart()->legend()->hide();
     lineChartView->chart()->setTitle("Simple line chart example");
@@ -78,6 +85,7 @@ MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
     QObject::connect(ui->ReturnButton, SIGNAL(clicked()), this, SLOT(returnToCurrent()));
 
     QVBoxLayout *layout = new QVBoxLayout();
+    objects.push_back(layout);
 
     vector<Hub *> h = sim->getHubs();
     hubs = h;
@@ -85,27 +93,31 @@ MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
     int i = 1;
     for(std::vector<Hub *>::iterator it = hubs.begin(); it != hubs.end(); it++){
         QPushButton *but = new QPushButton(QString::fromStdString("Hub"+to_string(i)));
-        //but->setGeometry(300,100,100,50);
-        //ui->tabWidget->layout()->addWidget(but);
-        //this->layout()->addWidget(but);
+        objects.push_back(but);
         layout->addWidget(but);
 
         //pop op venster voor info van centrum
         QDialog *dialog = new QDialog(this);
+        objects.push_back(dialog);
         dialog->setWindowTitle(QString::fromStdString("Hub" + to_string(i)));
         QGridLayout *grid = new QGridLayout;
+        objects.push_back(grid);
 
         QLabel *vaccins = new QLabel("Vaccines:");
+        objects.push_back(vaccins);
         grid->addWidget(vaccins, 0, 0);
         QLabel *countText = new QLabel("Count:");
+        objects.push_back(countText);
         grid->addWidget(countText, 0, 1);
 
         int j = 1;
         map<string, Vaccin *> v = (*it)->getVaccins();
         for (map<string, Vaccin *>::iterator it2 = v.begin(); it2 != v.end(); it2++) {
             QLabel *type = new QLabel(QString::fromStdString((*it2).first));
+            objects.push_back(type);
             grid->addWidget(type, j, 0);
             QLabel *count = new QLabel(QString::fromStdString(to_string((*it2).second->aantal)));
+            objects.push_back(count);
             grid->addWidget(count, j, 1);
             vaccineCount[(*it)][(*it2).first] = count;
             QObject::connect((*it), SIGNAL(changeVaccinCount(Hub * , std::string, int)), this,
@@ -122,8 +134,10 @@ MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
         centra[(*it)->getKfname()] = *it;
         string name = (*it)->getKfname();
         QPushButton *but = new QPushButton(QString::fromStdString(name));
+        objects.push_back(but);
         layout->addWidget(but);
         QProgressBar *progress = new QProgressBar();
+        objects.push_back(progress);
         progress->setMaximum((*it)->getKaantalInwoners());
         progress->setMinimum(0);
         layout->addWidget(progress);
@@ -131,18 +145,24 @@ MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
 
         //pop op venster voor info van centrum
         QDialog *dialog = new QDialog(this);
+        objects.push_back(dialog);
         dialog->setWindowTitle(QString::fromStdString(name));
         QGridLayout *grid = new QGridLayout;
+        objects.push_back(grid);
 
         QLabel *inwoners = new QLabel("inhabitants:");
+        objects.push_back(inwoners);
         grid->addWidget(inwoners, 0, 0);
         QLabel *inwo = new QLabel(QString::fromStdString(to_string((*it)->getKaantalInwoners())));
+        objects.push_back(inwo);
         grid->addWidget(inwo, 0, 1);
 
         QLabel *vaccin_label = new QLabel("Vaccins:");
+        objects.push_back(vaccin_label);
         grid->addWidget(vaccin_label, 0, 2);
 
         QLabel *vaccin_count = new QLabel();
+        objects.push_back(vaccin_count);
         vaccin_count->setNum(0);
         vaccinCount[name] = vaccin_count;
         grid->addWidget(vaccin_count, 0, 3);
@@ -150,14 +170,17 @@ MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
         QObject::connect((*it), SIGNAL(changeVaccinCentrumCount(int)), vaccin_count, SLOT(setNum(int)));
 
         QLabel *gevaccineerd = new QLabel("Percentage:");
+        objects.push_back(gevaccineerd);
         grid->addWidget(gevaccineerd, 1, 1);
 
         int hubcount = 2;
         QPushButton *commit = new QPushButton("Commit");
+        objects.push_back(commit);
         QObject::connect((*it), SIGNAL(newDay()), commit, SLOT(show()));
         QObject::connect(commit, SIGNAL(clicked()), commit, SLOT(hide()));
         for(int j = 0; j < (int) hubs.size(); j++){
             QLabel *leveren = new QLabel(QString::fromStdString("Hub"+to_string(j+1)+": "));
+            objects.push_back(leveren);
             grid->addWidget(leveren,1,(hubcount));
             QObject::connect(ui->StopButton, SIGNAL(clicked()), leveren, SLOT(show()));
             QObject::connect(ui->StartButton, SIGNAL(clicked()), leveren, SLOT(hide()));
@@ -182,6 +205,9 @@ MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
 
 
 MainWindow::~MainWindow() {
+    for(vector<QObject *>::iterator it = objects.begin(); it != objects.end(); it++){
+        delete (*it);
+    }
     delete ui;
 }
 
@@ -226,6 +252,7 @@ void MainWindow::updateStatistics() {
          vaccins != totaal_geleverde_vaccins.end(); ++vaccins) {
         if (series.find(vaccins->first) == series.end()) {
             series[vaccins->first] = new QLineSeries();
+            objects.push_back(series[vaccins->first]);
             series[vaccins->first]->setName(QString::fromStdString(vaccins->first));
             lineChartView->chart()->addSeries(series[vaccins->first]);
             series[vaccins->first]->attachAxis(axes.front());
@@ -238,8 +265,10 @@ void MainWindow::updateStatistics() {
 
 void MainWindow::addVaccin(const std::string &centrum, Vaccin *vaccin, int centrumnr) {
     QLabel *VaccineName = new QLabel(QString::fromStdString(vaccin->type));
+    objects.push_back(VaccineName);
     layouts[centrum]->addWidget(VaccineName, centrumnr + 1, 0);
     QProgressBar *VaccinBar = new QProgressBar();
+    objects.push_back(VaccinBar);
     progressBars[centrum][vaccin->type] = VaccinBar;
     layouts[centrum]->addWidget(VaccinBar, centrumnr + 1, 1);
 
@@ -251,7 +280,9 @@ void MainWindow::addVaccin(const std::string &centrum, Vaccin *vaccin, int centr
             string si = vaccin->type;
             if (verbonden_vaccins.find(vaccin->type) != verbonden_vaccins.end()) {
                 Slider *vaccinSlider = new Slider(vaccin->transport, hubs[hubnr], centra[centrum], vaccin);
+                objects.push_back(vaccinSlider);
                 QLabel *value = new QLabel("0");
+                objects.push_back(value);
 
                 emit vaccinSlider->changeMaximum();
 

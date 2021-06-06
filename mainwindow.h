@@ -29,7 +29,6 @@ public:
 
     explicit MainWindow(VaccinSimulatie *sim, QWidget *parent = nullptr);
 
-//    void setSimulation(VaccinSimulatie* s);
     ~MainWindow();
 
 public slots:
@@ -119,6 +118,8 @@ private:
 
     QChartView *lineChartView;
     std::map<std::string, QLineSeries *> series;
+
+    std::vector<QObject*> objects;
 };
 
 #endif // MAINWINDOW_H

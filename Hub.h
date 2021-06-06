@@ -162,19 +162,35 @@ public:
      */
     void addReservations(const string &type);
 
+    //TODO comments
     int getFreeStock(VaccinatieCentrum *centrum, int dag);
 
+    /*!
+     * geeft alle vaccin terug van een gegeven type, zowel de vaccins die in de overschot worden bewaard, als vaccins in reservaties
+     * @param type: type van het vaccin
+     * @return int vaccins;
+     */
     int getAllVaccins(const Vaccin *type);
 
+    /*!
+     * Haalt vaccin weg om manueel aan centra te leveren
+     * @param type: type van het vaccin
+     * @param count: hoeveelheid van vaccins
+     */
     void distributeManual(std::string type, int count);
 
+    /*!
+     * levert 0 vaccins aan alle centra met elk type om het te initialiseren
+     */
     void initializeCentra();
 
 public slots:
+    /*!
+     * stuurt een signaal om alle vaccinlabels te updaten
+     */
     void changeAllVaccinCount();
 
 signals:
-
     void changeVaccinCount(Hub *h, std::string vaccin, int count);
 
 private:

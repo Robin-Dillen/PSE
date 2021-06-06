@@ -275,6 +275,9 @@ signals:
      */
     void newDay();
 
+    /*!
+     * update het aantal vaccins op het scherm
+     */
     void changeVaccinCentrumCount(int);
 
 private:
