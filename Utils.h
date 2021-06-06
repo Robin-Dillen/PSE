@@ -239,6 +239,10 @@ inline void ExportSimulation(const std::string &filename, VaccinSimulatie *simul
          centrumIterator != centra.end(); ++centrumIterator) {
 
         TiXmlElement *centrum = new TiXmlElement("CENTRUM");
+        TiXmlElement *naam = new TiXmlElement("naam");
+        TiXmlText *naam_value = new TiXmlText((*centrumIterator)->getKfname().c_str());
+        naam->LinkEndChild(naam_value);
+        centrum->LinkEndChild(naam);
         const map<std::string, pair<Vaccin *, int>> &vaccins = (*centrumIterator)->getAantalVaccins1();
 
         for (map<std::string, pair<Vaccin *, int>>::const_iterator vaccinIterator = vaccins.begin();

@@ -207,7 +207,7 @@ void MainWindow::updateStatistics() {
 
     //line chart
     map<string, int> totaal_geleverde_vaccins = stats.getGeleverdeVaccins();
-    auto axes = lineChartView->chart()->axes();
+    QList<QAbstractAxis *> axes = lineChartView->chart()->axes();
     if (current_day >= 365 * k) {
         ++k;
         axes.front()->setRange(0, 365 * k);
@@ -323,17 +323,16 @@ void MainWindow::changeData() {
     StatisticsSingleton &stats = StatisticsSingleton::getInstance();
     string file = "../SavedData/dag" + to_string(simDay - dayOffset) + ".xml";
     SimulationImporter importer(file);
-    int centrumnr = 0;
     for (map<string, VaccinatieCentrum *>::iterator centrumIt = centra.begin();
          centrumIt != centra.end(); centrumIt++) {
-        emit (*centrumIt).second->changeMainProgressBar(importer.getAantalVaccinatiesCentrum(centrumnr));
+        emit (*centrumIt).second->changeMainProgressBar(importer.getAantalVaccinatiesCentrum(centrumIt->first));
         const map<string, pair<Vaccin *, int>> &vaccins = (*centrumIt).second->getAantalVaccins1();
         for (map<string, pair<Vaccin *, int> >::const_iterator vaccinIterator = vaccins.begin();
              vaccinIterator != vaccins.end(); vaccinIterator++) {
             int percentage = 0;
-            if (importer.getAantalVaccinatiesCentrum(centrumnr) != 0) {
-                percentage = (importer.getCentrumVaccinCount(centrumnr, (*vaccinIterator).first) * 100 /
-                              importer.getAantalVaccinatiesCentrum(centrumnr));
+            if (importer.getAantalVaccinatiesCentrum(centrumIt->first) != 0) {
+                percentage = (importer.getCentrumVaccinCount(centrumIt->first, (*vaccinIterator).first) * 100 /
+                              importer.getAantalVaccinatiesCentrum(centrumIt->first));
             }
             emit (*centrumIt).second->changeVaccinProgressBar((*centrumIt).second->getKfname(), (*vaccinIterator).first,
                                                               percentage);
@@ -354,12 +353,10 @@ void MainWindow::changeData() {
     float totaal = stats.getTotaalAantalMensen();
     int totaal_eersteprik = 0;
     int totaal_tweedeprik = 0;
-    i = 0;
     for (map<string, VaccinatieCentrum *>::iterator centrumIt = centra.begin();
          centrumIt != centra.end(); centrumIt++) {
-        totaal_eersteprik += importer.getTotaalAantalEerstePrikken(i);
-        totaal_tweedeprik += importer.getAantalVaccinatiesCentrum(i);
-        ++i;
+        totaal_eersteprik += importer.getTotaalAantalEerstePrikken(centrumIt->first);
+        totaal_tweedeprik += importer.getAantalVaccinatiesCentrum(centrumIt->first);
     }
 
     float pEerstePrikken = (totaal_eersteprik / totaal) * 100;

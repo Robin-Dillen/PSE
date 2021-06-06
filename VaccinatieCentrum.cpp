@@ -255,7 +255,7 @@ void VaccinatieCentrum::nieuweDag() {
             ENSURE(aantal->second.second == 0, "Er zijn vaccins met negatieve temperatuur niet gebruikt!");
         }
     }
-
+    std::cout << kfname << ": " << getTotaalAantalVaccinaties() << std::endl;
     emit changeMainProgressBar(getTotaalAantalVaccinaties());
     emit newDay();
 
