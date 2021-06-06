@@ -243,6 +243,9 @@ public:
      */
     const map<string, pair<Vaccin *, int>> &getAantalVaccins1() const;
 
+public slots:
+    void updateVaccinCount();
+
 signals:
 
     /*!
@@ -271,6 +274,8 @@ signals:
      * update het scherm met nieuwe dag
      */
     void newDay();
+
+    void changeVaccinCount(int);
 
 private:
 

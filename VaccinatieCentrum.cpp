@@ -258,6 +258,7 @@ void VaccinatieCentrum::nieuweDag() {
     std::cout << kfname << ": " << getTotaalAantalVaccinaties() << std::endl;
     emit changeMainProgressBar(getTotaalAantalVaccinaties());
     emit newDay();
+    emit changeVaccinCount(getTotaalAantalVaccins());
 
     ENSURE(begin_aantal_vaccins - aantal_tweede_prik - aantal_eerste_prik - verwijderde_vaccins == getTotaalAantalVaccins(),
            "Het aantal vaccins is niet geüpdate!");
@@ -379,5 +380,9 @@ const map<string, deque<int>> &VaccinatieCentrum::getAantalEerstePrikken() const
 const map<string, pair<Vaccin *, int>> &VaccinatieCentrum::getAantalVaccins1() const {
     REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling this function");
     return aantal_vaccins;
+}
+
+void VaccinatieCentrum::updateVaccinCount(){
+    emit changeVaccinCount(getTotaalAantalVaccins()+getTotaalAantalGeleverdeVaccins());
 }
 
