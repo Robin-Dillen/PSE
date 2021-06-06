@@ -157,6 +157,10 @@ public:
      */
     void verdeelVaccins();
 
+    void verdeelTweedePrikken();
+
+    void verdeelEerstePrikken();
+
     /*!
      * geeft het minimum aantal leveringen terug dat nodig is om de capaciteit van het gegeven vaccinaticentrum te bereiken
      * @param centrum iterator

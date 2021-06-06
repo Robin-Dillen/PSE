@@ -79,10 +79,16 @@ bool VaccinSimulatie::nextDay() {
         // stuur signaal nieuwe dag
         hubs[i]->nieuweDag();
 
+    }
+    for (unsigned int i = 0; i < hubs.size(); i++) {
+        if (hubs[i]->isIedereenGevaccineerd()) {
+            continue;
+        }
+        hubs[i]->verdeelEerstePrikken();
         // output
         output.addToOutputFile(hubs[i], i + 1, day, filename1);
     }
-    if(!endOfSimulation){
+    if (!endOfSimulation) {
         output.addDateToFile(day, filename2);
         map<string, int> totaal_vaccinaties;
         map<string, int> totaal_eerste_prikken;
