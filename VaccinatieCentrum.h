@@ -275,7 +275,7 @@ signals:
      */
     void newDay();
 
-    void changeVaccinCount(int);
+    void changeVaccinCentrumCount(int);
 
 private:
 

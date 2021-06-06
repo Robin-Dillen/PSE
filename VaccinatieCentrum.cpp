@@ -256,7 +256,7 @@ void VaccinatieCentrum::nieuweDag() {
         }
     }emit changeMainProgressBar(getTotaalAantalVaccinaties());
     emit newDay();
-    emit changeVaccinCount(getTotaalAantalVaccins());
+    emit changeVaccinCentrumCount(getTotaalAantalVaccins()+getTotaalAantalGeleverdeVaccins());
 
     ENSURE(begin_aantal_vaccins - aantal_tweede_prik - aantal_eerste_prik - verwijderde_vaccins ==
            getTotaalAantalVaccins(),
@@ -382,6 +382,6 @@ const map<string, pair<Vaccin *, int>> &VaccinatieCentrum::getAantalVaccins1() c
 }
 
 void VaccinatieCentrum::updateVaccinCount(){
-    emit changeVaccinCount(getTotaalAantalVaccins()+getTotaalAantalGeleverdeVaccins());
+    emit changeVaccinCentrumCount(getTotaalAantalVaccins()+getTotaalAantalGeleverdeVaccins());
 }
 
