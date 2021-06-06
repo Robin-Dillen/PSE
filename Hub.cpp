@@ -295,7 +295,7 @@ void Hub::verdeelVaccins() {
             vaccin->second->gereserveerd[centrum->first].pop_front();
             vaccin->second->extra_gereserveerd[centrum->first].pop_front();
 
-            emit changeVaccinCount(vaccin->first, getAllVaccins(vaccin->second));
+            emit changeVaccinCount(this, vaccin->first, getAllVaccins(vaccin->second));
 //            vaccin->second->gereserveerd[centrum->first].push_back(0);
 //            vaccin->second->extra_gereserveerd[centrum->first].push_back(0);
         }
@@ -376,7 +376,7 @@ void Hub::verdeelEerstePrikken() {
             vaccin->second->gereserveerd[centrum->first].pop_front();
             vaccin->second->extra_gereserveerd[centrum->first].pop_front();
 
-            emit changeVaccinCount(vaccin->first, getAllVaccins(vaccin->second));
+            emit changeVaccinCount(this,vaccin->first, getAllVaccins(vaccin->second));
 //            vaccin->second->gereserveerd[centrum->first].push_back(0);
 //            vaccin->second->extra_gereserveerd[centrum->first].push_back(0);
         }
