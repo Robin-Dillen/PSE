@@ -222,7 +222,7 @@ inline void ExportSimulation(const std::string &filename, VaccinSimulatie *simul
             type->LinkEndChild(type_value);
             TiXmlElement *aantal = new TiXmlElement("aantal");
             TiXmlText *aantal_value = new TiXmlText(
-                    to_string((*hubIterator)->getAantalVaccins(vaccinIterator->first)).c_str());
+                    to_string((*hubIterator)->getAllVaccins(vaccinIterator->second)).c_str());
             aantal->LinkEndChild(aantal_value);
             vaccin->LinkEndChild(type);
             vaccin->LinkEndChild(aantal);
