@@ -89,20 +89,7 @@
          </rect>
         </property>
         <property name="text">
-         <string>Day: 0</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton">
-        <property name="geometry">
-         <rect>
-          <x>779</x>
-          <y>20</y>
-          <width>121</width>
-          <height>23</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Distribute vaccines</string>
+         <string>Day: 1</string>
         </property>
        </widget>
        <widget class="QPushButton" name="NextDayButton_2">
@@ -134,7 +121,7 @@
        <widget class="QSlider" name="SpeedSlider">
         <property name="geometry">
          <rect>
-          <x>600</x>
+          <x>740</x>
           <y>20</y>
           <width>160</width>
           <height>22</height>
@@ -159,15 +146,28 @@
          <bool>false</bool>
         </property>
        </widget>
+       <widget class="QLabel" name="label">
+        <property name="geometry">
+         <rect>
+          <x>656</x>
+          <y>20</y>
+          <width>81</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>DayLength</string>
+        </property>
+       </widget>
        <zorder>ReturnButton</zorder>
        <zorder>StopButton</zorder>
        <zorder>StartButton</zorder>
        <zorder>NextDayButton</zorder>
        <zorder>PreviousDayButton</zorder>
        <zorder>DayText</zorder>
-       <zorder>pushButton</zorder>
        <zorder>NextDayButton_2</zorder>
        <zorder>SpeedSlider</zorder>
+       <zorder>label</zorder>
       </widget>
       <widget class="QWidget" name="Statistics">
        <attribute name="title">

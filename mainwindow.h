@@ -52,6 +52,8 @@ public slots:
 
     void returnToCurrent();
 
+    //void getAllSliderValues(Hub*);
+
 private:
     void setGuiDay(int day);
     void changeData();
@@ -62,8 +64,9 @@ private:
     std::vector<Hub*> hubs;
 
 
-    std::map<std::string, QGridLayout *> layouts;
 
+    std::map<std::string, QGridLayout *> layouts;
+    std::map<std::string, QPushButton *> commits;
     std::map<std::string, std::map<std::string, QProgressBar*>> progressBars;
     std::map<std::string, QLabel*> vaccineCount;
 

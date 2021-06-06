@@ -64,12 +64,9 @@ MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
     QObject::connect(ui->NextDayButton, SIGNAL(clicked()), sim, SLOT(stop()));
     QObject::connect(ui->NextDayButton, SIGNAL(clicked()), sim, SLOT(nextDay()));
     QObject::connect(ui->PreviousDayButton, SIGNAL(clicked()), sim, SLOT(stop()));
-    //QObject::connect(ui->PreviousDayButton, SIGNAL(clicked()), sim, SLOT(previousDay()));
     QObject::connect(ui->SpeedSlider, SIGNAL(sliderMoved(int)), sim, SLOT(updateSpeed(int)));
     QObject::connect(&StatisticsSingleton::getInstance(), SIGNAL(dataChange()), this, SLOT(dataChanged()));
     QObject::connect(sim, SIGNAL(dayNrChanged(int)), this, SLOT(changeDay(int)));
-    QObject::connect(sim, SIGNAL(endSimulation(int)), this, SLOT(endOfSimulation(int)));
-    QObject::connect(sim, SIGNAL(endSimulation(int)), this, SLOT(endOfSimulation(int)));
     QObject::connect(sim, SIGNAL(endSimulation(int)), this, SLOT(endOfSimulation(int)));
     QObject::connect(ui->comboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), ui->stackedWidget,
                      &QStackedWidget::setCurrentIndex);
@@ -86,6 +83,9 @@ MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
     int i = 1;
     for(auto it = hubs.begin(); it != hubs.end(); it++){
         QPushButton *but = new QPushButton(QString::fromStdString("Hub"+to_string(i)));
+        //but->setGeometry(300,100,100,50);
+        //ui->tabWidget->layout()->addWidget(but);
+        //this->layout()->addWidget(but);
         layout->addWidget(but);
 
         //pop op venster voor info van centrum
@@ -95,8 +95,8 @@ MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
 
         QLabel *vaccins = new QLabel("Vaccines:");
         grid->addWidget(vaccins,0,0);
-        QLabel *count = new QLabel("Count:");
-        grid->addWidget(count,0,1);
+        QLabel *countText = new QLabel("Count:");
+        grid->addWidget(countText,0,1);
 
         int j = 1;
         map<string, Vaccin*> v = (*it)->getVaccins();
@@ -139,20 +139,34 @@ MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
         QLabel *gevaccineerd = new QLabel("Percentage:");
         grid->addWidget(gevaccineerd,1,1);
 
-        QLabel *leveren = new QLabel("Distribute vaccines:");
-        grid->addWidget(leveren,1,2);
-        QObject::connect(ui->StopButton, SIGNAL(clicked()), leveren, SLOT(show()));
-        QObject::connect(ui->StartButton, SIGNAL(clicked()), leveren, SLOT(hide()));
-        QObject::connect(ui->ReturnButton, SIGNAL(clicked()), leveren, SLOT(show()));
-        QObject::connect(ui->PreviousDayButton, SIGNAL(clicked()), leveren, SLOT(hide()));
-
+        int hubcount = 2;
+        QPushButton *commit = new QPushButton("Commit");
+        QObject::connect((*it), SIGNAL(newDay()), this, SLOT(show()));
+        QObject::connect(commit, SIGNAL(clicked()), commit, SLOT(hide()));
+        QObject::connect(commit, SIGNAL(clicked()), commit, SLOT(hide()));
+        for(int j = 0; j < (int) hubs.size(); j++){
+            if(hubs[j]->getFverbondenCentra().find((*it)->getKfname()) != hubs[j]->getFverbondenCentra().end()){
+                QLabel *leveren = new QLabel(QString::fromStdString("Hub"+to_string(j+1)+": "));
+                grid->addWidget(leveren,1,(hubcount));
+                QObject::connect(ui->StopButton, SIGNAL(clicked()), leveren, SLOT(show()));
+                QObject::connect(ui->StartButton, SIGNAL(clicked()), leveren, SLOT(hide()));
+                QObject::connect(ui->ReturnButton, SIGNAL(clicked()), leveren, SLOT(show()));
+                QObject::connect(ui->PreviousDayButton, SIGNAL(clicked()), leveren, SLOT(hide()));
+                hubcount += 2;
+            }
+        }
+        commits[name] = commit;
+        grid->addWidget(commit,0,hubcount);
         layouts[name] = grid;
+
+
 
         dialog->setLayout(grid);
         QObject::connect(but, SIGNAL(pressed()), dialog, SLOT(exec()));
         QObject::connect((*it), SIGNAL(setVaccinInDialog(const std::string&, const Vaccin*, int)), this,
                          SLOT(addVaccin(const std::string&,const Vaccin*,int)));
     }
+
 
     ui->tabWidget->currentWidget()->setLayout(layout);
 }
@@ -218,38 +232,50 @@ void MainWindow::addVaccin(const std::string &centrum, const Vaccin* vaccin, int
     QProgressBar *VaccinBar = new QProgressBar();
     progressBars[centrum][vaccin->type] = VaccinBar;
     layouts[centrum]->addWidget(VaccinBar,i+1,1);
-    QSlider *vaccinSlider = new QSlider(Qt::Horizontal);
-    QLabel *value = new QLabel("0");
 
-    int totalVaccines = 0;
-    for(int i = 0; i< (int) hubs.size(); i++){
-        totalVaccines += hubs[i]->getAllVaccins(vaccin);
-    }
-    int teLeverenvaccins = floor((centra[centrum]->getMaxStock()-centra[centrum]->getTotaalAantalVaccins())/vaccin->transport)*vaccin->transport;
-    int maxteVerdelen = min(teLeverenvaccins, totalVaccines);
-    vaccinSlider->setMaximum(maxteVerdelen);
-    QObject::connect(vaccinSlider, &QSlider::valueChanged, this, [=] () {
-        int v =  round(vaccinSlider->value()/vaccin->transport)*vaccin->transport;
-        vaccinSlider->setValue(v);
-        if(value->text().toUtf8().constData() != to_string(v)){
-            cout<<"change! new value: "<<v<<endl;
+    int k = 2;
+    for(int j = 0; j< (int) hubs.size(); j++){
+        if(hubs[j]->getFverbondenCentra().find(centrum) != hubs[j]->getFverbondenCentra().end()){
+            QSlider *vaccinSlider = new QSlider(Qt::Horizontal);
+            QLabel *value = new QLabel("0");
+            int totalVaccines = 0;
+            for(int l = 0; l< (int) hubs.size(); l++){
+                totalVaccines += hubs[l]->getAllVaccins(vaccin);
+            }
+            int teLeverenvaccins = floor((centra[centrum]->getMaxStock()-centra[centrum]->getTotaalAantalVaccins())/vaccin->transport)*vaccin->transport;
+            int maxteVerdelen = min(teLeverenvaccins, totalVaccines);
+            vaccinSlider->setMaximum(maxteVerdelen);
+            //QObject::connect(vaccinSlider, SIGNAL(valueChanged()), vaccinSlider, SLOT(setValue())):
+
+            QObject::connect(vaccinSlider, &QSlider::valueChanged, this, [=] () {
+                int v =  round(vaccinSlider->value()/vaccin->transport)*vaccin->transport;
+                vaccinSlider->setValue(v);
+                if(value->text().toUtf8().constData() != to_string(v)){
+                    cout<<"change! new value: "<<v<<endl;
+                    value->setText(QString::number(v));
+                }
+            });
+            layouts[centrum]->addWidget(vaccinSlider,i+1,k);
+            layouts[centrum]->addWidget(value,i+1,k+1);
+            k+=2;
+
+            QObject::connect(ui->ReturnButton, SIGNAL(clicked()), vaccinSlider, SLOT(show()));
+            QObject::connect(ui->PreviousDayButton, SIGNAL(clicked()), vaccinSlider, SLOT(hide()));
+            QObject::connect(ui->StopButton, SIGNAL(clicked()), vaccinSlider, SLOT(show()));
+            QObject::connect(ui->StartButton, SIGNAL(clicked()), vaccinSlider, SLOT(hide()));
+            QObject::connect(commits[centrum], SIGNAL(clicked()), vaccinSlider, SLOT(hide()));
+
+            QObject::connect(ui->ReturnButton, SIGNAL(clicked()), value, SLOT(show()));
+            QObject::connect(ui->PreviousDayButton, SIGNAL(clicked()), value, SLOT(hide()));
+            QObject::connect(ui->StopButton, SIGNAL(clicked()), value, SLOT(show()));
+            QObject::connect(ui->StartButton, SIGNAL(clicked()), value, SLOT(hide()));
+            QObject::connect(commits[centrum], SIGNAL(clicked()), value, SLOT(hide()));
         }
-        value->setText(QString::number(v));
-    });
-    layouts[centrum]->addWidget(vaccinSlider,i+1,2);
-    layouts[centrum]->addWidget(value,i+1,3);
+    }
 
-    QObject::connect(ui->ReturnButton, SIGNAL(clicked()), vaccinSlider, SLOT(show()));
-    QObject::connect(ui->PreviousDayButton, SIGNAL(clicked()), vaccinSlider, SLOT(hide()));
-    QObject::connect(ui->StopButton, SIGNAL(clicked()), vaccinSlider, SLOT(show()));
-    QObject::connect(ui->StartButton, SIGNAL(clicked()), vaccinSlider, SLOT(hide()));
 
-    QObject::connect(ui->ReturnButton, SIGNAL(clicked()), value, SLOT(show()));
-    QObject::connect(ui->PreviousDayButton, SIGNAL(clicked()), value, SLOT(hide()));
-    QObject::connect(ui->StopButton, SIGNAL(clicked()), value, SLOT(show()));
-    QObject::connect(ui->StartButton, SIGNAL(clicked()), value, SLOT(hide()));
 
-    QObject::connect(centra[centrum], &VaccinatieCentrum::newDay,this, [=] () {
+    /*QObject::connect(centra[centrum], &VaccinatieCentrum::newDay,this, [=] () {
         value->setText("0");
         vaccinSlider->setValue(0);
         int totalVaccines = 0;
@@ -260,7 +286,7 @@ void MainWindow::addVaccin(const std::string &centrum, const Vaccin* vaccin, int
         int maxteVerdelen = min(teLeverenvaccins, totalVaccines);
         vaccinSlider->setMaximum(maxteVerdelen);
     });
-
+    */
     QObject::connect(centra[centrum], SIGNAL(changeVaccinProgressBar(const std::string&,const std::string&,int)), this, SLOT(setVaccinValue(const std::string&,const std::string&,int)));
 }
 
@@ -298,22 +324,20 @@ void MainWindow::previousDay(){
 }
 
 void MainWindow::changeData(){
-    /*
-    string file = "dag"+to_string(dayOffset)+".txt";
+    string file = "../SavedData/dag"+to_string(simDay-dayOffset)+".txt";
     SimulationImporter s(file);
     int centrumnr = 0;
     for (map<string,VaccinatieCentrum *>::iterator it = centra.begin(); it != centra.end(); it++) {
         emit (*it).second->changeMainProgressBar(s.getAantalVaccinatiesCentrum(centrumnr));
-        for(map<string,pair<Vaccin*, int> >::iterator it2 = (*it).second->getAantalVaccins1().begin(); it2 = (*it).second->getAantalVaccins1().end(); it2++  ){
+        for(map<string,pair<Vaccin *, int> >::const_iterator it2 = (*it).second->getAantalVaccins1().begin(); it2 != (*it).second->getAantalVaccins1().end(); it2++  ){
             emit (*it).second->changeVaccinProgressBar((*it).second->getKfname(),(*it2).first,(int)(s.getCentrumVaccinCount(centrumnr,(*it2).first)*100/s.getAantalVaccinatiesCentrum(centrumnr)));
         }
     }
     for(std::vector<Hub*>::iterator it = hubs.begin(); it != hubs.end(); it++){
-        for(map<string, Vaccin *>::iterator it2 = (*it)->getVaccins().begin(); it2 != (*it)->getVaccins().end(); it2++){
-            emit (*it)->changeVaccinCount((*it2)->first, (*it)->getAllVaccins((*it2)->second));
+        for(map<string, Vaccin *>::const_iterator it2 = (*it)->getVaccins().begin(); it2 != (*it)->getVaccins().end(); it2++){
+            emit (*it)->changeVaccinCount((*it2).first, (*it)->getAllVaccins((*it2).second));
         }
     }
-    */
 }
 
 void MainWindow::returnToCurrent(){
