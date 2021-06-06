@@ -258,10 +258,13 @@ inline void ExportSimulation(const std::string &filename, VaccinSimulatie *simul
             aantal->LinkEndChild(aantal_value);
             int totaal_eerste = 0;
 
-            const deque<int> &eerste_prikken = (*centrumIterator)->getAantalEerstePrikken().at(vaccinIterator->first);
-            for (deque<int>::const_iterator eerste_prik = eerste_prikken.begin();
-                 eerste_prik != eerste_prikken.end(); ++eerste_prik) {
-                totaal_eerste += *eerste_prik;
+            const map<std::string, deque<int> > &aantal_eerste_prikken = (*centrumIterator)->getAantalEerstePrikken();
+            if (aantal_eerste_prikken.find(vaccinIterator->first) != aantal_eerste_prikken.end()) {
+                const deque<int> &eerste_prikken = aantal_eerste_prikken.at(vaccinIterator->first);
+                for (deque<int>::const_iterator eerste_prik = eerste_prikken.begin();
+                     eerste_prik != eerste_prikken.end(); ++eerste_prik) {
+                    totaal_eerste += *eerste_prik;
+                }
             }
 
             TiXmlElement *eersteprik = new TiXmlElement("eersteprik");

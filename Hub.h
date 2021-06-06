@@ -27,7 +27,7 @@ class VaccinatieCentrum;
 struct Vaccin;
 
 class Hub  : public QObject {
-    Q_OBJECT
+Q_OBJECT
 public:
 
     /**
@@ -36,6 +36,8 @@ public:
 //    Hub(const int kaantal_vaccins_per_levering, const int kleveringen_interval, const int kaantal_vaccins_per_lading);
 
     Hub(const map<string, Vaccin *> &vaccins);
+
+    Hub(QObject *parent = nullptr);
 
     /**
      * Verwijdert alle centra van deze hub

@@ -16,6 +16,8 @@ Hub::Hub(const map<string, Vaccin *> &vaccins) : _initCheck(this), kvaccins(vacc
     ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
 }
 
+Hub::Hub(QObject *parent) : QObject(parent), _initCheck(this) {}
+
 bool Hub::isProperlyInitialized() const {
     return _initCheck == this;
 }
