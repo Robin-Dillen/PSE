@@ -233,14 +233,14 @@ void MainWindow::addVaccin(const std::string &centrum, Vaccin *vaccin, int centr
     progressBars[centrum][vaccin->type] = VaccinBar;
     layouts[centrum]->addWidget(VaccinBar, centrumnr + 1, 1);
 
-    for(int j = 0; j< (int) hubs.size(); j++) {
-        const map<std::string, VaccinatieCentrum *> &verbonden_centra = hubs[j]->getFverbondenCentra();
+    for (int hubnr = 0; hubnr < (int) hubs.size(); hubnr++) {
+        const map<std::string, VaccinatieCentrum *> &verbonden_centra = hubs[hubnr]->getFverbondenCentra();
         string s = centrum;
         if (verbonden_centra.find(centrum) != verbonden_centra.end()) {
-            const map<std::string, Vaccin*> &verbonden_vaccins = hubs[j]->getVaccins();
+            const map<std::string, Vaccin *> &verbonden_vaccins = hubs[hubnr]->getVaccins();
             string si = vaccin->type;
             if (verbonden_vaccins.find(vaccin->type) != verbonden_vaccins.end()) {
-                Slider *vaccinSlider = new Slider(vaccin->transport, hubs[j], centra[centrum], vaccin);
+                Slider *vaccinSlider = new Slider(vaccin->transport, hubs[hubnr], centra[centrum], vaccin);
                 QLabel *value = new QLabel("0");
 
                 int totalVaccines = 0;
@@ -257,8 +257,8 @@ void MainWindow::addVaccin(const std::string &centrum, Vaccin *vaccin, int centr
                 QObject::connect(vaccinSlider, SIGNAL(changeText(const QString&)), value,
                                  SLOT(setText(const QString &)));
 
-                layouts[centrum]->addWidget(vaccinSlider, centrumnr + 1, (j+1)*2);
-                layouts[centrum]->addWidget(value, centrumnr + 1, ((j+1)*2)+1);
+                layouts[centrum]->addWidget(vaccinSlider, centrumnr + 1, (hubnr + 1) * 2);
+                layouts[centrum]->addWidget(value, centrumnr + 1, ((hubnr + 1) * 2) + 1);
 
                 QObject::connect(ui->ReturnButton, SIGNAL(clicked()), vaccinSlider, SLOT(show()));
                 QObject::connect(ui->PreviousDayButton, SIGNAL(clicked()), vaccinSlider, SLOT(hide()));
