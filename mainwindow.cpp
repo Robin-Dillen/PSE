@@ -107,8 +107,8 @@ MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
             grid->addWidget(type,j,0);
             QLabel *count = new QLabel(QString::fromStdString(to_string((*it2).second->aantal)));
             grid->addWidget(count,j,1);
-            vaccineCount[(*it2).first] = count;
-            QObject::connect((*it), SIGNAL(changeVaccinCount(std::string,int)), this, SLOT(setVaccinCount(std::string,int)));
+            vaccineCount[(*it)][(*it2).first] = count;
+            QObject::connect((*it), SIGNAL(changeVaccinCount(Hub*,std::string,int)), this, SLOT(setVaccinCount(Hub*,std::string,int)));
             j++;
         }
 
@@ -287,8 +287,8 @@ void MainWindow::setVaccinValue(const std::string &centrum,const std::string &va
     progressBars[centrum][vaccin]->setValue(value);
 }
 
-void MainWindow::setVaccinCount(string vaccin, int count){
-    vaccineCount[vaccin]->setText(QString::fromStdString(to_string(count)));
+void MainWindow::setVaccinCount(Hub* h, string vaccin, int count){
+    vaccineCount[h][vaccin]->setText(QString::fromStdString(to_string(count)));
 }
 
 void MainWindow::setGuiDay(int day){
@@ -336,20 +336,22 @@ void MainWindow::changeData() {
                                                               percentage);
         }
     }
+    int i = 0;
     for (std::vector<Hub *>::iterator hubIterator = hubs.begin(); hubIterator != hubs.end(); hubIterator++) {
         const map<string, Vaccin *> &vaccins = (*hubIterator)->getVaccins();
         for (map<string, Vaccin *>::const_iterator vaccinIterator = vaccins.begin();
              vaccinIterator != vaccins.end(); vaccinIterator++) {
-            emit (*hubIterator)->changeVaccinCount((*vaccinIterator).first,
-                                                   (*hubIterator)->getAllVaccins((*vaccinIterator).second));
+            emit (*hubIterator)->changeVaccinCount((*hubIterator),(*vaccinIterator).first,
+                                                   importer.getHubVaccinCount(i,vaccinIterator->first));
         }
+        ++i;
     }
 
     //pie chart
     float totaal = stats.getTotaalAantalMensen();
     int totaal_eersteprik = 0;
     int totaal_tweedeprik = 0;
-    int i = 0;
+    i = 0;
     for (map<string, VaccinatieCentrum *>::iterator centrumIt = centra.begin();
          centrumIt != centra.end(); centrumIt++) {
         totaal_eersteprik += importer.getTotaalAantalEerstePrikken(i);

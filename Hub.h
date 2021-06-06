@@ -204,7 +204,7 @@ public:
 
     signals:
 
-    void changeVaccinCount(std::string vaccin,int count);
+    void changeVaccinCount(Hub* h,std::string vaccin,int count);
 
 private:
     // const attributes

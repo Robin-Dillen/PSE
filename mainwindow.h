@@ -44,7 +44,7 @@ public slots:
 
     void setVaccinValue(const std::string &centrum,const std::string &vaccin, int value);
 
-    void setVaccinCount(std::string vaccin,int count);
+    void setVaccinCount(Hub* h, std::string vaccin,int count);
 
     void nextDay();
 
@@ -68,7 +68,7 @@ private:
     std::map<std::string, QGridLayout *> layouts;
     std::map<std::string, QPushButton *> commits;
     std::map<std::string, std::map<std::string, QProgressBar*>> progressBars;
-    std::map<std::string, QLabel*> vaccineCount;
+    std::map<Hub*,std::map<std::string, QLabel*> > vaccineCount;
 
     Ui::MainWindow *ui;
     QPieSeries *pieSeries;
