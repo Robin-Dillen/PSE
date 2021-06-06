@@ -200,6 +200,7 @@ void MainWindow::dataChanged() {
     float pEerstePrikken = (stats.getTotaalEerstePrikken() / totaal) * 100;
     float pVolledigeVaccinaties = (stats.getTotaalVolledigeVaccinaties() / totaal) * 100;
     float pRest = 100 - (pEerstePrikken + pVolledigeVaccinaties);
+
     pieSeries->slices().at(0)->setValue(pRest);
 //    pieSeries->slices().at(0)->setLabel(QString("%1%").arg(100 * pieSeries->slices().at(0)->percentage(), 0, 'f', 1));
     pieSeries->slices().at(1)->setValue(pEerstePrikken);
@@ -362,11 +363,7 @@ void MainWindow::changeData() {
     int i = 0;
     for (map<string, VaccinatieCentrum *>::iterator centrumIt = centra.begin();
          centrumIt != centra.end(); centrumIt++) {
-        const map<string, pair<Vaccin *, int>> &vaccins = (*centrumIt).second->getAantalVaccins1();
-        for (map<string, pair<Vaccin *, int> >::const_iterator vaccinIterator = vaccins.begin();
-             vaccinIterator != vaccins.end(); vaccinIterator++) {
-            totaal_eersteprik += importer.getAantalEerstePrikken(i, vaccinIterator->first);
-        }
+        totaal_eersteprik += importer.getTotaalAantalEerstePrikken(i);
         totaal_tweedeprik += importer.getAantalVaccinatiesCentrum(i);
         ++i;
     }
@@ -375,11 +372,8 @@ void MainWindow::changeData() {
     float pVolledigeVaccinaties = (totaal_tweedeprik / totaal) * 100;
     float pRest = 100 - (pEerstePrikken + pVolledigeVaccinaties);
     pieSeries->slices().at(0)->setValue(pRest);
-//    pieSeries->slices().at(0)->setLabel(QString("%1%").arg(100 * pieSeries->slices().at(0)->percentage(), 0, 'f', 1));
     pieSeries->slices().at(1)->setValue(pEerstePrikken);
-//    pieSeries->slices().at(1)->setLabel(QString("%1%").arg(100 * pieSeries->slices().at(1)->percentage(), 0, 'f', 1));
     pieSeries->slices().at(2)->setValue(pVolledigeVaccinaties);
-//    pieSeries->slices().at(2)->setLabel(QString("%1%").arg(100 * pieSeries->slices().at(2)->percentage(), 0, 'f', 1));
 
 }
 

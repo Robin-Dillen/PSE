@@ -233,10 +233,12 @@ inline void ExportSimulation(const std::string &filename, VaccinSimulatie *simul
     const std::vector<VaccinatieCentrum *> &centra = simulatie->getVaccinatieCentra();
     for (std::vector<VaccinatieCentrum *>::const_iterator centrumIterator = centra.begin();
          centrumIterator != centra.end(); ++centrumIterator) {
+
         TiXmlElement *centrum = new TiXmlElement("CENTRUM");
         const map<std::string, pair<Vaccin *, int>> &vaccins = (*centrumIterator)->getAantalVaccins1();
         for (map<std::string, pair<Vaccin *, int>>::const_iterator vaccinIterator = vaccins.begin();
              vaccinIterator != vaccins.end(); ++vaccinIterator) {
+
             TiXmlElement *vaccin = new TiXmlElement("VACCIN");
             TiXmlElement *type = new TiXmlElement("type");
             TiXmlText *type_value = new TiXmlText(vaccinIterator->first.c_str());

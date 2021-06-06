@@ -71,7 +71,7 @@ public:
      * @return het aantal eerste prikken in hub met gegeven type
      * \n ENSURE(isProperlyInitialized(), "Object wasn't properly initialised!");
      */
-    int getAantalEerstePrikken(int centrumnr, const std::string &vaccin);
+    int getTotaalAantalEerstePrikken(int centrumnr);
 
     /*!
      * @return geeft terug of het object juist geïnitialiseert is

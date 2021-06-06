@@ -123,7 +123,7 @@ bool VaccinSimulatie::nextDay() {
         }
         stats.setEerstePrikken(totaal_eerste_prikken);
         stats.setAantalVaccinaties(totaal_vaccinaties);
-        ExportSimulation("../SavedData/dag" + to_string(day+1) + ".xml", this);
+        ExportSimulation("../SavedData/dag" + to_string(day + 1) + ".xml", this);
         day++;
         emit dayNrChanged(day);
     } else {
