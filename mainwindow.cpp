@@ -25,8 +25,8 @@ MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
     pieSeries->append("Niet gevaccineerd", 100);
     pieSeries->append("half gevaccineerd", 0);
     pieSeries->append("volledig gevaccineerd", 0);
-    pieSeries->setLabelsVisible();
-    pieSeries->setLabelsPosition(QPieSlice::LabelInsideHorizontal);
+//    pieSeries->setLabelsVisible();
+//    pieSeries->setLabelsPosition(QPieSlice::LabelInsideHorizontal);
 
     dayOffset = 0;
     simDay = 1;
@@ -34,7 +34,7 @@ MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
     QChart *chart = new QChart();
     chart->addSeries(pieSeries);
     chart->setTitle("Vaccinaties");
-//    setDisabled(chart->legend());
+//    chart->legend()->hide();
 
     QChartView *view = new QChartView(chart);
     view->setParent(ui->horizontalFrame_page1);
@@ -201,11 +201,11 @@ void MainWindow::dataChanged() {
     float pVolledigeVaccinaties = (stats.getTotaalVolledigeVaccinaties() / totaal) * 100;
     float pRest = 100 - (pEerstePrikken + pVolledigeVaccinaties);
     pieSeries->slices().at(0)->setValue(pRest);
-    pieSeries->slices().at(0)->setLabel(QString("%1%").arg(100 * pieSeries->slices().at(0)->percentage(), 0, 'f', 1));
+//    pieSeries->slices().at(0)->setLabel(QString("%1%").arg(100 * pieSeries->slices().at(0)->percentage(), 0, 'f', 1));
     pieSeries->slices().at(1)->setValue(pEerstePrikken);
-    pieSeries->slices().at(1)->setLabel(QString("%1%").arg(100 * pieSeries->slices().at(1)->percentage(), 0, 'f', 1));
+//    pieSeries->slices().at(1)->setLabel(QString("%1%").arg(100 * pieSeries->slices().at(1)->percentage(), 0, 'f', 1));
     pieSeries->slices().at(2)->setValue(pVolledigeVaccinaties);
-    pieSeries->slices().at(2)->setLabel(QString("%1%").arg(100 * pieSeries->slices().at(2)->percentage(), 0, 'f', 1));
+//    pieSeries->slices().at(2)->setLabel(QString("%1%").arg(100 * pieSeries->slices().at(2)->percentage(), 0, 'f', 1));
 
     //line chart
     map<string, int> totaal_geleverde_vaccins = stats.getGeleverdeVaccins();
@@ -326,18 +326,24 @@ void MainWindow::previousDay(){
     }
 }
 
-void MainWindow::changeData(){
+void MainWindow::changeData() {
+    StatisticsSingleton &stats = StatisticsSingleton::getInstance();
     string file = "../SavedData/dag" + to_string(simDay - dayOffset) + ".xml";
-    SimulationImporter s(file);
+    SimulationImporter importer(file);
     int centrumnr = 0;
-    for (map<string, VaccinatieCentrum *>::iterator it = centra.begin(); it != centra.end(); it++) {
-        emit (*it).second->changeMainProgressBar(s.getAantalVaccinatiesCentrum(centrumnr));
-        for(map<string,pair<Vaccin *, int> >::const_iterator it2 = (*it).second->getAantalVaccins1().begin(); it2 != (*it).second->getAantalVaccins1().end(); it2++  ){
+    for (map<string, VaccinatieCentrum *>::iterator centrumIt = centra.begin();
+         centrumIt != centra.end(); centrumIt++) {
+        emit (*centrumIt).second->changeMainProgressBar(importer.getAantalVaccinatiesCentrum(centrumnr));
+        const map<string, pair<Vaccin *, int>> &vaccins = (*centrumIt).second->getAantalVaccins1();
+        for (map<string, pair<Vaccin *, int> >::const_iterator vaccinIterator = vaccins.begin();
+             vaccinIterator != vaccins.end(); vaccinIterator++) {
             int percentage = 0;
-            if(s.getAantalVaccinatiesCentrum(centrumnr) != 0){
-               percentage = (s.getCentrumVaccinCount(centrumnr,(*it2).first)*100/s.getAantalVaccinatiesCentrum(centrumnr));
+            if (importer.getAantalVaccinatiesCentrum(centrumnr) != 0) {
+                percentage = (importer.getCentrumVaccinCount(centrumnr, (*vaccinIterator).first) * 100 /
+                              importer.getAantalVaccinatiesCentrum(centrumnr));
             }
-            emit (*it).second->changeVaccinProgressBar((*it).second->getKfname(),(*it2).first,percentage);
+            emit (*centrumIt).second->changeVaccinProgressBar((*centrumIt).second->getKfname(), (*vaccinIterator).first,
+                                                              percentage);
         }
     }
     for (std::vector<Hub *>::iterator hubIterator = hubs.begin(); hubIterator != hubs.end(); hubIterator++) {
@@ -348,6 +354,33 @@ void MainWindow::changeData(){
                                                    (*hubIterator)->getAllVaccins((*vaccinIterator).second));
         }
     }
+
+    //pie chart
+    float totaal = stats.getTotaalAantalMensen();
+    int totaal_eersteprik = 0;
+    int totaal_tweedeprik = 0;
+    int i = 0;
+    for (map<string, VaccinatieCentrum *>::iterator centrumIt = centra.begin();
+         centrumIt != centra.end(); centrumIt++) {
+        const map<string, pair<Vaccin *, int>> &vaccins = (*centrumIt).second->getAantalVaccins1();
+        for (map<string, pair<Vaccin *, int> >::const_iterator vaccinIterator = vaccins.begin();
+             vaccinIterator != vaccins.end(); vaccinIterator++) {
+            totaal_eersteprik += importer.getAantalEerstePrikken(i, vaccinIterator->first);
+        }
+        totaal_tweedeprik += importer.getAantalVaccinatiesCentrum(i);
+        ++i;
+    }
+
+    float pEerstePrikken = (totaal_eersteprik / totaal) * 100;
+    float pVolledigeVaccinaties = (totaal_tweedeprik / totaal) * 100;
+    float pRest = 100 - (pEerstePrikken + pVolledigeVaccinaties);
+    pieSeries->slices().at(0)->setValue(pRest);
+//    pieSeries->slices().at(0)->setLabel(QString("%1%").arg(100 * pieSeries->slices().at(0)->percentage(), 0, 'f', 1));
+    pieSeries->slices().at(1)->setValue(pEerstePrikken);
+//    pieSeries->slices().at(1)->setLabel(QString("%1%").arg(100 * pieSeries->slices().at(1)->percentage(), 0, 'f', 1));
+    pieSeries->slices().at(2)->setValue(pVolledigeVaccinaties);
+//    pieSeries->slices().at(2)->setLabel(QString("%1%").arg(100 * pieSeries->slices().at(2)->percentage(), 0, 'f', 1));
+
 }
 
 void MainWindow::returnToCurrent(){

@@ -1,6 +1,7 @@
 cmake-build*
 .idea
 gtest
+SavedData
 googletest-release-1.10.0.zip
 err.txt
 *.zip

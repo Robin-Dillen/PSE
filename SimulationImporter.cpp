@@ -50,9 +50,9 @@ SimulationImporter::SimulationImporter(const std::string &filename) : _initCheck
             importerData.data.at(type).aantal_vaccins = to_int(vaccin->FirstChildElement("eersteprik")->GetText());
             importerData.data.at(type).aantal_vaccins = to_int(vaccin->FirstChildElement("tweedeprik")->GetText());
 
-        } while ((vaccin = vaccin->NextSiblingElement("CENTRUM")) != NULL);
+        } while ((vaccin = vaccin->NextSiblingElement("VACCIN")) != NULL);
         centra_data.push_back(importerData);
-    } while ((centrum = centrum->NextSiblingElement("HUB")) != NULL);
+    } while ((centrum = centrum->NextSiblingElement("CENTRUM")) != NULL);
     ENSURE(isProperlyInitialized(), "Object isn't properly initialized when exiting the constructor");
 }
 
@@ -77,6 +77,7 @@ int SimulationImporter::getAantalVaccinatiesCentrum(int centrumnr) {
 
 int SimulationImporter::getAantalEerstePrikken(int centrumnr, const std::string &vaccin) {
     ENSURE(isProperlyInitialized(), "Object wasn't properly initialised!");
+    if (centra_data[centrumnr].data.find(vaccin) == centra_data[centrumnr].data.end()) return 0;
     return centra_data[centrumnr].data.at(vaccin).eerste_prikken;
 }
 
