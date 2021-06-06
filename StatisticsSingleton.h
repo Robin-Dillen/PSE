@@ -6,6 +6,7 @@
 #include <deque>
 #include <string>
 #include <QObject>
+#include "lib/DesignByContract.h"
 
 using namespace std;
 
@@ -38,39 +39,81 @@ public:
     /*!
      * voegt vaccins toe aan het totaal aantal geleverde vaccins
      * @param geleverd const map<string, int> &
+     * \n REQUIRE(isProperlyInitialized(), "The object isn't initialized when calling this function");
+     * \n ENSURE(data[levering->first].aantal_geleverde_vaccins == getGeleverdeVaccins()[levering->first], "Het setten van de map was nie succesvol!");
      */
     void addGeleverdeVaccins(const map<string, int> &geleverd);
 
     /*!
-     *
-     * @param eerste_prikken
+     * zet het totaal aantal eerste prikken
+     * @param eerste_prikken const map<string, int> &
+     * \n REQUIRE(isProperlyInitialized(), "The object isn't initialized when calling this function");
+     * \n ENSURE(begin_totaal + eerste_prik->second == getTotaalEerstePrikken(), "De eerste prikken zijn niet succesvol geset!");
      */
     void setEerstePrikken(const map<string, int> &eerste_prikken);
 
+    /*!
+     * zet het aantal volledige vaccinateis
+     * @param aantal const map<string, int> &
+     * \n REQUIRE(isProperlyInitialized(), "The object isn't initialized when calling this function");
+     * \n ENSURE(begin_totaal == getTotaalVolledigeVaccinaties(), "Het setten van de volledige vaccinaties is nie succesvol!");
+     */
     void setAantalVaccinaties(const map<string, int> &aantal);
 
     /**
      * @return geeft terug of het object correct is geïnitialiseert
+     * \n REQUIRE(isProperlyInitialized(), "The object isn't initialized when calling this function");
      */
     bool isProperlyInitialized() const;
 
+    /*!
+     * zet het totaal aantal mensen
+     * @param totaalAantalMensen int
+     * \n REQUIRE(isProperlyInitialized(), "The object isn't initialized when calling this function");
+     * \n ENSURE(getTotaalAantalMensen() == totaalAantalMensen, "Het totaal aantal mensen is niet succesvol geset!");
+     */
     void setTotaalAantalMensen(int totaalAantalMensen);
 
+    /*!
+     * geeft het totaal aantal eerste prikken terug
+     * \n REQUIRE(isProperlyInitialized(), "The object isn't initialized when calling this function");
+     * @return int
+     * \n ENSURE(totaal >= 0, "Het totaal aantal eerste prikken kan niet negatief zijn!");
+     */
     int getTotaalEerstePrikken() const;
 
+    /*!
+     * geeft het totaal aantal volledige vaccinaties terug
+     * \n REQUIRE(isProperlyInitialized(), "The object isn't initialized when calling this function");
+     * @return int
+     * \n ENSURE(totaal >= 0, "Het totaal aantal volledige vaccinaties kan niet negatief zijn!");
+     */
     int getTotaalVolledigeVaccinaties() const;
 
+    /*!
+     * geeft terug hoeveel vaccins er in totaal al zijn geleverd
+     * \n REQUIRE(isProperlyInitialized(), "The object isn't initialized when calling this function");
+     * @return map<string, int
+     */
     map<string, int> getGeleverdeVaccins() const;
 
+    /*!
+     * geeft het totaal aantal mensen terug
+     * \n REQUIRE(isProperlyInitialized(), "The object isn't initialized when calling this function");
+     * @return int
+     */
     int getTotaalAantalMensen() const;
 
 signals:
 
+    /*!
+     * stuurt een signaal dat de data is verandert
+     */
     void dataChange();
 
 private:
     StatisticsSingleton() : _initCheck(this) {
-
+        ENSURE(isProperlyInitialized(), "The object isn't properly initialized when exiting the constructor!");
     }                    // Constructor? (the {} brackets) are needed here.
 
     // C++ 03

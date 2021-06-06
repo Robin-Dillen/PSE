@@ -100,15 +100,6 @@ public:
     int getAantalGeleverdeVaccins(const string &type) const;
 
     /*!
-     * geeft terug hoeveel 2de prikken er gezet moeten worden vandaag
-     * @param type naam van het vaccin
-     * @return aantal 2de prikken
-     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getTodaysBatch()");
-     * \n ENSURE(aantal->second >= 0, "Er moet een negatief aantal inwoners gevaccineert worden!");
-     */
-    int getTodaysBatch(const string &type);
-
-    /*!
      * geeft het totaal aantal vaccinaties terug
      * @return int
      * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getTotaalAantalVaccinaties()");

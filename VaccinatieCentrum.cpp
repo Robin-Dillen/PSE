@@ -101,15 +101,6 @@ int VaccinatieCentrum::getMaxStock() const {
     return kcapaciteit * 2;
 }
 
-int VaccinatieCentrum::getTodaysBatch(const string &type) {
-    REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling getTodaysBatch()");
-    map<string, deque<int>>::iterator aantal = aantal_eerste_prikken.find(type);
-    if (aantal == aantal_eerste_prikken.end()) return 0;
-    if (aantal->second.empty()) return 0;
-    ENSURE(aantal->second.front() >= 0, "Er moet een negatief aantal inwoners gevaccineert worden!");
-    return aantal->second.front();
-}
-
 int VaccinatieCentrum::getTotaalAantalVaccinaties() const {
     REQUIRE(this->isProperlyInitialized(), "Object wasn't initialized when calling getTotaalAantalVaccinaties()");
     int totaal_vaccinaties = 0;
