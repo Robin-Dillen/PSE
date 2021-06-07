@@ -13,6 +13,13 @@
 #include "Vaccins.h"
 
 Hub::Hub(const map<string, Vaccin *> &vaccins) : _initCheck(this), kvaccins(vaccins) {
+    for (map<string, Vaccin *>::const_iterator vaccinsIt = vaccins.begin(); vaccinsIt != vaccins.end(); ++vaccinsIt) {
+        REQUIRE(!vaccinsIt->second->type.empty(), "Naam van het vaccin mag niet leeg zijn!");
+        REQUIRE(vaccinsIt->second->interval != 0, "het interval van het vaccin mag niet 0 zijn!");
+        REQUIRE(vaccinsIt->second->transport != 0, "het transport van het vaccin mag niet 0 zijn!");
+        REQUIRE(vaccinsIt->second->levering != 0, "de levering van het vaccin mag niet 0 zijn!");
+        REQUIRE(vaccinsIt->second->hernieuwing >= 0, "de hernieuwing van het vaccin mag niet negatief zijn!");
+    }
     ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
 }
 

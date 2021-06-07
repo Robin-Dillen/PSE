@@ -80,17 +80,17 @@ bool VaccinSimulatie::nextDay() {
         } else {
             continue;
         }
-        // increase current_day
+// increase current_day
         map<string, Vaccin *> vaccins = hubs[i]->getVaccins();
-        for(map<string,Vaccin*>::iterator it = vaccins.begin(); it != vaccins.end(); it++){
-            if ((day - 1) % it->second->interval == 0) {
-                // door in de simulatie het aantal vaccins mee te geven kunnen we war randomness toevoegen aan het aantal
-                // geleverde vaccins. Want ze zijn toch niet te vertrouwen die farmareuzen!
-                hubs[i]->ontvangLevering(it->first, it->second->levering);
+        for (map<string, Vaccin *>::iterator vaccinIt = vaccins.begin(); vaccinIt != vaccins.end(); vaccinIt++) {
+            if ((day - 1) % vaccinIt->second->interval == 0) {
+// door in de simulatie het aantal vaccins mee te geven kunnen we war randomness toevoegen aan het aantal
+// geleverde vaccins. Want ze zijn toch niet te vertrouwen die farmareuzen!
+                hubs[i]->ontvangLevering(vaccinIt->first, vaccinIt->second->levering);
             }
         }
 
-        // stuur signaal nieuwe dag
+// stuur signaal nieuwe dag
         hubs[i]->nieuweDag();
 
     }

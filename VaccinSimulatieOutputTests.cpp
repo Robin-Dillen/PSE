@@ -10,11 +10,12 @@
 #include <fstream>
 #include <sys/stat.h>
 #include <gtest/gtest.h>
-
-using namespace std;
-
 #include "VaccinSimulatie.h"
 #include "Lib.h"
+#include "Utils.h"
+#include "Parser.h"
+
+using namespace std;
 
 class VaccinSimulatieOutputTest : public ::testing::Test {
 protected:

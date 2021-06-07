@@ -10,12 +10,13 @@
 #include <fstream>
 #include <sys/stat.h>
 #include <gtest/gtest.h>
-
-using namespace std;
-
 #include "Lib.h"
 #include "Parser.h"
 #include "Utils.h"
+#include "SimulationImporter.h"
+
+using namespace std;
+
 
 class VaccinSimulatieInputTest : public ::testing::Test {
 protected:
@@ -163,4 +164,97 @@ TEST_F(VaccinSimulatieInputTest, InputXMLWarning019) {
 TEST_F(VaccinSimulatieInputTest, InputXMLWarning020) {
     Parser P("../XMLfiles/WarningTests/test020.xml");
     EXPECT_EQ(1, P.errorOccured(WRONG_VALUE));
+}
+
+TEST_F(VaccinSimulatieInputTest, BackupTest001) {
+    SimulationImporter importer("../SavedData/TestFiles/BackupTest001.xml");
+    EXPECT_TRUE(importer.isProperlyInitialized());
+
+    EXPECT_EQ(0, importer.getTotaalAantalEerstePrikken("Park Spoor Oost"));
+    EXPECT_NO_FATAL_FAILURE(importer.getTotaalAantalEerstePrikken("Park Spoor West"));
+
+    EXPECT_EQ(0, importer.getCentrumVaccinCount("Park Spoor Oost", "AstraZeneca"));
+    EXPECT_NO_FATAL_FAILURE(importer.getCentrumVaccinCount("Park Spoor Oost", "Pfizer"));
+    EXPECT_NO_FATAL_FAILURE(importer.getCentrumVaccinCount("Park Spoor West", "AstraZeneca"));
+    EXPECT_NO_FATAL_FAILURE(importer.getCentrumVaccinCount("Park Spoor West", "Pfizer"));
+
+    EXPECT_EQ(0, importer.getHubVaccinCount(0, "AstraZeneca"));
+    EXPECT_NO_FATAL_FAILURE(importer.getHubVaccinCount(0, "Moderna"));
+    EXPECT_NO_FATAL_FAILURE(importer.getHubVaccinCount(1, "AstraZeneca"));
+    EXPECT_NO_FATAL_FAILURE(importer.getHubVaccinCount(1, "Moderna"));
+
+    EXPECT_EQ(0, importer.getTotaalAantalVaccinatiesCentrum("Park Spoor Oost"));
+    EXPECT_NO_FATAL_FAILURE(importer.getTotaalAantalVaccinatiesCentrum("Park Spoor West"));
+
+    EXPECT_EQ(0, importer.getAantalVaccinatiesCentrum("Park Spoor Oost", "AstraZeneca"));
+    EXPECT_NO_FATAL_FAILURE(importer.getAantalVaccinatiesCentrum("Park Spoor Oost", "Moderna"));
+    EXPECT_NO_FATAL_FAILURE(importer.getAantalVaccinatiesCentrum("Park Spoor West", "AstraZeneca"));
+    EXPECT_NO_FATAL_FAILURE(importer.getAantalVaccinatiesCentrum("Park Spoor West", "Moderna"));
+}
+
+TEST_F(VaccinSimulatieInputTest, BackupTest002) {
+    SimulationImporter importer("../SavedData/TestFiles/BackupTest002.xml");
+    EXPECT_TRUE(importer.isProperlyInitialized());
+
+    EXPECT_EQ(2000, importer.getTotaalAantalEerstePrikken("Park Spoor Oost"));
+    EXPECT_EQ(1000, importer.getCentrumVaccinCount("Park Spoor Oost", "AstraZeneca"));
+    EXPECT_EQ(500, importer.getHubVaccinCount(0, "AstraZeneca"));
+    EXPECT_EQ(3000, importer.getTotaalAantalVaccinatiesCentrum("Park Spoor Oost"));
+    EXPECT_EQ(3000, importer.getAantalVaccinatiesCentrum("Park Spoor Oost", "AstraZeneca"));
+}
+
+TEST_F(VaccinSimulatieInputTest, BackupTest003) {
+    SimulationImporter importer("../SavedData/TestFiles/BackupTest003.xml");
+    EXPECT_TRUE(importer.isProperlyInitialized());
+
+    EXPECT_EQ(7000, importer.getTotaalAantalEerstePrikken("Park Spoor Oost"));
+    EXPECT_EQ(1000, importer.getCentrumVaccinCount("Park Spoor Oost", "AstraZeneca"));
+    EXPECT_EQ(4000, importer.getCentrumVaccinCount("Park Spoor Oost", "Pfizer"));
+    EXPECT_EQ(500, importer.getHubVaccinCount(0, "AstraZeneca"));
+    EXPECT_EQ(750, importer.getHubVaccinCount(0, "Pfizer"));
+    EXPECT_EQ(9000, importer.getTotaalAantalVaccinatiesCentrum("Park Spoor Oost"));
+    EXPECT_EQ(3000, importer.getAantalVaccinatiesCentrum("Park Spoor Oost", "AstraZeneca"));
+    EXPECT_EQ(6000, importer.getAantalVaccinatiesCentrum("Park Spoor Oost", "Pfizer"));
+}
+
+TEST_F(VaccinSimulatieInputTest, BackupTest004) {
+    SimulationImporter importer("../SavedData/TestFiles/BackupTest004.xml");
+    EXPECT_TRUE(importer.isProperlyInitialized());
+
+    EXPECT_EQ(7000, importer.getTotaalAantalEerstePrikken("Park Spoor Oost"));
+    EXPECT_EQ(1000, importer.getCentrumVaccinCount("Park Spoor Oost", "AstraZeneca"));
+    EXPECT_EQ(4000, importer.getCentrumVaccinCount("Park Spoor Oost", "Pfizer"));
+    EXPECT_EQ(500, importer.getHubVaccinCount(0, "AstraZeneca"));
+    EXPECT_EQ(750, importer.getHubVaccinCount(0, "Pfizer"));
+    EXPECT_EQ(9000, importer.getTotaalAantalVaccinatiesCentrum("Park Spoor Oost"));
+    EXPECT_EQ(3000, importer.getAantalVaccinatiesCentrum("Park Spoor Oost", "AstraZeneca"));
+    EXPECT_EQ(6000, importer.getAantalVaccinatiesCentrum("Park Spoor Oost", "Pfizer"));
+
+    EXPECT_EQ(7000, importer.getTotaalAantalEerstePrikken("De Zoerla"));
+    EXPECT_EQ(6000, importer.getCentrumVaccinCount("De Zoerla", "AstraZeneca"));
+    EXPECT_EQ(3000, importer.getCentrumVaccinCount("De Zoerla", "Pfizer"));;
+    EXPECT_EQ(5000, importer.getTotaalAantalVaccinatiesCentrum("De Zoerla"));
+    EXPECT_EQ(4000, importer.getAantalVaccinatiesCentrum("De Zoerla", "AstraZeneca"));
+    EXPECT_EQ(1000, importer.getAantalVaccinatiesCentrum("De Zoerla", "Pfizer"));
+}
+
+TEST_F(VaccinSimulatieInputTest, BackupTest005) {
+    SimulationImporter importer("../SavedData/TestFiles/BackupTest004.xml");
+    EXPECT_TRUE(importer.isProperlyInitialized());
+
+    EXPECT_EQ(7000, importer.getTotaalAantalEerstePrikken("Park Spoor Oost"));
+    EXPECT_EQ(1000, importer.getCentrumVaccinCount("Park Spoor Oost", "AstraZeneca"));
+    EXPECT_EQ(4000, importer.getCentrumVaccinCount("Park Spoor Oost", "Pfizer"));
+    EXPECT_EQ(500, importer.getHubVaccinCount(0, "AstraZeneca"));
+    EXPECT_EQ(750, importer.getHubVaccinCount(0, "Pfizer"));
+    EXPECT_EQ(9000, importer.getTotaalAantalVaccinatiesCentrum("Park Spoor Oost"));
+    EXPECT_EQ(3000, importer.getAantalVaccinatiesCentrum("Park Spoor Oost", "AstraZeneca"));
+    EXPECT_EQ(6000, importer.getAantalVaccinatiesCentrum("Park Spoor Oost", "Pfizer"));
+
+    EXPECT_EQ(7000, importer.getTotaalAantalEerstePrikken("De Zoerla"));
+    EXPECT_EQ(6000, importer.getCentrumVaccinCount("De Zoerla", "AstraZeneca"));
+    EXPECT_EQ(3000, importer.getCentrumVaccinCount("De Zoerla", "Pfizer"));
+    EXPECT_EQ(5000, importer.getTotaalAantalVaccinatiesCentrum("De Zoerla"));
+    EXPECT_EQ(4000, importer.getAantalVaccinatiesCentrum("De Zoerla", "AstraZeneca"));
+    EXPECT_EQ(1000, importer.getAantalVaccinatiesCentrum("De Zoerla", "Pfizer"));
 }

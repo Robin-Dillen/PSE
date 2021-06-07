@@ -59,6 +59,8 @@ SimulationImporter::SimulationImporter(const std::string &filename) : _initCheck
 
 int SimulationImporter::getHubVaccinCount(int hubnr, const std::string &vaccin) {
     ENSURE(isProperlyInitialized(), "Object wasn't properly initialised!");
+    if ((int) hubs_data.size() <= hubnr) return 0;
+    if (hubs_data[hubnr].data.find(vaccin) == hubs_data[hubnr].data.end()) return 0;
     int aantal = hubs_data[hubnr].data.at(vaccin).aantal_vaccins;
     ENSURE(aantal >= 0, "Een hub kan geen negatief aantal vaccinaties hebben!");
     return aantal;
@@ -66,6 +68,9 @@ int SimulationImporter::getHubVaccinCount(int hubnr, const std::string &vaccin) 
 
 int SimulationImporter::getCentrumVaccinCount(const std::string &centrum_naam, const std::string &vaccin) {
     ENSURE(isProperlyInitialized(), "Object wasn't properly initialised!");
+    map<std::string, SimulationImporterData>::iterator centrumIt = centra_data.find(centrum_naam);
+    if (centrumIt == centra_data.end()) return 0;
+    if (centrumIt->second.data.find(vaccin) == centrumIt->second.data.end()) return 0;
     int aantal = centra_data.at(centrum_naam).data.at(vaccin).aantal_vaccins;
     ENSURE(aantal >= 0, "Een centrum kan geen negatief aantal vaccins hebben!");
     return aantal;

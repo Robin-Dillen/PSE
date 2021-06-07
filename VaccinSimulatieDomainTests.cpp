@@ -74,10 +74,12 @@ TEST_F(VaccinSimulatieDomainTest, NonDefaultConstructor) {
     vaccins[Vac->type] = Vac;
     Hub H(vaccins);
     EXPECT_TRUE(H.isProperlyInitialized());
-    EXPECT_EQ(80000, H.getAantalVaccins(Vac->type));
+    EXPECT_EQ(0, H.getAantalVaccins(Vac->type));
     EXPECT_EQ(80000, H.getKaantalVaccinsPerLevering(Vac->type));
     EXPECT_EQ(10, H.getLeveringenInterval(Vac->type));
     EXPECT_EQ(1000, H.getKaantalVaccinsPerLading(Vac->type));
+    H.ontvangLevering(Vac->type, Vac->levering);
+    EXPECT_EQ(80000, H.getAantalVaccins(Vac->type));
 }
 
 /**
@@ -88,6 +90,7 @@ TEST_F(VaccinSimulatieDomainTest, HappyDay) {
     int nr = 1;
     string filename = HAPPY_DAY_TESTS_FILE_LOCATION + "test" + testnr + ".xml";
     while (FileExists(filename)) {
+        std::cout << testnr << std::endl;
         Parser P(filename);
         vector<Hub *> hubs = P.getFhubs();
         std::vector<VaccinatieCentrum *> vaccinatie_centra;

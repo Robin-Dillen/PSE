@@ -489,7 +489,16 @@
 
 int main(int argc, char **argv) {
     makeEmptyFile(OUTPUT_FILE_LOCATION + "err.txt");
-//    QApplication a(argc, argv);
+    std::string args;
+    for (int i = 0; i < argc; ++i) {
+        args += argv[i];
+    }
     ::testing::InitGoogleTest(&argc, argv);
+    if (args.find("HappyDay") == std::string::npos)
+        ::testing::GTEST_FLAG(
+                filter) = "VaccinSimulatieInputTest.*:VaccinSimulatieOutputTest.*:VaccinSimulatieDomainTest.*:-VaccinSimulatieDomainTest.HappyDay";
+    else
+        ::testing::GTEST_FLAG(filter) = "VaccinSimulatieDomainTest.HappyDay";
+
     return RUN_ALL_TESTS();
 }

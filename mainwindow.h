@@ -114,8 +114,7 @@ private:
     std::map<Hub*,std::map<std::string, QLabel*> > vaccineCount;
 
     Ui::MainWindow *ui;
-    QPieSeries *pieSeries;
-
+    QChartView *pieView;
     QChartView *lineChartView;
     std::map<std::string, QLineSeries *> series;
 
