@@ -15,9 +15,10 @@
 
 MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
         QMainWindow(parent),
-        ui(new Ui::MainWindow) {
+        ui(new Ui::MainWindow){
     ui->setupUi(this);
 
+    _initCheck = this;
     ui->NextDayButton_2->hide();
     ui->ReturnButton->hide();
 
