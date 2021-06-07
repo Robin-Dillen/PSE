@@ -94,6 +94,7 @@ void Slider::sendVaccins() {
     }
     hub->distributeManual(vaccin->type, this->value());
     centrum->ontvangLevering(this->value(), vaccin);
+    this->setMinimum(0);
 
 }
 
