@@ -151,17 +151,23 @@ void Hub::addReservations(const string &type) {
         for (int dag = 0; dag < interval; dag++) {
             //Aantal 2de prikken voor die dag
             int vaccins = centrum->second->getNogTeReserverenVaccins(type, dag);
+            int free_capacity = getFreeStock(centrum->second, dag);
             if (vaccins == 0) continue;
             vaccins = ceil((float) vaccins / lading) * lading;
             //Zolang er voldoende vaccins zijn, ladingen reserveren
-            while (vaccins > 0 && kvaccins[type]->aantal > 0) {
+            while (vaccins > 0 && kvaccins[type]->aantal > 0 && (kvaccins[type]->temperatuur >= 0 ||
+                                                                 kvaccins[type]->gereserveerd[centrum->first][dag] <=
+                                                                 free_capacity)) {
+                if (kvaccins[type]->extra_gereserveerd[centrum->first][dag] +
+                    kvaccins[type]->gereserveerd[centrum->first][dag] >
+                    centrum->second->getKcapaciteit() * 2)
+                    break;
                 vaccins -= lading;
                 //gereserveerde vaccins worden appart opgeslagen
                 kvaccins[type]->aantal -= lading;
                 kvaccins[type]->gereserveerd[centrum->first][dag] += lading;
                 centrum->second->reserveerVaccins(type, dag, lading);
             }
-
             ENSURE(kvaccins[type]->extra_gereserveerd[centrum->first][dag] +
                    kvaccins[type]->gereserveerd[centrum->first][dag] <=
                    centrum->second->getKcapaciteit() * 2, "Er zijn teveel vaccins gereserveerd");
