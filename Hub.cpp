@@ -33,8 +33,6 @@ int Hub::getAantalVaccins(const string &type) const {
     REQUIRE(isProperlyInitialized(), "Parser wasn't initialized when calling getAantalVaccins");
     REQUIRE(!type.empty(), "Type of vaccin cannot be empty.");
     if (kvaccins.find(type) == kvaccins.end()) return 0;
-    if (kvaccins.at(type)->aantal < 0)
-        cout << "error";
     ENSURE(kvaccins.at(type)->aantal >= 0, "Er is een negatief aantal vaccins!");
     return kvaccins.at(type)->aantal;
 }
@@ -109,9 +107,6 @@ void Hub::nieuweDag() {
                 (vaccin->second->interval + 1 + (((vaccin->second->tijd_tot_nieuwe_levering - 1) %
                                                   (vaccin->second->interval + 1)))) %
                 (vaccin->second->interval + 1); // python modulo (wraps around)
-//        cout << "\t\taantal dagen tot levering van " << vaccin->first << ": "
-//             << vaccin->second->tijd_tot_nieuwe_levering
-//             << endl;
     }
 
     verdeelTweedePrikken();

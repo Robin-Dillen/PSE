@@ -58,9 +58,6 @@ int VaccinatieCentrum::getAantalVaccinaties(const string &type) const {
     REQUIRE(!type.empty(), "Het Vaccin type mag geen lege string zijn!");
     map<string, int>::const_iterator aantal = aantal_vaccinaties.find(type);
     if (aantal == aantal_vaccinaties.end()) return 0;
-    if (aantal->second < 0) {
-        cout << "error" << std::endl;
-    }
     ENSURE(aantal->second >= 0, "Het aantal vaccinaties ligt onder nul!");
     return aantal->second;
 }
@@ -140,12 +137,9 @@ void VaccinatieCentrum::nieuweDag() {
     int aantal_eerste_prik = 0;
     int begin_aantal_vaccinaties = getTotaalAantalVaccinaties();
     int totaal_aantal_geleverde_vaccins = getTotaalAantalGeleverdeVaccins();
-    static int testdag = 0;
-    testdag++;
     for (map<string, int>::iterator geleverde_vaccins = aantal_geleverde_vaccins.begin();
          geleverde_vaccins != aantal_geleverde_vaccins.end(); geleverde_vaccins++) {
         aantal_vaccins[geleverde_vaccins->first].second += geleverde_vaccins->second;
-        if (testdag == 136) std::cout << geleverde_vaccins->first << ": " << geleverde_vaccins->second << std::endl;
         geleverde_vaccins->second = 0;
         ENSURE(getAantalGeleverdeVaccins(geleverde_vaccins->first) == 0,
                "Het aantal geleverde vaccins is niet succesvol gereset!");
@@ -169,8 +163,6 @@ void VaccinatieCentrum::nieuweDag() {
                            getAantalVaccins(batch->first),
                            capaciteit,
                            batch->second.front());
-
-            if (testdag == 136) std::cout << batch->first << ": " << min_ << std::endl;
 
             zet2dePrikVaccins(batch->first, min_, capaciteit);
             batch->second.front() -= min_;
@@ -196,7 +188,6 @@ void VaccinatieCentrum::nieuweDag() {
             }
         }
     }
-    if (testdag == 136) std::cout << "aantal niet vaccinaties: " << getAantalNietVaccinaties() << std::endl;
     //2de vaccinatie om nog niet gevaccineerden te vaccineren
     bool laatste_eerste_prikken = getAantalNietVaccinaties();
     for (int koud = 1; koud >= 0; --koud) {
@@ -207,8 +198,6 @@ void VaccinatieCentrum::nieuweDag() {
                                      capaciteit,
                                      aantal_niet_vaccinaties,
                                      getAantalVaccins(vaccin->first));
-
-            if (testdag == 136) std::cout << vaccin->first << ": " << aantal_prikken << std::endl;
 
             ENSURE(aantal_prikken >= 0, "Het aantal vaccinaties mag niet negatief zijn!");
             if (vaccin->second.first->hernieuwing == 0) {
