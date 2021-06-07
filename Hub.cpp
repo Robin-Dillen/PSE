@@ -242,6 +242,8 @@ void Hub::verdeelTweedePrikken() {
 
 void Hub::verdeelEerstePrikken() {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling verdeelEerstePrikken");
+    static int testdag = 0;
+    dag++;
     for (map<string, VaccinatieCentrum *>::iterator centrum = fverbonden_centra.begin();
          centrum != fverbonden_centra.end(); centrum++) {
         int totaal_vaccins =
@@ -263,8 +265,6 @@ void Hub::verdeelEerstePrikken() {
                 capaciteit -= lading;
                 totaal_vaccins += lading;
             }
-            if (gereserveerd_1ste_prik < 0)
-                cout << "error";
             ENSURE(gereserveerd_1ste_prik >= 0, "Er zijn meer vaccins geleverd dan gereserveerd");
             //Als er nog gereserveerde vaccins over zijn, mogen die terug in vaccins opgeslagen worden voor later
             if (gereserveerd_1ste_prik > 0) {

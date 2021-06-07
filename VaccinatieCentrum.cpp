@@ -140,11 +140,12 @@ void VaccinatieCentrum::nieuweDag() {
     int aantal_eerste_prik = 0;
     int begin_aantal_vaccinaties = getTotaalAantalVaccinaties();
     int totaal_aantal_geleverde_vaccins = getTotaalAantalGeleverdeVaccins();
-
+    static int testdag = 0;
+    testdag++;
     for (map<string, int>::iterator geleverde_vaccins = aantal_geleverde_vaccins.begin();
          geleverde_vaccins != aantal_geleverde_vaccins.end(); geleverde_vaccins++) {
         aantal_vaccins[geleverde_vaccins->first].second += geleverde_vaccins->second;
-
+        if (testdag == 136) std::cout << geleverde_vaccins->first << ": " << geleverde_vaccins->second << std::endl;
         geleverde_vaccins->second = 0;
         ENSURE(getAantalGeleverdeVaccins(geleverde_vaccins->first) == 0,
                "Het aantal geleverde vaccins is niet succesvol gereset!");
@@ -168,6 +169,8 @@ void VaccinatieCentrum::nieuweDag() {
                            getAantalVaccins(batch->first),
                            capaciteit,
                            batch->second.front());
+
+            if (testdag == 136) std::cout << batch->first << ": " << min_ << std::endl;
 
             zet2dePrikVaccins(batch->first, min_, capaciteit);
             batch->second.front() -= min_;
@@ -193,6 +196,7 @@ void VaccinatieCentrum::nieuweDag() {
             }
         }
     }
+    if (testdag == 136) std::cout << "aantal niet vaccinaties: " << getAantalNietVaccinaties() << std::endl;
     //2de vaccinatie om nog niet gevaccineerden te vaccineren
     bool laatste_eerste_prikken = getAantalNietVaccinaties();
     for (int koud = 1; koud >= 0; --koud) {
@@ -203,6 +207,9 @@ void VaccinatieCentrum::nieuweDag() {
                                      capaciteit,
                                      aantal_niet_vaccinaties,
                                      getAantalVaccins(vaccin->first));
+
+            if (testdag == 136) std::cout << vaccin->first << ": " << aantal_prikken << std::endl;
+
             ENSURE(aantal_prikken >= 0, "Het aantal vaccinaties mag niet negatief zijn!");
             if (vaccin->second.first->hernieuwing == 0) {
                 //nieuw type bijvoegen
@@ -254,9 +261,10 @@ void VaccinatieCentrum::nieuweDag() {
             }
             ENSURE(aantal->second.second == 0, "Er zijn vaccins met negatieve temperatuur niet gebruikt!");
         }
-    }emit changeMainProgressBar(getTotaalAantalVaccinaties());
+    }
+    emit changeMainProgressBar(getTotaalAantalVaccinaties());
     emit newDay();
-    emit changeVaccinCentrumCount(getTotaalAantalVaccins()+getTotaalAantalGeleverdeVaccins());
+    emit changeVaccinCentrumCount(getTotaalAantalVaccins() + getTotaalAantalGeleverdeVaccins());
 
     ENSURE(begin_aantal_vaccins - aantal_tweede_prik - aantal_eerste_prik - verwijderde_vaccins ==
            getTotaalAantalVaccins(),
