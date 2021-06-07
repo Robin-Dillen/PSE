@@ -210,6 +210,8 @@ void Hub::addReservations(const string &type) {
 
 void Hub::verdeelTweedePrikken() {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling verdeelTweedePrikken");
+    static int testdag = 0;
+    testdag++;
     for (map<string, VaccinatieCentrum *>::iterator centrum = fverbonden_centra.begin();
          centrum != fverbonden_centra.end(); centrum++) {
         int totaal_vaccins =
@@ -222,7 +224,8 @@ void Hub::verdeelTweedePrikken() {
             int gereserveerd_2de_prik = kvaccins[vaccin->first]->gereserveerd[centrum->first].front(); //aantal gereserveerde vaccins leveren
             int lading = kvaccins.at(vaccin->first)->transport;
             //Blijft ladingen leveren tot alle vaccins op zijn, of tot capaciteit is bereikt
-            while (gereserveerd_2de_prik >= lading && totaal_vaccins + lading <= maxStock) {
+            while (gereserveerd_2de_prik >= lading && totaal_vaccins + lading <= maxStock &&
+                   centrum->second->getAantalTweedePrikken(vaccin->first, 0) != 0) {
                 if (vaccin->second->temperatuur < 0 && lading > capaciteit) break;
                 centrum->second->ontvangLevering(lading, vaccin->second);
                 gereserveerd_2de_prik -= lading;
@@ -242,8 +245,7 @@ void Hub::verdeelTweedePrikken() {
 
 void Hub::verdeelEerstePrikken() {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling verdeelEerstePrikken");
-    static int testdag = 0;
-    dag++;
+
     for (map<string, VaccinatieCentrum *>::iterator centrum = fverbonden_centra.begin();
          centrum != fverbonden_centra.end(); centrum++) {
         int totaal_vaccins =
@@ -260,7 +262,6 @@ void Hub::verdeelEerstePrikken() {
             while (gereserveerd_1ste_prik >= lading && capaciteit > 0 && totaal_vaccins + lading <= maxStock &&
                    centrum->second->getAantalNietVaccinaties() != 0) {
                 if (vaccin->second->temperatuur < 0 && lading > capaciteit) break;
-                if (testdag == 136) std::cout << "geleverd: " << vaccin->first << lading << std::endl;
                 centrum->second->ontvangLevering(lading, vaccin->second);
                 gereserveerd_1ste_prik -= lading;
                 capaciteit -= lading;
