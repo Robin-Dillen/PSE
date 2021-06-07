@@ -59,6 +59,7 @@ void Slider::changeMaximum() {
                                   centrum->getTotaalAantalGeleverdeVaccins()) / interval) * interval;
     }
     int maxteVerdelen = min(teLeverenvaccins, totalVaccines);
+    if(maxteVerdelen < 0) maxteVerdelen = 0;
     this->setMaximum(maxteVerdelen);
     ENSURE(hub->isProperlyInitialized(), "De hub is niet goed geïnitialiseert!");
     ENSURE(centrum->isProperlyInitialized(), "het centrum is niet goed geïnitialiseert!");
@@ -94,8 +95,6 @@ void Slider::sendVaccins() {
     }
     hub->distributeManual(vaccin->type, this->value());
     centrum->ontvangLevering(this->value(), vaccin);
-    this->setMinimum(0);
-
 }
 
 

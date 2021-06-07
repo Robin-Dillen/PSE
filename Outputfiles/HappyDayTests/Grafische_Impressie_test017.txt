@@ -19,8 +19,26 @@ Park Spoor Oost:
 Overzicht van vaccinaties na: 0 jaren, 0 maanden, 0 weken en 3 dagen.
 
 Park Spoor Oost:
-	- vaccins		[==========          ] 50%
+	- vaccins		[                    ] 3%
 	- 1ste prik		[                    ] 4%
+	- gevaccineerd	[                    ] 0%
+		- AstraZenica		[                    ] 0%
+		- Moderna			[                    ] 0%
+		- Pfizer			[                    ] 0%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 0 weken en 4 dagen.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[=                   ] 5%
+	- gevaccineerd	[                    ] 0%
+		- AstraZenica		[                    ] 0%
+		- Moderna			[                    ] 0%
+		- Pfizer			[                    ] 0%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 0 weken en 5 dagen.
+
+Park Spoor Oost:
+	- vaccins		[==========          ] 50%
+	- 1ste prik		[=                   ] 6%
 	- gevaccineerd	[                    ] 0%
 		- AstraZenica		[                    ] 0%
 		- Moderna			[                    ] 0%
