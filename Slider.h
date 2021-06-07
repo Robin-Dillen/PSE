@@ -14,7 +14,7 @@
 class Slider : public QSlider {
 Q_OBJECT
 public:
-    Slider(int interval, Hub *hub, VaccinatieCentrum *centrum, Vaccin *vaccin);
+    Slider(int interval, Hub *hub,int nummer, VaccinatieCentrum *centrum, Vaccin *vaccin);
 
     /**
      * @return geeft terug of het object correct is geïnitialiseert
@@ -61,6 +61,7 @@ public slots:
 private:
     const Slider *const _initCheck;
     int interval;
+    int hubnr;
     Hub *hub;
     VaccinatieCentrum *centrum;
     Vaccin *vaccin;

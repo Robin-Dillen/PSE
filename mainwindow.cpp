@@ -279,7 +279,7 @@ void MainWindow::addVaccin(const std::string &centrum, Vaccin *vaccin, int centr
             const map<std::string, Vaccin *> &verbonden_vaccins = hubs[hubnr]->getVaccins();
             string si = vaccin->type;
             if (verbonden_vaccins.find(vaccin->type) != verbonden_vaccins.end()) {
-                Slider *vaccinSlider = new Slider(vaccin->transport, hubs[hubnr], centra[centrum], vaccin);
+                Slider *vaccinSlider = new Slider(vaccin->transport, hubs[hubnr],hubnr+1, centra[centrum], vaccin);
                 objects.push_back(vaccinSlider);
                 QLabel *value = new QLabel("0");
                 objects.push_back(value);

@@ -8,12 +8,13 @@
 #include <QLayout>
 #include <QLabel>
 
-Slider::Slider(int i, Hub *h, VaccinatieCentrum *c, Vaccin *v) : QSlider(Qt::Horizontal), _initCheck(this) {
+Slider::Slider(int i, Hub *h,int nummer, VaccinatieCentrum *c, Vaccin *v) : QSlider(Qt::Horizontal), _initCheck(this) {
     REQUIRE(h->isProperlyInitialized(), "De hub is niet goed geïnitialiseert!");
     REQUIRE(c->isProperlyInitialized(), "het centrum is niet goed geïnitialiseert!");
     REQUIRE(v->isProperlyInitialized(), "het vaccin is niet goed geïnitialiseert!");
     interval = i;
     hub = h;
+    hubnr = nummer;
     centrum = c;
     vaccin = v;
     ENSURE(isProperlyInitialized(), "Object isn't properly initialized when exiting constructor!");
@@ -85,7 +86,7 @@ void Slider::sendVaccins() {
         dialog.setWindowTitle("Distributed Too much vaccines");
         QVBoxLayout layout;
         dialog.setLayout(&layout);
-        string t = "Distributed too much vaccines from hub.. with vaccine " + vaccin->type + ". New value: " +
+        string t = "Distributed too much vaccines from hub"+ to_string(hubnr) + " with vaccine " + vaccin->type + ". New value: " +
                 to_string(this->value());
         QLabel text(QString::fromStdString(t));
         layout.addWidget(&text);
