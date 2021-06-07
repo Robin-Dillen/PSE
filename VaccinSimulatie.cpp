@@ -177,4 +177,6 @@ bool VaccinSimulatie::isProperlyInitialized() const {
     return _initCheck == this;
 }
 
+VaccinSimulatie::VaccinSimulatie(QObject *parent) : QObject(parent), _initCheck(nullptr), qTimer(nullptr) {}
+
 

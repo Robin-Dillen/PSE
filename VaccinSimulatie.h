@@ -28,6 +28,8 @@ public:
     VaccinSimulatie(vector<Hub *> &hubs, std::vector<VaccinatieCentrum *> &vaccinatie_centra,
                     const string &testfilename);
 
+    VaccinSimulatie(QObject *parent = nullptr);
+
     /*!
      * geeft alle hubs van de simulatie terug
      * @return const vector<Hub *> &

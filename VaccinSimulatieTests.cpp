@@ -496,9 +496,9 @@ int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
     if (args.find("HappyDay") == std::string::npos)
         ::testing::GTEST_FLAG(
-                filter) = "VaccinSimulatieInputTest.*:VaccinSimulatieOutputTest.*:VaccinSimulatieDomainTest.*:-VaccinSimulatieDomainTest.HappyDay";
+                filter) = "VaccinSimulatieInputTest.*:VaccinSimulatieOutputTest.*:VaccinSimulatieDomainTest.*:-*HappyDay*";
     else
-        ::testing::GTEST_FLAG(filter) = "VaccinSimulatieDomainTest.HappyDay";
+        ::testing::GTEST_FLAG(filter) = "*HappyDay*";
 
     return RUN_ALL_TESTS();
 }

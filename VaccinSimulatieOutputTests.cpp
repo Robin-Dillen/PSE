@@ -121,7 +121,9 @@ TEST_F(VaccinSimulatieOutputTest, OutputHappyDay) {
                 }
             }
         }
-        VaccinSimulatie(hubs, vaccinatie_centra, filename);
+        VaccinSimulatie simulatie(hubs, vaccinatie_centra, filename);
+        while (simulatie.nextDay());
+
         EXPECT_TRUE(FileExists(HAPPY_DAY_OUTPUT_FILE_LOCATION + "Simpele_Uitvoer_test" + testnr + ".txt"));
         EXPECT_TRUE(FileExists(HAPPY_DAY_OUTPUT_FILE_LOCATION + "Expected_Simpele_Uitvoer_test" + testnr + ".txt"));
         EXPECT_TRUE(FileExists(HAPPY_DAY_OUTPUT_FILE_LOCATION + "Grafische_Impressie_test" + testnr + ".txt"));

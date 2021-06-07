@@ -1,0 +1,281 @@
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 0 weken en 1 dag.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[=                   ] 5%
+	- gevaccineerd	[                    ] 0%
+		- Pfizer		[                    ] 0%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 0 weken en 2 dagen.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[==                  ] 10%
+	- gevaccineerd	[                    ] 0%
+		- Pfizer		[                    ] 0%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 0 weken en 3 dagen.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[===                 ] 15%
+	- gevaccineerd	[                    ] 0%
+		- Pfizer		[                    ] 0%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 0 weken en 4 dagen.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[====                ] 20%
+	- gevaccineerd	[                    ] 0%
+		- Pfizer		[                    ] 0%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 0 weken en 5 dagen.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[=====               ] 25%
+	- gevaccineerd	[                    ] 0%
+		- Pfizer		[                    ] 0%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 0 weken en 6 dagen.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[======              ] 30%
+	- gevaccineerd	[                    ] 0%
+		- Pfizer		[                    ] 0%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 1 week en 0 dagen.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[=======             ] 35%
+	- gevaccineerd	[                    ] 0%
+		- Pfizer		[                    ] 0%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 1 week en 1 dag.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[========            ] 40%
+	- gevaccineerd	[                    ] 0%
+		- Pfizer		[                    ] 0%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 1 week en 2 dagen.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[=========           ] 45%
+	- gevaccineerd	[                    ] 0%
+		- Pfizer		[                    ] 0%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 1 week en 3 dagen.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[==========          ] 50%
+	- gevaccineerd	[                    ] 0%
+		- Pfizer		[                    ] 0%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 1 week en 4 dagen.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[===========         ] 55%
+	- gevaccineerd	[                    ] 0%
+		- Pfizer		[                    ] 0%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 1 week en 5 dagen.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[============        ] 60%
+	- gevaccineerd	[                    ] 0%
+		- Pfizer		[                    ] 0%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 1 week en 6 dagen.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[=============       ] 65%
+	- gevaccineerd	[                    ] 0%
+		- Pfizer		[                    ] 0%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 2 weken en 0 dagen.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[==============      ] 70%
+	- gevaccineerd	[                    ] 0%
+		- Pfizer		[                    ] 0%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 2 weken en 1 dag.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[===============     ] 75%
+	- gevaccineerd	[                    ] 0%
+		- Pfizer		[                    ] 0%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 2 weken en 2 dagen.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[================    ] 80%
+	- gevaccineerd	[                    ] 0%
+		- Pfizer		[                    ] 0%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 2 weken en 3 dagen.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[=================   ] 85%
+	- gevaccineerd	[                    ] 0%
+		- Pfizer		[                    ] 0%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 2 weken en 4 dagen.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[==================  ] 90%
+	- gevaccineerd	[                    ] 0%
+		- Pfizer		[                    ] 0%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 2 weken en 5 dagen.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[=================== ] 95%
+	- gevaccineerd	[                    ] 0%
+		- Pfizer		[                    ] 0%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 2 weken en 6 dagen.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[====================] 100%
+	- gevaccineerd	[                    ] 0%
+		- Pfizer		[                    ] 0%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 3 weken en 0 dagen.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[=================== ] 95%
+	- gevaccineerd	[=                   ] 5%
+		- Pfizer		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 3 weken en 1 dag.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[==================  ] 90%
+	- gevaccineerd	[==                  ] 10%
+		- Pfizer		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 3 weken en 2 dagen.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[=================   ] 85%
+	- gevaccineerd	[===                 ] 15%
+		- Pfizer		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 3 weken en 3 dagen.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[================    ] 80%
+	- gevaccineerd	[====                ] 20%
+		- Pfizer		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 3 weken en 4 dagen.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[===============     ] 75%
+	- gevaccineerd	[=====               ] 25%
+		- Pfizer		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 3 weken en 5 dagen.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[==============      ] 70%
+	- gevaccineerd	[======              ] 30%
+		- Pfizer		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 3 weken en 6 dagen.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[=============       ] 65%
+	- gevaccineerd	[=======             ] 35%
+		- Pfizer		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 4 weken en 0 dagen.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[============        ] 60%
+	- gevaccineerd	[========            ] 40%
+		- Pfizer		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 0 maanden, 4 weken en 1 dag.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[===========         ] 55%
+	- gevaccineerd	[=========           ] 45%
+		- Pfizer		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 1 maand, 0 weken en 0 dagen.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[==========          ] 50%
+	- gevaccineerd	[==========          ] 50%
+		- Pfizer		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 1 maand, 0 weken en 1 dag.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[=========           ] 45%
+	- gevaccineerd	[===========         ] 55%
+		- Pfizer		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 1 maand, 0 weken en 2 dagen.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[========            ] 40%
+	- gevaccineerd	[============        ] 60%
+		- Pfizer		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 1 maand, 0 weken en 3 dagen.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[=======             ] 35%
+	- gevaccineerd	[=============       ] 65%
+		- Pfizer		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 1 maand, 0 weken en 4 dagen.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[======              ] 30%
+	- gevaccineerd	[==============      ] 70%
+		- Pfizer		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 1 maand, 0 weken en 5 dagen.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[=====               ] 25%
+	- gevaccineerd	[===============     ] 75%
+		- Pfizer		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 1 maand, 0 weken en 6 dagen.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[====                ] 20%
+	- gevaccineerd	[================    ] 80%
+		- Pfizer		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 1 maand, 1 week en 0 dagen.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[===                 ] 15%
+	- gevaccineerd	[=================   ] 85%
+		- Pfizer		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 1 maand, 1 week en 1 dag.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[==                  ] 10%
+	- gevaccineerd	[==================  ] 90%
+		- Pfizer		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 1 maand, 1 week en 2 dagen.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[=                   ] 5%
+	- gevaccineerd	[=================== ] 95%
+		- Pfizer		[====================] 100%
+Overzicht van vaccinaties na: 0 jaren, 1 maand, 1 week en 3 dagen.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Pfizer		[====================] 100%
+
