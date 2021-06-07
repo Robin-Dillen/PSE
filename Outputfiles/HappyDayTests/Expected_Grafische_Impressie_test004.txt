@@ -10910,4 +10910,752 @@ AED Studios:
 	- 1ste prik		[=                   ] 6%
 	- gevaccineerd	[=================   ] 88%
 		- Moderna		[====================] 100%
+Overzicht van vaccinaties na: 1 jaar, 4 maanden, 3 weken en 0 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[=                   ] 6%
+	- gevaccineerd	[=================   ] 88%
+		- Moderna		[====================] 100%
+Overzicht van vaccinaties na: 1 jaar, 4 maanden, 3 weken en 1 dag.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[=                   ] 6%
+	- gevaccineerd	[=================   ] 89%
+		- Moderna		[====================] 100%
+Overzicht van vaccinaties na: 1 jaar, 4 maanden, 3 weken en 2 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[=                   ] 6%
+	- gevaccineerd	[=================   ] 89%
+		- Moderna		[====================] 100%
+Overzicht van vaccinaties na: 1 jaar, 4 maanden, 3 weken en 3 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[=                   ] 6%
+	- gevaccineerd	[=================   ] 89%
+		- Moderna		[====================] 100%
+Overzicht van vaccinaties na: 1 jaar, 4 maanden, 3 weken en 4 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[=                   ] 6%
+	- gevaccineerd	[=================   ] 89%
+		- Moderna		[====================] 100%
+Overzicht van vaccinaties na: 1 jaar, 4 maanden, 3 weken en 5 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[=                   ] 6%
+	- gevaccineerd	[==================  ] 90%
+		- Moderna		[====================] 100%
+Overzicht van vaccinaties na: 1 jaar, 4 maanden, 3 weken en 6 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[=                   ] 6%
+	- gevaccineerd	[==================  ] 90%
+		- Moderna		[====================] 100%
+Overzicht van vaccinaties na: 1 jaar, 4 maanden, 4 weken en 0 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[=                   ] 6%
+	- gevaccineerd	[==================  ] 91%
+		- Moderna		[====================] 100%
+Overzicht van vaccinaties na: 1 jaar, 4 maanden, 4 weken en 1 dag.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[=                   ] 6%
+	- gevaccineerd	[==================  ] 91%
+		- Moderna		[====================] 100%
+Overzicht van vaccinaties na: 1 jaar, 5 maanden, 0 weken en 0 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[=                   ] 6%
+	- gevaccineerd	[==================  ] 91%
+		- Moderna		[====================] 100%
+Overzicht van vaccinaties na: 1 jaar, 5 maanden, 0 weken en 1 dag.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[=                   ] 6%
+	- gevaccineerd	[==================  ] 92%
+		- Moderna		[====================] 100%
+Overzicht van vaccinaties na: 1 jaar, 5 maanden, 0 weken en 2 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[=                   ] 6%
+	- gevaccineerd	[==================  ] 92%
+		- Moderna		[====================] 100%
+Overzicht van vaccinaties na: 1 jaar, 5 maanden, 0 weken en 3 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[=                   ] 6%
+	- gevaccineerd	[==================  ] 92%
+		- Moderna		[====================] 100%
+Overzicht van vaccinaties na: 1 jaar, 5 maanden, 0 weken en 4 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[=                   ] 6%
+	- gevaccineerd	[==================  ] 93%
+		- Moderna		[====================] 100%
+Overzicht van vaccinaties na: 1 jaar, 5 maanden, 0 weken en 5 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[=                   ] 6%
+	- gevaccineerd	[==================  ] 93%
+		- Moderna		[====================] 100%
+Overzicht van vaccinaties na: 1 jaar, 5 maanden, 0 weken en 6 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[=                   ] 5%
+	- gevaccineerd	[==================  ] 94%
+		- Moderna		[====================] 100%
+Overzicht van vaccinaties na: 1 jaar, 5 maanden, 1 week en 0 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[=                   ] 5%
+	- gevaccineerd	[==================  ] 94%
+		- Moderna		[====================] 100%
+Overzicht van vaccinaties na: 1 jaar, 5 maanden, 1 week en 1 dag.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[=                   ] 5%
+	- gevaccineerd	[==================  ] 94%
+		- Moderna		[====================] 100%
+Overzicht van vaccinaties na: 1 jaar, 5 maanden, 1 week en 2 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[=                   ] 5%
+	- gevaccineerd	[==================  ] 94%
+		- Moderna		[====================] 100%
+Overzicht van vaccinaties na: 1 jaar, 5 maanden, 1 week en 3 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 4%
+	- gevaccineerd	[=================== ] 95%
+		- Moderna		[====================] 100%
+Overzicht van vaccinaties na: 1 jaar, 5 maanden, 1 week en 4 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 4%
+	- gevaccineerd	[=================== ] 95%
+		- Moderna		[====================] 100%
+Overzicht van vaccinaties na: 1 jaar, 5 maanden, 1 week en 5 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 3%
+	- gevaccineerd	[=================== ] 96%
+		- Moderna		[====================] 100%
+Overzicht van vaccinaties na: 1 jaar, 5 maanden, 1 week en 6 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 3%
+	- gevaccineerd	[=================== ] 96%
+		- Moderna		[====================] 100%
+Overzicht van vaccinaties na: 1 jaar, 5 maanden, 2 weken en 0 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 3%
+	- gevaccineerd	[=================== ] 96%
+		- Moderna		[====================] 100%
+Overzicht van vaccinaties na: 1 jaar, 5 maanden, 2 weken en 1 dag.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 2%
+	- gevaccineerd	[=================== ] 97%
+		- Moderna		[====================] 100%
+Overzicht van vaccinaties na: 1 jaar, 5 maanden, 2 weken en 2 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 2%
+	- gevaccineerd	[=================== ] 97%
+		- Moderna		[====================] 100%
+Overzicht van vaccinaties na: 1 jaar, 5 maanden, 2 weken en 3 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 2%
+	- gevaccineerd	[=================== ] 97%
+		- Moderna		[====================] 100%
+Overzicht van vaccinaties na: 1 jaar, 5 maanden, 2 weken en 4 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 1%
+	- gevaccineerd	[=================== ] 98%
+		- Moderna		[====================] 100%
+Overzicht van vaccinaties na: 1 jaar, 5 maanden, 2 weken en 5 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 1%
+	- gevaccineerd	[=================== ] 98%
+		- Moderna		[====================] 100%
+Overzicht van vaccinaties na: 1 jaar, 5 maanden, 2 weken en 6 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 1%
+	- gevaccineerd	[=================== ] 98%
+		- Moderna		[====================] 100%
+Overzicht van vaccinaties na: 1 jaar, 5 maanden, 3 weken en 0 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=================== ] 99%
+		- Moderna		[====================] 100%
+Overzicht van vaccinaties na: 1 jaar, 5 maanden, 3 weken en 1 dag.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=================== ] 99%
+		- Moderna		[====================] 100%
+Overzicht van vaccinaties na: 1 jaar, 5 maanden, 3 weken en 2 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=================== ] 99%
+		- Moderna		[====================] 100%
+Overzicht van vaccinaties na: 1 jaar, 5 maanden, 3 weken en 3 dagen.
+
+AED Studios:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+De Zoerla:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Flanders Expo:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[====================] 100%
+		- Moderna		[====================] 100%
 

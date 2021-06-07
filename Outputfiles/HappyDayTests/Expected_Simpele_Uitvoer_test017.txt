@@ -486,613 +486,613 @@ Hub 1 (1642000 vaccins)
 Park Spoor Oost: 322500 gevacineerd, nog 217673 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 2 maanden, 3 weken en 0 dagen.
 
-Hub 1 (1648000 vaccins)
+Hub 1 (1658000 vaccins)
 	-> Park Spoor Oost (0 vaccins)
 
 Park Spoor Oost: 322500 gevacineerd, nog 217673 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 2 maanden, 3 weken en 1 dag.
 
-Hub 1 (1649000 vaccins)
+Hub 1 (1659000 vaccins)
 	-> Park Spoor Oost (0 vaccins)
 
 Park Spoor Oost: 324000 gevacineerd, nog 216173 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 2 maanden, 3 weken en 2 dagen.
 
-Hub 1 (1650000 vaccins)
+Hub 1 (1660000 vaccins)
 	-> Park Spoor Oost (0 vaccins)
 
 Park Spoor Oost: 329000 gevacineerd, nog 211173 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 2 maanden, 3 weken en 3 dagen.
 
-Hub 1 (1651000 vaccins)
+Hub 1 (1663000 vaccins)
 	-> Park Spoor Oost (0 vaccins)
 
 Park Spoor Oost: 336000 gevacineerd, nog 204173 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 2 maanden, 3 weken en 4 dagen.
 
-Hub 1 (1751000 vaccins)
+Hub 1 (1752000 vaccins)
 	-> Park Spoor Oost (0 vaccins)
 
-Park Spoor Oost: 343000 gevacineerd, nog 197173 inwoners niet gevaccineerd.
+Park Spoor Oost: 341000 gevacineerd, nog 199173 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 2 maanden, 3 weken en 5 dagen.
 
 Hub 1 (1758000 vaccins)
 	-> Park Spoor Oost (0 vaccins)
 
-Park Spoor Oost: 344000 gevacineerd, nog 196173 inwoners niet gevaccineerd.
+Park Spoor Oost: 343000 gevacineerd, nog 197173 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 2 maanden, 3 weken en 6 dagen.
 
-Hub 1 (1758000 vaccins)
+Hub 1 (1760000 vaccins)
 	-> Park Spoor Oost (0 vaccins)
 
 Park Spoor Oost: 345000 gevacineerd, nog 195173 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 2 maanden, 4 weken en 0 dagen.
 
-Hub 1 (1758000 vaccins)
-	-> Park Spoor Oost (500 vaccins)
+Hub 1 (1760000 vaccins)
+	-> Park Spoor Oost (0 vaccins)
 
-Park Spoor Oost: 351500 gevacineerd, nog 188673 inwoners niet gevaccineerd.
+Park Spoor Oost: 350000 gevacineerd, nog 190173 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 2 maanden, 4 weken en 1 dag.
 
-Hub 1 (1758000 vaccins)
-	-> Park Spoor Oost (1000 vaccins)
+Hub 1 (1760000 vaccins)
+	-> Park Spoor Oost (500 vaccins)
 
-Park Spoor Oost: 351500 gevacineerd, nog 188673 inwoners niet gevaccineerd.
+Park Spoor Oost: 350000 gevacineerd, nog 190173 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 3 maanden, 0 weken en 0 dagen.
 
-Hub 1 (1758000 vaccins)
-	-> Park Spoor Oost (1500 vaccins)
-
-Park Spoor Oost: 351500 gevacineerd, nog 188673 inwoners niet gevaccineerd.
-Overzicht van vaccinaties na: 0 jaren, 3 maanden, 0 weken en 1 dag.
-
-Hub 1 (1810000 vaccins)
-	-> Park Spoor Oost (2000 vaccins)
-
-Park Spoor Oost: 351500 gevacineerd, nog 188673 inwoners niet gevaccineerd.
-Overzicht van vaccinaties na: 0 jaren, 3 maanden, 0 weken en 2 dagen.
-
-Hub 1 (1854000 vaccins)
-	-> Park Spoor Oost (2500 vaccins)
-
-Park Spoor Oost: 351500 gevacineerd, nog 188673 inwoners niet gevaccineerd.
-Overzicht van vaccinaties na: 0 jaren, 3 maanden, 0 weken en 3 dagen.
-
-Hub 1 (1860000 vaccins)
-	-> Park Spoor Oost (3000 vaccins)
-
-Park Spoor Oost: 351500 gevacineerd, nog 188673 inwoners niet gevaccineerd.
-Overzicht van vaccinaties na: 0 jaren, 3 maanden, 0 weken en 4 dagen.
-
-Hub 1 (1862000 vaccins)
-	-> Park Spoor Oost (0 vaccins)
-
-Park Spoor Oost: 357000 gevacineerd, nog 183173 inwoners niet gevaccineerd.
-Overzicht van vaccinaties na: 0 jaren, 3 maanden, 0 weken en 5 dagen.
-
-Hub 1 (1864000 vaccins)
-	-> Park Spoor Oost (0 vaccins)
-
-Park Spoor Oost: 364000 gevacineerd, nog 176173 inwoners niet gevaccineerd.
-Overzicht van vaccinaties na: 0 jaren, 3 maanden, 0 weken en 6 dagen.
-
-Hub 1 (1866000 vaccins)
-	-> Park Spoor Oost (0 vaccins)
-
-Park Spoor Oost: 371000 gevacineerd, nog 169173 inwoners niet gevaccineerd.
-Overzicht van vaccinaties na: 0 jaren, 3 maanden, 1 week en 0 dagen.
-
-Hub 1 (1960000 vaccins)
-	-> Park Spoor Oost (0 vaccins)
-
-Park Spoor Oost: 378000 gevacineerd, nog 162173 inwoners niet gevaccineerd.
-Overzicht van vaccinaties na: 0 jaren, 3 maanden, 1 week en 1 dag.
-
-Hub 1 (1967000 vaccins)
-	-> Park Spoor Oost (0 vaccins)
-
-Park Spoor Oost: 384500 gevacineerd, nog 155673 inwoners niet gevaccineerd.
-Overzicht van vaccinaties na: 0 jaren, 3 maanden, 1 week en 2 dagen.
-
-Hub 1 (1974000 vaccins)
-	-> Park Spoor Oost (0 vaccins)
-
-Park Spoor Oost: 384500 gevacineerd, nog 155673 inwoners niet gevaccineerd.
-Overzicht van vaccinaties na: 0 jaren, 3 maanden, 1 week en 3 dagen.
-
-Hub 1 (1981000 vaccins)
-	-> Park Spoor Oost (0 vaccins)
-
-Park Spoor Oost: 384500 gevacineerd, nog 155673 inwoners niet gevaccineerd.
-Overzicht van vaccinaties na: 0 jaren, 3 maanden, 1 week en 4 dagen.
-
-Hub 1 (1966000 vaccins)
-	-> Park Spoor Oost (0 vaccins)
-
-Park Spoor Oost: 384500 gevacineerd, nog 155673 inwoners niet gevaccineerd.
-Overzicht van vaccinaties na: 0 jaren, 3 maanden, 1 week en 5 dagen.
-
-Hub 1 (1966000 vaccins)
-	-> Park Spoor Oost (500 vaccins)
-
-Park Spoor Oost: 385000 gevacineerd, nog 155173 inwoners niet gevaccineerd.
-Overzicht van vaccinaties na: 0 jaren, 3 maanden, 1 week en 6 dagen.
-
-Hub 1 (2057000 vaccins)
+Hub 1 (1760000 vaccins)
 	-> Park Spoor Oost (1000 vaccins)
 
-Park Spoor Oost: 385000 gevacineerd, nog 155173 inwoners niet gevaccineerd.
-Overzicht van vaccinaties na: 0 jaren, 3 maanden, 2 weken en 0 dagen.
+Park Spoor Oost: 350000 gevacineerd, nog 190173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 3 maanden, 0 weken en 1 dag.
 
-Hub 1 (2057000 vaccins)
+Hub 1 (1814000 vaccins)
 	-> Park Spoor Oost (1500 vaccins)
 
-Park Spoor Oost: 385000 gevacineerd, nog 155173 inwoners niet gevaccineerd.
-Overzicht van vaccinaties na: 0 jaren, 3 maanden, 2 weken en 1 dag.
+Park Spoor Oost: 350000 gevacineerd, nog 190173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 3 maanden, 0 weken en 2 dagen.
 
-Hub 1 (2097000 vaccins)
+Hub 1 (1857000 vaccins)
 	-> Park Spoor Oost (2000 vaccins)
 
-Park Spoor Oost: 385000 gevacineerd, nog 155173 inwoners niet gevaccineerd.
-Overzicht van vaccinaties na: 0 jaren, 3 maanden, 2 weken en 2 dagen.
+Park Spoor Oost: 350000 gevacineerd, nog 190173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 3 maanden, 0 weken en 3 dagen.
 
-Hub 1 (2100000 vaccins)
+Hub 1 (1862000 vaccins)
 	-> Park Spoor Oost (2500 vaccins)
 
-Park Spoor Oost: 385000 gevacineerd, nog 155173 inwoners niet gevaccineerd.
+Park Spoor Oost: 350000 gevacineerd, nog 190173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 3 maanden, 0 weken en 4 dagen.
+
+Hub 1 (1869000 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+Park Spoor Oost: 356000 gevacineerd, nog 184173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 3 maanden, 0 weken en 5 dagen.
+
+Hub 1 (1871000 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+Park Spoor Oost: 358000 gevacineerd, nog 182173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 3 maanden, 0 weken en 6 dagen.
+
+Hub 1 (1872000 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+Park Spoor Oost: 365000 gevacineerd, nog 175173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 3 maanden, 1 week en 0 dagen.
+
+Hub 1 (1966000 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+Park Spoor Oost: 372000 gevacineerd, nog 168173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 3 maanden, 1 week en 1 dag.
+
+Hub 1 (1973000 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+Park Spoor Oost: 378500 gevacineerd, nog 161673 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 3 maanden, 1 week en 2 dagen.
+
+Hub 1 (1980000 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+Park Spoor Oost: 378500 gevacineerd, nog 161673 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 3 maanden, 1 week en 3 dagen.
+
+Hub 1 (1987000 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+Park Spoor Oost: 378500 gevacineerd, nog 161673 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 3 maanden, 1 week en 4 dagen.
+
+Hub 1 (1975000 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+Park Spoor Oost: 378500 gevacineerd, nog 161673 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 3 maanden, 1 week en 5 dagen.
+
+Hub 1 (1975000 vaccins)
+	-> Park Spoor Oost (500 vaccins)
+
+Park Spoor Oost: 379000 gevacineerd, nog 161173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 3 maanden, 1 week en 6 dagen.
+
+Hub 1 (2066000 vaccins)
+	-> Park Spoor Oost (1000 vaccins)
+
+Park Spoor Oost: 379000 gevacineerd, nog 161173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 3 maanden, 2 weken en 0 dagen.
+
+Hub 1 (2066000 vaccins)
+	-> Park Spoor Oost (1500 vaccins)
+
+Park Spoor Oost: 379000 gevacineerd, nog 161173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 3 maanden, 2 weken en 1 dag.
+
+Hub 1 (2104000 vaccins)
+	-> Park Spoor Oost (2000 vaccins)
+
+Park Spoor Oost: 379000 gevacineerd, nog 161173 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 3 maanden, 2 weken en 2 dagen.
+
+Hub 1 (2108000 vaccins)
+	-> Park Spoor Oost (2500 vaccins)
+
+Park Spoor Oost: 379000 gevacineerd, nog 161173 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 3 maanden, 2 weken en 3 dagen.
 
-Hub 1 (2101000 vaccins)
+Hub 1 (2109000 vaccins)
 	-> Park Spoor Oost (0 vaccins)
 
-Park Spoor Oost: 387500 gevacineerd, nog 152673 inwoners niet gevaccineerd.
+Park Spoor Oost: 381500 gevacineerd, nog 158673 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 3 maanden, 2 weken en 4 dagen.
 
-Hub 1 (2105000 vaccins)
+Hub 1 (2111000 vaccins)
 	-> Park Spoor Oost (0 vaccins)
 
-Park Spoor Oost: 391500 gevacineerd, nog 148673 inwoners niet gevaccineerd.
+Park Spoor Oost: 385500 gevacineerd, nog 154673 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 3 maanden, 2 weken en 5 dagen.
 
-Hub 1 (2199000 vaccins)
+Hub 1 (2205000 vaccins)
 	-> Park Spoor Oost (0 vaccins)
 
-Park Spoor Oost: 395000 gevacineerd, nog 145173 inwoners niet gevaccineerd.
+Park Spoor Oost: 391000 gevacineerd, nog 149173 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 3 maanden, 2 weken en 6 dagen.
 
-Hub 1 (2200000 vaccins)
+Hub 1 (2206000 vaccins)
 	-> Park Spoor Oost (0 vaccins)
 
-Park Spoor Oost: 401000 gevacineerd, nog 139173 inwoners niet gevaccineerd.
+Park Spoor Oost: 397000 gevacineerd, nog 143173 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 3 maanden, 3 weken en 0 dagen.
 
-Hub 1 (2209000 vaccins)
+Hub 1 (2215000 vaccins)
 	-> Park Spoor Oost (0 vaccins)
 
-Park Spoor Oost: 407000 gevacineerd, nog 133173 inwoners niet gevaccineerd.
+Park Spoor Oost: 403000 gevacineerd, nog 137173 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 3 maanden, 3 weken en 1 dag.
 
-Hub 1 (2210000 vaccins)
+Hub 1 (2216000 vaccins)
 	-> Park Spoor Oost (500 vaccins)
 
-Park Spoor Oost: 413500 gevacineerd, nog 126673 inwoners niet gevaccineerd.
+Park Spoor Oost: 409500 gevacineerd, nog 130673 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 3 maanden, 3 weken en 2 dagen.
 
-Hub 1 (2210000 vaccins)
+Hub 1 (2216000 vaccins)
 	-> Park Spoor Oost (0 vaccins)
 
-Park Spoor Oost: 420000 gevacineerd, nog 120173 inwoners niet gevaccineerd.
+Park Spoor Oost: 416000 gevacineerd, nog 124173 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 3 maanden, 3 weken en 3 dagen.
 
-Hub 1 (2211000 vaccins)
+Hub 1 (2217000 vaccins)
 	-> Park Spoor Oost (500 vaccins)
 
-Park Spoor Oost: 426500 gevacineerd, nog 113673 inwoners niet gevaccineerd.
+Park Spoor Oost: 422500 gevacineerd, nog 117673 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 3 maanden, 3 weken en 4 dagen.
 
-Hub 1 (2298000 vaccins)
+Hub 1 (2304000 vaccins)
 	-> Park Spoor Oost (0 vaccins)
 
-Park Spoor Oost: 433500 gevacineerd, nog 106673 inwoners niet gevaccineerd.
+Park Spoor Oost: 429000 gevacineerd, nog 111173 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 3 maanden, 3 weken en 5 dagen.
 
-Hub 1 (2299000 vaccins)
+Hub 1 (2305000 vaccins)
 	-> Park Spoor Oost (500 vaccins)
 
-Park Spoor Oost: 441000 gevacineerd, nog 99173 inwoners niet gevaccineerd.
+Park Spoor Oost: 436500 gevacineerd, nog 103673 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 3 maanden, 3 weken en 6 dagen.
 
-Hub 1 (2299000 vaccins)
+Hub 1 (2305000 vaccins)
 	-> Park Spoor Oost (0 vaccins)
 
-Park Spoor Oost: 448500 gevacineerd, nog 91673 inwoners niet gevaccineerd.
+Park Spoor Oost: 444000 gevacineerd, nog 96173 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 3 maanden, 4 weken en 0 dagen.
 
-Hub 1 (2317000 vaccins)
+Hub 1 (2324000 vaccins)
 	-> Park Spoor Oost (500 vaccins)
 
-Park Spoor Oost: 456000 gevacineerd, nog 84173 inwoners niet gevaccineerd.
+Park Spoor Oost: 451500 gevacineerd, nog 88673 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 3 maanden, 4 weken en 1 dag.
 
-Hub 1 (2319000 vaccins)
+Hub 1 (2326000 vaccins)
 	-> Park Spoor Oost (0 vaccins)
 
-Park Spoor Oost: 456500 gevacineerd, nog 83673 inwoners niet gevaccineerd.
+Park Spoor Oost: 452000 gevacineerd, nog 88173 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 0 weken en 0 dagen.
 
-Hub 1 (2325000 vaccins)
+Hub 1 (2331000 vaccins)
 	-> Park Spoor Oost (0 vaccins)
 
-Park Spoor Oost: 456500 gevacineerd, nog 83673 inwoners niet gevaccineerd.
+Park Spoor Oost: 452000 gevacineerd, nog 88173 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 0 weken en 1 dag.
 
-Hub 1 (2448000 vaccins)
+Hub 1 (2454000 vaccins)
 	-> Park Spoor Oost (0 vaccins)
 
-Park Spoor Oost: 457000 gevacineerd, nog 83173 inwoners niet gevaccineerd.
+Park Spoor Oost: 452000 gevacineerd, nog 88173 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 0 weken en 2 dagen.
 
-Hub 1 (2449000 vaccins)
+Hub 1 (2455000 vaccins)
 	-> Park Spoor Oost (500 vaccins)
 
-Park Spoor Oost: 464500 gevacineerd, nog 75673 inwoners niet gevaccineerd.
+Park Spoor Oost: 459500 gevacineerd, nog 80673 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 0 weken en 3 dagen.
 
-Hub 1 (2449000 vaccins)
+Hub 1 (2455000 vaccins)
 	-> Park Spoor Oost (0 vaccins)
 
-Park Spoor Oost: 472000 gevacineerd, nog 68173 inwoners niet gevaccineerd.
+Park Spoor Oost: 467000 gevacineerd, nog 73173 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 0 weken en 4 dagen.
 
-Hub 1 (2450000 vaccins)
+Hub 1 (2456000 vaccins)
 	-> Park Spoor Oost (500 vaccins)
 
-Park Spoor Oost: 479500 gevacineerd, nog 60673 inwoners niet gevaccineerd.
+Park Spoor Oost: 473500 gevacineerd, nog 66673 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 0 weken en 5 dagen.
 
-Hub 1 (2450000 vaccins)
+Hub 1 (2456000 vaccins)
 	-> Park Spoor Oost (0 vaccins)
 
-Park Spoor Oost: 486500 gevacineerd, nog 53673 inwoners niet gevaccineerd.
+Park Spoor Oost: 480500 gevacineerd, nog 59673 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 0 weken en 6 dagen.
 
-Hub 1 (2451000 vaccins)
+Hub 1 (2457000 vaccins)
 	-> Park Spoor Oost (500 vaccins)
 
-Park Spoor Oost: 494000 gevacineerd, nog 46173 inwoners niet gevaccineerd.
+Park Spoor Oost: 488000 gevacineerd, nog 52173 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 1 week en 0 dagen.
 
-Hub 1 (2528000 vaccins)
+Hub 1 (2536000 vaccins)
 	-> Park Spoor Oost (0 vaccins)
 
-Park Spoor Oost: 501500 gevacineerd, nog 38673 inwoners niet gevaccineerd.
+Park Spoor Oost: 495500 gevacineerd, nog 44673 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 1 week en 1 dag.
 
-Hub 1 (2529000 vaccins)
+Hub 1 (2537000 vaccins)
 	-> Park Spoor Oost (500 vaccins)
 
-Park Spoor Oost: 509000 gevacineerd, nog 31173 inwoners niet gevaccineerd.
+Park Spoor Oost: 503000 gevacineerd, nog 37173 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 1 week en 2 dagen.
 
-Hub 1 (2529000 vaccins)
+Hub 1 (2537000 vaccins)
 	-> Park Spoor Oost (0 vaccins)
 
-Park Spoor Oost: 516000 gevacineerd, nog 24173 inwoners niet gevaccineerd.
+Park Spoor Oost: 510000 gevacineerd, nog 30173 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 1 week en 3 dagen.
 
-Hub 1 (2530000 vaccins)
+Hub 1 (2538000 vaccins)
 	-> Park Spoor Oost (500 vaccins)
 
-Park Spoor Oost: 523500 gevacineerd, nog 16673 inwoners niet gevaccineerd.
+Park Spoor Oost: 517500 gevacineerd, nog 22673 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 1 week en 4 dagen.
 
-Hub 1 (2590000 vaccins)
+Hub 1 (2592000 vaccins)
 	-> Park Spoor Oost (0 vaccins)
 
-Park Spoor Oost: 531000 gevacineerd, nog 9173 inwoners niet gevaccineerd.
+Park Spoor Oost: 525000 gevacineerd, nog 15173 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 1 week en 5 dagen.
 
 Hub 1 (2592000 vaccins)
 	-> Park Spoor Oost (0 vaccins)
 
-Park Spoor Oost: 531000 gevacineerd, nog 9173 inwoners niet gevaccineerd.
+Park Spoor Oost: 525000 gevacineerd, nog 15173 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 1 week en 6 dagen.
 
-Hub 1 (2669000 vaccins)
-	-> Park Spoor Oost (0 vaccins)
+Hub 1 (2671000 vaccins)
+	-> Park Spoor Oost (500 vaccins)
 
-Park Spoor Oost: 535000 gevacineerd, nog 5173 inwoners niet gevaccineerd.
+Park Spoor Oost: 529500 gevacineerd, nog 10673 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 2 weken en 0 dagen.
-
-Hub 1 (2675000 vaccins)
-	-> Park Spoor Oost (0 vaccins)
-
-Park Spoor Oost: 536500 gevacineerd, nog 3673 inwoners niet gevaccineerd.
-Overzicht van vaccinaties na: 0 jaren, 4 maanden, 2 weken en 1 dag.
 
 Hub 1 (2677000 vaccins)
 	-> Park Spoor Oost (0 vaccins)
 
-Park Spoor Oost: 537500 gevacineerd, nog 2673 inwoners niet gevaccineerd.
-Overzicht van vaccinaties na: 0 jaren, 4 maanden, 2 weken en 2 dagen.
+Park Spoor Oost: 531500 gevacineerd, nog 8673 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 4 maanden, 2 weken en 1 dag.
 
-Hub 1 (2679000 vaccins)
+Hub 1 (2681000 vaccins)
 	-> Park Spoor Oost (0 vaccins)
 
-Park Spoor Oost: 539000 gevacineerd, nog 1173 inwoners niet gevaccineerd.
+Park Spoor Oost: 532500 gevacineerd, nog 7673 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 4 maanden, 2 weken en 2 dagen.
+
+Hub 1 (2681000 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+Park Spoor Oost: 534000 gevacineerd, nog 6173 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 2 weken en 3 dagen.
+
+Hub 1 (2685000 vaccins)
+	-> Park Spoor Oost (500 vaccins)
+
+Park Spoor Oost: 534500 gevacineerd, nog 5673 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 4 maanden, 2 weken en 4 dagen.
 
 Hub 1 (2685000 vaccins)
 	-> Park Spoor Oost (0 vaccins)
 
-Park Spoor Oost: 540000 gevacineerd, nog 173 inwoners niet gevaccineerd.
-Overzicht van vaccinaties na: 0 jaren, 4 maanden, 2 weken en 4 dagen.
-
-Hub 1 (2686000 vaccins)
-	-> Park Spoor Oost (827 vaccins)
-
-Park Spoor Oost: 540173 gevacineerd, nog 0 inwoners niet gevaccineerd.
+Park Spoor Oost: 536000 gevacineerd, nog 4173 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 2 weken en 5 dagen.
 
-Hub 1 (2772000 vaccins)
-	-> Park Spoor Oost (1327 vaccins)
+Hub 1 (2773000 vaccins)
+	-> Park Spoor Oost (500 vaccins)
 
-Park Spoor Oost: 540173 gevacineerd, nog 0 inwoners niet gevaccineerd.
+Park Spoor Oost: 537000 gevacineerd, nog 3173 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 2 weken en 6 dagen.
 
 Hub 1 (2773000 vaccins)
-	-> Park Spoor Oost (1827 vaccins)
+	-> Park Spoor Oost (0 vaccins)
 
-Park Spoor Oost: 540173 gevacineerd, nog 0 inwoners niet gevaccineerd.
+Park Spoor Oost: 538000 gevacineerd, nog 2173 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 3 weken en 0 dagen.
 
-Hub 1 (2761000 vaccins)
-	-> Park Spoor Oost (2327 vaccins)
+Hub 1 (2760000 vaccins)
+	-> Park Spoor Oost (500 vaccins)
 
-Park Spoor Oost: 540173 gevacineerd, nog 0 inwoners niet gevaccineerd.
+Park Spoor Oost: 539000 gevacineerd, nog 1173 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 3 weken en 1 dag.
 
-Hub 1 (2761000 vaccins)
-	-> Park Spoor Oost (2327 vaccins)
+Hub 1 (2760000 vaccins)
+	-> Park Spoor Oost (0 vaccins)
 
-Park Spoor Oost: 540173 gevacineerd, nog 0 inwoners niet gevaccineerd.
+Park Spoor Oost: 540000 gevacineerd, nog 173 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 3 weken en 2 dagen.
 
-Hub 1 (2761000 vaccins)
-	-> Park Spoor Oost (2827 vaccins)
+Hub 1 (2760000 vaccins)
+	-> Park Spoor Oost (500 vaccins)
 
-Park Spoor Oost: 540173 gevacineerd, nog 0 inwoners niet gevaccineerd.
+Park Spoor Oost: 540000 gevacineerd, nog 173 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 3 weken en 3 dagen.
 
-Hub 1 (2787000 vaccins)
-	-> Park Spoor Oost (3327 vaccins)
+Hub 1 (2786000 vaccins)
+	-> Park Spoor Oost (1000 vaccins)
 
-Park Spoor Oost: 540173 gevacineerd, nog 0 inwoners niet gevaccineerd.
+Park Spoor Oost: 540000 gevacineerd, nog 173 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 3 weken en 4 dagen.
 
-Hub 1 (2885000 vaccins)
-	-> Park Spoor Oost (3827 vaccins)
+Hub 1 (2881000 vaccins)
+	-> Park Spoor Oost (1500 vaccins)
 
-Park Spoor Oost: 540173 gevacineerd, nog 0 inwoners niet gevaccineerd.
+Park Spoor Oost: 540000 gevacineerd, nog 173 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 3 weken en 5 dagen.
 
-Hub 1 (2890000 vaccins)
-	-> Park Spoor Oost (4327 vaccins)
+Hub 1 (2884000 vaccins)
+	-> Park Spoor Oost (1827 vaccins)
 
 Park Spoor Oost: 540173 gevacineerd, nog 0 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 3 weken en 6 dagen.
 
-Hub 1 (2895000 vaccins)
-	-> Park Spoor Oost (4327 vaccins)
+Hub 1 (2887000 vaccins)
+	-> Park Spoor Oost (1827 vaccins)
 
 Park Spoor Oost: 540173 gevacineerd, nog 0 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 4 weken en 0 dagen.
 
-Hub 1 (2902000 vaccins)
-	-> Park Spoor Oost (4827 vaccins)
+Hub 1 (2894000 vaccins)
+	-> Park Spoor Oost (1827 vaccins)
 
 Park Spoor Oost: 540173 gevacineerd, nog 0 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 4 weken en 1 dag.
 
-Hub 1 (2909000 vaccins)
-	-> Park Spoor Oost (5327 vaccins)
+Hub 1 (2901000 vaccins)
+	-> Park Spoor Oost (2327 vaccins)
 
 Park Spoor Oost: 540173 gevacineerd, nog 0 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 0 weken en 0 dagen.
 
-Hub 1 (2916000 vaccins)
-	-> Park Spoor Oost (5827 vaccins)
+Hub 1 (2908000 vaccins)
+	-> Park Spoor Oost (2827 vaccins)
 
 Park Spoor Oost: 540173 gevacineerd, nog 0 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 0 weken en 1 dag.
 
-Hub 1 (3015000 vaccins)
-	-> Park Spoor Oost (6327 vaccins)
+Hub 1 (3011000 vaccins)
+	-> Park Spoor Oost (3327 vaccins)
 
 Park Spoor Oost: 540173 gevacineerd, nog 0 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 0 weken en 2 dagen.
 
-Hub 1 (3015000 vaccins)
-	-> Park Spoor Oost (6327 vaccins)
+Hub 1 (3011000 vaccins)
+	-> Park Spoor Oost (3327 vaccins)
 
 Park Spoor Oost: 540173 gevacineerd, nog 0 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 0 weken en 3 dagen.
 
-Hub 1 (3015000 vaccins)
-	-> Park Spoor Oost (6827 vaccins)
+Hub 1 (3011000 vaccins)
+	-> Park Spoor Oost (3827 vaccins)
 
 Park Spoor Oost: 540173 gevacineerd, nog 0 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 0 weken en 4 dagen.
 
-Hub 1 (3016000 vaccins)
-	-> Park Spoor Oost (7327 vaccins)
+Hub 1 (3011000 vaccins)
+	-> Park Spoor Oost (4327 vaccins)
 
 Park Spoor Oost: 540173 gevacineerd, nog 0 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 0 weken en 5 dagen.
 
-Hub 1 (3017000 vaccins)
-	-> Park Spoor Oost (6827 vaccins)
+Hub 1 (3012000 vaccins)
+	-> Park Spoor Oost (4827 vaccins)
 
 Park Spoor Oost: 540173 gevacineerd, nog 0 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 0 weken en 6 dagen.
 
-Hub 1 (3017000 vaccins)
-	-> Park Spoor Oost (6827 vaccins)
+Hub 1 (3012000 vaccins)
+	-> Park Spoor Oost (4827 vaccins)
 
 Park Spoor Oost: 540173 gevacineerd, nog 0 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 1 week en 0 dagen.
 
-Hub 1 (3131000 vaccins)
-	-> Park Spoor Oost (7327 vaccins)
+Hub 1 (3121000 vaccins)
+	-> Park Spoor Oost (5327 vaccins)
 
 Park Spoor Oost: 540173 gevacineerd, nog 0 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 1 week en 1 dag.
 
-Hub 1 (3139000 vaccins)
-	-> Park Spoor Oost (6827 vaccins)
+Hub 1 (3129000 vaccins)
+	-> Park Spoor Oost (5827 vaccins)
 
 Park Spoor Oost: 540173 gevacineerd, nog 0 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 1 week en 2 dagen.
 
-Hub 1 (3147000 vaccins)
-	-> Park Spoor Oost (6827 vaccins)
+Hub 1 (3136000 vaccins)
+	-> Park Spoor Oost (5827 vaccins)
 
 Park Spoor Oost: 540173 gevacineerd, nog 0 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 1 week en 3 dagen.
 
-Hub 1 (3154000 vaccins)
-	-> Park Spoor Oost (6827 vaccins)
+Hub 1 (3143000 vaccins)
+	-> Park Spoor Oost (6327 vaccins)
 
 Park Spoor Oost: 540173 gevacineerd, nog 0 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 1 week en 4 dagen.
 
-Hub 1 (3183000 vaccins)
-	-> Park Spoor Oost (7327 vaccins)
+Hub 1 (3173000 vaccins)
+	-> Park Spoor Oost (6327 vaccins)
 
 Park Spoor Oost: 540173 gevacineerd, nog 0 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 1 week en 5 dagen.
 
-Hub 1 (3189000 vaccins)
-	-> Park Spoor Oost (7327 vaccins)
+Hub 1 (3179000 vaccins)
+	-> Park Spoor Oost (6327 vaccins)
 
 Park Spoor Oost: 540173 gevacineerd, nog 0 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 1 week en 6 dagen.
 
-Hub 1 (3289000 vaccins)
-	-> Park Spoor Oost (7827 vaccins)
+Hub 1 (3279000 vaccins)
+	-> Park Spoor Oost (6827 vaccins)
 
 Park Spoor Oost: 540173 gevacineerd, nog 0 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 2 weken en 0 dagen.
 
-Hub 1 (3296000 vaccins)
-	-> Park Spoor Oost (7827 vaccins)
+Hub 1 (3285000 vaccins)
+	-> Park Spoor Oost (7327 vaccins)
 
 Park Spoor Oost: 540173 gevacineerd, nog 0 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 2 weken en 1 dag.
 
-Hub 1 (3304000 vaccins)
-	-> Park Spoor Oost (0 vaccins)
+Hub 1 (3292000 vaccins)
+	-> Park Spoor Oost (7827 vaccins)
 
 Park Spoor Oost: 540173 gevacineerd, nog 0 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 2 weken en 2 dagen.
 
-Hub 1 (3312000 vaccins)
-	-> Park Spoor Oost (0 vaccins)
+Hub 1 (3299000 vaccins)
+	-> Park Spoor Oost (7827 vaccins)
 
 Park Spoor Oost: 540173 gevacineerd, nog 0 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 2 weken en 3 dagen.
 
-Hub 1 (3320000 vaccins)
-	-> Park Spoor Oost (0 vaccins)
+Hub 1 (3306000 vaccins)
+	-> Park Spoor Oost (7827 vaccins)
 
 Park Spoor Oost: 540173 gevacineerd, nog 0 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 2 weken en 4 dagen.
 
-Hub 1 (3328000 vaccins)
-	-> Park Spoor Oost (0 vaccins)
+Hub 1 (3313000 vaccins)
+	-> Park Spoor Oost (7827 vaccins)
 
 Park Spoor Oost: 540173 gevacineerd, nog 0 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 2 weken en 5 dagen.
 
-Hub 1 (3403000 vaccins)
-	-> Park Spoor Oost (0 vaccins)
+Hub 1 (3386000 vaccins)
+	-> Park Spoor Oost (7827 vaccins)
 
 Park Spoor Oost: 540173 gevacineerd, nog 0 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 2 weken en 6 dagen.
 
-Hub 1 (3434000 vaccins)
-	-> Park Spoor Oost (0 vaccins)
+Hub 1 (3424000 vaccins)
+	-> Park Spoor Oost (7827 vaccins)
 
 Park Spoor Oost: 540173 gevacineerd, nog 0 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 3 weken en 0 dagen.
 
-Hub 1 (3472000 vaccins)
-	-> Park Spoor Oost (0 vaccins)
+Hub 1 (3462000 vaccins)
+	-> Park Spoor Oost (7827 vaccins)
 
 Park Spoor Oost: 540173 gevacineerd, nog 0 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 3 weken en 1 dag.
 
-Hub 1 (3480000 vaccins)
-	-> Park Spoor Oost (0 vaccins)
+Hub 1 (3470000 vaccins)
+	-> Park Spoor Oost (7827 vaccins)
 
 Park Spoor Oost: 540173 gevacineerd, nog 0 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 3 weken en 2 dagen.
 
-Hub 1 (3482000 vaccins)
+Hub 1 (3476000 vaccins)
 	-> Park Spoor Oost (0 vaccins)
 
 Park Spoor Oost: 540173 gevacineerd, nog 0 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 3 weken en 3 dagen.
 
-Hub 1 (3490000 vaccins)
+Hub 1 (3484000 vaccins)
 	-> Park Spoor Oost (0 vaccins)
 
 Park Spoor Oost: 540173 gevacineerd, nog 0 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 3 weken en 4 dagen.
 
-Hub 1 (3591000 vaccins)
+Hub 1 (3585000 vaccins)
 	-> Park Spoor Oost (0 vaccins)
 
 Park Spoor Oost: 540173 gevacineerd, nog 0 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 3 weken en 5 dagen.
 
-Hub 1 (3599000 vaccins)
+Hub 1 (3593000 vaccins)
 	-> Park Spoor Oost (0 vaccins)
 
 Park Spoor Oost: 540173 gevacineerd, nog 0 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 3 weken en 6 dagen.
 
-Hub 1 (3607000 vaccins)
+Hub 1 (3601000 vaccins)
 	-> Park Spoor Oost (0 vaccins)
 
 Park Spoor Oost: 540173 gevacineerd, nog 0 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 4 weken en 0 dagen.
 
-Hub 1 (3615000 vaccins)
+Hub 1 (3609000 vaccins)
 	-> Park Spoor Oost (0 vaccins)
 
 Park Spoor Oost: 540173 gevacineerd, nog 0 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 4 weken en 1 dag.
 
-Hub 1 (3623000 vaccins)
+Hub 1 (3617000 vaccins)
 	-> Park Spoor Oost (0 vaccins)
 
 Park Spoor Oost: 540173 gevacineerd, nog 0 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 6 maanden, 0 weken en 0 dagen.
 
-Hub 1 (3631000 vaccins)
+Hub 1 (3625000 vaccins)
 	-> Park Spoor Oost (0 vaccins)
 
 Park Spoor Oost: 540173 gevacineerd, nog 0 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 6 maanden, 0 weken en 1 dag.
 
-Hub 1 (3698000 vaccins)
+Hub 1 (3691000 vaccins)
 	-> Park Spoor Oost (0 vaccins)
 
 Park Spoor Oost: 540173 gevacineerd, nog 0 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 6 maanden, 0 weken en 2 dagen.
 
-Hub 1 (3706000 vaccins)
+Hub 1 (3699000 vaccins)
 	-> Park Spoor Oost (0 vaccins)
 
 Park Spoor Oost: 540173 gevacineerd, nog 0 inwoners niet gevaccineerd.
@@ -1104,7 +1104,13 @@ Hub 1 (3767000 vaccins)
 Park Spoor Oost: 540173 gevacineerd, nog 0 inwoners niet gevaccineerd.
 Overzicht van vaccinaties na: 0 jaren, 6 maanden, 0 weken en 4 dagen.
 
-Hub 1 (3768000 vaccins)
+Hub 1 (3775000 vaccins)
+	-> Park Spoor Oost (0 vaccins)
+
+Park Spoor Oost: 540173 gevacineerd, nog 0 inwoners niet gevaccineerd.
+Overzicht van vaccinaties na: 0 jaren, 6 maanden, 0 weken en 5 dagen.
+
+Hub 1 (3778000 vaccins)
 	-> Park Spoor Oost (0 vaccins)
 
 Park Spoor Oost: 540173 gevacineerd, nog 0 inwoners niet gevaccineerd.

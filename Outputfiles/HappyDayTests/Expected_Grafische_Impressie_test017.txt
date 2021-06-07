@@ -721,7 +721,7 @@ Park Spoor Oost:
 Overzicht van vaccinaties na: 0 jaren, 2 maanden, 3 weken en 6 dagen.
 
 Park Spoor Oost:
-	- vaccins		[                    ] 3%
+	- vaccins		[                    ] 0%
 	- 1ste prik		[====                ] 23%
 	- gevaccineerd	[========            ] 41%
 		- AstraZenica		[==============      ] 73%
@@ -730,7 +730,7 @@ Park Spoor Oost:
 Overzicht van vaccinaties na: 0 jaren, 2 maanden, 4 weken en 0 dagen.
 
 Park Spoor Oost:
-	- vaccins		[=                   ] 7%
+	- vaccins		[                    ] 3%
 	- 1ste prik		[====                ] 22%
 	- gevaccineerd	[========            ] 42%
 		- AstraZenica		[==============      ] 74%
@@ -739,8 +739,8 @@ Park Spoor Oost:
 Overzicht van vaccinaties na: 0 jaren, 2 maanden, 4 weken en 1 dag.
 
 Park Spoor Oost:
-	- vaccins		[==                  ] 10%
-	- 1ste prik		[====                ] 21%
+	- vaccins		[=                   ] 7%
+	- 1ste prik		[====                ] 20%
 	- gevaccineerd	[========            ] 44%
 		- AstraZenica		[===============     ] 75%
 		- Moderna			[====                ] 22%
@@ -748,7 +748,7 @@ Park Spoor Oost:
 Overzicht van vaccinaties na: 0 jaren, 3 maanden, 0 weken en 0 dagen.
 
 Park Spoor Oost:
-	- vaccins		[==                  ] 13%
+	- vaccins		[==                  ] 10%
 	- 1ste prik		[===                 ] 19%
 	- gevaccineerd	[=========           ] 45%
 		- AstraZenica		[===============     ] 76%
@@ -757,8 +757,8 @@ Park Spoor Oost:
 Overzicht van vaccinaties na: 0 jaren, 3 maanden, 0 weken en 1 dag.
 
 Park Spoor Oost:
-	- vaccins		[===                 ] 17%
-	- 1ste prik		[===                 ] 18%
+	- vaccins		[==                  ] 13%
+	- 1ste prik		[===                 ] 17%
 	- gevaccineerd	[=========           ] 46%
 		- AstraZenica		[===============     ] 77%
 		- Moderna			[====                ] 21%
@@ -766,7 +766,7 @@ Park Spoor Oost:
 Overzicht van vaccinaties na: 0 jaren, 3 maanden, 0 weken en 2 dagen.
 
 Park Spoor Oost:
-	- vaccins		[====                ] 20%
+	- vaccins		[===                 ] 17%
 	- 1ste prik		[===                 ] 16%
 	- gevaccineerd	[=========           ] 48%
 		- AstraZenica		[===============     ] 77%
@@ -785,7 +785,7 @@ Park Spoor Oost:
 
 Park Spoor Oost:
 	- vaccins		[                    ] 0%
-	- 1ste prik		[===                 ] 18%
+	- 1ste prik		[===                 ] 17%
 	- gevaccineerd	[=========           ] 48%
 		- AstraZenica		[===============     ] 77%
 		- Moderna			[====                ] 20%
@@ -794,7 +794,7 @@ Park Spoor Oost:
 
 Park Spoor Oost:
 	- vaccins		[                    ] 0%
-	- 1ste prik		[====                ] 20%
+	- 1ste prik		[===                 ] 19%
 	- gevaccineerd	[=========           ] 48%
 		- AstraZenica		[===============     ] 77%
 		- Moderna			[====                ] 20%
@@ -803,7 +803,7 @@ Park Spoor Oost:
 
 Park Spoor Oost:
 	- vaccins		[                    ] 0%
-	- 1ste prik		[====                ] 21%
+	- 1ste prik		[====                ] 20%
 	- gevaccineerd	[=========           ] 48%
 		- AstraZenica		[===============     ] 77%
 		- Moderna			[====                ] 20%
@@ -812,7 +812,7 @@ Park Spoor Oost:
 
 Park Spoor Oost:
 	- vaccins		[                    ] 0%
-	- 1ste prik		[====                ] 22%
+	- 1ste prik		[====                ] 21%
 	- gevaccineerd	[=========           ] 48%
 		- AstraZenica		[===============     ] 77%
 		- Moderna			[====                ] 20%
@@ -821,7 +821,7 @@ Park Spoor Oost:
 
 Park Spoor Oost:
 	- vaccins		[                    ] 0%
-	- 1ste prik		[====                ] 21%
+	- 1ste prik		[====                ] 20%
 	- gevaccineerd	[=========           ] 49%
 		- AstraZenica		[===============     ] 78%
 		- Moderna			[====                ] 20%
@@ -830,7 +830,7 @@ Park Spoor Oost:
 
 Park Spoor Oost:
 	- vaccins		[                    ] 0%
-	- 1ste prik		[===                 ] 19%
+	- 1ste prik		[===                 ] 18%
 	- gevaccineerd	[==========          ] 51%
 		- AstraZenica		[===============     ] 78%
 		- Moderna			[===                 ] 19%
@@ -839,7 +839,7 @@ Park Spoor Oost:
 
 Park Spoor Oost:
 	- vaccins		[                    ] 0%
-	- 1ste prik		[===                 ] 18%
+	- 1ste prik		[===                 ] 17%
 	- gevaccineerd	[==========          ] 52%
 		- AstraZenica		[===============     ] 79%
 		- Moderna			[===                 ] 19%
@@ -848,7 +848,7 @@ Park Spoor Oost:
 
 Park Spoor Oost:
 	- vaccins		[                    ] 3%
-	- 1ste prik		[===                 ] 17%
+	- 1ste prik		[===                 ] 16%
 	- gevaccineerd	[==========          ] 53%
 		- AstraZenica		[===============     ] 79%
 		- Moderna			[===                 ] 18%
@@ -857,7 +857,7 @@ Park Spoor Oost:
 
 Park Spoor Oost:
 	- vaccins		[=                   ] 7%
-	- 1ste prik		[===                 ] 16%
+	- 1ste prik		[==                  ] 14%
 	- gevaccineerd	[===========         ] 55%
 		- AstraZenica		[================    ] 80%
 		- Moderna			[===                 ] 18%
@@ -866,7 +866,7 @@ Park Spoor Oost:
 
 Park Spoor Oost:
 	- vaccins		[==                  ] 10%
-	- 1ste prik		[==                  ] 14%
+	- 1ste prik		[==                  ] 13%
 	- gevaccineerd	[===========         ] 56%
 		- AstraZenica		[================    ] 80%
 		- Moderna			[===                 ] 18%
@@ -875,7 +875,7 @@ Park Spoor Oost:
 
 Park Spoor Oost:
 	- vaccins		[==                  ] 13%
-	- 1ste prik		[==                  ] 13%
+	- 1ste prik		[==                  ] 12%
 	- gevaccineerd	[===========         ] 57%
 		- AstraZenica		[================    ] 81%
 		- Moderna			[===                 ] 17%
@@ -884,7 +884,7 @@ Park Spoor Oost:
 
 Park Spoor Oost:
 	- vaccins		[===                 ] 17%
-	- 1ste prik		[==                  ] 11%
+	- 1ste prik		[==                  ] 10%
 	- gevaccineerd	[===========         ] 59%
 		- AstraZenica		[================    ] 81%
 		- Moderna			[===                 ] 17%
@@ -893,7 +893,7 @@ Park Spoor Oost:
 
 Park Spoor Oost:
 	- vaccins		[                    ] 0%
-	- 1ste prik		[==                  ] 11%
+	- 1ste prik		[==                  ] 10%
 	- gevaccineerd	[============        ] 60%
 		- AstraZenica		[================    ] 80%
 		- Moderna			[===                 ] 18%
@@ -902,7 +902,7 @@ Park Spoor Oost:
 
 Park Spoor Oost:
 	- vaccins		[                    ] 0%
-	- 1ste prik		[==                  ] 11%
+	- 1ste prik		[==                  ] 10%
 	- gevaccineerd	[============        ] 60%
 		- AstraZenica		[===============     ] 79%
 		- Moderna			[===                 ] 19%
@@ -914,7 +914,7 @@ Park Spoor Oost:
 	- 1ste prik		[==                  ] 11%
 	- gevaccineerd	[============        ] 61%
 		- AstraZenica		[===============     ] 79%
-		- Moderna			[===                 ] 18%
+		- Moderna			[===                 ] 19%
 		- Pfizer			[                    ] 1%
 Overzicht van vaccinaties na: 0 jaren, 3 maanden, 2 weken en 5 dagen.
 
@@ -923,7 +923,7 @@ Park Spoor Oost:
 	- 1ste prik		[==                  ] 12%
 	- gevaccineerd	[============        ] 61%
 		- AstraZenica		[===============     ] 79%
-		- Moderna			[===                 ] 18%
+		- Moderna			[===                 ] 19%
 		- Pfizer			[                    ] 1%
 Overzicht van vaccinaties na: 0 jaren, 3 maanden, 2 weken en 6 dagen.
 
@@ -939,7 +939,7 @@ Park Spoor Oost:
 Park Spoor Oost:
 	- vaccins		[                    ] 3%
 	- 1ste prik		[==                  ] 14%
-	- gevaccineerd	[============        ] 62%
+	- gevaccineerd	[============        ] 61%
 		- AstraZenica		[===============     ] 79%
 		- Moderna			[===                 ] 18%
 		- Pfizer			[                    ] 1%
@@ -948,7 +948,7 @@ Park Spoor Oost:
 Park Spoor Oost:
 	- vaccins		[                    ] 0%
 	- 1ste prik		[===                 ] 15%
-	- gevaccineerd	[============        ] 62%
+	- gevaccineerd	[============        ] 61%
 		- AstraZenica		[===============     ] 79%
 		- Moderna			[===                 ] 18%
 		- Pfizer			[                    ] 1%
@@ -958,7 +958,7 @@ Park Spoor Oost:
 	- vaccins		[                    ] 3%
 	- 1ste prik		[===                 ] 16%
 	- gevaccineerd	[============        ] 62%
-		- AstraZenica		[===============     ] 79%
+		- AstraZenica		[================    ] 80%
 		- Moderna			[===                 ] 18%
 		- Pfizer			[                    ] 1%
 Overzicht van vaccinaties na: 0 jaren, 3 maanden, 3 weken en 3 dagen.
@@ -967,25 +967,25 @@ Park Spoor Oost:
 	- vaccins		[                    ] 0%
 	- 1ste prik		[===                 ] 17%
 	- gevaccineerd	[============        ] 62%
-		- AstraZenica		[===============     ] 79%
+		- AstraZenica		[================    ] 80%
 		- Moderna			[===                 ] 18%
 		- Pfizer			[                    ] 1%
 Overzicht van vaccinaties na: 0 jaren, 3 maanden, 3 weken en 4 dagen.
 
 Park Spoor Oost:
 	- vaccins		[                    ] 3%
-	- 1ste prik		[===                 ] 19%
+	- 1ste prik		[===                 ] 18%
 	- gevaccineerd	[============        ] 62%
-		- AstraZenica		[===============     ] 79%
+		- AstraZenica		[================    ] 80%
 		- Moderna			[===                 ] 18%
 		- Pfizer			[                    ] 1%
 Overzicht van vaccinaties na: 0 jaren, 3 maanden, 3 weken en 5 dagen.
 
 Park Spoor Oost:
 	- vaccins		[                    ] 0%
-	- 1ste prik		[====                ] 20%
+	- 1ste prik		[===                 ] 19%
 	- gevaccineerd	[============        ] 62%
-		- AstraZenica		[===============     ] 79%
+		- AstraZenica		[================    ] 80%
 		- Moderna			[===                 ] 18%
 		- Pfizer			[                    ] 1%
 Overzicht van vaccinaties na: 0 jaren, 3 maanden, 3 weken en 6 dagen.
@@ -994,7 +994,7 @@ Park Spoor Oost:
 	- vaccins		[                    ] 3%
 	- 1ste prik		[====                ] 21%
 	- gevaccineerd	[============        ] 62%
-		- AstraZenica		[===============     ] 79%
+		- AstraZenica		[================    ] 80%
 		- Moderna			[===                 ] 18%
 		- Pfizer			[                    ] 1%
 Overzicht van vaccinaties na: 0 jaren, 3 maanden, 4 weken en 0 dagen.
@@ -1003,15 +1003,15 @@ Park Spoor Oost:
 	- vaccins		[                    ] 0%
 	- 1ste prik		[====                ] 20%
 	- gevaccineerd	[============        ] 63%
-		- AstraZenica		[===============     ] 77%
+		- AstraZenica		[===============     ] 78%
 		- Moderna			[===                 ] 19%
-		- Pfizer			[                    ] 2%
+		- Pfizer			[                    ] 1%
 Overzicht van vaccinaties na: 0 jaren, 3 maanden, 4 weken en 1 dag.
 
 Park Spoor Oost:
 	- vaccins		[                    ] 0%
-	- 1ste prik		[===                 ] 19%
-	- gevaccineerd	[=============       ] 65%
+	- 1ste prik		[===                 ] 18%
+	- gevaccineerd	[============        ] 64%
 		- AstraZenica		[===============     ] 76%
 		- Moderna			[====                ] 20%
 		- Pfizer			[                    ] 2%
@@ -1019,138 +1019,129 @@ Park Spoor Oost:
 
 Park Spoor Oost:
 	- vaccins		[                    ] 0%
-	- 1ste prik		[===                 ] 18%
+	- 1ste prik		[===                 ] 17%
 	- gevaccineerd	[=============       ] 66%
-		- AstraZenica		[===============     ] 75%
-		- Moderna			[====                ] 20%
-		- Pfizer			[                    ] 3%
+		- AstraZenica		[===============     ] 76%
+		- Moderna			[====                ] 21%
+		- Pfizer			[                    ] 2%
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 0 weken en 1 dag.
 
 Park Spoor Oost:
 	- vaccins		[                    ] 3%
-	- 1ste prik		[===                 ] 19%
+	- 1ste prik		[===                 ] 18%
 	- gevaccineerd	[=============       ] 66%
-		- AstraZenica		[===============     ] 75%
-		- Moderna			[====                ] 20%
-		- Pfizer			[                    ] 3%
+		- AstraZenica		[===============     ] 76%
+		- Moderna			[====                ] 21%
+		- Pfizer			[                    ] 2%
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 0 weken en 2 dagen.
 
 Park Spoor Oost:
 	- vaccins		[                    ] 0%
-	- 1ste prik		[====                ] 21%
+	- 1ste prik		[====                ] 20%
 	- gevaccineerd	[=============       ] 66%
-		- AstraZenica		[===============     ] 75%
-		- Moderna			[====                ] 20%
-		- Pfizer			[                    ] 3%
+		- AstraZenica		[===============     ] 76%
+		- Moderna			[====                ] 21%
+		- Pfizer			[                    ] 2%
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 0 weken en 3 dagen.
 
 Park Spoor Oost:
 	- vaccins		[                    ] 3%
-	- 1ste prik		[====                ] 22%
+	- 1ste prik		[====                ] 21%
 	- gevaccineerd	[=============       ] 66%
-		- AstraZenica		[===============     ] 75%
+		- AstraZenica		[===============     ] 76%
 		- Moderna			[====                ] 20%
-		- Pfizer			[                    ] 3%
+		- Pfizer			[                    ] 2%
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 0 weken en 4 dagen.
 
 Park Spoor Oost:
 	- vaccins		[                    ] 0%
-	- 1ste prik		[====                ] 23%
+	- 1ste prik		[====                ] 22%
 	- gevaccineerd	[=============       ] 66%
 		- AstraZenica		[===============     ] 76%
 		- Moderna			[====                ] 20%
-		- Pfizer			[                    ] 3%
+		- Pfizer			[                    ] 2%
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 0 weken en 5 dagen.
 
 Park Spoor Oost:
 	- vaccins		[                    ] 3%
-	- 1ste prik		[=====               ] 25%
+	- 1ste prik		[====                ] 23%
 	- gevaccineerd	[=============       ] 66%
 		- AstraZenica		[===============     ] 76%
 		- Moderna			[====                ] 20%
-		- Pfizer			[                    ] 3%
+		- Pfizer			[                    ] 2%
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 0 weken en 6 dagen.
 
 Park Spoor Oost:
 	- vaccins		[                    ] 0%
-	- 1ste prik		[=====               ] 26%
+	- 1ste prik		[=====               ] 25%
 	- gevaccineerd	[=============       ] 66%
 		- AstraZenica		[===============     ] 76%
 		- Moderna			[====                ] 20%
-		- Pfizer			[                    ] 3%
+		- Pfizer			[                    ] 2%
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 1 week en 0 dagen.
 
 Park Spoor Oost:
 	- vaccins		[                    ] 3%
-	- 1ste prik		[=====               ] 27%
+	- 1ste prik		[=====               ] 26%
 	- gevaccineerd	[=============       ] 66%
 		- AstraZenica		[===============     ] 76%
 		- Moderna			[====                ] 20%
-		- Pfizer			[                    ] 3%
+		- Pfizer			[                    ] 2%
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 1 week en 1 dag.
 
 Park Spoor Oost:
 	- vaccins		[                    ] 0%
-	- 1ste prik		[=====               ] 29%
+	- 1ste prik		[=====               ] 27%
 	- gevaccineerd	[=============       ] 66%
 		- AstraZenica		[===============     ] 76%
 		- Moderna			[====                ] 20%
-		- Pfizer			[                    ] 3%
+		- Pfizer			[                    ] 2%
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 1 week en 2 dagen.
 
 Park Spoor Oost:
 	- vaccins		[                    ] 3%
-	- 1ste prik		[======              ] 30%
+	- 1ste prik		[=====               ] 29%
 	- gevaccineerd	[=============       ] 66%
 		- AstraZenica		[===============     ] 76%
 		- Moderna			[====                ] 20%
-		- Pfizer			[                    ] 3%
+		- Pfizer			[                    ] 2%
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 1 week en 3 dagen.
 
 Park Spoor Oost:
 	- vaccins		[                    ] 0%
-	- 1ste prik		[======              ] 31%
+	- 1ste prik		[======              ] 30%
 	- gevaccineerd	[=============       ] 66%
 		- AstraZenica		[===============     ] 76%
 		- Moderna			[====                ] 20%
-		- Pfizer			[                    ] 3%
+		- Pfizer			[                    ] 2%
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 1 week en 4 dagen.
 
 Park Spoor Oost:
 	- vaccins		[                    ] 0%
-	- 1ste prik		[======              ] 30%
+	- 1ste prik		[=====               ] 29%
 	- gevaccineerd	[=============       ] 67%
-		- AstraZenica		[==============      ] 74%
+		- AstraZenica		[===============     ] 75%
 		- Moderna			[====                ] 20%
 		- Pfizer			[                    ] 4%
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 1 week en 5 dagen.
 
 Park Spoor Oost:
-	- vaccins		[                    ] 0%
-	- 1ste prik		[======              ] 31%
-	- gevaccineerd	[=============       ] 67%
+	- vaccins		[                    ] 3%
+	- 1ste prik		[=====               ] 29%
+	- gevaccineerd	[=============       ] 68%
 		- AstraZenica		[==============      ] 74%
 		- Moderna			[====                ] 20%
-		- Pfizer			[=                   ] 5%
+		- Pfizer			[                    ] 4%
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 1 week en 6 dagen.
 
 Park Spoor Oost:
 	- vaccins		[                    ] 0%
-	- 1ste prik		[======              ] 30%
-	- gevaccineerd	[=============       ] 68%
+	- 1ste prik		[=====               ] 29%
+	- gevaccineerd	[=============       ] 69%
 		- AstraZenica		[==============      ] 74%
-		- Moderna			[====                ] 20%
-		- Pfizer			[=                   ] 5%
+		- Moderna			[====                ] 21%
+		- Pfizer			[                    ] 4%
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 2 weken en 0 dagen.
-
-Park Spoor Oost:
-	- vaccins		[                    ] 0%
-	- 1ste prik		[======              ] 30%
-	- gevaccineerd	[=============       ] 68%
-		- AstraZenica		[==============      ] 73%
-		- Moderna			[====                ] 20%
-		- Pfizer			[=                   ] 5%
-Overzicht van vaccinaties na: 0 jaren, 4 maanden, 2 weken en 1 dag.
 
 Park Spoor Oost:
 	- vaccins		[                    ] 0%
@@ -1158,328 +1149,337 @@ Park Spoor Oost:
 	- gevaccineerd	[=============       ] 69%
 		- AstraZenica		[==============      ] 73%
 		- Moderna			[====                ] 21%
-		- Pfizer			[=                   ] 5%
-Overzicht van vaccinaties na: 0 jaren, 4 maanden, 2 weken en 2 dagen.
+		- Pfizer			[                    ] 4%
+Overzicht van vaccinaties na: 0 jaren, 4 maanden, 2 weken en 1 dag.
 
 Park Spoor Oost:
 	- vaccins		[                    ] 0%
 	- 1ste prik		[=====               ] 28%
+	- gevaccineerd	[==============      ] 70%
+		- AstraZenica		[==============      ] 73%
+		- Moderna			[====                ] 21%
+		- Pfizer			[                    ] 4%
+Overzicht van vaccinaties na: 0 jaren, 4 maanden, 2 weken en 2 dagen.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 3%
+	- 1ste prik		[=====               ] 27%
 	- gevaccineerd	[==============      ] 71%
-		- AstraZenica		[==============      ] 71%
-		- Moderna			[====                ] 22%
-		- Pfizer			[=                   ] 5%
+		- AstraZenica		[==============      ] 72%
+		- Moderna			[====                ] 23%
+		- Pfizer			[                    ] 4%
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 2 weken en 3 dagen.
 
 Park Spoor Oost:
-	- vaccins		[=                   ] 6%
-	- 1ste prik		[=====               ] 28%
-	- gevaccineerd	[==============      ] 71%
+	- vaccins		[                    ] 0%
+	- 1ste prik		[=====               ] 27%
+	- gevaccineerd	[==============      ] 72%
 		- AstraZenica		[==============      ] 71%
-		- Moderna			[====                ] 23%
-		- Pfizer			[=                   ] 5%
+		- Moderna			[====                ] 24%
+		- Pfizer			[                    ] 4%
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 2 weken en 4 dagen.
 
 Park Spoor Oost:
-	- vaccins		[=                   ] 9%
-	- 1ste prik		[=====               ] 27%
-	- gevaccineerd	[==============      ] 72%
-		- AstraZenica		[==============      ] 72%
-		- Moderna			[====                ] 22%
-		- Pfizer			[=                   ] 5%
+	- vaccins		[                    ] 3%
+	- 1ste prik		[=====               ] 26%
+	- gevaccineerd	[==============      ] 73%
+		- AstraZenica		[==============      ] 71%
+		- Moderna			[====                ] 23%
+		- Pfizer			[                    ] 4%
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 2 weken en 5 dagen.
 
 Park Spoor Oost:
-	- vaccins		[==                  ] 12%
-	- 1ste prik		[=====               ] 26%
-	- gevaccineerd	[==============      ] 73%
+	- vaccins		[                    ] 0%
+	- 1ste prik		[====                ] 24%
+	- gevaccineerd	[==============      ] 74%
 		- AstraZenica		[==============      ] 72%
-		- Moderna			[====                ] 22%
-		- Pfizer			[=                   ] 5%
+		- Moderna			[====                ] 23%
+		- Pfizer			[                    ] 4%
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 2 weken en 6 dagen.
 
 Park Spoor Oost:
-	- vaccins		[===                 ] 16%
-	- 1ste prik		[=====               ] 25%
-	- gevaccineerd	[==============      ] 74%
-		- AstraZenica		[==============      ] 73%
+	- vaccins		[                    ] 3%
+	- 1ste prik		[====                ] 23%
+	- gevaccineerd	[===============     ] 75%
+		- AstraZenica		[==============      ] 72%
 		- Moderna			[====                ] 22%
 		- Pfizer			[                    ] 4%
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 3 weken en 0 dagen.
 
 Park Spoor Oost:
-	- vaccins		[===                 ] 16%
-	- 1ste prik		[====                ] 23%
-	- gevaccineerd	[===============     ] 76%
+	- vaccins		[                    ] 0%
+	- 1ste prik		[====                ] 22%
+	- gevaccineerd	[===============     ] 77%
 		- AstraZenica		[==============      ] 73%
-		- Moderna			[====                ] 21%
+		- Moderna			[====                ] 22%
 		- Pfizer			[                    ] 4%
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 3 weken en 1 dag.
 
 Park Spoor Oost:
-	- vaccins		[===                 ] 19%
-	- 1ste prik		[====                ] 22%
-	- gevaccineerd	[===============     ] 77%
+	- vaccins		[                    ] 3%
+	- 1ste prik		[====                ] 21%
+	- gevaccineerd	[===============     ] 78%
 		- AstraZenica		[==============      ] 73%
-		- Moderna			[====                ] 21%
+		- Moderna			[====                ] 22%
 		- Pfizer			[                    ] 4%
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 3 weken en 2 dagen.
 
 Park Spoor Oost:
-	- vaccins		[====                ] 22%
-	- 1ste prik		[====                ] 21%
-	- gevaccineerd	[===============     ] 78%
+	- vaccins		[=                   ] 7%
+	- 1ste prik		[====                ] 20%
+	- gevaccineerd	[===============     ] 79%
 		- AstraZenica		[==============      ] 74%
-		- Moderna			[====                ] 20%
+		- Moderna			[====                ] 21%
 		- Pfizer			[                    ] 4%
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 3 weken en 3 dagen.
 
 Park Spoor Oost:
-	- vaccins		[=====               ] 26%
-	- 1ste prik		[===                 ] 19%
-	- gevaccineerd	[================    ] 80%
+	- vaccins		[==                  ] 10%
+	- 1ste prik		[===                 ] 18%
+	- gevaccineerd	[================    ] 81%
 		- AstraZenica		[==============      ] 74%
-		- Moderna			[====                ] 20%
+		- Moderna			[====                ] 21%
 		- Pfizer			[                    ] 4%
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 3 weken en 4 dagen.
 
 Park Spoor Oost:
-	- vaccins		[=====               ] 29%
-	- 1ste prik		[===                 ] 19%
-	- gevaccineerd	[================    ] 80%
-		- AstraZenica		[==============      ] 74%
-		- Moderna			[====                ] 20%
+	- vaccins		[==                  ] 12%
+	- 1ste prik		[===                 ] 17%
+	- gevaccineerd	[================    ] 82%
+		- AstraZenica		[==============      ] 73%
+		- Moderna			[====                ] 22%
 		- Pfizer			[                    ] 4%
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 3 weken en 5 dagen.
 
 Park Spoor Oost:
-	- vaccins		[=====               ] 29%
-	- 1ste prik		[===                 ] 18%
-	- gevaccineerd	[================    ] 81%
-		- AstraZenica		[==============      ] 74%
-		- Moderna			[====                ] 21%
+	- vaccins		[==                  ] 12%
+	- 1ste prik		[===                 ] 16%
+	- gevaccineerd	[================    ] 83%
+		- AstraZenica		[==============      ] 72%
+		- Moderna			[====                ] 23%
 		- Pfizer			[                    ] 4%
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 3 weken en 6 dagen.
 
 Park Spoor Oost:
-	- vaccins		[======              ] 32%
-	- 1ste prik		[===                 ] 18%
-	- gevaccineerd	[================    ] 81%
-		- AstraZenica		[==============      ] 73%
-		- Moderna			[====                ] 21%
-		- Pfizer			[                    ] 4%
+	- vaccins		[==                  ] 12%
+	- 1ste prik		[===                 ] 16%
+	- gevaccineerd	[================    ] 83%
+		- AstraZenica		[==============      ] 72%
+		- Moderna			[====                ] 23%
+		- Pfizer			[                    ] 3%
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 4 weken en 0 dagen.
 
 Park Spoor Oost:
-	- vaccins		[=======             ] 36%
-	- 1ste prik		[===                 ] 16%
-	- gevaccineerd	[================    ] 83%
-		- AstraZenica		[==============      ] 74%
-		- Moderna			[====                ] 21%
-		- Pfizer			[                    ] 4%
+	- vaccins		[===                 ] 16%
+	- 1ste prik		[==                  ] 14%
+	- gevaccineerd	[=================   ] 85%
+		- AstraZenica		[==============      ] 72%
+		- Moderna			[====                ] 23%
+		- Pfizer			[                    ] 3%
 Overzicht van vaccinaties na: 0 jaren, 4 maanden, 4 weken en 1 dag.
 
 Park Spoor Oost:
-	- vaccins		[=======             ] 39%
-	- 1ste prik		[===                 ] 15%
-	- gevaccineerd	[================    ] 84%
-		- AstraZenica		[==============      ] 74%
-		- Moderna			[====                ] 21%
-		- Pfizer			[                    ] 4%
+	- vaccins		[===                 ] 19%
+	- 1ste prik		[==                  ] 13%
+	- gevaccineerd	[=================   ] 86%
+		- AstraZenica		[==============      ] 73%
+		- Moderna			[====                ] 22%
+		- Pfizer			[                    ] 3%
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 0 weken en 0 dagen.
 
 Park Spoor Oost:
-	- vaccins		[========            ] 42%
-	- 1ste prik		[==                  ] 14%
-	- gevaccineerd	[=================   ] 85%
-		- AstraZenica		[===============     ] 75%
-		- Moderna			[====                ] 20%
-		- Pfizer			[                    ] 4%
+	- vaccins		[====                ] 22%
+	- 1ste prik		[==                  ] 12%
+	- gevaccineerd	[=================   ] 87%
+		- AstraZenica		[==============      ] 73%
+		- Moderna			[====                ] 22%
+		- Pfizer			[                    ] 3%
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 0 weken en 1 dag.
 
 Park Spoor Oost:
-	- vaccins		[========            ] 42%
-	- 1ste prik		[==                  ] 12%
-	- gevaccineerd	[=================   ] 87%
-		- AstraZenica		[===============     ] 75%
-		- Moderna			[====                ] 20%
-		- Pfizer			[                    ] 4%
+	- vaccins		[====                ] 22%
+	- 1ste prik		[==                  ] 11%
+	- gevaccineerd	[=================   ] 88%
+		- AstraZenica		[==============      ] 73%
+		- Moderna			[====                ] 22%
+		- Pfizer			[                    ] 3%
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 0 weken en 2 dagen.
 
 Park Spoor Oost:
-	- vaccins		[=========           ] 46%
-	- 1ste prik		[==                  ] 11%
-	- gevaccineerd	[=================   ] 88%
-		- AstraZenica		[===============     ] 75%
-		- Moderna			[====                ] 20%
-		- Pfizer			[                    ] 4%
+	- vaccins		[=====               ] 26%
+	- 1ste prik		[=                   ] 9%
+	- gevaccineerd	[==================  ] 90%
+		- AstraZenica		[==============      ] 74%
+		- Moderna			[====                ] 21%
+		- Pfizer			[                    ] 3%
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 0 weken en 3 dagen.
 
 Park Spoor Oost:
-	- vaccins		[=========           ] 49%
-	- 1ste prik		[=                   ] 9%
-	- gevaccineerd	[==================  ] 90%
-		- AstraZenica		[===============     ] 76%
-		- Moderna			[===                 ] 19%
-		- Pfizer			[                    ] 4%
+	- vaccins		[=====               ] 29%
+	- 1ste prik		[=                   ] 8%
+	- gevaccineerd	[==================  ] 91%
+		- AstraZenica		[==============      ] 74%
+		- Moderna			[====                ] 21%
+		- Pfizer			[                    ] 3%
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 0 weken en 4 dagen.
 
 Park Spoor Oost:
-	- vaccins		[=========           ] 46%
-	- 1ste prik		[=                   ] 8%
-	- gevaccineerd	[==================  ] 91%
-		- AstraZenica		[===============     ] 76%
-		- Moderna			[===                 ] 19%
-		- Pfizer			[                    ] 4%
+	- vaccins		[======              ] 32%
+	- 1ste prik		[=                   ] 6%
+	- gevaccineerd	[==================  ] 93%
+		- AstraZenica		[===============     ] 75%
+		- Moderna			[====                ] 21%
+		- Pfizer			[                    ] 3%
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 0 weken en 5 dagen.
 
 Park Spoor Oost:
-	- vaccins		[=========           ] 46%
-	- 1ste prik		[=                   ] 7%
-	- gevaccineerd	[==================  ] 92%
-		- AstraZenica		[===============     ] 76%
-		- Moderna			[===                 ] 19%
+	- vaccins		[======              ] 32%
+	- 1ste prik		[=                   ] 5%
+	- gevaccineerd	[==================  ] 94%
+		- AstraZenica		[===============     ] 75%
+		- Moderna			[====                ] 20%
 		- Pfizer			[                    ] 3%
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 0 weken en 6 dagen.
 
 Park Spoor Oost:
-	- vaccins		[=========           ] 49%
-	- 1ste prik		[=                   ] 5%
-	- gevaccineerd	[==================  ] 94%
-		- AstraZenica		[===============     ] 77%
-		- Moderna			[===                 ] 18%
+	- vaccins		[=======             ] 36%
+	- 1ste prik		[                    ] 4%
+	- gevaccineerd	[=================== ] 95%
+		- AstraZenica		[===============     ] 75%
+		- Moderna			[====                ] 20%
 		- Pfizer			[                    ] 3%
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 1 week en 0 dagen.
 
 Park Spoor Oost:
-	- vaccins		[=========           ] 46%
-	- 1ste prik		[                    ] 4%
-	- gevaccineerd	[=================== ] 95%
-		- AstraZenica		[===============     ] 77%
-		- Moderna			[===                 ] 18%
+	- vaccins		[=======             ] 39%
+	- 1ste prik		[                    ] 2%
+	- gevaccineerd	[=================== ] 97%
+		- AstraZenica		[===============     ] 76%
+		- Moderna			[====                ] 20%
 		- Pfizer			[                    ] 3%
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 1 week en 1 dag.
 
 Park Spoor Oost:
-	- vaccins		[=========           ] 46%
-	- 1ste prik		[                    ] 4%
-	- gevaccineerd	[=================== ] 95%
-		- AstraZenica		[===============     ] 77%
-		- Moderna			[===                 ] 18%
+	- vaccins		[=======             ] 39%
+	- 1ste prik		[                    ] 2%
+	- gevaccineerd	[=================== ] 97%
+		- AstraZenica		[===============     ] 76%
+		- Moderna			[====                ] 20%
 		- Pfizer			[                    ] 3%
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 1 week en 2 dagen.
 
 Park Spoor Oost:
-	- vaccins		[=========           ] 46%
-	- 1ste prik		[                    ] 4%
-	- gevaccineerd	[=================== ] 95%
-		- AstraZenica		[===============     ] 77%
-		- Moderna			[===                 ] 18%
+	- vaccins		[========            ] 42%
+	- 1ste prik		[                    ] 2%
+	- gevaccineerd	[=================== ] 97%
+		- AstraZenica		[===============     ] 76%
+		- Moderna			[====                ] 20%
 		- Pfizer			[                    ] 3%
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 1 week en 3 dagen.
 
 Park Spoor Oost:
-	- vaccins		[=========           ] 49%
-	- 1ste prik		[                    ] 4%
-	- gevaccineerd	[=================== ] 95%
-		- AstraZenica		[===============     ] 77%
-		- Moderna			[===                 ] 18%
+	- vaccins		[========            ] 42%
+	- 1ste prik		[                    ] 2%
+	- gevaccineerd	[=================== ] 97%
+		- AstraZenica		[===============     ] 76%
+		- Moderna			[====                ] 20%
 		- Pfizer			[                    ] 3%
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 1 week en 4 dagen.
 
 Park Spoor Oost:
-	- vaccins		[=========           ] 49%
-	- 1ste prik		[                    ] 4%
-	- gevaccineerd	[=================== ] 95%
-		- AstraZenica		[===============     ] 77%
-		- Moderna			[===                 ] 18%
+	- vaccins		[========            ] 42%
+	- 1ste prik		[                    ] 2%
+	- gevaccineerd	[=================== ] 97%
+		- AstraZenica		[===============     ] 76%
+		- Moderna			[====                ] 20%
 		- Pfizer			[                    ] 3%
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 1 week en 5 dagen.
 
 Park Spoor Oost:
-	- vaccins		[==========          ] 52%
-	- 1ste prik		[                    ] 3%
-	- gevaccineerd	[=================== ] 96%
-		- AstraZenica		[===============     ] 77%
-		- Moderna			[===                 ] 18%
+	- vaccins		[=========           ] 46%
+	- 1ste prik		[                    ] 1%
+	- gevaccineerd	[=================== ] 98%
+		- AstraZenica		[===============     ] 76%
+		- Moderna			[====                ] 20%
 		- Pfizer			[                    ] 3%
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 1 week en 6 dagen.
 
 Park Spoor Oost:
-	- vaccins		[==========          ] 52%
-	- 1ste prik		[                    ] 3%
-	- gevaccineerd	[=================== ] 96%
-		- AstraZenica		[===============     ] 77%
-		- Moderna			[===                 ] 18%
+	- vaccins		[=========           ] 49%
+	- 1ste prik		[                    ] 1%
+	- gevaccineerd	[=================== ] 98%
+		- AstraZenica		[===============     ] 76%
+		- Moderna			[====                ] 20%
 		- Pfizer			[                    ] 3%
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 2 weken en 0 dagen.
 
 Park Spoor Oost:
-	- vaccins		[                    ] 0%
-	- 1ste prik		[                    ] 3%
-	- gevaccineerd	[=================== ] 96%
-		- AstraZenica		[===============     ] 77%
-		- Moderna			[===                 ] 18%
+	- vaccins		[==========          ] 52%
+	- 1ste prik		[                    ] 1%
+	- gevaccineerd	[=================== ] 98%
+		- AstraZenica		[===============     ] 76%
+		- Moderna			[====                ] 20%
 		- Pfizer			[                    ] 3%
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 2 weken en 1 dag.
 
 Park Spoor Oost:
-	- vaccins		[                    ] 0%
-	- 1ste prik		[                    ] 3%
-	- gevaccineerd	[=================== ] 96%
-		- AstraZenica		[===============     ] 77%
-		- Moderna			[===                 ] 18%
+	- vaccins		[==========          ] 52%
+	- 1ste prik		[                    ] 1%
+	- gevaccineerd	[=================== ] 98%
+		- AstraZenica		[===============     ] 76%
+		- Moderna			[====                ] 20%
 		- Pfizer			[                    ] 3%
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 2 weken en 2 dagen.
 
 Park Spoor Oost:
-	- vaccins		[                    ] 0%
-	- 1ste prik		[                    ] 3%
-	- gevaccineerd	[=================== ] 96%
-		- AstraZenica		[===============     ] 77%
-		- Moderna			[===                 ] 18%
+	- vaccins		[==========          ] 52%
+	- 1ste prik		[                    ] 1%
+	- gevaccineerd	[=================== ] 98%
+		- AstraZenica		[===============     ] 76%
+		- Moderna			[====                ] 20%
 		- Pfizer			[                    ] 3%
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 2 weken en 3 dagen.
 
 Park Spoor Oost:
-	- vaccins		[                    ] 0%
-	- 1ste prik		[                    ] 3%
-	- gevaccineerd	[=================== ] 96%
-		- AstraZenica		[===============     ] 77%
-		- Moderna			[===                 ] 18%
+	- vaccins		[==========          ] 52%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=================== ] 99%
+		- AstraZenica		[===============     ] 76%
+		- Moderna			[====                ] 20%
 		- Pfizer			[                    ] 3%
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 2 weken en 4 dagen.
 
 Park Spoor Oost:
-	- vaccins		[                    ] 0%
-	- 1ste prik		[                    ] 3%
-	- gevaccineerd	[=================== ] 96%
-		- AstraZenica		[===============     ] 77%
-		- Moderna			[===                 ] 18%
+	- vaccins		[==========          ] 52%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=================== ] 99%
+		- AstraZenica		[===============     ] 76%
+		- Moderna			[===                 ] 19%
 		- Pfizer			[                    ] 3%
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 2 weken en 5 dagen.
 
 Park Spoor Oost:
-	- vaccins		[                    ] 0%
-	- 1ste prik		[                    ] 3%
-	- gevaccineerd	[=================== ] 96%
-		- AstraZenica		[===============     ] 77%
-		- Moderna			[===                 ] 18%
+	- vaccins		[==========          ] 52%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=================== ] 99%
+		- AstraZenica		[===============     ] 76%
+		- Moderna			[===                 ] 19%
 		- Pfizer			[                    ] 3%
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 2 weken en 6 dagen.
 
 Park Spoor Oost:
-	- vaccins		[                    ] 0%
-	- 1ste prik		[                    ] 2%
-	- gevaccineerd	[=================== ] 97%
+	- vaccins		[==========          ] 52%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=================== ] 99%
 		- AstraZenica		[===============     ] 76%
 		- Moderna			[===                 ] 19%
 		- Pfizer			[                    ] 3%
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 3 weken en 0 dagen.
 
 Park Spoor Oost:
-	- vaccins		[                    ] 0%
-	- 1ste prik		[                    ] 2%
-	- gevaccineerd	[=================== ] 97%
+	- vaccins		[==========          ] 52%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=================== ] 99%
 		- AstraZenica		[===============     ] 76%
 		- Moderna			[===                 ] 19%
 		- Pfizer			[                    ] 3%
@@ -1487,8 +1487,8 @@ Park Spoor Oost:
 
 Park Spoor Oost:
 	- vaccins		[                    ] 0%
-	- 1ste prik		[                    ] 2%
-	- gevaccineerd	[=================== ] 97%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=================== ] 99%
 		- AstraZenica		[===============     ] 76%
 		- Moderna			[===                 ] 19%
 		- Pfizer			[                    ] 3%
@@ -1496,108 +1496,117 @@ Park Spoor Oost:
 
 Park Spoor Oost:
 	- vaccins		[                    ] 0%
-	- 1ste prik		[                    ] 1%
-	- gevaccineerd	[=================== ] 98%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=================== ] 99%
 		- AstraZenica		[===============     ] 76%
 		- Moderna			[===                 ] 19%
-		- Pfizer			[                    ] 4%
+		- Pfizer			[                    ] 3%
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 3 weken en 3 dagen.
 
 Park Spoor Oost:
 	- vaccins		[                    ] 0%
-	- 1ste prik		[                    ] 1%
-	- gevaccineerd	[=================== ] 98%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=================== ] 99%
 		- AstraZenica		[===============     ] 76%
 		- Moderna			[===                 ] 19%
-		- Pfizer			[                    ] 4%
+		- Pfizer			[                    ] 3%
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 3 weken en 4 dagen.
 
 Park Spoor Oost:
 	- vaccins		[                    ] 0%
-	- 1ste prik		[                    ] 1%
-	- gevaccineerd	[=================== ] 98%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=================== ] 99%
 		- AstraZenica		[===============     ] 76%
 		- Moderna			[===                 ] 19%
-		- Pfizer			[                    ] 4%
+		- Pfizer			[                    ] 3%
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 3 weken en 5 dagen.
 
 Park Spoor Oost:
 	- vaccins		[                    ] 0%
-	- 1ste prik		[                    ] 1%
-	- gevaccineerd	[=================== ] 98%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=================== ] 99%
 		- AstraZenica		[===============     ] 76%
 		- Moderna			[===                 ] 19%
-		- Pfizer			[                    ] 4%
+		- Pfizer			[                    ] 3%
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 3 weken en 6 dagen.
 
 Park Spoor Oost:
 	- vaccins		[                    ] 0%
-	- 1ste prik		[                    ] 1%
-	- gevaccineerd	[=================== ] 98%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=================== ] 99%
 		- AstraZenica		[===============     ] 76%
 		- Moderna			[===                 ] 19%
-		- Pfizer			[                    ] 4%
+		- Pfizer			[                    ] 3%
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 4 weken en 0 dagen.
 
 Park Spoor Oost:
 	- vaccins		[                    ] 0%
-	- 1ste prik		[                    ] 1%
-	- gevaccineerd	[=================== ] 98%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=================== ] 99%
 		- AstraZenica		[===============     ] 76%
 		- Moderna			[===                 ] 19%
-		- Pfizer			[                    ] 4%
+		- Pfizer			[                    ] 3%
 Overzicht van vaccinaties na: 0 jaren, 5 maanden, 4 weken en 1 dag.
 
 Park Spoor Oost:
 	- vaccins		[                    ] 0%
-	- 1ste prik		[                    ] 1%
-	- gevaccineerd	[=================== ] 98%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=================== ] 99%
 		- AstraZenica		[===============     ] 76%
 		- Moderna			[===                 ] 19%
-		- Pfizer			[                    ] 4%
+		- Pfizer			[                    ] 3%
 Overzicht van vaccinaties na: 0 jaren, 6 maanden, 0 weken en 0 dagen.
 
 Park Spoor Oost:
 	- vaccins		[                    ] 0%
-	- 1ste prik		[                    ] 1%
-	- gevaccineerd	[=================== ] 98%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=================== ] 99%
 		- AstraZenica		[===============     ] 76%
 		- Moderna			[===                 ] 19%
-		- Pfizer			[                    ] 4%
+		- Pfizer			[                    ] 3%
 Overzicht van vaccinaties na: 0 jaren, 6 maanden, 0 weken en 1 dag.
 
 Park Spoor Oost:
 	- vaccins		[                    ] 0%
-	- 1ste prik		[                    ] 1%
-	- gevaccineerd	[=================== ] 98%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=================== ] 99%
 		- AstraZenica		[===============     ] 76%
 		- Moderna			[===                 ] 19%
-		- Pfizer			[                    ] 4%
+		- Pfizer			[                    ] 3%
 Overzicht van vaccinaties na: 0 jaren, 6 maanden, 0 weken en 2 dagen.
 
 Park Spoor Oost:
 	- vaccins		[                    ] 0%
-	- 1ste prik		[                    ] 1%
-	- gevaccineerd	[=================== ] 98%
+	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=================== ] 99%
 		- AstraZenica		[===============     ] 76%
 		- Moderna			[===                 ] 19%
-		- Pfizer			[                    ] 4%
+		- Pfizer			[                    ] 3%
 Overzicht van vaccinaties na: 0 jaren, 6 maanden, 0 weken en 3 dagen.
 
 Park Spoor Oost:
 	- vaccins		[                    ] 0%
 	- 1ste prik		[                    ] 0%
 	- gevaccineerd	[=================== ] 99%
-		- AstraZenica		[===============     ] 75%
-		- Moderna			[====                ] 20%
-		- Pfizer			[                    ] 4%
+		- AstraZenica		[===============     ] 76%
+		- Moderna			[===                 ] 19%
+		- Pfizer			[                    ] 3%
 Overzicht van vaccinaties na: 0 jaren, 6 maanden, 0 weken en 4 dagen.
 
 Park Spoor Oost:
 	- vaccins		[                    ] 0%
 	- 1ste prik		[                    ] 0%
+	- gevaccineerd	[=================== ] 99%
+		- AstraZenica		[===============     ] 76%
+		- Moderna			[===                 ] 19%
+		- Pfizer			[                    ] 3%
+Overzicht van vaccinaties na: 0 jaren, 6 maanden, 0 weken en 5 dagen.
+
+Park Spoor Oost:
+	- vaccins		[                    ] 0%
+	- 1ste prik		[                    ] 0%
 	- gevaccineerd	[====================] 100%
-		- AstraZenica		[===============     ] 75%
-		- Moderna			[====                ] 20%
+		- AstraZenica		[===============     ] 76%
+		- Moderna			[===                 ] 19%
 		- Pfizer			[                    ] 4%
 
