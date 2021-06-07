@@ -1,23 +1,0 @@
-Overzicht van vaccinaties na: 0 jaren, 0 maanden, 0 weken en 1 dag.
-
-AED Studios:
-	- vaccins		[                    ] 0%
-	- 1ste prik		[                    ] 0%
-	- gevaccineerd	[                    ] 2%
-		- J_J		[====================] 100%
-De Zoerla:
-	- vaccins		[                    ] 0%
-	- 1ste prik		[                    ] 0%
-	- gevaccineerd	[                    ] 2%
-		- J_J		[====================] 100%
-Flanders Expo:
-	- vaccins		[                    ] 0%
-	- 1ste prik		[                    ] 0%
-	- gevaccineerd	[                    ] 0%
-		- J_J		[                    ] 0%
-Park Spoor Oost:
-	- vaccins		[                    ] 0%
-	- 1ste prik		[                    ] 0%
-	- gevaccineerd	[                    ] 0%
-		- J_J		[                    ] 0%
-

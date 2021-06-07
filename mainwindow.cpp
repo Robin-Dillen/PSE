@@ -16,7 +16,6 @@
 MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
         QMainWindow(parent),
         ui(new Ui::MainWindow) {
-    ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
     ui->setupUi(this);
 
     ui->NextDayButton_2->hide();
@@ -184,6 +183,7 @@ MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
         QObject::connect(but, SIGNAL(pressed()), dialog, SLOT(exec()));
         QObject::connect((*it), SIGNAL(setVaccinInDialog(const std::string&, Vaccin*, int)), this,
                          SLOT(addVaccin(const std::string&,Vaccin*,int)));
+        ENSURE(isProperlyInitialized(), "Object isn't properly initialized when exiting constructor!");
     }
 
 
@@ -324,7 +324,7 @@ void MainWindow::setVaccinValue(const std::string &centrum, const std::string &v
     progressBars[centrum][vaccin]->setValue(value);
 }
 
-void MainWindow::setVaccinCount(Hub* h, string vaccin, int count)
+void MainWindow::setVaccinCount(Hub* h, string vaccin, int count){
     REQUIRE(count >= 0, "Er is een negatieve vaccinWaarde meegegeven aan de GUI.");
     vaccineCount[h][vaccin]->setText(QString::fromStdString(to_string(count)));
 }
