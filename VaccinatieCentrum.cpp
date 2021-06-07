@@ -306,6 +306,7 @@ void VaccinatieCentrum::ontvangLevering(int vaccins_in_levering, Vaccin *vaccin)
     aantal_geleverde_vaccins[vaccin->type] += vaccins_in_levering;
     ENSURE(begin_aantal_geleverde_vaccins + vaccins_in_levering == getAantalGeleverdeVaccins(vaccin->type),
            "De vaccins zijn niet succesvol geleverd!");
+    ENSURE(getTotaalAantalVaccins()+getTotaalAantalGeleverdeVaccins() <= getMaxStock(), "Er zijn teveel vaccins geleverd!");
 }
 
 bool VaccinatieCentrum::isIedereenGevaccineerd() const {

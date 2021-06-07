@@ -328,26 +328,28 @@ void Hub::distributeManual(std::string type, int count){
     Vaccin* vaccin = kvaccins[type];
     if(vaccin->aantal >= count){
         vaccin->aantal -= count;
-        return;
+        count = 0;
     }
     else{
         count -= vaccin->aantal;
         vaccin->aantal = 0;
-        for(map<string, deque<int> >::iterator it = vaccin->extra_gereserveerd.begin(); it != vaccin->extra_gereserveerd.end(); it++){
+        for(map<string, deque<int> >::iterator reservatie_iterator = vaccin->extra_gereserveerd.begin(); reservatie_iterator != vaccin->extra_gereserveerd.end(); reservatie_iterator++){
             if(count == 0) break;
-            for(deque<int>::reverse_iterator it2 = (*it).second.rbegin(); it2 != (*it).second.rend(); it++){
-                   if((*it2) >= count){
-                       (*it2) -= count;
+            for(deque<int>::reverse_iterator extra_reservatie_iterator = (*reservatie_iterator).second.rbegin(); extra_reservatie_iterator != (*reservatie_iterator).second.rend(); extra_reservatie_iterator++){
+                   if((*extra_reservatie_iterator) >= count){
+                       (*extra_reservatie_iterator) -= count;
                        count = 0;
                        break;
                    }
                    else{
-                       count -= (*it2);
-                       (*it2) = 0;
+                       count -= (*extra_reservatie_iterator);
+                       (*extra_reservatie_iterator) = 0;
                    }
             }
         }
     }
+    ENSURE(count == 0, "Er zijn onvoldoende vaccins weggenomen bij een hub tijdens het manueel leveren.");
+    ENSURE(getAllVaccins(vaccin) >= 0, "Er zijn teveel vaccins weggenomen uit een hub tijdens het manueel verdelen.");
 }
 
 void Hub::changeAllVaccinCount(){

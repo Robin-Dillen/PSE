@@ -4,7 +4,9 @@
 
 #include "Slider.h"
 #include "lib/DesignByContract.h"
-
+#include <QDialog>
+#include <QLayout>
+#include <QLabel>
 
 Slider::Slider(int i, Hub *h, VaccinatieCentrum *c, Vaccin *v) : QSlider(Qt::Horizontal), _initCheck(this) {
     REQUIRE(h->isProperlyInitialized(), "De hub is niet goed geïnitialiseert!");
@@ -67,8 +69,31 @@ void Slider::sendVaccins() {
     ENSURE(hub->isProperlyInitialized(), "De hub is niet goed geïnitialiseert!");
     ENSURE(centrum->isProperlyInitialized(), "het centrum is niet goed geïnitialiseert!");
     ENSURE(vaccin->isProperlyInitialized(), "het vaccin is niet goed geïnitialiseert!");
+    int maxteLeveren;
+    if (vaccin->temperatuur < 0) {
+        maxteLeveren = centrum->getKcapaciteit();
+    }else{
+        maxteLeveren = centrum->getMaxStock();
+    }
+    bool teveel = false;
+    while(centrum->getTotaalAantalVaccins()+centrum->getTotaalAantalGeleverdeVaccins()+this->value() > maxteLeveren && this->value() > 0){
+        teveel = true;
+        this->setValue(this->value()-interval);
+    }
+    if(teveel){
+        QDialog dialog(this);
+        dialog.setWindowTitle("Distributed Too much vaccines");
+        QVBoxLayout layout;
+        dialog.setLayout(&layout);
+        string t = "Distributed too much vaccines from hub.. with vaccine " + vaccin->type + ". New value: " +
+                to_string(this->value());
+        QLabel text(QString::fromStdString(t));
+        layout.addWidget(&text);
+        dialog.exec();
+    }
     hub->distributeManual(vaccin->type, this->value());
     centrum->ontvangLevering(this->value(), vaccin);
+
 }
 
 

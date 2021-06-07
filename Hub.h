@@ -176,6 +176,8 @@ public:
      * Haalt vaccin weg om manueel aan centra te leveren
      * @param type: type van het vaccin
      * @param count: hoeveelheid van vaccins
+     * \n ENSURE(count == 0, "Er zijn onvoldoende vaccins weggenomen bij een hub tijdens het manueel leveren.");
+     * \n ENSURE(getAllVaccins(type) >= 0, "Er zijn teveel vaccins weggenomen uit een hub tijdens het manueel verdelen.");
      */
     void distributeManual(std::string type, int count);
 
