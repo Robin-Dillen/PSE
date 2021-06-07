@@ -162,13 +162,20 @@ public:
      */
     void addReservations(const string &type);
 
-    //TODO comments
+    /*!
+     * geeft terug hoeveel vaccins er nog geleverd kunnnen worden voor de capaciteit vol zit
+     * @param centrum centrum
+     * @param dag de dag
+     * @return aantal vaccins
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling this function");
+     */
     int getFreeStock(VaccinatieCentrum *centrum, int dag);
 
     /*!
      * geeft alle vaccin terug van een gegeven type, zowel de vaccins die in de overschot worden bewaard, als vaccins in reservaties
      * @param type: type van het vaccin
      * @return int vaccins;
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling this function");
      */
     int getAllVaccins(const Vaccin *type);
 
@@ -176,6 +183,7 @@ public:
      * Haalt vaccin weg om manueel aan centra te leveren
      * @param type: type van het vaccin
      * @param count: hoeveelheid van vaccins
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling this function");
      * \n ENSURE(count == 0, "Er zijn onvoldoende vaccins weggenomen bij een hub tijdens het manueel leveren.");
      * \n ENSURE(getAllVaccins(type) >= 0, "Er zijn teveel vaccins weggenomen uit een hub tijdens het manueel verdelen.");
      */
@@ -183,12 +191,16 @@ public:
 
     /*!
      * levert 0 vaccins aan alle centra met elk type om het te initialiseren
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling this function");
      */
     void initializeCentra();
 
 public slots:
+
     /*!
      * stuurt een signaal om alle vaccinlabels te updaten
+     * @emit void Hub::changeVaccinCount(Hub *, std::string, int)
+     * \n REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling this function");
      */
     void changeAllVaccinCount();
 
