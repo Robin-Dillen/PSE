@@ -12,13 +12,22 @@ using namespace std;
 
 struct Vaccin {
     Vaccin(const string &type, const int levering, const int interval, const int transport, const int hernieuwing,
-           const int temperatuur) : type(type), levering(levering), interval(interval), transport(transport),
+           const int temperatuur) : _initCheck(this), type(type), levering(levering), interval(interval),
+                                    transport(transport),
                                     hernieuwing(hernieuwing), temperatuur(temperatuur),
                                     tijd_tot_nieuwe_levering(interval), aantal(0) {}
 
-    Vaccin() : levering(0), interval(0), transport(0), hernieuwing(0), temperatuur(0),
+    Vaccin() : _initCheck(this), levering(0), interval(0), transport(0), hernieuwing(0), temperatuur(0),
                tijd_tot_nieuwe_levering(interval), aantal(0) {}
 
+    /*!
+    * @return geeft terug of het object correct is geïnitialiseert
+    */
+    bool isProperlyInitialized() const {
+        return this == _initCheck;
+    }
+
+    const Vaccin *const _initCheck;
     const string type;
     const int levering; // geleverd aan hub
     const int interval;
@@ -70,7 +79,7 @@ public:
     Vaccin *
     getVaccin(const string &type, const int levering, const int interval, const int transport, const int hernieuwing,
               const int temperatuur) {
-        REQUIRE(this == _initCheck, "Object wasn't initialized when calling getInstance");
+        REQUIRE(isProperlyInitialized(), "Object wasn't initialized when calling getInstance");
         REQUIRE(!type.empty(), "Type name cannot be empty!");
         REQUIRE(levering > 0, "levering moet groter zijn dan 0!");
         REQUIRE(interval > 0, "Interval moet groter zijn dan 0!");
@@ -91,7 +100,9 @@ public:
 
 private:
     VaccinsFactorySingleton() : _initCheck(
-            this) {}                    // Constructor? (the {} brackets) are needed here.
+            this) {
+        ENSURE(isProperlyInitialized(), "Object wasn't properly initialized when exiting constructor!");
+    }                    // Constructor? (the {} brackets) are needed here.
 
     // C++ 03
     // ========
@@ -102,7 +113,7 @@ private:
     void operator=(VaccinsFactorySingleton const &); // Don't implement
 
     vector<Vaccin *> vaccins;
-    VaccinsFactorySingleton *const _initCheck;
+    const VaccinsFactorySingleton *const _initCheck;
 };
 
 

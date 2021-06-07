@@ -36,6 +36,7 @@ SimulationImporter::SimulationImporter(const std::string &filename) : _initCheck
     // another one bites the dust
     TiXmlElement *centrum = root->FirstChildElement("CENTRUM");
     do {
+        std::string naam = centrum->FirstChildElement("naam")->GetText();
         if (centrum->FirstChildElement() == NULL) continue;
         SimulationImporterData importerData;
 
@@ -51,49 +52,65 @@ SimulationImporter::SimulationImporter(const std::string &filename) : _initCheck
             importerData.data.at(type).tweede_prikken = to_int(vaccin->FirstChildElement("tweedeprik")->GetText());
 
         } while ((vaccin = vaccin->NextSiblingElement("VACCIN")) != NULL);
-        centra_data.push_back(importerData);
+        centra_data.insert(std::make_pair(naam, importerData));
     } while ((centrum = centrum->NextSiblingElement("CENTRUM")) != NULL);
     ENSURE(isProperlyInitialized(), "Object isn't properly initialized when exiting the constructor");
 }
 
 int SimulationImporter::getHubVaccinCount(int hubnr, const std::string &vaccin) {
     ENSURE(isProperlyInitialized(), "Object wasn't properly initialised!");
+    if ((int) hubs_data.size() <= hubnr) return 0;
+    if (hubs_data[hubnr].data.find(vaccin) == hubs_data[hubnr].data.end()) return 0;
     int aantal = hubs_data[hubnr].data.at(vaccin).aantal_vaccins;
     ENSURE(aantal >= 0, "Een hub kan geen negatief aantal vaccinaties hebben!");
     return aantal;
 }
 
-int SimulationImporter::getCentrumVaccinCount(int centrumnr, const std::string &vaccin) {
+int SimulationImporter::getCentrumVaccinCount(const std::string &centrum_naam, const std::string &vaccin) {
     ENSURE(isProperlyInitialized(), "Object wasn't properly initialised!");
-    int aantal = centra_data[centrumnr].data.at(vaccin).aantal_vaccins;
-    ENSURE(aantal >= 0, "Een centrum kan geen negatief aantal vaccinaties hebben!");
+    map<std::string, SimulationImporterData>::iterator centrumIt = centra_data.find(centrum_naam);
+    if (centrumIt == centra_data.end()) return 0;
+    if (centrumIt->second.data.find(vaccin) == centrumIt->second.data.end()) return 0;
+    int aantal = centra_data.at(centrum_naam).data.at(vaccin).aantal_vaccins;
+    ENSURE(aantal >= 0, "Een centrum kan geen negatief aantal vaccins hebben!");
     return aantal;
 }
 
-int SimulationImporter::getAantalVaccinatiesCentrum(int centrumnr) {
+int SimulationImporter::getTotaalAantalVaccinatiesCentrum(const std::string &centrum_naam) {
     ENSURE(isProperlyInitialized(), "Object wasn't properly initialised!");
     int count = 0;
-    if (centra_data.empty() || (int) centra_data.size() < centrumnr) return 0;
-    for (std::map<std::string, SimulationImporterVaccinData>::iterator it = centra_data[centrumnr].data.begin();
-         it != centra_data[centrumnr].data.end(); it++) {
+    if (centra_data.find(centrum_naam) == centra_data.end()) return 0;
+    for (std::map<std::string, SimulationImporterVaccinData>::iterator it = centra_data.at(centrum_naam).data.begin();
+         it != centra_data.at(centrum_naam).data.end(); it++) {
         count += (*it).second.tweede_prikken;
     }
     ENSURE(count >= 0, "Het aantal vaccinaties in een centrum kan nie negatief zijn!");
     return count;
 }
 
-int SimulationImporter::getTotaalAantalEerstePrikken(int centrumnr) {
+int SimulationImporter::getAantalVaccinatiesCentrum(const string &centrum_naam, const string &vaccin) {
     ENSURE(isProperlyInitialized(), "Object wasn't properly initialised!");
-    if (centra_data.empty() || (int) centra_data.size() < centrumnr)
+    if (centra_data.find(centrum_naam) == centra_data.end()) return 0;
+    map<basic_string<char>, SimulationImporterVaccinData>::iterator vaccin_aantal = centra_data.at(
+            centrum_naam).data.find(vaccin);
+    if (vaccin_aantal == centra_data.at(centrum_naam).data.end()) return 0;
+    ENSURE(vaccin_aantal->second.tweede_prikken >= 0, "Het aantal vaccinaties in een centrum kan nie negatief zijn!");
+    return vaccin_aantal->second.tweede_prikken;
+}
+
+int SimulationImporter::getTotaalAantalEerstePrikken(const std::string &centrum_naam) {
+    ENSURE(isProperlyInitialized(), "Object wasn't properly initialised!");
+    if (centra_data.find(centrum_naam) == centra_data.end())
         return 0;
     int totaal = 0;
-    for (map<string, SimulationImporterVaccinData>::iterator eerste_prikken = centra_data[centrumnr].data.begin();
-         eerste_prikken != centra_data[centrumnr].data.end(); ++eerste_prikken) {
+    for (map<string, SimulationImporterVaccinData>::iterator eerste_prikken = centra_data.at(centrum_naam).data.begin();
+         eerste_prikken != centra_data.at(centrum_naam).data.end(); ++eerste_prikken) {
         totaal += eerste_prikken->second.eerste_prikken;
     }
     ENSURE(totaal >= 0, "Een centrum kan geen negatief aantal eerste prikken hebben!");
     return totaal;
 }
+
 
 bool SimulationImporter::isProperlyInitialized() const {
     return this == _initCheck;

@@ -10,7 +10,6 @@
 #include <vector>
 
 class SimulationImporter;
-
 struct SimulationImporterData;
 
 struct SimulationImporterVaccinData {
@@ -28,14 +27,12 @@ struct SimulationImporterData {
     friend SimulationImporter;
 private:
     SimulationImporterData();
-
-    // int[4] = aantal_vaccins, eerste_prikken, 2deprikken
     std::map<std::string, SimulationImporterVaccinData> data;
 };
 
 class SimulationImporter {
 public:
-    SimulationImporter(const std::string &filename);
+    explicit SimulationImporter(const std::string &filename);
 
     /*!
      * geeft het aantal vaccins in de gegeven hub terug (hubnr is de index van hubs in simulatie)
@@ -53,16 +50,28 @@ public:
      * @param vaccin type van het vaccin
      * @return het aantal vaccins in het centrum met gegeven type
      * \n ENSURE(isProperlyInitialized(), "Object wasn't properly initialised!");
+     * \n ENSURE(aantal >= 0, "Een centrum kan geen negatief aantal vaccinaties hebben!");
      */
-    int getCentrumVaccinCount(int centrumnr, const std::string &vaccin);
+    int getCentrumVaccinCount(const std::string &centrum_naam, const std::string &vaccin);
 
     /*!
      * geeft het totaal aantal volledige vaccinaties terug van het centrum
      * @param centrumnr vaccin type van het vaccin
      * @return het totaal aantal volledige vaccinaties
      * \n ENSURE(isProperlyInitialized(), "Object wasn't properly initialised!");
+     * \n ENSURE(count >= 0, "Het aantal vaccinaties in een centrum kan nie negatief zijn!");
      */
-    int getAantalVaccinatiesCentrum(int centrumnr);
+    int getTotaalAantalVaccinatiesCentrum(const std::string &centrum_naam);
+
+    /*!
+    * geeft het totaal aantal volledige vaccinaties terug van het centrum
+    * @param centrum_naam naam van het vaccin
+    * @param vaccin type van het vaccin
+    * @return het totaal aantal volledige vaccinaties
+    * \n ENSURE(isProperlyInitialized(), "Object wasn't properly initialised!");
+    * \n ENSURE(count >= 0, "Het aantal vaccinaties in een centrum kan nie negatief zijn!");
+    */
+    int getAantalVaccinatiesCentrum(const std::string &centrum_naam, const std::string &vaccin);
 
     /*!
      * geeft het aantal eerste prikken van het centrum met het bepaalde type terug
@@ -70,8 +79,9 @@ public:
      * @param vaccin type van het vaccin
      * @return het aantal eerste prikken in hub met gegeven type
      * \n ENSURE(isProperlyInitialized(), "Object wasn't properly initialised!");
+     * \n ENSURE(totaal >= 0, "Een centrum kan geen negatief aantal eerste prikken hebben!");
      */
-    int getTotaalAantalEerstePrikken(int centrumnr);
+    int getTotaalAantalEerstePrikken(const std::string &centrum_naam);
 
     /*!
      * @return geeft terug of het object juist geïnitialiseert is
@@ -81,7 +91,7 @@ public:
 private:
     const SimulationImporter *const _initCheck;
     std::vector<SimulationImporterData> hubs_data;
-    std::vector<SimulationImporterData> centra_data;
+    std::map<std::string, SimulationImporterData> centra_data;
 };
 
 

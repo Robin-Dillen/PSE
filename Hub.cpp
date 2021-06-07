@@ -12,16 +12,18 @@
 #include "StatisticsSingleton.h"
 #include "Vaccins.h"
 
-Hub::Hub(const map<string, Vaccin *> &vaccins) : kvaccins(vaccins), _initCheck(this) {
-//    for (map<string, Vaccin *>::const_iterator vaccin = vaccins.begin(); vaccin != vaccins.end(); vaccin++) {
-//        ontvangLevering(vaccin->first, vaccin->second->levering);
-//    }
+Hub::Hub(const map<string, Vaccin *> &vaccins) : _initCheck(this), kvaccins(vaccins) {
+    for (map<string, Vaccin *>::const_iterator vaccinsIt = vaccins.begin(); vaccinsIt != vaccins.end(); ++vaccinsIt) {
+        REQUIRE(!vaccinsIt->second->type.empty(), "Naam van het vaccin mag niet leeg zijn!");
+        REQUIRE(vaccinsIt->second->interval != 0, "het interval van het vaccin mag niet 0 zijn!");
+        REQUIRE(vaccinsIt->second->transport != 0, "het transport van het vaccin mag niet 0 zijn!");
+        REQUIRE(vaccinsIt->second->levering != 0, "de levering van het vaccin mag niet 0 zijn!");
+        REQUIRE(vaccinsIt->second->hernieuwing >= 0, "de hernieuwing van het vaccin mag niet negatief zijn!");
+    }
     ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
 }
 
-Hub::Hub() : kvaccins(map<string, Vaccin *>()), _initCheck(this) {
-    ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
-}
+Hub::Hub(QObject *parent) : QObject(parent), _initCheck(this) {}
 
 bool Hub::isProperlyInitialized() const {
     return _initCheck == this;
@@ -31,8 +33,6 @@ int Hub::getAantalVaccins(const string &type) const {
     REQUIRE(isProperlyInitialized(), "Parser wasn't initialized when calling getAantalVaccins");
     REQUIRE(!type.empty(), "Type of vaccin cannot be empty.");
     if (kvaccins.find(type) == kvaccins.end()) return 0;
-    if (kvaccins.at(type)->aantal < 0)
-        cout << "error";
     ENSURE(kvaccins.at(type)->aantal >= 0, "Er is een negatief aantal vaccins!");
     return kvaccins.at(type)->aantal;
 }
@@ -75,40 +75,13 @@ const map<string, VaccinatieCentrum *> &Hub::getFverbondenCentra() const {
     return fverbonden_centra;
 }
 
-void Hub::setAantalVaccins(const string &type, int aantalVaccins) {
-    REQUIRE(isProperlyInitialized(), "Parser wasn't initialized when calling setAantalVaccins");
-    REQUIRE(!type.empty(), "Type of vaccin cannot be empty.");
-    if (kvaccins.find(type) == kvaccins.end()) return;
-    kvaccins[type]->aantal = aantalVaccins;
-    ENSURE(aantalVaccins == getAantalVaccins(type), "Het setten van het aantal kvaccins is mislukt!");
-}
-
-void Hub::addFverbondenCentra(const map<string, VaccinatieCentrum *> &fverbondenCentra) {
-    REQUIRE(isProperlyInitialized(), "Parser wasn't initialized when calling addFverbondenCentra(map)");
-    //Voegt centra toe aan de hub
-    int start_size = fverbonden_centra.size();
-    fverbonden_centra = fverbondenCentra;
-    ENSURE(fverbonden_centra.size() == fverbondenCentra.size() + start_size,
-           "De centra zijn niet (volledig) Toegevoegd");
-}
-
-void Hub::addFverbondenCentra(const vector<VaccinatieCentrum *> &fverbondenCentra) {
-    REQUIRE(isProperlyInitialized(), "Parser wasn't initialized when calling addFverbondenCentra(vector)");
-    int start_size = fverbonden_centra.size();
-    //Voegt centra toe aan de hub
-    for (int i = 0, end = fverbondenCentra.size(); i < end; i++) {
-        fverbonden_centra[fverbondenCentra[i]->getKfname()] = fverbondenCentra[i];
-    }
-    ENSURE(fverbonden_centra.size() == fverbondenCentra.size() + start_size,
-           "De centra zijn niet (volledig) Toegevoegd");
-}
-
 void Hub::addCentrum(VaccinatieCentrum *centrum) {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling addCentrum");
     REQUIRE(centrum != NULL, "Het centrum is ongeldig!");
 
     unsigned int og_size = fverbonden_centra.size();
     fverbonden_centra[centrum->getKfname()] = centrum;
+
     ENSURE(fverbonden_centra.size() == og_size + 1, "Het vaccinatie centrum is niet toegevoegt!");
 }
 
@@ -134,9 +107,6 @@ void Hub::nieuweDag() {
                 (vaccin->second->interval + 1 + (((vaccin->second->tijd_tot_nieuwe_levering - 1) %
                                                   (vaccin->second->interval + 1)))) %
                 (vaccin->second->interval + 1); // python modulo (wraps around)
-//        cout << "\t\taantal dagen tot levering van " << vaccin->first << ": "
-//             << vaccin->second->tijd_tot_nieuwe_levering
-//             << endl;
     }
 
     verdeelTweedePrikken();
@@ -181,17 +151,23 @@ void Hub::addReservations(const string &type) {
         for (int dag = 0; dag < interval; dag++) {
             //Aantal 2de prikken voor die dag
             int vaccins = centrum->second->getNogTeReserverenVaccins(type, dag);
+            int free_capacity = getFreeStock(centrum->second, dag);
             if (vaccins == 0) continue;
             vaccins = ceil((float) vaccins / lading) * lading;
             //Zolang er voldoende vaccins zijn, ladingen reserveren
-            while (vaccins > 0 && kvaccins[type]->aantal > 0) {
+            while (vaccins > 0 && kvaccins[type]->aantal > 0 && (kvaccins[type]->temperatuur >= 0 ||
+                                                                 kvaccins[type]->gereserveerd[centrum->first][dag] <=
+                                                                 free_capacity)) {
+                if (kvaccins[type]->extra_gereserveerd[centrum->first][dag] +
+                    kvaccins[type]->gereserveerd[centrum->first][dag] >
+                    centrum->second->getKcapaciteit() * 2)
+                    break;
                 vaccins -= lading;
                 //gereserveerde vaccins worden appart opgeslagen
                 kvaccins[type]->aantal -= lading;
                 kvaccins[type]->gereserveerd[centrum->first][dag] += lading;
                 centrum->second->reserveerVaccins(type, dag, lading);
             }
-
             ENSURE(kvaccins[type]->extra_gereserveerd[centrum->first][dag] +
                    kvaccins[type]->gereserveerd[centrum->first][dag] <=
                    centrum->second->getKcapaciteit() * 2, "Er zijn teveel vaccins gereserveerd");
@@ -233,103 +209,32 @@ void Hub::addReservations(const string &type) {
 
 }
 
-void Hub::verdeelVaccins() {
-    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling verdeelVaccins");
-    for (map<string, VaccinatieCentrum *>::iterator centrum = fverbonden_centra.begin(); centrum != fverbonden_centra.end(); centrum++) {
-        //Als er geen vaccins gereserveerd zijn, moet er ook niks verdeeld worden
-//        if (gereserveerde_vaccins.front().empty() && extra_reservatie.front().empty()) {
-//            return;
-//        }
-        int totaal_vaccins =
-                centrum->second->getTotaalAantalVaccins() + centrum->second->getTotaalAantalGeleverdeVaccins();
-        int capaciteit = centrum->second->getKcapaciteit() - totaal_vaccins;
-        int maxStock = centrum->second->getMaxStock();
-        //1ste verdeling om alle 2de prikken te leveren
-        for (map<string, Vaccin *>::const_iterator vaccin = kvaccins.begin(); vaccin != kvaccins.end(); vaccin++) {
-            int gereserveerd_2de_prik = kvaccins[vaccin->first]->gereserveerd[centrum->first].front();
-            //aantal gereserveerde vaccins leveren
-            int lading = kvaccins.at(vaccin->first)->transport;
-            //Blijft ladingen leveren tot alle vaccins op zijn, of tot capaciteit is bereikt
-            while (gereserveerd_2de_prik >= lading && totaal_vaccins + lading <= maxStock) {
-                if (vaccin->second->temperatuur < 0 && lading > capaciteit) break;
-                centrum->second->ontvangLevering(lading, vaccin->second);
-                gereserveerd_2de_prik -= lading;
-                capaciteit -= lading;
-                totaal_vaccins += lading;
-            }
-//            ENSURE(gereserveerd_2de_prik >= 0, "Er zijn meer vaccins geleverd dan gereserveerd");
-            //Als er nog gereserveerde vaccins over zijn, mogen die terug in vaccins opgeslagen worden voor later
-            if (gereserveerd_2de_prik > 0) {
-                kvaccins[vaccin->first]->aantal += gereserveerd_2de_prik;
-                gereserveerd_2de_prik = 0;
-            }
-        }
-        //capaciteit = min(capaciteit, centrum->second->getAantalNietVaccinaties());
-        //2de verdeling om capaciteit te bekomen
-        for (map<string, Vaccin *>::const_iterator vaccin = kvaccins.begin(); vaccin != kvaccins.end(); vaccin++) {
-            int gereserveerd_1ste_prik = kvaccins[vaccin->first]->extra_gereserveerd[centrum->first].front();
-            //aantal gereserveerde vaccins leveren
-            int lading = kvaccins[vaccin->first]->transport;
-
-            //Blijft ladingen leveren tot alle vaccins op zijn, of tot capaciteit is bereikt
-            while (gereserveerd_1ste_prik >= lading && capaciteit > 0 && totaal_vaccins + lading <= maxStock &&
-                   centrum->second->getAantalNietVaccinaties() != 0) {
-                if (vaccin->second->temperatuur < 0 && lading > capaciteit) break;
-                centrum->second->ontvangLevering(lading, vaccin->second);
-                /*if(temperatuur < 0 && capaciteit < lading){
-                    break;
-                }
-                 */
-                gereserveerd_1ste_prik -= lading;
-                capaciteit -= lading;
-                totaal_vaccins += lading;
-            }
-            if (gereserveerd_1ste_prik < 0)
-                cout << "error";
-            ENSURE(gereserveerd_1ste_prik >= 0, "Er zijn meer vaccins geleverd dan gereserveerd");
-            //Als er nog gereserveerde vaccins over zijn, mogen die terug in vaccins opgeslagen worden voor later
-            if (gereserveerd_1ste_prik > 0) {
-                kvaccins[vaccin->first]->aantal += gereserveerd_1ste_prik;
-                gereserveerd_1ste_prik = 0;
-            }
-            vaccin->second->gereserveerd[centrum->first].pop_front();
-            vaccin->second->extra_gereserveerd[centrum->first].pop_front();
-
-            emit changeVaccinCount(vaccin->first, getAllVaccins(vaccin->second));
-//            vaccin->second->gereserveerd[centrum->first].push_back(0);
-//            vaccin->second->extra_gereserveerd[centrum->first].push_back(0);
-        }
-//        ENSURE(getGereserveerdevaccins(gereserveerd_1ste_prik) == 0, "Er zitten nog vaccins in een verlopen reservatie");
-//        ENSURE(getGereserveerdevaccins(gereserveerd_2de_prik) == 0, "Er zitten nog vaccins in een verlopen reservatie");
-    }
-}
-
 void Hub::verdeelTweedePrikken() {
-    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling verdeelVaccins");
+    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling verdeelTweedePrikken");
+    static int testdag = 0;
+    testdag++;
     for (map<string, VaccinatieCentrum *>::iterator centrum = fverbonden_centra.begin();
          centrum != fverbonden_centra.end(); centrum++) {
-        //Als er geen vaccins gereserveerd zijn, moet er ook niks verdeeld worden
-//        if (gereserveerde_vaccins.front().empty() && extra_reservatie.front().empty()) {
-//            return;
-//        }
         int totaal_vaccins =
                 centrum->second->getTotaalAantalVaccins() + centrum->second->getTotaalAantalGeleverdeVaccins();
         int capaciteit = centrum->second->getKcapaciteit() - totaal_vaccins;
         int maxStock = centrum->second->getMaxStock();
+
         //1ste verdeling om alle 2de prikken te leveren
         for (map<string, Vaccin *>::const_iterator vaccin = kvaccins.begin(); vaccin != kvaccins.end(); vaccin++) {
-            int gereserveerd_2de_prik = kvaccins[vaccin->first]->gereserveerd[centrum->first].front();
-            //aantal gereserveerde vaccins leveren
+            int gereserveerd_2de_prik = kvaccins[vaccin->first]->gereserveerd[centrum->first].front(); //aantal gereserveerde vaccins leveren
             int lading = kvaccins.at(vaccin->first)->transport;
             //Blijft ladingen leveren tot alle vaccins op zijn, of tot capaciteit is bereikt
-            while (gereserveerd_2de_prik >= lading && totaal_vaccins + lading <= maxStock) {
+            while (gereserveerd_2de_prik >= lading && totaal_vaccins + lading <= maxStock &&
+                   centrum->second->getAantalTweedePrikken(vaccin->first, 0) != 0) {
                 if (vaccin->second->temperatuur < 0 && lading > capaciteit) break;
                 centrum->second->ontvangLevering(lading, vaccin->second);
                 gereserveerd_2de_prik -= lading;
                 capaciteit -= lading;
                 totaal_vaccins += lading;
             }
-//            ENSURE(gereserveerd_2de_prik >= 0, "Er zijn meer vaccins geleverd dan gereserveerd");
+            ENSURE(gereserveerd_2de_prik >= 0, "Er zijn meer vaccins geleverd dan gereserveerd");
+
             //Als er nog gereserveerde vaccins over zijn, mogen die terug in vaccins opgeslagen worden voor later
             if (gereserveerd_2de_prik > 0) {
                 kvaccins[vaccin->first]->aantal += gereserveerd_2de_prik;
@@ -340,6 +245,8 @@ void Hub::verdeelTweedePrikken() {
 }
 
 void Hub::verdeelEerstePrikken() {
+    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling verdeelEerstePrikken");
+
     for (map<string, VaccinatieCentrum *>::iterator centrum = fverbonden_centra.begin();
          centrum != fverbonden_centra.end(); centrum++) {
         int totaal_vaccins =
@@ -357,16 +264,10 @@ void Hub::verdeelEerstePrikken() {
                    centrum->second->getAantalNietVaccinaties() != 0) {
                 if (vaccin->second->temperatuur < 0 && lading > capaciteit) break;
                 centrum->second->ontvangLevering(lading, vaccin->second);
-                /*if(temperatuur < 0 && capaciteit < lading){
-                    break;
-                }
-                 */
                 gereserveerd_1ste_prik -= lading;
                 capaciteit -= lading;
                 totaal_vaccins += lading;
             }
-            if (gereserveerd_1ste_prik < 0)
-                cout << "error";
             ENSURE(gereserveerd_1ste_prik >= 0, "Er zijn meer vaccins geleverd dan gereserveerd");
             //Als er nog gereserveerde vaccins over zijn, mogen die terug in vaccins opgeslagen worden voor later
             if (gereserveerd_1ste_prik > 0) {
@@ -376,39 +277,24 @@ void Hub::verdeelEerstePrikken() {
             vaccin->second->gereserveerd[centrum->first].pop_front();
             vaccin->second->extra_gereserveerd[centrum->first].pop_front();
 
-            emit changeVaccinCount(vaccin->first, getAllVaccins(vaccin->second));
+            emit changeVaccinCount(this,vaccin->first, getAllVaccins(vaccin->second));
 //            vaccin->second->gereserveerd[centrum->first].push_back(0);
 //            vaccin->second->extra_gereserveerd[centrum->first].push_back(0);
+//            emit changeVaccinCount(vaccin->first, getAllVaccins(vaccin->second));
         }
     }
 }
 
-int
-Hub::minAantalLeveringen(const map<string, VaccinatieCentrum *>::const_iterator &centrum, const Vaccin *vaccin) const {
-    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling minAantalLeveringen");
-    REQUIRE(vaccin == NULL, "Vaccin is niet geldig!");
-    //Berekent hoeveel ladingen er kunnen geleverd worden om de capaciteit van het centrum te bereiken
-    return ceil(((float) max(centrum->second->getKcapaciteit() - centrum->second->getAantalVaccins(vaccin->type), 0) /
-                 vaccin->transport));
-}
 
 map<string, Vaccin *> Hub::getVaccins() {
     REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getVaccins()");
     return kvaccins;
 }
 
-int Hub::getGereserveerdevaccins(map<string, int> dag) {
-    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling getGereserveerdevaccins()");
-    int vaccins = 0;
-    for (map<string, Vaccin *>::const_iterator vaccin = kvaccins.begin(); vaccin != kvaccins.end(); vaccin++) {
-        vaccins += dag[vaccin->first];
-    }
-    return vaccins;
-}
-
 Hub::~Hub() {}
 
 int Hub::getFreeStock(VaccinatieCentrum *centrum, int dag) {
+    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling this function");
     int overschot = 0;
     for (int d = 0; d < dag; d++) {
         for (map<string, Vaccin *>::const_iterator vaccin = kvaccins.begin(); vaccin != kvaccins.end(); ++vaccin) {
@@ -434,17 +320,66 @@ int Hub::getFreeStock(VaccinatieCentrum *centrum, int dag) {
 }
 
 int Hub::getAllVaccins(const Vaccin *type) {
+    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling this function");
     int count = 0;
     count += type->aantal;
-    for(map<string, deque<int> >::const_iterator centrum = type->gereserveerd.begin(); centrum != type->gereserveerd.end(); centrum++){
-        for(int i = 0; i < (int) centrum->second.size(); i++){
+    for (map<string, deque<int> >::const_iterator centrum = type->gereserveerd.begin();
+         centrum != type->gereserveerd.end(); centrum++) {
+        for (int i = 0; i < (int) centrum->second.size(); i++) {
             count += centrum->second[i];
         }
     }
-    for(map<string, deque<int> >::const_iterator centrum = type->extra_gereserveerd.begin(); centrum != type->extra_gereserveerd.end(); centrum++){
-        for(int i = 0; i < (int) centrum->second.size(); i++){
+    for (map<string, deque<int> >::const_iterator centrum = type->extra_gereserveerd.begin();
+         centrum != type->extra_gereserveerd.end(); centrum++) {
+        for (int i = 0; i < (int) centrum->second.size(); i++) {
             count += centrum->second[i];
         }
     }
     return count;
+}
+
+void Hub::distributeManual(std::string type, int count) {
+    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling this function");
+    Vaccin *vaccin = kvaccins[type];
+    if (vaccin->aantal >= count) {
+        vaccin->aantal -= count;
+        count = 0;
+    } else {
+        count -= vaccin->aantal;
+        vaccin->aantal = 0;
+        for (map<string, deque<int> >::iterator reservatie_iterator = vaccin->extra_gereserveerd.begin();
+             reservatie_iterator != vaccin->extra_gereserveerd.end(); reservatie_iterator++) {
+            if (count == 0) break;
+            for(deque<int>::reverse_iterator extra_reservatie_iterator = (*reservatie_iterator).second.rbegin(); extra_reservatie_iterator != (*reservatie_iterator).second.rend(); extra_reservatie_iterator++){
+                   if((*extra_reservatie_iterator) >= count){
+                       (*extra_reservatie_iterator) -= count;
+                       count = 0;
+                       break;
+                   }
+                   else{
+                       count -= (*extra_reservatie_iterator);
+                       (*extra_reservatie_iterator) = 0;
+                   }
+            }
+        }
+    }
+    ENSURE(count == 0, "Er zijn onvoldoende vaccins weggenomen bij een hub tijdens het manueel leveren.");
+    ENSURE(getAllVaccins(vaccin) >= 0, "Er zijn teveel vaccins weggenomen uit een hub tijdens het manueel verdelen.");
+}
+
+void Hub::changeAllVaccinCount() {
+    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling this function");
+    for (map<string, Vaccin *>::const_iterator vaccin = kvaccins.begin(); vaccin != kvaccins.end(); ++vaccin) {
+        emit changeVaccinCount(this, vaccin->first, getAllVaccins(vaccin->second));
+    }
+}
+
+void Hub::initializeCentra() {
+    REQUIRE(this->isProperlyInitialized(), "Parser wasn't initialized when calling this function");
+    for (map<string, VaccinatieCentrum *>::iterator centrum = fverbonden_centra.begin();
+         centrum != fverbonden_centra.end(); centrum++) {
+        for (map<string, Vaccin *>::const_iterator vaccin = kvaccins.begin(); vaccin != kvaccins.end(); vaccin++) {
+            centrum->second->ontvangLevering(0, vaccin->second);
+        }
+    }
 }

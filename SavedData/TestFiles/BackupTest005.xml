@@ -1,0 +1,52 @@
+<root>
+    <HUB>
+        <VACCIN>
+            <type>AstraZeneca</type>
+            <aantal>500</aantal>
+        </VACCIN>
+        <VACCIN>
+            <type>Pfizer</type>
+            <aantal>750</aantal>
+        </VACCIN>
+    </HUB>
+    <HUB>
+        <VACCIN>
+            <type>AstraZeneca</type>
+            <aantal>10000</aantal>
+        </VACCIN>
+        <VACCIN>
+            <type>Pfizer</type>
+            <aantal>9000</aantal>
+        </VACCIN>
+    </HUB>
+    <CENTRUM>
+        <naam>Park Spoor Oost</naam>
+        <VACCIN>
+            <type>AstraZeneca</type>
+            <aantal>1000</aantal>
+            <eersteprik>2000</eersteprik>
+            <tweedeprik>3000</tweedeprik>
+        </VACCIN>
+        <VACCIN>
+            <type>Pfizer</type>
+            <aantal>4000</aantal>
+            <eersteprik>5000</eersteprik>
+            <tweedeprik>6000</tweedeprik>
+        </VACCIN>
+    </CENTRUM>
+    <CENTRUM>
+        <naam>De Zoerla</naam>
+        <VACCIN>
+            <type>AstraZeneca</type>
+            <aantal>6000</aantal>
+            <eersteprik>5000</eersteprik>
+            <tweedeprik>4000</tweedeprik>
+        </VACCIN>
+        <VACCIN>
+            <type>Pfizer</type>
+            <aantal>3000</aantal>
+            <eersteprik>2000</eersteprik>
+            <tweedeprik>1000</tweedeprik>
+        </VACCIN>
+    </CENTRUM>
+</root>

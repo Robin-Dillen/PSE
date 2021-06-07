@@ -1,20 +1,21 @@
 //============================================================================
-// Name        : TicTactToeOutputTest.cpp
-// Author      : Serge Demeyer
+// Name        : VaccinSimulatieOutputTest.cpp
+// Author      : Niels van Den Broecke, Robin Dillen
 // Version     :
-// Copyright   : Project Software Engineering - BA1 Informatica - Serge Demeyer - University of Antwerp
-// Description : TicTactToe in C++, Ansi-style
+// Copyright   : Project Software Engineering - BA1 Informatica - Niels van Den Broecke, Robin Dillen - University of Antwerp
+// Description : Vaccin simulatie outputtests
 //============================================================================
 
 #include <iostream>
 #include <fstream>
 #include <sys/stat.h>
 #include <gtest/gtest.h>
-
-using namespace std;
-
 #include "VaccinSimulatie.h"
 #include "Lib.h"
+#include "Utils.h"
+#include "Parser.h"
+
+using namespace std;
 
 class VaccinSimulatieOutputTest : public ::testing::Test {
 protected:

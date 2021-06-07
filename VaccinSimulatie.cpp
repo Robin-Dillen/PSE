@@ -13,10 +13,10 @@
 #include "Hub.h"
 
 
-VaccinSimulatie::VaccinSimulatie(vector<Hub *> &h, std::vector<VaccinatieCentrum *> &v, const string &testfilename,
-                                 bool c_out) : day(1) {
+VaccinSimulatie::VaccinSimulatie(vector<Hub *> &h, std::vector<VaccinatieCentrum *> &v, const string &testfilename)
+        : _initCheck(this), day(1) {
     size_t pos = testfilename.find("test");
-    ENSURE(pos != string::npos, "Given argument doesn't include a test file!");
+    REQUIRE(pos != string::npos, "Given argument doesn't include a test file!");
     hubs = h;
     vaccinatieCentra = v;
 
@@ -46,21 +46,31 @@ VaccinSimulatie::VaccinSimulatie(vector<Hub *> &h, std::vector<VaccinatieCentrum
     qTimer = new QTimer(this);
     qTimer->setInterval(200);
     connect(qTimer, SIGNAL(timeout()), this, SLOT(nextDay()));
+    ENSURE(isProperlyInitialized(), "The object isn't properly initialized when exiting the constructor!");
 }
 
 void VaccinSimulatie::start() {
+    REQUIRE(isProperlyInitialized(), "The object isn't properly initialised when calling this function");
     qTimer->start();
+    ENSURE(qTimer->isActive() == true, "Timer is niet succesvol gestart!");
 }
 
 void VaccinSimulatie::stop() {
+    REQUIRE(isProperlyInitialized(), "The object isn't properly initialised when calling this function");
     qTimer->stop();
+    ENSURE(qTimer->isActive() == false, "Timer is niet succesvol gestopt!");
 }
 
 bool VaccinSimulatie::nextDay() {
+    REQUIRE(isProperlyInitialized(), "The object isn't properly initialised when calling this function");
     StatisticsSingleton &stats = StatisticsSingleton::getInstance();
     OutputSingleton &output = OutputSingleton::getInstance();
-    if(day == 1){
+    if (day == 1) {
         ExportSimulation("../SavedData/dag" + to_string(day) + ".xml", this);
+        ENSURE(FileExists("../SavedData/dag" + to_string(day) + ".xml"),
+               "De backup file is niet succesvol aangemaakt!");
+        ENSURE(!FileIsEmpty("../SavedData/dag" + to_string(day) + ".xml"),
+               "De backup file is niet correct geschreven!");
     }
 
     bool endOfSimulation = true;
@@ -70,17 +80,17 @@ bool VaccinSimulatie::nextDay() {
         } else {
             continue;
         }
-        // increase current_day
+// increase current_day
         map<string, Vaccin *> vaccins = hubs[i]->getVaccins();
-        for(map<string,Vaccin*>::iterator it = vaccins.begin(); it != vaccins.end(); it++){
-            if ((day - 1) % it->second->interval == 0) {
-                // door in de simulatie het aantal vaccins mee te geven kunnen we war randomness toevoegen aan het aantal
-                // geleverde vaccins. Want ze zijn toch niet te vertrouwen die farmareuzen!
-                hubs[i]->ontvangLevering(it->first, it->second->levering);
+        for (map<string, Vaccin *>::iterator vaccinIt = vaccins.begin(); vaccinIt != vaccins.end(); vaccinIt++) {
+            if ((day - 1) % vaccinIt->second->interval == 0) {
+// door in de simulatie het aantal vaccins mee te geven kunnen we war randomness toevoegen aan het aantal
+// geleverde vaccins. Want ze zijn toch niet te vertrouwen die farmareuzen!
+                hubs[i]->ontvangLevering(vaccinIt->first, vaccinIt->second->levering);
             }
         }
 
-        // stuur signaal nieuwe dag
+// stuur signaal nieuwe dag
         hubs[i]->nieuweDag();
 
     }
@@ -124,6 +134,10 @@ bool VaccinSimulatie::nextDay() {
         stats.setEerstePrikken(totaal_eerste_prikken);
         stats.setAantalVaccinaties(totaal_vaccinaties);
         ExportSimulation("../SavedData/dag" + to_string(day + 1) + ".xml", this);
+        ENSURE(FileExists("../SavedData/dag" + to_string(day + 1) + ".xml"),
+               "De backup file is niet succesvol aangemaakt!");
+        ENSURE(!FileIsEmpty("../SavedData/dag" + to_string(day + 1) + ".xml"),
+               "De backup file is niet correct geschreven!");
         day++;
         emit dayNrChanged(day);
     } else {
@@ -135,30 +149,32 @@ bool VaccinSimulatie::nextDay() {
     return true;
 }
 
-
-//void VaccinSimulatie::previousDay() {
-//    std::cout << "prev day" << std::endl;
-//    day--;
-//    emit dayNrChanged(day);
-//}
-
 const vector<Hub *> &VaccinSimulatie::getHubs() const {
+    REQUIRE(isProperlyInitialized(), "The object isn't properly initialised when calling this function");
     return hubs;
 }
 
 const vector<VaccinatieCentrum *> &VaccinSimulatie::getVaccinatieCentra() const {
+    REQUIRE(isProperlyInitialized(), "The object isn't properly initialised when calling this function");
     return vaccinatieCentra;
 }
 
 void VaccinSimulatie::updateSpeed(int newspeed) {
+    REQUIRE(isProperlyInitialized(), "The object isn't properly initialised when calling this function");
     qTimer->setInterval(newspeed);
+    ENSURE(qTimer->interval() == newspeed, "De snelheid is niet succesvol geüpdate");
 }
 
 VaccinSimulatie::~VaccinSimulatie() {
+    REQUIRE(isProperlyInitialized(), "The object isn't properly initialised when calling this function");
     for (int i = 1; i <= day; i++) {
         remove(("../SavedData/dag" + to_string(i) + ".xml").c_str());
     }
+    delete qTimer;
+}
 
+bool VaccinSimulatie::isProperlyInitialized() const {
+    return _initCheck == this;
 }
 
 

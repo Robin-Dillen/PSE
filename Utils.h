@@ -193,7 +193,6 @@ inline std::pair<double, double> addressToCoords(const std::string &address) {
 #endif
         std::ifstream file("location.txt");
         getline(file, coords);
-        std::cout << coords << std::endl;
         size_t delim = coords.find(',');
         lat = std::stod(coords.substr(0, delim - 1));
         lon = std::stod(coords.substr(delim + 1, coords.size()));
@@ -211,18 +210,22 @@ inline void ExportSimulation(const std::string &filename, VaccinSimulatie *simul
     TiXmlElement *root = new TiXmlElement("root");
     doc.LinkEndChild(root);
     const std::vector<Hub *> &hubs = simulatie->getHubs();
+
     for (std::vector<Hub *>::const_iterator hubIterator = hubs.begin(); hubIterator != hubs.end(); ++hubIterator) {
+
         TiXmlElement *hub = new TiXmlElement("HUB");
         map<std::string, Vaccin *> vaccins = (*hubIterator)->getVaccins();
+
         for (map<std::string, Vaccin *>::const_iterator vaccinIterator = vaccins.begin();
              vaccinIterator != vaccins.end(); ++vaccinIterator) {
+
             TiXmlElement *vaccin = new TiXmlElement("VACCIN");
             TiXmlElement *type = new TiXmlElement("type");
             TiXmlText *type_value = new TiXmlText(vaccinIterator->first.c_str());
             type->LinkEndChild(type_value);
             TiXmlElement *aantal = new TiXmlElement("aantal");
             TiXmlText *aantal_value = new TiXmlText(
-                    to_string((*hubIterator)->getAantalVaccins(vaccinIterator->first)).c_str());
+                    to_string((*hubIterator)->getAllVaccins(vaccinIterator->second)).c_str());
             aantal->LinkEndChild(aantal_value);
             vaccin->LinkEndChild(type);
             vaccin->LinkEndChild(aantal);
@@ -235,7 +238,12 @@ inline void ExportSimulation(const std::string &filename, VaccinSimulatie *simul
          centrumIterator != centra.end(); ++centrumIterator) {
 
         TiXmlElement *centrum = new TiXmlElement("CENTRUM");
+        TiXmlElement *naam = new TiXmlElement("naam");
+        TiXmlText *naam_value = new TiXmlText((*centrumIterator)->getKfname().c_str());
+        naam->LinkEndChild(naam_value);
+        centrum->LinkEndChild(naam);
         const map<std::string, pair<Vaccin *, int>> &vaccins = (*centrumIterator)->getAantalVaccins1();
+
         for (map<std::string, pair<Vaccin *, int>>::const_iterator vaccinIterator = vaccins.begin();
              vaccinIterator != vaccins.end(); ++vaccinIterator) {
 
@@ -248,11 +256,16 @@ inline void ExportSimulation(const std::string &filename, VaccinSimulatie *simul
                     to_string((*centrumIterator)->getAantalVaccins(vaccinIterator->first)).c_str());
             aantal->LinkEndChild(aantal_value);
             int totaal_eerste = 0;
-            const deque<int> &eerste_prikken = (*centrumIterator)->getAantalEerstePrikken().at(vaccinIterator->first);
-            for (deque<int>::const_iterator eerste_prik = eerste_prikken.begin();
-                 eerste_prik != eerste_prikken.end(); ++eerste_prik) {
-                totaal_eerste += *eerste_prik;
+
+            const map<std::string, deque<int> > &aantal_eerste_prikken = (*centrumIterator)->getAantalEerstePrikken();
+            if (aantal_eerste_prikken.find(vaccinIterator->first) != aantal_eerste_prikken.end()) {
+                const deque<int> &eerste_prikken = aantal_eerste_prikken.at(vaccinIterator->first);
+                for (deque<int>::const_iterator eerste_prik = eerste_prikken.begin();
+                     eerste_prik != eerste_prikken.end(); ++eerste_prik) {
+                    totaal_eerste += *eerste_prik;
+                }
             }
+
             TiXmlElement *eersteprik = new TiXmlElement("eersteprik");
             TiXmlText *eersteprik_value = new TiXmlText(to_string(totaal_eerste).c_str());
             eersteprik->LinkEndChild(eersteprik_value);

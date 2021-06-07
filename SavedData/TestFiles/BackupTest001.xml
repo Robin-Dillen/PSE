@@ -1,0 +1,17 @@
+<root>
+    <HUB>
+        <VACCIN>
+            <type>AstraZeneca</type>
+            <aantal>0</aantal>
+        </VACCIN>
+    </HUB>
+    <CENTRUM>
+        <naam>Park Spoor Oost</naam>
+        <VACCIN>
+            <type>AstraZeneca</type>
+            <aantal>0</aantal>
+            <eersteprik>0</eersteprik>
+            <tweedeprik>0</tweedeprik>
+        </VACCIN>
+    </CENTRUM>
+</root>
