@@ -15,9 +15,10 @@
 
 MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
         QMainWindow(parent),
-        ui(new Ui::MainWindow) {
+        ui(new Ui::MainWindow){
     ui->setupUi(this);
 
+    _initCheck = this;
     ui->NextDayButton_2->hide();
     ui->ReturnButton->hide();
 
@@ -183,10 +184,15 @@ MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
         QObject::connect(but, SIGNAL(pressed()), dialog, SLOT(exec()));
         QObject::connect((*it), SIGNAL(setVaccinInDialog(const std::string&, Vaccin*, int)), this,
                          SLOT(addVaccin(const std::string&,Vaccin*,int)));
+        ENSURE(isProperlyInitialized(), "Object isn't properly initialized when exiting constructor!");
     }
 
 
     ui->tabWidget->currentWidget()->setLayout(layout);
+}
+
+bool MainWindow::isProperlyInitialized() const {
+    return _initCheck == this;
 }
 
 
@@ -198,11 +204,13 @@ MainWindow::~MainWindow() {
 }
 
 void MainWindow::changeDay(int day) {
+    REQUIRE(day >= 1, "Er is een negatieve dag meegegeven aan de GUI");
     simDay = day;
     setGuiDay(day);
 }
 
 void MainWindow::endOfSimulation(int day) {
+    REQUIRE(day >= 1, "Er is een negatieve dag meegegeven aan de GUI");
     string daytext = "vaccination ended at day: " + to_string(day);
     QString time = QString::fromStdString(daytext);
     ui->DayText->setText(time);
@@ -313,14 +321,17 @@ void MainWindow::addVaccin(const std::string &centrum, Vaccin *vaccin, int centr
 }
 
 void MainWindow::setVaccinValue(const std::string &centrum, const std::string &vaccin, int value) {
+    REQUIRE(value >= 0, "Er is een negatieve vaccinWaarde meegegeven aan de GUI.");
     progressBars[centrum][vaccin]->setValue(value);
 }
 
 void MainWindow::setVaccinCount(Hub* h, string vaccin, int count){
+    REQUIRE(count >= 0, "Er is een negatieve vaccinWaarde meegegeven aan de GUI.");
     vaccineCount[h][vaccin]->setText(QString::fromStdString(to_string(count)));
 }
 
 void MainWindow::setGuiDay(int day) {
+    REQUIRE(day >= 1, "Er is een negatieve dag meegegeven aan de GUI");
     string daytext = "day: " + to_string(day);
     QString time = QString::fromStdString(daytext);
     ui->DayText->setText(time);
