@@ -32,7 +32,7 @@ public:
      * \n ENSURE(kaantalInwoners >= 0, "het aantal inwoners is negatief!");
      * \n ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
     */
-    VaccinatieCentrum(const int kcapaciteit, const int kaantalInwoners, const string &kfname,
+    VaccinatieCentrum(int kcapaciteit, int kaantalInwoners, const string &kfname,
                       const string &kfaddress);
 
     VaccinatieCentrum();
