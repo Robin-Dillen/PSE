@@ -14,6 +14,9 @@
 class Slider : public QSlider {
 Q_OBJECT
 public:
+    /*!
+     * \n ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
+     */
     Slider(int interval, Hub *hub,int nummer, VaccinatieCentrum *centrum, Vaccin *vaccin);
 
     /**

@@ -27,7 +27,15 @@ Q_OBJECT
 
 public:
 
+    /*!
+     * \n ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
+     */
     explicit MainWindow(VaccinSimulatie *sim, QWidget *parent = nullptr);
+
+    /**
+     * @return geeft terug of het object correct is geïnitialiseert
+     */
+    bool isProperlyInitialized() const;
 
     ~MainWindow();
 
@@ -44,12 +52,14 @@ public slots:
     /*!
      * verandert de dag
      * @param day de dag naar waar we veranderen
+     * \n REQUIRE(day >= 1, "Er is een negatieve dag meegegeven aan de GUI");
      */
     void changeDay(int day);
 
     /*!
      * bëeindigt de simulatie
      * @param day laatste dag
+     *  \n REQUIRE(day >= 1, "Er is een negatieve dag meegegeven aan de GUI");
      */
     void endOfSimulation(int day);
 
@@ -63,11 +73,16 @@ public slots:
      * @param centrum naam van het centrum
      * @param vaccin naam van het vaccin
      * @param value waarde waarnaar verandert word
+     * \n REQUIRE(value >= 0, "Er is een negatieve vaccinWaarde meegegeven aan de GUI.");
      */
     void setVaccinValue(const std::string &centrum, const std::string &vaccin, int value);
 
     /*!
-     * het aantal vaccins da er in da hub
+     * set het aantal vaccins in een hub
+     * @param h hub
+     * @param vaccin naam van het vaccin
+     * @param value waarde waarnaar verandert word
+     * \n REQUIRE(count >= 0, "Er is een negatieve vaccinWaarde meegegeven aan de GUI.");
      */
     void setVaccinCount(Hub *h, std::string vaccin, int count);
 
@@ -88,9 +103,13 @@ public slots:
     void returnToCurrent();
 
 private:
+
+    const MainWindow *_initCheck; // pointer naar zichzelf om te checken of het object correct geïnitialseert is
+
     /*!
      * zet de dag van de gui
      * @param day waarde
+     * \n REQUIRE(day >= 1, "Er is een negatieve dag meegegeven aan de GUI");
      */
     void setGuiDay(int day);
 

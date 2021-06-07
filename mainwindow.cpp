@@ -16,6 +16,7 @@
 MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
         QMainWindow(parent),
         ui(new Ui::MainWindow) {
+    ENSURE(isProperlyInitialized(), "constructor must end in properlyInitialized state");
     ui->setupUi(this);
 
     ui->NextDayButton_2->hide();
@@ -189,6 +190,10 @@ MainWindow::MainWindow(VaccinSimulatie *sim, QWidget *parent) :
     ui->tabWidget->currentWidget()->setLayout(layout);
 }
 
+bool MainWindow::isProperlyInitialized() const {
+    return _initCheck == this;
+}
+
 
 MainWindow::~MainWindow() {
     for(vector<QObject *>::iterator it = objects.begin(); it != objects.end(); it++){
@@ -198,11 +203,13 @@ MainWindow::~MainWindow() {
 }
 
 void MainWindow::changeDay(int day) {
+    REQUIRE(day >= 1, "Er is een negatieve dag meegegeven aan de GUI");
     simDay = day;
     setGuiDay(day);
 }
 
 void MainWindow::endOfSimulation(int day) {
+    REQUIRE(day >= 1, "Er is een negatieve dag meegegeven aan de GUI");
     string daytext = "vaccination ended at day: " + to_string(day);
     QString time = QString::fromStdString(daytext);
     ui->DayText->setText(time);
@@ -313,14 +320,17 @@ void MainWindow::addVaccin(const std::string &centrum, Vaccin *vaccin, int centr
 }
 
 void MainWindow::setVaccinValue(const std::string &centrum, const std::string &vaccin, int value) {
+    REQUIRE(value >= 0, "Er is een negatieve vaccinWaarde meegegeven aan de GUI.");
     progressBars[centrum][vaccin]->setValue(value);
 }
 
-void MainWindow::setVaccinCount(Hub* h, string vaccin, int count){
+void MainWindow::setVaccinCount(Hub* h, string vaccin, int count)
+    REQUIRE(count >= 0, "Er is een negatieve vaccinWaarde meegegeven aan de GUI.");
     vaccineCount[h][vaccin]->setText(QString::fromStdString(to_string(count)));
 }
 
 void MainWindow::setGuiDay(int day) {
+    REQUIRE(day >= 1, "Er is een negatieve dag meegegeven aan de GUI");
     string daytext = "day: " + to_string(day);
     QString time = QString::fromStdString(daytext);
     ui->DayText->setText(time);
