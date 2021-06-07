@@ -1,9 +1,9 @@
 //============================================================================
-// Name        : TicTactToeOutputTest.cpp
-// Author      : Serge Demeyer
+// Name        : VaccinSimulatieOutputTest.cpp
+// Author      : Niels van Den Broecke, Robin Dillen
 // Version     :
-// Copyright   : Project Software Engineering - BA1 Informatica - Serge Demeyer - University of Antwerp
-// Description : TicTactToe in C++, Ansi-style
+// Copyright   : Project Software Engineering - BA1 Informatica - Niels van Den Broecke, Robin Dillen - University of Antwerp
+// Description : Vaccin simulatie outputtests
 //============================================================================
 
 #include <iostream>

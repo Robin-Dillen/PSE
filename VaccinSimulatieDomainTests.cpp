@@ -90,7 +90,6 @@ TEST_F(VaccinSimulatieDomainTest, HappyDay) {
     int nr = 1;
     string filename = HAPPY_DAY_TESTS_FILE_LOCATION + "test" + testnr + ".xml";
     while (FileExists(filename)) {
-        std::cout << testnr << std::endl;
         Parser P(filename);
         vector<Hub *> hubs = P.getFhubs();
         std::vector<VaccinatieCentrum *> vaccinatie_centra;

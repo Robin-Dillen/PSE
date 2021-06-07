@@ -193,7 +193,6 @@ inline std::pair<double, double> addressToCoords(const std::string &address) {
 #endif
         std::ifstream file("location.txt");
         getline(file, coords);
-        std::cout << coords << std::endl;
         size_t delim = coords.find(',');
         lat = std::stod(coords.substr(0, delim - 1));
         lon = std::stod(coords.substr(delim + 1, coords.size()));
